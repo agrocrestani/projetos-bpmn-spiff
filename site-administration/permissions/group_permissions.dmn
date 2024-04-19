@@ -211,6 +211,20 @@
           <text>"BASIC"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1ya4i4i">
+        <inputEntry id="UnaryTests_1po9kcd">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1q3yc0c">
+          <text>"comercialGraos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ujcpau">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0do9eq4">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
