@@ -7,7 +7,7 @@
           <text>"*"</text>
         </inputExpression>
       </input>
-      <output id="OutputClause_0vrbi1j" label="users" typeRef="string" biodi:width="290" />
+      <output id="OutputClause_0vrbi1j" label="users" typeRef="string" biodi:width="317" />
       <output id="output_1" name="groups" typeRef="Any" biodi:width="262" />
       <rule id="DecisionRule_1xwvp7b">
         <description>Each line in this table assigns a user identifier (email) to a group. Please ensure that there are quotes around each entry.</description>
@@ -118,6 +118,17 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0im090f">
           <text>"insumos_curupai"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pjr0b1">
+        <inputEntry id="UnaryTests_0aku9ln">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qvjmx6">
+          <text>"marcio.firmino@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07ql941">
+          <text>"TI"</text>
         </outputEntry>
       </rule>
     </decisionTable>
