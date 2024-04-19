@@ -222,7 +222,7 @@
           <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0do9eq4">
-          <text>"BASIC"</text>
+          <text>"PG:example"</text>
         </outputEntry>
       </rule>
     </decisionTable>
