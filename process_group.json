@@ -1,0 +1,15 @@
+{
+    "data_store_specifications": {
+        "json": {
+            "saplogin": {
+                "description": "",
+                "identifier": "saplogin",
+                "location": "",
+                "name": "SapLogin",
+                "schema": {}
+            }
+        }
+    },
+    "description": null,
+    "display_name": ""
+}
