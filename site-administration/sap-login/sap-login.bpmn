@@ -38,7 +38,7 @@ query = """
 
 teste = Hana(connection).selectDb(query)
 
-teste = json.dumps(teste)</bpmn:script>
+teste = json.loads(teste)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
