@@ -36,9 +36,9 @@ query = """
             select * from SBO_CRESTANI_QA."OITB"
             """
 
-teste = Hana(connection).selectDb(query)
+teste = json.loads(Hana(connection).selectDb(query))
 
-teste = json.loads(teste)</bpmn:script>
+</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
