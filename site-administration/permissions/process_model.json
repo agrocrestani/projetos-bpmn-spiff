@@ -5,5 +5,5 @@
     "fault_or_suspend_on_exception": "fault",
     "metadata_extraction_paths": null,
     "primary_file_name": "permissions.bpmn",
-    "primary_process_id": "Process_permissions_gthz2ww"
+    "primary_process_id": "set_permissions_process"
 }
