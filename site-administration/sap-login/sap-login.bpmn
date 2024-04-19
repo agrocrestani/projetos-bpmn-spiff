@@ -33,7 +33,7 @@ You can also change the text you are reading here by updating the *Instructions*
 #     "password": "9Ab63^Op33"
 # }
 
-connection = {SPIFF_SECRET:hana}
+connection = "SPIFF_SECRET:hana"
 query = """
             select * from SBO_CRESTANI_QA."OITB"
             """
