@@ -222,7 +222,21 @@
           <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0do9eq4">
-          <text>"PG:example"</text>
+          <text>"PG:comercial_graos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15a8asc">
+        <inputEntry id="UnaryTests_07m8hvf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jkhk46">
+          <text>"TI"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0s39xtl">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ow5t8k">
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
     </decisionTable>
