@@ -65,7 +65,7 @@ for r in rsp:
         }
     )
 
-centros_de_custo = csafras
+safras = csafras
 
 del(rsp)
 del(ccustos)
