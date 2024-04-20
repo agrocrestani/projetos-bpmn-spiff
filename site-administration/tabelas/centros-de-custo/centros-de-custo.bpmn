@@ -65,10 +65,10 @@ for r in rsp:
         }
     )
 
-centros_de_custo = ccustos
+# centros_de_custo = ccustos
 
-del(rsp)
-del(ccustos)</bpmn:script>
+# del(rsp)
+# del(ccustos)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_0jau633" name="Centros de Custo" dataStoreRef="centros_de_custo" type="json" />
   </bpmn:process>
