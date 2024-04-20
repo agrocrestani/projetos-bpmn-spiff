@@ -19,7 +19,7 @@
       <bpmn:script>
 # typeahead = []
 
-typeahead = {"oitm": oitm}</bpmn:script>
+owhs_almoxarifados  = {"owhs_almoxarifados ": owhs_almoxarifados}</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_09mu4sd" targetRef="Activity_0o51srq" />
     <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
