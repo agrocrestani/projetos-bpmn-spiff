@@ -65,7 +65,7 @@ for r in rsp:
         }
     )
 
-centros_de_custo = {ccustos}
+centros_de_custo = {"centros_de_custo": ccustos}
 
 del(rsp)
 del(almoxarifados)</bpmn:script>
