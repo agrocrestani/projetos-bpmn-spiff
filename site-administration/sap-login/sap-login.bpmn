@@ -7,21 +7,7 @@
         <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">R5/PT30M</bpmn:timeCycle>
       </bpmn:timerEventDefinition>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_0sjbpag" sourceRef="StartEvent_1" targetRef="Activity_04cxo2j" />
-    <bpmn:scriptTask id="Activity_04cxo2j" name="Cria variaveis">
-      <bpmn:incoming>Flow_0sjbpag</bpmn:incoming>
-      <bpmn:outgoing>Flow_01qedxo</bpmn:outgoing>
-      <bpmn:script>data = {
-    "UserName": "emerson.gregorio",
-    "Password": "A951753@roo",
-    "CompanyDB": "SBO_CRESTANI_QA",
-    "Language":"29"
-}
-headers = {
-  'Content-Type': 'application/json'}
-url = "https://172.20.1.9:50000/b1s/v1/Login"</bpmn:script>
-    </bpmn:scriptTask>
-    <bpmn:sequenceFlow id="Flow_01qedxo" sourceRef="Activity_04cxo2j" targetRef="Activity_12rivqi" />
+    <bpmn:sequenceFlow id="Flow_0sjbpag" sourceRef="StartEvent_1" targetRef="Activity_12rivqi" />
     <bpmn:serviceTask id="Activity_12rivqi" name="Loga no SAP">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>url = "https://slayer.agrocrestani.com.br:50000/b1s/v1/Login"
@@ -50,7 +36,7 @@ headers = {
 body = response['body']
 status = response['http_status']</spiffworkflow:postScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_01qedxo</bpmn:incoming>
+      <bpmn:incoming>Flow_0sjbpag</bpmn:incoming>
       <bpmn:outgoing>Flow_1egjosn</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:endEvent id="Event_1la0phd">
@@ -100,10 +86,6 @@ saplogin = [
       <bpmndi:BPMNShape id="Event_0a5p9ys_di" bpmnElement="StartEvent_1">
         <dc:Bounds x="82" y="69" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1g4ltg2_di" bpmnElement="Activity_04cxo2j">
-        <dc:Bounds x="170" y="47" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0mqr8r5_di" bpmnElement="Activity_12rivqi">
         <dc:Bounds x="350" y="47" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -126,10 +108,6 @@ saplogin = [
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0sjbpag_di" bpmnElement="Flow_0sjbpag">
         <di:waypoint x="118" y="87" />
-        <di:waypoint x="170" y="87" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_01qedxo_di" bpmnElement="Flow_01qedxo">
-        <di:waypoint x="270" y="87" />
         <di:waypoint x="350" y="87" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1egjosn_di" bpmnElement="Flow_1egjosn">
