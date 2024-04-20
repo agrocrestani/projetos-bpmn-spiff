@@ -43,7 +43,9 @@ query = """
             ORDER BY T0."ItemName"
           """
 
-rsp = json.loads(Hana(connection).selectDb(query))</bpmn:script>
+rsp = json.loads(Hana(connection).selectDb(query))
+
+del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:scriptTask id="Activity_09mu4sd" name="Fetch entidades">
       <bpmn:extensionElements>
