@@ -33,22 +33,22 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-query = """
-      SELECT o."WhsCode", o."WhsName", o."BPLid" FROM owhs o 
-      WHERE 
-        o."WhsCode" LIKE '01.%'
-        OR o."WhsCode" LIKE '02.%'
-        OR o."WhsCode" LIKE '05.%'
-        OR o."WhsCode" LIKE '06.%'
-        OR o."WhsCode" LIKE '07.%'
-        OR o."WhsCode" LIKE '08.%'
-        OR o."WhsCode" LIKE '09.%'
-        OR o."WhsCode" LIKE '10.%'
-        OR o."WhsCode" LIKE '1%'
-      ORDER BY o."WhsCode" 
-          """
+# query = """
+#       SELECT o."WhsCode", o."WhsName", o."BPLid" FROM owhs o 
+#       WHERE 
+#         o."WhsCode" LIKE '01.%'
+#         OR o."WhsCode" LIKE '02.%'
+#         OR o."WhsCode" LIKE '05.%'
+#         OR o."WhsCode" LIKE '06.%'
+#         OR o."WhsCode" LIKE '07.%'
+#         OR o."WhsCode" LIKE '08.%'
+#         OR o."WhsCode" LIKE '09.%'
+#         OR o."WhsCode" LIKE '10.%'
+#         OR o."WhsCode" LIKE '1%'
+#       ORDER BY o."WhsCode" 
+#           """
 
-rsp = json.loads(Hana(connection).selectDb(query))
+# rsp = json.loads(Hana(connection).selectDb(query))
 
 # del(connection)</bpmn:script>
     </bpmn:scriptTask>
@@ -63,11 +63,11 @@ rsp = json.loads(Hana(connection).selectDb(query))
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1auiu7s_di" bpmnElement="Activity_0qpzdpu">
-        <dc:Bounds x="270" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="632" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1auiu7s_di" bpmnElement="Activity_0qpzdpu">
+        <dc:Bounds x="270" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_18v80m6_di" bpmnElement="Activity_1iixjle">
         <dc:Bounds x="430" y="137" width="100" height="80" />
