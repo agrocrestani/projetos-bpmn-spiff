@@ -65,7 +65,7 @@ for r in rsp:
         }
     )
 
-culturas = cdepartamentos
+departamentos = cdepartamentos
 
 del(rsp)
 del(cdepartamentos)
