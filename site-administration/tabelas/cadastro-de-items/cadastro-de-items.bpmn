@@ -106,7 +106,7 @@ for r in rsp:
             "search_term": itemName, 
             "result": {
                 "ItemCode": ItemCode, 
-                "itemName": itemName, 
+                "itemName": ItemName, 
                 "ItmsGrpNam": ItmsGrpNam,
                 "InvntryUom": InvntryUom if InvntryUom != 'null' else None
                 }
