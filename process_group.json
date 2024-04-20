@@ -8,6 +8,13 @@
                 "name": "Centros de Custo",
                 "schema": {}
             },
+            "culturas": {
+                "description": "",
+                "identifier": "culturas",
+                "location": "",
+                "name": "Culturas",
+                "schema": {}
+            },
             "saplogin": {
                 "description": "",
                 "identifier": "saplogin",
