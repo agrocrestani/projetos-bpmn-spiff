@@ -8,6 +8,15 @@
                 "name": "SapLogin",
                 "schema": {}
             }
+        },
+        "kkv": {
+            "typeahead": {
+                "description": "",
+                "identifier": "typeahead",
+                "location": "",
+                "name": "Typeahead (modelo)",
+                "schema": {}
+            }
         }
     },
     "description": null,
