@@ -33,9 +33,10 @@ connection = {
 }
 
 query = """
-            SELECT o."WhsCode", o."WhsName", o."BPLid" FROM owhs o 
+            SELECT o."WhsCode", o."WhsName", o."BPLid" 
+            FROM owhs o 
             WHERE 
-              o."WhsCode" LIKE '01.%'
+                 o."WhsCode" LIKE '01.%'
               OR o."WhsCode" LIKE '02.%'
               OR o."WhsCode" LIKE '05.%'
               OR o."WhsCode" LIKE '06.%'
@@ -118,7 +119,6 @@ for r in rsp:
 del(rsp)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
-  <bpmn:dataStore id="owhs_almoxarifados" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="owhs_almoxarifados">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
