@@ -96,7 +96,7 @@ del(rsp)</spiffworkflow:postScript>
       <bpmn:outgoing>Flow_0w7oyed</bpmn:outgoing>
       <bpmn:script>oitm = []
 
-for r in rsp['body']:
+for r in rsp:
     ItemCode = r[0]
     ItemName = r[1]
     ItmsGrpNam = r[2]
