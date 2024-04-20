@@ -48,9 +48,9 @@ query = """
         ORDER BY o."WhsCode" 
           """
 
-rsp = Hana(connection).selectDb(query)
+rsp = json.loads(Hana(connection).selectDb(query))
 
-# del(connection)</bpmn:script>
+del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="Activity_1iixjle">
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
