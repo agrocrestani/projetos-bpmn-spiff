@@ -42,6 +42,13 @@
                 "location": "",
                 "name": "SapLogin",
                 "schema": {}
+            },
+            "utilizacoes": {
+                "description": "",
+                "identifier": "utilizacoes",
+                "location": "",
+                "name": "Utiliza\u00e7\u00f5es",
+                "schema": {}
             }
         },
         "kkv": {
