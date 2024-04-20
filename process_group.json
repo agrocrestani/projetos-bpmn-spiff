@@ -15,6 +15,13 @@
                 "name": "Culturas",
                 "schema": {}
             },
+            "safras": {
+                "description": "",
+                "identifier": "safras",
+                "location": "",
+                "name": "Safras",
+                "schema": {}
+            },
             "saplogin": {
                 "description": "",
                 "identifier": "saplogin",
