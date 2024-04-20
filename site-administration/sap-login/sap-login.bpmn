@@ -26,12 +26,13 @@ url = "https://172.20.1.9:50000/b1s/v1/Login"</bpmn:script>
       <bpmn:extensionElements>
         <spiffworkflow:preScript>url = "https://slayer.agrocrestani.com.br:50000/b1s/v1/Login"
 
-payload = json.dumps({
-  "UserName": "emerson.gregorio",
-  "Password": "A951753@roo",
-  "CompanyDB": "SBO_CRESTANI_QA",
-  "Language": "29"
-})
+data = {
+    "UserName": "emerson.gregorio",
+    "Password": "A951753@roo",
+    "CompanyDB": "SBO_CRESTANI_QA",
+    "Language":"29"
+}
+
 headers = {
   'Content-Type': 'application/json'
 }
