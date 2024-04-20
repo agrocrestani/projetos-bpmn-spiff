@@ -1,6 +1,13 @@
 {
     "data_store_specifications": {
         "json": {
+            "centros_de_custo": {
+                "description": "",
+                "identifier": "centros_de_custo",
+                "location": "",
+                "name": "Centros de Custo",
+                "schema": {}
+            },
             "saplogin": {
                 "description": "",
                 "identifier": "saplogin",
