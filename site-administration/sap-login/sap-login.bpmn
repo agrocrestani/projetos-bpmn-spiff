@@ -7,19 +7,31 @@
         <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">R5/PT30M</bpmn:timeCycle>
       </bpmn:timerEventDefinition>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_0sjbpag" sourceRef="StartEvent_1" targetRef="Activity_12rivqi" />
+    <bpmn:sequenceFlow id="Flow_0sjbpag" sourceRef="StartEvent_1" targetRef="Activity_04cxo2j" />
+    <bpmn:scriptTask id="Activity_04cxo2j" name="Cria variaveis">
+      <bpmn:incoming>Flow_0sjbpag</bpmn:incoming>
+      <bpmn:outgoing>Flow_01qedxo</bpmn:outgoing>
+      <bpmn:script>data = {
+    "UserName": "emerson.gregorio",
+    "Password": "A951753@roo",
+    "CompanyDB": "SBO_CRESTANI_QA",
+    "Language":"29"
+}
+headers = {
+  'Content-Type': 'application/json'}
+url = "https://172.20.1.9:50000/b1s/v1/Login"</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_01qedxo" sourceRef="Activity_04cxo2j" targetRef="Activity_12rivqi" />
     <bpmn:serviceTask id="Activity_12rivqi" name="Loga no SAP">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript># url = "https://slayer.agrocrestani.com.br:50000/b1s/v1/Login"
-url = "https://172.20.1.9:50000/b1s/v1/Login"
+        <spiffworkflow:preScript>url = "https://slayer.agrocrestani.com.br:50000/b1s/v1/Login"
 
-data = json.dumps({
+payload = json.dumps({
   "UserName": "emerson.gregorio",
   "Password": "A951753@roo",
   "CompanyDB": "SBO_CRESTANI_QA",
   "Language": "29"
 })
-
 headers = {
   'Content-Type': 'application/json'
 }
@@ -33,17 +45,18 @@ headers = {
             <spiffworkflow:parameter id="basic_auth_password" type="str" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
-        <spiffworkflow:postScript>body = response['body']
+        <spiffworkflow:postScript>#body = json.loads(response['body'])
+body = response['body']
 status = response['http_status']</spiffworkflow:postScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0sjbpag</bpmn:incoming>
+      <bpmn:incoming>Flow_01qedxo</bpmn:incoming>
       <bpmn:outgoing>Flow_1egjosn</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:endEvent id="Event_1la0phd">
-      <bpmn:incoming>Flow_1q1dbcs</bpmn:incoming>
+      <bpmn:incoming>Flow_0161db1</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1egjosn" sourceRef="Activity_12rivqi" targetRef="Activity_1ngczyk" />
-    <bpmn:sequenceFlow id="Flow_1q1dbcs" sourceRef="Activity_1ngczyk" targetRef="Event_1la0phd" />
+    <bpmn:sequenceFlow id="Flow_1q1dbcs" sourceRef="Activity_1ngczyk" targetRef="Activity_0tu8vtj" />
     <bpmn:scriptTask id="Activity_1ngczyk" name="Pega SessionId">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>SessionId = body["SessionId"]</spiffworkflow:preScript>
@@ -62,44 +75,87 @@ saplogin = [
 ]</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_1e0prfh" name="SapLogin" dataStoreRef="saplogin" type="json" />
+    <bpmn:sequenceFlow id="Flow_0161db1" sourceRef="Activity_0tu8vtj" targetRef="Event_1la0phd" />
+    <bpmn:manualTask id="Activity_0tu8vtj" name="Mostra conteudo">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## SAP Session ID
+
+{% for s in saplogin -%}
+    {{s.SessionId}}
+{% endfor -%}</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1q1dbcs</bpmn:incoming>
+      <bpmn:outgoing>Flow_0161db1</bpmn:outgoing>
+      <bpmn:property id="Property_1xynmg1" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_14zr2zh">
+        <bpmn:sourceRef>DataStoreReference_1e0prfh</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1xynmg1</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_login_sap_s0chrgk">
       <bpmndi:BPMNShape id="Event_0a5p9ys_di" bpmnElement="StartEvent_1">
-        <dc:Bounds x="252" y="68" width="36" height="36" />
+        <dc:Bounds x="82" y="69" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1g4ltg2_di" bpmnElement="Activity_04cxo2j">
+        <dc:Bounds x="170" y="47" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0mqr8r5_di" bpmnElement="Activity_12rivqi">
-        <dc:Bounds x="350" y="46" width="100" height="80" />
+        <dc:Bounds x="350" y="47" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1la0phd_di" bpmnElement="Event_1la0phd">
-        <dc:Bounds x="702" y="68" width="36" height="36" />
+        <dc:Bounds x="942" y="68" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0zol1bk_di" bpmnElement="Activity_1ngczyk">
         <dc:Bounds x="530" y="46" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_1e0prfh_di" bpmnElement="DataStoreReference_1e0prfh">
-        <dc:Bounds x="575" y="-85" width="50" height="50" />
+        <dc:Bounds x="635" y="-85" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="578" y="-109" width="47" height="14" />
+          <dc:Bounds x="638" y="-109" width="46" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1thlznr_di" bpmnElement="Activity_0tu8vtj">
+        <dc:Bounds x="710" y="47" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0sjbpag_di" bpmnElement="Flow_0sjbpag">
-        <di:waypoint x="288" y="86" />
-        <di:waypoint x="350" y="86" />
+        <di:waypoint x="118" y="87" />
+        <di:waypoint x="170" y="87" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01qedxo_di" bpmnElement="Flow_01qedxo">
+        <di:waypoint x="270" y="87" />
+        <di:waypoint x="350" y="87" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1egjosn_di" bpmnElement="Flow_1egjosn">
-        <di:waypoint x="450" y="86" />
+        <di:waypoint x="450" y="87" />
+        <di:waypoint x="490" y="87" />
+        <di:waypoint x="490" y="86" />
         <di:waypoint x="530" y="86" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1q1dbcs_di" bpmnElement="Flow_1q1dbcs">
         <di:waypoint x="630" y="86" />
-        <di:waypoint x="702" y="86" />
+        <di:waypoint x="670" y="86" />
+        <di:waypoint x="670" y="87" />
+        <di:waypoint x="710" y="87" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_1nni45t_di" bpmnElement="DataOutputAssociation_1nni45t">
-        <di:waypoint x="585" y="46" />
-        <di:waypoint x="597" y="-35" />
+        <di:waypoint x="602" y="46" />
+        <di:waypoint x="646" y="-35" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0161db1_di" bpmnElement="Flow_0161db1">
+        <di:waypoint x="810" y="87" />
+        <di:waypoint x="876" y="87" />
+        <di:waypoint x="876" y="86" />
+        <di:waypoint x="942" y="86" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_14zr2zh_di" bpmnElement="DataInputAssociation_14zr2zh">
+        <di:waypoint x="681" y="-35" />
+        <di:waypoint x="751" y="47" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
