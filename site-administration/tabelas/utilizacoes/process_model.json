@@ -1,0 +1,9 @@
+{
+    "description": "",
+    "display_name": "Utiliza\u00e7\u00f5es",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "utilizacoes.bpmn",
+    "primary_process_id": "Process_utilizacoes_nxkswyb"
+}
