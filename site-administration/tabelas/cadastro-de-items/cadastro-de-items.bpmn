@@ -103,7 +103,7 @@ for r in rsp:
     InvntryUom = str(r['invntryuom'])
     oitm.append(
         {
-            "search_term": itemName, 
+            "search_term": ItemName, 
             "result": {
                 "ItemCode": ItemCode, 
                 "itemName": ItemName, 
