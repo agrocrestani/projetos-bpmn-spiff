@@ -19,7 +19,7 @@
       <bpmn:script>
 # typeahead = []
 
-typeahead = {"entidades": entidades}</bpmn:script>
+typeahead = {"oitm": oitm}</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_09mu4sd" targetRef="Activity_0o51srq" />
     <bpmn:serviceTask id="Activity_09mu4sd" name="Fetch entidades">
@@ -31,28 +31,42 @@ typeahead = {"entidades": entidades}</bpmn:script>
             <spiffworkflow:parameter id="schema" type="any" value="schema" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
-        <spiffworkflow:preScript>table = "sap.\"Entidade\""
+        <spiffworkflow:preScript>from connectiondb.hana import Hana
 
-schema = {
-  "columns": [
-    "\"ID\"",
-    "\"NomeFantasia\"",
-    "\"CNPJ\""
-  ]
-}</spiffworkflow:preScript>
-        <spiffworkflow:postScript>entidades = []
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = """
+            SELECT 
+              T0."ItemCode", 
+              T0."ItemName", 
+              T1."ItmsGrpNam", 
+              T0."InvntryUom" 
+            FROM OITM T0
+            INNER JOIN OITB T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"  
+            ORDER BY T0."ItemName"
+            """
+
+teste = Hana(connection).selectDb(query)</spiffworkflow:preScript>
+        <spiffworkflow:postScript>oitm = []
 
 for r in rsp['body']:
-    id = r[0]
-    nome_fantasia = r[1]
-    cnpj = r[2]
-    entidades.append(
+    ItemCode = r[0]
+    ItemName = r[1]
+    ItmsGrpNam = r[2]
+    InvntryUom = r[3]
+    oitm.append(
         {
-            "search_term": nome_fantasia, 
+            "search_term": itemName, 
             "result": {
-                "id": id, 
-                "nome_fantasia": nome_fantasia, 
-                "cnpj": cnpj
+                "ItemCode": ItemCode, 
+                "itemName": itemName, 
+                "ItmsGrpNam": ItmsGrpNam,
+                "InvntryUom": InvntryUom
                 }
             }
         )
