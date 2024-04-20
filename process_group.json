@@ -1,6 +1,13 @@
 {
     "data_store_specifications": {
         "json": {
+            "almoxarifados": {
+                "description": "Dep\u00f3sitos do SAP utilizados para armazenar items adquiridos de terceiros.",
+                "identifier": "almoxarifados",
+                "location": "",
+                "name": "Almoxarifados",
+                "schema": {}
+            },
             "centros_de_custo": {
                 "description": "",
                 "identifier": "centros_de_custo",
