@@ -34,8 +34,13 @@ connection = {
 }
 
 query = """
-      SELECT o."WhsCode", o."WhsName", o."BPLid" FROM SBO_CRESTANI_QA.owhs o 
-        WHERE 
+      SELECT 
+        o."WhsCode", 
+        o."WhsName", 
+        o."BPLid" 
+      FROM 
+        SBO_CRESTANI_QA.owhs o 
+      WHERE 
         o."WhsCode" LIKE '01.%'
         OR o."WhsCode" LIKE '02.%'
         OR o."WhsCode" LIKE '05.%'
@@ -45,7 +50,8 @@ query = """
         OR o."WhsCode" LIKE '09.%'
         OR o."WhsCode" LIKE '10.%'
         OR o."WhsCode" LIKE '1%'
-        ORDER BY o."WhsCode" 
+      ORDER BY 
+        o."WhsCode" 
           """
 
 rsp = json.loads(Hana(connection).selectDb(query))
