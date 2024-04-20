@@ -68,7 +68,7 @@ for r in rsp:
 safras = csafras
 
 del(rsp)
-del(ccustos)
+del(csafras)
 
 </bpmn:script>
     </bpmn:scriptTask>
