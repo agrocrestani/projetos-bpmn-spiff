@@ -97,10 +97,10 @@ del(rsp)</spiffworkflow:postScript>
       <bpmn:script>oitm = []
 
 for r in rsp:
-    ItemCode = str(r['ItemCode'])
-    ItemName = str(r['ItemName'])
-    ItmsGrpNam = str(r['ItmsGrpNam'])
-    InvntryUom = str(r['InvntryUom'])
+    ItemCode = str(r['itemcode'])
+    ItemName = str(r['itemname'])
+    ItmsGrpNam = str(r['itmsgrpnam'])
+    InvntryUom = str(r['invntryuom'])
     oitm.append(
         {
             "search_term": itemName, 
