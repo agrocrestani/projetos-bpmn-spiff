@@ -34,25 +34,13 @@ connection = {
 }
 
 query = """
-      SELECT 
-        o."WhsCode", 
-        o."WhsName", 
-        o."BPLid" 
-      FROM 
-        SBO_CRESTANI_QA.owhs o 
-      WHERE 
-        o."WhsCode" LIKE '01.%'
-        OR o."WhsCode" LIKE '02.%'
-        OR o."WhsCode" LIKE '05.%'
-        OR o."WhsCode" LIKE '06.%'
-        OR o."WhsCode" LIKE '07.%'
-        OR o."WhsCode" LIKE '08.%'
-        OR o."WhsCode" LIKE '09.%'
-        OR o."WhsCode" LIKE '10.%'
-        OR o."WhsCode" LIKE '1%'
-      ORDER BY 
-        o."WhsCode" 
-          """
+          SELECT 
+            o."OcrCode",
+            o."OcrName"
+          FROM SBO_CRESTANI_PRD.oocr o
+          WHERE 
+            o."DimCode" = 1
+        """
 
 rsp = json.loads(Hana(connection).selectDb(query))
 
@@ -65,21 +53,19 @@ del(connection)</bpmn:script>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1721ddj">
         <bpmn:targetRef>DataStoreReference_0jau633</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
-      <bpmn:script>almoxarifados = []
+      <bpmn:script>ccustos = []
 
 for r in rsp:
-    WhsCode = str(r['whscode'])
-    WhsName = str(r['whsname'])
-    BPLid = str(r['bplid'])
-    almoxarifados.append(
+    OcrCode = str(r['ocrcode'])
+    OcrName = str(r['orcname'])
+    ccustos.append(
         {
-            "WhsCode": WhsCode, 
-            "WhsName": WhsName, 
-            "BPLid": BPLid
+            "OcrCode": OcrCode, 
+            "OcrName": OcrName
         }
     )
 
-owhs_almoxarifados = {"owhs_almoxarifados": almoxarifados}
+centros_de_custo = ccustos
 
 del(rsp)
 del(almoxarifados)</bpmn:script>
@@ -88,7 +74,7 @@ del(almoxarifados)</bpmn:script>
   </bpmn:process>
   <bpmn:dataStore id="owhs_almoxarifados" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_almoxarifados_rz3jdix">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_centros_de_custo_fhbynla">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
