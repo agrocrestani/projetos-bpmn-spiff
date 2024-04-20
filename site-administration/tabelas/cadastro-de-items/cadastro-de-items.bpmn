@@ -31,7 +31,7 @@ typeahead = {"oitm": oitm}</bpmn:script>
             <spiffworkflow:parameter id="schema" type="any" value="schema" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
-        <spiffworkflow:preScript>from connectiondb.hana import Hana
+        <spiffworkflow:preScript>from connectordb.hana import Hana
 
 connection = {
     "address": "172.20.1.4",
