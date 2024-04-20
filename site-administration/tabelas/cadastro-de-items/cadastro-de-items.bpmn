@@ -46,10 +46,10 @@ query = """
               T0."ItemName", 
               T1."ItmsGrpNam", 
               T0."InvntryUom" 
-            FROM OITM T0
-            INNER JOIN OITB T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"  
+            FROM SBO_CRESTANI_QA."OITM" T0
+            INNER JOIN SBO_CRESTANI_QA."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"  
             ORDER BY T0."ItemName"
-            """
+          """
 
 teste = Hana(connection).selectDb(query)</spiffworkflow:preScript>
         <spiffworkflow:postScript>oitm = []
