@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
-  <bpmn:process id="load_world" name="Load World" isExecutable="true">
+  <bpmn:process id="owhs_almoxarifados" name="Almoxarifados Compras" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_0tn4ed3</bpmn:outgoing>
     </bpmn:startEvent>
@@ -50,7 +50,7 @@ query = """
 rsp = Hana(connection).selectDb(query)
 # rsp = json.loads(Hana(connection).selectDb(query))
 
-del(connection)</bpmn:script>
+# del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:scriptTask id="Activity_09mu4sd" name="Fetch entidades">
       <bpmn:extensionElements>
@@ -120,7 +120,7 @@ del(rsp)</bpmn:script>
   </bpmn:process>
   <bpmn:dataStore id="owhs_almoxarifados" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="load_world">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="owhs_almoxarifados">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-58" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
