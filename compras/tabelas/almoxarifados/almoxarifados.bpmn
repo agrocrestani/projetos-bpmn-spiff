@@ -12,7 +12,7 @@
       <bpmn:incoming>Flow_1l9e5wy</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_1iixjle" />
-    <bpmn:scriptTask id="Activity_0qpzdpu" name="Example manual task">
+    <bpmn:scriptTask id="Activity_0qpzdpu" name="Fetch Depositos">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
 
@@ -58,11 +58,28 @@ rsp = json.loads(Hana(connection).selectDb(query))
 
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:manualTask id="Activity_1iixjle">
+    <bpmn:sequenceFlow id="Flow_1l9e5wy" sourceRef="Activity_1iixjle" targetRef="EndEvent_1" />
+    <bpmn:scriptTask id="Activity_1iixjle">
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1l9e5wy</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:sequenceFlow id="Flow_1l9e5wy" sourceRef="Activity_1iixjle" targetRef="EndEvent_1" />
+      <bpmn:script>almoxarifados = []
+
+for r in rsp:
+    WhsCode = str(r['whscode'])
+    WhsName = str(r['whsname'])
+    BPLid = str(r['bplid'])
+    almoxarifados.append(
+        {
+            "WhsCode": WhsCode, 
+            "WhsName": WhsName, 
+            "BPLid": BPLid
+        }
+    )
+
+owhs_almoxarifados = {"owhs_almoxarifados": almoxarifados}
+
+del(rsp)</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_almoxarifados_rz3jdix">
@@ -74,8 +91,9 @@ del(connection)</bpmn:script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1auiu7s_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_18v80m6_di" bpmnElement="Activity_1iixjle">
+      <bpmndi:BPMNShape id="Activity_0ic29wm_di" bpmnElement="Activity_1iixjle">
         <dc:Bounds x="430" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
