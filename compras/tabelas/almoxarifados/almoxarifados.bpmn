@@ -33,20 +33,20 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-# query = """
-#       SELECT o."WhsCode", o."WhsName", o."BPLid" FROM owhs o 
-#       WHERE 
-#         o."WhsCode" LIKE '01.%'
-#         OR o."WhsCode" LIKE '02.%'
-#         OR o."WhsCode" LIKE '05.%'
-#         OR o."WhsCode" LIKE '06.%'
-#         OR o."WhsCode" LIKE '07.%'
-#         OR o."WhsCode" LIKE '08.%'
-#         OR o."WhsCode" LIKE '09.%'
-#         OR o."WhsCode" LIKE '10.%'
-#         OR o."WhsCode" LIKE '1%'
-#       ORDER BY o."WhsCode" 
-#           """
+query = """
+      SELECT o."WhsCode", o."WhsName", o."BPLid" FROM owhs o 
+      WHERE 
+        o."WhsCode" LIKE '01.%'
+        OR o."WhsCode" LIKE '02.%'
+        OR o."WhsCode" LIKE '05.%'
+        OR o."WhsCode" LIKE '06.%'
+        OR o."WhsCode" LIKE '07.%'
+        OR o."WhsCode" LIKE '08.%'
+        OR o."WhsCode" LIKE '09.%'
+        OR o."WhsCode" LIKE '10.%'
+        OR o."WhsCode" LIKE '1%'
+      ORDER BY o."WhsCode" 
+          """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
 
