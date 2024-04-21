@@ -23,13 +23,6 @@
       "anyOf": [
         "options_from_task_data_var:tipo_requisicao"
       ]
-    },
-    "centroDeCustoSolicitacao": {
-      "title": "Selecione o Centro de Custo",
-      "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:fruits"
-      ]
     }
   }
 }
