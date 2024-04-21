@@ -16,6 +16,13 @@
       "anyOf": [
         "options_from_task_data_var:departamentos"
       ]
+    },
+    "favoriteFruit": {
+      "title": "Select your favorite fruit",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:fruits"
+      ]
     }
   }
 }
