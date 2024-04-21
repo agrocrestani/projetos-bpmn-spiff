@@ -11,7 +11,7 @@
       ]
     },
     "departamentoSolicitacao": {
-      "title": "Select your favorite fruit",
+      "title": "Selecione o Departamento",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:fruits"
