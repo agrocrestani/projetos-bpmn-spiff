@@ -30,6 +30,17 @@
   ],
   "departamentoSolicitacao": "3",
   "fruits": [
-    tipoRequisicaoSolicitacao
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
   ]
 }
