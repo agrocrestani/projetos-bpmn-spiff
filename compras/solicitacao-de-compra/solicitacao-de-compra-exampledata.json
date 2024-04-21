@@ -43,19 +43,5 @@
       "label": "Projeto Próprio"
     }
   ],
-  "tipoRequisicaoSolicitacao": 3,
-  "fruits": [
-    {
-      "value": "apples",
-      "label": "Apples"
-    },
-    {
-      "value": "oranges",
-      "label": "Oranges"
-    },
-    {
-      "value": "bananas",
-      "label": "Bananas"
-    }
-  ]
+  "tipoRequisicaoSolicitacao": 3
 }
