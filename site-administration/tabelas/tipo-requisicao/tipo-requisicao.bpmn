@@ -12,7 +12,7 @@
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
-    <bpmn:manualTask id="Activity_0qpzdpu" name="Example manual task">
+    <bpmn:scriptTask id="Activity_0qpzdpu" name="Tipo Requiaicao">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
 
@@ -24,8 +24,41 @@ You can also change the text you are reading here by updating the *Instructions*
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-    </bpmn:manualTask>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_158tk1z">
+        <bpmn:targetRef>DataStoreReference_199nbou</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:script>ctipo_requisicao = [
+        {
+            "Code": 1, 
+            "Description": "ADM - Estoque"
+        },
+        {
+            "Code": 2, 
+            "Description": "Fazenda - Estoque"
+        },
+        {
+            "Code": 3, 
+            "Description": "Projeto Próprio"
+        },
+        {
+            "Code": 4, 
+            "Description": "Projeto Terceiro"
+        },
+        {
+            "Code": 5, 
+            "Description": "ADM Direto"
+        },
+        {
+            "Code": 6, 
+            "Description": "Fazenda Direto"
+        }
+]
+
+tipo_requisicao = ctipo_requisicao</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:dataStoreReference id="DataStoreReference_199nbou" name="Tipo Requisição" dataStoreRef="tipo_requisicao" type="json" />
   </bpmn:process>
+  <bpmn:dataStore id="tipo_requisicao" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_tipo_requisicao_bvzvv8a">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -34,9 +67,15 @@ You can also change the text you are reading here by updating the *Instructions*
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="432" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
+      <bpmndi:BPMNShape id="Activity_0d0xzgv_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_199nbou_di" bpmnElement="DataStoreReference_199nbou">
+        <dc:Bounds x="305" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="291" y="342" width="78" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
@@ -45,6 +84,10 @@ You can also change the text you are reading here by updating the *Instructions*
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="370" y="177" />
         <di:waypoint x="432" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_158tk1z_di" bpmnElement="DataOutputAssociation_158tk1z">
+        <di:waypoint x="325" y="217" />
+        <di:waypoint x="333" y="285" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
