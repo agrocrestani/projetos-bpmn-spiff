@@ -22,7 +22,7 @@
     }
   ],
   "filialSolicitacao": "2",
-  "fruits": [
+  "departamentos": [
     {
         "value": "1",
         "label": "Almoxarifado"
