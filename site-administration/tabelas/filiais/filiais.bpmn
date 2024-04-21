@@ -12,7 +12,7 @@
       <bpmn:incoming>Flow_1l9e5wy</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_1iixjle" />
-    <bpmn:scriptTask id="Activity_0qpzdpu" name="Fetch Departamentos">
+    <bpmn:scriptTask id="Activity_0qpzdpu" name="Fetch Filiais">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
 
@@ -35,11 +35,14 @@ connection = {
 
 query = """
           SELECT 
-            o."Code",
-            o."Name"
-          FROM SBO_CRESTANI_PRD.OUDP o
-          WHERE 
-            o."Code" &lt;&gt; -2
+            o."BPLId",
+            o."BPLName",
+            o."TaxIdNum",
+            e.ID "EntidadeId"
+          FROM
+            SBO_CRESTANI_PRD.OBPL o
+          INNER JOIN "Entidade" e ON
+            O."TaxIdNum" = e.CNPJ
         """
 
 rsp = json.loads(Hana(connection).selectDb(query))
@@ -47,7 +50,7 @@ rsp = json.loads(Hana(connection).selectDb(query))
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1l9e5wy" sourceRef="Activity_1iixjle" targetRef="EndEvent_1" />
-    <bpmn:scriptTask id="Activity_1iixjle" name="Parse Departamentos">
+    <bpmn:scriptTask id="Activity_1iixjle" name="Parse Filiais">
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1l9e5wy</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1721ddj">
@@ -76,7 +79,7 @@ del(cdepartamentos)
   </bpmn:process>
   <bpmn:dataStore id="departamentos" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_departamentos_gn76oti">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_filiais_879ix24">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
