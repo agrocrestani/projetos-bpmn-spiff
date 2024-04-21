@@ -31,16 +31,16 @@
   "departamentoSolicitacao": "3",
   "tipo_requisicao": [
     {
-      "value": "apples",
-      "label": "Apples"
+        "value": 1,
+        "label": "ADM - Estoque"
     },
     {
-      "value": "oranges",
-      "label": "Oranges"
+        "value": 2,
+        "label": "Fazenda - Estoque"
     },
     {
-      "value": "bananas",
-      "label": "Bananas"
-    }
+        "value": 3,
+        "label": "Projeto Próprio"
+    },
   ]
 }
