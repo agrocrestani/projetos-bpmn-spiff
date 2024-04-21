@@ -17,7 +17,7 @@
         "options_from_task_data_var:departamentos"
       ]
     },
-    "tipo": {
+    "tipoRequi": {
       "title": "Select your favorite fruit",
       "type": "string",
       "anyOf": [
