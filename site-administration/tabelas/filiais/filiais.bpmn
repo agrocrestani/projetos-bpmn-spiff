@@ -56,22 +56,26 @@ del(connection)</bpmn:script>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1721ddj">
         <bpmn:targetRef>DataStoreReference_0jau633</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
-      <bpmn:script>cdepartamentos = []
+      <bpmn:script>cfiliais = []
 
 for r in rsp:
-    Code = str(r['code'])
-    Name = str(r['name'])
-    cdepartamentos.append(
+    BPLId = str(r['bplid'])
+    BPLName = str(r['bplname'])
+    TaxIdNum = str(r['taxidnum'])
+    EntidadeId = str(r['entidadeid'])
+    cfiliais.append(
         {
-            "Code": Code, 
-            "Name": Name
+            "BPLId": BPLId, 
+            "BPLName": BPLName, 
+            "TaxIdNum": TaxIdNum, 
+            "EntidadeId": EntidadeId
         }
     )
 
-departamentos = cdepartamentos
+filiais = cfiliais
 
 del(rsp)
-del(cdepartamentos)
+del(cfiliais)
 
 </bpmn:script>
     </bpmn:scriptTask>
