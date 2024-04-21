@@ -18,7 +18,7 @@
       ]
     },
     "tipoRequisicaoSolicitacao": {
-      "title": "Selecione o Tipo de Requisi",
+      "title": "Selecione o Tipo de Requisicao",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:fruits"
