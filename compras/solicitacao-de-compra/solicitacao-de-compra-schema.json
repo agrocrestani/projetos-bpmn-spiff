@@ -25,7 +25,7 @@
       ]
     },
     "centroDeCustoSolicitacao": {
-      "title": "Select your favorite fruit",
+      "title": "Centro de Custo",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:fruits"
