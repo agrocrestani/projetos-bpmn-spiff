@@ -18,7 +18,7 @@
       ]
     },
     "tipoRequisicaoSolicitacao": {
-      "title": "Select your favorite fruit",
+      "title": "Selecione ",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:fruits"
