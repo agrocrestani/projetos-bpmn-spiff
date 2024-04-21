@@ -25,7 +25,7 @@
       ]
     },
     "centroDeCustoSolicitacao": {
-      "title": "Selecione o Centro",
+      "title": "Selecione o Centro de Custo",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:tipo_requisicao"
