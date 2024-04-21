@@ -41,7 +41,7 @@ query = """
             e.ID "EntidadeId"
           FROM
             SBO_CRESTANI_PRD.OBPL o
-          INNER JOIN "Entidade" e ON
+          INNER JOIN SBO_CRESTANI_PRD."Entidade" e ON
             O."TaxIdNum" = e.CNPJ
         """
 
