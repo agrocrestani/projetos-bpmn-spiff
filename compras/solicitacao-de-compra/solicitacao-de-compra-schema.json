@@ -28,7 +28,7 @@
       "title": "Selecione o Centro de Custo",
       "type": "string",
       "anyOf": [
-        "options_from_task_data_var:fruits"
+        "options_from_task_data_var:centros"
       ]
     }
   }
