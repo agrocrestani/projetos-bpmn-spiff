@@ -23,6 +23,13 @@
       "anyOf": [
         "options_from_task_data_var:tipo_requisicao"
       ]
+    },
+    "favoriteFruit": {
+      "title": "Select your favorite fruit",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:fruits"
+      ]
     }
   }
 }
