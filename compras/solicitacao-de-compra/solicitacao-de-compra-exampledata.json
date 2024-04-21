@@ -44,12 +44,5 @@
     }
   ],
   "tipoRequisicaoSolicitacao": 3,
-  "centros_de_custo": ,
-    "tipoRequisicaoSolicitacao": {
-      "title": "Selecione o Tipo de Requisição",
-      "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:tipo_requisicao"
-      ]
-    }
+  "centros_de_custo": 
 }
