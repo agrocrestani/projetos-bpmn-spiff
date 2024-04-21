@@ -28,19 +28,5 @@
       "label": "Comercial Algodão"
     }
   ],
-  "departamentoSolicitacao": "3",
-  "fruits": [
-    {
-      "value": "apples",
-      "label": "Apples"
-    },
-    {
-      "value": "oranges",
-      "label": "Oranges"
-    },
-    {
-      "value": "bananas",
-      "label": "Bananas"
-    }
-  ]
+  "departamentoSolicitacao": "3"
 }
