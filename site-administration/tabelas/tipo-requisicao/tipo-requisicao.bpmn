@@ -29,28 +29,28 @@ You can also change the text you are reading here by updating the *Instructions*
       </bpmn:dataOutputAssociation>
       <bpmn:script>ctipo_requisicao = [
         {
-            "Code": 1, 
-            "Description": "ADM - Estoque"
+            "value": 1, 
+            "label": "ADM - Estoque"
         },
         {
-            "Code": 2, 
-            "Description": "Fazenda - Estoque"
+            "value": 2, 
+            "label": "Fazenda - Estoque"
         },
         {
-            "Code": 3, 
-            "Description": "Projeto Próprio"
+            "value": 3, 
+            "label": "Projeto Próprio"
         },
         {
-            "Code": 4, 
-            "Description": "Projeto Terceiro"
+            "value": 4, 
+            "label": "Projeto Terceiro"
         },
         {
-            "Code": 5, 
-            "Description": "ADM Direto"
+            "value": 5, 
+            "label": "ADM Direto"
         },
         {
-            "Code": 6, 
-            "Description": "Fazenda Direto"
+            "value": 6, 
+            "label": "Fazenda Direto"
         }
 ]
 
