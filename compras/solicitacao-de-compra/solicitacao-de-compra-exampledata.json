@@ -24,16 +24,17 @@
   "filialSolicitacao": "2",
   "departamentos": [
     {
-        "value": "1",
-        "label": "Almoxarifado"
+      "value": "1",
+      "label": "Almoxarifado"
     },
     {
-        "value": "2",
-        "label": "Comercial"
+      "value": "2",
+      "label": "Comercial"
     },
     {
-        "value": "3",
-        "label": "Comercial Algodão"
+      "value": "3",
+      "label": "Comercial Algodão"
     }
-  ]
+  ],
+  "departamentoSolicitacao": "3"
 }
