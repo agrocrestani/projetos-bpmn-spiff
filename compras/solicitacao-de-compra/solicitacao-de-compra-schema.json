@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "favoriteFruit": {
-      "title": "Selecione a ",
+      "title": "Selecione a fil",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:n_filiais"
