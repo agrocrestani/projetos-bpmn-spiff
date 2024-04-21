@@ -31,16 +31,16 @@
   "departamentoSolicitacao": "3",
   "fruits": [
     {
-      "value": "apples",
-      "label": "Apples"
+        "Code": 1,
+        "Description": "ADM - Estoque"
     },
     {
-      "value": "oranges",
-      "label": "Oranges"
+        "Code": 2,
+        "Description": "Fazenda - Estoque"
     },
     {
-      "value": "bananas",
-      "label": "Bananas"
+        "Code": 3,
+        "Description": "Projeto Próprio"
     }
   ]
 }
