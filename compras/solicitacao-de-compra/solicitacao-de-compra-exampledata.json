@@ -43,5 +43,6 @@
       "label": "Projeto Próprio"
     }
   ],
-  "favoriteFruit": 2
+  "favoriteFruit": 2,
+  "tipoRequisicaoSolicitacao": 3
 }
