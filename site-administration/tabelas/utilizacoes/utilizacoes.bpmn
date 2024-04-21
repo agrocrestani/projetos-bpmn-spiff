@@ -59,8 +59,8 @@ for r in rsp:
     Usage = str(r['usage'])
     cutilizacoes.append(
         {
-            "Id": Id, 
-            "Usage": Usage
+            "value": Id, 
+            "label": Usage
         }
     )
 
