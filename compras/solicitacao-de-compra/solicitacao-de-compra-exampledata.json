@@ -30,17 +30,18 @@
   ],
   "departamentoSolicitacao": "3",
   "fruits": [
+
     {
-        "Code": 1,
-        "Description": "ADM - Estoque"
+        "value": "1",
+        "label": "Almoxarifado"
     },
     {
-        "Code": 2,
-        "Description": "Fazenda - Estoque"
+        "value": "2",
+        "label": "Comercial"
     },
     {
-        "Code": 3,
-        "Description": "Projeto Próprio"
-    }
+        "value": "3",
+        "label": "Comercial Algodão"
+    },
   ]
 }
