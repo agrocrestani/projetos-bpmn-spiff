@@ -29,7 +29,7 @@
     }
   ],
   "departamentoSolicitacao": "3",
-  "fruits": [
+  "tipo_requi": [
     {
         "Code": 1,
         "Description": "ADM - Estoque"
