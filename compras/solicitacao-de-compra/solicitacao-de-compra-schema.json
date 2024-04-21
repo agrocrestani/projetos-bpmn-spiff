@@ -14,7 +14,7 @@
       "title": "Selecione o Departamento",
       "type": "string",
       "anyOf": [
-        "options_from_task_data_var:fruitsde"
+        "options_from_task_data_var:departamentos"
       ]
     }
   }
