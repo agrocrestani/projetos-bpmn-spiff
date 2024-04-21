@@ -57,5 +57,19 @@
       "value": "QUEMEC",
       "label": "N. QUE MECANIZAÇÃO"
     }
+  ],
+  "fruits": [
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
   ]
 }
