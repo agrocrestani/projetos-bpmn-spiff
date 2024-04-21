@@ -1,16 +1,24 @@
 {
-  "fruits": [
+  "n_filiais": [
     {
-      "value": "apples",
-      "label": "Apples"
+      "value": "1",
+      "label": "0109-AGROPECUARIA CRESTANI LTDA"
     },
     {
-      "value": "oranges",
-      "label": "Oranges"
+      "value": "2",
+      "label": "0281-AGROPECUARIA CRESTANI LTDA"
     },
     {
-      "value": "bananas",
-      "label": "Bananas"
-    }
+      "value": "3",
+      "label": "0362-AGROPECUARIA CRESTANI LTDA"
+    },
+    {
+      "value": "4",
+      "label": "0443-AGROPECUARIA CRESTANI LTDA"
+    },
+    {
+      "value": "5",
+      "label": "0524-AGROPECUARIA CRESTANI LTDA"
+    },
   ]
 }
