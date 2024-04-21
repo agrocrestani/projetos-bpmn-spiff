@@ -29,6 +29,13 @@
                 "name": "Departamentos",
                 "schema": {}
             },
+            "filiais": {
+                "description": "",
+                "identifier": "filiais",
+                "location": "",
+                "name": "Filiais",
+                "schema": {}
+            },
             "safras": {
                 "description": "",
                 "identifier": "safras",
