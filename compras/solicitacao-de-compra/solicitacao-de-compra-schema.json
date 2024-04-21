@@ -23,6 +23,13 @@
       "anyOf": [
         "options_from_task_data_var:tipo_requisicao"
       ]
+    },
+    "tipoRequisicaoSolicitacao": {
+      "title": "Selecione o Tipo de Requisição",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:tipo_requisicao"
+      ]
     }
   }
 }
