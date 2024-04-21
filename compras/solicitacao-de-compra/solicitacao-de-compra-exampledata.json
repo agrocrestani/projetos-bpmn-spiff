@@ -30,18 +30,17 @@
   ],
   "departamentoSolicitacao": "3",
   "fruits": [
-
     {
-        "value": "1",
-        "label": "Almoxarifado"
+      "value": "apples",
+      "label": "Apples"
     },
     {
-        "value": "2",
-        "label": "Comercial"
+      "value": "oranges",
+      "label": "Oranges"
     },
     {
-        "value": "3",
-        "label": "Comercial Algodão"
-    },
+      "value": "bananas",
+      "label": "Bananas"
+    }
   ]
 }
