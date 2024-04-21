@@ -18,7 +18,7 @@
       ]
     },
     "tipoRequisicaoSolicitacao": {
-      "title": "Selecione o tipo d",
+      "title": "Selecione o Tipo de Req",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:tipo_requisicao"
