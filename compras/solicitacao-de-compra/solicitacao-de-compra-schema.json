@@ -58,7 +58,7 @@
         }
       ]
     },
-    "centroDeCusto": {
+    "centroDeCustoS": {
       "title": "Select your favorite fruit",
       "type": "string",
       "anyOf": [
