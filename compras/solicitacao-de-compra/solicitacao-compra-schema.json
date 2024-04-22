@@ -72,7 +72,7 @@
         "options_from_task_data_var:safras"
       ]
     },
-    "Main": {
+    "MainUsage": {
       "title": "Safra",
       "type": "string",
       "anyOf": [
