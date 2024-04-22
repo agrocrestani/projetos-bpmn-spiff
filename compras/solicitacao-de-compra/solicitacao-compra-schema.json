@@ -90,7 +90,7 @@
         "properties": {
           "title": {
             "type": "string",
-            "title": "Selecione o It",
+            "title": "Selecione o Item",
             "description": "Please describe the task to complete"
           },
           "done": {
