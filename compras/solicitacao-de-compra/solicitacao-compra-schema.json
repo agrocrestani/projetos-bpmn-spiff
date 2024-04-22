@@ -50,6 +50,7 @@
       "anyOf": [
         "options_from_task_data_var:tipo_requisicao"
       ]
-    }
+    },
+    
   }
 }
