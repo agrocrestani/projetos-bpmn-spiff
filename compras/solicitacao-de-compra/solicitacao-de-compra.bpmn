@@ -16,7 +16,7 @@
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## Instruções sobre a solicitação de compras</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="solicitacao-de-compra-schema.json" />
+          <spiffworkflow:property name="formJsonSchemaFilename" value="" />
           <spiffworkflow:property name="formUiSchemaFilename" value="solicitacao-de-compra-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:preScript>n_filiais = [
