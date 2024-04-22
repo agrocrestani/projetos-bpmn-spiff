@@ -31,7 +31,20 @@
       "label": "Bananas"
     }
   ],
-  "departamentos": [],
+  "departamentos": [
+        {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
+  ],
   "tipo_requisicao": [],
   "fruits": [
     {
