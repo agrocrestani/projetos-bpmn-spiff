@@ -90,7 +90,7 @@
         "properties": {
           "title": {
             "type": "string",
-            "title": "Title",
+            "title": "Produ",
             "description": "Please describe the task to complete"
           },
           "done": {
