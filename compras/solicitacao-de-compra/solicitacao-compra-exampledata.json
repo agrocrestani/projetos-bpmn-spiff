@@ -14,5 +14,21 @@
       "label": "0362-AGROPECUARIA CRESTANI LTDA"
     }
   ],
-  ""
+  "departamentos": [
+    {
+        "value": "",
+        "label": ""
+    },
+    {
+        "value": "1",
+        "label": "Almoxarifado"
+    },
+    {
+        "value": "2",
+        "label": "Comercial"
+    },
+    {
+        "value": "3",
+        "label": "Comercial Algodão"
+    }
 }
