@@ -21,7 +21,7 @@
           "items": {
             "ui:layout": [
               {
-                "title": { "sm": 2, "md": 2, "lg": 4 },
+                "title": { "sm": 2, "md": 2, "lg": 2 },
                 "MainUsage": { "sm": 2, "md": 2, "lg": 4 }
               }
             ]
