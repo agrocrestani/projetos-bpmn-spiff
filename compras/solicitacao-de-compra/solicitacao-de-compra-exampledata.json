@@ -17,7 +17,20 @@
       "label": "QUEMEC - N. QUE MECANIZAÇÃO"
     }
   ],
-  "filiais": [],
+  "filiais": [
+        {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
+  ],
   "departamentos": [],
   "tipo_requisicao": [],
   "fruits": [
