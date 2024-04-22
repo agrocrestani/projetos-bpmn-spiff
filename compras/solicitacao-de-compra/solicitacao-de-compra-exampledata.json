@@ -58,5 +58,19 @@
       "value": "27/28",
       "label": "Safra 2027/2028"
     }
+  ],
+  "fruits": [
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
   ]
 }
