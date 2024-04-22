@@ -92,16 +92,16 @@
   ],
   "utilizacoes": [
     {
-      "value": "22/23",
-      "label": "Safra 2022/2023"
+      "value": "1",
+      "label": "001-AMOSTRA GRÁTIS"
     },
     {
-      "value": "24/25",
-      "label": "Safra 2024/2025"
+      "value": "2",
+      "label": "002-BONIFICAÇÃO"
     },
     {
-      "value": "27/28",
-      "label": "Safra 2027/2028"
+      "value": "3",
+      "label": "003-C INDUSTRIAL PF"
     }
   ]
 }
