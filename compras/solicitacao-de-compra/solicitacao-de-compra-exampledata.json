@@ -63,18 +63,22 @@
   "filialSolicitacao": "3",
   "prioridadeSolicitacao": "3",
   "tipoRequisicaoSolicitacao": "3",
-  "fruits": [
+  "centros_de_custo": [
     {
-      "value": "apples",
-      "label": "Apples"
+      "value": "",
+      "label": ""
     },
     {
-      "value": "oranges",
-      "label": "Oranges"
+      "value": "QUEARM",
+      "label": "QUEARM - N. QUE ARMAZÉM"
     },
     {
-      "value": "bananas",
-      "label": "Bananas"
+      "value": "QUECORP",
+      "label": "QUECORP - N. QUE CORPORATIVO"
+    },
+    {
+      "value": "QUEMEC",
+      "label": "QUEMEC - N. QUE MECANIZAÇÃO"
     }
   ]
 }
