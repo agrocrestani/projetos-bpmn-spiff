@@ -61,7 +61,7 @@ for r in rsp:
     ccustos.append(
         {
             "value": OcrCode, 
-            "label": OcrName
+            "label": OcrCode + " - " + OcrName
         }
     )
 
