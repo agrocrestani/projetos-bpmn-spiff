@@ -63,5 +63,21 @@
   "filialSolicitacao": "3",
   "prioridadeSolicitacao": "3",
   "tipoRequisicaoSolicitacao": "3",
-  "centros_de_custo": 
+  "centros_de_custo": [
+    {
+        "value": "",
+        "label": ""
+    },
+    {
+        "value": "QUEARM",
+        "label": "QUEARM - N. QUE ARMAZÉM"
+    },
+    {
+        "value": "QUECORP",
+        "label": "QUECORP - N. QUE CORPORATIVO"
+    },
+    {
+        "value": "QUEMEC",
+        "label": "QUEMEC - N. QUE MECANIZAÇÃO"
+    },
 }
