@@ -52,7 +52,7 @@
       ]
     },
     ,
-    "O": {
+    "OcrCode": {
       "title": "Tipo de requisicao",
       "type": "string",
       "anyOf": [
