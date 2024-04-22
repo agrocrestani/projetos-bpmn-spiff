@@ -58,7 +58,7 @@
         }
       ]
     },
-    "centroDeCustoSolicitacao": {
+    "centroDeCustoSol": {
       "title": "Centro de custo",
       "type": "string",
       "anyOf": [
