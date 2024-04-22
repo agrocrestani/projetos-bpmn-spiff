@@ -32,10 +32,7 @@
     }
   ],
   "tipo_requisicao": [
-    {
-      "value": "",
-      "label": ""
-    },
+,
     {
       "value": "1",
       "label": "ADM - Estoque"
