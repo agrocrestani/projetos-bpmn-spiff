@@ -44,7 +44,7 @@
     }
   ],
   "tipoRequisicaoSolicitacao": "3",
-  "tipo_requisicao": [
+  "prioridade": [
     {
       "value": "1",
       "label": "ADM - Estoque"
