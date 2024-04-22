@@ -1,6 +1,6 @@
 {
   "title": "Solicitação de Compras",
-  "description": "Preencha todps ps ca,´ps qi",
+  "description": "Preencha todos os campos do formu",
   "type": "object",
   "properties": {
     "filialSolicitacao": {
