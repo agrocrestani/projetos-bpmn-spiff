@@ -24,7 +24,7 @@
         "options_from_task_data_var:tipo_requisicao"
       ]
     },
-    "priori": {
+    "prioridade": {
       "title": "Selecione o Tipo de Requisição",
       "type": "string",
       "anyOf": [
