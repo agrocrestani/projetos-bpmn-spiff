@@ -8,7 +8,7 @@
         "U_RSD_Prioridade": { "sm": 2, "md": 2, "lg": 4 }
     },
     {
-        "OcrCode": {"sm": 2, "md": 2, "lg": 4 },
+        "OcrCode": {"sm": 2, "md": 2, "lg": 2 },
         "OcrCode2": {},
         "OcrCode3": {}
     },
