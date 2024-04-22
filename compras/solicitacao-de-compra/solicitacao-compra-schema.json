@@ -21,7 +21,6 @@
       "title": "Prioridade",
       "type": "string",
        "anyOf": [
-        
         {
           "type": "string",
           "enum": [
