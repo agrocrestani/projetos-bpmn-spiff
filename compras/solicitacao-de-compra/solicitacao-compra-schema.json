@@ -72,7 +72,7 @@
         "options_from_task_data_var:safras"
       ]
     },
-    "OcrCode3": {
+    "Main": {
       "title": "Safra",
       "type": "string",
       "anyOf": [
