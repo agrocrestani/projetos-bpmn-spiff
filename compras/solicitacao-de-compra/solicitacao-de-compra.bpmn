@@ -31,7 +31,20 @@ for f in filiais:
         }
     )
 
-del(filiais)</spiffworkflow:preScript>
+n_almoxarifados = []
+
+for a in almoxarifados:
+    WhsCode = f['WhsCode']
+    WhsName = f['WhsName']
+    n_filiais.append(
+        {
+            "value": WhsCode,
+            "label": WhsCode + " - " + WhsName
+        }
+    )
+
+del(filiais)
+del(almoxarifados)</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
