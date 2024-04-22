@@ -17,7 +17,7 @@
         "options_from_task_data_var:departamentos"
       ]
     },
-    "U_RSD": {
+    "U_RSD_Prioridade": {
       "title": "Filial",
       "type": "string",
       "anyOf": [
