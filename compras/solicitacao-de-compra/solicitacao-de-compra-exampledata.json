@@ -43,5 +43,19 @@
       "label": "Projeto Próprio"
     }
   ],
-  "tipoRequisicaoSolicitacao": "3"
+  "tipoRequisicaoSolicitacao": "3",
+  "tipo_requisicao": [
+    {
+      "value": "1",
+      "label": "ADM - Estoque"
+    },
+    {
+      "value": "2",
+      "label": "Fazenda - Estoque"
+    },
+    {
+      "value": "3",
+      "label": "Projeto Próprio"
+    }
+  ]
 }
