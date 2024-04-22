@@ -19,7 +19,9 @@
       {
         "listItems": {
           "items": {
-            "ui:layout": []
+            "ui:layout": [
+              
+            ]
           }
         }
     }
