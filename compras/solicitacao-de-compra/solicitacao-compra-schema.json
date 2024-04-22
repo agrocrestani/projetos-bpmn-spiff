@@ -94,7 +94,7 @@
             "description": "Please describe the task to complete"
           },
           "done": {
-            "type": "boolean",
+            "type": "string",
             "title": "Done?",
             "default": false
           }
