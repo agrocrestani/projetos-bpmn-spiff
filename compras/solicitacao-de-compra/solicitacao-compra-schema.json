@@ -59,7 +59,7 @@
       ]
     },
     "OcrCode3": {
-      "title": "Cultura",
+      "title": "S",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:culturas"
