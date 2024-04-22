@@ -45,7 +45,7 @@
         {
           "type": "string",
           "enum": [
-            "#0000ff"
+            "3"
           ],
           "title": "Blue"
         }
