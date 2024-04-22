@@ -18,7 +18,7 @@
     }
   ],
   "filiais": [
-        {
+    {
       "value": "apples",
       "label": "Apples"
     },
@@ -32,7 +32,7 @@
     }
   ],
   "departamentos": [
-        {
+    {
       "value": "apples",
       "label": "Apples"
     },
@@ -46,7 +46,7 @@
     }
   ],
   "tipo_requisicao": [
-        {
+    {
       "value": "apples",
       "label": "Apples"
     },
