@@ -1,6 +1,6 @@
 {
   "favoriteFruit": "oranges",
-  "centros_de_custo": [
+  "n_filiais": [
     {
       "value": "apples",
       "label": "Apples"
