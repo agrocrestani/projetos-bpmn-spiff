@@ -19,7 +19,13 @@
           <spiffworkflow:property name="formJsonSchemaFilename" value="solicitacao-de-compra-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="solicitacao-de-compra-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript>n_filiais = []
+        <spiffworkflow:preScript>n_filiais = [
+    {
+      "value": "",
+      "label": ""
+    }
+]
+
 for f in filiais:
     BPLId = f['BPLId']
     BPLName = f['BPLName']
@@ -28,7 +34,9 @@ for f in filiais:
             "value": BPLId,
             "label": BPLName
         }
-    )</spiffworkflow:preScript>
+    )
+
+del(filiais)</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
