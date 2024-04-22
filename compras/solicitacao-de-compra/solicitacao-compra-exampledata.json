@@ -30,5 +30,21 @@
       "label": "Comercial Algodão"
     }
   ],
-  "tipo_requisicao": 
+  "tipo_requisicao": [
+    {
+        "value": "",
+        "label": ""
+    },
+    {
+        "value": "1",
+        "label": "ADM - Estoque"
+    },
+    {
+        "value": "2",
+        "label": "Fazenda - Estoque"
+    },
+    {
+        "value": "3",
+        "label": "Projeto Próprio"
+    }
 }
