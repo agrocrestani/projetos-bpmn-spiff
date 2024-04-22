@@ -1,6 +1,6 @@
 {
   "title": "Solicitação de Compras",
-  "description": "Pre",
+  "description": "Preencha tod",
   "type": "object",
   "properties": {
     "filialSolicitacao": {
