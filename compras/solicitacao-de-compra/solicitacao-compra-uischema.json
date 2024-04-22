@@ -12,7 +12,7 @@
         "OcrCode2": {}
     },
     {
-        "OcrCode3": {},
+        ,
         "WhsCode": { "sm": 2, "md": 2, "lg": 4 }
     }
   ]
