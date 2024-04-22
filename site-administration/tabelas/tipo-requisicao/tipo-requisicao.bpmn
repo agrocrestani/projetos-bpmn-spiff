@@ -29,6 +29,10 @@ You can also change the text you are reading here by updating the *Instructions*
       </bpmn:dataOutputAssociation>
       <bpmn:script>ctipo_requisicao = [
         {
+            "value": "",
+            "label": ""
+        },
+        {
             "value": "1", 
             "label": "ADM - Estoque"
         },
