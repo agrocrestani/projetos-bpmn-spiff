@@ -28,7 +28,9 @@
       "title": "Selecione o Tipo de Requisição",
       "type": "string",
       "anyOf": [
-        {}
+        {
+          
+        }
       ]
     }
   }
