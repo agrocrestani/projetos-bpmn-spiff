@@ -10,7 +10,7 @@
     {
         "OcrCode": { "sm": 2, "md": 2, "lg": 2 },
         "OcrCode2": { "sm": 2, "md": 2, "lg": 2 },
-        "OcrCode3": { "sm": 2, "md": 2, "lg": 4 }
+        "OcrCode3": { "sm": 2, "md": 2, "lg": 2 }
     },
     {
         "WhsCode": { "sm": 2, "md": 2, "lg": 4 },
