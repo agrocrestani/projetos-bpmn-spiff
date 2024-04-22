@@ -103,5 +103,19 @@
       "value": "3",
       "label": "003-C INDUSTRIAL PF"
     }
+  ],
+  "utilizacoes": [
+    {
+      "value": "1",
+      "label": "001-AMOSTRA GRÁTIS"
+    },
+    {
+      "value": "2",
+      "label": "002-BONIFICAÇÃO"
+    },
+    {
+      "value": "3",
+      "label": "003-C INDUSTRIAL PF"
+    }
   ]
 }
