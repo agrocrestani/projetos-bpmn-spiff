@@ -28,7 +28,27 @@
       "title": "Selecione a prioridade",
       "type": "string",
       "anyOf": [
-        "options_from_task_data_var:prioridade"
+        {
+          "type": "string",
+          "enum": [
+            "#ff0000"
+          ],
+          "title": "Red"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "#00ff00"
+          ],
+          "title": "Green"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "#0000ff"
+          ],
+          "title": "Blue"
+        }
       ]
     }
   }
