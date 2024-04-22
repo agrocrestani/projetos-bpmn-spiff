@@ -95,7 +95,7 @@
           },
           "done": {
             "type": "string",
-            "title": "Q?",
+            "title": "Quantidade?",
             "default": false
           }
         }
