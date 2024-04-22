@@ -11,7 +11,7 @@
       ]
     },
     "departamentoSolicitacao": {
-      "title": "Selecione o Departamento",
+      "title": "Departamento",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:departamentos"
