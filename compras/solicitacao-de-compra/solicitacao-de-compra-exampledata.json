@@ -45,7 +45,7 @@
   ],
   "tipoRequisicaoSolicitacao": "3",
   "prioridadeSolicitacao": "2",
-  "centroDeCusto": [
+  "centro_de_custo": [
     {
       "value": "QUEARM",
       "label": "QUEARM - N. QUE ARMAZÉM"
