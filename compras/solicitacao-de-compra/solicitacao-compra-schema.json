@@ -20,9 +20,7 @@
     "U_RSD_Prioridade": {
       "title": "Prioridade",
       "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:"
-      ]
+      
     },
     "BPLId": {
       "title": "Filial",
