@@ -38,7 +38,7 @@
         {
           "type": "string",
           "enum": [
-            2
+            "2"
           ],
           "title": "Green"
         },
