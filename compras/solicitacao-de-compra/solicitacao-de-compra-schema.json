@@ -1,6 +1,6 @@
 {
   "title": "Solicitação de Compras",
-  "description": "Preencha todps ps ca,´ps qi  ",
+  "description": "Preencha todps ps ca,´ps qi",
   "type": "object",
   "properties": {
     "filialSolicitacao": {
