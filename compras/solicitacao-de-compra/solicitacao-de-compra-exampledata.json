@@ -44,18 +44,5 @@
     }
   ],
   "tipoRequisicaoSolicitacao": "3",
-  "prioridade": [
-    {
-      "value": "1",
-      "label": "Normal"
-    },
-    {
-      "value": "2",
-      "label": "Urgente"
-    },
-    {
-      "value": "3",
-      "label": "Fora processo"
-    }
-  ]
+  
 }
