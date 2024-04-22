@@ -59,7 +59,7 @@
       ]
     },
     "safraSolicitacao": {
-      "title": "Centro de Custo",
+      "title": "Safra",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:safras"
