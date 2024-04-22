@@ -57,13 +57,6 @@
           "title": "Fora Processo"
         }
       ]
-    },
-    "centroDeCustoSol": {
-      "title": "Centro de custo",
-      "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:centros_de_custo"
-      ]
     }
   }
 }
