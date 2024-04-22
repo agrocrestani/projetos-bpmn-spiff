@@ -1,7 +1,6 @@
 {
   "BPLId": "apples",
-  "n_filiais": []
-    ,
+  "n_filiais": [
     {
       "value": "1",
       "label": "0109-AGROPECUARIA CRESTANI LTDA"
