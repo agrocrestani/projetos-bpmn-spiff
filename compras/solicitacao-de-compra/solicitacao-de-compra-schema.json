@@ -33,7 +33,7 @@
           "enum": [
             "1"
           ],
-          "title": "Red"
+          "title": "Normal"
         },
         {
           "type": "string",
