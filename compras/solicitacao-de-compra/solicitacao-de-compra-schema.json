@@ -59,7 +59,7 @@
       ]
     },
     "centroDeCustoSolicitacao": {
-      "title": "Centro de custo",
+      "title": "Centro de ",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:centros_de_custo"
