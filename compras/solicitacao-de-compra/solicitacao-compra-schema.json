@@ -65,7 +65,7 @@
         "options_from_task_data_var:safras"
       ]
     },
-    "WhsCode3": {
+    "WhsCode": {
       "title": "Safra",
       "type": "string",
       "anyOf": [
