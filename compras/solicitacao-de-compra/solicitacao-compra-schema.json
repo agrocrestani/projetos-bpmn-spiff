@@ -44,7 +44,7 @@
         }
       ]
     },
-    "U_RSD_": {
+    "U_RSD_A": {
       "title": "Filial",
       "type": "string",
       "anyOf": [
