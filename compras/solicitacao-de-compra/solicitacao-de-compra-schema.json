@@ -31,7 +31,7 @@
       "anyOf": [
         "options_from_task_data_var:fruits"
       ]
-    }
+    },
     "prioridadeSolicitacao": {
       "title": "Prioridade",
       "type": "string",
