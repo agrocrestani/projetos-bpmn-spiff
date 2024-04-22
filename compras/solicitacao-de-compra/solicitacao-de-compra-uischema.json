@@ -1,1 +1,5 @@
-{}
+{
+  "multipleChoicesList": {
+    "ui:widget": "checkboxes"
+  }
+}
