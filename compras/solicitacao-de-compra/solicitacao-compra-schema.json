@@ -95,7 +95,7 @@
           },
           "done": {
             "type": "string",
-            "title": "Done?",
+            "title": "Q?",
             "default": false
           }
         }
