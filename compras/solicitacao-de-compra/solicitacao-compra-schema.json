@@ -48,7 +48,7 @@
       "title": "Centro de Custo",
       "type": "string",
       "anyOf": [
-        "options_from_task_data_var:Centros de Custo"
+        "options_from_task_data_var:centros_de_custos"
       ]
     },
     ,
