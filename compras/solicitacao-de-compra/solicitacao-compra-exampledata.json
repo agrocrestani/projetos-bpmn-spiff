@@ -16,7 +16,7 @@
       "label": "0362-AGROPECUARIA CRESTANI LTDA"
     }
   ],
-  "departamentos": [
+  "tipo_requisicao": [
     {
       "value": "1",
       "label": "Almoxarifado"
