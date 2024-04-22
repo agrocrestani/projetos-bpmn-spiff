@@ -1,5 +1,5 @@
 {
-  "title": "Dropdown list",
+  "title": "Solicitação de Compras",
   "description": "A dropdown list with options pulled form existing Task Data. IMPORTANT - Add 'fruits' to Task Data before using this component!!!",
   "type": "object",
   "properties": {
