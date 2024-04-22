@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "BPLId": {
-      "title": "Select your favorite fruit",
+      "title": "fil",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:centros_de_custo"
