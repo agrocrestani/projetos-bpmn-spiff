@@ -40,7 +40,7 @@
           "enum": [
             "2"
           ],
-          "title": "Green"
+          "title": "Urgente"
         },
         {
           "type": "string",
