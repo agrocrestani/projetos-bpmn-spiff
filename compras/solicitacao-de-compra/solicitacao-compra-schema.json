@@ -20,9 +20,37 @@
     "U_RSD_Prioridade": {
       "title": "Prioridade",
       "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:"
+       "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            ""
+          ],
+          "title": ""
+        },
+        {
+          "type": "string",
+          "enum": [
+            "1"
+          ],
+          "title": "Normal"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "2"
+          ],
+          "title": "Urgente"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "3"
+          ],
+          "title": "Fora Processo"
+        }
       ]
+
     },
     "BPLId": {
       "title": "Filial",
