@@ -81,7 +81,7 @@
     },
     "itens": {
       "type": "array",
-      "title": "Itens",
+      "title": "Item",
       "items": {
         "type": "object",
         "required": [
