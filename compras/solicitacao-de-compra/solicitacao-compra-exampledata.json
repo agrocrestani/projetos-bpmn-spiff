@@ -46,7 +46,18 @@
     }
   ],
   "centros_de_custo": [
-    
+    {
+        "value": "QUEARM",
+        "label": "QUEARM - N. QUE ARMAZÉM"
+    },
+    {
+        "value": "QUECORP",
+        "label": "QUECORP - N. QUE CORPORATIVO"
+    },
+    {
+        "value": "QUEMEC",
+        "label": "QUEMEC - N. QUE MECANIZAÇÃO"
+    }
   ],
   "culturas": [
 
