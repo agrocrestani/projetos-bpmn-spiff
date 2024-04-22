@@ -58,7 +58,7 @@
         }
       ]
     },
-    "tipoRequisicaoSolicitacao": {
+    "centroSolicitacao": {
       "title": "Tipo de Requisição",
       "type": "string",
       "anyOf": [
