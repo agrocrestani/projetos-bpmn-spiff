@@ -62,7 +62,7 @@
       "title": "Safra",
       "type": "string",
       "anyOf": [
-        "options_from_task_data_var:culturas"
+        "options_from_task_data_var:safras"
       ]
     }
   }
