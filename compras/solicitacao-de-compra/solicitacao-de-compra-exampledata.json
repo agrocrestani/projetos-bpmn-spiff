@@ -72,5 +72,6 @@
       "value": "bananas",
       "label": "Bananas"
     }
-  ]
+  ],
+  "prioridadeSolicitacao": "3"
 }
