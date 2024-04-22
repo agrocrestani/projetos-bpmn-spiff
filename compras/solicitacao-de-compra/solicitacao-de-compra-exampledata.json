@@ -69,5 +69,6 @@
       "label": "Bananas"
     }
   ],
-  "filialSolicitacao": "2"
+  "filialSolicitacao": "2",
+  "departamentoSolicitacao": "2"
 }
