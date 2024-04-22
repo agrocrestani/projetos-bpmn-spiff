@@ -1,17 +1,21 @@
 {
   "BPLId": "apples",
-  "n_filiais": [
+  "n_filiais": "n_filiais": [
     {
-      "value": "apples",
-      "label": "Apples"
+      "value": "",
+      "label": ""
     },
     {
-      "value": "oranges",
-      "label": "Oranges"
+      "value": "1",
+      "label": "0109-AGROPECUARIA CRESTANI LTDA"
     },
     {
-      "value": "bananas",
-      "label": "Bananas"
-    }
+      "value": "2",
+      "label": "0281-AGROPECUARIA CRESTANI LTDA"
+    },
+    {
+      "value": "3",
+      "label": "0362-AGROPECUARIA CRESTANI LTDA"
+    },
   ]
 }
