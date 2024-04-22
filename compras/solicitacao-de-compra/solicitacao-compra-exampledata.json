@@ -47,44 +47,44 @@
   ],
   "centros_de_custo": [
     {
-        "value": "QUEARM",
-        "label": "QUEARM - N. QUE ARMAZÉM"
+      "value": "QUEARM",
+      "label": "QUEARM - N. QUE ARMAZÉM"
     },
     {
-        "value": "QUECORP",
-        "label": "QUECORP - N. QUE CORPORATIVO"
+      "value": "QUECORP",
+      "label": "QUECORP - N. QUE CORPORATIVO"
     },
     {
-        "value": "QUEMEC",
-        "label": "QUEMEC - N. QUE MECANIZAÇÃO"
+      "value": "QUEMEC",
+      "label": "QUEMEC - N. QUE MECANIZAÇÃO"
     }
   ],
   "culturas": [
     {
-        "value": "SOJA",
-        "label": "SOJA"
+      "value": "SOJA",
+      "label": "SOJA"
     },
     {
-        "value": "MILHO",
-        "label": "MILHO"
+      "value": "MILHO",
+      "label": "MILHO"
     },
     {
-        "value": "ALGODAO",
-        "label": "ALGODÃO"
+      "value": "ALGODAO",
+      "label": "ALGODÃO"
     }
   ],
   "safras": [
     {
-        "value": "22/23",
-        "label": "Safra 2022/2023"
+      "value": "22/23",
+      "label": "Safra 2022/2023"
     },
     {
-        "value": "24/25",
-        "label": "Safra 2024/2025"
+      "value": "24/25",
+      "label": "Safra 2024/2025"
     },
     {
-        "value": "27/28",
-        "label": "Safra 2027/2028"
+      "value": "27/28",
+      "label": "Safra 2027/2028"
     }
   ]
 }
