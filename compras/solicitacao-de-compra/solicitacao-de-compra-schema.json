@@ -1,6 +1,6 @@
 {
-  "title": "Multiple Choice List",
-  "description": "Build a multiple choice list with a predefined list of options",
+  "title": "Dropdown list",
+  "description": "A dropdown list with options pulled form existing Task Data. IMPORTANT - Add 'fruits' to Task Data before using this component!!!",
   "type": "object",
   "properties": {
     "filialSolicitacao": {
@@ -56,6 +56,13 @@
           ],
           "title": "Fora Processo"
         }
+      ]
+    },
+    "favoriteFruit": {
+      "title": "Select your favorite fruit",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:fruits"
       ]
     }
   }
