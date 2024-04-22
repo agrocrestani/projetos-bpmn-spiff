@@ -58,7 +58,7 @@
         "options_from_task_data_var:centroDeCusto"
       ]
     },
-    "centroDeCustoSolicitacao": {
+    "safraSolicitacao": {
       "title": "Centro de Custo",
       "type": "string",
       "anyOf": [
