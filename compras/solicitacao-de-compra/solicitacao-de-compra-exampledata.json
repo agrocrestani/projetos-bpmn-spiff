@@ -1,20 +1,20 @@
 {
     "centros_de_custo": [
-    {
-        "value": "",
-        "label": ""
-    },
-    {
-        "value": "QUEARM",
-        "label": "QUEARM - N. QUE ARMAZÉM"
-    },
-    {
-        "value": "QUECORP",
-        "label": "QUECORP - N. QUE CORPORATIVO"
-    },
-    {
-        "value": "QUEMEC",
-        "label": "QUEMEC - N. QUE MECANIZAÇÃO"
-    }
+        {
+            "value": "",
+            "label": ""
+        },
+        {
+            "value": "QUEARM",
+            "label": "QUEARM - N. QUE ARMAZÉM"
+        },
+        {
+            "value": "QUECORP",
+            "label": "QUECORP - N. QUE CORPORATIVO"
+        },
+        {
+            "value": "QUEMEC",
+            "label": "QUEMEC - N. QUE MECANIZAÇÃO"
+        }
     ]
 }
