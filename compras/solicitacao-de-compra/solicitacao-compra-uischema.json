@@ -1,1 +1,9 @@
-{}
+{
+  "ui:layout": [
+    {
+      "firstName": { "sm": 2, "md": 2, "lg": 4 },
+      "lastName": { "sm": 2, "md": 2, "lg": 4 }
+    },
+    { "notes": {} }
+  ]
+}
