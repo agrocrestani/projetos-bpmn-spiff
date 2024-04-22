@@ -81,7 +81,7 @@
     },
     "itens": {
       "type": "array",
-      "title": "Item",
+      "title": "Items",
       "items": {
         "type": "object",
         "required": [
