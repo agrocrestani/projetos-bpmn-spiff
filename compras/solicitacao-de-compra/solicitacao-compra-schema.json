@@ -65,7 +65,7 @@
         "options_from_task_data_var:safras"
       ]
     },
-    "OcrWhsCCode3": {
+    "OcrWhsCode3": {
       "title": "Safra",
       "type": "string",
       "anyOf": [
