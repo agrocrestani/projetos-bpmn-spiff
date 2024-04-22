@@ -7,6 +7,11 @@
   "OcrCode3": "24/25",
   "WhsCode": "01.FCOL",
   "MainUsage": "1",
+  "items": [
+    {
+      "done": false
+    }
+  ],
   "itens": [],
   "U_RSD_Aplicacao": "2",
   "n_filiais": [
