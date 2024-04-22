@@ -60,7 +60,18 @@
     }
   ],
   "culturas": [
-    
+    {
+        "value": "SOJA",
+        "label": "SOJA"
+    },
+    {
+        "value": "MILHO",
+        "label": "MILHO"
+    },
+    {
+        "value": "ALGODAO",
+        "label": "ALGODÃO"
+    }
   ],
   "safras": [
 
