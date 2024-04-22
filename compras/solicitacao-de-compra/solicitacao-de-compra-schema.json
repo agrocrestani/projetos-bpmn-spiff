@@ -25,7 +25,7 @@
       ]
     },
     "prioridadeSolicitacao": {
-      "title": "Selecione a ",
+      "title": "Selecione a prioridade",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:prioridade"
