@@ -7,6 +7,11 @@
   "OcrCode3": "24/25",
   "WhsCode": "01.FCOL",
   "MainUsage": "1",
+  "listItems": [
+    {
+      "done": false
+    }
+  ],
   "items": [
     {
       "done": false
