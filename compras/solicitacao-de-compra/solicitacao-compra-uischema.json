@@ -10,6 +10,10 @@
     {
         "OcrCode": { "sm": 2, "md": 2, "lg": 4 },
         "OcrCode2": { "sm": 2, "md": 2, "lg": 4 }
+    },
+    {
+        "OcrCode": { "sm": 2, "md": 2, "lg": 4 },
+        "OcrCode2": { "sm": 2, "md": 2, "lg": 4 }
     }
   ]
 }
