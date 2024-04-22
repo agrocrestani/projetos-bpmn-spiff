@@ -62,7 +62,7 @@
       "title": "Centro de Custo",
       "type": "string",
       "anyOf": [
-        "options_from_task_data_var:safra"
+        "options_from_task_data_var:safras"
       ]
     }
   }
