@@ -58,27 +58,5 @@
       "value": "27/28",
       "label": "Safra 2027/2028"
     }
-  ],
-  "centros_de_custo": [
-    {
-      "value": "",
-      "label": ""
-    },
-    {
-      "value": "QUEARM",
-      "label": "QUEARM - N. QUE ARMAZÉM"
-    },
-    {
-      "value": "QUECORP",
-      "label": "QUECORP - N. QUE CORPORATIVO"
-    },
-    {
-      "value": "QUEMEC",
-      "label": "QUEMEC - N. QUE MECANIZAÇÃO"
-    }
-  ],
-  "filialSolicitacao": "2",
-  "departamentoSolicitacao": "2",
-  "tipoRequisicaoSolicitacao": "1",
-  "prioridadeSolicitacao": "1"
+  ]
 }
