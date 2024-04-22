@@ -15,16 +15,6 @@
     {
         "WhsCode": { "sm": 2, "md": 2, "lg": 4 },
         "MainUsage": { "sm": 2, "md": 2, "lg": 4 }
-    },
-    {
-      "listItems": {
-        "items": {
-            {
-              "title": { "sm": 2, "md": 2, "lg": 2 },
-              "done": { "sm": 2, "md": 2, "lg": 2 }
-          }
-        }
-      }
     }
   ]
 }
