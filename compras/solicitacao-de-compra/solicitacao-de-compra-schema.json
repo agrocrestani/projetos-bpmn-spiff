@@ -1,6 +1,6 @@
 {
   "title": "Solicitação de Compras",
-  "description": "Preencha todos os campos do formu",
+  "description": "Preencha todos os campos do formul",
   "type": "object",
   "properties": {
     "filialSolicitacao": {
