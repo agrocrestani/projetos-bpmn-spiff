@@ -16,10 +16,6 @@
   ],
   "departamentos": [
     {
-      "value": "",
-      "label": ""
-    },
-    {
       "value": "1",
       "label": "Almoxarifado"
     },
