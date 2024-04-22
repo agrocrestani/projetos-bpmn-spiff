@@ -44,7 +44,7 @@
         }
       ]
     },
-    "U_RSD_Aplicacao": {
+    "O": {
       "title": "Tipo de requisicao",
       "type": "string",
       "anyOf": [
