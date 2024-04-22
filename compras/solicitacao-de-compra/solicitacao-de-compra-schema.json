@@ -38,6 +38,13 @@
         {
           "type": "string",
           "enum": [
+            "1"
+          ],
+          "title": "Normal"
+        },
+        {
+          "type": "string",
+          "enum": [
             "2"
           ],
           "title": "Urgente"
