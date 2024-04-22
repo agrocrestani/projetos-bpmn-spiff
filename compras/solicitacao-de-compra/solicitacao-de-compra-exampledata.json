@@ -46,17 +46,17 @@
   "tipoRequisicaoSolicitacao": "3",
   "prioridadeSolicitacao": "2",
   "centroDeCusto": [
-    {
-        "value": "QUEARM",
-        "label": "N. QUE ARMAZÉM"
-    },
-    {
-        "value": "QUECORP",
-        "label": "N. QUE CORPORATIVO"
-    },
-    {
-        "value": "QUEMEC",
-        "label": "N. QUE MECANIZAÇÃO"
-    }
+      {
+          "value": "QUEARM",
+          "label": "N. QUE ARMAZÉM"
+      },
+      {
+          "value": "QUECORP",
+          "label": "N. QUE CORPORATIVO"
+      },
+      {
+          "value": "QUEMEC",
+          "label": "N. QUE MECANIZAÇÃO"
+      }
     ]
 }
