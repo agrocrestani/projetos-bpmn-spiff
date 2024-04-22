@@ -91,7 +91,7 @@
           "title": {
             "type": "string",
             "title": "Selecione o Item",
-           
+        
           "done": {
             "type": "number",
             "title": "Quantidade?",
