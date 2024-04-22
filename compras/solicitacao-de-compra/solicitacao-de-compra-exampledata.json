@@ -59,7 +59,7 @@
       "label": "Safra 2027/2028"
     }
   ],
-  "centros_de": [
+  "centros_de_custo": [
     {
       "value": "apples",
       "label": "Apples"
