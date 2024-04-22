@@ -23,6 +23,13 @@
       "anyOf": [
         "options_from_task_data_var:n_filiais"
       ]
+    },
+    "BPLId": {
+      "title": "Filial",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:n_filiais"
+      ]
     }
   }
 }
