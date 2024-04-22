@@ -94,7 +94,7 @@
             "description": "Please describe the task to complete"
           },
           "done": {
-            "type": "string",
+            "type": "number",
             "title": "Quantidade?",
             "default": false
           }
