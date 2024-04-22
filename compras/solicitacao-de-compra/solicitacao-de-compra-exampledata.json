@@ -79,5 +79,6 @@
   ],
   "filialSolicitacao": "2",
   "departamentoSolicitacao": "2",
-  "tipoRequisicaoSolicitacao": "1"
+  "tipoRequisicaoSolicitacao": "1",
+  "prioridadeSolicitacao": "1"
 }
