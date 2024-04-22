@@ -18,7 +18,7 @@
       ]
     },
     "U_RSD_Prioridade": {
-      "title": "P",
+      "title": "Prioridade",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:n_filiais"
