@@ -46,31 +46,31 @@
   "tipoRequisicaoSolicitacao": "3",
   "prioridadeSolicitacao": "2",
   "centroDeCusto": [
-      {
-          "value": "QUEARM",
-          "label": "QUEARM - N. QUE ARMAZÉM"
-      },
-      {
-          "value": "QUECORP",
-          "label": "QUECORP - N. QUE CORPORATIVO"
-      },
-      {
-          "value": "QUEMEC",
-          "label": "QUEMEC - N. QUE MECANIZAÇÃO"
-      }
-    ],
+    {
+      "value": "QUEARM",
+      "label": "QUEARM - N. QUE ARMAZÉM"
+    },
+    {
+      "value": "QUECORP",
+      "label": "QUECORP - N. QUE CORPORATIVO"
+    },
+    {
+      "value": "QUEMEC",
+      "label": "QUEMEC - N. QUE MECANIZAÇÃO"
+    }
+  ],
   "safras": [
-      {
-          "value": "22/23",
-          "label": "Safra 2022/2023"
-      },
-      {
-          "value": "24/25",
-          "label": "Safra 2024/2025"
-      },
-      {
-          "value": "27/28",
-          "label": "Safra 2027/2028"
-      }
-    ]
+    {
+      "value": "22/23",
+      "label": "Safra 2022/2023"
+    },
+    {
+      "value": "24/25",
+      "label": "Safra 2024/2025"
+    },
+    {
+      "value": "27/28",
+      "label": "Safra 2027/2028"
+    }
+  ]
 }
