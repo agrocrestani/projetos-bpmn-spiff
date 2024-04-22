@@ -46,18 +46,18 @@
   "tipoRequisicaoSolicitacao": "3",
   "prioridadeSolicitacao": "2",
   "centroDeCusto": [
-      {
-          "value": "QUEARM",
-          "label": "N. QUE ARMAZÉM"
-      },
-      {
-          "value": "QUECORP",
-          "label": "N. QUE CORPORATIVO"
-      },
-      {
-          "value": "QUEMEC",
-          "label": "N. QUE MECANIZAÇÃO"
-      }
+    {
+        "value": "QUEARM",
+        "label": "QUEARM - N. QUE ARMAZÉM"
+    },
+    {
+        "value": "QUECORP",
+        "label": "QUECORP - N. QUE CORPORATIVO"
+    },
+    {
+        "value": "QUEMEC",
+        "label": "QUEMEC - N. QUE MECANIZAÇÃO"
+    }
     ],
   "safras": [
       {
