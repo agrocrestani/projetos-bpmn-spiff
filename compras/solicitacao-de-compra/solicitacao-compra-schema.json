@@ -69,7 +69,7 @@
       "title": "Safra",
       "type": "string",
       "anyOf": [
-        "options_from_task_data_var:almoxari"
+        "options_from_task_data_var:almoxarifados"
       ]
     },
     "MainUsage": {
