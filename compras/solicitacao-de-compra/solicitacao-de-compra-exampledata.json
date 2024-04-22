@@ -46,18 +46,18 @@
   "tipoRequisicaoSolicitacao": "3",
   "prioridadeSolicitacao": "2",
   "centroDeCusto": [
-      {
-          "value": "QUEARM",
-          "label": "N. QUE ARMAZÉM"
-      },
-      {
-          "value": "QUECORP",
-          "label": "N. QUE CORPORATIVO"
-      },
-      {
-          "value": "QUEMEC",
-          "label": "N. QUE MECANIZAÇÃO"
-      }
+    {
+        "value": "22/23",
+        "label": "Safra 2022/2023"
+    },
+    {
+        "value": "24/25",
+        "label": "Safra 2024/2025"
+    },
+    {
+        "value": "27/28",
+        "label": "Safra 2027/2028"
+    }
     ],
   "safras": [
       {
