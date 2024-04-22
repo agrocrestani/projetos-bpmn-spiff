@@ -34,9 +34,9 @@ for f in filiais:
 n_almoxarifados = []
 
 for a in almoxarifados:
-    WhsCode = f['WhsCode']
-    WhsName = f['WhsName']
-    n_filiais.append(
+    WhsCode = a['WhsCode']
+    WhsName = a['WhsName']
+    n_almoxarifados.append(
         {
             "value": WhsCode,
             "label": WhsCode + " - " + WhsName
