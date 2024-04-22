@@ -11,7 +11,7 @@
       ]
     },
     "Department": {
-      "title": "Departament",
+      "title": "Departamento",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:departamentos"
