@@ -55,5 +55,7 @@
       "label": "Safra 2027/2028"
     }
   ],
-  "prioridadeSolicitacao": "2"
+  "prioridadeSolicitacao": "2",
+  "tipoRequisicaoSolicitacao": "2",
+  "departamentoSolicitacao": "2"
 }
