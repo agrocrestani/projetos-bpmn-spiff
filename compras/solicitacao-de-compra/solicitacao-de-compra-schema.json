@@ -25,7 +25,7 @@
       ]
     },
     "prioridadeSolicitacao": {
-      "title": "Selecione a prioridade",
+      "title": "rioridade",
       "type": "string",
       "anyOf": [
         {
