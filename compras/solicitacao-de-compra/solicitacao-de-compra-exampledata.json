@@ -45,7 +45,20 @@
       "label": "Bananas"
     }
   ],
-  "tipo_requisicao": [],
+  "tipo_requisicao": [
+        {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
+  ],
   "fruits": [
     {
       "value": "apples",
