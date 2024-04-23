@@ -58,7 +58,7 @@
       "label": "Projeto Próprio"
     }
   ],
-  "centros_de_custo": [
+  "n_centros_de_custo": [
     {
       "value": "QUEARM",
       "label": "QUEARM - N. QUE ARMAZÉM"
