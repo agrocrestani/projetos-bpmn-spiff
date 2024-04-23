@@ -64,7 +64,7 @@
         "ui:widget": "typeahead",
         "ui:options": {
           "category": "oitm",
-          "itemFormat": "{ItemName} ({ItemCode} - {onhand})"
+          "itemFormat": "{ItemName} ({ItemCode} - {ItmsGrpNamonhand})"
         }
       }
     }
