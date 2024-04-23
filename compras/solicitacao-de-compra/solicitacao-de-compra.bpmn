@@ -115,7 +115,8 @@ for u in utilizacoes:
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## Solicitação de Compras
 
-Unidade: {{}}
+Unidade: 
+
 Depósito: {almoxarifado}</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>almoxarifado = ""
 for i in n_almoxarifados:
