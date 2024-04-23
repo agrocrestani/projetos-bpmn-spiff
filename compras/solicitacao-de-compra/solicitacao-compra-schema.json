@@ -44,7 +44,7 @@
         }
       ]
     },
-    "U_": {
+    "U_RSD": {
       "title": "Departamento",
       "type": "string",
       "anyOf": [
