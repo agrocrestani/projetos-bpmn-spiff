@@ -1,0 +1,9 @@
+{
+    "description": "",
+    "display_name": "Solicitacao de Insumos",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "solicitacao-de-insumos.bpmn",
+    "primary_process_id": "Process_solicitacao_de_insumos_akr6kgg"
+}
