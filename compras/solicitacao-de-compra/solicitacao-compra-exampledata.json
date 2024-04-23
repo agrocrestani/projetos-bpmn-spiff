@@ -18,7 +18,8 @@
       "quantidade": 50
     },
     {
-      "item": "{\"ItemCode\":\"002342\",\"ItemName\":\"FEIJAO CARIOCA 1KG\",\"ItmsGrpNam\":\"ALIMENTOS / HORTA\",\"InvntryUom\":\"QUILOGRAM\"}"
+      "item": "{\"ItemCode\":\"002342\",\"ItemName\":\"FEIJAO CARIOCA 1KG\",\"ItmsGrpNam\":\"ALIMENTOS / HORTA\",\"InvntryUom\":\"QUILOGRAM\"}",
+      "quantidade": 10
     }
   ],
   "n_filiais": [
