@@ -1,5 +1,5 @@
 {
-  "title": "S",
+  "title": "Solicitação de Compras",
   "description": "A larger resizable area to enter longer text. (field name will be 'bio')",
   "type": "object",
   "properties": {
