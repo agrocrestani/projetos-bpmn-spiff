@@ -47,7 +47,7 @@ for d in departamentos:
 
 n_centros_de_custo = []
 for c in centros_de_custo:
-    n_departamentos.append(c)
+    n_centros_de_custo.append(c)
 
 n_culturas = []
 for c in culturas:
