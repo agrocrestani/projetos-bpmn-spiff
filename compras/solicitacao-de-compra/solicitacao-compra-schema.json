@@ -81,7 +81,7 @@
     },
     "bio": {
       "type": "string",
-      "title": "O"
+      "title": "Observações"
     }
   }
 }
