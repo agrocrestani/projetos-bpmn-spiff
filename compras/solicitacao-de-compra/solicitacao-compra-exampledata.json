@@ -17,7 +17,9 @@
       "item": "{\"ItemCode\":\"002193\",\"ItemName\":\"ARROZ 5KG\",\"ItmsGrpNam\":\"ALIMENTOS / HORTA\",\"InvntryUom\":\"QUILOGRAM\"}",
       "quantidade": 50
     },
-    {}
+    {
+      "item": "{\"ItemCode\":\"002342\",\"ItemName\":\"FEIJAO CARIOCA 1KG\",\"ItmsGrpNam\":\"ALIMENTOS / HORTA\",\"InvntryUom\":\"QUILOGRAM\"}"
+    }
   ],
   "n_filiais": [
     {
