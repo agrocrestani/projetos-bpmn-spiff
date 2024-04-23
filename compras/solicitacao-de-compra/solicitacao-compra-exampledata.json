@@ -8,16 +8,7 @@
   "OcrCode3": "24/25",
   "WhsCode": "01.FCOL",
   "MainUsage": "1",
-  "solicitacao": [
-    {
-      "item": "{\"ItemCode\":\"002193\",\"ItemName\":\"ARROZ 5KG\",\"ItmsGrpNam\":\"ALIMENTOS / HORTA\",\"InvntryUom\":\"QUILOGRAM\"}",
-      "quantidade": 50
-    },
-    {
-      "item": "{\"ItemCode\":\"002342\",\"ItemName\":\"FEIJAO CARIOCA 1KG\",\"ItmsGrpNam\":\"ALIMENTOS / HORTA\",\"InvntryUom\":\"QUILOGRAM\"}",
-      "quantidade": 10
-    }
-  ],
+  "solicitacao": [],
   "n_filiais": [
     {
       "value": "1",
