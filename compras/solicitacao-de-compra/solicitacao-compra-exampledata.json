@@ -8,12 +8,7 @@
   "OcrCode3": "24/25",
   "WhsCode": "01.FCOL",
   "MainUsage": "1",
-  "solicitacao": [
-    {
-      "item": "{\"ItemCode\":\"002193\",\"ItemName\":\"ARROZ 5KG\",\"ItmsGrpNam\":\"ALIMENTOS / HORTA\",\"InvntryUom\":\"QUILOGRAM\"}",
-      "quantidade": 2
-    }
-  ],
+  "solicitacao": [],
   "n_filiais": [
     {
       "value": "1",
