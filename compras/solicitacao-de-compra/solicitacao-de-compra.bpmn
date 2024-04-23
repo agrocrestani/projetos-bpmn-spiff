@@ -20,7 +20,6 @@
           <spiffworkflow:property name="formUiSchemaFilename" value="solicitacao-compra-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:preScript>n_filiais = []
-
 for f in filiais:
     BPLId = f['BPLId']
     BPLName = f['BPLName']
@@ -32,7 +31,6 @@ for f in filiais:
     )
 
 n_almoxarifados = []
-
 for a in almoxarifados:
     WhsCode = a['WhsCode']
     WhsName = a['WhsName']
@@ -46,6 +44,18 @@ for a in almoxarifados:
 n_departamentos = []
 for d in departamentos:
     n_departamentos.append(d)
+
+n_centros_de_custo = []
+for c in centros_de_custo:
+    n_departamentos.append(c)
+
+n_culturas = []
+for c in culturas:
+    n_culturas.append(c)
+
+n_safras = []
+for s in safras:
+    n_safras.append(s)
 
 </spiffworkflow:preScript>
       </bpmn:extensionElements>
