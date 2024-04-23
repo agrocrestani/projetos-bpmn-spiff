@@ -63,7 +63,7 @@
       "insumo": {
         "ui:widget": "typeahead",
         "ui:options": {
-          "category": "estoque_de_insumos",
+          "category": "oitm",
           "itemFormat": "{name} - {code} (Estoque: {onhand})"
         }
       }
