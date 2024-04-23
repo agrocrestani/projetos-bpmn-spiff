@@ -10,7 +10,8 @@
   "MainUsage": "1",
   "solicitacao": [
     {
-      "item": "{\"ItemCode\":\"020990\",\"ItemName\":\"CANETA  ESFEROGRAFICA CRISTAL  AZUL BIC 1.0\",\"ItmsGrpNam\":\"MATERIAIS DE EXPEDIENTE\",\"InvntryUom\":\"UNIDADE\"}"
+      "item": "{\"ItemCode\":\"020990\",\"ItemName\":\"CANETA  ESFEROGRAFICA CRISTAL  AZUL BIC 1.0\",\"ItmsGrpNam\":\"MATERIAIS DE EXPEDIENTE\",\"InvntryUom\":\"UNIDADE\"}",
+      "quantidade": 10
     }
   ],
   "n_filiais": [
