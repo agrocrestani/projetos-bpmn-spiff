@@ -16,7 +16,11 @@
       }
     },
     {
-      
+      "U_RSD_Aplicacao": {
+        "sm": 2,
+        "md": 2,
+        "lg": 3
+      }
     },
     {
       "OcrCode": {
