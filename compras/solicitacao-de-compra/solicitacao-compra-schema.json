@@ -92,7 +92,7 @@
     },
     "solicitacao": {
       "type": "array",
-      "title": "Items  ",
+      "title": "Items Solicitados ",
       "items": {
         "type": "object",
         "required": [
