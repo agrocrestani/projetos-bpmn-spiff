@@ -117,7 +117,7 @@ for u in utilizacoes:
 
 Unidade: 
 
-Depósito: {almoxarifado}</spiffworkflow:instructionsForEndUser>
+Depósito: {{almoxarifado}}</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>almoxarifado = ""
 for i in n_almoxarifados:
     if i['value'] == WhsCode:
