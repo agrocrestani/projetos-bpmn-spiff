@@ -72,7 +72,7 @@
       "label": "QUEMEC - N. QUE MECANIZAÇÃO"
     }
   ],
-  "culturas": [
+  "n_culturas": [
     {
       "value": "SOJA",
       "label": "SOJA"
