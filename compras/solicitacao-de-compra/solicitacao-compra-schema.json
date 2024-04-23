@@ -83,6 +83,26 @@
       "type": "string",
       "title": "Observações"
     },
-    
+    "solicitacao": {
+      "type": "array",
+      "title": "",
+      "items": {
+        "type": "object",
+        "required": [
+          "insumo",
+          "quantidade"
+        ],
+        "properties": {
+          "insumo": {
+            "type": "string",
+            "title": "Selecione o Insumo"
+          },
+          "quantidade": {
+            "type": "number",
+            "title": "Quantidade"
+          }
+        }
+      }
+    }
   }
 }
