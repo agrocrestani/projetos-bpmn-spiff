@@ -1,6 +1,6 @@
 {
   "title": "Solicitação de Compras",
-  "description": "A larger resizable area to enter longer text. (field name will be 'bio')",
+  "description": "Solicitação de compras de produtos para estoque",
   "type": "object",
   "properties": {
     "BPLId": {
