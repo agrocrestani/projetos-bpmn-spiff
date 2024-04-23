@@ -43,10 +43,11 @@ for a in almoxarifados:
         }
     )
 
-departamentos = departamentos
+n_departamentos = []
+for d in departamentos:
+    n_departamentos.append(d)
 
-del(filiais)
-del(almoxarifados)</spiffworkflow:preScript>
+</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
