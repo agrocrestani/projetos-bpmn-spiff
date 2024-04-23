@@ -82,6 +82,6 @@
     "Comments": {
       "type": "string",
       "title": "Observações"
-    }
+    },
   }
 }
