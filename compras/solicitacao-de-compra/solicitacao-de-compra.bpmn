@@ -113,11 +113,14 @@ for u in utilizacoes:
     <bpmn:sequenceFlow id="Flow_1y37zi6" sourceRef="Activity_0xafkf4" targetRef="EndEvent_1" />
     <bpmn:manualTask id="Activity_0xafkf4">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>## Solicitação de Compras
+        <spiffworkflow:instructionsForEndUser>
 
-Unidade: 
+## Solicitação de Compras
 
-Depósito: {{almoxarifado}}</spiffworkflow:instructionsForEndUser>
+|**Unidade:** |{{unidade}}|
+
+|**Depósito**: |{{almoxarifado}}|
+</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>almoxarifado = ""
 for i in n_almoxarifados:
     if i['value'] == WhsCode:
