@@ -79,7 +79,7 @@
         "options_from_task_data_var:utilizacoes"
       ]
     },
-    "bio": {
+    "Co": {
       "type": "string",
       "title": "Observações"
     }
