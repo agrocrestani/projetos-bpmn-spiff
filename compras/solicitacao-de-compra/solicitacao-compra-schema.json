@@ -79,25 +79,6 @@
         "options_from_task_data_var:utilizacoes"
       ]
     },
-    "listItems": {
-      "type": "array",
-      "title": "Items",
-      "items": {
-        "type": "object",
-        "required": [
-          "title"
-        ],
-        "properties": {
-          "title": {
-            "type": "string",
-            "title": "Selecione o Item",
-          "done": {
-            "type": "number",
-            "title": "Quantidade?",
-            "default": false
-          }
-        }
-      }
-    }
+    
   }
 }
