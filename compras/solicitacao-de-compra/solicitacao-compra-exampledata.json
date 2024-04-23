@@ -10,7 +10,8 @@
   "MainUsage": "1",
   "solicitacao": [
     {
-      "item": "{\"ItemCode\":\"002193\",\"ItemName\":\"ARROZ 5KG\",\"ItmsGrpNam\":\"ALIMENTOS / HORTA\",\"InvntryUom\":\"QUILOGRAM\"}"
+      "item": "{\"ItemCode\":\"002193\",\"ItemName\":\"ARROZ 5KG\",\"ItmsGrpNam\":\"ALIMENTOS / HORTA\",\"InvntryUom\":\"QUILOGRAM\"}",
+      "quantidade": 2
     }
   ],
   "listItems": [],
