@@ -57,6 +57,13 @@ n_safras = []
 for s in safras:
     n_safras.append(s)
 
+n_tipo_requisicao = []
+for t in tipo_requisicao:
+    n_tipo_requisicao.append(t)
+
+n_utilizacoes = []
+for u in utilizacoes:
+    n_utilizacoes.append(u)
 </spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
