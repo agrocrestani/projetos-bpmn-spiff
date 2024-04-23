@@ -116,7 +116,8 @@ for u in utilizacoes:
         <spiffworkflow:instructionsForEndUser>## Solicitação de Compras
 
 Unidade: {{}}</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript>for i in n_almoxarifados:
+        <spiffworkflow:preScript>almoxarifado = ""
+for i in n_almoxarifados:
     if i['value'] == WhsCode:
         almoxarifado = i['value'] + ' - ' + i['label']</spiffworkflow:preScript>
       </bpmn:extensionElements>
