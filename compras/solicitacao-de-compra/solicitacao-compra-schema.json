@@ -89,7 +89,7 @@
       "items": {
         "type": "object",
         "required": [
-          "insumo",
+          "item",
           "quantidade"
         ],
         "properties": {
