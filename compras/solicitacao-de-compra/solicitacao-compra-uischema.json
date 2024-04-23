@@ -64,7 +64,7 @@
         "ui:widget": "typeahead",
         "ui:options": {
           "category": "oitm",
-          "itemFormat": "{ItemName} (Estoque: {onhand})"
+          "itemFormat": "{ItemName} ({ItemCode} - {onhand})"
         }
       }
     }
