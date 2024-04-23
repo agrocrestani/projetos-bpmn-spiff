@@ -13,7 +13,9 @@
       "item": "{\"ItemCode\":\"020990\",\"ItemName\":\"CANETA  ESFEROGRAFICA CRISTAL  AZUL BIC 1.0\",\"ItmsGrpNam\":\"MATERIAIS DE EXPEDIENTE\",\"InvntryUom\":\"UNIDADE\"}",
       "quantidade": 10
     },
-    {}
+    {
+      "item": "{\"ItemCode\":\"002193\",\"ItemName\":\"ARROZ 5KG\",\"ItmsGrpNam\":\"ALIMENTOS / HORTA\",\"InvntryUom\":\"QUILOGRAM\"}"
+    }
   ],
   "n_filiais": [
     {
