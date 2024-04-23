@@ -60,7 +60,7 @@
   },
   "solicitacao": {
     "items": {
-      "insumo": {
+      "item": {
         "ui:widget": "typeahead",
         "ui:options": {
           "category": "oitm",
