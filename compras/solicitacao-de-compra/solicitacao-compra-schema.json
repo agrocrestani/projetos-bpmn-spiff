@@ -102,7 +102,7 @@
         "properties": {
           "item": {
             "type": "string",
-            "title": "Selecione o Insumo"
+            "title": "Selecione o Item"
           },
           "quantidade": {
             "type": "number",
