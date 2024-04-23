@@ -44,7 +44,7 @@
       "label": "Comercial Algodão"
     }
   ],
-  "tipo_requisicao": [
+  "n_tipo_requisicao": [
     {
       "value": "1",
       "label": "ADM - Estoque"
