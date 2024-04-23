@@ -44,6 +44,13 @@
         }
       ]
     },
+    "Department": {
+      "title": "Departamento",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:n_departamentos"
+      ]
+    },
     "OcrCode": {
       "title": "Centro de Custo",
       "type": "string",
