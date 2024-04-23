@@ -44,7 +44,7 @@
         }
       ]
     },
-    "U_RSD_Aplica": {
+    "U_RSD_Aplicacao": {
       "title": "Departamento",
       "type": "string",
       "anyOf": [
