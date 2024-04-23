@@ -8,7 +8,9 @@
   "OcrCode3": "24/25",
   "WhsCode": "01.FCOL",
   "MainUsage": "1",
-  "solicitacao": [],
+  "solicitacao": [
+    {}
+  ],
   "n_filiais": [
     {
       "value": "1",
