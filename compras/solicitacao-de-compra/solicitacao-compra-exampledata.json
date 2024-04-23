@@ -8,7 +8,9 @@
   "WhsCode": "01.FCOL",
   "MainUsage": "1",
   "solicitacao": [
-    {}
+    {
+      "item": "{\"ItemCode\":\"002193\",\"ItemName\":\"ARROZ 5KG\",\"ItmsGrpNam\":\"ALIMENTOS / HORTA\",\"InvntryUom\":\"QUILOGRAM\"}"
+    }
   ],
   "listItems": [],
   "items": [
