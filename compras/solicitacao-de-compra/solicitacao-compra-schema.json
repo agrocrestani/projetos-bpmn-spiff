@@ -44,7 +44,7 @@
         }
       ]
     },
-    "Department": {
+    "U_": {
       "title": "Departamento",
       "type": "string",
       "anyOf": [
