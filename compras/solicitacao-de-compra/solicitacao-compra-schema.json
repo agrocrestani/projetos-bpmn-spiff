@@ -83,7 +83,7 @@
       "type": "string",
       "title": "Observações"
     },
-    "solicitacao": {
+    "itens": {
       "type": "array",
       "title": "",
       "items": {
