@@ -1,20 +1,51 @@
 {
   "ui:layout": [
     {
-        "BPLId": {}
+      "BPLId": {}
     },
     {
-        "Department": { "sm": 2, "md": 2, "lg": 4 },
-        "U_RSD_Prioridade": { "sm": 2, "md": 2, "lg": 4 }
+      "Department": {
+        "sm": 2,
+        "md": 2,
+        "lg": 4
+      },
+      "U_RSD_Prioridade": {
+        "sm": 2,
+        "md": 2,
+        "lg": 4
+      }
     },
     {
-        "OcrCode": {"sm": 2, "md": 2, "lg": 3 },
-        "OcrCode2": {"sm": 2, "md": 2, "lg": 2 },
-        "OcrCode3": {"sm": 2, "md": 2, "lg": 3 }
+      "OcrCode": {
+        "sm": 2,
+        "md": 2,
+        "lg": 3
+      },
+      "OcrCode2": {
+        "sm": 2,
+        "md": 2,
+        "lg": 2
+      },
+      "OcrCode3": {
+        "sm": 2,
+        "md": 2,
+        "lg": 3
+      }
     },
     {
-        "WhsCode": { "sm": 2, "md": 2, "lg": 4 },
-        "MainUsage": { "sm": 2, "md": 2, "lg": 4 }
+      "WhsCode": {
+        "sm": 2,
+        "md": 2,
+        "lg": 4
+      },
+      "MainUsage": {
+        "sm": 2,
+        "md": 2,
+        "lg": 4
+      }
     }
-  ]
+  ],
+  "bio": {
+    "ui:widget": "textarea"
+  }
 }

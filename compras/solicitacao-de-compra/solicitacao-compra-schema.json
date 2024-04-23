@@ -1,6 +1,6 @@
 {
-  "title": "Nested Form / Repeating Section",
-  "description": "Allow the form submitter to add multiple entries for a set of fields.",
+  "title": "Text Area",
+  "description": "A larger resizable area to enter longer text. (field name will be 'bio')",
   "type": "object",
   "properties": {
     "BPLId": {
@@ -78,6 +78,10 @@
       "anyOf": [
         "options_from_task_data_var:utilizacoes"
       ]
+    },
+    "bio": {
+      "type": "string",
+      "title": "Bio"
     }
   }
 }
