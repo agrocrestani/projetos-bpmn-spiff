@@ -29,6 +29,9 @@
         }
     },
     "ui:layout": [
+                {
+            "entidade": {}
+        }
         {
             "numero_due": {
                 "sm": 2,
