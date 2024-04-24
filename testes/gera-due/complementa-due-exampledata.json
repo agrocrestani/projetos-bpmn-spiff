@@ -1,20 +1,6 @@
-{
+n_{
   "naturezaDeclaracao": "0",
-  "n_tipoDeclaracao": [
-    {
-      "value": "0",
-      "label": "Declaração de Exportação"
-    },
-    {
-      "value": "1",
-      "label": "Declaração Simplificada de Exportação"
-    },
-    {
-      "value": "2",
-      "label": "Declaração Única de Exportação"
-    }
-  ],
-  "ntipoConhecimento": [
+  "tipoConhecimento": [
     {
       "value": "1",
       "label": "AWB"
@@ -102,6 +88,20 @@
     {
       "value": "99",
       "label": "OUTROS"
+    }
+  ],
+  "n_tipoDeclaracao": [
+    {
+      "value": "0",
+      "label": "Declaração de Exportação"
+    },
+    {
+      "value": "1",
+      "label": "Declaração Simplificada de Exportação"
+    },
+    {
+      "value": "2",
+      "label": "Declaração Única de Exportação"
     }
   ]
 }
