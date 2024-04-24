@@ -53,9 +53,5 @@
     {
       "delivery_date": {}
     }
-  ],
-  "delivery_date": {
-    "ui:widget": "date",
-    "ui:help": "Specify the preferred delivery date for this service/product"
-  }
+  ]
 }
