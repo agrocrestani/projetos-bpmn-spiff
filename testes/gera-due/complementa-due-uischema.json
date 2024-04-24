@@ -31,7 +31,7 @@
     },
     "ui:layout": [
         {
-            "due": {}"numero_due": {
+            "due": {"numero_due": {
                     "sm": 2,
                     "md": 2,
                     "lg": 2
