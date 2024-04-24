@@ -47,6 +47,12 @@
       "type": "string",
       "format": "date",
       "title": "Data Declaração"
+    },
+    "delivery_date": {
+      "type": "string",
+      "format": "date",
+      "title": "Preferred Delivery Date",
+      "validationErrorMessage": "Date must be today's date or later"
     }
   }
 }
