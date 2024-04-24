@@ -190,7 +190,7 @@ pais_destino = due['pais_destino']</spiffworkflow:preScript>
 data_averbacao = data_averbacao[0:10]
 
 schema = {
-  "columsn": [
+  "columns": [
     "NumeroDeclaracao", 
     "NumeroRegistro", 
     "NumeroConhecimento",
