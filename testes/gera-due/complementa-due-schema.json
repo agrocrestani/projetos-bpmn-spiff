@@ -5,7 +5,8 @@
   "properties": {
     "numero_due": {
       "type": "string",
-      "title": "Numero DUE"
+      "title": "Numero DUE",
+      
     },
     "data_embarque": {
       "type": "string",
