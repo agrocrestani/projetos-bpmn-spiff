@@ -27,7 +27,6 @@
         "category": "tipo_declaracao",
         "itemFormat": "{nome_fantasia}"
         }
-    }
     },
     "ui:layout": [
         {
