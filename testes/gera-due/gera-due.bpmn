@@ -194,12 +194,10 @@ pais_destino = due['pais_destino']</spiffworkflow:preScript>
                 "NumeroRegistro",
                 "NumeroConhecimento",
                 "PaisDestino",
-                "UFDesctino",
                 "DataDeclaracao",
                 dataregistro,
                 dataconhecimento,
                 dataaverbacao,
-                "Local",
                 naturezaid,
                 tipoconhecimentoid,
                 tipodocumentoid)
@@ -207,7 +205,14 @@ pais_destino = due['pais_destino']</spiffworkflow:preScript>
                 {numero_due},
                 {numero_due},
                 {numero_due},
-                {}
+                {paisImportador['Code']},
+                {data_declaracao},
+                {data_declaracao},
+                {data_declaracao},
+                {data_averbacao},
+                {naturezaDeclaracao},
+                {tipoConhecimento},
+                {tipoDeclaracao}
             )
 """</bpmn:script>
       </bpmn:scriptTask>
