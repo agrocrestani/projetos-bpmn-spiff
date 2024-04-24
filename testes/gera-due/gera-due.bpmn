@@ -179,10 +179,19 @@ pais_destino = due['pais_destino']</spiffworkflow:preScript>
         <bpmn:incoming>Flow_1d28xqv</bpmn:incoming>
         <bpmn:outgoing>Flow_0mvhmve</bpmn:outgoing>
       </bpmn:userTask>
-      <bpmn:userTask id="Activity_153jm8a">
+      <bpmn:scriptTask id="Activity_153jm8a">
+        <bpmn:extensionElements>
+          <spiffworkflow:properties>
+            <spiffworkflow:property name="formJsonSchemaFilename" value="" />
+            <spiffworkflow:property name="formUiSchemaFilename" value="" />
+          </spiffworkflow:properties>
+        </bpmn:extensionElements>
         <bpmn:incoming>Flow_0mvhmve</bpmn:incoming>
         <bpmn:outgoing>Flow_0bqcq4s</bpmn:outgoing>
-      </bpmn:userTask>
+        <bpmn:script>query = f"""
+            insert into due {numero_due}
+"""</bpmn:script>
+      </bpmn:scriptTask>
     </bpmn:subProcess>
     <bpmn:endEvent id="EndEvent_1">
       <bpmn:extensionElements>
@@ -229,7 +238,7 @@ pais_destino = due['pais_destino']</spiffworkflow:preScript>
         <dc:Bounds x="730" y="430" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1ago8i5_di" bpmnElement="Activity_153jm8a">
+      <bpmndi:BPMNShape id="Activity_1qau31a_di" bpmnElement="Activity_153jm8a">
         <dc:Bounds x="890" y="430" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1d28xqv_di" bpmnElement="Flow_1d28xqv">
