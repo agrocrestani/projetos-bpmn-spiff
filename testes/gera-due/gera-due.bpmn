@@ -190,6 +190,7 @@ pais_destino = due['pais_destino']</spiffworkflow:preScript>
         <bpmn:incoming>Flow_0mvhmve</bpmn:incoming>
         <bpmn:outgoing>Flow_0bqcq4s</bpmn:outgoing>
         <bpmn:script>paisImportador = json.loads(paisImportador)
+data_averbacao = data_averbacao[0:10]
 
 query = f"""
             insert into sap.due_dados (
