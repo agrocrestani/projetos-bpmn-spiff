@@ -2,9 +2,9 @@
     "paisImportador": {
         "ui:widget": "typeahead",
         "ui:options": {
-        "category": "ocry",
-        "itemFormat": "{name} ({code})"
-        }
+                "category": "ocry",
+                "itemFormat": "{name} ({code})"
+                }
     },
     "ui:layout": [
         {
