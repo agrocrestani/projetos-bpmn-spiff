@@ -189,7 +189,26 @@ pais_destino = due['pais_destino']</spiffworkflow:preScript>
         <bpmn:incoming>Flow_0mvhmve</bpmn:incoming>
         <bpmn:outgoing>Flow_0bqcq4s</bpmn:outgoing>
         <bpmn:script>query = f"""
-            insert into due {numero_due}
+            insert into sap.due_dados (
+                "NumeroDeclaracao",
+                "NumeroRegistro",
+                "NumeroConhecimento",
+                "PaisDestino",
+                "UFDesctino",
+                "DataDeclaracao",
+                dataregistro,
+                dataconhecimento,
+                dataaverbacao,
+                "Local",
+                naturezaid,
+                tipoconhecimentoid,
+                tipodocumentoid)
+            values (
+                {numero_due},
+                {numero_due},
+                {numero_due},
+                {}
+            )
 """</bpmn:script>
       </bpmn:scriptTask>
     </bpmn:subProcess>
