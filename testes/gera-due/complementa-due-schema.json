@@ -39,7 +39,7 @@
       "type": "string",
       "title": "Tipo Declaração",
       "anyOf": [
-              "options_from_task_data_var:tipoConhecimento"
+              "options_from_task_data_var:tipoDeclaracao"
             ]
     },
     "paisImportador": {
