@@ -6,7 +6,7 @@
     "entidade": {
       "type": "string",
       "title": "Entidade",
-      "default": "FAZENDA QUERENCIA"
+
     },
     "numero_due": {
       "type": "string",
