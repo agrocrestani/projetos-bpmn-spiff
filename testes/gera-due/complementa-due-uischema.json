@@ -30,7 +30,7 @@
         }
     },
     "ui:layout": [
-        {"due": 
+        { 
         {
             "numero_due": {
                 "sm": 2,
