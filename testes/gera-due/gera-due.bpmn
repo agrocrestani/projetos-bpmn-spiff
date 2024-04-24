@@ -140,7 +140,7 @@ for i in nDeclaracao:
     naturezaDeclaracao.append(
         {
             "value": i['id'],
-            "label": i['Description']
+            "label": i['description']
         }
     )
 del(qDecl)
@@ -153,7 +153,7 @@ for i in tDeclaracao:
     tipoDeclaracao.append(
         {
             "value": i['id'],
-            "label": i['Description']
+            "label": i['description']
         }
     )
 del(nTipo)
@@ -166,7 +166,7 @@ for i in tpConhecimento:
     tipoConhecimento.append(
     {
         "value": i['id'],
-        "label": i['Description']
+        "label": i['description']
     }
 )
 del(nConh)
