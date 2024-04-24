@@ -195,10 +195,10 @@ schema = {
                 "PaisDestino", "DataDeclaracao", dataregistro, 
                 dataconhecimento, dataaverbacao, naturezaid,
                 tipoconhecimentoid,  tipodocumentoid)
-            values ("{numero_due}", "{numero_due}", "{numero_due}",
-                "{paisImportador['Code']}", "{dt_declaracao}", "{dt_declaracao}",
-                "{dt_declaracao}", "{data_averbacao}", "{naturezaDeclaracao}",
-                "{tipoConhecimento}",  "{tipoDeclaracao}")
+            values ('{numero_due}', '{numero_due}', '{numero_due}',
+                '{paisImportador['Code']}', '{dt_declaracao}', '{dt_declaracao}',
+                '{dt_declaracao}', '{data_averbacao}', '{naturezaDeclaracao}',
+                '{tipoConhecimento}',  '{tipoDeclaracao}')
     """,
   "fetch_results": False
 }
