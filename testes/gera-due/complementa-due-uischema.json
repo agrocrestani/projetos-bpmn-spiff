@@ -31,7 +31,7 @@
     },
     "ui:layout": [
     {
-      "BPLId": {}
+      "numero_due": {}
     },
     {
       "Department": {
