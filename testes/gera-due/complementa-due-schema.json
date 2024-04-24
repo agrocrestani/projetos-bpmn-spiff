@@ -17,7 +17,6 @@
       "format": "date",
       "title": "Data Averbação"
     },
-
     "naturezaDeclaracao": {
       "type": "string",
       "title": "Natureza da Declaração"
