@@ -24,6 +24,7 @@
     "naturezaDeclaracao": {
       "type": "string",
       "title": "Natureza da Declaração"
+      
     },
     "tipoConhecimento": {
       "type": "string",
