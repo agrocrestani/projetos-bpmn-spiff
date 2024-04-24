@@ -1,4 +1,5 @@
 {
+
     "naturezaDeclaracao": {
         "ui:widget": "typeahead",
         "ui:options": {
@@ -28,7 +29,6 @@
         }
     },
     "ui:layout": [
-        
         {
             "numero_due": {
                 "sm": 2,
