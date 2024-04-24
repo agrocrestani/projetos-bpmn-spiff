@@ -17,11 +17,7 @@
       "format": "date",
       "title": "Data Averbação"
     },
-    "entidade": {
-      "type": "string",
-      "title": "Entidade",
-      "default": "FAZENDA QUERENCIA"
-    },
+
     "naturezaDeclaracao": {
       "type": "string",
       "title": "Natureza da Declaração"
