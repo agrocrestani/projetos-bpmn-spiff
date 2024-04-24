@@ -6,7 +6,7 @@
     "numero_due": {
       "type": "string",
       "title": "Numero DUE",
-      ui:disabled": true
+      "ui:disabled": true
     },
     "data_embarque": {
       "type": "string",
