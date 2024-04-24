@@ -67,6 +67,18 @@
                 "md": 2,
                 "lg": 4
             }
+        },
+        {
+            "tipoConhecimento": {
+                "sm": 2,
+                "md": 2,
+                "lg": 4
+            },
+            "tipoDeclaracao": {
+                "sm": 2,
+                "md": 2,
+                "lg": 4
+            }
         }
     ]
 }
