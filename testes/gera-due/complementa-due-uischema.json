@@ -28,7 +28,8 @@
             "itemFormat": "{nome_fantasia}"
             }
         }
-    }"ui:layout": [
+    },
+    "ui:layout": [
         {
             "numero_due": {
                 "sm": 2,
