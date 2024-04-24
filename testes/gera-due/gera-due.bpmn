@@ -143,28 +143,34 @@ for i in nDeclaracao:
             "label": i['Description']
         }
     )
+del(qDecl)
+del(nDeclaracao)
 
-# nTipo = 'SELECT * FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoTipo"'
-# tDeclaracao = json.loads(Hana(connection).selectDb(nTipo))
-# tipoDeclaracao = []
-# for i in tDeclaracao:
-#     tipoDeclaracao.append(
-#         {
-#             "value": i['id'],
-#             "label": i['Description']
-#         }
-#     )
+nTipo = 'SELECT * FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoTipo"'
+tDeclaracao = json.loads(Hana(connection).selectDb(nTipo))
+tipoDeclaracao = []
+for i in tDeclaracao:
+    tipoDeclaracao.append(
+        {
+            "value": i['id'],
+            "label": i['Description']
+        }
+    )
+del(nTipo)
+del(tDeclaracao)
 
-# nConh = 'SELECT * FROM SBO_CRESTANI_PRD."TipoConhecimento"'
-# tpConhecimento = json.loads(Hana(connection).selectDb(nConh))
-# tipoConhecimento = []
-# for i in tpConhecimento:
-#     tipoConhecimento.append(
-#     {
-#         "value": i['id'],
-#         "label": i['Description']
-#     }
-# )</bpmn:script>
+nConh = 'SELECT * FROM SBO_CRESTANI_PRD."TipoConhecimento"'
+tpConhecimento = json.loads(Hana(connection).selectDb(nConh))
+tipoConhecimento = []
+for i in tpConhecimento:
+    tipoConhecimento.append(
+    {
+        "value": i['id'],
+        "label": i['Description']
+    }
+)
+del(nConh)
+del(tpConhecimento)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
