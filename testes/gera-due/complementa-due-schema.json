@@ -43,7 +43,6 @@
       "type": "string",
       "title": "País Importador"
     },
-    
     "delivery_date": {
       "type": "string",
       "format": "date",
