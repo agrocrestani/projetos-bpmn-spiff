@@ -198,7 +198,7 @@ schema = {
             values ({numero_due}, {numero_due}, {numero_due},
                 {paisImportador['Code']}, {dt_declaracao}, {dt_declaracao},
                 {dt_declaracao}, {data_averbacao}, {str(naturezaDeclaracao)},
-                {str(tipoConhecimento)},  {str(tipoDeclaracao}))
+                {str(tipoConhecimento)},  {str(tipoDeclaracao)})
     """,
   "fetch_results": False
 }
