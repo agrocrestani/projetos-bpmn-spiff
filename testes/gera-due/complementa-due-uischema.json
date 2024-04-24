@@ -58,5 +58,6 @@
   ],
   "dt_declaracao": {
     "ui:widget": "date",
+    ""
   }
 }
