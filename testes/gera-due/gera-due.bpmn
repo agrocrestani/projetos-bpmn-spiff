@@ -132,17 +132,8 @@ connection = {
 }
 
 nDecl = """
-          SELECT * FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoNatureza"
+          SELECT * FROM SBO_CRESTANI_PRD.\"DeclaracaoExportacaoNatureza\"
         """
-
-nTipo = """
-            SELECT * FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoTipo"
-        """
-
-nConh = """
-            SELECT * FROM SBO_CRESTANI_PRD."TipoConhecimento"
-        """
-
 nDeclaracao = json.loads(Hana(connection).selectDb(nDecl))
 naturezaDeclaracao = []
 for i in nDeclaracao:
@@ -152,7 +143,9 @@ for i in nDeclaracao:
             "label": i['Description']
         }
     )
-  
+
+
+nTipo = 'SELECT * FROM SBO_CRESTANI_PRD.\"DeclaracaoExportacaoTipo\"'
 tDeclaracao = json.loads(Hana(connection).selectDb(nTipo))
 tipoDeclaracao = []
 for i in tDeclaracao:
@@ -163,6 +156,7 @@ for i in tDeclaracao:
         }
     )
 
+nConh = 'SELECT * FROM SBO_CRESTANI_PRD.\"TipoConhecimento\"'
 tpConhecimento = json.loads(Hana(connection).selectDb(nConh))
 tipoConhecimento = []
 for i in tpConhecimento:
