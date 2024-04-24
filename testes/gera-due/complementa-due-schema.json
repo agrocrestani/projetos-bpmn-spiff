@@ -33,7 +33,7 @@
       "type": "string",
       "title": "Tipo Declaração"
     },
-    "tipoDeclaracao": {
+    "P": {
       "type": "string",
       "title": "Tipo Declaração"
     }
