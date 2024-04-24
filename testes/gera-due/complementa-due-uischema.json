@@ -58,6 +58,6 @@
   ],
   "dt_declaracao": {
     "ui:widget": "date",
-    "ui:disabled"
+    "ui:disabled": 
   }
 }
