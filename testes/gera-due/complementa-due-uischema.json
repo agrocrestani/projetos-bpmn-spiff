@@ -3,7 +3,7 @@
         "ui:widget": "typeahead",
         "ui:options": {
         "category": "ocry",
-        "itemFormat": "{n} ({cnpj})"
+        "itemFormat": "{name} ({cnpj})"
         }
     },
     "ui:layout": [
