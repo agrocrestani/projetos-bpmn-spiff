@@ -37,11 +37,8 @@ connection = {
 }
 
 query = """
-            SELECT T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom" 
-            FROM SBO_CRESTANI_QA."OITM" T0
-            INNER JOIN SBO_CRESTANI_QA."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"  
-            ORDER BY T0."ItemName"
-          """
+          SELECT o."Code", o."Name"  FROM SBO_CRESTANI_PRD.ocry o
+        """
 
 rsp = json.loads(Hana(connection).selectDb(query))
 
@@ -119,7 +116,7 @@ del(rsp)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="load_world">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="pais_importador">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-58" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
