@@ -1,6 +1,6 @@
 {
-  "title": "Complemente os dados da DUE",
-  "description": "Você deve acessar o portal: www.siscomex.com.br e preenchar o formulario com os dados encontrados.",
+  "title": "Date",
+  "description": "Create a date field with a date picker (delivery_date).",
   "type": "object",
   "properties": {
     "numero_due": {
@@ -36,8 +36,8 @@
       "type": "string",
       "title": "Tipo Declaração",
       "anyOf": [
-              "options_from_task_data_var:n_tipoDeclaracao"
-            ]
+        "options_from_task_data_var:n_tipoDeclaracao"
+      ]
     },
     "paisImportador": {
       "type": "string",
@@ -47,6 +47,12 @@
       "type": "string",
       "format": "date",
       "title": "Data Declaracao"
+    },
+    "delivery_date": {
+      "type": "string",
+      "format": "date",
+      "title": "Preferred Delivery Date",
+      "validationErrorMessage": "Date must be today's date or later"
     }
-  }  
+  }
 }
