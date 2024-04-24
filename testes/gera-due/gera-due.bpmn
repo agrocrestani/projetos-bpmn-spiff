@@ -29,7 +29,6 @@ You can also change the text you are reading here by updating the *Instructions*
           itens_averbados -&gt; 0 -&gt;&gt; 'data_averbacao' data_averbacao,
           itens_averbados -&gt; 0 -&gt;&gt; 'motivo_alteracao' motivo_alteracao,
           '1' as natureza,
-          null as entidade,
           null as nro_declaracao,
           null as tipo_documento,
           null as tipo_conhecimento,
@@ -102,7 +101,6 @@ data_embarque = due['data_embarque']
 data_averbacao = due['data_averbacao']
 motivo_alteracao = due['motivo_alteracao']
 natureza = due['natureza']
-entidade = due['entidade']
 nro_declaracao = due['nro_declaracao']
 tipo_documento = due['tipo_documento']
 tipo_conhecimento = due['tipo_conhecimento']
