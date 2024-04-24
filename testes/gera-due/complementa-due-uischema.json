@@ -3,7 +3,7 @@
         "ui:widget": "typeahead",
         "ui:options": {
             "category": "ocry",
-            "itemFormat": "{name} ({code})"
+            "itemFormat": "{Name} ({code})"
             }
     },
     "ui:layout": [
