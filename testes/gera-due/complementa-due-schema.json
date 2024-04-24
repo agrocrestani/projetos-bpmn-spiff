@@ -3,7 +3,6 @@
   "description": "Você deve acessar o portal: www.siscomex.com.br e preenchar o formulario com os dados encontrados.",
   "type": "object",
   "properties": {
-
     "numero_due": {
       "type": "string",
       "title": "Numero DUE"
