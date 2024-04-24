@@ -35,7 +35,7 @@
     },
     "paisImportador": {
       "type": "string",
-      "title": "Tipo Declaração"
+      "title": "Pais"
     }
   }  
 }
