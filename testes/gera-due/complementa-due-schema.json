@@ -10,7 +10,8 @@
     },
     "data_embarque": {
       "type": "string",
-      "title": "Data Embarque"
+      "title": "Data Embarque",
+      "readOnly": true
     },
     "data_averbacao": {
       "type": "string",
