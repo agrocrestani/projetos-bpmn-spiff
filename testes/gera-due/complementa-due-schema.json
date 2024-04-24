@@ -25,7 +25,7 @@
       "type": "string",
       "title": "Natureza da Declaração",
       "anyOf": [
-        "options_from_task_data_var:nnaturezaDeclaracao"
+        "options_from_task_data_var:n_naturezaDeclaracao"
       ]
     },
     "tipoConhecimento": {
