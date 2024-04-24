@@ -1,5 +1,5 @@
-{}
-"naturezaDeclaracao": [
+{
+  "naturezaDeclaracao": [
     {
       "value": "0",
       "label": "Exportação Direta"
@@ -7,24 +7,6 @@
     {
       "value": "1",
       "label": "Exportação Indireta"
-    }
-  ],
-  "i": {
-    "id": "99",
-    "description": "OUTROS"
-  },
-  "tipoDeclaracao": [
-    {
-      "value": "0",
-      "label": "Declaração de Exportação"
-    },
-    {
-      "value": "1",
-      "label": "Declaração Simplificada de Exportação"
-    },
-    {
-      "value": "2",
-      "label": "Declaração Única de Exportação"
     }
   ],
   "tipoConhecimento": [
@@ -116,5 +98,23 @@
       "value": "99",
       "label": "OUTROS"
     }
-  ]
+  ],
+  "tipoDeclaracao": [
+    {
+      "value": "0",
+      "label": "Declaração de Exportação"
+    },
+    {
+      "value": "1",
+      "label": "Declaração Simplificada de Exportação"
+    },
+    {
+      "value": "2",
+      "label": "Declaração Única de Exportação"
+    }
+  ],
+  "i": {
+    "id": "99",
+    "description": "OUTROS"
+  }
 }
