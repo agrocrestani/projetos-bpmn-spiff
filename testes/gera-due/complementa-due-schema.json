@@ -32,7 +32,7 @@
       "type": "string",
       "title": "Tipo do Conhecimento",
       "anyOf": [
-        "options_from_task_data_var:tipoConhecimento"
+        "options_from_task_data_var:n_tipoConhecimento"
       ]
     },
     "tipoDeclaracao": {
