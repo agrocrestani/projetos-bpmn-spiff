@@ -186,29 +186,45 @@ pais_destino = due['pais_destino']</spiffworkflow:preScript>
             <spiffworkflow:property name="formJsonSchemaFilename" value="" />
             <spiffworkflow:property name="formUiSchemaFilename" value="" />
           </spiffworkflow:properties>
-          <spiffworkflow:serviceTaskOperator id="postgres_v2/DoSQL" resultVariable="rsp">
-            <spiffworkflow:parameters>
-              <spiffworkflow:parameter id="database_connection_str" type="str" value="&#34;SPIFF_SECRET:postgres&#34;" />
-              <spiffworkflow:parameter id="schema" type="any" value="schema" />
-            </spiffworkflow:parameters>
-          </spiffworkflow:serviceTaskOperator>
           <spiffworkflow:preScript>paisImportador = json.loads(paisImportador)
 data_averbacao = data_averbacao[0:10]
 
 schema = {
-  "sql": """
-      insert into sap.due_dados ("NumeroDeclaracao", "NumeroRegistro", "NumeroConhecimento",
-                "PaisDestino", "DataDeclaracao", dataregistro, 
-                dataconhecimento, dataaverbacao, naturezaid,
-                tipoconhecimentoid,  tipodocumentoid)
-            values ({numero_due}, {numero_due}, {numero_due},
-                {paisImportador['Code']}, {dt_declaracao}, {dt_declaracao},
-                {dt_declaracao}, {data_averbacao}, {naturezaDeclaracao},
-                {tipoConhecimento},  {tipoDeclaracao})
-    """,
-  "fetch_results": False
+  "columsn": [
+    "NumeroDeclaracao", 
+    "NumeroRegistro", 
+    "NumeroConhecimento",
+    "PaisDestino", 
+    "DataDeclaracao", 
+    "dataregistro", 
+    "dataconhecimento",
+    "dataaverbacao",
+    "naturezaid",
+    "tipoconhecimentoid",  
+    "tipodocumentoid"
+  ],
+  "values": [
+    numero_due, 
+    numero_due, 
+    numero_due,
+    paisImportador['Code'],
+    dt_declaracao, 
+    dt_declaracao,
+    dt_declaracao, 
+    data_averbacao, 
+    naturezaDeclaracao,
+    tipoConhecimento,
+    tipoDeclaracao
+  ]
 }
 </spiffworkflow:preScript>
+          <spiffworkflow:serviceTaskOperator id="postgres_v2/InsertValuesV2" resultVariable="rsp">
+            <spiffworkflow:parameters>
+              <spiffworkflow:parameter id="database_connection_str" type="str" value="&#34;SPIFF_SECRET:postgres&#34;" />
+              <spiffworkflow:parameter id="table_name" type="str" value="&#34;sap.due_dados&#34;" />
+              <spiffworkflow:parameter id="schema" type="any" value="schema" />
+            </spiffworkflow:parameters>
+          </spiffworkflow:serviceTaskOperator>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0mvhmve</bpmn:incoming>
         <bpmn:outgoing>Flow_0bqcq4s</bpmn:outgoing>
