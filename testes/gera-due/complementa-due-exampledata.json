@@ -1,14 +1,5 @@
 {
-  "naturezaDeclaracao": [
-    {
-      "value": "0",
-      "label": "Exportação Direta"
-    },
-    {
-      "value": "1",
-      "label": "Exportação Indireta"
-    }
-  ],
+  "naturezaDeclaracao": "0",
   "tipoConhecimento": [
     {
       "value": "1",
