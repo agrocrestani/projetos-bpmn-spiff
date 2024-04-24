@@ -43,7 +43,6 @@
       "type": "string",
       "title": "País Importador"
     },
-    ,
     "paisImportador": {
       "type": "string",
       "title": "País Importador"
