@@ -1,5 +1,4 @@
 {
-,
     "entidade": {
         "ui:widget": "typeahead",
         "ui:options": {
