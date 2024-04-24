@@ -50,7 +50,9 @@
         "lg": 4
       }
     },
-    {}
+    {
+      "delivery_date"
+    }
   ],
   "delivery_date": {
     "ui:widget": "date",
