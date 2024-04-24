@@ -28,6 +28,7 @@
         }
     },
     "ui:layout": [
+        
         {
             "numero_due": {
                 "sm": 2,
