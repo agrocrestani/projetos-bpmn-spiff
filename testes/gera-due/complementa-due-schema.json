@@ -37,8 +37,8 @@
     },
     "tipoDeclaracao": {
       "type": "string",
-      "title": "Tipo Declaração"
-      
+      "title": "Tipo Declaração",
+
     },
     "paisImportador": {
       "type": "string",
