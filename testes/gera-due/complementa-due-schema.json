@@ -45,7 +45,7 @@
     },
     "data_declaracao": {
       "type": "string",
-      
+      ""
       "title": "Data Declaracao"
     }
   }  
