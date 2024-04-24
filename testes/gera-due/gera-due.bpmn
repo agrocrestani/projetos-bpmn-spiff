@@ -131,9 +131,9 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-qDecl = 'SELECT o.ID, o."Description" FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoNatureza" o'
-nDeclaracao = json.loads(Hana(connection).selectDb(qDecl))
-naturezaDeclaracao = []
+# qDecl = 'SELECT o.ID, o."Description" FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoNatureza" o'
+# nDeclaracao = json.loads(Hana(connection).selectDb(qDecl))
+# naturezaDeclaracao = []
 # for i in nDeclaracao:
 #     naturezaDeclaracao.append(
 #         {
