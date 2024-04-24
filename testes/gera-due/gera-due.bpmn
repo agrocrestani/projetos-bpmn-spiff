@@ -131,16 +131,16 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-qDecl = 'SELECT o.ID, o."Description" FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoNatureza" o'
+qDecl = 'SELECT TO_ALPHANUM(ID) ID, "Description" FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoNatureza"'
 nDeclaracao = json.loads(Hana(connection).selectDb(qDecl))
-# naturezaDeclaracao = []
-# for i in nDeclaracao:
-#     naturezaDeclaracao.append(
-#         {
-#             "value": i['id'],
-#             "label": i['Description']
-#         }
-#     )
+naturezaDeclaracao = []
+for i in nDeclaracao:
+    naturezaDeclaracao.append(
+        {
+            "value": i['id'],
+            "label": i['Description']
+        }
+    )
 
 # nTipo = 'SELECT * FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoTipo"'
 # tDeclaracao = json.loads(Hana(connection).selectDb(nTipo))
