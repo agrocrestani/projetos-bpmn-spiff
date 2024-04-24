@@ -35,7 +35,7 @@
     },
     "paisImportador": {
       "type": "string",
-      "title": "Pais"
+      "title": "Pa"
     }
   }  
 }
