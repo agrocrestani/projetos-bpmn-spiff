@@ -6,7 +6,7 @@
     "numero_due": {
       "type": "string",
       "title": "Numero DUE",
-      "disabled": true
+      "readOnly": true
     },
     "data_embarque": {
       "type": "string",
