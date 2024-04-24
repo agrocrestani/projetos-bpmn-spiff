@@ -16,10 +16,7 @@
       <bpmn:dataOutputAssociation id="DataOutputAssociation_0tjuw5b">
         <bpmn:targetRef>DataStoreReference_1oronwq</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
-      <bpmn:script>
-# typeahead = []
-
-typeahead = {"oitm": oitm}</bpmn:script>
+      <bpmn:script>typeahead = {"ocry": ocry}</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_09mu4sd" targetRef="Activity_0o51srq" />
     <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
