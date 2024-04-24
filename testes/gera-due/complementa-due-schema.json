@@ -42,12 +42,6 @@
     "paisImportador": {
       "type": "string",
       "title": "País Importador"
-    },
-    "data_declaracao": {
-      "type": "string",
-      "format": "date",
-      "title": "Preferred Delivery Date",
-      "validationErrorMessage": "Date must be today's date or later"
     }
   }
 }
