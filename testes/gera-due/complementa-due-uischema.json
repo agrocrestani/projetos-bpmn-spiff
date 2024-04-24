@@ -43,7 +43,12 @@
         "lg": 4
       }
     },
-
+    {
+      "paisImportador": {
+        "sm": 2,
+        "md": 2,
+        "lg": 4
+      },
       "dt_declaracao": {
         "sm": 2,
         "md": 2,
