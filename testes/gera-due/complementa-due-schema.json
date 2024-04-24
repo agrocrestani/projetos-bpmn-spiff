@@ -5,8 +5,7 @@
   "properties": {
     "entidade": {
       "type": "string",
-      "title": "Entidade",
-
+      "title": "Entidade"
     },
     "numero_due": {
       "type": "string",
