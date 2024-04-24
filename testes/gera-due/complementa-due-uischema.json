@@ -29,7 +29,7 @@
     },
     "ui:layout": [
         {
-            "entidade":
+            "entidade": {}
         },
         {
             "numero_due": {
