@@ -9,7 +9,7 @@
     },
     "data_embarque": {
       "type": "string",
-      "format": "date",
+
       "title": "Data Embarque"
     },
     "data_averbacao": {
