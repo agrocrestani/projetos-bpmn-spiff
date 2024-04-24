@@ -145,6 +145,7 @@ for i in nDeclaracao:
     )
 del(qDecl)
 del(nDeclaracao)
+del(i)
 
 nTipo = 'SELECT TO_ALPHANUM(ID) ID, "Description" FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoTipo"'
 tDeclaracao = json.loads(Hana(connection).selectDb(nTipo))
@@ -158,6 +159,7 @@ for i in tDeclaracao:
     )
 del(nTipo)
 del(tDeclaracao)
+del(i)
 
 nConh = 'SELECT TO_ALPHANUM(ID) ID, "Description" FROM SBO_CRESTANI_PRD."TipoConhecimento"'
 tpConhecimento = json.loads(Hana(connection).selectDb(nConh))
@@ -170,7 +172,9 @@ for i in tpConhecimento:
     }
 )
 del(nConh)
-del(tpConhecimento)</bpmn:script>
+del(tpConhecimento)
+del(i)
+del(connection)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
