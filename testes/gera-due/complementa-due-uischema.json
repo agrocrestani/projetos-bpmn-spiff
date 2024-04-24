@@ -8,7 +8,7 @@
     },
     "ui:layout": [
         {
-            "entidade": {}
+            "paisImportador": {}
         },
         {
             "numero_due": {
