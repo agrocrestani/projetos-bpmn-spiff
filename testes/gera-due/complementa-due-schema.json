@@ -15,7 +15,8 @@
     },
     "data_averbacao": {
       "type": "string",
-      "title": "Data Averbação"
+      "title": "Data Averbação",
+      "readOnly": true
     },
     "naturezaDeclaracao": {
       "type": "string",
