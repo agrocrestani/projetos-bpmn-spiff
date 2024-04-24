@@ -180,46 +180,39 @@ pais_destino = due['pais_destino']</spiffworkflow:preScript>
         <bpmn:incoming>Flow_1d28xqv</bpmn:incoming>
         <bpmn:outgoing>Flow_0mvhmve</bpmn:outgoing>
       </bpmn:userTask>
-      <bpmn:scriptTask id="Activity_153jm8a" name="Insere no Banco de Dados">
+      <bpmn:serviceTask id="Activity_153jm8a" name="Insere no Banco de Dados">
         <bpmn:extensionElements>
           <spiffworkflow:properties>
             <spiffworkflow:property name="formJsonSchemaFilename" value="" />
             <spiffworkflow:property name="formUiSchemaFilename" value="" />
           </spiffworkflow:properties>
+          <spiffworkflow:serviceTaskOperator id="postgres_v2/DoSQL" resultVariable="rsp">
+            <spiffworkflow:parameters>
+              <spiffworkflow:parameter id="database_connection_str" type="str" value="&#34;SPIFF_SECRET:postgres&#34;" />
+              <spiffworkflow:parameter id="schema" type="any" value="schema" />
+            </spiffworkflow:parameters>
+          </spiffworkflow:serviceTaskOperator>
+          <spiffworkflow:preScript>paisImportador = json.loads(paisImportador)
+data_averbacao = data_averbacao[0:10]
+
+schema = {
+  "sql": """
+      insert into sap.due_dados ("NumeroDeclaracao", "NumeroRegistro", "NumeroConhecimento",
+                "PaisDestino", "DataDeclaracao", dataregistro, 
+                dataconhecimento, dataaverbacao, naturezaid,
+                tipoconhecimentoid,  tipodocumentoid)
+            values ({numero_due}, {numero_due}, {numero_due},
+                {paisImportador['Code']}, {dt_declaracao}, {dt_declaracao},
+                {dt_declaracao}, {data_averbacao}, {naturezaDeclaracao},
+                {tipoConhecimento},  {tipoDeclaracao})
+    """,
+  "fetch_results": False
+}
+</spiffworkflow:preScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0mvhmve</bpmn:incoming>
         <bpmn:outgoing>Flow_0bqcq4s</bpmn:outgoing>
-        <bpmn:script>paisImportador = json.loads(paisImportador)
-data_averbacao = data_averbacao[0:10]
-
-query = f"""
-            insert into sap.due_dados (
-                "NumeroDeclaracao",
-                "NumeroRegistro",
-                "NumeroConhecimento",
-                "PaisDestino",
-                "DataDeclaracao",
-                dataregistro,
-                dataconhecimento,
-                dataaverbacao,
-                naturezaid,
-                tipoconhecimentoid,
-                tipodocumentoid)
-            values (
-                {numero_due},
-                {numero_due},
-                {numero_due},
-                {paisImportador['Code']},
-                {dt_declaracao},
-                {dt_declaracao},
-                {dt_declaracao},
-                {data_averbacao},
-                {naturezaDeclaracao},
-                {tipoConhecimento},
-                {tipoDeclaracao}
-            )
-"""</bpmn:script>
-      </bpmn:scriptTask>
+      </bpmn:serviceTask>
     </bpmn:subProcess>
     <bpmn:endEvent id="EndEvent_1">
       <bpmn:extensionElements>
@@ -262,9 +255,8 @@ query = f"""
         <dc:Bounds x="730" y="430" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1qau31a_di" bpmnElement="Activity_153jm8a">
+      <bpmndi:BPMNShape id="Activity_1b2wz5f_di" bpmnElement="Activity_153jm8a">
         <dc:Bounds x="890" y="430" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1d28xqv_di" bpmnElement="Flow_1d28xqv">
         <di:waypoint x="676" y="470" />
