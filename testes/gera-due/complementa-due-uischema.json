@@ -1,5 +1,4 @@
 {
-    
     "naturezaDeclaracao": {
         "ui:widget": "typeahead",
         "ui:options": {
