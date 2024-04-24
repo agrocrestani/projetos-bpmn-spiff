@@ -135,9 +135,9 @@ qDecl = """
             SELECT TO_ALPHANUM(ID) ID, "Description" FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoNatureza"
         """
 nDeclaracao = json.loads(Hana(connection).selectDb(qDecl))
-naturezaDeclaracao = []
+n_naturezaDeclaracao = []
 for i in nDeclaracao:
-    naturezaDeclaracao.append(
+    n_naturezaDeclaracao.append(
         {
             "value": i['id'],
             "label": i['description']
@@ -149,9 +149,9 @@ del(i)
 
 nTipo = 'SELECT TO_ALPHANUM(ID) ID, "Description" FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoTipo"'
 tDeclaracao = json.loads(Hana(connection).selectDb(nTipo))
-tipoDeclaracao = []
+n_tipoDeclaracao = []
 for i in tDeclaracao:
-    tipoDeclaracao.append(
+    n_tipoDeclaracao.append(
         {
             "value": i['id'],
             "label": i['description']
@@ -163,9 +163,9 @@ del(i)
 
 nConh = 'SELECT TO_ALPHANUM(ID) ID, "Description" FROM SBO_CRESTANI_PRD."TipoConhecimento"'
 tpConhecimento = json.loads(Hana(connection).selectDb(nConh))
-tipoConhecimento = []
+n_tipoConhecimento = []
 for i in tpConhecimento:
-    tipoConhecimento.append(
+    n_tipoConhecimento.append(
     {
         "value": i['id'],
         "label": i['description']
