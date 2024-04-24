@@ -29,7 +29,7 @@
     },
     "ui:layout": [
         {
-            "entidade": {
+            "numero_due": {
                 "sm": 2,
                 "md": 2,
                 "lg": 4
