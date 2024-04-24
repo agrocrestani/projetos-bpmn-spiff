@@ -131,9 +131,7 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-nDecl = """
-          SELECT * FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoNatureza"
-        """
+nDecl = 'SELECT * FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoNatureza"'
 nDeclaracao = json.loads(Hana(connection).selectDb(nDecl))
 naturezaDeclaracao = []
 for i in nDeclaracao:
