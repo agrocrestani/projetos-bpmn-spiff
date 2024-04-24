@@ -93,21 +93,17 @@ del(rsp)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_15602ew</bpmn:incoming>
       <bpmn:outgoing>Flow_0w7oyed</bpmn:outgoing>
-      <bpmn:script>oitm = []
+      <bpmn:script>ocry = []
 
 for r in rsp:
-    ItemCode = str(r['itemcode'])
-    ItemName = str(r['itemname'])
-    ItmsGrpNam = str(r['itmsgrpnam'])
-    InvntryUom = str(r['invntryuom'])
-    oitm.append(
+    Code = str(r['code'])
+    Name = str(r['name'])
+    ocry.append(
         {
-            "search_term": ItemName, 
+            "search_term": Name, 
             "result": {
-                "ItemCode": ItemCode, 
-                "ItemName": ItemName, 
-                "ItmsGrpNam": ItmsGrpNam,
-                "InvntryUom": InvntryUom if InvntryUom != 'null' else None
+                "Code": Code, 
+                "Name": Name
                 }
             }
         )
