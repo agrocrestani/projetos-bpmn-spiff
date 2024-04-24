@@ -50,7 +50,9 @@
         "lg": 4
       }
     },
-    {}
+    {
+      
+    }
   ],
   "dt_declaracao": {
     "ui:widget": "date"
