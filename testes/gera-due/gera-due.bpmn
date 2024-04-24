@@ -146,7 +146,7 @@ for i in nDeclaracao:
 del(qDecl)
 del(nDeclaracao)
 
-nTipo = 'SELECT * FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoTipo"'
+nTipo = 'SELECT TO_ALPHANUM(ID) ID, "Description" FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoTipo"'
 tDeclaracao = json.loads(Hana(connection).selectDb(nTipo))
 tipoDeclaracao = []
 for i in tDeclaracao:
@@ -159,7 +159,7 @@ for i in tDeclaracao:
 del(nTipo)
 del(tDeclaracao)
 
-nConh = 'SELECT * FROM SBO_CRESTANI_PRD."TipoConhecimento"'
+nConh = 'SELECT TO_ALPHANUM(ID) ID, "Description" FROM SBO_CRESTANI_PRD."TipoConhecimento"'
 tpConhecimento = json.loads(Hana(connection).selectDb(nConh))
 tipoConhecimento = []
 for i in tpConhecimento:
