@@ -45,7 +45,7 @@
     },
     "dt_declaracao": {
       "type": "string",
-      "format": "date",
+      "format": "full-date",
       "title": "Data Declaração"
     }
   }
