@@ -10,7 +10,7 @@
         <bpmn:flowNodeRef>Activity_0qpzdpu</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1tzzigu</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_1kh0cdj" name="comercialGraos">
+      <bpmn:lane id="Lane_1kh0cdj">
         <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0rp2yix</bpmn:flowNodeRef>
       </bpmn:lane>
@@ -205,12 +205,11 @@ pais_destino = due['pais_destino']</spiffworkflow:preScript>
       <bpmndi:BPMNShape id="Participant_0e01865_di" bpmnElement="Participant_0e01865" isHorizontal="true">
         <dc:Bounds x="20" y="30" width="1250" height="580" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1eavrp0_di" bpmnElement="Lane_1eavrp0" isHorizontal="true">
-        <dc:Bounds x="50" y="30" width="1220" height="294" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1kh0cdj_di" bpmnElement="Lane_1kh0cdj" isHorizontal="true">
         <dc:Bounds x="50" y="324" width="1220" height="286" />
-        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1eavrp0_di" bpmnElement="Lane_1eavrp0" isHorizontal="true">
+        <dc:Bounds x="50" y="30" width="1220" height="294" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="72" y="159" width="36" height="36" />
@@ -221,9 +220,6 @@ pais_destino = due['pais_destino']</spiffworkflow:preScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0nsjjj1_di" bpmnElement="Activity_1tzzigu">
         <dc:Bounds x="370" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1212" y="452" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0rp2yix_di" bpmnElement="Activity_0rp2yix" isExpanded="true">
         <dc:Bounds x="600" y="370" width="540" height="200" />
@@ -245,14 +241,17 @@ pais_destino = due['pais_destino']</spiffworkflow:preScript>
         <di:waypoint x="676" y="470" />
         <di:waypoint x="730" y="470" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0bqcq4s_di" bpmnElement="Flow_0bqcq4s">
-        <di:waypoint x="990" y="470" />
-        <di:waypoint x="1052" y="470" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0mvhmve_di" bpmnElement="Flow_0mvhmve">
         <di:waypoint x="830" y="470" />
         <di:waypoint x="890" y="470" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bqcq4s_di" bpmnElement="Flow_0bqcq4s">
+        <di:waypoint x="990" y="470" />
+        <di:waypoint x="1052" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1212" y="452" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="108" y="177" />
         <di:waypoint x="200" y="177" />
