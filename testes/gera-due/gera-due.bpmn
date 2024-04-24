@@ -204,17 +204,17 @@ schema = {
     "tipodocumentoid"
   ],
   "values": [
-    numero_due, 
-    numero_due, 
-    numero_due,
-    paisImportador['Code'],
-    dt_declaracao, 
-    dt_declaracao,
-    dt_declaracao, 
-    data_averbacao, 
-    naturezaDeclaracao,
-    tipoConhecimento,
-    tipoDeclaracao
+    str(numero_due), 
+    str(numero_due), 
+    str(numero_due),
+    str(paisImportador['Code']),
+    str(dt_declaracao), 
+    str(dt_declaracao),
+    str(dt_declaracao), 
+    str(data_averbacao), 
+    str(naturezaDeclaracao),
+    str(tipoConhecimento),
+    str(tipoDeclaracao)
   ]
 }
 </spiffworkflow:preScript>
