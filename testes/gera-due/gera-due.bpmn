@@ -131,38 +131,38 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-nDecl = 'SELECT o.ID, o."Description" FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoNatureza" o'
-nDeclaracao = json.loads(Hana(connection).selectDb(nDecl))
+qDecl = 'SELECT o.ID, o."Description" FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoNatureza" o'
+nDeclaracao = json.loads(Hana(connection).selectDb(qDecl))
 naturezaDeclaracao = []
-for i in nDeclaracao:
-    naturezaDeclaracao.append(
-        {
-            "value": i['id'],
-            "label": i['Description']
-        }
-    )
+# for i in nDeclaracao:
+#     naturezaDeclaracao.append(
+#         {
+#             "value": i['id'],
+#             "label": i['Description']
+#         }
+#     )
 
-nTipo = 'SELECT * FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoTipo"'
-tDeclaracao = json.loads(Hana(connection).selectDb(nTipo))
-tipoDeclaracao = []
-for i in tDeclaracao:
-    tipoDeclaracao.append(
-        {
-            "value": i['id'],
-            "label": i['Description']
-        }
-    )
+# nTipo = 'SELECT * FROM SBO_CRESTANI_PRD."DeclaracaoExportacaoTipo"'
+# tDeclaracao = json.loads(Hana(connection).selectDb(nTipo))
+# tipoDeclaracao = []
+# for i in tDeclaracao:
+#     tipoDeclaracao.append(
+#         {
+#             "value": i['id'],
+#             "label": i['Description']
+#         }
+#     )
 
-nConh = 'SELECT * FROM SBO_CRESTANI_PRD."TipoConhecimento"'
-tpConhecimento = json.loads(Hana(connection).selectDb(nConh))
-tipoConhecimento = []
-for i in tpConhecimento:
-    tipoConhecimento.append(
-    {
-        "value": i['id'],
-        "label": i['Description']
-    }
-)</bpmn:script>
+# nConh = 'SELECT * FROM SBO_CRESTANI_PRD."TipoConhecimento"'
+# tpConhecimento = json.loads(Hana(connection).selectDb(nConh))
+# tipoConhecimento = []
+# for i in tpConhecimento:
+#     tipoConhecimento.append(
+#     {
+#         "value": i['id'],
+#         "label": i['Description']
+#     }
+# )</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -170,15 +170,12 @@ for i in tpConhecimento:
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="72" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1252" y="172" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0kgs1zt_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="200" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0nsjjj1_di" bpmnElement="Activity_1tzzigu">
-        <dc:Bounds x="370" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1252" y="172" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0rp2yix_di" bpmnElement="Activity_0rp2yix" isExpanded="true">
         <dc:Bounds x="590" y="90" width="540" height="200" />
@@ -200,14 +197,17 @@ for i in tpConhecimento:
         <di:waypoint x="666" y="190" />
         <di:waypoint x="720" y="190" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0bqcq4s_di" bpmnElement="Flow_0bqcq4s">
-        <di:waypoint x="980" y="190" />
-        <di:waypoint x="1042" y="190" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0mvhmve_di" bpmnElement="Flow_0mvhmve">
         <di:waypoint x="820" y="190" />
         <di:waypoint x="880" y="190" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bqcq4s_di" bpmnElement="Flow_0bqcq4s">
+        <di:waypoint x="980" y="190" />
+        <di:waypoint x="1042" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_0nsjjj1_di" bpmnElement="Activity_1tzzigu">
+        <dc:Bounds x="370" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="108" y="177" />
         <di:waypoint x="200" y="177" />
