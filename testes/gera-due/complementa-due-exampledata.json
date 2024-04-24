@@ -1,6 +1,6 @@
 {
   "naturezaDeclaracao": "0",
-  "n_tipoConhecimento": [
+  "tipoConhecimento": [
     {
       "value": "1",
       "label": "AWB"
