@@ -1,12 +1,5 @@
 {
-    
-    "naturezaDeclaracao": {
-        "ui:widget": "typeahead",
-        "ui:options": {
-        "category": "natureza_declaracao",
-        "itemFormat": "{nome_fantasia}"
-        }
-    },
+,
     "entidade": {
         "ui:widget": "typeahead",
         "ui:options": {
