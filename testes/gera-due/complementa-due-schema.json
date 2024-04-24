@@ -13,7 +13,6 @@
     },
     "data_averbacao": {
       "type": "string",
-
       "title": "Data Averbação"
     },
     "naturezaDeclaracao": {
