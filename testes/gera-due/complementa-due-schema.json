@@ -43,11 +43,7 @@
       "type": "string",
       "title": "País Importador"
     },
-    "data_declaracao": {
-      "type": "string",
-      "format": "date",
-      "title": "Data Declaracao"
-    },
+    
     "delivery_date": {
       "type": "string",
       "format": "date",
