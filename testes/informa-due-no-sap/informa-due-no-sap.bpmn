@@ -115,8 +115,9 @@ schema = {
     due = rsp['body'][0][0]
 except:
     due = None
-    
-del(rsp)</spiffworkflow:postScript>
+
+if due == 'null' or not due:
+    due = None</spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1aiipxu</bpmn:incoming>
         <bpmn:outgoing>Flow_1hznv83</bpmn:outgoing>
