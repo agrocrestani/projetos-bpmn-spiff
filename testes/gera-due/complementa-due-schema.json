@@ -7,7 +7,7 @@
           "tipoConhecimento",
           "tipoDeclaracao",
           "paisImportador",
-          
+          "dt_declaracao"
         ],
   "properties": {
     "numero_due": {
