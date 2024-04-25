@@ -114,10 +114,8 @@ schema = {
           <spiffworkflow:postScript>try:
     due = rsp['body'][0][0]
 except:
-    due = None
-
-if due == 'null' or not due:
-    due = None</spiffworkflow:postScript>
+    due = 0
+</spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1aiipxu</bpmn:incoming>
         <bpmn:outgoing>Flow_1hznv83</bpmn:outgoing>
