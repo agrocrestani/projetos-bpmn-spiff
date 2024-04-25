@@ -1,0 +1,9 @@
+{
+    "description": "Informa a DUE nas notas fiscais de exporta\u00e7\u00e3o indireta de Soja em Gr\u00e3os",
+    "display_name": "Informa DUE no SAP",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "informa-due-no-sap.bpmn",
+    "primary_process_id": "Process_informa_due_no_sap_ha8p30j"
+}
