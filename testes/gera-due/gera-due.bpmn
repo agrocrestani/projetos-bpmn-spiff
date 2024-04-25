@@ -10,7 +10,7 @@
         <bpmn:flowNodeRef>Activity_0qpzdpu</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1tzzigu</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_1kh0cdj">
+      <bpmn:lane id="Lane_1kh0cdj" name="comercialGraos">
         <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0rp2yix</bpmn:flowNodeRef>
       </bpmn:lane>
@@ -257,6 +257,7 @@ schema = {
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1kh0cdj_di" bpmnElement="Lane_1kh0cdj" isHorizontal="true">
         <dc:Bounds x="50" y="324" width="1220" height="286" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1eavrp0_di" bpmnElement="Lane_1eavrp0" isHorizontal="true">
         <dc:Bounds x="50" y="30" width="1220" height="294" />
