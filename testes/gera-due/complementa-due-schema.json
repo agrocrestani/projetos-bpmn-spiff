@@ -6,7 +6,8 @@
           "naturezaDeclaracao",
           "tipoConhecimento",
           "tipoDeclaracao",
-          "paisImportador"
+          "paisImportador",
+          
         ],
   "properties": {
     "numero_due": {
