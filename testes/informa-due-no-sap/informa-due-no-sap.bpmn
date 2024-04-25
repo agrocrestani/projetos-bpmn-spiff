@@ -48,16 +48,19 @@ query = """
             t1."LineNum",
             t1."ItemCode",
             t4."ItemName",
-            t1."Quantity" 
+            t1."Quantity",
+            T5.ID "EntidadeId"
+
         from
             sbo_crestani_prd.oinv t0
             INNER JOIN sbo_crestani_prd.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
             INNER JOIN sbo_crestani_prd.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
             INNER JOIN sbo_crestani_prd."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4
             INNER JOIN sbo_crestani_prd.oitm t4 ON T1."ItemCode" = t4."ItemCode"
+            INNER JOIN sbo_crestani_prd."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
         WHERE
                 t2."MainUsage" = 82 AND t0."DocDate" &lt;= '20240215'  AND t1."ItemCode" = '022966'
-                and t3."KeyNfe" in ('51240103262185000109550010000245571183610655','51240203262185000443550010000015331630761660')
+                and t3."KeyNfe" = '51240103262185000109550010000245571183610655'
         """
 nfes = json.loads(Hana(connection).selectDb(query))
 
