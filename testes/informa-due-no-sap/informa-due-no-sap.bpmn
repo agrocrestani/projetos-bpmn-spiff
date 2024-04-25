@@ -146,7 +146,8 @@ except:
             "NumeroDeclaracao" = '{due}'
     """,
   "fetch_results": True
-}</spiffworkflow:preScript>
+}
+entidadeid = nfes['entidadeid']</spiffworkflow:preScript>
           <spiffworkflow:postScript>rsp = rsp['body'][0]
 NumeroRegistro = rsp[0]
 NumeroConhecimento = rsp[1]
@@ -160,7 +161,7 @@ Local = rsp[8]
 naturezaid = rsp[9]
 tipoconhecimentoid = rsp[10]
 tipodocumentoid = rsp[11]
-entidadeid = nfes['entidadeid']
+
 
 del(rsp)</spiffworkflow:postScript>
         </bpmn:extensionElements>
