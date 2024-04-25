@@ -80,10 +80,10 @@ nfes = json.loads(Hana(connection).selectDb(query))
       </bpmn:startEvent>
       <bpmn:sequenceFlow id="Flow_1aiipxu" sourceRef="Event_0gcqa1j" targetRef="Activity_1g6j532" />
       <bpmn:sequenceFlow id="Flow_1hznv83" sourceRef="Activity_1g6j532" targetRef="Gateway_0wkbi6q" />
-      <bpmn:sequenceFlow id="Flow_0o0tp2q" sourceRef="Activity_0nhlv6j" targetRef="Event_1b5n8ba" />
+      <bpmn:sequenceFlow id="Flow_0o0tp2q" sourceRef="Activity_0nhlv6j" targetRef="Activity_0od9hbe" />
       <bpmn:endEvent id="Event_1b5n8ba">
         <bpmn:incoming>Flow_12epf89</bpmn:incoming>
-        <bpmn:incoming>Flow_0o0tp2q</bpmn:incoming>
+        <bpmn:incoming>Flow_0nry0ei</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:serviceTask id="Activity_1g6j532" name="Retorna DUE da NFE">
         <bpmn:extensionElements>
@@ -174,6 +174,41 @@ del(rsp)</spiffworkflow:postScript>
       <bpmn:sequenceFlow id="Flow_12epf89" sourceRef="Gateway_0wkbi6q" targetRef="Event_1b5n8ba">
         <bpmn:conditionExpression>due == False</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_0nry0ei" sourceRef="Activity_0od9hbe" targetRef="Event_1b5n8ba" />
+      <bpmn:scriptTask id="Activity_0od9hbe">
+        <bpmn:incoming>Flow_0o0tp2q</bpmn:incoming>
+        <bpmn:outgoing>Flow_0nry0ei</bpmn:outgoing>
+        <bpmn:script>
+query = f"""
+        INSERT INTO SBO_CRESTANI_QA."DeclaracaoExportacao"
+        ("EntidadeId", 
+        "NumeroDeclaracao", 
+        "NumeroRegistro", 
+        "NumeroConhecimento", 
+        "PaisDestino", 
+        "DataDeclaracao", 
+        "DataRegistro", 
+        "DataConhecimento", 
+        "DataAverbacao", 
+        "NaturezaId", 
+        "TipoConhecimentoId",
+        "TipoDocumentoId")
+        VALUES(
+            {EntidadeId}, 
+            '{due}', 
+            '{NumeroRegistro}', 
+            '{NumeroConhecimento}', 
+            '{PaisDestino}', 
+            '{DataDeclaracao}', 
+            '{dataregistro}', 
+            '{dataconhecimento}', 
+            '{dataaverbacao}', 
+            {naturezaid}, 
+            {tipoconhecimentoid}, 
+            {tipodocumentoid}
+            )
+"""</bpmn:script>
+      </bpmn:scriptTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_0ccgix8" sourceRef="Activity_1398pii" targetRef="EndEvent_1" />
   </bpmn:process>
@@ -207,6 +242,9 @@ del(rsp)</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Gateway_0wkbi6q_di" bpmnElement="Gateway_0wkbi6q" isMarkerVisible="true">
         <dc:Bounds x="705" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18vvxc9_di" bpmnElement="Activity_0od9hbe">
+        <dc:Bounds x="980" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1aiipxu_di" bpmnElement="Flow_1aiipxu">
         <di:waypoint x="496" y="177" />
         <di:waypoint x="560" y="177" />
@@ -217,7 +255,7 @@ del(rsp)</spiffworkflow:postScript>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0o0tp2q_di" bpmnElement="Flow_0o0tp2q">
         <di:waypoint x="920" y="177" />
-        <di:waypoint x="1172" y="177" />
+        <di:waypoint x="980" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1l0h6eb_di" bpmnElement="Flow_1l0h6eb">
         <di:waypoint x="755" y="177" />
@@ -228,6 +266,10 @@ del(rsp)</spiffworkflow:postScript>
         <di:waypoint x="730" y="260" />
         <di:waypoint x="1190" y="260" />
         <di:waypoint x="1190" y="195" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0nry0ei_di" bpmnElement="Flow_0nry0ei">
+        <di:waypoint x="1080" y="177" />
+        <di:waypoint x="1172" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
