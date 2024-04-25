@@ -131,6 +131,17 @@
           <text>"TI"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1m6pdzw">
+        <inputEntry id="UnaryTests_0nqz5nc">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_118u0ct">
+          <text>"salomao.barros@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ftwhn3">
+          <text>"comercialGraos"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
