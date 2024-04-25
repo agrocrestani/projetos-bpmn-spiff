@@ -9,7 +9,7 @@
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1y37zi6</bpmn:incoming>
+      <bpmn:incoming>Flow_1hh3d5j</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_0xafkf4" />
     <bpmn:userTask id="Activity_0qpzdpu" name="Solicitacao Compras">
@@ -110,8 +110,8 @@ for u in utilizacoes:
     <bpmn:dataStoreReference id="DataStoreReference_0ess18n" name="Filiais" dataStoreRef="filiais" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_1o5t6ge" name="Tipo Requisição" dataStoreRef="tipo_requisicao" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_0rjpdye" name="Utilizações" dataStoreRef="utilizacoes" type="json" />
-    <bpmn:sequenceFlow id="Flow_1y37zi6" sourceRef="Activity_0xafkf4" targetRef="EndEvent_1" />
-    <bpmn:manualTask id="Activity_0xafkf4">
+    <bpmn:sequenceFlow id="Flow_1y37zi6" sourceRef="Activity_0xafkf4" targetRef="Activity_0856rbm" />
+    <bpmn:manualTask id="Activity_0xafkf4" name="Aprovação Almoxarifado">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>
 
@@ -129,6 +129,11 @@ for i in n_almoxarifados:
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1y37zi6</bpmn:outgoing>
     </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_1hh3d5j" sourceRef="Activity_0856rbm" targetRef="EndEvent_1" />
+    <bpmn:scriptTask id="Activity_0856rbm" name="Enviar para o SAP">
+      <bpmn:incoming>Flow_1y37zi6</bpmn:incoming>
+      <bpmn:outgoing>Flow_1hh3d5j</bpmn:outgoing>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:dataStore id="almoxarifados" name="JSONDataStore" />
   <bpmn:dataStore id="centros_de_custo" name="JSONDataStore" />
@@ -200,6 +205,11 @@ for i in n_almoxarifados:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1izsqe5_di" bpmnElement="Activity_0xafkf4">
         <dc:Bounds x="520" y="150" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ozxjmx_di" bpmnElement="Activity_0856rbm">
+        <dc:Bounds x="690" y="150" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="190" />
@@ -243,6 +253,10 @@ for i in n_almoxarifados:
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1y37zi6_di" bpmnElement="Flow_1y37zi6">
         <di:waypoint x="620" y="190" />
+        <di:waypoint x="690" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hh3d5j_di" bpmnElement="Flow_1hh3d5j">
+        <di:waypoint x="790" y="190" />
         <di:waypoint x="1042" y="190" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
