@@ -153,7 +153,9 @@ dataaverbacao = rsp[7]
 Local = rsp[8]
 naturezaid = rsp[9]
 tipoconhecimentoid = rsp[10]
-tipodocumentoid = rsp[11]</spiffworkflow:postScript>
+tipodocumentoid = rsp[11]
+
+del(rsp)</spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1hznv83</bpmn:incoming>
         <bpmn:outgoing>Flow_0o0tp2q</bpmn:outgoing>
