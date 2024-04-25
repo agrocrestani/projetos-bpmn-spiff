@@ -122,20 +122,20 @@ del(rsp)</spiffworkflow:postScript>
           </spiffworkflow:serviceTaskOperator>
           <spiffworkflow:preScript>schema = {
   "sql": f"""
-        SELECT "NumeroDeclaracao", 
-                "NumeroRegistro",
-                "NumeroConhecimento", 
-                "PaisDestino", 
-                "UFDesctino", 
-                "DataDeclaracao", 
-                dataregistro, 
-                dataconhecimento, 
-                dataaverbacao, 
-                "Local", 
-                naturezaid, 
-                tipoconhecimentoid, 
-                tipodocumentoid
-            FROM sap.due_dados;
+        SELECT  
+          "NumeroRegistro",
+          "NumeroConhecimento", 
+          "PaisDestino", 
+          "UFDesctino", 
+          "DataDeclaracao", 
+          dataregistro, 
+          dataconhecimento, 
+          dataaverbacao, 
+          "Local", 
+          naturezaid, 
+          tipoconhecimentoid, 
+          tipodocumentoid
+        FROM sap.due_dados
         where
             "NumeroDeclaracao" = '{due}'
     """,
