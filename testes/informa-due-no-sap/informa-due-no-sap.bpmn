@@ -71,7 +71,11 @@ count = 0</bpmn:script>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0ccgix8</bpmn:outgoing>
-      <bpmn:multiInstanceLoopCharacteristics />
+      <bpmn:multiInstanceLoopCharacteristics>
+        <bpmn:loopDataOutputRef>nfe</bpmn:loopDataOutputRef>
+        <bpmn:inputDataItem id="nfes" name="nfes" />
+        <bpmn:outputDataItem id="nfes" name="nfes" />
+      </bpmn:multiInstanceLoopCharacteristics>
       <bpmn:startEvent id="Event_0gcqa1j">
         <bpmn:outgoing>Flow_1aiipxu</bpmn:outgoing>
       </bpmn:startEvent>
