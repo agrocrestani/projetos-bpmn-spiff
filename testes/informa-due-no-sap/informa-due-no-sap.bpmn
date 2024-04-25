@@ -110,10 +110,39 @@ schema = {
         <bpmn:incoming>Flow_1aiipxu</bpmn:incoming>
         <bpmn:outgoing>Flow_1hznv83</bpmn:outgoing>
       </bpmn:serviceTask>
-      <bpmn:task id="Activity_0nhlv6j" name="Dados da DUE">
+      <bpmn:serviceTask id="Activity_0nhlv6j" name="Dados da DUE">
+        <bpmn:extensionElements>
+          <spiffworkflow:serviceTaskOperator id="postgres_v2/DoSQL" resultVariable="rsp">
+            <spiffworkflow:parameters>
+              <spiffworkflow:parameter id="database_connection_str" type="str" value="&#34;SPIFF_SECRET:postgres&#34;" />
+              <spiffworkflow:parameter id="schema" type="any" value="schema" />
+            </spiffworkflow:parameters>
+          </spiffworkflow:serviceTaskOperator>
+          <spiffworkflow:preScript>schema = {
+  "sql": f"""
+        SELECT "NumeroDeclaracao", 
+                "NumeroRegistro",
+                "NumeroConhecimento", 
+                "PaisDestino", 
+                "UFDesctino", 
+                "DataDeclaracao", 
+                dataregistro, 
+                dataconhecimento, 
+                dataaverbacao, 
+                "Local", 
+                naturezaid, 
+                tipoconhecimentoid, 
+                tipodocumentoid
+            FROM sap.due_dados;
+        where
+            "NumeroDeclaracao" = '{due}'
+    """,
+  "fetch_results": True
+}</spiffworkflow:preScript>
+        </bpmn:extensionElements>
         <bpmn:incoming>Flow_1hznv83</bpmn:incoming>
         <bpmn:outgoing>Flow_0o0tp2q</bpmn:outgoing>
-      </bpmn:task>
+      </bpmn:serviceTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_0ccgix8" sourceRef="Activity_1398pii" targetRef="EndEvent_1" />
   </bpmn:process>
@@ -145,7 +174,7 @@ schema = {
       <bpmndi:BPMNShape id="Activity_1de54cj_di" bpmnElement="Activity_1g6j532">
         <dc:Bounds x="550" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1jpqhbc_di" bpmnElement="Activity_0nhlv6j">
+      <bpmndi:BPMNShape id="Activity_1cyxtkq_di" bpmnElement="Activity_0nhlv6j">
         <dc:Bounds x="710" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1aiipxu_di" bpmnElement="Flow_1aiipxu">
