@@ -222,7 +222,7 @@ query = f"""
             )
 """
 
-Hana(connection).insertDb(query)</bpmn:script>
+Hana(connection).executeDb(query)</bpmn:script>
       </bpmn:scriptTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_0ccgix8" sourceRef="Activity_1398pii" targetRef="EndEvent_1" />
