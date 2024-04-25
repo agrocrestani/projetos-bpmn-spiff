@@ -44,12 +44,12 @@ You can also change the text you are reading here by updating the *Instructions*
           sap.due_eventos
       where
           itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' not in (select "NumeroDeclaracao" from sap.due_dados)
-          and itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' in ('24BR0000782570')
     """,
   "fetch_results": True
 }
 
-# , '24BR0001110100','24BR0003384436'</spiffworkflow:preScript>
+# , '24BR0001110100','24BR0003384436'
+#and itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' in ('24BR0000782570')</spiffworkflow:preScript>
         <spiffworkflow:serviceTaskOperator id="postgres_v2/DoSQL" resultVariable="rsp">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="database_connection_str" type="str" value="&#34;SPIFF_SECRET:postgres&#34;" />
