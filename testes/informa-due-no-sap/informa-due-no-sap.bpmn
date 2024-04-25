@@ -78,7 +78,7 @@ nfes = json.loads(Hana(connection).selectDb(query))
         <bpmn:outgoing>Flow_1aiipxu</bpmn:outgoing>
       </bpmn:startEvent>
       <bpmn:sequenceFlow id="Flow_1aiipxu" sourceRef="Event_0gcqa1j" targetRef="Activity_1g6j532" />
-      <bpmn:sequenceFlow id="Flow_1hznv83" sourceRef="Activity_1g6j532" targetRef="Activity_0nhlv6j" />
+      <bpmn:sequenceFlow id="Flow_1hznv83" sourceRef="Activity_1g6j532" targetRef="Gateway_0wkbi6q" />
       <bpmn:task id="Activity_17r9wf8" name="Envia dados para SAP">
         <bpmn:incoming>Flow_0o0tp2q</bpmn:incoming>
         <bpmn:outgoing>Flow_0i9otpz</bpmn:outgoing>
@@ -86,6 +86,7 @@ nfes = json.loads(Hana(connection).selectDb(query))
       <bpmn:sequenceFlow id="Flow_0o0tp2q" sourceRef="Activity_0nhlv6j" targetRef="Activity_17r9wf8" />
       <bpmn:endEvent id="Event_1b5n8ba">
         <bpmn:incoming>Flow_0i9otpz</bpmn:incoming>
+        <bpmn:incoming>Flow_12epf89</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:sequenceFlow id="Flow_0i9otpz" sourceRef="Activity_17r9wf8" targetRef="Event_1b5n8ba" />
       <bpmn:serviceTask id="Activity_1g6j532" name="Retorna DUE da NFE">
@@ -164,9 +165,20 @@ tipodocumentoid = rsp[11]
 
 del(rsp)</spiffworkflow:postScript>
         </bpmn:extensionElements>
-        <bpmn:incoming>Flow_1hznv83</bpmn:incoming>
+        <bpmn:incoming>Flow_1l0h6eb</bpmn:incoming>
         <bpmn:outgoing>Flow_0o0tp2q</bpmn:outgoing>
       </bpmn:serviceTask>
+      <bpmn:exclusiveGateway id="Gateway_0wkbi6q" default="Flow_1l0h6eb">
+        <bpmn:incoming>Flow_1hznv83</bpmn:incoming>
+        <bpmn:outgoing>Flow_1l0h6eb</bpmn:outgoing>
+        <bpmn:outgoing>Flow_12epf89</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_1l0h6eb" sourceRef="Gateway_0wkbi6q" targetRef="Activity_0nhlv6j">
+        <bpmn:conditionExpression>due == True</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_12epf89" sourceRef="Gateway_0wkbi6q" targetRef="Event_1b5n8ba">
+        <bpmn:conditionExpression />
+      </bpmn:sequenceFlow>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_0ccgix8" sourceRef="Activity_1398pii" targetRef="EndEvent_1" />
   </bpmn:process>
@@ -199,7 +211,10 @@ del(rsp)</spiffworkflow:postScript>
         <dc:Bounds x="560" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1cyxtkq_di" bpmnElement="Activity_0nhlv6j">
-        <dc:Bounds x="790" y="137" width="100" height="80" />
+        <dc:Bounds x="820" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0wkbi6q_di" bpmnElement="Gateway_0wkbi6q" isMarkerVisible="true">
+        <dc:Bounds x="705" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1aiipxu_di" bpmnElement="Flow_1aiipxu">
         <di:waypoint x="496" y="177" />
@@ -207,15 +222,25 @@ del(rsp)</spiffworkflow:postScript>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1hznv83_di" bpmnElement="Flow_1hznv83">
         <di:waypoint x="660" y="177" />
-        <di:waypoint x="790" y="177" />
+        <di:waypoint x="705" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0o0tp2q_di" bpmnElement="Flow_0o0tp2q">
-        <di:waypoint x="890" y="177" />
+        <di:waypoint x="920" y="177" />
         <di:waypoint x="1010" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0i9otpz_di" bpmnElement="Flow_0i9otpz">
         <di:waypoint x="1110" y="177" />
         <di:waypoint x="1172" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1l0h6eb_di" bpmnElement="Flow_1l0h6eb">
+        <di:waypoint x="755" y="177" />
+        <di:waypoint x="820" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12epf89_di" bpmnElement="Flow_12epf89">
+        <di:waypoint x="730" y="202" />
+        <di:waypoint x="730" y="260" />
+        <di:waypoint x="1190" y="260" />
+        <di:waypoint x="1190" y="195" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
