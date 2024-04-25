@@ -90,7 +90,7 @@ nfes = json.loads(Hana(connection).selectDb(query))
           <spiffworkflow:preScript>keynfe = nfe['keynfe']
 
 schema = {
-  "sql": """
+  "sql": f"""
       SELECT distinct 
           itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' numero_due
       FROM 
