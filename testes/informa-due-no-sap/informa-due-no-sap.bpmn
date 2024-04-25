@@ -71,7 +71,7 @@ count = 0</bpmn:script>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0ccgix8</bpmn:outgoing>
-      <bpmn:standardLoopCharacteristics>
+      <bpmn:standardLoopCharacteristics loopMaximum="qtde_reg">
         <bpmn:loopCondition xsi:type="bpmn:tFormalExpression">qtde_reg = count</bpmn:loopCondition>
       </bpmn:standardLoopCharacteristics>
       <bpmn:startEvent id="Event_0gcqa1j">
