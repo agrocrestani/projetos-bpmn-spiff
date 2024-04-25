@@ -5,7 +5,7 @@
   "required": [
           "naturezaDeclaracao",
           "tipoConhecimento",
-          "tipoDeclaracao"
+          "tipoDeclaracao",
         ],
   "properties": {
     "numero_due": {
