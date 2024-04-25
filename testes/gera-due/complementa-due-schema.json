@@ -5,7 +5,7 @@
   "required": [
           "item",
           "quantidade"
-        ]
+        ],
   "properties": {
     "numero_due": {
       "type": "string",
