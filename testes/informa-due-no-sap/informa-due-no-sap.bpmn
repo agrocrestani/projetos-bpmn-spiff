@@ -106,7 +106,7 @@ schema = {
               <spiffworkflow:parameter id="schema" type="any" value="schema" />
             </spiffworkflow:parameters>
           </spiffworkflow:serviceTaskOperator>
-          <spiffworkflow:postScript>due = rsp[0][0]
+          <spiffworkflow:postScript>due = rsp['body'][0][0]
 del(rsp)</spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1aiipxu</bpmn:incoming>
@@ -141,18 +141,19 @@ del(rsp)</spiffworkflow:postScript>
     """,
   "fetch_results": True
 }</spiffworkflow:preScript>
-          <spiffworkflow:postScript>NumeroRegistro = rsp[0][0]
-NumeroConhecimento = rsp[0][1]
-PaisDestino = rsp[0][2]
-UFDesctino = rsp[0][3]
-DataDeclaracao = rsp[0][4]
-dataregistro = rsp[0][5]
-dataconhecimento = rsp[0][6]
-dataaverbacao = rsp[0][7]
-Local = rsp[0][8]
-naturezaid = rsp[0][9]
-tipoconhecimentoid = rsp[0][10]
-tipodocumentoid = rsp[0][11]</spiffworkflow:postScript>
+          <spiffworkflow:postScript>rsp = rsp['body'][0]
+NumeroRegistro = rsp[0]
+NumeroConhecimento = rsp[1]
+PaisDestino = rsp[2]
+UFDesctino = rsp[3]
+DataDeclaracao = rsp[4]
+dataregistro = rsp[5]
+dataconhecimento = rsp[6]
+dataaverbacao = rsp[7]
+Local = rsp[8]
+naturezaid = rsp[9]
+tipoconhecimentoid = rsp[10]
+tipodocumentoid = rsp[11]</spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1hznv83</bpmn:incoming>
         <bpmn:outgoing>Flow_0o0tp2q</bpmn:outgoing>
