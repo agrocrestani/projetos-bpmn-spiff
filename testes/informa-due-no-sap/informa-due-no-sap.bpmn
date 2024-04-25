@@ -177,7 +177,7 @@ del(rsp)</spiffworkflow:postScript>
         <bpmn:conditionExpression>due == True</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
       <bpmn:sequenceFlow id="Flow_12epf89" sourceRef="Gateway_0wkbi6q" targetRef="Event_1b5n8ba">
-        <bpmn:conditionExpression />
+        <bpmn:conditionExpression>due == False</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_0ccgix8" sourceRef="Activity_1398pii" targetRef="EndEvent_1" />
@@ -195,7 +195,7 @@ del(rsp)</spiffworkflow:postScript>
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1398pii_di" bpmnElement="Activity_1398pii" isExpanded="true">
-        <dc:Bounds x="420" y="77" width="890" height="213" />
+        <dc:Bounds x="420" y="77" width="990" height="213" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0gcqa1j_di" bpmnElement="Event_0gcqa1j">
         <dc:Bounds x="460" y="159" width="36" height="36" />
@@ -251,8 +251,12 @@ del(rsp)</spiffworkflow:postScript>
         <di:waypoint x="420" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ccgix8_di" bpmnElement="Flow_0ccgix8">
-        <di:waypoint x="1310" y="177" />
-        <di:waypoint x="1392" y="177" />
+        <di:waypoint x="1410" y="87" />
+        <di:waypoint x="1410" y="57" />
+        <di:waypoint x="1430" y="57" />
+        <di:waypoint x="1430" y="88" />
+        <di:waypoint x="1410" y="88" />
+        <di:waypoint x="1410" y="159" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
