@@ -57,10 +57,11 @@ query = """
             INNER JOIN sbo_crestani_prd.oitm t4 ON T1."ItemCode" = t4."ItemCode"
         WHERE
                 t2."MainUsage" = 82 AND t0."DocDate" &lt;= '20240215'  AND t1."ItemCode" = '022966'
-                and t3."KeyNfe" in ('51240103262185000109550010000245571183610655', '51240203262185000443550010000015331630761660')
+                and t3."KeyNfe" in ('51240203262185000443550010000015331630761660')
         """
 nfes = json.loads(Hana(connection).selectDb(query))
-</bpmn:script>
+
+# '51240103262185000109550010000245571183610655',</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_1398pii">
       <bpmn:extensionElements>
