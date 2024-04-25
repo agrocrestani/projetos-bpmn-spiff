@@ -146,7 +146,7 @@ del(connection)
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0pk289d</bpmn:incoming>
       <bpmn:outgoing>Flow_19e22i2</bpmn:outgoing>
-      <bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true">
         <bpmn:loopDataInputRef>dues</bpmn:loopDataInputRef>
         <bpmn:loopDataOutputRef>dues</bpmn:loopDataOutputRef>
         <bpmn:inputDataItem id="due" name="due" />
@@ -174,8 +174,8 @@ natureza = due['natureza']
 nro_declaracao = due['nro_declaracao']
 tipo_documento = due['tipo_documento']
 tipo_conhecimento = due['tipo_conhecimento']
-data_declaracao = due['data_declaracao']
-pais_destino = due['pais_destino']</spiffworkflow:preScript>
+data_declaracao = ""
+paisImportador = ""</spiffworkflow:preScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1d28xqv</bpmn:incoming>
         <bpmn:outgoing>Flow_0mvhmve</bpmn:outgoing>
