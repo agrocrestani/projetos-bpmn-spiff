@@ -109,7 +109,11 @@ schema = {
               <spiffworkflow:parameter id="schema" type="any" value="schema" />
             </spiffworkflow:parameters>
           </spiffworkflow:serviceTaskOperator>
-          <spiffworkflow:postScript>due = rsp['body'][0][0]
+          <spiffworkflow:postScript>try:
+    due = rsp['body'][0][0]
+except:
+    due = None
+    
 del(rsp)</spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1aiipxu</bpmn:incoming>
