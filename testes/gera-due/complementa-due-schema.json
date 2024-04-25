@@ -2,6 +2,10 @@
   "title": "Date",
   "description": "Create a date field with a date picker (delivery_date).",
   "type": "object",
+  "required": [
+          "item",
+          "quantidade"
+        ]
   "properties": {
     "numero_due": {
       "type": "string",
