@@ -60,9 +60,7 @@ query = """
                 and t3."KeyNfe" in ('51240103262185000109550010000245571183610655', '51240203262185000443550010000015331630761660')
         """
 nfes = json.loads(Hana(connection).selectDb(query))
-
-# qtde_reg = len(nfes)
-# count = 0</bpmn:script>
+</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_1398pii">
       <bpmn:extensionElements>
