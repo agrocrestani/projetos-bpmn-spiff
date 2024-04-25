@@ -160,6 +160,7 @@ Local = rsp[8]
 naturezaid = rsp[9]
 tipoconhecimentoid = rsp[10]
 tipodocumentoid = rsp[11]
+entidadeid = nfes['entidadeid']
 
 del(rsp)</spiffworkflow:postScript>
         </bpmn:extensionElements>
@@ -197,7 +198,7 @@ query = f"""
         "TipoConhecimentoId",
         "TipoDocumentoId")
         VALUES(
-            {EntidadeId}, 
+            {entidadeid}, 
             '{due}', 
             '{NumeroRegistro}', 
             '{NumeroConhecimento}', 
