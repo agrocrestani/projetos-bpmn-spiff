@@ -61,7 +61,8 @@ query = """
         """
 nfes = json.loads(Hana(connection).selectDb(query))
 
-qtde_reg = len(nfes)</bpmn:script>
+qtde_reg = len(nfes)
+count = 0</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_1398pii">
       <bpmn:extensionElements>
