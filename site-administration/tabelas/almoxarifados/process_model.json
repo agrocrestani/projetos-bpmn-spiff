@@ -1,9 +1,0 @@
-{
-    "description": "Atualiza os dep\u00f3sitos do SAP que s\u00e3o utilizados para armazemar itens adquiridos de terceiros.",
-    "display_name": "Almoxarifados",
-    "exception_notification_addresses": [],
-    "fault_or_suspend_on_exception": "fault",
-    "metadata_extraction_paths": null,
-    "primary_file_name": "almoxarifados.bpmn",
-    "primary_process_id": "Process_almoxarifados_sv3erms"
-}

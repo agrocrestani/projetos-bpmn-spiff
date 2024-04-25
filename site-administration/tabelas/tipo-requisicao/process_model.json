@@ -1,9 +1,0 @@
-{
-    "description": "",
-    "display_name": "Tipo Requisi\u00e7\u00e3o",
-    "exception_notification_addresses": [],
-    "fault_or_suspend_on_exception": "fault",
-    "metadata_extraction_paths": null,
-    "primary_file_name": "tipo-requisicao.bpmn",
-    "primary_process_id": "Process_tipo_requisicao_bvzvv8a"
-}

@@ -1,9 +1,0 @@
-{
-    "description": "",
-    "display_name": "Centros de Custo",
-    "exception_notification_addresses": [],
-    "fault_or_suspend_on_exception": "fault",
-    "metadata_extraction_paths": null,
-    "primary_file_name": "centros-de-custo.bpmn",
-    "primary_process_id": "Process_centros_de_custo_fhbynla"
-}
