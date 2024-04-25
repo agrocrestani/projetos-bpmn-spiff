@@ -87,7 +87,7 @@ nfes = json.loads(Hana(connection).selectDb(query))
       <bpmn:sequenceFlow id="Flow_0i9otpz" sourceRef="Activity_17r9wf8" targetRef="Event_1b5n8ba" />
       <bpmn:serviceTask id="Activity_1g6j532" name="Retorna DUE da NFE">
         <bpmn:extensionElements>
-          <spiffworkflow:preScript>keynfe = nfes['keynfe']
+          <spiffworkflow:preScript>keynfe = nfe['keynfe']
 
 schema = {
   "sql": """
