@@ -149,37 +149,47 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-# query = f"""
-#         INSERT INTO SBO_CRESTANI_QA."DeclaracaoExportacao"
-#         ("EntidadeId", 
-#         "NumeroDeclaracao", 
-#         "NumeroRegistro", 
-#         "NumeroConhecimento", 
-#         "PaisDestino", 
-#         "DataDeclaracao", 
-#         "DataRegistro", 
-#         "DataConhecimento", 
-#         "DataAverbacao", 
-#         "NaturezaId", 
-#         "TipoConhecimentoId",
-#         "TipoDocumentoId")
-#         VALUES(
-#             {entidadeid}, 
-#             '{due}', 
-#             '{NumeroRegistro}', 
-#             '{NumeroConhecimento}', 
-#             '{PaisDestino}', 
-#             '{DataDeclaracao}', 
-#             '{dataregistro}', 
-#             '{dataconhecimento}', 
-#             '{dataaverbacao}', 
-#             {naturezaid}, 
-#             {tipoconhecimentoid}, 
-#             {tipodocumentoid}
-#             )
-# """
+query = f"""
+    INSERT INTO SBO_CRESTANI_QA."DeclaracaoExportacaoItens"
+    ("DeclaracaoExportacaoId", 
+    "DocEntry", 
+    "DocDate", 
+    "DocNum", 
+    "SeqCode", 
+    "Serial", 
+    "SeriesStr", 
+    --"SubStr", 
+    "Model", 
+    "ObjType", 
+    "LineNum", 
+    "ItemCode", 
+    "ItemName", 
+    "LineTotal", 
+    --"qExport", 
+    --"nDraw", 
+    --"nRE", 
+    "chNFe", 
+    --"EntradaDfe"
+    )
+    VALUES( 
+    {idDueSap[0]['id']}, 
+    {nfe['docentry']}, 
+    '{nfe['docdate']}', 
+    {nfe['docnum']}, 
+    {nfe['seqcode']}, 
+    {nfe['serial']}, 
+    '{nfe['serialstr']}', 
+    {nfe['model']}, 
+    {nfe['ojbtype']}, 
+    {nfe['linenum']}, 
+    '{nfe['itemcode']}', 
+    '{nfe['itemname']}', 
+    {nfe['linetotal']}, 
+    '{nfe['keynfe']}'
+    )
+"""
 
-# Hana(connection).executeDb(query)</bpmn:script>
+Hana(connection).executeDb(query)</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:scriptTask id="Activity_0nhlv6j" name="Dados da DUE">
         <bpmn:extensionElements>
