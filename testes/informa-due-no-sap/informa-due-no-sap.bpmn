@@ -150,13 +150,24 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-query = f"""
-    INSERT INTO SBO_CRESTANI_QA."DeclaracaoExportacaoItens"
-    ("DeclaracaoExportacaoId", "DocEntry","DocDate","DocNum","SeqCode","Serial","SeriesStr","Model","ObjType","LineNum","ItemCode","ItemName","LineTotal","chNFe")
-    VALUES({idDueSap[0]['id']},{nfe['docentry']},'{nfe['docdate'][0:10]}',{nfe['docnum']},{nfe['seqcode']},{nfe['serial']},'{nfe['seriesstr']}',{nfe['model']},{nfe['objtype']},{nfe['linenum']},'{nfe['itemcode']}','{nfe['itemname']}',{nfe['linetotal']},'{nfe['keynfe']}')
-"""
+for n in nfe:
+    query = f"""
+        INSERT INTO SBO_CRESTANI_QA."DeclaracaoExportacaoItens"
+        ("DeclaracaoExportacaoId", "DocEntry","DocDate","DocNum","SeqCode","Serial","SeriesStr","Model","ObjType","LineNum","ItemCode","ItemName","LineTotal","chNFe")
+        VALUES({idDueSap[0]['id']},{n['docentry']},'{n['docdate'][0:10]}',{n['docnum']},{n['seqcode']},{n['serial']},'{n['seriesstr']}',{n['model']},{n['objtype']},{n['linenum']},'{n['itemcode']}','{n['itemname']}',{n['linetotal']},'{n['keynfe']}')
+        """
 
-Hana(connection).executeDb(query)</bpmn:script>
+Hana(connection).executeDb(query)
+
+
+
+    # query = f"""
+    #     INSERT INTO SBO_CRESTANI_QA."DeclaracaoExportacaoItens"
+    #     ("DeclaracaoExportacaoId", "DocEntry","DocDate","DocNum","SeqCode","Serial","SeriesStr","Model","ObjType","LineNum","ItemCode","ItemName","LineTotal","chNFe")
+    #     VALUES({idDueSap[0]['id']},{nfe['docentry']},'{nfe['docdate'][0:10]}',{nfe['docnum']},{nfe['seqcode']},{nfe['serial']},'{nfe['seriesstr']}',{nfe['model']},{nfe['objtype']},{nfe['linenum']},'{nfe['itemcode']}','{nfe['itemname']}',{nfe['linetotal']},'{nfe['keynfe']}')
+    #     """
+del(connection)
+del(nfe)</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:scriptTask id="Activity_0nhlv6j" name="Dados da DUE">
         <bpmn:extensionElements>
