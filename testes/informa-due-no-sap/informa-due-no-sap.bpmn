@@ -245,7 +245,10 @@ query_id_due = f"""
         AND de."NumeroDeclaracao" = '{due}' 
 """
 
-idDueSap = json.loads(Hana(connection).selectDb(query_id_due))</bpmn:script>
+idDueSap = json.loads(Hana(connection).selectDb(query_id_due))
+
+del(connection)
+del(query_id_due)</bpmn:script>
       </bpmn:scriptTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_0ccgix8" sourceRef="Activity_1398pii" targetRef="EndEvent_1" />
