@@ -159,7 +159,6 @@ query = f"""
     "SeqCode", 
     "Serial", 
     "SeriesStr", 
-    --"SubStr", 
     "Model", 
     "ObjType", 
     "LineNum", 
