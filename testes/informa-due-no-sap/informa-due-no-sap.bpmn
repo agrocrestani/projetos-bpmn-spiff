@@ -50,7 +50,6 @@ query = """
             t4."ItemName",
             t1."Quantity",
             T5.ID "EntidadeId"
-
         from
             sbo_crestani_prd.oinv t0
             INNER JOIN sbo_crestani_prd.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
@@ -60,7 +59,6 @@ query = """
             INNER JOIN sbo_crestani_prd."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
         WHERE
                 t2."MainUsage" = 82 AND t0."DocDate" &lt;= '20240215'  AND t1."ItemCode" = '022966'
-                and t3."KeyNfe" = '51240103262185000109550010000245571183610655'
         """
 nfes = json.loads(Hana(connection).selectDb(query))
 
