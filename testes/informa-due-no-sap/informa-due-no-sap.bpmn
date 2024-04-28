@@ -236,7 +236,7 @@ connection = {
 }
 
 query_id_due = f"""
-    SELECT de."Id" FROM sap_crestani_qa."DeclaracaoExportacao" de 
+    SELECT de."Id" FROM sbo_crestani_qa."DeclaracaoExportacao" de 
         WHERE de."EntidadeId" = {entidadeid}
         AND de."NumeroDeclaracao" = '{due}' 
 """
