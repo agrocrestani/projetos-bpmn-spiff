@@ -94,11 +94,12 @@ nfes = json.loads(Hana(connection).selectDb(query))
 schema = {
   "sql": f"""
       SELECT distinct 
-          itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' numero_due
+        entidadeid,
+         itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' numero_due
       FROM 
-          sap.due_eventos
+        sap.due_eventos
       where
-          keynfe = '{keynfe}'
+        keynfe = '{keynfe}'
     """,
   "fetch_results": True
 }
