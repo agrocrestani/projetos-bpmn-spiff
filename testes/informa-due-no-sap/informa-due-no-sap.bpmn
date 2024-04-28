@@ -112,7 +112,8 @@ schema = {
             </spiffworkflow:parameters>
           </spiffworkflow:serviceTaskOperator>
           <spiffworkflow:postScript>try:
-    due = rsp['body'][0][0]
+    entidadeid = rsp['body'][0][0]
+    due = rsp['body'][0][1]
 except:
     due = 0
 </spiffworkflow:postScript>
