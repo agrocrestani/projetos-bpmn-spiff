@@ -49,6 +49,7 @@ query = """
             t1."ItemCode",
             t4."ItemName",
             t1."Quantity",
+            t1."LineTotal",
             T5.ID "EntidadeId"
         from
             sbo_crestani_prd.oinv t0
@@ -165,22 +166,18 @@ query = f"""
     "ItemCode", 
     "ItemName", 
     "LineTotal", 
-    --"qExport", 
-    --"nDraw", 
-    --"nRE", 
     "chNFe", 
-    --"EntradaDfe"
     )
     VALUES( 
     {idDueSap[0]['id']}, 
     {nfe['docentry']}, 
-    '{nfe['docdate']}', 
+    '{nfe['docdate'][0:10]}', 
     {nfe['docnum']}, 
     {nfe['seqcode']}, 
     {nfe['serial']}, 
-    '{nfe['serialstr']}', 
+    '{nfe['seriesstr']}', 
     {nfe['model']}, 
-    {nfe['ojbtype']}, 
+    {nfe['objtype']}, 
     {nfe['linenum']}, 
     '{nfe['itemcode']}', 
     '{nfe['itemname']}', 
