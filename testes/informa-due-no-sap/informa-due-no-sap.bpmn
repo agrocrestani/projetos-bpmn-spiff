@@ -63,6 +63,8 @@ query = """
         """
 nfes = json.loads(Hana(connection).selectDb(query))
 
+del(connection)
+del(query)
 # '51240103262185000109550010000245571183610655',</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_1398pii">
@@ -116,7 +118,9 @@ schema = {
     due = rsp['body'][0][1]
 except:
     due = 0
-</spiffworkflow:postScript>
+
+del(schema)
+del(rsp)</spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1aiipxu</bpmn:incoming>
         <bpmn:outgoing>Flow_1hznv83</bpmn:outgoing>
