@@ -63,7 +63,11 @@ query = """
                 AND t0."DocEntry" NOT IN (SELECT "DocEntry" FROM sbo_crestani_qa."DeclaracaoExportacaoItens")
         """
 
-nfes = json.loads(Hana(connection).selectDb(query))</bpmn:script>
+nfes = Hana(connection).selectDb(query)
+
+# nfes = json.loads(Hana(connection).selectDb(query))
+del(connection)
+del(query)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_1398pii">
       <bpmn:extensionElements>
