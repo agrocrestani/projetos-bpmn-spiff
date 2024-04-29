@@ -68,7 +68,7 @@ del(query)
       <bpmn:incoming>Flow_1qqxwtk</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1qqxwtk" sourceRef="Activity_00fg6gl" targetRef="Event_0sl6esg" />
-    <bpmn:callActivity id="Activity_00fg6gl" name="Insere DUE" calledElement="Process_inserir_due_dpzov4n">
+    <bpmn:callActivity id="Activity_00fg6gl" name="Insere DUE" calledElement="Inserir_DUE">
       <bpmn:incoming>Flow_15x11ay</bpmn:incoming>
       <bpmn:outgoing>Flow_1qqxwtk</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
