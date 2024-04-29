@@ -70,7 +70,7 @@ Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no 
 |**Data Situacao Especial**:| {{pn['data_situacao_especial']}}|
 |**Capital Social**:| {{pn['capital_social']}}|
 </spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript>atividade_principal = pn[0]['atividade_principal']['code'] - pn[0]['atividade_principal']['text']
+        <spiffworkflow:preScript>atividade_principal pn[0]['atividade_principal']['code'] +' - '+ pn[0]['atividade_principal']['text']
 atividades_secundarias = json.loads(pn[0]['atividades_secundarias'])</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_13oahru</bpmn:incoming>
