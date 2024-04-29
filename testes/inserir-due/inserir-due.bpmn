@@ -6,7 +6,26 @@
     </bpmn:startEvent>
     <bpmn:serviceTask id="Activity_1g6j532" name="Retorna DUE da NFE">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>keynfe = nfe['keynfe']
+        <spiffworkflow:preScript>"nfe": {
+    "docentry": 36,
+    "docnum": 16,
+    "serial": 13123,
+    "keynfe": "51240203262185000443550010000015331630761660",
+    "docdate": "2024-01-01 00:00:00.0000000",
+    "seqcode": 29,
+    "seriesstr": "1",
+    "substr": "",
+    "model": "39",
+    "objtype": "13",
+    "linenum": 0,
+    "itemcode": "022966",
+    "itemname": "SOJA EM GRAOS",
+    "quantity": "5000.000000",
+    "linetotal": "5250.000000",
+    "entidadeid": 3
+  }
+
+keynfe = nfe['keynfe']
 
 schema = {
   "sql": f"""
