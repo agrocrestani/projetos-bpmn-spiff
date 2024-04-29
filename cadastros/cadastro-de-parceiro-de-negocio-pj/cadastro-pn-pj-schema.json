@@ -8,8 +8,7 @@
   "properties": {
     "cnpj": {
       "type": "string",
-      "title": "CNPJ",
-      "default": "Chuck"
+      "title": "CNPJ"
     }
   }
 }
