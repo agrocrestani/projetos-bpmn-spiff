@@ -45,8 +45,22 @@ Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no 
     <bpmn:sequenceFlow id="Flow_1ozlsyd" sourceRef="Activity_16qlavn" targetRef="EndEvent_1" />
     <bpmn:manualTask id="Activity_16qlavn" name="Verificar Solicitação">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>CNPJ: {{pn['cnpj']}}
-Nome: {{pn['nome']}}
+        <spiffworkflow:instructionsForEndUser>**CNPJ**: {{pn['cnpj']}}\
+**Nome**: {{pn['nome']}}\
+**Fantasia**: {{pn['fantasia']}}\
+**Abertura**: {{pn['abertura']}}\
+**Atividade Principal**: {{pn['atividade_principal']['code]}} - {{pn['atividade_principal']['text]}}\
+**Natureza Juridica**: {{pn['natureza_juridica']}}\
+**Endereço**: {{pn['logradouro']}}, **Número**: {{pn['numero']}}\
+**Complemento**: {{pn['complemento']}} - **Bairro**: {{pn['bairro']}}\
+**CEP**: {{pn['cep']}} - **Municipio**: {{pn['municipio']}} - **UF**: {{pn['uf']}}\
+**situação**: {{pn['telefone']}}\
+**E-mail**: {{pn['situacao']}}\
+**Data Situação**: {{pn['data_situacao']}}\
+**Motivo Situacao**: {{pn['motivo_situacao']}}\
+**Situação Especial**: {{pn['situacao_especial']}}\
+**Data Situacao Especial**: {{pn['data_situacao_especial']}}\
+**Capital Social**: {{pn['capital_social']}}\
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_13oahru</bpmn:incoming>
