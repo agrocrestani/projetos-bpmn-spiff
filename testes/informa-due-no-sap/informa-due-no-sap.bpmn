@@ -48,8 +48,8 @@ query = """
             t1."LineNum",
             t1."ItemCode",
             t4."ItemName",
-            to_alphanum(t1."Quantity"),
-            to_alphanum(t1."LineTotal"),
+            to_alphanum(t1."Quantity") "Quantity",
+            to_alphanum(t1."LineTotal") "LineTotal",
             T5.ID "EntidadeId"
         from
             sbo_crestani_qa.oinv t0
