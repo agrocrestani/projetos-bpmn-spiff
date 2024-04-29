@@ -12,7 +12,7 @@
     },
     "ie": {
       "type": "string",
-      "title": "Inscrição",
+      "title": "Inscrição Estadual",
       "default": "Chuck"
     }
   }
