@@ -51,7 +51,8 @@ Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no 
 |**Nome**:| {{pn['nome']}}|
 |**Fantasia**:| {{pn['fantasia']}}|
 |**Abertura**:| {{pn['abertura']}}|
-|**Atividade Principal**:| {{pn['atividade_principal']}}|
+|**Atividade Principal**:| {{atividade_principal}}|
+|**Atividades Secundarias**:| {{atividades_secundarias}}|
 |**Natureza Juridica**:| {{pn['natureza_juridica']}}|
 |**Endereço**:| {{pn['logradouro']}}|
 |**Número**:| {{pn['numero']}}|
