@@ -45,7 +45,8 @@ Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no 
     <bpmn:sequenceFlow id="Flow_1ozlsyd" sourceRef="Activity_16qlavn" targetRef="EndEvent_1" />
     <bpmn:manualTask id="Activity_16qlavn" name="Verificar Solicitação">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>CNPJ: {{rsp['cnpj']}}
+        <spiffworkflow:instructionsForEndUser>CNPJ: {{pn['cnpj']}}
+Nome: {{pn['nome']}}
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_13oahru</bpmn:incoming>
