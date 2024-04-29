@@ -64,7 +64,7 @@ query = """
                 --and t3."KeyNfe" = '51240103262185000443550010000014221137660108'
         limit 5
         """
-nfes = json.loads(Hana(connection).selectDb(query))
+nfes = Hana(connection).selectDb(query)
 
 del(connection)
 del(query)
