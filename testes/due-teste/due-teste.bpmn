@@ -62,10 +62,10 @@ query = """
                 t2."MainUsage" = 82 AND t0."DocDate" &lt;= '20240215'  AND t1."ItemCode" = '022966'
                 and t3."KeyNfe" = '51240103262185000443550010000014221137660108'
         """
-nfes = json.loads(Hana(connection).selectDb(query))
+# nfes = json.loads(Hana(connection).selectDb(query))
 
-del(connection)
-del(query)
+# del(connection)
+# del(query)
 # '51240103262185000109550010000245571183610655',</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1v8ye58" sourceRef="Activity_1uiidhu" targetRef="EndEvent_1" />
@@ -79,12 +79,12 @@ del(query)
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="642" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ckybt4_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="642" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1eqai82_di" bpmnElement="Activity_1uiidhu">
         <dc:Bounds x="450" y="137" width="100" height="80" />
