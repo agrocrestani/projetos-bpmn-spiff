@@ -62,11 +62,8 @@ query = """
                 t2."MainUsage" = 82 AND t0."DocDate" &lt;= '20240215'  AND t1."ItemCode" = '022966'
                 AND t0."DocEntry" NOT IN (SELECT "DocEntry" FROM sbo_crestani_qa."DeclaracaoExportacaoItens")
         """
-nfes = json.loads(Hana(connection).selectDb(query))
 
-# del(connection)
-# del(query)
-# '51240103262185000109550010000245571183610655',</bpmn:script>
+# nfes = json.loads(Hana(connection).selectDb(query))</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_1398pii">
       <bpmn:extensionElements>
