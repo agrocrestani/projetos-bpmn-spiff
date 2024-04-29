@@ -13,11 +13,6 @@
     "ie": {
       "type": "string",
       "title": "Inscrição Estadual"
-    },
-    "done": {
-      "type": "boolean",
-      "title": "Done?",
-      "default": false
     }
   }
 }
