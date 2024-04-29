@@ -42,8 +42,7 @@ query = """
             o."DimCode" = 1
         """
 
-teste = Hana(connection).selectDb(query)
-rsp = json.loads(teste)
+rsp = Hana(connection).selectDb(query)
 
 # rsp = json.loads(Hana(connection).selectDb(query))
 
