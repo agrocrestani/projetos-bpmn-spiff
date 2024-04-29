@@ -14,7 +14,7 @@
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_0nbi0ax" />
     <bpmn:scriptTask id="Activity_0qpzdpu" name="Busca as notas sem DUE">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
@@ -46,7 +46,7 @@ query = """
             to_alphanum(t1."LineTotal") "LineTotal",
             T5.ID "EntidadeId"
         from
-            sbo_crestani_qa.oinv t0
+            sbo_crestani_prd.oinv t0
             INNER JOIN sbo_crestani_qa.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
             INNER JOIN sbo_crestani_qa.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
             INNER JOIN sbo_crestani_qa."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4
@@ -55,8 +55,7 @@ query = """
         WHERE
                 t2."MainUsage" = 82 AND t0."DocDate" &lt;= '20240215'  AND t1."ItemCode" = '022966'
                 AND t0."DocEntry" NOT IN (SELECT "DocEntry" FROM sbo_crestani_qa."DeclaracaoExportacaoItens")
-                --and t3."KeyNfe" = '51240103262185000443550010000014221137660108'
-        limit 20
+                --and t3."KeyNfe" = '51240103262185000443550010000014221137660108"
         """
 nfes = Hana(connection).selectDb(query)
 
@@ -83,6 +82,9 @@ del(query)
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="642" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ckybt4_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -90,9 +92,6 @@ del(query)
       <bpmndi:BPMNShape id="Activity_0bg2fws_di" bpmnElement="Activity_0nbi0ax">
         <dc:Bounds x="450" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="642" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
