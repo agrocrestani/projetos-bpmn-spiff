@@ -43,6 +43,7 @@ query = """
         """
 
 teste = Hana(connection).selectDb(query)
+rsp = json.loads(teste)
 
 # rsp = json.loads(Hana(connection).selectDb(query))
 
