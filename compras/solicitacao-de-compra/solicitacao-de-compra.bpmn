@@ -102,7 +102,7 @@ for u in utilizacoes:
         <bpmn:targetRef>Property_0qewnk4</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
-    <bpmn:dataStoreReference id="DataStoreReference_13uzln6" name="Almoxarifados" dataStoreRef="almoxarifados" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_13uzln6" name="" type="" />
     <bpmn:dataStoreReference id="DataStoreReference_0dm57aw" name="Centros de Custo" dataStoreRef="centros_de_custo" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_1ln8zd2" name="Culturas" dataStoreRef="culturas" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_07gc9qu" name="Safras" dataStoreRef="safras" type="json" />
@@ -135,7 +135,6 @@ for i in n_almoxarifados:
       <bpmn:outgoing>Flow_1hh3d5j</bpmn:outgoing>
     </bpmn:scriptTask>
   </bpmn:process>
-  <bpmn:dataStore id="almoxarifados" name="JSONDataStore" />
   <bpmn:dataStore id="centros_de_custo" name="JSONDataStore" />
   <bpmn:dataStore id="culturas" name="JSONDataStore" />
   <bpmn:dataStore id="departamentos" name="JSONDataStore" />
