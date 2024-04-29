@@ -15,5 +15,7 @@
     "ui:enableMarkdownInDescription": true,
     "ui:description": "Digite a inscrição sem pontos, traços e/ou espaços"
   },
-  "ui:layout": {}
+  "ui:layout": {
+    
+  }
 }
