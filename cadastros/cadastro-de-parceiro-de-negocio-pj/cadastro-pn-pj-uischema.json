@@ -7,7 +7,7 @@
     "ui:enableMarkdownInDescription": true,
     "ui:description": "Digite o **CNPJ** sem pontos, traços e/ou espaços."
   },
-  "firstName": {
+  "ie": {
     "ui:autofocus": true,
     "ui:emptyValue": "",
     "ui:placeholder": "ui:emptyValue causes this field to always be valid despite being required",
