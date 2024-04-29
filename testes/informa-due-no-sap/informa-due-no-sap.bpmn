@@ -219,7 +219,7 @@ connection = {
 }
 
 query_id_due = f"""
-    SELECT de."Id" FROM sbo_crestani_prd."DeclaracaoExportacao" de 
+    SELECT de."Id" FROM sbo_crestani_qa."DeclaracaoExportacao" de 
         WHERE de."EntidadeId" = {entidadeid}
         AND de."NumeroDeclaracao" = '{due}' 
 """
@@ -227,7 +227,7 @@ query_id_due = f"""
 idDueSap = Hana(connection).selectDb(query_id_due)
 
 del(connection)
-del(query_id_due)</bpmn:script>
+# del(query_id_due)</bpmn:script>
       </bpmn:scriptTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_0ccgix8" sourceRef="Activity_1398pii" targetRef="EndEvent_1" />
