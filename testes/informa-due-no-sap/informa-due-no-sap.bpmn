@@ -64,8 +64,8 @@ You can also change the text you are reading here by updating the *Instructions*
 #         """
 # nfes = json.loads(Hana(connection).selectDb(query))
 
-del(connection)
-del(query)
+# del(connection)
+# del(query)
 # '51240103262185000109550010000245571183610655',</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_1398pii">
