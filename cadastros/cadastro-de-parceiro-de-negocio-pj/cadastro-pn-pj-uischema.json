@@ -14,5 +14,5 @@
     "ui:autocomplete": "family-name",
     "ui:enableMarkdownInDescription": true,
     "ui:description": "Digite a inscrição sem pontos, traços e/ou espaços"
-  }
+  },
 }
