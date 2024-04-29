@@ -92,36 +92,14 @@ del(query)
       <bpmn:sequenceFlow id="Flow_0kv3dck" sourceRef="Activity_1g6j532" targetRef="Event_1b5n8ba" />
       <bpmn:callActivity id="Activity_1g6j532" name="Retorna DUE da NFE" calledElement="Process_inserir_due_dpzov4n">
         <bpmn:extensionElements>
-          <spiffworkflow:preScript>keynfe = nfe['keynfe']
-
-schema = {
-  "sql": f"""
-      SELECT distinct 
-        entidadeid,
-         itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' numero_due
-      FROM 
-        sap.due_eventos
-      where
-        keynfe = '{keynfe}'
-    """,
-  "fetch_results": True
-}
-
-</spiffworkflow:preScript>
+          <spiffworkflow:preScript />
           <spiffworkflow:serviceTaskOperator id="postgres_v2/DoSQL" resultVariable="rsp">
             <spiffworkflow:parameters>
               <spiffworkflow:parameter id="database_connection_str" type="str" value="&#34;SPIFF_SECRET:postgres&#34;" />
               <spiffworkflow:parameter id="schema" type="any" value="schema" />
             </spiffworkflow:parameters>
           </spiffworkflow:serviceTaskOperator>
-          <spiffworkflow:postScript>try:
-    entidadeid = rsp['body'][0][0]
-    due = rsp['body'][0][1]
-except:
-    due = 0
-
-del(schema)
-del(rsp)</spiffworkflow:postScript>
+          <spiffworkflow:postScript />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1aiipxu</bpmn:incoming>
         <bpmn:outgoing>Flow_0kv3dck</bpmn:outgoing>
@@ -134,21 +112,21 @@ del(rsp)</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="842" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ckybt4_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="842" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1398pii_di" bpmnElement="Activity_1398pii" isExpanded="true">
         <dc:Bounds x="420" y="77" width="350" height="213" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0gcqa1j_di" bpmnElement="Event_0gcqa1j">
-        <dc:Bounds x="460" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1b5n8ba_di" bpmnElement="Event_1b5n8ba">
         <dc:Bounds x="702" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0gcqa1j_di" bpmnElement="Event_0gcqa1j">
+        <dc:Bounds x="460" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1jxbxfm_di" bpmnElement="Activity_1g6j532">
         <dc:Bounds x="560" y="137" width="100" height="80" />
