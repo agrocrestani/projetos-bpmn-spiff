@@ -6,10 +6,10 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:incoming>Flow_1ozlsyd</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
-    <bpmn:userTask id="Activity_0qpzdpu" name="Example manual task">
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_1mr06y8" />
+    <bpmn:userTask id="Activity_0qpzdpu" name="Solicitar Cadastro">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## Cadastro de Parceiro de Negócio - PJ
 Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no ERP da Crestani. O cadastro será analisado pelo departamento responsável e sendo aprovado será inserido no ERP.</spiffworkflow:instructionsForEndUser>
@@ -21,17 +21,52 @@ Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no 
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_13oahru" sourceRef="Activity_1mr06y8" targetRef="Activity_16qlavn" />
+    <bpmn:serviceTask id="Activity_1mr06y8" name="Busca dados ReceitaWs">
+      <bpmn:extensionElements>
+        <spiffworkflow:serviceTaskOperator id="http/GetRequestV2" resultVariable="rsp">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" />
+            <spiffworkflow:parameter id="params" type="any" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+            <spiffworkflow:parameter id="attempts" type="int" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript>url = 'https://receitaws.com.br/v1/cnpj/'+cnpj</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_13oahru</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1ozlsyd" sourceRef="Activity_16qlavn" targetRef="EndEvent_1" />
+    <bpmn:manualTask id="Activity_16qlavn" name="Verificar Solicitação">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>{{rsp}}</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_13oahru</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ozlsyd</bpmn:outgoing>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_cadastro_de_parceiro_de_negocio_pj_qqtz0ek">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="432" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0wscjka_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vtjajg_di" bpmnElement="Activity_1mr06y8">
+        <dc:Bounds x="440" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1k6x7li_di" bpmnElement="Activity_16qlavn">
+        <dc:Bounds x="590" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="782" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
@@ -39,7 +74,15 @@ Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no 
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="370" y="177" />
-        <di:waypoint x="432" y="177" />
+        <di:waypoint x="440" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13oahru_di" bpmnElement="Flow_13oahru">
+        <di:waypoint x="540" y="177" />
+        <di:waypoint x="590" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ozlsyd_di" bpmnElement="Flow_1ozlsyd">
+        <di:waypoint x="690" y="177" />
+        <di:waypoint x="782" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
