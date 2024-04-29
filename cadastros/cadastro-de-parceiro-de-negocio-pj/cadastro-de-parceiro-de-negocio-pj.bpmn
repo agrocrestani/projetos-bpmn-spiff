@@ -9,14 +9,18 @@
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
-    <bpmn:manualTask id="Activity_0qpzdpu" name="Example manual task">
+    <bpmn:userTask id="Activity_0qpzdpu" name="Example manual task">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## Cadastro de Parceiro de Negócio - PJ
 Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no ERP da Crestani. O cadastro será analisado pelo departamento responsável e sendo aprovado será inserido no ERP.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="cadastro-pn-pj-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="cadastro-pn-pj-uischema.json" />
+        </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-    </bpmn:manualTask>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_cadastro_de_parceiro_de_negocio_pj_qqtz0ek">
@@ -26,9 +30,8 @@ Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no 
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="432" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
+      <bpmndi:BPMNShape id="Activity_0wscjka_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
