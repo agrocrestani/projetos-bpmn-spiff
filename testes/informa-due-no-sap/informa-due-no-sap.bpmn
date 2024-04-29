@@ -52,14 +52,15 @@ query = """
             t1."LineTotal",
             T5.ID "EntidadeId"
         from
-            sbo_crestani_prd.oinv t0
-            INNER JOIN sbo_crestani_prd.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
-            INNER JOIN sbo_crestani_prd.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
-            INNER JOIN sbo_crestani_prd."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4
-            INNER JOIN sbo_crestani_prd.oitm t4 ON T1."ItemCode" = t4."ItemCode"
-            INNER JOIN sbo_crestani_prd."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
+            sbo_crestani_qa.oinv t0
+            INNER JOIN sbo_crestani_qa.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
+            INNER JOIN sbo_crestani_qa.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
+            INNER JOIN sbo_crestani_qa."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4
+            INNER JOIN sbo_crestani_qa.oitm t4 ON T1."ItemCode" = t4."ItemCode"
+            INNER JOIN sbo_crestani_qa."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
         WHERE
                 t2."MainUsage" = 82 AND t0."DocDate" &lt;= '20240215'  AND t1."ItemCode" = '022966'
+                AND t0."DocEntry" NOT IN (SELECT "DocEntry" FROM sbo_crestani_qa."DeclaracaoExportacaoItens")
         """
 nfes = json.loads(Hana(connection).selectDb(query))
 
@@ -238,7 +239,7 @@ del(query_id_due)</bpmn:script>
         <dc:Bounds x="1462" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ckybt4_di" bpmnElement="Activity_0qpzdpu">
-        <dc:Bounds x="270" y="137" width="100" height="80" />
+        <dc:Bounds x="280" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1398pii_di" bpmnElement="Activity_1398pii" isExpanded="true">
@@ -291,10 +292,10 @@ del(query_id_due)</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
-        <di:waypoint x="270" y="177" />
+        <di:waypoint x="280" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
-        <di:waypoint x="370" y="177" />
+        <di:waypoint x="380" y="177" />
         <di:waypoint x="420" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ccgix8_di" bpmnElement="Flow_0ccgix8">
