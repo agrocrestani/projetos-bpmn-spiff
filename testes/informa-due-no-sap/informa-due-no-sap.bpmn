@@ -71,7 +71,7 @@ del(query)
     <bpmn:callActivity id="Activity_00fg6gl" name="Insere DUE" calledElement="Process_inserir_due_dpzov4n">
       <bpmn:incoming>Flow_15x11ay</bpmn:incoming>
       <bpmn:outgoing>Flow_1qqxwtk</bpmn:outgoing>
-      <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
         <bpmn:loopDataInputRef>nfes</bpmn:loopDataInputRef>
         <bpmn:loopDataOutputRef>nfes</bpmn:loopDataOutputRef>
         <bpmn:inputDataItem id="nfe" name="nfe" />
