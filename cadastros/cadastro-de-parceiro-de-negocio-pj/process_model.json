@@ -1,0 +1,9 @@
+{
+    "description": "Cadastro de Parceiro de Neg\u00f3cio PJ",
+    "display_name": "Cadastro de Parceiro de Neg\u00f3cio PJ",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "cadastro-de-parceiro-de-negocio-pj.bpmn",
+    "primary_process_id": "Process_cadastro_de_parceiro_de_negocio_pj_qqtz0ek"
+}
