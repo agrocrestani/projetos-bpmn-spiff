@@ -6,7 +6,7 @@
     "firstName"
   ],
   "properties": {
-    "firstName": {
+    "CNP": {
       "type": "string",
       "title": "First name",
       "default": "Chuck"
