@@ -14,7 +14,7 @@
       "type": "string",
       "title": "Inscrição Estadual"
     },
-    "favoriteFruit": {
+    "tip": {
       "title": "Select your favorite fruit",
       "type": "string",
       "anyOf": [
