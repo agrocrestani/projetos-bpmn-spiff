@@ -63,7 +63,8 @@ query = """
                 AND t0."DocEntry" NOT IN (SELECT "DocEntry" FROM sbo_crestani_qa."DeclaracaoExportacaoItens")
         """
         
-nfes = json.loads(Hana(connection).selectDb(query))
+nfes = Hana(connection).selectDb(query)
+# nfes = json.loads(Hana(connection).selectDb(query))
 
 # del(connection)
 # del(query)
