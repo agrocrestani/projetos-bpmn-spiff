@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
-  <bpmn:process id="Process_inserir_due_dpzov4n" isExecutable="true">
+  <bpmn:process id="Inserir_DUE" isExecutable="true">
     <bpmn:startEvent id="Event_0gcqa1j">
       <bpmn:outgoing>Flow_1aiipxu</bpmn:outgoing>
     </bpmn:startEvent>
@@ -156,7 +156,7 @@ nfe = ""</bpmn:script>
     <bpmn:sequenceFlow id="Flow_07x7mvp" sourceRef="Activity_1j1cc8f" targetRef="Event_1b5n8ba" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_inserir_due_dpzov4n">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Inserir_DUE">
       <bpmndi:BPMNShape id="Event_0gcqa1j_di" bpmnElement="Event_0gcqa1j">
         <dc:Bounds x="450" y="-68" width="36" height="36" />
       </bpmndi:BPMNShape>
