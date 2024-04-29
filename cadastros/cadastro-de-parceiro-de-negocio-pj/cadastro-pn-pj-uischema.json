@@ -17,6 +17,6 @@
   },
   "ui:layout": {
     {"cnpj"},
-    {ie}
+    {"ie"}
   }
 }
