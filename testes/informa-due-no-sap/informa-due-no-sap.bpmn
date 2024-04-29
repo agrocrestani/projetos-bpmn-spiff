@@ -39,7 +39,7 @@ query = """
             t0."DocNum",
             t0."Serial",
             t3."KeyNfe",
-            t0."DocDate",
+            to_alphanum(t0."DocDate") "DocDate",
             t0."SeqCode",
             t0."SeriesStr",
             t0."SubStr",
@@ -48,8 +48,8 @@ query = """
             t1."LineNum",
             t1."ItemCode",
             t4."ItemName",
-            t1."Quantity",
-            t1."LineTotal",
+            to_alphanum(t1."Quantity") "Quantity",
+            to_alphanum(t1."LineTotal") "LineTotal",
             T5.ID "EntidadeId"
         from
             sbo_crestani_qa.oinv t0
@@ -63,7 +63,7 @@ query = """
                 AND t0."DocEntry" NOT IN (SELECT "DocEntry" FROM sbo_crestani_qa."DeclaracaoExportacaoItens")
         """
 
-# nfes = json.loads(Hana(connection).selectDb(query))</bpmn:script>
+nfes = json.loads(Hana(connection).selectDb(query))</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_1398pii">
       <bpmn:extensionElements>
