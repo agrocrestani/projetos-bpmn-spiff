@@ -135,13 +135,9 @@ query = f"""
 Hana(connection).executeDb(query)
 nfe = ""</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:manualTask id="Activity_1j1cc8f" name="Verificar">
-      <bpmn:incoming>Flow_0nry0ei</bpmn:incoming>
-      <bpmn:outgoing>Flow_07x7mvp</bpmn:outgoing>
-    </bpmn:manualTask>
     <bpmn:endEvent id="Event_1b5n8ba">
       <bpmn:incoming>Flow_12epf89</bpmn:incoming>
-      <bpmn:incoming>Flow_07x7mvp</bpmn:incoming>
+      <bpmn:incoming>Flow_0nry0ei</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1aiipxu" sourceRef="Event_0gcqa1j" targetRef="Activity_1g6j532" />
     <bpmn:sequenceFlow id="Flow_1hznv83" sourceRef="Activity_1g6j532" targetRef="Gateway_0wkbi6q" />
@@ -152,8 +148,7 @@ nfe = ""</bpmn:script>
       <bpmn:conditionExpression>due == False</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0o0tp2q" sourceRef="Activity_0nhlv6j" targetRef="Activity_0od9hbe" />
-    <bpmn:sequenceFlow id="Flow_0nry0ei" sourceRef="Activity_0od9hbe" targetRef="Activity_1j1cc8f" />
-    <bpmn:sequenceFlow id="Flow_07x7mvp" sourceRef="Activity_1j1cc8f" targetRef="Event_1b5n8ba" />
+    <bpmn:sequenceFlow id="Flow_0nry0ei" sourceRef="Activity_0od9hbe" targetRef="Event_1b5n8ba" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Inserir_DUE">
@@ -173,12 +168,8 @@ nfe = ""</bpmn:script>
         <dc:Bounds x="970" y="-90" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1s8aivm_di" bpmnElement="Activity_1j1cc8f">
-        <dc:Bounds x="1120" y="-90" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1b5n8ba_di" bpmnElement="Event_1b5n8ba">
-        <dc:Bounds x="1262" y="-68" width="36" height="36" />
+        <dc:Bounds x="1142" y="-68" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1aiipxu_di" bpmnElement="Flow_1aiipxu">
         <di:waypoint x="486" y="-50" />
@@ -195,8 +186,8 @@ nfe = ""</bpmn:script>
       <bpmndi:BPMNEdge id="Flow_12epf89_di" bpmnElement="Flow_12epf89">
         <di:waypoint x="720" y="-25" />
         <di:waypoint x="720" y="33" />
-        <di:waypoint x="1280" y="33" />
-        <di:waypoint x="1280" y="-32" />
+        <di:waypoint x="1160" y="33" />
+        <di:waypoint x="1160" y="-32" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0o0tp2q_di" bpmnElement="Flow_0o0tp2q">
         <di:waypoint x="910" y="-50" />
@@ -204,11 +195,7 @@ nfe = ""</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0nry0ei_di" bpmnElement="Flow_0nry0ei">
         <di:waypoint x="1070" y="-50" />
-        <di:waypoint x="1120" y="-50" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_07x7mvp_di" bpmnElement="Flow_07x7mvp">
-        <di:waypoint x="1220" y="-50" />
-        <di:waypoint x="1262" y="-50" />
+        <di:waypoint x="1142" y="-50" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
