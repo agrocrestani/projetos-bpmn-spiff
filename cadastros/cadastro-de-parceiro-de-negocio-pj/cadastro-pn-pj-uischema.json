@@ -5,6 +5,6 @@
     "ui:placeholder": "ui:emptyValue causes this field to always be valid despite being required",
     "ui:autocomplete": "family-name",
     "ui:enableMarkdownInDescription": true,
-    "ui:description": "Digite o **CNPJ** sem esp)."
+    "ui:description": "Digite o **CNPJ** sem pontos, traços)."
   }
 }
