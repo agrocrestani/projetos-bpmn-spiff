@@ -37,6 +37,7 @@ Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no 
         </spiffworkflow:serviceTaskOperator>
         <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:preScript>url = 'https://receitaws.com.br/v1/cnpj/'+cnpj</spiffworkflow:preScript>
+        <spiffworkflow:postScript>pn = rsp['body']</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_13oahru</bpmn:outgoing>
