@@ -69,6 +69,9 @@ del(query)
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1qqxwtk" sourceRef="Activity_00fg6gl" targetRef="Event_0sl6esg" />
     <bpmn:callActivity id="Activity_00fg6gl" name="Insere DUE" calledElement="Inserir_DUE">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript>del(nfe)</spiffworkflow:postScript>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_15x11ay</bpmn:incoming>
       <bpmn:outgoing>Flow_1qqxwtk</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
