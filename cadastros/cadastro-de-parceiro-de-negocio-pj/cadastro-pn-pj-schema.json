@@ -15,7 +15,7 @@
       "title": "Inscrição Estadual"
     },
     "tipoPn": {
-      "title": "Select your favorite fruit",
+      "title": "Selecione o Tipo do PN",
       "type": "string",
       "anyOf": [
         {
