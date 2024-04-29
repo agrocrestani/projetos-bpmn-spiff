@@ -51,7 +51,7 @@ Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no 
 |**Nome**:| {{pn['nome']}}|
 |**Fantasia**:| {{pn['fantasia']}}|
 |**Abertura**:| {{pn['abertura']}}|
-|**Atividade Principal**:| {{pn['atividade_principal']['code']}} - {{pn['atividade_principal']['text']}}|
+|**Atividade Principal**:| {{pn['atividade_principal']}}|
 |**Natureza Juridica**:| {{pn['natureza_juridica']}}|
 |**Endereço**:| {{pn['logradouro']}}|
 |**Número**:| {{pn['numero']}}|
@@ -60,8 +60,9 @@ Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no 
 |**CEP**:| {{pn['cep']}}|
 |**Municipio**:| {{pn['municipio']}}|
 |**UF**:| {{pn['uf']}}|
-|**situação**:| {{pn['telefone']}}|
-|**E-mail**:| {{pn['situacao']}}|
+|**E-mail**:| {{pn['email']}}|
+|**Telefone**:| {{pn['telefone']}}|
+|**situacao**:| {{pn['situacao']}}|
 |**Data Situação**:| {{pn['data_situacao']}}|
 |**Motivo Situacao**:| {{pn['motivo_situacao']}}|
 |**Situação Especial**:| {{pn['situacao_especial']}}|
