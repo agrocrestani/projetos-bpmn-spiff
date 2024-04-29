@@ -17,11 +17,11 @@
   },
   "ui:layout": [
     {
-      "cnpj": {},
+        "cnpj": {},
         "ie": {}
     },
     {
-        "tipoPn"
+        "tipoPn":
     }
   ]
 }
