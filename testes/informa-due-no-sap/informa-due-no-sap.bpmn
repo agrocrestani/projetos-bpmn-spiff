@@ -153,7 +153,7 @@ connection = {
 }
 
 query = f"""
-    INSERT INTO SBO_CRESTANI_prd."DeclaracaoExportacaoItens"
+    INSERT INTO SBO_CRESTANI_qa."DeclaracaoExportacaoItens"
     ("DeclaracaoExportacaoId", "DocEntry","DocDate","DocNum","SeqCode","Serial","SeriesStr","Model","ObjType","LineNum","ItemCode","ItemName","LineTotal","chNFe")
     VALUES({idDueSap[0]['id']},{nfe['docentry']},'{nfe['docdate'][0:10]}',{nfe['docnum']},{nfe['seqcode']},{nfe['serial']},'{nfe['seriesstr']}',{nfe['model']},{nfe['objtype']},{nfe['linenum']},'{nfe['itemcode']}','{nfe['itemname']}',{nfe['linetotal']},'{nfe['keynfe']}')
 """
