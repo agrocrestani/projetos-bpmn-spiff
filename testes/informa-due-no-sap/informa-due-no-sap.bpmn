@@ -224,7 +224,7 @@ query_id_due = f"""
         AND de."NumeroDeclaracao" = '{due}' 
 """
 
-idDueSap = json.loads(Hana(connection).selectDb(query_id_due))
+idDueSap = Hana(connection).selectDb(query_id_due)
 
 del(connection)
 del(query_id_due)</bpmn:script>
