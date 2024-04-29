@@ -24,7 +24,7 @@ You can also change the text you are reading here by updating the *Instructions*
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0cycchs</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-      <bpmn:script>from connectordb.hana1 import Hana
+      <bpmn:script>from connectordb.hana import Hana
 
 connection = {
     "address": "172.20.1.4",
@@ -49,7 +49,7 @@ query = """
             t1."ItemCode",
             t4."ItemName",
             to_alphanum(t1."Quantity") "Quantity",
-            to_alphanum(t1."LineTotal") "Linetotal",
+            t1."LineTotal" "Linetotal",
             T5.ID "EntidadeId"
         from
             sbo_crestani_qa.oinv t0
@@ -76,10 +76,10 @@ nfes = Hana(connection).selectDb(query)
       <bpmn:outgoing>Flow_1v8ye58</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_0cycchs" sourceRef="Activity_1ap8ltd" targetRef="Activity_0qpzdpu" />
-    <bpmn:userTask id="Activity_1ap8ltd">
+    <bpmn:task id="Activity_1ap8ltd">
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_0cycchs</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:task>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_due_teste_ckl5pta">
@@ -97,7 +97,7 @@ nfes = Hana(connection).selectDb(query)
         <dc:Bounds x="670" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1iwjkb0_di" bpmnElement="Activity_1ap8ltd">
+      <bpmndi:BPMNShape id="Activity_0q8l5m7_di" bpmnElement="Activity_1ap8ltd">
         <dc:Bounds x="300" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
