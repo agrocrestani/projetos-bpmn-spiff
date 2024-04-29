@@ -10,7 +10,7 @@
       "type": "string",
       "title": "CNPJ"
     },
-    "firstName": {
+    "ie": {
       "type": "string",
       "title": "First name",
       "default": "Chuck"
