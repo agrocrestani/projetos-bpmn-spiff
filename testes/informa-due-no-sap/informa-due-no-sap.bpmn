@@ -26,43 +26,43 @@ You can also change the text you are reading here by updating the *Instructions*
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
-# connection = {
-#     "address": "172.20.1.4",
-#     "port": "30015",
-#     "user": "SYSTEM",
-#     "password": "9Ab63^Op33"
-# }
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
 
-# query = """
-#         select
-#             t0."DocEntry",
-#             t0."DocNum",
-#             t0."Serial",
-#             t3."KeyNfe",
-#             t0."DocDate",
-#             t0."SeqCode",
-#             t0."SeriesStr",
-#             t0."SubStr",
-#             t0."Model",
-#             t0."ObjType",
-#             t1."LineNum",
-#             t1."ItemCode",
-#             t4."ItemName",
-#             t1."Quantity",
-#             t1."LineTotal",
-#             T5.ID "EntidadeId"
-#         from
-#             sbo_crestani_prd.oinv t0
-#             INNER JOIN sbo_crestani_prd.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
-#             INNER JOIN sbo_crestani_prd.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
-#             INNER JOIN sbo_crestani_prd."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4
-#             INNER JOIN sbo_crestani_prd.oitm t4 ON T1."ItemCode" = t4."ItemCode"
-#             INNER JOIN sbo_crestani_prd."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
-#         WHERE
-#                 t2."MainUsage" = 82 AND t0."DocDate" &lt;= '20240215'  AND t1."ItemCode" = '022966'
-#                 and t3."KeyNfe" = '51240103262185000443550010000014221137660108'
-#         """
-# nfes = json.loads(Hana(connection).selectDb(query))
+query = """
+        select
+            t0."DocEntry",
+            t0."DocNum",
+            t0."Serial",
+            t3."KeyNfe",
+            t0."DocDate",
+            t0."SeqCode",
+            t0."SeriesStr",
+            t0."SubStr",
+            t0."Model",
+            t0."ObjType",
+            t1."LineNum",
+            t1."ItemCode",
+            t4."ItemName",
+            t1."Quantity",
+            t1."LineTotal",
+            T5.ID "EntidadeId"
+        from
+            sbo_crestani_prd.oinv t0
+            INNER JOIN sbo_crestani_prd.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
+            INNER JOIN sbo_crestani_prd.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
+            INNER JOIN sbo_crestani_prd."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4
+            INNER JOIN sbo_crestani_prd.oitm t4 ON T1."ItemCode" = t4."ItemCode"
+            INNER JOIN sbo_crestani_prd."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
+        WHERE
+                t2."MainUsage" = 82 AND t0."DocDate" &lt;= '20240215'  AND t1."ItemCode" = '022966'
+                and t3."KeyNfe" = '51240103262185000443550010000014221137660108'
+        """
+nfes = json.loads(Hana(connection).selectDb(query))
 
 # del(connection)
 # del(query)
