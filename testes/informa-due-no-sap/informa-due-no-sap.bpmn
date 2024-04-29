@@ -87,7 +87,7 @@ del(query)
         <bpmn:conditionExpression>due == True</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
       <bpmn:sequenceFlow id="Flow_1hznv83" sourceRef="Activity_1g6j532" targetRef="Gateway_0wkbi6q" />
-      <bpmn:sequenceFlow id="Flow_0nry0ei" sourceRef="Activity_0od9hbe" targetRef="Activity_1j1cc8f" />
+      <bpmn:sequenceFlow id="Flow_0nry0ei" sourceRef="Activity_0od9hbe" targetRef="Event_1b5n8ba" />
       <bpmn:sequenceFlow id="Flow_12epf89" sourceRef="Gateway_0wkbi6q" targetRef="Event_1b5n8ba">
         <bpmn:conditionExpression>due == False</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
@@ -225,16 +225,11 @@ del(rsp)</spiffworkflow:postScript>
       </bpmn:serviceTask>
       <bpmn:endEvent id="Event_1b5n8ba">
         <bpmn:incoming>Flow_12epf89</bpmn:incoming>
-        <bpmn:incoming>Flow_07x7mvp</bpmn:incoming>
+        <bpmn:incoming>Flow_0nry0ei</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:startEvent id="Event_0gcqa1j">
         <bpmn:outgoing>Flow_1aiipxu</bpmn:outgoing>
       </bpmn:startEvent>
-      <bpmn:sequenceFlow id="Flow_07x7mvp" sourceRef="Activity_1j1cc8f" targetRef="Event_1b5n8ba" />
-      <bpmn:manualTask id="Activity_1j1cc8f" name="Verificar">
-        <bpmn:incoming>Flow_0nry0ei</bpmn:incoming>
-        <bpmn:outgoing>Flow_07x7mvp</bpmn:outgoing>
-      </bpmn:manualTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_0ccgix8" sourceRef="Activity_1398pii" targetRef="EndEvent_1" />
   </bpmn:process>
@@ -272,10 +267,6 @@ del(rsp)</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Event_0gcqa1j_di" bpmnElement="Event_0gcqa1j">
         <dc:Bounds x="460" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1s8aivm_di" bpmnElement="Activity_1j1cc8f">
-        <dc:Bounds x="1130" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0o0tp2q_di" bpmnElement="Flow_0o0tp2q">
         <di:waypoint x="920" y="177" />
         <di:waypoint x="980" y="177" />
@@ -290,7 +281,7 @@ del(rsp)</spiffworkflow:postScript>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0nry0ei_di" bpmnElement="Flow_0nry0ei">
         <di:waypoint x="1080" y="177" />
-        <di:waypoint x="1130" y="177" />
+        <di:waypoint x="1272" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12epf89_di" bpmnElement="Flow_12epf89">
         <di:waypoint x="730" y="202" />
@@ -301,10 +292,6 @@ del(rsp)</spiffworkflow:postScript>
       <bpmndi:BPMNEdge id="Flow_1aiipxu_di" bpmnElement="Flow_1aiipxu">
         <di:waypoint x="496" y="177" />
         <di:waypoint x="560" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_07x7mvp_di" bpmnElement="Flow_07x7mvp">
-        <di:waypoint x="1230" y="177" />
-        <di:waypoint x="1272" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
