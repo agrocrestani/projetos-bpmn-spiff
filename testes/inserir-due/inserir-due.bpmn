@@ -6,7 +6,7 @@
     </bpmn:startEvent>
     <bpmn:serviceTask id="Activity_1g6j532" name="Retorna DUE da NFE">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>"nfe": {
+        <spiffworkflow:preScript>nfe = {
     "docentry": 36,
     "docnum": 16,
     "serial": 13123,
