@@ -9,9 +9,9 @@
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0ccgix8</bpmn:incoming>
+      <bpmn:incoming>Flow_1am86zg</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_1398pii" />
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_0nbi0ax" />
     <bpmn:scriptTask id="Activity_0qpzdpu" name="Busca as notas sem DUE">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
@@ -64,77 +64,47 @@ del(connection)
 del(query)
 # '51240103262185000109550010000245571183610655',</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:subProcess id="Activity_1398pii">
+    <bpmn:callActivity id="Activity_0nbi0ax" name="Insere no SAP" calledElement="Inserir_DUE">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript />
         <spiffworkflow:postScript>del(nfe)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
-      <bpmn:outgoing>Flow_0ccgix8</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1am86zg</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
         <bpmn:loopDataInputRef>nfes</bpmn:loopDataInputRef>
         <bpmn:loopDataOutputRef>nfes</bpmn:loopDataOutputRef>
         <bpmn:inputDataItem id="nfe" name="nfe" />
       </bpmn:multiInstanceLoopCharacteristics>
-      <bpmn:sequenceFlow id="Flow_1aiipxu" sourceRef="Event_0gcqa1j" targetRef="Activity_0nbi0ax" />
-      <bpmn:endEvent id="Event_1b5n8ba">
-        <bpmn:incoming>Flow_1shnr1s</bpmn:incoming>
-      </bpmn:endEvent>
-      <bpmn:startEvent id="Event_0gcqa1j">
-        <bpmn:outgoing>Flow_1aiipxu</bpmn:outgoing>
-      </bpmn:startEvent>
-      <bpmn:sequenceFlow id="Flow_1shnr1s" sourceRef="Activity_0nbi0ax" targetRef="Event_1b5n8ba" />
-      <bpmn:callActivity id="Activity_0nbi0ax" name="Insere no SAP" calledElement="Inserir_DUE">
-        <bpmn:incoming>Flow_1aiipxu</bpmn:incoming>
-        <bpmn:outgoing>Flow_1shnr1s</bpmn:outgoing>
-      </bpmn:callActivity>
-    </bpmn:subProcess>
-    <bpmn:sequenceFlow id="Flow_0ccgix8" sourceRef="Activity_1398pii" targetRef="EndEvent_1" />
+    </bpmn:callActivity>
+    <bpmn:sequenceFlow id="Flow_1am86zg" sourceRef="Activity_0nbi0ax" targetRef="EndEvent_1" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_informa_due_no_sap_ha8p30j">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="872" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ckybt4_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1398pii_di" bpmnElement="Activity_1398pii" isExpanded="true">
-        <dc:Bounds x="420" y="77" width="370" height="213" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1b5n8ba_di" bpmnElement="Event_1b5n8ba">
-        <dc:Bounds x="702" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0gcqa1j_di" bpmnElement="Event_0gcqa1j">
-        <dc:Bounds x="460" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0bg2fws_di" bpmnElement="Activity_0nbi0ax">
-        <dc:Bounds x="550" y="137" width="100" height="80" />
+        <dc:Bounds x="450" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_1aiipxu_di" bpmnElement="Flow_1aiipxu">
-        <di:waypoint x="496" y="177" />
-        <di:waypoint x="550" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1shnr1s_di" bpmnElement="Flow_1shnr1s">
-        <di:waypoint x="650" y="177" />
-        <di:waypoint x="702" y="177" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="642" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="370" y="177" />
-        <di:waypoint x="420" y="177" />
+        <di:waypoint x="450" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0ccgix8_di" bpmnElement="Flow_0ccgix8">
-        <di:waypoint x="790" y="177" />
-        <di:waypoint x="872" y="177" />
+      <bpmndi:BPMNEdge id="Flow_1am86zg_di" bpmnElement="Flow_1am86zg">
+        <di:waypoint x="550" y="177" />
+        <di:waypoint x="642" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
