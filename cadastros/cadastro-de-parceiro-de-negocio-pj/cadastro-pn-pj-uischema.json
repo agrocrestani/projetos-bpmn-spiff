@@ -13,7 +13,7 @@
     "ui:placeholder": "ui:emptyValue causes this field to always be valid despite being required",
     "ui:autocomplete": "family-name",
     "ui:enableMarkdownInDescription": true,
-    "ui:description": "Digite a inscrição sem pontos, traços e/ou espaços"
+    "ui:description": "Digite a  sem pontos, traços e/ou espaços"
   },
   "ui:layout": [
     {
