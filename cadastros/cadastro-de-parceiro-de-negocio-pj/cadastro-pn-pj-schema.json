@@ -12,7 +12,7 @@
     },
     "ie": {
       "type": "string",
-      "title": "First name",
+      "title": "Inscri",
       "default": "Chuck"
     }
   }
