@@ -1,6 +1,6 @@
 {
-  "title": "Text Field",
-  "description": "A simple text field that is required, has a default value, sets a placeholder, includes a description. (field name will be 'firstname')",
+  "title": "Checkbox",
+  "description": "A super simple checkbox",
   "type": "object",
   "required": [
     "firstName"
@@ -13,6 +13,11 @@
     "ie": {
       "type": "string",
       "title": "Inscrição Estadual"
+    },
+    "done": {
+      "type": "boolean",
+      "title": "Done?",
+      "default": false
     }
   }
 }
