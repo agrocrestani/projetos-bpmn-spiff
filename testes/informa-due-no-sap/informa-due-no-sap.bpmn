@@ -14,7 +14,7 @@
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_1398pii" />
     <bpmn:scriptTask id="Activity_0qpzdpu" name="Busca as notas sem DUE">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
@@ -67,7 +67,7 @@ del(query)
     <bpmn:subProcess id="Activity_1398pii">
       <bpmn:extensionElements>
         <spiffworkflow:preScript />
-        <spiffworkflow:postScript />
+        <spiffworkflow:postScript>del(nfe)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0ccgix8</bpmn:outgoing>
@@ -227,7 +227,7 @@ del(rsp)</spiffworkflow:postScript>
       <bpmn:sequenceFlow id="Flow_07x7mvp" sourceRef="Activity_1j1cc8f" targetRef="Event_1b5n8ba" />
       <bpmn:manualTask id="Activity_1j1cc8f" name="Verificar">
         <bpmn:extensionElements>
-          <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+          <spiffworkflow:instructionsForEndUser />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0nry0ei</bpmn:incoming>
         <bpmn:outgoing>Flow_07x7mvp</bpmn:outgoing>
