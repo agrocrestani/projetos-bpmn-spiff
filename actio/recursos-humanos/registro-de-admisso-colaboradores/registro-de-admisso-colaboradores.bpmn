@@ -6,7 +6,7 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="IPACTIORH01" targetRef="ACTIORH01" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_0etx8vl</bpmn:incoming>
+      <bpmn:incoming>Flow_1quid0u</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="ACTIORH01" targetRef="Activity_0tow411" />
     <bpmn:userTask id="ACTIORH01" name="Inserir dados Colaboradores">
@@ -22,7 +22,7 @@
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_0etx8vl" sourceRef="Activity_0tow411" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_0etx8vl" sourceRef="Activity_0tow411" targetRef="LoginActio" />
     <bpmn:manualTask id="Activity_0tow411" name="Confirma dados dos Colaboradores">
       <bpmn:extensionElements>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response">
@@ -59,6 +59,23 @@
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0etx8vl</bpmn:outgoing>
     </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_1quid0u" sourceRef="LoginActio" targetRef="EndEvent_1" />
+    <bpmn:serviceTask id="LoginActio" name="Login Actio">
+      <bpmn:extensionElements>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequest" resultVariable="response">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" />
+            <spiffworkflow:parameter id="headers" type="any" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="data" type="any" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0etx8vl</bpmn:incoming>
+      <bpmn:outgoing>Flow_1quid0u</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_registro_de_admisso_colaboradores_5reiwhf">
@@ -73,7 +90,11 @@
         <dc:Bounds x="480" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1042" y="159" width="36" height="36" />
+        <dc:Bounds x="832" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1yoq94z_di" bpmnElement="LoginActio">
+        <dc:Bounds x="650" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
@@ -85,7 +106,11 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0etx8vl_di" bpmnElement="Flow_0etx8vl">
         <di:waypoint x="580" y="177" />
-        <di:waypoint x="1042" y="177" />
+        <di:waypoint x="650" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1quid0u_di" bpmnElement="Flow_1quid0u">
+        <di:waypoint x="750" y="177" />
+        <di:waypoint x="832" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
