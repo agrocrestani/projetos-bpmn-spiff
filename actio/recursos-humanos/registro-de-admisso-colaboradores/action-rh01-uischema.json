@@ -3,7 +3,7 @@
     "ui:layout": [
       {
         "escritorioAtivos":{},
-        ""
+        "escritorioDemitidos"
       }
   ],
   "filialEscritorio": {
