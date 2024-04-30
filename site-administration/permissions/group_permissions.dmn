@@ -250,7 +250,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1r91vo2">
-          <text>"PG:comercial/graos"</text>
+          <text>"PG:comercial:graos"</text>
         </outputEntry>
       </rule>
     </decisionTable>
