@@ -65,7 +65,7 @@
     "items": {
       "ui:layout": [{
         "item":{
-          "sm": 2,
+          "sm": 6,
           "md": 2,
           "lg": 4
         },
