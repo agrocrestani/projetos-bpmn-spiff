@@ -1,4 +1,6 @@
 {
-  "filialEscritorio": {},
+  "filialEscritorio": {
+    "escritorioAtivos": 1
+  },
   "filialBrasnorte": {}
 }
