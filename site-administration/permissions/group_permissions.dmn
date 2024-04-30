@@ -216,13 +216,13 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1q3yc0c">
-          <text>"comercialGraos"</text>
+          <text>"ComercialGraos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ujcpau">
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0do9eq4">
-          <text>"BASIC"</text>
+          <text>"PG:comercial/graos"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_15a8asc">
