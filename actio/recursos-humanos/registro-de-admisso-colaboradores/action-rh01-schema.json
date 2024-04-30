@@ -11,10 +11,10 @@
       "title": "Simple",
       "type": "object",
       "properties": {
-         "escritorioAtivos": {
-            "type": "string",
-            "title": "Colaboradores Ativos"
-          },
+        "escritorioAtivos": {
+          "type": "string",
+          "title": "Colaboradores Ativos"
+        },
           "escritorioDemitidos": {
             "type": "string",
             "title": "Colaboradores Demitidos"
