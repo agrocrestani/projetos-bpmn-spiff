@@ -19,7 +19,7 @@
           "enum": [
             "1"
           ],
-          "title": "Contribuinte ICMS (informar a IE do destinatário)"
+          "title": "1 - Contribuinte ICMS (informar a IE do destinatário)"
         },
         {
           "type": "string",
