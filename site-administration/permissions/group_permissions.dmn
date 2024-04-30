@@ -216,13 +216,13 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1q3yc0c">
-          <text>"ComercialGraos"</text>
+          <text>"comercialGraos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ujcpau">
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0do9eq4">
-          <text>"PG:comercial/graos"</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_15a8asc">
@@ -237,6 +237,20 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1ow5t8k">
           <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0h8lcjr">
+        <inputEntry id="UnaryTests_18ym718">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pjmdoh">
+          <text>"ComercialGraos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15oft7d">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1r91vo2">
+          <text>"/comercial/graos"</text>
         </outputEntry>
       </rule>
     </decisionTable>
