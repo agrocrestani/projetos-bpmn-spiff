@@ -18,6 +18,6 @@
       "ui:placeholder": "Digite o número de colaboradores demitidos",
       "ui:autocomplete": "family-name"
     }
-  },
+  }
 
 }
