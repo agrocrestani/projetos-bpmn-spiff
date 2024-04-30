@@ -12,7 +12,7 @@
     },
     "escritorioDemitidos": {
       "type": "string",
-      "title": "First name",
+      "title": "Colaboradores Demitidos",
       "default": "Colaboradores Demitidos"
     }
   }
