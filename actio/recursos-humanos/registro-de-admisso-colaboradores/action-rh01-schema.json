@@ -7,7 +7,7 @@
     "escritorioDemitidos"
   ],
   "properties": {
-    "filialE"
+    "filialEscritorio":
     "escritorioAtivos": {
       "type": "string",
       "title": "Colaboradores Ativos"
