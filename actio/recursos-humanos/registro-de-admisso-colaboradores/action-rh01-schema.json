@@ -3,7 +3,9 @@
   "description": "Informa a quantidade de colaborares ativos e demitidos no mês por filial",
   "type": "object",
   "required": [
-
+    "escritorioAtivos",
+    "escritorioDemitidos",
+    ""
   ],
   "properties": {
     "filialEscritorio":{
