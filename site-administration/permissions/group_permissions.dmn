@@ -264,7 +264,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0p10bmb">
-          <text>"/screts/*"</text>
+          <text>"/secrets/*"</text>
         </outputEntry>
       </rule>
     </decisionTable>
