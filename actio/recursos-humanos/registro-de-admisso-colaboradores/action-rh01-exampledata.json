@@ -1,10 +1,6 @@
 {
   "firstName": "Chuck",
-  "tasks": [
-    {
-      "done": false
-    }
-  ],
+  "tasks": [],
   "vegetarian": false,
   "personalData": {
     "drivingSkill": 7
