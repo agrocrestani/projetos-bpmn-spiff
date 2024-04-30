@@ -1,6 +1,6 @@
 {
   "title": "Colaboradores Ativos e Demitidos do mês",
-  "description": "O preo",
+  "description": "O processo ",
   "type": "object",
   "required": [
     "escritorioAtivos",
