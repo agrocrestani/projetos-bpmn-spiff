@@ -227,7 +227,24 @@ del(rsp)</spiffworkflow:postScript>
       <bpmn:sequenceFlow id="Flow_07x7mvp" sourceRef="Activity_1j1cc8f" targetRef="Event_1b5n8ba" />
       <bpmn:manualTask id="Activity_1j1cc8f" name="Verificar">
         <bpmn:extensionElements>
-          <spiffworkflow:instructionsForEndUser />
+          <spiffworkflow:instructionsForEndUser>## Informado NFe na DUE no SAP
+
+| Campo | Valor  |
+| ---------: | ------- |
+| Id DUE | {{idDueSap[0]['id']}} |
+| DocEntry | {{nfe['docentry']}} |
+|DocDate | {{nfe['docdate'][0:10]}} | 
+|DocNum|{{nfe['docnum']}}|
+|SeqCode|{{nfe['seqcode']}}|
+|**Serial**|**{{nfe['serial']}}**|
+|SeriesStr|{{nfe['seriesstr']}}|
+|Model|{{nfe['model']}}|
+|ObjType|{{nfe['objtype']}}|
+|LineNum|{{nfe['linenum']}}|
+|ItemCode|{{nfe['itemcode']}}|
+|ItemName|{{nfe['itemname']}}|
+|LineTotal|{{nfe['linetotal']}}|
+|KeyNfe|{{nfe['keynfe']}}|</spiffworkflow:instructionsForEndUser>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0nry0ei</bpmn:incoming>
         <bpmn:outgoing>Flow_07x7mvp</bpmn:outgoing>
