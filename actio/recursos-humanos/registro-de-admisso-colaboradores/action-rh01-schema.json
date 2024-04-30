@@ -29,7 +29,7 @@
           "type": "number",
           "title": "Colaboradores Ativos"
         },
-        "escritorioDemitidos": {
+        "brasnorteDemitidos": {
           "type": "number",
           "title": "Colaboradores Demitidos"
         }
