@@ -8,7 +8,7 @@
   ],
   "properties": {
     "filialEscritorio":{
-      "title": "CoEscritório",
+      "title": "Escritório",
       "type": "object",
       "properties": {
         "escritorioAtivos": {
