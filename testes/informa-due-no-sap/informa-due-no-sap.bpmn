@@ -227,7 +227,7 @@ del(rsp)</spiffworkflow:postScript>
       <bpmn:sequenceFlow id="Flow_07x7mvp" sourceRef="Activity_1j1cc8f" targetRef="Event_1b5n8ba" />
       <bpmn:manualTask id="Activity_1j1cc8f" name="Verificar registro">
         <bpmn:extensionElements>
-          <spiffworkflow:instructionsForEndUser>## Informado NFe na DUE no SAP
+          <spiffworkflow:instructionsForEndUser>## Informado NFe: *{{nfe['serial']}}* na DUE: *{{due}}* no SAP
 
 | Campo | Valor  |
 | ---------: | ------- |
@@ -236,7 +236,6 @@ del(rsp)</spiffworkflow:postScript>
 |DocDate  | {{nfe['docdate'][0:10]}} | 
 |DocNum  |{{nfe['docnum']}}|
 |SeqCode |{{nfe['seqcode']}}|
-|**Serial** |**{{nfe['serial']}}**|
 |SeriesStr|{{nfe['seriesstr']}}|
 |Model|{{nfe['model']}}|
 |ObjType|{{nfe['objtype']}}|
@@ -270,6 +269,10 @@ del(rsp)</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Activity_0k10jva_di" bpmnElement="Activity_0nhlv6j">
         <dc:Bounds x="820" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18vvxc9_di" bpmnElement="Activity_0od9hbe">
+        <dc:Bounds x="990" y="140" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0wkbi6q_di" bpmnElement="Gateway_0wkbi6q" isMarkerVisible="true">
         <dc:Bounds x="705" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -284,10 +287,6 @@ del(rsp)</spiffworkflow:postScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1s8aivm_di" bpmnElement="Activity_1j1cc8f">
         <dc:Bounds x="1130" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_18vvxc9_di" bpmnElement="Activity_0od9hbe">
-        <dc:Bounds x="990" y="140" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0o0tp2q_di" bpmnElement="Flow_0o0tp2q">
