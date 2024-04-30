@@ -3,10 +3,10 @@
         {
             "indicadorIE":{"sm": 2,
         "md": 2,
-        "lg": },
+        "lg": 6},
             "indicadorOpConsumidor": {"sm": 2,
         "md": 2,
-        "lg": 4}
+        "lg": }
         }
     ]
 }
