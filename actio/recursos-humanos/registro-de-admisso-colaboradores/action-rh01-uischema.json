@@ -9,7 +9,7 @@
       "ui:autofocus": true,
       "ui:emptyValue": "",
       "ui:placeholder": "Digite o número de colaboradores ativos",
-      "ui:autocomplete": "family-name",
+      "ui:autocomplete": "family-name"
     },
     "escritorioDemitidos": {
       "ui:autofocus": true,
