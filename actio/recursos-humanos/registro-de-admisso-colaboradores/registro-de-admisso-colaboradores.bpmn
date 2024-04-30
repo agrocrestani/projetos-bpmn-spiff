@@ -11,13 +11,13 @@
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="ICACTIORH01" targetRef="EndEvent_1" />
     <bpmn:userTask id="ICACTIORH01" name="Inserir dados Colaboradores">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="action-rh01-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="action-rh01-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript></spiffworkflow:preScript>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:preScript />
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
