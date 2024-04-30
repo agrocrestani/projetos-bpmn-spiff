@@ -225,7 +225,7 @@ del(rsp)</spiffworkflow:postScript>
         <bpmn:outgoing>Flow_1aiipxu</bpmn:outgoing>
       </bpmn:startEvent>
       <bpmn:sequenceFlow id="Flow_07x7mvp" sourceRef="Activity_1j1cc8f" targetRef="Event_1b5n8ba" />
-      <bpmn:manualTask id="Activity_1j1cc8f" name="Verificar">
+      <bpmn:manualTask id="Activity_1j1cc8f" name="Verificar registro">
         <bpmn:extensionElements>
           <spiffworkflow:instructionsForEndUser>## Informado NFe na DUE no SAP
 
