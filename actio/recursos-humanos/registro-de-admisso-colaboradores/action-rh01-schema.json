@@ -15,10 +15,10 @@
           "type": "string",
           "title": "Colaboradores Ativos"
         },
-          "escritorioDemitidos": {
-            "type": "string",
-            "title": "Colaboradores Demitidos"
-          }
+        "escritorioDemitidos": {
+          "type": "string",
+          "title": "Colaboradores Demitidos"
+        }
       }
     }
    
