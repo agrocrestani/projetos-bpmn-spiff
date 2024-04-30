@@ -45,8 +45,8 @@ Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no 
     <bpmn:sequenceFlow id="Flow_1ozlsyd" sourceRef="Activity_16qlavn" targetRef="EndEvent_1" />
     <bpmn:manualTask id="Activity_16qlavn" name="Verificar Solicitação">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>| Campo      | Conteúdo |
-| ------------- | ------------ | 
+        <spiffworkflow:instructionsForEndUser>| Campo      | Conteúdo                  ||
+| -------------: | :------------ | ------------- | 
 |**CNPJ**  | {{pn['cnpj']}}|
 |**Nome**:| {{pn['nome']}}|
 |**Fantasia**:| {{pn['fantasia']}}|
@@ -59,7 +59,7 @@ Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no 
 |**Complemento**:| {{pn['complemento']}}|
 |**Bairro**:| {{pn['bairro']}}|
 |**CEP**:| {{pn['cep']}}|
-|**Municipio**:| {{pn['municipio']}}|
+|**Municipio**:| {{pn['municipio']}}| **UF**: {{pn['uf']}}|
 |**UF**:| {{pn['uf']}}|
 |**E-mail**:| {{pn['email']}}|
 |**Telefone**:| {{pn['telefone']}}|
