@@ -10,6 +10,7 @@
     "filialEscritorio":{
       "title": "Escritório",
       "type": "object",
+      "properties": {
         "escritorioAtivos": {
           "type": "number",
           "title": "Colaboradores Ativos"
@@ -17,6 +18,7 @@
         "escritorioDemitidos": {
           "type": "number",
           "title": "Colaboradores Demitidos"
+        }
       }
     }
    
