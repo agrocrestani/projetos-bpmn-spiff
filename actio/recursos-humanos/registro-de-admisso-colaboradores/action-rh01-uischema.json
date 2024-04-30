@@ -2,8 +2,8 @@
   "ui:layout": [
     {
       "escritorioAtivos": {},
-      "escritorioDemitidos": {}
-      "title"
+      "escritorioDemitidos": {},
+      "title":
     }
   ],
   "title": "Fixed array of conditionals",
