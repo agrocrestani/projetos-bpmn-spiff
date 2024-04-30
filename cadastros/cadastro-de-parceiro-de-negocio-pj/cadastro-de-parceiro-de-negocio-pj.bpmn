@@ -72,8 +72,7 @@ Neste processo você vai iniciar o cadastro de um Novo Parceiro de Negócios no 
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>atividade_principal = pn['atividade_principal'][0]['code'] + ' - ' + pn['atividade_principal'][0]['text']
 atividades_secundarias = pn['atividades_secundarias'][0]
-
-data = task.data</spiffworkflow:preScript>
+</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_13oahru</bpmn:incoming>
       <bpmn:outgoing>Flow_1ozlsyd</bpmn:outgoing>
