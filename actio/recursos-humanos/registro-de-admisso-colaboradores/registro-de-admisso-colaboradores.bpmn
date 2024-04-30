@@ -4,12 +4,12 @@
     <bpmn:startEvent id="IPACTIORH01">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="IPACTIORH01" targetRef="ICACTIORH01" />
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="IPACTIORH01" targetRef="ACTIORH01" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:incoming>Flow_0etx8vl</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="ICACTIORH01" targetRef="EndEvent_1" />
-    <bpmn:userTask id="ICACTIORH01" name="Inserir dados Colaboradores">
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="ACTIORH01" targetRef="Activity_0tow411" />
+    <bpmn:userTask id="ACTIORH01" name="Inserir dados Colaboradores">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:properties>
@@ -22,18 +22,58 @@
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0etx8vl" sourceRef="Activity_0tow411" targetRef="EndEvent_1" />
+    <bpmn:manualTask id="Activity_0tow411" name="Confirma dados dos Colaboradores">
+      <bpmn:extensionElements>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" />
+            <spiffworkflow:parameter id="headers" type="any" />
+            <spiffworkflow:parameter id="data" type="any" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="actio-rh02-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="actio-rh02-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser>## Funcionário Matriz 
+| Situação | Quantidade |
+| ---------- | :----------: |
+|Ativos  | {{filialEscritorio['escritorioAtivos']}} |
+|Demitidos |{{filialEscritorio['escritorioDemitidos']}} |
+
+
+ }}: {
+    "escritorioAtivos": 1,
+    "escritorioDemitidos": 1
+  },
+  "filialBrasnorte": {
+    "brasnorteAtivos": 1,
+    "brasnorteDemitidos": 1
+  }
+</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0etx8vl</bpmn:outgoing>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_registro_de_admisso_colaboradores_5reiwhf">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="IPACTIORH01">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="522" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1fjxmla_di" bpmnElement="ICACTIORH01">
+      <bpmndi:BPMNShape id="Activity_1fjxmla_di" bpmnElement="ACTIORH01">
         <dc:Bounds x="320" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_17dm0xt_di" bpmnElement="Activity_0tow411">
+        <dc:Bounds x="480" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1042" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
@@ -41,7 +81,11 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="420" y="177" />
-        <di:waypoint x="522" y="177" />
+        <di:waypoint x="480" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0etx8vl_di" bpmnElement="Flow_0etx8vl">
+        <di:waypoint x="580" y="177" />
+        <di:waypoint x="1042" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
