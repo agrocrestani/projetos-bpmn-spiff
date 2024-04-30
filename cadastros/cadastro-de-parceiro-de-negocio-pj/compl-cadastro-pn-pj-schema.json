@@ -46,7 +46,7 @@
           "enum": [
             "-1"
           ],
-          "title": "-"
+          "title": "-1 - Não De"
         },
         {
           "type": "string",
