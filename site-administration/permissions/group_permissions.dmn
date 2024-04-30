@@ -9,7 +9,7 @@
       </input>
       <output id="OutputClause_14rq1xp" name="permission_groups" typeRef="string" />
       <output id="output_1" name="permissions" typeRef="string" biodi:width="279" />
-      <output id="OutputClause_1d0f70s" name="permission_uris" typeRef="string" biodi:width="254" />
+      <output id="OutputClause_1d0f70s" name="permission_uris" typeRef="string" biodi:width="335" />
       <rule id="DecisionRule_13uhk78">
         <description>admin group has access to everything. The permissions create, read, update, and delete are the full set that is available, and "all" is a shortcut to include all permissions.</description>
         <inputEntry id="UnaryTests_1yb5tu4">
@@ -250,7 +250,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1r91vo2">
-          <text>"PG:comercial:graos"</text>
+          <text>"PG:comercial:graos:*"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0xm4kow">
@@ -265,6 +265,20 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0p10bmb">
           <text>"/secrets/*"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fylxmi">
+        <inputEntry id="UnaryTests_041dfkz">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cijs3u">
+          <text>"ComercialGraos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nkwil6">
+          <text>["read"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hnww3z">
+          <text>"/process-groups/comercial:graos:*"</text>
         </outputEntry>
       </rule>
     </decisionTable>
