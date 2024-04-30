@@ -10,7 +10,7 @@
     "filialEscritorio":{
       "title": "Escritório",
       "type": "object",
-      "properties": {
+      
         "escritorioAtivos": {
           "type": "number",
           "title": "Colaboradores Ativos"
