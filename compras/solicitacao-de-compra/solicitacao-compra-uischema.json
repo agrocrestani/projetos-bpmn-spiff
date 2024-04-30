@@ -66,8 +66,8 @@
       "ui:layout": [{
         "item":{
           "sm": 2,
-            "md": 2,
-            "lg": 4
+          "md": 2,
+          "lg": 4
         },
         "quantidade":{}
       }],
