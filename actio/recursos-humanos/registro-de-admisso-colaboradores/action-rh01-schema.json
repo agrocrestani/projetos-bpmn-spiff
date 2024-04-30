@@ -1,6 +1,6 @@
 {
   "title": "Colaboradores Ativos e Demitidos do mês",
-  "description": "Informa a quantidade de colaborares ativos ",
+  "description": "Informa a quantidade de colaborares ativos e demi",
   "type": "object",
   "required": [
     "escritorioAtivos",
