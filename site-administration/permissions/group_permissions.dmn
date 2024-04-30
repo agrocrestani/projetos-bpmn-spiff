@@ -267,20 +267,6 @@
           <text>"/secrets/*"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0fylxmi">
-        <inputEntry id="UnaryTests_041dfkz">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1cijs3u">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1nkwil6">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0hnww3z">
-          <text></text>
-        </outputEntry>
-      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
