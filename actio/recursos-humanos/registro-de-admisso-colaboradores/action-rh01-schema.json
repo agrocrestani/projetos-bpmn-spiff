@@ -8,7 +8,7 @@
   ],
   "properties": {
     "filialEscritorio":{
-      "title": "Simple",
+      "title": "",
       "type": "object",
       "properties": {
         "escritorioAtivos": {
