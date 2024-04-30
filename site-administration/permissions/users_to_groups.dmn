@@ -142,6 +142,17 @@
           <text>"ComercialGraos"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1qep9xe">
+        <inputEntry id="UnaryTests_08k6vfc">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1j37ksp">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_190axfq">
+          <text>"everybody"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
