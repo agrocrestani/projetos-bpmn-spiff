@@ -1,6 +1,6 @@
 {
-  "title": "Admissão e Demissão Agro Crestani",
-  "description": "Informar os dados de Admissão e Demissão dos colaboradores da Agropecuaria Crestani para serem registrados no Actio",
+  "title": "Nested Form / Repeating Section",
+  "description": "Allow the form submitter to add multiple entries for a set of fields.",
   "type": "object",
   "required": [
     "firstName"
@@ -10,6 +10,28 @@
       "type": "string",
       "title": "First name",
       "default": "Chuck"
+    },
+    "tasks": {
+      "type": "array",
+      "title": "Tasks",
+      "items": {
+        "type": "object",
+        "required": [
+          "title"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Please describe the task to complete"
+          },
+          "done": {
+            "type": "boolean",
+            "title": "Done?",
+            "default": false
+          }
+        }
+      }
     }
   }
 }
