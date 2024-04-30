@@ -1,9 +1,9 @@
 {
   "filialEscritorio": {
-  "ui:layout": [
-    {
-      "filialEscritorio": {}
-    }
+    "ui:layout": [
+      {
+        "filialEscritorio": {}
+      }
   ],
   "filialEscritorio": {
     "escritorioAtivos": {
