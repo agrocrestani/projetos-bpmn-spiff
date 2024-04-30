@@ -1,6 +1,7 @@
 {
   "ui:layout": [{
-    "filialEscritorio": {}
+    "filialEscritorio": {},
+    filialBrasnorte
   }],
   "filialEscritorio": {
     "ui:layout": [
