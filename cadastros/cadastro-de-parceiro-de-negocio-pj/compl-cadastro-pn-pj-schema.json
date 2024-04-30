@@ -53,7 +53,7 @@
           "enum": [
             "0"
           ],
-          "title": "Urgente"
+          "title": "0 - Normal"
         },
         {
           "type": "string",
