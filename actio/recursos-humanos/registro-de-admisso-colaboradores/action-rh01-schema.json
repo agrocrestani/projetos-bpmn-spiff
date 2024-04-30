@@ -22,7 +22,7 @@
       }
     },
     "filialBrasnorte":{
-      "title": "Bras",
+      "title": "Brasnorte",
       "type": "object",
       "properties": {
         "brasnorteAtivos": {
