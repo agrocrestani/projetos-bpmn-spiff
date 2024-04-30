@@ -35,7 +35,7 @@
       "ui:placeholder": "Digite o número de colaboradores ativos",
       "ui:autocomplete": "family-name"
     },
-    "escritorioDemitidos": {
+    "brasnorteDemitidos": {
       "ui:autofocus": true,
       "ui:emptyValue": "",
       "ui:placeholder": "Digite o número de colaboradores demitidos",
