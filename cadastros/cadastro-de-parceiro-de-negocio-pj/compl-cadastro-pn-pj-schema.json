@@ -19,7 +19,7 @@
           "enum": [
             "1"
           ],
-          "title": "Contribuinte ICMS (informar"
+          "title": "Contribuinte ICMS (informar a IE do destin"
         },
         {
           "type": "string",
