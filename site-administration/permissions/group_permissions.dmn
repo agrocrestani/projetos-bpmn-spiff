@@ -7,7 +7,7 @@
           <text>"*"</text>
         </inputExpression>
       </input>
-      <output id="OutputClause_14rq1xp" name="permission_groups" typeRef="string" />
+      <output id="OutputClause_14rq1xp" name="permission_groups" typeRef="string" biodi:width="277" />
       <output id="output_1" name="permissions" typeRef="string" biodi:width="279" />
       <output id="OutputClause_1d0f70s" name="permission_uris" typeRef="string" biodi:width="335" />
       <rule id="DecisionRule_13uhk78">
@@ -239,6 +239,20 @@
           <text>"BASIC"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0xm4kow">
+        <inputEntry id="UnaryTests_03l4pqx">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mblbt7">
+          <text>"ComercialGraos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cl2mk2">
+          <text>["read"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p10bmb">
+          <text>"/secrets:*"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0h8lcjr">
         <inputEntry id="UnaryTests_18ym718">
           <text></text>
@@ -253,18 +267,18 @@
           <text>"PG:comercial"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0xm4kow">
-        <inputEntry id="UnaryTests_03l4pqx">
+      <rule id="DecisionRule_0yflr5j">
+        <inputEntry id="UnaryTests_15xe8ub">
           <text></text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0mblbt7">
-          <text>"ComercialGraos"</text>
+        <outputEntry id="LiteralExpression_08q3sd9">
+          <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1cl2mk2">
-          <text>["read"]</text>
+        <outputEntry id="LiteralExpression_13wwdug">
+          <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0p10bmb">
-          <text>"/secrets/*"</text>
+        <outputEntry id="LiteralExpression_15qu6t1">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
