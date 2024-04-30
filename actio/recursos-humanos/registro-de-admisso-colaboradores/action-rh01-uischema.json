@@ -6,6 +6,19 @@
     }
   ],
   "filialEscritorio":{
-
+  "escritorioAtivos": {
+    "ui:autofocus": true,
+    "ui:emptyValue": "",
+    "ui:placeholder": "Digite o número de colaboradores ativos",
+    "ui:autocomplete": "family-name",
+    "ui:enableMarkdownInDescription": true
+  },
+  "escritorioDemitidos": {
+    "ui:autofocus": true,
+    "ui:emptyValue": "",
+    "ui:placeholder": "Digite o número de colaboradores demitidos",
+    "ui:autocomplete": "family-name",
+    "ui:enableMarkdownInDescription": true
+  }
   }
 }
