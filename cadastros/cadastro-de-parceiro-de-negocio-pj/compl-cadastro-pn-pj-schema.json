@@ -11,7 +11,7 @@
       ]
     },
     "indicadorOpConsumidor": {
-      "title": "Indicador de Op. Consum",
+      "title": "Indicador de Op. Consumidor",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:fruits"
