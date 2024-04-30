@@ -11,27 +11,6 @@
       "title": "First name",
       "default": "Chuck"
     },
-    "tasks": {
-      "type": "array",
-      "title": "Tasks",
-      "items": {
-        "type": "object",
-        "required": [
-          "title"
-        ],
-        "properties": {
-          "title": {
-            "type": "string",
-            "title": "Title",
-            "description": "Please describe the task to complete"
-          },
-          "done": {
-            "type": "boolean",
-            "title": "Done?",
-            "default": false
-          }
-        }
-      }
-    }
+
   }
 }
