@@ -5,7 +5,7 @@
       firstName
     }
   ],
-  "escritorio": {
+  "escritorioAtivos": {
     "ui:autofocus": true,
     "ui:emptyValue": "",
     "ui:placeholder": "ui:emptyValue causes this field to always be valid despite being required",
