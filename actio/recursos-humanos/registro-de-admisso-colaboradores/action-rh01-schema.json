@@ -10,6 +10,7 @@
     "filialEscritorio":{
       "title": "Simple",
       "type": "object",
+      
     }
     "escritorioAtivos": {
       "type": "string",
