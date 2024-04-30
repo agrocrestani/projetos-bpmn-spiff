@@ -63,7 +63,7 @@
   },
   "solicitacao": {
     "items": {
-      
+      LAYOU
       "item": {
         "ui:widget": "typeahead",
         "ui:options": {
