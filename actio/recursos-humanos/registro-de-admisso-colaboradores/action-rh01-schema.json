@@ -22,7 +22,7 @@
       }
     },
     "filialBrasnorte":{
-      "title": "Escritório",
+      "title": "Bras",
       "type": "object",
       "properties": {
         "brasnorteAtivos": {
