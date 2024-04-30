@@ -231,8 +231,12 @@ del(rsp)</spiffworkflow:postScript>
 
 | Campo | Valor  |
 | ---------: | ------- |
-| Id DUE | {{idDueSap[0]['id']}} |
+| Id DUE    | {{idDueSap[0]['id']}} |
 | DocEntry | {{nfe['docentry']}} |
+|DocDate  | {{nfe['docdate'][0:10]}} | 
+|DocNum  |{{nfe['docnum']}}|
+|SeqCode |{{nfe['seqcode']}}|
+|**Serial** |**{{nfe['serial']}}**|
 </spiffworkflow:instructionsForEndUser>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0nry0ei</bpmn:incoming>
