@@ -25,7 +25,7 @@
   "filialBrasnorte": {
     "ui:layout": [
       {
-        "escritorioAtivos":{},
+        "brAtivos":{},
         "escritorioDemitidos": {}
       }
     ],
