@@ -69,7 +69,11 @@
           "md": 2,
           "lg": 4
         },
-        "quantidade":{}
+        "quantidade":{
+          "sm": 2,
+        "md": 2,
+        "lg": 4
+        }
       }],
       "item": {
         "ui:widget": "typeahead",
