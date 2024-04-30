@@ -26,7 +26,7 @@
           "enum": [
             "2"
           ],
-          "title": "Contribuinte isento de Inscrição"
+          "title": "2 - Contribuinte isento de Inscrição"
         },
         {
           "type": "string",
