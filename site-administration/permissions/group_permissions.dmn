@@ -239,20 +239,6 @@
           <text>"BASIC"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0xm4kow">
-        <inputEntry id="UnaryTests_03l4pqx">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0mblbt7">
-          <text>"ComercialGraos"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1cl2mk2">
-          <text>["read"]</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0p10bmb">
-          <text>"/secrets/baseSap"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0h8lcjr">
         <inputEntry id="UnaryTests_18ym718">
           <text></text>
@@ -264,7 +250,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1r91vo2">
-          <text>"PG:comercial"</text>
+          <text>"ELEVATED"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0yflr5j">
