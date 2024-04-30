@@ -8,7 +8,7 @@
   "properties": {
     "escritorio": {
       "type": "string",
-      "title": "Cola"
+      "title": "Colaboradore"
     }
   }
 }
