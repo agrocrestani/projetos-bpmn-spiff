@@ -67,12 +67,12 @@
         "item":{
           "sm": 2,
           "md": 2,
-          "lg": 4
+          "lg": 6
         },
         "quantidade":{
           "sm": 2,
           "md": 2,
-          "lg": 4
+          "lg": 2
         }
       }],
       "item": {
