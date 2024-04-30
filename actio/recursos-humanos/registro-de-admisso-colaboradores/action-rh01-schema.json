@@ -9,7 +9,7 @@
   "properties": {
     "filialEscritorio":{
       "title": "Escritório",
-      "description"
+      "description": "tatata"
       "type": "object",
       "properties": {
         "escritorioAtivos": {
