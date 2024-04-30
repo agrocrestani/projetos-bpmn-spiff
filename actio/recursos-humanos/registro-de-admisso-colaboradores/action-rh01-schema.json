@@ -21,7 +21,7 @@
         }
       }
     },
-    "filialEscritorio":{
+    "filialBrasnorte":{
       "title": "Escritório",
       "type": "object",
       "properties": {
