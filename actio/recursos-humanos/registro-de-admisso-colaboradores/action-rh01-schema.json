@@ -10,7 +10,7 @@
       "type": "string",
       "title": "Colaboradores Ativos"
     },
-    "firstName": {
+    "escritorioDemitidos": {
       "type": "string",
       "title": "First name",
       "default": "Chuck"
