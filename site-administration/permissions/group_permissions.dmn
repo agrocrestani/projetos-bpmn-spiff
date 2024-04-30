@@ -253,6 +253,20 @@
           <text>"PG:comercial:graos"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0xm4kow">
+        <inputEntry id="UnaryTests_03l4pqx">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mblbt7">
+          <text>"ComercialGraos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cl2mk2">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p10bmb">
+          <text>"/screts/*"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
