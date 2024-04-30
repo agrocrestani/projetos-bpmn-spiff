@@ -62,7 +62,7 @@ query = """
                 t2."MainUsage" = 82 AND t0."DocDate" &lt;= '20240215'  AND t1."ItemCode" = '022966'
                 AND t0."DocEntry" NOT IN (SELECT "DocEntry" FROM sbo_crestani_qa."DeclaracaoExportacaoItens")
                 --and t3."KeyNfe" = '51240103262185000443550010000014221137660108'
-        limit 5
+        limit 10
         """
 nfes = Hana(connection).selectDb(query)
 
@@ -232,6 +232,9 @@ del(rsp)</spiffworkflow:postScript>
       </bpmn:startEvent>
       <bpmn:sequenceFlow id="Flow_07x7mvp" sourceRef="Activity_1j1cc8f" targetRef="Event_1b5n8ba" />
       <bpmn:manualTask id="Activity_1j1cc8f" name="Verificar">
+        <bpmn:extensionElements>
+          <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        </bpmn:extensionElements>
         <bpmn:incoming>Flow_0nry0ei</bpmn:incoming>
         <bpmn:outgoing>Flow_07x7mvp</bpmn:outgoing>
       </bpmn:manualTask>
