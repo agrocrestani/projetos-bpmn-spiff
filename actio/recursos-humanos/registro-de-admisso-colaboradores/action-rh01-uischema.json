@@ -5,7 +5,7 @@
       "escritorioDemitidos": {}
     }
   ],
-  "title": "Fixed array of conditionals"
+  "title": "Fixed array of conditionals",
   "escritorioAtivos": {
     "ui:autofocus": true,
     "ui:emptyValue": "",
