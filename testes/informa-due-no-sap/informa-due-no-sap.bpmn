@@ -174,7 +174,7 @@ query = f"""
 """
 
 Hana(connection).executeDb(query)
-nfe = ""</bpmn:script>
+</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:exclusiveGateway id="Gateway_0wkbi6q" default="Flow_1l0h6eb">
         <bpmn:incoming>Flow_1hznv83</bpmn:incoming>
