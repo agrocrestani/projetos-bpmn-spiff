@@ -12,7 +12,7 @@
           "enum": [
             "0"
           ],
-          "title": "Padrão Defini"
+          "title": "Padrão Definido pelo sistema"
         },
         {
           "type": "string",
