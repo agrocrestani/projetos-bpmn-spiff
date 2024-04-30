@@ -1,6 +1,6 @@
 {
   "title": "Admissão e Demissão Agro Crestani",
-  "description": "Informar ",
+  "description": "Informar os dad",
   "type": "object",
   "required": [
     "firstName"
