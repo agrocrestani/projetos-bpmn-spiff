@@ -19,7 +19,7 @@
           "enum": [
             "1"
           ],
-          "title": "Contribuinte "
+          "title": "Contribuinte ICMS ("
         },
         {
           "type": "string",
