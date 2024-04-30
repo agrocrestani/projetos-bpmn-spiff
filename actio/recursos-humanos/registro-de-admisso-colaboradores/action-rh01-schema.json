@@ -25,7 +25,7 @@
       "title": "Escritório",
       "type": "object",
       "properties": {
-        "escritorioAtivos": {
+        "brasnorteAtivos": {
           "type": "number",
           "title": "Colaboradores Ativos"
         },
