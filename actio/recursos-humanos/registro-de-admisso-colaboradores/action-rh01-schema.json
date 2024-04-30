@@ -12,7 +12,7 @@
     },
     "escritorioDemitidos": {
       "type": "string",
-      "title": "Colaboradores Demitidos",
+      "title": "Colaboradores Demitidos"
     }
   }
 }
