@@ -2,10 +2,9 @@
   "ui:layout": [
     {
       "escritorioAtivos": {},
-      "escritorioDemitidos": {},
+      "escritorioDemitidos": {}
     }
   ],
-  "title": "Fixed array of conditionals",
   "escritorioAtivos": {
     "ui:autofocus": true,
     "ui:emptyValue": "",
