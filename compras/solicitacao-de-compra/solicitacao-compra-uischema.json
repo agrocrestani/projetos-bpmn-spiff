@@ -64,7 +64,7 @@
   "solicitacao": {
     "items": {
       "ui:layout": [{
-        ""
+        "item":
       }],
       "item": {
         "ui:widget": "typeahead",
