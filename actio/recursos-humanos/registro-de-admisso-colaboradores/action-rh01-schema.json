@@ -12,13 +12,13 @@
       "type": "object",
       "properties": {
          "escritorioAtivos": {
-      "type": "string",
-      "title": "Colaboradores Ativos"
-    },
-    "escritorioDemitidos": {
-      "type": "string",
-      "title": "Colaboradores Demitidos"
-    }
+            "type": "string",
+            "title": "Colaboradores Ativos"
+          },
+          "escritorioDemitidos": {
+            "type": "string",
+            "title": "Colaboradores Demitidos"
+          }
       }
     }
    
