@@ -102,7 +102,7 @@ for u in utilizacoes:
         <bpmn:targetRef>Property_0qewnk4</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
-    <bpmn:dataStoreReference id="DataStoreReference_13uzln6" name="" type="" />
+    <bpmn:dataStoreReference id="DataStoreReference_13uzln6" name="Almoxarifados" dataStoreRef="almoxarifados" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_0dm57aw" name="Centros de Custo" dataStoreRef="centros_de_custo" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_1ln8zd2" name="Culturas" dataStoreRef="culturas" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_07gc9qu" name="Safras" dataStoreRef="safras" type="json" />
@@ -142,6 +142,7 @@ for i in n_almoxarifados:
   <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmn:dataStore id="tipo_requisicao" name="JSONDataStore" />
   <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
+  <bpmn:dataStore id="almoxarifados" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_solicitacao_de_compra_lz3stw2">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -157,7 +158,7 @@ for i in n_almoxarifados:
       <bpmndi:BPMNShape id="DataStoreReference_13uzln6_di" bpmnElement="DataStoreReference_13uzln6">
         <dc:Bounds x="205" y="-5" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="194" y="52" width="72" height="14" />
+          <dc:Bounds x="195" y="52" width="70" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_0dm57aw_di" bpmnElement="DataStoreReference_0dm57aw">
