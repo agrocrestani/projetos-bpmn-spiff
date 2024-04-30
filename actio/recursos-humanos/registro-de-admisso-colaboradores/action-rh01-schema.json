@@ -16,7 +16,7 @@
           "title": "Colaboradores Ativos"
         },
         "escritorioDemitidos": {
-          "type": "string",
+          "type": "number",
           "title": "Colaboradores Demitidos"
         }
       }
