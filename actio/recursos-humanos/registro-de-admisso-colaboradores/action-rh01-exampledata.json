@@ -1,6 +1,7 @@
 {
   "filialEscritorio": {
-    "escritorioAtivos": 1
+    "escritorioAtivos": 1,
+    "escritorioDemitidos": 1
   },
   "escritorioDemitidos": "",
   "escritorioAtivos": ""
