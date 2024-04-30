@@ -1,15 +1,3 @@
 {
-  "title": "Nested Form / Repeating Section",
-  "description": "Allow the form submitter to add multiple entries for a set of fields.",
-  "type": "object",
-  "required": [
-    "firstName"
-  ],
-  "properties": {
-    "firstName": {
-      "type": "string",
-      "title": "First name",
-      "default": "Chuck"
-    }
-  }
+
 }
