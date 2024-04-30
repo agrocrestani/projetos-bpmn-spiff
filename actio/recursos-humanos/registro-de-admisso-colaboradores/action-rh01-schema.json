@@ -6,8 +6,8 @@
     "escritorioAtivos",
     "escritorioDemitidos"
   ],
-    "title": "Fixed array of conditionals",
   "properties": {
+    "title": "Fixed array of conditionals",
     "escritorioAtivos": {
       "type": "string",
       "title": "Colaboradores Ativos"
