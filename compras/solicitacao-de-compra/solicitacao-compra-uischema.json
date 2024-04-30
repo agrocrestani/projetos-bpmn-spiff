@@ -65,7 +65,7 @@
     "items": {
       "ui:layout": [{
         "item":{},
-        "quatidade":{}
+        "quantidade":{}
       }],
       "item": {
         "ui:widget": "typeahead",
