@@ -1,12 +1,8 @@
 {
-  "ui:layout": [
-    {
-      "filialEscritorio": {}
-    },
-    {
-      "filialBrasnorte": {}
-    }
-  ],
+  "ui:layout": [{
+    "filialEscritorio": {},
+    "filialBrasnorte": {}
+  }],
   "filialEscritorio": {
     "ui:layout": [
       {
