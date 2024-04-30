@@ -21,7 +21,7 @@
       <bpmn:script>from connectordb.hana import Hana
 
 env = get_env()
-conn = get_secret(hana)
+conn = get_secret('hana')
 
 connection = {
     "address": "172.20.1.4",
