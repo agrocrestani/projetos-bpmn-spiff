@@ -5,9 +5,10 @@
                 "sm": 2,
                 "md": 2,
                 "lg": 5},
-            "indicadorOpConsumidor": {"sm": 2,
-        "md": 2,
-        "lg": 3}
+            "indicadorOpConsumidor": {
+                "sm": 2,
+                "md": 2,
+                "lg": 3}
         }
     ]
 }
