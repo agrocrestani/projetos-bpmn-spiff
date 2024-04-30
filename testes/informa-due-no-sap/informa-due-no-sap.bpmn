@@ -53,6 +53,7 @@ query = """
                 t2."MainUsage" = 82 AND t0."DocDate" &lt;= '20240215'  AND t1."ItemCode" = '022966'
                 AND t0."DocEntry" NOT IN (SELECT "DocEntry" FROM sbo_crestani_qa."DeclaracaoExportacaoItens")
                 --and t3."KeyNfe" = '51240103262185000443550010000014221137660108"
+        limit 20
         """
 nfes = Hana(connection).selectDb(query)
 
