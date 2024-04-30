@@ -12,5 +12,5 @@
       "label": "Birth Date",
       "scope": "#/properties/birthDate"
     }
-  ]
+  ],
 }
