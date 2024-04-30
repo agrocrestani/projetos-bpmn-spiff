@@ -22,7 +22,7 @@
       "ui:autocomplete": "family-name"
     }
   },
-  "filialEscritorio": {
+  "filialBras": {
     "ui:layout": [
       {
         "escritorioAtivos":{},
