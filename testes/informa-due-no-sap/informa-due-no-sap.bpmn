@@ -60,6 +60,7 @@ query = """
         """
 nfes = Hana(connection).selectDb(query)
 totalRegistros = len(nfes)
+contador = 0
 del(connection)
 del(query)
 # '51240103262185000109550010000245571183610655',</bpmn:script>
