@@ -21,7 +21,7 @@
       <bpmn:script>from connectordb.hana import Hana
 
 env = get_env()
-conn = get_secret('hana')
+baseSap = get_secret('baseSap')
 
 connection = {
     "address": "172.20.1.4",
@@ -49,15 +49,15 @@ query = """
             to_alphanum(t1."LineTotal") "LineTotal",
             T5.ID "EntidadeId"
         from
-            sbo_crestani_qa.oinv t0
-            INNER JOIN sbo_crestani_qa.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
-            INNER JOIN sbo_crestani_qa.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
-            INNER JOIN sbo_crestani_qa."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4
-            INNER JOIN sbo_crestani_qa.oitm t4 ON T1."ItemCode" = t4."ItemCode"
-            INNER JOIN sbo_crestani_qa."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
+            {baseSap}.oinv t0
+            INNER JOIN {baseSap}.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
+            INNER JOIN {baseSap}.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
+            INNER JOIN {baseSap}."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4
+            INNER JOIN {baseSap}.oitm t4 ON T1."ItemCode" = t4."ItemCode"
+            INNER JOIN {baseSap}."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
         WHERE
                 t2."MainUsage" = 82 AND t0."DocDate" &lt;= '20240215'  AND t1."ItemCode" = '022966'
-                AND t0."DocEntry" NOT IN (SELECT "DocEntry" FROM sbo_crestani_qa."DeclaracaoExportacaoItens")
+                AND t0."DocEntry" NOT IN (SELECT "DocEntry" FROM {baseSap}."DeclaracaoExportacaoItens")
                 --and t3."KeyNfe" = '51240103262185000443550010000014221137660108'
         limit 10
         """
