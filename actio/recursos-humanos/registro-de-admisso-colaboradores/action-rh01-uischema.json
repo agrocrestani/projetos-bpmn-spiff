@@ -1,7 +1,9 @@
 {
   "ui:layout": [
     {
-      "firstName": {}
+      "firstName": {
+        
+      }
     }
   ],
   "firstName": {
