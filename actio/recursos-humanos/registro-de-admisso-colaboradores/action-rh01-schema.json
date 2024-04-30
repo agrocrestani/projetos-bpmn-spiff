@@ -8,7 +8,7 @@
   ],
   "properties": {
     "filialEscritorio":{
-      "title": "Escritório",
+      "title": "ColaEscritório",
       "type": "object",
       "properties": {
         "escritorioAtivos": {
