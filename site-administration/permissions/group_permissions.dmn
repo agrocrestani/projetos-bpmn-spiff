@@ -250,7 +250,7 @@
           <text>["read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0p10bmb">
-          <text>"/secrets:*"</text>
+          <text>"/secrets/baseSap"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0h8lcjr">
