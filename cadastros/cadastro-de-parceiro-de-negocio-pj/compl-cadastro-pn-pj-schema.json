@@ -58,7 +58,7 @@
         {
           "type": "string",
           "enum": [
-            "3"
+            "1"
           ],
           "title": "Fora Processo"
         }
