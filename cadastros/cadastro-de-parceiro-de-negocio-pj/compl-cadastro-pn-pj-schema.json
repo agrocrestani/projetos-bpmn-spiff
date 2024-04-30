@@ -11,7 +11,7 @@
       ]
     },
     "indicadorOpConsumidor": {
-      "title": "Select your favorite fruit",
+      "title": "Indicador",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:fruits"
