@@ -1,5 +1,5 @@
 {
-  "vegetarian": true,
+  "vegetarian": false,
   "personalData": {
     "drivingSkill": 7
   },
