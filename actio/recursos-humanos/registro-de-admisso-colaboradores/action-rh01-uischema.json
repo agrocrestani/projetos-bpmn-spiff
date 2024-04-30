@@ -2,7 +2,12 @@
   "ui:layout": [
     {
       "filialEscritorio": {
-"escritorioAtivos": {
+        
+      }
+    }
+  ],
+  "filialEscritorio":{
+    "escritorioAtivos": {
       "ui:autofocus": true,
       "ui:emptyValue": "",
       "ui:placeholder": "Digite o número de colaboradores ativos",
@@ -14,10 +19,5 @@
       "ui:placeholder": "Digite o número de colaboradores demitidos",
       "ui:autocomplete": "family-name"
     }
-      }
-    }
-  ],
-  "filialEscritorio":{
-    
   }
 }
