@@ -22,6 +22,25 @@
       "ui:autocomplete": "family-name"
     }
   },
-  
+    "filialEscritorio": {
+    "ui:layout": [
+      {
+        "escritorioAtivos":{},
+        "escritorioDemitidos": {}
+      }
+    ],
+    "escritorioAtivos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores ativos",
+      "ui:autocomplete": "family-name"
+    },
+    "escritorioDemitidos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores demitidos",
+      "ui:autocomplete": "family-name"
+    }
+  }
 
 }
