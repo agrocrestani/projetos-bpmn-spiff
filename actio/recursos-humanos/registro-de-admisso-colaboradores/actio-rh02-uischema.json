@@ -1,1 +1,5 @@
-{}
+{
+  "bio": {
+    "ui:widget": "textarea"
+  }
+}
