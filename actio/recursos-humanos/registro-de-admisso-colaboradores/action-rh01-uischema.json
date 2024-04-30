@@ -1,8 +1,7 @@
 {
   "ui:layout": [
     {
-      "filialEscritorio": {},
-      "escritorioDemitidos": {}
+      "filialEscritorio": {}
     }
   ],
   "filialEscritorio":{
