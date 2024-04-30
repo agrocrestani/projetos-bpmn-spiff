@@ -142,6 +142,17 @@
           <text>"ComercialGraos"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1ewuiew">
+        <inputEntry id="UnaryTests_175m8px">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_166dnp8">
+          <text>"marcio.firmino@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0h53v34">
+          <text>"everybody"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
