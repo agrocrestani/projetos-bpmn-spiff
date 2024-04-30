@@ -233,7 +233,7 @@ del(rsp)</spiffworkflow:postScript>
 | ---------: | ------- |
 | Id DUE    | {{idDueSap[0]['id']}} |
 | DocEntry | {{nfe['docentry']}} |
-|DocDate  | | 
+|DocDate  | {{nfe['docdate'][0:10]}} | 
 |DocNum  |{{nfe['docnum']}}|
 |SeqCode |{{nfe['seqcode']}}|
 |**Serial** |**{{nfe['serial']}}**|
@@ -270,10 +270,6 @@ del(rsp)</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Activity_0k10jva_di" bpmnElement="Activity_0nhlv6j">
         <dc:Bounds x="820" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_18vvxc9_di" bpmnElement="Activity_0od9hbe">
-        <dc:Bounds x="980" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0wkbi6q_di" bpmnElement="Gateway_0wkbi6q" isMarkerVisible="true">
         <dc:Bounds x="705" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -290,9 +286,15 @@ del(rsp)</spiffworkflow:postScript>
         <dc:Bounds x="1130" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18vvxc9_di" bpmnElement="Activity_0od9hbe">
+        <dc:Bounds x="990" y="140" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0o0tp2q_di" bpmnElement="Flow_0o0tp2q">
         <di:waypoint x="920" y="177" />
-        <di:waypoint x="980" y="177" />
+        <di:waypoint x="955" y="177" />
+        <di:waypoint x="955" y="180" />
+        <di:waypoint x="990" y="180" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1l0h6eb_di" bpmnElement="Flow_1l0h6eb">
         <di:waypoint x="755" y="177" />
@@ -303,7 +305,9 @@ del(rsp)</spiffworkflow:postScript>
         <di:waypoint x="705" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0nry0ei_di" bpmnElement="Flow_0nry0ei">
-        <di:waypoint x="1080" y="177" />
+        <di:waypoint x="1090" y="180" />
+        <di:waypoint x="1110" y="180" />
+        <di:waypoint x="1110" y="177" />
         <di:waypoint x="1130" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12epf89_di" bpmnElement="Flow_12epf89">
