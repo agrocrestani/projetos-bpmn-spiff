@@ -30,7 +30,7 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-query = """
+query = f"""
         select
             t0."DocEntry",
             t0."DocNum",
