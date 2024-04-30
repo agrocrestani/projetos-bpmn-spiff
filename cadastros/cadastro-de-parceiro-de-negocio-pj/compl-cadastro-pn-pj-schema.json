@@ -27,6 +27,13 @@
             "2"
           ],
           "title": "Contribuinte isento de Inscrição"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "2"
+          ],
+          "title": "Contribuinte isento de Inscrição"
         }
       ]
     },
