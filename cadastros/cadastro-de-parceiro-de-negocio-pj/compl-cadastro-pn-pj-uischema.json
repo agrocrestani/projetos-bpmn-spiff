@@ -2,7 +2,7 @@
     "ui:layout": [
         {
             "indicadorIE":{},
-            "indicadorOpConsumidor"
+            "indicadorOpConsumidor":
         }
     ]
 }
