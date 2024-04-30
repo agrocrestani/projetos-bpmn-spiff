@@ -250,7 +250,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1r91vo2">
-          <text>"PG:comercial:graos:*"</text>
+          <text>"PG:comercial:*"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0xm4kow">
@@ -272,13 +272,13 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cijs3u">
-          <text>"ComercialGraos"</text>
+          <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1nkwil6">
-          <text>["read"]</text>
+          <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0hnww3z">
-          <text>"/process-groups/comercial:*"</text>
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
