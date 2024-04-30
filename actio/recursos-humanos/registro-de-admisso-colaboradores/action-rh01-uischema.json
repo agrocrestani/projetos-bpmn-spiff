@@ -42,4 +42,49 @@
       "ui:autocomplete": "family-name"
     }
   }
+},
+{
+  "ui:layout": [{
+    "filialEscritorio": {}
+  }],
+  "filialEscritorio": {
+    "ui:layout": [
+      {
+        "escritorioAtivos":{},
+        "escritorioDemitidos": {}
+      }
+    ],
+    "escritorioAtivos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores ativos",
+      "ui:autocomplete": "family-name"
+    },
+    "escritorioDemitidos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores demitidos",
+      "ui:autocomplete": "family-name"
+    }
+  },
+  "filialBrasnorte": {
+    "ui:layout": [
+      {
+        "brasnorteAtivos":{},
+        "brasnorteDemitidos": {}
+      }
+    ],
+    "brasnorteAtivos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores ativos",
+      "ui:autocomplete": "family-name"
+    },
+    "brasnorteDemitidos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores demitidos",
+      "ui:autocomplete": "family-name"
+    }
+  }
 }
