@@ -65,7 +65,8 @@ for f in filiais:
 | --------- | ------------ | --------------- | ---- |
 
 {%for s in solicitacao %}
-| {{s['insumo']['code']}} | {{s['insumo']['name']}} | {{s['quantidade']}} | {{s['insumo']['um']}} |
+{%insumo = json.loads(s['insumo'])%}
+| {{insumo['code']}} | {{insumo['name']}} | {{s['quantidade']}} | {{insumo['um']}} |
 {%endfor%}</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
