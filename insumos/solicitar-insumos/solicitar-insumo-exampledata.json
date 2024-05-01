@@ -1,5 +1,7 @@
 {
-  "solicitacao": [],
+  "solicitacao": [
+    {}
+  ],
   "n_filiais": [
     {
       "value": "apples",
