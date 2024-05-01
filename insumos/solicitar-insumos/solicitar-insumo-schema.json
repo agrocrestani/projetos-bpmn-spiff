@@ -1,6 +1,6 @@
 {
-  "title": "Solicitação de Insumos",
-  "description": "A simple text field that is required, has a default value, sets a placeholder, includes a description. (field name will be 'firstname')",
+  "title": "Dropdown list",
+  "description": "A dropdown list with options pulled form existing Task Data. IMPORTANT - Add 'fruits' to Task Data before using this component!!!",
   "type": "object",
   "properties": {
     "solicitacao": {
@@ -23,6 +23,13 @@
           }
         }
       }
+    },
+    "favoriteFruit": {
+      "title": "Select your favorite fruit",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:fruits"
+      ]
     }
   }
 }

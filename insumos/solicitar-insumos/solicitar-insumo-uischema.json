@@ -1,12 +1,20 @@
 {
-  "solicitacao": { 
+  "solicitacao": {
     "items": {
       "ui:layout": [
-      {
-        "insumo": {"sm": 2, "md": 2, "lg": 6},
-        "quantidade": {"sm": 2, "md": 2, "lg": 2}
-      }
-    ],
+        {
+          "insumo": {
+            "sm": 2,
+            "md": 2,
+            "lg": 6
+          },
+          "quantidade": {
+            "sm": 2,
+            "md": 2,
+            "lg": 2
+          }
+        }
+      ],
       "insumo": {
         "ui:widget": "typeahead",
         "ui:options": {
@@ -16,7 +24,6 @@
       }
     }
   },
-
   "ui:layout": [
     {
       "solicitacao": {
