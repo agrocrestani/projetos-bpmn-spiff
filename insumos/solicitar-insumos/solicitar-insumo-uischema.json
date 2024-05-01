@@ -4,7 +4,7 @@
       "ui:layout": [
       {
         "insumo": {"sm": 2, "md": 2, "lg": 6},
-        "quantidade": {"sm": 2, "md": 2, "lg": 6}
+        "quantidade": {"sm": 2, "md": 2, "lg": 2}
       }
     ],
       "insumo": {
