@@ -1,10 +1,5 @@
 {
-  "solicitacao": [
-    {
-      "insumo": "{\"name\":\"FOLTRON\",\"code\":\"022538\",\"onhand\":\"4280.00\",\"um\":\"LITRO\"}",
-      "quantidade": 20
-    }
-  ],
+  "solicitacao": [],
   "fruits": [
     {
       "value": "apples",
