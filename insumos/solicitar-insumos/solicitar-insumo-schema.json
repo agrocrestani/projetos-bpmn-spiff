@@ -25,7 +25,7 @@
       }
     },
     "unidade": {
-      "title": "Select your favorite fruit",
+      "title": "Selecione a ",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:fruits"
