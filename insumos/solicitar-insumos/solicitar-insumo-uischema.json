@@ -1,0 +1,31 @@
+{
+  "solicitacao": {
+    "items": {
+      "insumo": {
+        "ui:widget": "typeahead",
+        "ui:options": {
+          "category": "estoque_de_insumos",
+          "itemFormat": "{name} - {code} (Estoque: {onhand})"
+        }
+      }
+    }
+  },
+  "ui:layout": [
+    {
+      "solicitacao": {
+        "items": {
+          "insumo": {
+            "sm": 9,
+            "md": 9,
+            "lg": 9
+          },
+          "quantidade": {
+            "sm": 3,
+            "md": 3,
+            "lg": 3
+          }
+        }
+      }
+    }
+  ]
+}
