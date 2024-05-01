@@ -264,7 +264,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15qu6t1">
-          <text>"/can-run-privileged-script/"</text>
+          <text>"/v1.0/can-run-privileged-script/"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_01yhpgr">
