@@ -65,7 +65,7 @@ for f in filiais:
 
 {%for s in solicitacao %}
 {{s}}
-
+{%endfor%}
 
 "solicitacao": [
     {
