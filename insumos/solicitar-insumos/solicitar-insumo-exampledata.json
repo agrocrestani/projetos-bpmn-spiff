@@ -8,5 +8,19 @@
       "insumo": "{\"name\":\"FOLTRON\",\"code\":\"022538\",\"onhand\":\"4280.00\",\"um\":\"LITRO\"}",
       "quantidade": 20
     }
+  ],
+  "fruits": [
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
   ]
 }
