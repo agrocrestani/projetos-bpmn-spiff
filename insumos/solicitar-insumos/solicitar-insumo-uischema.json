@@ -1,7 +1,9 @@
 {
   "solicitacao": {
     "ui:layout": [
-      {{}}
+      {
+        
+      }
     ],  
     "items": {
       "insumo": {
