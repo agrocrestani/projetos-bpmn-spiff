@@ -1,5 +1,6 @@
 {
   "solicitacao": {
+    
     "items": {
       "insumo": {
         "ui:widget": "typeahead",
@@ -10,7 +11,7 @@
       }
     }
   },
-  
+
   "ui:layout": [
     {
       "solicitacao": {
