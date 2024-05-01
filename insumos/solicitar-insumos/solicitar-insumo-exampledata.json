@@ -7,7 +7,8 @@
     {
       "insumo": "{\"name\":\"FINISH\",\"code\":\"022835\",\"onhand\":\"28460.00\",\"um\":\"LITRO\"}",
       "quantidade": 1000
-    }
+    },
+    {}
   ],
   "unidade": "apples",
   "n_filiais": [
