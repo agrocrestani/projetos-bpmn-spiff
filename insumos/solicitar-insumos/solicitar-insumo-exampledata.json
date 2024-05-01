@@ -9,7 +9,8 @@
       "quantidade": 1000
     },
     {
-      "insumo": "{\"name\":\"MALATHION UL\",\"code\":\"022777\",\"onhand\":\"6000.00\",\"um\":\"LITRO\"}"
+      "insumo": "{\"name\":\"MALATHION UL\",\"code\":\"022777\",\"onhand\":\"6000.00\",\"um\":\"LITRO\"}",
+      "quantidade": 200
     }
   ],
   "unidade": "apples",
