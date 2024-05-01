@@ -35,10 +35,10 @@ connection = {
 
 query = """
           SELECT 
-            o."BPLId",
+            to_alphanum(o."BPLId") "BPLId",
             o."BPLName",
             o."TaxIdNum",
-            e.ID "EntidadeId",
+            to_alphanum(e.ID "EntidadeId") "EntidadeId",
             o."AliasName" 
           FROM
             SBO_CRESTANI_PRD.OBPL o
