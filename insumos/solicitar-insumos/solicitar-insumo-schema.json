@@ -24,7 +24,7 @@
         }
       }
     },
-    "favoriteFruit": {
+    "unidade": {
       "title": "Select your favorite fruit",
       "type": "string",
       "anyOf": [
