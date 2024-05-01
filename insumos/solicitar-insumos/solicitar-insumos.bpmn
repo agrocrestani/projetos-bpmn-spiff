@@ -63,7 +63,6 @@ for f in filiais:
 
 | Código | Descrição | Quantidade | Um |
 | --------- | ------------ | --------------- | ---- |
-
 {%for s in solicitacao %}
 | {{s['insumo']['code']}} | {{s['insumo']['name']}} | {{s['quantidade']}} | {{s['insumo']['um']}} |
 {%endfor%}</spiffworkflow:instructionsForEndUser>
