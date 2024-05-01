@@ -5,7 +5,7 @@
       "insumo": "{\"name\":\"YARAVITA FOLICARE\",\"code\":\"022589\",\"onhand\":\"800.00\",\"um\":\"QUILOGRAM\"}"
     },
     {
-      "insumo": "{\"name\":\"DIOX\",\"code\":\"022986\",\"onhand\":\"420.00\"}"
+      "insumo": null
     }
   ]
 }
