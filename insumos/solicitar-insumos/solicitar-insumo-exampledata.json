@@ -1,9 +1,6 @@
 {
   "solicitacao": [
-    {
-      "insumo": null,
-      "quantidade": 10
-    }
+    {}
   ],
   "unidade": "apples",
   "n_filiais": [
