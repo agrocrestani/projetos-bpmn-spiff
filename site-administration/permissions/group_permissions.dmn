@@ -239,20 +239,6 @@
           <text>"BASIC"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0h8lcjr">
-        <inputEntry id="UnaryTests_18ym718">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0pjmdoh">
-          <text>"ComercialGraos"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_15oft7d">
-          <text>["all"]</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1r91vo2">
-          <text>"PG:comercial:graos"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0yflr5j">
         <inputEntry id="UnaryTests_15xe8ub">
           <text></text>
@@ -275,24 +261,10 @@
           <text>"ComercialGraos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18zgdo9">
-          <text>["all"]</text>
+          <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vw46yv">
           <text>"/v1.0/process-groups/comercial"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0sxnmpt">
-        <inputEntry id="UnaryTests_0byhrkp">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0xlk51i">
-          <text>"ComercialGraos"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0004hng">
-          <text>["all"]</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0kuywaq">
-          <text>"/secrest/baseSap"</text>
         </outputEntry>
       </rule>
     </decisionTable>
