@@ -264,7 +264,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15qu6t1">
-          <text>"/v1.0/can-run-privileged-script/"</text>
+          <text>"/can-run-privileged-script/"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_01yhpgr">
@@ -279,6 +279,20 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1vw46yv">
           <text>"/v1.0/process-groups/comercial"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0sxnmpt">
+        <inputEntry id="UnaryTests_0byhrkp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xlk51i">
+          <text>"ComercialGraos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0004hng">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kuywaq">
+          <text>"/secrest/baseSap"</text>
         </outputEntry>
       </rule>
     </decisionTable>
