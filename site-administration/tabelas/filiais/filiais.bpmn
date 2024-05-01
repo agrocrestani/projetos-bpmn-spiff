@@ -38,7 +38,8 @@ query = """
             o."BPLId",
             o."BPLName",
             o."TaxIdNum",
-            e.ID "EntidadeId"
+            e.ID "EntidadeId",
+            o."AliasName" 
           FROM
             SBO_CRESTANI_PRD.OBPL o
           INNER JOIN SBO_CRESTANI_PRD."Entidade" e ON
