@@ -4,7 +4,9 @@
       "insumo": "{\"name\":\"JAVA 200 SP\",\"code\":\"022771\",\"onhand\":\"5.00\",\"um\":\"QUILOGRAM\"}",
       "quantidade": 1
     },
-    {}
+    {
+      "insumo": "{\"name\":\"FINISH\",\"code\":\"022835\",\"onhand\":\"28460.00\",\"um\":\"LITRO\"}"
+    }
   ],
   "unidade": "apples",
   "n_filiais": [
