@@ -2,7 +2,7 @@
   "solicitacao": [
     {
       "quantidade": 100,
-      "insumo": "{\"name\":\"YARAVITA FOLICARE\",\"code\":\"022589\",\"onhand\":\"800.00\"}"
+      "insumo": null
     },
     {
       "insumo": "{\"name\":\"DIOX\",\"code\":\"022986\",\"onhand\":\"420.00\"}"
