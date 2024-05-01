@@ -44,7 +44,7 @@ for f in filiais:
             "label": BPLName
         }
     )</spiffworkflow:preScript>
-        <spiffworkflow:postScript>solicitacao =solicitacao</spiffworkflow:postScript>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1jn3emy</bpmn:incoming>
       <bpmn:outgoing>Flow_1roexn7</bpmn:outgoing>
@@ -65,9 +65,10 @@ for f in filiais:
 | --------- | ------------ | --------------- | ---- |
 
 {%for s in solicitacao %}
-{%insumo = json.loads(s['insumo'])%}
-| {{insumo['code']}} | {{insumo['name']}} | {{s['quantidade']}} | {{insumo['um']}} |
+| {{s['insumo']['code']}} | {{s['insumo']['name']}} | {{s['quantidade']}} | {{s['insumo']['um']}} |
 {%endfor%}</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript>for s in solicitacao:
+    s['insumo'] = json.loads(s['insumo'])</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
       <bpmn:outgoing>Flow_09et6e0</bpmn:outgoing>
