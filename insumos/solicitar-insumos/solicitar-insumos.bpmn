@@ -59,7 +59,7 @@ for f in filiais:
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## Solicitação de Insumos 
 
-### Filial: {{unidade}}
+### Filial: {{descricaoFilial}}
 
 | Código | Descrição | Quantidade | Um |
 | --------- | ------------ | --------------- | ---- |
@@ -67,7 +67,13 @@ for f in filiais:
 | {{s['insumo']['code']}} | {{s['insumo']['name']}} | {{s['quantidade']}} | {{s['insumo']['um']}} |
 {%endfor%}</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>for s in solicitacao:
-    s['insumo'] = json.loads(s['insumo'])</spiffworkflow:preScript>
+    s['insumo'] = json.loads(s['insumo'])
+
+
+descricaoFilial = ""
+for f in n_filial:
+    if f['value'] == unidade:
+      descricaoFilial = f['label']</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
       <bpmn:outgoing>Flow_09et6e0</bpmn:outgoing>
