@@ -5,7 +5,8 @@
       "quantidade": 1
     },
     {
-      "insumo": "{\"name\":\"FINISH\",\"code\":\"022835\",\"onhand\":\"28460.00\",\"um\":\"LITRO\"}"
+      "insumo": "{\"name\":\"FINISH\",\"code\":\"022835\",\"onhand\":\"28460.00\",\"um\":\"LITRO\"}",
+      "quantidade": 1000
     }
   ],
   "unidade": "apples",
