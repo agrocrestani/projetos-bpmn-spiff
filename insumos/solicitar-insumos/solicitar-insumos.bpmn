@@ -44,6 +44,7 @@ for f in filiais:
             "label": BPLName
         }
     )</spiffworkflow:preScript>
+        <spiffworkflow:postScript>solicitacao = json.loads(solicitacao)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1jn3emy</bpmn:incoming>
       <bpmn:outgoing>Flow_1roexn7</bpmn:outgoing>
