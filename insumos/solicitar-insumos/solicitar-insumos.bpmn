@@ -38,11 +38,28 @@
           <spiffworkflow:property name="formJsonSchemaFilename" value="solicitar-insumo-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="solicitar-insumo-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:preScript>n_filiais = []
+for f in filiais:
+    BPLId = f['BPLId']
+    BPLName = f['BPLName']
+    n_filiais.append(
+        {
+            "value": BPLId,
+            "label": BPLName
+        }
+    )</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1jn3emy</bpmn:incoming>
       <bpmn:outgoing>Flow_1roexn7</bpmn:outgoing>
+      <bpmn:property id="Property_13gdj9d" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1hak9da">
+        <bpmn:sourceRef>DataStoreReference_1ismram</bpmn:sourceRef>
+        <bpmn:targetRef>Property_13gdj9d</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
     </bpmn:userTask>
+    <bpmn:dataStoreReference id="DataStoreReference_1ismram" name="Filiais" dataStoreRef="filiais" type="json" />
   </bpmn:process>
+  <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_solicitacao_de_insumos_rqoml0p">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -69,6 +86,12 @@
       <bpmndi:BPMNShape id="Activity_1sk3qsl_di" bpmnElement="Activity_0jw3ade">
         <dc:Bounds x="270" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1ismram_di" bpmnElement="DataStoreReference_1ismram">
+        <dc:Bounds x="265" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="276" y="342" width="28" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_09et6e0_di" bpmnElement="Flow_09et6e0">
         <di:waypoint x="570" y="177" />
         <di:waypoint x="640" y="177" />
@@ -92,6 +115,10 @@
       <bpmndi:BPMNEdge id="Flow_1roexn7_di" bpmnElement="Flow_1roexn7">
         <di:waypoint x="370" y="177" />
         <di:waypoint x="470" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1hak9da_di" bpmnElement="DataInputAssociation_1hak9da">
+        <di:waypoint x="297" y="285" />
+        <di:waypoint x="317" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
