@@ -38,8 +38,7 @@ query = """
             to_alphanum(o."BPLId") "BPLId",
             o."BPLName",
             o."TaxIdNum",
-            to_alphanum(e.ID "EntidadeId") "EntidadeId",
-            o."AliasName" 
+            to_alphanum(e.ID "EntidadeId") "EntidadeId"
           FROM
             SBO_CRESTANI_PRD.OBPL o
           INNER JOIN SBO_CRESTANI_PRD."Entidade" e ON
