@@ -64,22 +64,8 @@ for f in filiais:
 | --------- | ------------ | --------------- | ---- |
 
 {%for s in solicitacao %}
-{{s}}
-{%endfor%}
-
-"solicitacao": [
-    {
-      "insumo": "{\"name\":\"JAVA 200 SP\",\"code\":\"022771\",\"onhand\":\"5.00\",\"um\":\"QUILOGRAM\"}",
-      "quantidade": 1
-    },
-    {
-      "insumo": "{\"name\":\"FINISH\",\"code\":\"022835\",\"onhand\":\"28460.00\",\"um\":\"LITRO\"}",
-      "quantidade": 1000
-    },
-    {
-      "insumo": "{\"name\":\"MALATHION UL\",\"code\":\"022777\",\"onhand\":\"6000.00\",\"um\":\"LITRO\"}",
-      "quantidade": 200
-    }</spiffworkflow:instructionsForEndUser>
+| {{s['insumo']['code']}} | {{s['insumo']['name']}} | {{s['quantidade']}} | {{s['insumo']['um']}} |
+{%endfor%}</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
       <bpmn:outgoing>Flow_09et6e0</bpmn:outgoing>
