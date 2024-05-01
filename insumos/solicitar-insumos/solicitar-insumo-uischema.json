@@ -25,7 +25,9 @@
     }
   },
   "ui:layout": [
-    
+    {
+      
+    }
     {
       "solicitacao": {}
     },
