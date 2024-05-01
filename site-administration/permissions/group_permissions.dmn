@@ -250,7 +250,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1r91vo2">
-          <text>"ELEVATED"</text>
+          <text>"PG:comercial:graos"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0yflr5j">
@@ -258,13 +258,13 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_08q3sd9">
-          <text></text>
+          <text>"ComercialGraos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_13wwdug">
-          <text></text>
+          <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15qu6t1">
-          <text></text>
+          <text>"/can-run-privileged-script/"</text>
         </outputEntry>
       </rule>
     </decisionTable>
