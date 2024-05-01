@@ -153,6 +153,17 @@
           <text>"everybody"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0a8s598">
+        <inputEntry id="UnaryTests_0irgejj">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zdh014">
+          <text>"emerson@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wh1blv">
+          <text>"ComercialGraos"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
