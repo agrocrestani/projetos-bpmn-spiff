@@ -26,10 +26,6 @@
       <bpmn:outgoing>Flow_1azxpfs</bpmn:outgoing>
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1azxpfs" sourceRef="Activity_1i9wp10" targetRef="EndEvent_1" />
-    <bpmn:userTask id="Activity_0y3xwhg" name="Confirmar Solicitação de Insumos">
-      <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
-      <bpmn:outgoing>Flow_09et6e0</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_1jn3emy" sourceRef="StartEvent_1" targetRef="Activity_0jw3ade" />
     <bpmn:sequenceFlow id="Flow_1roexn7" sourceRef="Activity_0jw3ade" targetRef="Activity_0y3xwhg" />
     <bpmn:userTask id="Activity_0jw3ade" name="Solicitar Insumos">
@@ -58,6 +54,36 @@ for f in filiais:
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
     <bpmn:dataStoreReference id="DataStoreReference_1ismram" name="Filiais" dataStoreRef="filiais" type="json" />
+    <bpmn:manualTask id="Activity_0y3xwhg" name="Confirmar Solicitação de Insumos">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## Solicitação de Insumos 
+
+### Filial: {{unidade}}
+
+| Código | Descrição | Quantidade | Um |
+| --------- | ------------ | --------------- | ---- |
+
+{%for s in solicitacao %}
+
+
+
+"solicitacao": [
+    {
+      "insumo": "{\"name\":\"JAVA 200 SP\",\"code\":\"022771\",\"onhand\":\"5.00\",\"um\":\"QUILOGRAM\"}",
+      "quantidade": 1
+    },
+    {
+      "insumo": "{\"name\":\"FINISH\",\"code\":\"022835\",\"onhand\":\"28460.00\",\"um\":\"LITRO\"}",
+      "quantidade": 1000
+    },
+    {
+      "insumo": "{\"name\":\"MALATHION UL\",\"code\":\"022777\",\"onhand\":\"6000.00\",\"um\":\"LITRO\"}",
+      "quantidade": 200
+    }</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
+      <bpmn:outgoing>Flow_09et6e0</bpmn:outgoing>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -80,10 +106,6 @@ for f in filiais:
         <dc:Bounds x="960" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1uc08xr_di" bpmnElement="Activity_0y3xwhg">
-        <dc:Bounds x="470" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1sk3qsl_di" bpmnElement="Activity_0jw3ade">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -93,6 +115,9 @@ for f in filiais:
         <bpmndi:BPMNLabel>
           <dc:Bounds x="226" y="342" width="28" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1meiajm_di" bpmnElement="Activity_0y3xwhg">
+        <dc:Bounds x="470" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_09et6e0_di" bpmnElement="Flow_09et6e0">
         <di:waypoint x="570" y="177" />
