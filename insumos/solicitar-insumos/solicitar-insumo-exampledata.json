@@ -5,7 +5,8 @@
       "quantidade": 10
     },
     {
-      "insumo": "{\"name\":\"JAVA 200 SP\",\"code\":\"022771\",\"onhand\":\"5.00\",\"um\":\"QUILOGRAM\"}"
+      "insumo": "{\"name\":\"JAVA 200 SP\",\"code\":\"022771\",\"onhand\":\"5.00\",\"um\":\"QUILOGRAM\"}",
+      "quantidade": 1
     }
   ],
   "n_filiais": [
