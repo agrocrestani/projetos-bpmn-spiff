@@ -264,7 +264,7 @@
           <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vw46yv">
-          <text>"/v1.0/process-groups/comercial"</text>
+          <text>"/v1.0/process-groups/comercial/graos"</text>
         </outputEntry>
       </rule>
     </decisionTable>
