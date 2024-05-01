@@ -1,0 +1,28 @@
+{
+  "title": "Solicitação de Insumos",
+  "description": "A simple text field that is required, has a default value, sets a placeholder, includes a description. (field name will be 'firstname')",
+  "type": "object",
+  "properties": {
+    "solicitacao": {
+      "type": "array",
+      "title": "",
+      "items": {
+        "type": "object",
+        "required": [
+          "insumo",
+          "quantidade"
+        ],
+        "properties": {
+          "insumo": {
+            "type": "string",
+            "title": "Selecione o Insumo"
+          },
+          "quantidade": {
+            "type": "number",
+            "title": "Quantidade"
+          }
+        }
+      }
+    }
+  }
+}
