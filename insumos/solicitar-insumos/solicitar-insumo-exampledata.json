@@ -1,6 +1,8 @@
 {
   "solicitacao": [
-    {}
+    {
+      "insumo": "{\"name\":\"JAVA 200 SP\",\"code\":\"022771\",\"onhand\":\"5.00\",\"um\":\"QUILOGRAM\"}"
+    }
   ],
   "unidade": "apples",
   "n_filiais": [
