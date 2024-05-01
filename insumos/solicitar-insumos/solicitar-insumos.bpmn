@@ -11,7 +11,7 @@
       <bpmn:incoming>Flow_1azxpfs</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_09et6e0" sourceRef="Activity_0y3xwhg" targetRef="Activity_1juz99w" />
-    <bpmn:task id="Activity_1juz99w" name="Gera Pedido no SAP">
+    <bpmn:task id="Activity_1juz99w" name="Gerar Pedido no SAP">
       <bpmn:incoming>Flow_09et6e0</bpmn:incoming>
       <bpmn:outgoing>Flow_108mqy4</bpmn:outgoing>
     </bpmn:task>
@@ -26,13 +26,13 @@
       <bpmn:outgoing>Flow_1azxpfs</bpmn:outgoing>
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1azxpfs" sourceRef="Activity_1i9wp10" targetRef="EndEvent_1" />
-    <bpmn:userTask id="Activity_0y3xwhg" name="Confirma Solicitação">
+    <bpmn:userTask id="Activity_0y3xwhg" name="Confirmar Solicitação de Insumos">
       <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
       <bpmn:outgoing>Flow_09et6e0</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_1jn3emy" sourceRef="StartEvent_1" targetRef="Activity_0jw3ade" />
     <bpmn:sequenceFlow id="Flow_1roexn7" sourceRef="Activity_0jw3ade" targetRef="Activity_0y3xwhg" />
-    <bpmn:userTask id="Activity_0jw3ade" name="Solicita Insumos">
+    <bpmn:userTask id="Activity_0jw3ade" name="Solicitar Insumos">
       <bpmn:extensionElements>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="solicitar-insumo-schema.json" />
@@ -82,14 +82,16 @@ for f in filiais:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1uc08xr_di" bpmnElement="Activity_0y3xwhg">
         <dc:Bounds x="470" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1sk3qsl_di" bpmnElement="Activity_0jw3ade">
         <dc:Bounds x="270" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_1ismram_di" bpmnElement="DataStoreReference_1ismram">
-        <dc:Bounds x="265" y="285" width="50" height="50" />
+        <dc:Bounds x="215" y="285" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="276" y="342" width="28" height="14" />
+          <dc:Bounds x="226" y="342" width="28" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_09et6e0_di" bpmnElement="Flow_09et6e0">
@@ -117,8 +119,8 @@ for f in filiais:
         <di:waypoint x="470" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1hak9da_di" bpmnElement="DataInputAssociation_1hak9da">
-        <di:waypoint x="297" y="285" />
-        <di:waypoint x="317" y="217" />
+        <di:waypoint x="257" y="285" />
+        <di:waypoint x="302" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
