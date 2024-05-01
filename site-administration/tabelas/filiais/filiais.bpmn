@@ -64,12 +64,14 @@ for r in rsp:
     BPLName = str(r['bplname'])
     TaxIdNum = str(r['taxidnum'])
     EntidadeId = str(r['entidadeid'])
+    AliasName = str(r['aliasname'])
     cfiliais.append(
         {
             "BPLId": BPLId, 
             "BPLName": BPLName, 
             "TaxIdNum": TaxIdNum, 
             "EntidadeId": EntidadeId
+            "AliasName": AliasName
         }
     )
 
