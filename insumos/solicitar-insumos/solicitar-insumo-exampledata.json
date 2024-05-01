@@ -5,7 +5,8 @@
       "insumo": "{\"name\":\"YARAVITA FOLICARE\",\"code\":\"022589\",\"onhand\":\"800.00\",\"um\":\"QUILOGRAM\"}"
     },
     {
-      "insumo": "{\"name\":\"FOLTRON\",\"code\":\"022538\",\"onhand\":\"4280.00\",\"um\":\"LITRO\"}"
+      "insumo": "{\"name\":\"FOLTRON\",\"code\":\"022538\",\"onhand\":\"4280.00\",\"um\":\"LITRO\"}",
+      "quantidade": 20
     }
   ]
 }
