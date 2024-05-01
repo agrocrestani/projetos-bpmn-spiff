@@ -128,7 +128,7 @@
           <text>"marcio.firmino@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_07ql941">
-          <text>"ComercialGraos"</text>
+          <text>"Comercial Graos"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1m6pdzw">
@@ -139,7 +139,7 @@
           <text>"salomao.barros@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ftwhn3">
-          <text>"ComercialGraos"</text>
+          <text>"Comercial Graos" </text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1qep9xe">
@@ -161,7 +161,7 @@
           <text>"emerson@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0wh1blv">
-          <text>"ComercialGraos"</text>
+          <text>"Comercial Graos" </text>
         </outputEntry>
       </rule>
     </decisionTable>
