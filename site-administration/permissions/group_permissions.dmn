@@ -244,7 +244,7 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_08q3sd9">
-          <text>"Comercial Graos"</text>
+          <text>"ComercialGraos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_13wwdug">
           <text>["all"]</text>
@@ -258,13 +258,55 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xivti9">
-          <text>"Comercial Graos" </text>
+          <text>"ComercialGraos" </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18zgdo9">
           <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vw46yv">
           <text>"PG:comercial:graos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zp63e8">
+        <inputEntry id="UnaryTests_0zhi2mn">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07fxjbr">
+          <text>"Comercial Graos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1654fja">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_024cx1y">
+          <text>"/can-run-privileged-script/*"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0t659p9">
+        <inputEntry id="UnaryTests_1nvfz5x">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10zkxa0">
+          <text>"Comercial Graos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a6pl5u">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mgoqsn">
+          <text>"PG:comercial:graos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11wov95">
+        <inputEntry id="UnaryTests_1of7ik5">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uvee0n">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10g2lr0">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nxenh3">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
