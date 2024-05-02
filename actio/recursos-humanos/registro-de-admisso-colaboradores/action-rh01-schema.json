@@ -36,18 +36,8 @@
       "title": "Selecione um mês de referência",
       "type": "string",
       "anyOf": [
-        {
-          "type": "string",
-          "enum": [
-            "1"
-          ],
-          "title": "Ambos"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "2"
-          ]}
+        "options_from_task_data_var:meses"
+      ]
     }
   }
 }
