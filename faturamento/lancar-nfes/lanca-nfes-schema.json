@@ -19,7 +19,7 @@
     "filesAccept": {
       "type": "string",
       "format": "data-url",
-      "title": "Selecione o arquivo "
+      "title": "Selecione o arquivo .PDF"
     }
   }
 }
