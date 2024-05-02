@@ -65,26 +65,26 @@ cfiliais = []
 rsp = json.dumps(rsp)
 rsp = json.loads(rsp)
 
-for r in rsp:
-    BPLId = str(r['bplid'])
-    BPLName = str(r['bplname'])
-    TaxIdNum = str(r['taxidnum'])
-    EntidadeId = str(r['entidadeid'])
-    AliasName = str(r['aliasname'])
-    cfiliais.append(
-        {
-            "BPLId": BPLId, 
-            "BPLName": BPLName, 
-            "TaxIdNum": TaxIdNum, 
-            "EntidadeId": EntidadeId
-            "AliasName": AliasName
-        }
-    )
+# for r in rsp:
+#     BPLId = str(r['bplid'])
+#     BPLName = str(r['bplname'])
+#     TaxIdNum = str(r['taxidnum'])
+#     EntidadeId = str(r['entidadeid'])
+#     AliasName = str(r['aliasname'])
+#     cfiliais.append(
+#         {
+#             "BPLId": BPLId, 
+#             "BPLName": BPLName, 
+#             "TaxIdNum": TaxIdNum, 
+#             "EntidadeId": EntidadeId
+#             "AliasName": AliasName
+#         }
+#     )
 
-filiais = cfiliais
+# filiais = cfiliais
 
-del(rsp)
-del(cfiliais)
+# del(rsp)
+# del(cfiliais)
 </bpmn:script>
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_0jau633" name="Filiais" dataStoreRef="filiais" type="json" />
