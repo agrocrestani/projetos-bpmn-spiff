@@ -7,5 +7,10 @@
     "ui:options": {
       "accept": ".pdf"
     }
+  },
+  "nfesPdf": {
+    "ui:options": {
+      "accept": ".pdf"
+    }
   }
 }
