@@ -1,6 +1,6 @@
 {
-  "title": "Dropdown list",
-  "description": "A dropdown list with options pulled form existing Task Data. IMPORTANT - Add 'fruits' to Task Data before using this component!!!",
+  "title": "Date",
+  "description": "Create a date field with a date picker (delivery_date).",
   "type": "object",
   "properties": {
     "favoriteFruit": {
@@ -9,6 +9,12 @@
       "anyOf": [
         "options_from_task_data_var:fruits"
       ]
+    },
+    "delivery_date": {
+      "type": "string",
+      "format": "date",
+      "title": "Preferred Delivery Date",
+      "validationErrorMessage": "Date must be today's date or later"
     }
   }
 }
