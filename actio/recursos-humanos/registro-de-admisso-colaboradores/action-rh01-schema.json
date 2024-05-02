@@ -7,6 +7,7 @@
     "filialEscritorio": {
       "title": "Matriz",
       "type": "object",
+      "required": ["escritorioAtivos", "escritorioDemitidos"],
       "properties": {
         "escritorioAtivos": {
           "type": "number",
@@ -21,6 +22,7 @@
     "filialBrasnorte": {
       "title": "Brasnorte",
       "type": "object",
+      "required": ["brasnorteAtivos", "brasnorteDemitidos"],
       "properties": {
         "brasnorteAtivos": {
           "type": "number",
@@ -35,6 +37,7 @@
     "filialQuerencia": {
       "title": "Querência",
       "type": "object",
+      "required": ["querenciaAtivos", "querenciaDemitidos"],
       "properties": {
         "querenciaAtivos": {
           "type": "number",
@@ -49,6 +52,7 @@
     "filialCamposDeJulio": {
       "title": "Campos de Júlio",
       "type": "object",
+      "required": ["camposDeJulioAtivos", "camposDeJulioDemitidos"],
       "properties": {
         "camposDeJulioAtivos": {
           "type": "number",
