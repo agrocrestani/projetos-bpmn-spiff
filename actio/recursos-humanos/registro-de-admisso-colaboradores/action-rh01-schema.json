@@ -1,5 +1,5 @@
 {
-  "title": "Registro dos Dados de De e Ativos",
+  "title": "Registro dos Dados de Demiss e Ativos",
   "description": "Este formulário permite o registro dos dados de demissão e de colaboradores ativos por filial e mês. Certifique-se de adicionar as informações corretas antes de utilizar este componente.",
   "type": "object",
   "required": [],
