@@ -1,0 +1,68 @@
+{
+  "title": "Dropdown list",
+  "description": "A dropdown list with options pulled form existing Task Data. IMPORTANT - Add 'fruits' to Task Data before using this component!!!",
+  "type": "object",
+  "properties": {
+    "indicadorIE": {
+      "title": "Indicador de IE",
+      "type": "string",
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "0"
+          ],
+          "title": "0 - Padrão Definido pelo sistema"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "1"
+          ],
+          "title": "1 - Contribuinte ICMS (informar a IE do destinatário)"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "2"
+          ],
+          "title": "2 - Contribuinte isento de Inscrição"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "3"
+          ],
+          "title": "3 - Não Contribuinte"
+        }
+      ]
+    },
+    "indicadorOpConsumidor": {
+      "title": "Indicador de Op. Consumidor",
+      "type": "string",
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "-1"
+          ],
+          "title": "-1 - Não Definido"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "0"
+          ],
+          "title": " 0 - Normal"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "1"
+          ],
+          "title": " 1 - Consumidor Final"
+        }
+      ]
+    }
+  }
+}

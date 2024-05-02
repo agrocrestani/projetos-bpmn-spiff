@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="Process_registro_de_admisso_colaboradores_5reiwhf" isExecutable="true">
+    <bpmn:startEvent id="IPACTIORH01">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="IPACTIORH01" targetRef="ACTIORH01" />
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:incoming>Flow_0q548we</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="ACTIORH01" targetRef="Activity_0tow411" />
+    <bpmn:userTask id="ACTIORH01" name="Inserir dados Colaboradores">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser />
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="action-rh01-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="action-rh01-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:preScript>meses = []
+
+meses = [
+    {"value": "1", "label": "Janeiro"},
+    {"value": "2", "label": "Fevereiro"},
+    {"value": "3", "label": "Março"},
+    {"value": "4", "label": "Abril"},
+    {"value": "5", "label": "Maio"},
+    {"value": "6", "label": "Junho"},
+    {"value": "7", "label": "Julho"},
+    {"value": "8", "label": "Agosto"},
+    {"value": "9", "label": "Setembro"},
+    {"value": "10", "label": "Outubro"},
+    {"value": "11", "label": "Novembro"},
+    {"value": "12", "label": "Dezembro"}
+]</spiffworkflow:preScript>
+        <spiffworkflow:postScript />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0etx8vl" sourceRef="Activity_0tow411" targetRef="LoginActio" />
+    <bpmn:manualTask id="Activity_0tow411" name="Confirma dados dos Colaboradores">
+      <bpmn:extensionElements>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" />
+            <spiffworkflow:parameter id="headers" type="any" />
+            <spiffworkflow:parameter id="data" type="any" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="actio-rh02-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="actio-rh02-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser>### Funcionários Matriz
+| Situação | Quantidade |
+| ---------- | :----------: |
+| Ativos | {{filialEscritorio['escritorioAtivos']}} |
+| Demitidos | {{filialEscritorio['escritorioDemitidos']}} |
+
+### Funcionários Brasnorte
+| Situação | Quantidade |
+| ---------- | :----------: |
+| Ativos | {{filialBrasnorte['brasnorteAtivos']}} |
+| Demitidos | {{filialBrasnorte['brasnorteDemitidos']}} |
+
+### Funcionários Querência
+| Situação | Quantidade |
+| ---------- | :----------: |
+| Ativos | {{filialQuerencia['querenciaAtivos']}} |
+| Demitidos | {{filialQuerencia['querenciaDemitidos']}} |
+
+### Funcionários Campos de Júlio
+| Situação | Quantidade |
+| ---------- | :----------: |
+| Ativos | {{filialCamposDeJulio['camposDeJulioAtivos']}} |
+| Demitidos | {{filialCamposDeJulio['camposDeJulioDemitidos']}} |
+</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0etx8vl</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_1quid0u" sourceRef="LoginActio" targetRef="RegistrarParametros" />
+    <bpmn:serviceTask id="LoginActio" name="Login Actio">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>url = "https://crestani-webapi.actiosoftware.com/api/auth"
+
+data = {
+    "email":"mailon.campos@agrocrestani.com.br",
+    "password":"AndressaWin2@"
+}
+
+headers = {
+  'Content-Type': 'application/json'
+}</spiffworkflow:preScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="data" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:postScript>body = response['body']
+accessToken = body['accessToken']</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0etx8vl</bpmn:incoming>
+      <bpmn:outgoing>Flow_1quid0u</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0q548we" sourceRef="RegistrarParametros" targetRef="EndEvent_1" />
+    <bpmn:serviceTask id="RegistrarParametros" name="Registrar Parametros">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript># Definindo as variáveis
+url = "https://crestani-webapi.actiosoftware.com/api/values/executedValues"
+ano = 2024
+headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + accessToken
+}
+
+# Obtendo os valores dos funcionários das filiais
+funcAtivosMatriz = filialEscritorio['escritorioAtivos']
+funcDemitidosMatriz = filialEscritorio['escritorioDemitidos']
+funcAtivosBrasnorte = filialBrasnorte['brasnorteAtivos']
+funcDemitidosBrasnorte = filialBrasnorte['brasnorteDemitidos']
+funcAtivosQuerencia = filialQuerencia['querenciaAtivos']
+funcDemitidosQuerencia = filialQuerencia['querenciaDemitidos']
+funcAtivosCamposDeJulio = filialCamposDeJulio['camposDeJulioAtivos']
+funcDemitidosCamposDeJulio = filialCamposDeJulio['camposDeJulioDemitidos']
+
+# Definindo os dados a serem enviados
+data = [
+    {
+        "itemCode": "RH.PAR.004",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcAtivosMatriz
+    },
+    {
+        "itemCode": "RH.PAR.008",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcDemitidosMatriz
+    },
+    {
+        "itemCode": "RH.PAR.001",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcAtivosBrasnorte
+    },
+    {
+        "itemCode": "RH.PAR.005",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcDemitidosBrasnorte
+    },
+    {
+        "itemCode": "RH.PAR.003",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcAtivosQuerencia
+    },
+    {
+        "itemCode": "RH.PAR.007",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcDemitidosQuerencia
+    },
+    {
+        "itemCode": "RH.PAR.002",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcAtivosCamposDeJulio
+    },
+    {
+        "itemCode": "RH.PAR.006",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcDemitidosCamposDeJulio
+    }
+]</spiffworkflow:preScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="data" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1quid0u</bpmn:incoming>
+      <bpmn:outgoing>Flow_0q548we</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_registro_de_admisso_colaboradores_5reiwhf">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="IPACTIORH01">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1042" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1fjxmla_di" bpmnElement="ACTIORH01">
+        <dc:Bounds x="320" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_17dm0xt_di" bpmnElement="Activity_0tow411">
+        <dc:Bounds x="480" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1yoq94z_di" bpmnElement="LoginActio">
+        <dc:Bounds x="650" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_032f4vz_di" bpmnElement="RegistrarParametros">
+        <dc:Bounds x="820" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="320" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
+        <di:waypoint x="420" y="177" />
+        <di:waypoint x="480" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0etx8vl_di" bpmnElement="Flow_0etx8vl">
+        <di:waypoint x="580" y="177" />
+        <di:waypoint x="650" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1quid0u_di" bpmnElement="Flow_1quid0u">
+        <di:waypoint x="750" y="177" />
+        <di:waypoint x="820" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0q548we_di" bpmnElement="Flow_0q548we">
+        <di:waypoint x="920" y="177" />
+        <di:waypoint x="1042" y="177" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

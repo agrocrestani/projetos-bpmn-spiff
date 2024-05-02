@@ -5,80 +5,13 @@
   </bpmn:collaboration>
   <bpmn:process id="Process_informar_nfe_na_due_no_sap_s4et3dg" name="Informar NFe na DUE no SAP" isExecutable="true">
     <bpmn:laneSet id="LaneSet_1ysngrh">
-      <bpmn:lane id="Lane_12arzfr">
+      <bpmn:lane id="Lane_Comercial_Graos" name="Comercial Graos">
+        <bpmn:flowNodeRef>Activity_Busca_NFe_sem_DUE</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_Busca_NFe_sem_DUE</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="Lane_Comercial_Graos" name="ComercialGraos">
         <bpmn:flowNodeRef>Activity_NFes</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:startEvent id="StartEvent_1">
-      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
-    </bpmn:startEvent>
-    <bpmn:endEvent id="EndEvent_1">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0ccgix8</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:scriptTask id="Activity_Busca_NFe_sem_DUE" name="Busca as notas sem DUE">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser />
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-      <bpmn:script>from connectordb.hana import Hana
-
-env = get_env()
-baseSap = get_secret('baseSap')
-
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
-
-query = f"""
-        select
-            t0."DocEntry",
-            t0."DocNum",
-            t0."Serial",
-            t3."KeyNfe",
-            to_alphanum(t0."DocDate") "DocDate",
-            t0."SeqCode",
-            t0."SeriesStr",
-            t0."SubStr",
-            t0."Model",
-            t0."ObjType",
-            t1."LineNum",
-            t1."ItemCode",
-            t4."ItemName",
-            to_alphanum(t1."Quantity") "Quantity",
-            to_alphanum(t1."LineTotal") "LineTotal",
-            T5.ID "EntidadeId"
-        from
-            {baseSap}.oinv t0
-            INNER JOIN {baseSap}.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
-            INNER JOIN {baseSap}.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
-            INNER JOIN {baseSap}."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4
-            INNER JOIN {baseSap}.oitm t4 ON T1."ItemCode" = t4."ItemCode"
-            INNER JOIN {baseSap}."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
-        WHERE
-                t2."MainUsage" = 82 AND t0."DocDate" &lt;= '20240215'  AND t1."ItemCode" = '022966'
-                AND t0."DocEntry" NOT IN (SELECT "DocEntry" FROM {baseSap}."DeclaracaoExportacaoItens")
-                --and t3."KeyNfe" = '51240103262185000443550010000014221137660108'
-        limit 10
-        """
-nfes = Hana(connection).selectDb(query)
-totalRegistros = len(nfes)
-contador = 0
-del(connection)
-del(query)
-# '51240103262185000109550010000245571183610655',</bpmn:script>
-    </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_Busca_NFe_sem_DUE" />
     <bpmn:sequenceFlow id="Flow_0ccgix8" sourceRef="Activity_NFes" targetRef="EndEvent_1" />
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_Busca_NFe_sem_DUE" targetRef="Activity_NFes" />
@@ -267,27 +200,79 @@ del(rsp)</spiffworkflow:postScript>
         <bpmn:outgoing>Flow_07x7mvp</bpmn:outgoing>
       </bpmn:manualTask>
     </bpmn:subProcess>
+    <bpmn:scriptTask id="Activity_Busca_NFe_sem_DUE" name="Busca as notas sem DUE">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+env = get_env()
+baseSap = get_secret('baseSap')
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+        select
+            t0."DocEntry",
+            t0."DocNum",
+            t0."Serial",
+            t3."KeyNfe",
+            to_alphanum(t0."DocDate") "DocDate",
+            t0."SeqCode",
+            t0."SeriesStr",
+            t0."SubStr",
+            t0."Model",
+            t0."ObjType",
+            t1."LineNum",
+            t1."ItemCode",
+            t4."ItemName",
+            to_alphanum(t1."Quantity") "Quantity",
+            to_alphanum(t1."LineTotal") "LineTotal",
+            T5.ID "EntidadeId"
+        from
+            {baseSap}.oinv t0
+            INNER JOIN {baseSap}.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
+            INNER JOIN {baseSap}.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
+            INNER JOIN {baseSap}."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4
+            INNER JOIN {baseSap}.oitm t4 ON T1."ItemCode" = t4."ItemCode"
+            INNER JOIN {baseSap}."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
+        WHERE
+                t2."MainUsage" = 82 AND t0."DocDate" &lt;= '20240215'  AND t1."ItemCode" = '022966'
+                AND t0."DocEntry" NOT IN (SELECT "DocEntry" FROM {baseSap}."DeclaracaoExportacaoItens")
+                --and t3."KeyNfe" = '51240103262185000443550010000014221137660108'
+        limit 100
+        """
+nfes = Hana(connection).selectDb(query)
+totalRegistros = len(nfes)
+contador = 0
+del(connection)
+del(query)
+# '51240103262185000109550010000245571183610655',</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ccgix8</bpmn:incoming>
+    </bpmn:endEvent>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1803azx">
       <bpmndi:BPMNShape id="Participant_0qra9c5_di" bpmnElement="Participant_0qra9c5" isHorizontal="true">
-        <dc:Bounds x="129" y="54" width="1390" height="556" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_12arzfr_di" bpmnElement="Lane_12arzfr" isHorizontal="true">
-        <dc:Bounds x="159" y="54" width="1360" height="266" />
+        <dc:Bounds x="129" y="340" width="1390" height="270" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_153rpnu_di" bpmnElement="Lane_Comercial_Graos" isHorizontal="true">
-        <dc:Bounds x="159" y="320" width="1360" height="290" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1462" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0ckybt4_di" bpmnElement="Activity_Busca_NFe_sem_DUE">
-        <dc:Bounds x="270" y="137" width="100" height="80" />
+        <dc:Bounds x="159" y="340" width="1360" height="270" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1398pii_di" bpmnElement="Activity_NFes" isExpanded="true">
@@ -319,21 +304,21 @@ del(rsp)</spiffworkflow:postScript>
         <dc:Bounds x="1120" y="430" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_1l0h6eb_di" bpmnElement="Flow_1l0h6eb">
-        <di:waypoint x="745" y="470" />
-        <di:waypoint x="810" y="470" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0o0tp2q_di" bpmnElement="Flow_0o0tp2q">
         <di:waypoint x="910" y="470" />
         <di:waypoint x="980" y="470" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0nry0ei_di" bpmnElement="Flow_0nry0ei">
-        <di:waypoint x="1080" y="470" />
-        <di:waypoint x="1120" y="470" />
+      <bpmndi:BPMNEdge id="Flow_1l0h6eb_di" bpmnElement="Flow_1l0h6eb">
+        <di:waypoint x="745" y="470" />
+        <di:waypoint x="810" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1hznv83_di" bpmnElement="Flow_1hznv83">
         <di:waypoint x="650" y="470" />
         <di:waypoint x="695" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0nry0ei_di" bpmnElement="Flow_0nry0ei">
+        <di:waypoint x="1080" y="470" />
+        <di:waypoint x="1120" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12epf89_di" bpmnElement="Flow_12epf89">
         <di:waypoint x="720" y="495" />
@@ -349,20 +334,26 @@ del(rsp)</spiffworkflow:postScript>
         <di:waypoint x="1220" y="470" />
         <di:waypoint x="1262" y="470" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_0ckybt4_di" bpmnElement="Activity_Busca_NFe_sem_DUE">
+        <dc:Bounds x="270" y="430" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="192" y="452" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1462" y="452" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
-        <di:waypoint x="215" y="177" />
-        <di:waypoint x="270" y="177" />
+        <di:waypoint x="228" y="470" />
+        <di:waypoint x="270" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ccgix8_di" bpmnElement="Flow_0ccgix8">
         <di:waypoint x="1400" y="470" />
-        <di:waypoint x="1431" y="470" />
-        <di:waypoint x="1431" y="177" />
-        <di:waypoint x="1462" y="177" />
+        <di:waypoint x="1462" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
-        <di:waypoint x="370" y="177" />
-        <di:waypoint x="390" y="177" />
-        <di:waypoint x="390" y="470" />
+        <di:waypoint x="370" y="470" />
         <di:waypoint x="410" y="470" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>

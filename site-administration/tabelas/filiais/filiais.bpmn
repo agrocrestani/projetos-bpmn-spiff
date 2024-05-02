@@ -38,19 +38,75 @@ query = """
             o."BPLId",
             o."BPLName",
             o."TaxIdNum",
-            e.ID "EntidadeId"
+            e.ID "EntidadeId",
+            o."AliasName"
           FROM
             SBO_CRESTANI_PRD.OBPL o
           INNER JOIN SBO_CRESTANI_PRD."Entidade" e ON
             O."TaxIdNum" = e.CNPJ
         """
 
-rsp = json.loads(Hana(connection).selectDb(query))
+rsp = Hana(connection).selectDb(query)
+# rsp = json.loads(Hana(connection).selectDb(query))
 
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1l9e5wy" sourceRef="Activity_1iixjle" targetRef="EndEvent_1" />
     <bpmn:scriptTask id="Activity_1iixjle" name="Parse Filiais">
+      <bpmn:extensionElements>
+        <spiffworkflow:unitTests>
+          <spiffworkflow:unitTest id="ScriptUnitTest_0t4w4aq">
+            <spiffworkflow:inputJson>{
+    "rsp": [
+        {
+        "bplid": 1,
+        "bplname": "0109-AGROPECUARIA CRESTANI LTDA",
+        "taxidnum": "03.262.185/0001-09",
+        "entidadeid": 2,
+        "aliasname": "FAZENDA QUERENCIA"
+        },
+        {
+        "bplid": 2,
+        "bplname": "0281-AGROPECUARIA CRESTANI LTDA",
+        "taxidnum": "03.262.185/0002-81",
+        "entidadeid": 1,
+        "aliasname": "FAZENDA PROMISSAO"
+        },
+        {
+        "bplid": 3,
+        "bplname": "0362-AGROPECUARIA CRESTANI LTDA",
+        "taxidnum": "03.262.185/0003-62",
+        "entidadeid": 3,
+        "aliasname": "FAZENDA COLORADO"
+        }
+    ]
+}</spiffworkflow:inputJson>
+            <spiffworkflow:expectedOutputJson>{
+    "rsp": [
+        {
+            "BPLId": 1,
+            "BPLName": "0109-AGROPECUARIA CRESTANI LTDA",
+            "TaxIdNum": "03.262.185/0001-09",
+            "EntidadeId": 2,
+            "AliasName": "FAZENDA QUERENCIA"
+        },
+        {   "BPLId": 2,
+            "BPLName": "0281-AGROPECUARIA CRESTANI LTDA",
+            "TaxIdNum": "03.262.185/0002-81",
+            "EntidadeId": 1,
+            "AliasName": "FAZENDA PROMISSAO"
+        },
+        {   "BPLId": 3,
+            "BPLName": "0362-AGROPECUARIA CRESTANI LTDA",
+            "TaxIdNum": "03.262.185/0003-62",
+            "EntidadeId": 3,
+            "AliasName": "FAZENDA COLORADO"
+        }
+    ]
+}</spiffworkflow:expectedOutputJson>
+          </spiffworkflow:unitTest>
+        </spiffworkflow:unitTests>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1l9e5wy</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1721ddj">
@@ -58,17 +114,22 @@ del(connection)</bpmn:script>
       </bpmn:dataOutputAssociation>
       <bpmn:script>cfiliais = []
 
+# rsp = json.dumps(rsp)
+# rsp = json.loads(rsp)
+
 for r in rsp:
     BPLId = str(r['bplid'])
     BPLName = str(r['bplname'])
     TaxIdNum = str(r['taxidnum'])
     EntidadeId = str(r['entidadeid'])
+    AliasName = str(r['aliasname'])
     cfiliais.append(
         {
             "BPLId": BPLId, 
             "BPLName": BPLName, 
             "TaxIdNum": TaxIdNum, 
-            "EntidadeId": EntidadeId
+            "EntidadeId": EntidadeId,
+            "AliasName": AliasName
         }
     )
 
@@ -76,7 +137,6 @@ filiais = cfiliais
 
 del(rsp)
 del(cfiliais)
-
 </bpmn:script>
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_0jau633" name="Filiais" dataStoreRef="filiais" type="json" />
