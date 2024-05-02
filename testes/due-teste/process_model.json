@@ -1,9 +1,0 @@
-{
-    "description": "",
-    "display_name": "Due Teste",
-    "exception_notification_addresses": [],
-    "fault_or_suspend_on_exception": "fault",
-    "metadata_extraction_paths": null,
-    "primary_file_name": "due-teste.bpmn",
-    "primary_process_id": "Process_due_teste_ckl5pta"
-}

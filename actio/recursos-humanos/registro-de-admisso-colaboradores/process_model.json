@@ -1,9 +1,0 @@
-{
-    "description": "",
-    "display_name": "Registro de Admiss\u00e3o Colaboradores",
-    "exception_notification_addresses": [],
-    "fault_or_suspend_on_exception": "fault",
-    "metadata_extraction_paths": [],
-    "primary_file_name": "registro-de-admisso-colaboradores.bpmn",
-    "primary_process_id": "Process_registro_de_admisso_colaboradores_5reiwhf"
-}
