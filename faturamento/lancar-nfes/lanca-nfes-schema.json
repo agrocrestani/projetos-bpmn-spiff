@@ -17,7 +17,7 @@
         "options_from_task_data_var:n_filiais"
       ]
     },
-    "nfesPdf": {
+    "nfsePdf": {
       "type": "string",
       "format": "data-url",
       "title": "Selecione o arquivo .pdf"
