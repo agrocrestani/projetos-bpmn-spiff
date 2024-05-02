@@ -10,7 +10,7 @@
   "filialEscritorio": {
     "ui:layout": [
       {
-        "escritorioAtivos":{},
+        "escritorioAtivos": {},
         "escritorioDemitidos": {}
       }
     ],
@@ -30,7 +30,7 @@
   "filialBrasnorte": {
     "ui:layout": [
       {
-        "brasnorteAtivos":{},
+        "brasnorteAtivos": {},
         "brasnorteDemitidos": {}
       }
     ],
