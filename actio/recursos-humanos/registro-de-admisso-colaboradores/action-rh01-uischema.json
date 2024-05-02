@@ -4,10 +4,20 @@
       "mes": {}
     },
     {
+      "title": "Matriz",
       "filialEscritorio": {}
     },
     {
+      "title": "Brasnorte",
       "filialBrasnorte": {}
+    },
+    {
+      "title": "Querência",
+      "filialQuerencia": {}
+    },
+    {
+      "title": "Campos de Júlio",
+      "filialCamposDeJulio": {}
     }
   ],
   "mes": {
@@ -47,6 +57,46 @@
       "ui:autocomplete": "family-name"
     },
     "brasnorteDemitidos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores demitidos",
+      "ui:autocomplete": "family-name"
+    }
+  },
+  "filialQuerencia": {
+    "ui:layout": [
+      {
+        "querenciaAtivos": {},
+        "querenciaDemitidos": {}
+      }
+    ],
+    "querenciaAtivos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores ativos",
+      "ui:autocomplete": "family-name"
+    },
+    "querenciaDemitidos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores demitidos",
+      "ui:autocomplete": "family-name"
+    }
+  },
+  "filialCamposDeJulio": {
+    "ui:layout": [
+      {
+        "camposDeJulioAtivos": {},
+        "camposDeJulioDemitidos": {}
+      }
+    ],
+    "camposDeJulioAtivos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores ativos",
+      "ui:autocomplete": "family-name"
+    },
+    "camposDeJulioDemitidos": {
       "ui:autofocus": true,
       "ui:emptyValue": "",
       "ui:placeholder": "Digite o número de colaboradores demitidos",
