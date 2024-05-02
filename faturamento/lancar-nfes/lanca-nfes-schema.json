@@ -16,7 +16,7 @@
       "title": "Preferred Delivery Date",
       "validationErrorMessage": "Date must be today's date or later"
     },
-    "nfesP": {
+    "nfesPdf": {
       "type": "string",
       "format": "data-url",
       "title": "Selecione o arquivo .PDF"
