@@ -16,7 +16,7 @@
       "anyOf": [
         "options_from_task_data_var:n_filiais"
       ]
-    }
+    },
     "delivery_date": {
       "type": "string",
       "format": "date",
