@@ -1,6 +1,6 @@
 {
   "title": "Registro dos Dados de Admissão e Ativos",
-  "description": "Este formulário permite o registro dos dados de admissão e ativos de colaboradores por filial e mês. Certifique-se de adicionar as informações corretas antes de utilizar este componente.",
+  "description": "Este formulário permite o registro dos dados de demiss e ativos de colaboradores por filial e mês. Certifique-se de adicionar as informações corretas antes de utilizar este componente.",
   "type": "object",
   "required": [],
   "properties": {
