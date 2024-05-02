@@ -10,7 +10,7 @@
   },
   "nfesXml": {
     "ui:options": {
-      "accept": ".pdf"
+      "accept": ".xml"
     }
   }
 }
