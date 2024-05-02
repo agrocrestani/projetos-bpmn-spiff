@@ -181,12 +181,14 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-query = """
+baseSap = get_secret('baseSap')
+
+query = f"""
     SELECT 
       T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", T2."WhsCode", to_alphanum(T2."OnHand") "OnHand"
-    FROM SBO_CRESTANI_PRD."OITM" T0
-    INNER JOIN SBO_CRESTANI_PRD."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
-    INNER JOIN SBO_CRESTANI_PRD."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
+    FROM {baseSap}."OITM" T0
+    INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
+    INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
     WHERE T2."OnHand" &gt; 0  
       AND  T2."WhsCode" = '03.MATR'
       OR (T2."WhsCode" = '01.FQUE' AND T0."QryGroup2" = 'Y')

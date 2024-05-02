@@ -33,8 +33,10 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-query = """
-          SELECT o."Code", o."Name"  FROM SBO_CRESTANI_PRD.ocry o
+baseSap = get_secret('baseSap')
+
+query = f"""
+          SELECT o."Code", o."Name"  FROM {baseSap}.ocry o
         """
 
 rsp = Hana(connection).selectDb(query)
