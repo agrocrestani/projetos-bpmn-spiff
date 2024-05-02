@@ -19,7 +19,7 @@
     "nfesPdf": {
       "type": "string",
       "format": "data-url",
-      "title": "Selecione o arquivo .PDF"
+      "title": "Selecione o arquivo .pdf"
     },
     "nfesXml": {
       "type": "string",
