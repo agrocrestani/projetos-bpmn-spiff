@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "unidade": {
-      "title": "Selecione a Uni",
+      "title": "Selecione a Unidade",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:fruits"
