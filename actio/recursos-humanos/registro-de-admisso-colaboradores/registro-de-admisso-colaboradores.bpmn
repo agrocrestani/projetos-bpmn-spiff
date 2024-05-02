@@ -39,21 +39,17 @@
           <spiffworkflow:property name="formJsonSchemaFilename" value="actio-rh02-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="actio-rh02-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:instructionsForEndUser>## Funcionário Matriz 
+        <spiffworkflow:instructionsForEndUser>## Funcionários Matriz 
 | Situação | Quantidade |
 | ---------- | :----------: |
 |Ativos  | {{filialEscritorio['escritorioAtivos']}} |
 |Demitidos |{{filialEscritorio['escritorioDemitidos']}} |
 
-
- }}: {
-    "escritorioAtivos": 1,
-    "escritorioDemitidos": 1
-  },
-  "filialBrasnorte": {
-    "brasnorteAtivos": 1,
-    "brasnorteDemitidos": 1
-  }
+## Funcionários Brasnorte
+| Situação | Quantidade |
+| ---------- | :----------: |
+|Ativos  | {{filialBrasnorte['brasnorteAtivos']}} |
+|Demitidos |{{filialBrasnorte['brasnorteDemitidos']}} |
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript />
       </bpmn:extensionElements>
@@ -92,28 +88,39 @@ accessToken = body['accessToken']</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_0q548we" sourceRef="RegistrarParametros" targetRef="EndEvent_1" />
     <bpmn:serviceTask id="RegistrarParametros" name="Registrar Parametros">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>url2 = "https://crestani-webapi.actiosoftware.com/api/values/executedValues"
+        <spiffworkflow:preScript>url = "https://crestani-webapi.actiosoftware.com/api/values/executedValues"
 
-mes = 11
+mes = 2
 ano = 2024
 
-data2 = [{
+funcAtivosMatriz = filialEscritorio['escritorioAtivos']
+funcDemitidosMatriz = filialEscritorio['escritorioDemitidos']
+
+data = [
+  {
+    "itemCode":"RH.PAR.004",
+    "period": mes,
+    "year": ano,
+    "executedValue": funcAtivosMatriz
+  },
+  {
     "itemCode":"RH.PAR.008",
     "period": mes,
     "year": ano,
-    "executedValue": 3
-}]
+    "executedValue": funcDemitidosMatriz
+  }
+]
 
-headers2 = {
+headers = {
   'Content-Type': 'application/json',
   'Authorization': 'Bearer ' + accessToken
 }
 </spiffworkflow:preScript>
-        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response2">
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response">
           <spiffworkflow:parameters>
-            <spiffworkflow:parameter id="url" type="str" value="url2" />
-            <spiffworkflow:parameter id="headers" type="any" value="headers2" />
-            <spiffworkflow:parameter id="data" type="any" value="data2" />
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="data" />
             <spiffworkflow:parameter id="basic_auth_username" type="str" />
             <spiffworkflow:parameter id="basic_auth_password" type="str" />
             <spiffworkflow:parameter id="verify" type="bool" />
