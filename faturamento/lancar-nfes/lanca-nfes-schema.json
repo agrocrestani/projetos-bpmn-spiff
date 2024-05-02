@@ -7,7 +7,7 @@
       "title": "Unidade",
       "type": "string",
       "anyOf": [
-        "options_from_task_data_var:"
+        "options_from_task_data_var:n_"
       ]
     },
     "delivery_date": {
