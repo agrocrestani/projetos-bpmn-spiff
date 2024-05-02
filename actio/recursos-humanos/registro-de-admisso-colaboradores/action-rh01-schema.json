@@ -33,7 +33,7 @@
       }
     },
     "mes": {
-      "title": "Select your favorite fruit",
+      "title": "Se",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:fruits"
