@@ -33,7 +33,7 @@
       }
     },
     "mes": {
-      "title": "Selecione um mês",
+      "title": "Selecione um mês de refe",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:fruits"
