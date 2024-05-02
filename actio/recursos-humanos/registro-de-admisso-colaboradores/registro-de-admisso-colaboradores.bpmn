@@ -90,6 +90,35 @@ headers = {
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_0q548we" sourceRef="RegistrarParametros" targetRef="EndEvent_1" />
     <bpmn:serviceTask id="RegistrarParametros" name="Registrar Parametros">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>url = "https://crestani-webapi.actiosoftware.com/api/values/executedValues"
+
+mes = 11
+ano = 2024
+
+data = [{
+    "itemCode":"RH.PAR.008",
+    "period": mes,
+    "year": ano,
+    "executedValue": 3
+}]
+
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Bearer ' + accessToken
+}
+</spiffworkflow:preScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="data" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1quid0u</bpmn:incoming>
       <bpmn:outgoing>Flow_0q548we</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -114,7 +143,7 @@ headers = {
         <dc:Bounds x="1042" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_032f4vz_di" bpmnElement="RegistrarParametros">
-        <dc:Bounds x="830" y="137" width="100" height="80" />
+        <dc:Bounds x="820" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
@@ -131,10 +160,10 @@ headers = {
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1quid0u_di" bpmnElement="Flow_1quid0u">
         <di:waypoint x="750" y="177" />
-        <di:waypoint x="830" y="177" />
+        <di:waypoint x="820" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0q548we_di" bpmnElement="Flow_0q548we">
-        <di:waypoint x="930" y="177" />
+        <di:waypoint x="920" y="177" />
         <di:waypoint x="1042" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
