@@ -55,7 +55,7 @@
     "brasnorteDemitidos": 1
   }
 </spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:preScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0etx8vl</bpmn:outgoing>
@@ -69,7 +69,7 @@
             <spiffworkflow:parameter id="headers" type="any" />
             <spiffworkflow:parameter id="basic_auth_username" type="str" />
             <spiffworkflow:parameter id="basic_auth_password" type="str" />
-            <spiffworkflow:parameter id="data" type="any" value="&#34;{     &#34;email&#34;:&#34;mailon.campos@agrocrestani.com.br&#34;,     &#34;password&#34;:&#34;AndressaWin2@&#34; }&#34;" />
+            <spiffworkflow:parameter id="data" type="any" value="{     &#34;email&#34;:&#34;mailon.campos@agrocrestani.com.br&#34;,     &#34;password&#34;:&#34;AndressaWin2@&#34; }" />
             <spiffworkflow:parameter id="verify" type="bool" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
@@ -83,6 +83,9 @@
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="IPACTIORH01">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="922" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1fjxmla_di" bpmnElement="ACTIORH01">
         <dc:Bounds x="320" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -93,9 +96,6 @@
       <bpmndi:BPMNShape id="Activity_1yoq94z_di" bpmnElement="LoginActio">
         <dc:Bounds x="650" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="922" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
