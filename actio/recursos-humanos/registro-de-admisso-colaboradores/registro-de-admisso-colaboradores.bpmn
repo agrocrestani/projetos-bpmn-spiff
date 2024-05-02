@@ -105,11 +105,13 @@ accessToken = body['accessToken']</spiffworkflow:postScript>
       <bpmn:extensionElements>
         <spiffworkflow:preScript>url = "https://crestani-webapi.actiosoftware.com/api/values/executedValues"
 
-mes = 2
 ano = 2024
 
 funcAtivosMatriz = filialEscritorio['escritorioAtivos']
 funcDemitidosMatriz = filialEscritorio['escritorioDemitidos']
+
+funcAtivosBrasnorte = filialBrasnorte['brasnorteAtivos']
+funcDemitidosBrasnorte = filialBrasnorte['brasnorteDemitidos']
 
 data = [
   {
@@ -123,6 +125,18 @@ data = [
     "period": mes,
     "year": ano,
     "executedValue": funcDemitidosMatriz
+  },
+   {
+    "itemCode":"RH.PAR.001",
+    "period": mes,
+    "year": ano,
+    "executedValue": funcAtivosBrasnorte
+  },
+  {
+    "itemCode":"RH.PAR.005",
+    "period": mes,
+    "year": ano,
+    "executedValue": funcDemitidosBrasnorte
   }
 ]
 
