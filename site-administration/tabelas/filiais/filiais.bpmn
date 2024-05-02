@@ -56,8 +56,54 @@ del(connection)</bpmn:script>
       <bpmn:extensionElements>
         <spiffworkflow:unitTests>
           <spiffworkflow:unitTest id="ScriptUnitTest_0t4w4aq">
-            <spiffworkflow:inputJson>{}</spiffworkflow:inputJson>
-            <spiffworkflow:expectedOutputJson>{}</spiffworkflow:expectedOutputJson>
+            <spiffworkflow:inputJson>{
+    "rsp": [
+        {
+        "bplid": 1,
+        "bplname": "0109-AGROPECUARIA CRESTANI LTDA",
+        "taxidnum": "03.262.185/0001-09",
+        "entidadeid": 2,
+        "aliasname": "FAZENDA QUERENCIA"
+        },
+        {
+        "bplid": 2,
+        "bplname": "0281-AGROPECUARIA CRESTANI LTDA",
+        "taxidnum": "03.262.185/0002-81",
+        "entidadeid": 1,
+        "aliasname": "FAZENDA PROMISSAO"
+        },
+        {
+        "bplid": 3,
+        "bplname": "0362-AGROPECUARIA CRESTANI LTDA",
+        "taxidnum": "03.262.185/0003-62",
+        "entidadeid": 3,
+        "aliasname": "FAZENDA COLORADO"
+        }
+    ]
+}</spiffworkflow:inputJson>
+            <spiffworkflow:expectedOutputJson>{
+    [
+        {
+            'bplid': 1,
+            'bplname': '0109-AGROPECUARIA CRESTANI LTDA',
+            'taxidnum': '03.262.185/0001-09',
+            'entidadeid': 2,
+            'aliasname': 'FAZENDA QUERENCIA'
+        },
+        {   'bplid': 2,
+            'bplname': '0281-AGROPECUARIA CRESTANI LTDA',
+            'taxidnum': '03.262.185/0002-81',
+            'entidadeid': 1,
+            'aliasname': 'FAZENDA PROMISSAO'
+        },
+        {   'bplid': 3,
+            'bplname': '0362-AGROPECUARIA CRESTANI LTDA',
+            'taxidnum': '03.262.185/0003-62',
+            'entidadeid': 3,
+            'aliasname': 'FAZENDA COLORADO'
+        }
+    ]
+}</spiffworkflow:expectedOutputJson>
           </spiffworkflow:unitTest>
         </spiffworkflow:unitTests>
       </bpmn:extensionElements>
