@@ -60,6 +60,8 @@ del(connection)</bpmn:script>
       </bpmn:dataOutputAssociation>
       <bpmn:script>cfiliais = []
 
+rsp = json.loads(rsp)
+
 for r in rsp:
     BPLId = str(r['bplid'])
     BPLName = str(r['bplname'])
@@ -80,7 +82,6 @@ filiais = cfiliais
 
 del(rsp)
 del(cfiliais)
-
 </bpmn:script>
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_0jau633" name="Filiais" dataStoreRef="filiais" type="json" />
