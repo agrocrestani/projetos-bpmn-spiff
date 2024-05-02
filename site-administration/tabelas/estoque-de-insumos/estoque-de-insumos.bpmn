@@ -204,6 +204,7 @@ for r in rsp:
     ItmsGrpNam = str(r['itmsgrpnam'])
     InvntryUom = str(r['invntryuom'])
     OnHand = str(r['onhand'])
+    WhsCode = str(r['whscode'])
     estoque_de_insumos.append(
         {
             "search_term": ItemName, 
@@ -212,7 +213,8 @@ for r in rsp:
                 "ItemName": ItemName, 
                 "ItmsGrpNam": ItmsGrpNam,
                 "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
-                "OnHand": OnHand
+                "OnHand": OnHand,
+                "WhsCode": WhsCode
                 }
             }
         )
