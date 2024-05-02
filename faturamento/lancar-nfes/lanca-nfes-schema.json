@@ -20,6 +20,11 @@
       "type": "string",
       "format": "data-url",
       "title": "Selecione o arquivo .PDF"
+    },
+    "nfesPdf": {
+      "type": "string",
+      "format": "data-url",
+      "title": "Selecione o arquivo .PDF"
     }
   }
 }
