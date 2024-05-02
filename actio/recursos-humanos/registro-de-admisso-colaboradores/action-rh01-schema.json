@@ -35,7 +35,9 @@
     "mes": {
       "title": "Selecione um mês de referência",
       "type": "string",
-      "anyOf": "meses"
+      "anyOf": [
+        "options_from_task_data_var:meses"
+      ]
     }
   }
 }
