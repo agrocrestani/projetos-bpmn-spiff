@@ -15,6 +15,13 @@
       "format": "date",
       "title": "Preferred Delivery Date",
       "validationErrorMessage": "Date must be today's date or later"
-    },
+    }"files": {
+      "type": "array",
+      "title": "Multiple files",
+      "items": {
+        "type": "string",
+        "format": "data-url"
+      }
+    }
   }
 }
