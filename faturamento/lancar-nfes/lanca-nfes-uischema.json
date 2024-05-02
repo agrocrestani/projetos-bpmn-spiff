@@ -1,6 +1,5 @@
 {
-  
-  "nfesPdf": {
+  nfesPdf": {
     "ui:options": {
       "accept": ".pdf"
     }
