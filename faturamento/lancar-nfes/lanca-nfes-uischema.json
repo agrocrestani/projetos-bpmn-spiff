@@ -8,7 +8,7 @@
       "accept": ".pdf"
     }
   },
-  "nfesPdf": {
+  "nfes": {
     "ui:options": {
       "accept": ".pdf"
     }
