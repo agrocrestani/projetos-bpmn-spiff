@@ -33,11 +33,13 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-query = """
+baseSap = get_secret('baseSap')
+
+query = f"""
           SELECT 
             o.ID,
             o."Usage"
-          FROM SBO_CRESTANI_PRD.OUSG o
+          FROM {baseSap}.OUSG o
           ORDER BY o."Usage" 
         """
 

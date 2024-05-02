@@ -26,6 +26,8 @@ You can also change the text you are reading here by updating the *Instructions*
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
+baseSap = get_secret('baseSap')
+
 connection = {
     "address": "172.20.1.4",
     "port": "30015",
@@ -33,13 +35,13 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-query = """
+query = f"""
       SELECT 
         o."WhsCode", 
         o."WhsName", 
         o."BPLid" 
       FROM 
-        SBO_CRESTANI_QA.owhs o 
+        {baseSap}.owhs o 
       WHERE 
         o."WhsCode" LIKE '01.%'
         OR o."WhsCode" LIKE '02.%'

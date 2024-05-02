@@ -33,11 +33,13 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-query = """
+baseSap = get_secret('baseSap')
+
+query = f"""
           SELECT 
             o."OcrCode",
             o."OcrName"
-          FROM SBO_CRESTANI_PRD.oocr o
+          FROM {baseSap}.oocr o
           WHERE 
             o."DimCode" = 3
         """
