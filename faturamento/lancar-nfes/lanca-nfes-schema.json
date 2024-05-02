@@ -15,8 +15,7 @@
       "format": "date",
       "title": "Preferred Delivery Date",
       "validationErrorMessage": "Date must be today's date or later"
-    },
-
+    }
     }
   }
 }
