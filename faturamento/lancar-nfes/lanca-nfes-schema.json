@@ -24,7 +24,7 @@
     "nfesXml": {
       "type": "string",
       "format": "data-url",
-      "title": "Selecione o arquivo .a"
+      "title": "Selecione o arquivo .x"
     }
   }
 }
