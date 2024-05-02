@@ -63,7 +63,7 @@ del(connection)</bpmn:script>
 cfiliais = []
 
 rsp = json.dumps(rsp)
-rsp = json.loads(rsp)
+# rsp = json.loads(rsp)
 
 # for r in rsp:
 #     BPLId = str(r['bplid'])
