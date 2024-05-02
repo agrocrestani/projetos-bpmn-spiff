@@ -54,17 +54,17 @@ meses = [
           <spiffworkflow:property name="formJsonSchemaFilename" value="actio-rh02-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="actio-rh02-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:instructionsForEndUser>## Funcionários Matriz 
-| Situação | Quantidade |
-| ---------- | :----------: |
-|Ativos  | {{filialEscritorio['escritorioAtivos']}} |
-|Demitidos |{{filialEscritorio['escritorioDemitidos']}} |
+        <spiffworkflow:instructionsForEndUser>| Funcionários Matriz | Funcionários Brasnorte |
+| -------------------- | ---------------------- |
+| **Situação** | **Quantidade** | **Situação** | **Quantidade** |
+| Ativos | {{filialEscritorio['escritorioAtivos']}} | Ativos | {{filialBrasnorte['brasnorteAtivos']}} |
+| Demitidos | {{filialEscritorio['escritorioDemitidos']}} | Demitidos | {{filialBrasnorte['brasnorteDemitidos']}} |
 
-## Funcionários Brasnorte
-| Situação | Quantidade |
-| ---------- | :----------: |
-|Ativos  | {{filialBrasnorte['brasnorteAtivos']}} |
-|Demitidos |{{filialBrasnorte['brasnorteDemitidos']}} |
+| Funcionários Querência | Funcionários Campos de Júlio |
+| ----------------------- | --------------------------- |
+| **Situação** | **Quantidade** | **Situação** | **Quantidade** |
+| Ativos | {{filialQuerencia['querenciaAtivos']}} | Ativos | {{filialCamposDeJulio['camposDeJulioAtivos']}} |
+| Demitidos | {{filialQuerencia['querenciaDemitidos']}} | Demitidos | {{filialCamposDeJulio['camposDeJulioDemitidos']}} |
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript />
       </bpmn:extensionElements>
@@ -103,48 +103,75 @@ accessToken = body['accessToken']</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_0q548we" sourceRef="RegistrarParametros" targetRef="EndEvent_1" />
     <bpmn:serviceTask id="RegistrarParametros" name="Registrar Parametros">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>url = "https://crestani-webapi.actiosoftware.com/api/values/executedValues"
-
+        <spiffworkflow:preScript># Definindo as variáveis
+url = "https://crestani-webapi.actiosoftware.com/api/values/executedValues"
 ano = 2024
+headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + accessToken
+}
 
+# Obtendo os valores dos funcionários das filiais
 funcAtivosMatriz = filialEscritorio['escritorioAtivos']
 funcDemitidosMatriz = filialEscritorio['escritorioDemitidos']
-
 funcAtivosBrasnorte = filialBrasnorte['brasnorteAtivos']
 funcDemitidosBrasnorte = filialBrasnorte['brasnorteDemitidos']
+funcAtivosQuerencia = filialQuerencia['querenciaAtivos']
+funcDemitidosQuerencia = filialQuerencia['querenciaDemitidos']
+funcAtivosCamposDeJulio = filialCamposDeJulio['camposDeJulioAtivos']
+funcDemitidosCamposDeJulio = filialCamposDeJulio['camposDeJulioDemitidos']
 
+# Definindo os dados a serem enviados
 data = [
-  {
-    "itemCode":"RH.PAR.004",
-    "period": mes,
-    "year": ano,
-    "executedValue": funcAtivosMatriz
-  },
-  {
-    "itemCode":"RH.PAR.008",
-    "period": mes,
-    "year": ano,
-    "executedValue": funcDemitidosMatriz
-  },
-   {
-    "itemCode":"RH.PAR.001",
-    "period": mes,
-    "year": ano,
-    "executedValue": funcAtivosBrasnorte
-  },
-  {
-    "itemCode":"RH.PAR.005",
-    "period": mes,
-    "year": ano,
-    "executedValue": funcDemitidosBrasnorte
-  }
-]
-
-headers = {
-  'Content-Type': 'application/json',
-  'Authorization': 'Bearer ' + accessToken
-}
-</spiffworkflow:preScript>
+    {
+        "itemCode": "RH.PAR.004",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcAtivosMatriz
+    },
+    {
+        "itemCode": "RH.PAR.008",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcDemitidosMatriz
+    },
+    {
+        "itemCode": "RH.PAR.001",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcAtivosBrasnorte
+    },
+    {
+        "itemCode": "RH.PAR.005",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcDemitidosBrasnorte
+    },
+    {
+        "itemCode": "RH.PAR.003",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcAtivosQuerencia
+    },
+    {
+        "itemCode": "RH.PAR.007",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcDemitidosQuerencia
+    },
+    {
+        "itemCode": "RH.PAR.002",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcAtivosCamposDeJulio
+    },
+    {
+        "itemCode": "RH.PAR.006",
+        "period": mes,
+        "year": ano,
+        "executedValue": funcDemitidosCamposDeJulio
+    }
+]</spiffworkflow:preScript>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
