@@ -42,7 +42,7 @@ query = """
             o."DimCode" = 3
         """
 
-rsp = json.loads(Hana(connection).selectDb(query))
+rsp = Hana(connection).selectDb(query)
 
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
