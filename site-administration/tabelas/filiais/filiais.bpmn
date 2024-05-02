@@ -53,6 +53,14 @@ del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1l9e5wy" sourceRef="Activity_1iixjle" targetRef="EndEvent_1" />
     <bpmn:scriptTask id="Activity_1iixjle" name="Parse Filiais">
+      <bpmn:extensionElements>
+        <spiffworkflow:unitTests>
+          <spiffworkflow:unitTest id="ScriptUnitTest_0t4w4aq">
+            <spiffworkflow:inputJson>{}</spiffworkflow:inputJson>
+            <spiffworkflow:expectedOutputJson>{}</spiffworkflow:expectedOutputJson>
+          </spiffworkflow:unitTest>
+        </spiffworkflow:unitTests>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1l9e5wy</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1721ddj">
