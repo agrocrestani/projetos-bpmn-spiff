@@ -19,7 +19,7 @@
     "filesAccept": {
       "type": "string",
       "format": "data-url",
-      "title": "Single File with Accept attribute"
+      "title": "Selecione o arquivo "
     }
   }
 }
