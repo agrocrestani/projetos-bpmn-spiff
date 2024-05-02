@@ -74,7 +74,7 @@ for f in filiais:
 descricaoFilial = ""
 for f in n_filiais:
     if f['value'] == unidade:
-      descricaoFilial = f['fantasia']</spiffworkflow:preScript>
+      descricaoFilial = f['label']</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
       <bpmn:outgoing>Flow_09et6e0</bpmn:outgoing>
