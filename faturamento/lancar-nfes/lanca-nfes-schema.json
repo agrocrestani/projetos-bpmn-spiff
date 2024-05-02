@@ -21,7 +21,7 @@
       "format": "data-url",
       "title": "Selecione o arquivo .PDF"
     },
-    "nfesPdf": {
+    "nfesX": {
       "type": "string",
       "format": "data-url",
       "title": "Selecione o arquivo .PDF"
