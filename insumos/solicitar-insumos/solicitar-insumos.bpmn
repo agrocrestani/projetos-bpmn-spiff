@@ -38,10 +38,12 @@
 for f in filiais:
     BPLId = f['BPLId']
     BPLName = f['BPLName']
+    AliasName = f['AliasName']
     n_filiais.append(
         {
             "value": BPLId,
-            "label": BPLName
+            "label": BPLName,
+            "fantasia": AliasName
         }
     )</spiffworkflow:preScript>
         <spiffworkflow:postScript />
