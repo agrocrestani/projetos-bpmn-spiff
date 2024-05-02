@@ -32,7 +32,7 @@
         }
       }
     },
-    "favoriteFruit": {
+    "sel": {
       "title": "Select your favorite fruit",
       "type": "string",
       "anyOf": [
