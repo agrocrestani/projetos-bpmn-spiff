@@ -62,10 +62,10 @@ for f in filiais:
 
 ### Filial: {{descricaoFilial}}
 
-| Código | Descrição | Quantidade | Um |
-| --------- | ------------ | --------------- | ---- |
+| Código | Descrição | Quantidade | UN| Deposito |
+| --------- | ------------ | :---------------: | ---- | --------- |
 {%for s in solicitacao %}
-| {{s['insumo']['code']}} | {{s['insumo']['name']}} | {{s['quantidade']}} | {{s['insumo']['um']}} |
+| {{s['insumo']['code']}} | {{s['insumo']['name']}} | {{s['quantidade']}} | {{s['insumo']['um']}} | {{s['insumo']['whscode']}} |
 {%endfor%}</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>for s in solicitacao:
     s['insumo'] = json.loads(s['insumo'])
