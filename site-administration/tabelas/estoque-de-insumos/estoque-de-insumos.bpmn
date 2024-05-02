@@ -129,10 +129,7 @@
       <bpmn:dataOutputAssociation id="DataOutputAssociation_0tjuw5b">
         <bpmn:targetRef>DataStoreReference_1oronwq</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
-      <bpmn:script>
-# typeahead = []
-
-typeahead = {"estoque_de_insumos": estoque_de_insumos}</bpmn:script>
+      <bpmn:script>typeahead = {"estoque_de_insumos": estoque_de_insumos}</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_09mu4sd" targetRef="Activity_0o51srq" />
     <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
@@ -198,6 +195,31 @@ query = """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
 rsp = Hana(connection).selectDb(query)
+
+estoque_de_insumos = []
+
+for r in rsp:
+    ItemCode = str(r['itemcode'])
+    ItemName = str(r['itemname'])
+    ItmsGrpNam = str(r['itmsgrpnam'])
+    InvntryUom = str(r['invntryuom'])
+    OnHand = str(r['onhand'])
+    estoque_de_insumos.append(
+        {
+            "search_term": ItemName, 
+            "result": {
+                "ItemCode": ItemCode, 
+                "ItemName": ItemName, 
+                "ItmsGrpNam": ItmsGrpNam,
+                "InvntryUom": InvntryUom if InvntryUom != 'null' else None
+                "OnHand": OnHand
+                }
+            }
+        )
+
+
+
+
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
