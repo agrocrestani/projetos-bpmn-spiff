@@ -36,7 +36,6 @@
       "title": "Selecione um mês de referência",
       "type": "string",
       "anyOf": meses
-      
     }
   }
 }
