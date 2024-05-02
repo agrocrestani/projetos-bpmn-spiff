@@ -33,21 +33,21 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-query = """
-          SELECT 
-            to_alphanum(o."BPLId") "BPLId",
-            o."BPLName",
-            o."TaxIdNum",
-            to_alphanum(e.ID "EntidadeId") "EntidadeId"
-          FROM
-            SBO_CRESTANI_PRD.OBPL o
-          INNER JOIN SBO_CRESTANI_PRD."Entidade" e ON
-            O."TaxIdNum" = e.CNPJ
-        """
+# query = """
+#           SELECT 
+#             to_alphanum(o."BPLId") "BPLId",
+#             o."BPLName",
+#             o."TaxIdNum",
+#             to_alphanum(e.ID "EntidadeId") "EntidadeId"
+#           FROM
+#             SBO_CRESTANI_PRD.OBPL o
+#           INNER JOIN SBO_CRESTANI_PRD."Entidade" e ON
+#             O."TaxIdNum" = e.CNPJ
+#         """
 
-rsp = Hana(connection).selectDb(query)
+# rsp = Hana(connection).selectDb(query)
 
-del(connection)</bpmn:script>
+# del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1l9e5wy" sourceRef="Activity_1iixjle" targetRef="EndEvent_1" />
     <bpmn:scriptTask id="Activity_1iixjle" name="Parse Filiais">
