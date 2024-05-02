@@ -26,7 +26,7 @@ You can also change the text you are reading here by updating the *Instructions*
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
-baseSap = get_secrets('baseSap')
+baseSap = get_secret('baseSap')
 
 connection = {
     "address": "172.20.1.4",
