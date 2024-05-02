@@ -33,11 +33,13 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
+baseSap = get_secret('baseSap')
+
 query = """
           SELECT 
             o."Code",
             o."Name"
-          FROM SBO_CRESTANI_PRD.OUDP o
+          FROM {baseSap}.OUDP o
           WHERE 
             o."Code" &lt;&gt; -2
         """
