@@ -45,9 +45,10 @@ query = """
             O."TaxIdNum" = e.CNPJ
         """
 
-rsp = json.loads(Hana(connection).selectDb(query))
+rsp = Hana(connection).selectDb(query)
+# rsp = json.loads(Hana(connection).selectDb(query))
 
-# del(connection)</bpmn:script>
+del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1l9e5wy" sourceRef="Activity_1iixjle" targetRef="EndEvent_1" />
     <bpmn:scriptTask id="Activity_1iixjle" name="Parse Filiais">
