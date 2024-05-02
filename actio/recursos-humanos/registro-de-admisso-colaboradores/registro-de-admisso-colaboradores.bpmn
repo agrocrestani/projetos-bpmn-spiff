@@ -92,28 +92,28 @@ accessToken = body.accessToken</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_0q548we" sourceRef="RegistrarParametros" targetRef="EndEvent_1" />
     <bpmn:serviceTask id="RegistrarParametros" name="Registrar Parametros">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>url = "https://crestani-webapi.actiosoftware.com/api/values/executedValues"
+        <spiffworkflow:preScript>url2 = "https://crestani-webapi.actiosoftware.com/api/values/executedValues"
 
 mes = 11
 ano = 2024
 
-data = [{
+data2 = [{
     "itemCode":"RH.PAR.008",
     "period": mes,
     "year": ano,
     "executedValue": 3
 }]
 
-headers = {
+headers2 = {
   'Content-Type': 'application/json',
   'Authorization': 'Bearer ' + accessToken
 }
 </spiffworkflow:preScript>
-        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response">
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response2">
           <spiffworkflow:parameters>
-            <spiffworkflow:parameter id="url" type="str" value="url" />
-            <spiffworkflow:parameter id="headers" type="any" value="headers" />
-            <spiffworkflow:parameter id="data" type="any" value="data" />
+            <spiffworkflow:parameter id="url" type="str" value="url2" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers2" />
+            <spiffworkflow:parameter id="data" type="any" value="data2" />
             <spiffworkflow:parameter id="basic_auth_username" type="str" />
             <spiffworkflow:parameter id="basic_auth_password" type="str" />
             <spiffworkflow:parameter id="verify" type="bool" />
