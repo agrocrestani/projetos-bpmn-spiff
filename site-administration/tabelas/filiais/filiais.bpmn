@@ -33,17 +33,17 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-# query = """
-#           SELECT 
-#             to_alphanum(o."BPLId") "BPLId",
-#             o."BPLName",
-#             o."TaxIdNum",
-#             to_alphanum(e.ID "EntidadeId") "EntidadeId"
-#           FROM
-#             SBO_CRESTANI_PRD.OBPL o
-#           INNER JOIN SBO_CRESTANI_PRD."Entidade" e ON
-#             O."TaxIdNum" = e.CNPJ
-#         """
+query = """
+          SELECT 
+            to_alphanum(o."BPLId") "BPLId",
+            o."BPLName",
+            o."TaxIdNum",
+            to_alphanum(e.ID "EntidadeId") "EntidadeId"
+          FROM
+            SBO_CRESTANI_PRD.OBPL o
+          INNER JOIN SBO_CRESTANI_PRD."Entidade" e ON
+            O."TaxIdNum" = e.CNPJ
+        """
 
 # rsp = Hana(connection).selectDb(query)
 
