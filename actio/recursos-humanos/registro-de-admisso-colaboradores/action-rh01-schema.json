@@ -1,12 +1,10 @@
 {
-  "title": "Colaboradores Ativos e Demitidos do mês",
-  "description": "Informa a quantidade de colaborares ativos e demitidos no mês por filial",
+  "title": "Dropdown list",
+  "description": "A dropdown list with options pulled form existing Task Data. IMPORTANT - Add 'fruits' to Task Data before using this component!!!",
   "type": "object",
-  "required": [
-    
-  ],
+  "required": [],
   "properties": {
-    "filialEscritorio":{
+    "filialEscritorio": {
       "title": "Matriz",
       "type": "object",
       "properties": {
@@ -20,7 +18,7 @@
         }
       }
     },
-    "filialBrasnorte":{
+    "filialBrasnorte": {
       "title": "Brasnorte",
       "type": "object",
       "properties": {
@@ -33,7 +31,13 @@
           "title": "Colaboradores Demitidos"
         }
       }
+    },
+    "favoriteFruit": {
+      "title": "Select your favorite fruit",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:fruits"
+      ]
     }
-   
   }
 }
