@@ -183,7 +183,7 @@ connection = {
 
 query = """
     SELECT 
-      T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", SUM(T2."OnHand") "OnHand"
+      T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", to_alphanum(SUM(T2."OnHand")) "OnHand"
     FROM SBO_CRESTANI_PRD."OITM" T0
     INNER JOIN SBO_CRESTANI_PRD."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
     INNER JOIN SBO_CRESTANI_PRD."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
