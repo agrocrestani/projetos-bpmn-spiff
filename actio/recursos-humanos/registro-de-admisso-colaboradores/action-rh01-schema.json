@@ -7,7 +7,7 @@
   ],
   "properties": {
     "filialEscritorio":{
-      "title": "Escritório",
+      "title": "Matriz",
       "type": "object",
       "properties": {
         "escritorioAtivos": {
