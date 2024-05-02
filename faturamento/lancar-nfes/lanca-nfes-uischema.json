@@ -4,7 +4,7 @@
       "accept": ".pdf"
     }
   },
-  "nfesXml": {
+  "nfseXml": {
     "ui:options": {
       "accept": ".xml"
     }
