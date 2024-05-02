@@ -48,7 +48,19 @@ for f in filiais:
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## NFSe
 
-Para visualizar a nota [clique aqui](nfsePdf).</spiffworkflow:instructionsForEndUser>
+Para visualizar a nota [clique aqui]({{nfsePdf}}).
+
+xfun::embed_file("homework.pdf")
+
+
+```
+&lt;object data="{{nfsePdf}}" type="application/pdf" width="700px" height="700px"&gt;
+    &lt;embed src="{{nfsePdf}}"&gt;
+        &lt;p&gt;This browser does not support PDFs. Please download the PDF to view it: &lt;a href="{{nfsePdf}}"&gt;Download PDF&lt;/a&gt;.&lt;/p&gt;
+    &lt;/embed&gt;
+&lt;/object&gt;
+
+```</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0n8incj</bpmn:outgoing>
