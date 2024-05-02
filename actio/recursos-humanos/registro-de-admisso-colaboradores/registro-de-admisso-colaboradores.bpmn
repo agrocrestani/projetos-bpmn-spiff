@@ -54,17 +54,11 @@ meses = [
           <spiffworkflow:property name="formJsonSchemaFilename" value="actio-rh02-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="actio-rh02-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:instructionsForEndUser>| Funcionários Matriz | Funcionários Brasnorte |
-| -------------------- | ---------------------- |
-| **Situação** | **Quantidade** | **Situação** | **Quantidade** |
-| Ativos | {{filialEscritorio['escritorioAtivos']}} | Ativos | {{filialBrasnorte['brasnorteAtivos']}} |
-| Demitidos | {{filialEscritorio['escritorioDemitidos']}} | Demitidos | {{filialBrasnorte['brasnorteDemitidos']}} |
-
-| Funcionários Querência | Funcionários Campos de Júlio |
-| ----------------------- | --------------------------- |
-| **Situação** | **Quantidade** | **Situação** | **Quantidade** |
-| Ativos | {{filialQuerencia['querenciaAtivos']}} | Ativos | {{filialCamposDeJulio['camposDeJulioAtivos']}} |
-| Demitidos | {{filialQuerencia['querenciaDemitidos']}} | Demitidos | {{filialCamposDeJulio['camposDeJulioDemitidos']}} |
+        <spiffworkflow:instructionsForEndUser>| Funcionários Matriz | Funcionários Brasnorte | Funcionários Querência | Funcionários Campos de Júlio |
+| -------------------- | ---------------------- | ----------------------- | --------------------------- |
+| **Situação** | **Quantidade** | **Situação** | **Quantidade** | **Situação** | **Quantidade** | **Situação** | **Quantidade** |
+| Ativos | {{filialEscritorio['escritorioAtivos']}} | Ativos | {{filialBrasnorte['brasnorteAtivos']}} | Ativos | {{filialQuerencia['querenciaAtivos']}} | Ativos | {{filialCamposDeJulio['camposDeJulioAtivos']}} |
+| Demitidos | {{filialEscritorio['escritorioDemitidos']}} | Demitidos | {{filialBrasnorte['brasnorteDemitidos']}} | Demitidos | {{filialQuerencia['querenciaDemitidos']}} | Demitidos | {{filialCamposDeJulio['camposDeJulioDemitidos']}} |
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript />
       </bpmn:extensionElements>
