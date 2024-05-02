@@ -211,7 +211,7 @@ for r in rsp:
                 "ItemCode": ItemCode, 
                 "ItemName": ItemName, 
                 "ItmsGrpNam": ItmsGrpNam,
-                "InvntryUom": InvntryUom if InvntryUom != 'null' else None
+                "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
                 "OnHand": OnHand
                 }
             }
