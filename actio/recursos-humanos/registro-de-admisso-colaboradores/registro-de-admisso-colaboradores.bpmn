@@ -63,13 +63,23 @@
     <bpmn:sequenceFlow id="Flow_1quid0u" sourceRef="LoginActio" targetRef="EndEvent_1" />
     <bpmn:serviceTask id="LoginActio" name="Login Actio">
       <bpmn:extensionElements>
-        <spiffworkflow:serviceTaskOperator id="http/PostRequest" resultVariable="response">
+        <spiffworkflow:preScript>url = "https://crestani-webapi.actiosoftware.com/api/auth"
+
+data = {
+    "email":"mailon.campos@agrocrestani.com.br",
+    "password":"AndressaWin2@"
+}
+
+headers = {
+  'Content-Type': 'application/json'
+}</spiffworkflow:preScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2">
           <spiffworkflow:parameters>
-            <spiffworkflow:parameter id="url" type="str" value="&#34;https://crestani-webapi.actiosoftware.com/api/auth&#34;" />
-            <spiffworkflow:parameter id="headers" type="any" />
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="data" />
             <spiffworkflow:parameter id="basic_auth_username" type="str" />
             <spiffworkflow:parameter id="basic_auth_password" type="str" />
-            <spiffworkflow:parameter id="data" type="any" value="{     &#34;email&#34;:&#34;mailon.campos@agrocrestani.com.br&#34;,     &#34;password&#34;:&#34;AndressaWin2@&#34; }" />
             <spiffworkflow:parameter id="verify" type="bool" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
