@@ -84,7 +84,7 @@ headers = {
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
         <spiffworkflow:postScript>body = response['body']
-accessToken = body.accessToken</spiffworkflow:postScript>
+accessToken = body['accessToken']</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0etx8vl</bpmn:incoming>
       <bpmn:outgoing>Flow_1quid0u</bpmn:outgoing>
