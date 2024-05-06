@@ -62,9 +62,9 @@ produtoDeposito = produtosDespositos[0]
     <bpmn:manualTask id="ViewDadosProdutos" name="View Dados Produtos">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>
-| Cod. Produto | Cod. Deposito |
-| ----------------- | ------------------- |
-| {{produtoDeposito['produto']}} | {{produtoDeposito['coddeposito']}} |
+| Cod. Produto | Cod. Deposito | Em Estoque | Custo Deposito|  Custo Item Deposito|
+| ----------------- | -------------- | ------------------- | -----------  | ----------- | 
+| {{produtoDeposito['produto']}} | {{produtoDeposito['coddeposito']}} | {{produtoDeposito['emestoque']}} | {{produtoDeposito['customediodeposito']}} | {{produtoDeposito['customedioitemdeposito']}} | 
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
