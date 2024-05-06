@@ -51,6 +51,8 @@ query = f"""
 """
 
 produtosDespositos = Hana(connection).selectDb(query)
+totalRegistros = len(produtosDespositos)
+contador = 0
 </bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
