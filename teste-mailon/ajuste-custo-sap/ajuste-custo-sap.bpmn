@@ -58,7 +58,8 @@ contador = 0
     <bpmn:sequenceFlow id="Flow_1vqrmxu" sourceRef="ViewDadosProdutos" targetRef="EndEvent_1" />
     <bpmn:manualTask id="ViewDadosProdutos" name="View Dados Produtos">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>{{contador}}</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser>{{contador}}
+{{totalRegistros}}</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1vqrmxu</bpmn:outgoing>
