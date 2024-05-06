@@ -89,7 +89,7 @@ connection = {
 query = f"""SELECT 
 	t0."ItemCode" || ' - ' || t0."ItemName" 		AS "Produto" , 
 	t2."DocDate"									AS "Data" ,
-	CAST(t1."WhsCode" AS VARCHAR(50)) 				AS "CodDeposito" , 
+	t1."WhsCode"									AS "CodDeposito" , 
 	CAST(t2."Quantity" AS VARCHAR(50)) 				AS "QuantidadeLancamento" ,
 	CASE 
 		WHEN t2."Currency" = 'R$' THEN t2."Price"
