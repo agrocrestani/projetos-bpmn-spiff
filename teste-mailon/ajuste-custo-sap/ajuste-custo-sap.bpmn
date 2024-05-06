@@ -47,7 +47,7 @@ query = f"""
     INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode" 
     WHERE 
         t1."AvgPrice" &gt; 0
-    ORDER BY t0."ItemCode", t1."WhsCode" TOP 10
+    ORDER BY t0."ItemCode", t1."WhsCode" limit 10
 """
 
 produtosDespositos = Hana(connection).selectDb(query)
