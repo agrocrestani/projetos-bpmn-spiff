@@ -4,12 +4,12 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="BuscaProdutosPorDepositoSAP" />
     <bpmn:endEvent id="EndEvent_1">
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
-    <bpmn:manualTask id="Activity_0qpzdpu" name="Example manual task">
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="BuscaProdutosPorDepositoSAP" targetRef="EndEvent_1" />
+    <bpmn:scriptTask id="BuscaProdutosPorDepositoSAP" name="Busca Produtos por Deposito no SAP">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
 
@@ -21,7 +21,38 @@ You can also change the text you are reading here by updating the *Instructions*
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-    </bpmn:manualTask>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+
+
+query = f"""
+    SELECT 
+	t0."ItemCode" || ' - ' || t0."ItemName" 		AS "Produto" , 
+	t1."WhsCode" 									AS "Cod. Deposito" , 
+	t1."OnHand" 									AS "Em Estoque" , 
+	t0."InvntryUom"									AS "Unidade Medida Estoque" ,
+	t1."AvgPrice" 									AS "Custo Médio do Deposito" ,
+	CASE 
+		WHEN t1."OnHand" &lt;&gt; 0 THEN t1."AvgPrice" / t1."OnHand"
+		ELSE '0'
+	END												AS "Custo Médio do Item Deposito" 
+FROM OITM t0
+INNER JOIN OITW t1 ON t1."ItemCode" = t0."ItemCode" 
+WHERE 
+	t1."AvgPrice" &gt; 0
+ORDER BY t0."ItemCode", t1."WhsCode"
+"""
+
+Hana(connection).executeDb(query)
+</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
@@ -31,7 +62,7 @@ You can also change the text you are reading here by updating the *Instructions*
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="432" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
+      <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
