@@ -32,9 +32,9 @@ connection = {
 
 query = f"""
     SELECT 
-        str(t0."ItemCode") || ' - ' || t0."ItemName"     AS "Produto"
+        t0."ItemCode" || ' - ' || t0."ItemName"     AS "Produto"
         t1."WhsCode"                                 AS "Cod. Deposito" , 
-        t1."OnHand"                                  AS "Em Estoque" , 
+        str(t1."OnHand")                                  AS "Em Estoque" , 
         t0."InvntryUom"                              AS "Unidade Medida Estoque" ,
         t1."AvgPrice"                                AS "Custo Médio do Deposito" ,
         CASE 
@@ -44,7 +44,7 @@ query = f"""
     FROM OITM t0
     INNER JOIN OITW t1 ON t1."ItemCode" = t0."ItemCode" 
     WHERE 
-        t1."AvgPrice" &gt; 0
+        t1."AvgPrice" &gt; '0'
     ORDER BY t0."ItemCode", t1."WhsCode"
 """
 
