@@ -57,7 +57,11 @@ produtosDespositos = Hana(connection).selectDb(query)
 totalRegistros = len(produtosDespositos)
 contador = 0
 
-produtosDesposito = produtosDespositos</bpmn:script>
+produtosDesposito = [
+    {
+        "CodProduto": 1
+    }
+]</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1vqrmxu" sourceRef="ViewDadosProdutos" targetRef="EndEvent_1" />
     <bpmn:manualTask id="ViewDadosProdutos" name="View Dados Produtos">
