@@ -86,7 +86,7 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-query = f"""SELECT 
+query2 = f"""SELECT 
 	t0."ItemCode" || ' - ' || t0."ItemName" 		AS "Produto" , 
 	t2."DocDate"									AS "Data" ,
 	t1."WhsCode"									AS "CodDeposito" , 
@@ -108,7 +108,7 @@ WHERE
 	t3.CANCELED     = 'N'
 ORDER BY t2."DocDate"
 """
-movProdutoDesposito = Hana(connection).selectDb(query)
+movProdutoDesposito = Hana(connection).selectDb(query2)
 
 </bpmn:script>
     </bpmn:scriptTask>
