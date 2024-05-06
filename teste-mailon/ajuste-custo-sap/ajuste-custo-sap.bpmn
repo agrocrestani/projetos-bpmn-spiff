@@ -46,7 +46,8 @@ query = f"""
     FROM {baseSap}.OITM t0
     INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode" 
     WHERE 
-        t1."AvgPrice" &gt; 0
+        t1."AvgPrice" &gt; 0 AND
+        t0."ItemCode"  	= '011021'
     ORDER BY t0."ItemCode", t1."WhsCode" limit 10
 """
 
@@ -67,9 +68,6 @@ contador = 0
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="122" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="210" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -78,10 +76,13 @@ contador = 0
         <dc:Bounds x="370" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="652" y="159" width="36" height="36" />
+        <dc:Bounds x="752" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="92" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
-        <di:waypoint x="158" y="177" />
+        <di:waypoint x="128" y="177" />
         <di:waypoint x="210" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
@@ -90,7 +91,7 @@ contador = 0
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1vqrmxu_di" bpmnElement="Flow_1vqrmxu">
         <di:waypoint x="470" y="177" />
-        <di:waypoint x="652" y="177" />
+        <di:waypoint x="752" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
