@@ -64,7 +64,7 @@ produtoDeposito = produtosDespositos[0]
         <spiffworkflow:instructionsForEndUser>
 | Cod. Produto | Cod. Deposito |
 | ----------------- | ------------------- |
-| {{produtoDeposito['Produto']}} | produtoDeposito['CodDeposito'] |
+| {{produtoDeposito['produto']}} | produtoDeposito['coddeposito'] |
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
