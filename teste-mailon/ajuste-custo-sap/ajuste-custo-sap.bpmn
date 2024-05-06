@@ -77,15 +77,6 @@ produtoDeposito = produtosDespositos[0]
       <bpmn:outgoing>Flow_01jbn5b</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
-baseSap = get_secret('baseSap')
-
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
-
 query2 = f"""SELECT 
 	t0."ItemCode" || ' - ' || t0."ItemName" 		AS "Produto" , 
 	t2."DocDate"									AS "Data" ,
