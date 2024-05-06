@@ -32,7 +32,7 @@ connection = {
 
 query = f"""
     SELECT 
-        t0."ItemCode" || ' - ' || t0."ItemName"     AS "Produto" , 
+        str(t0."ItemCode") || ' - ' || t0."ItemName"     AS "Produto"
         t1."WhsCode"                                 AS "Cod. Deposito" , 
         t1."OnHand"                                  AS "Em Estoque" , 
         t0."InvntryUom"                              AS "Unidade Medida Estoque" ,
