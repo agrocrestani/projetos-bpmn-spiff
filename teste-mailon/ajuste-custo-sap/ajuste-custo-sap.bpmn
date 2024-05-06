@@ -21,9 +21,6 @@ You can also change the text you are reading here by updating the *Instructions*
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_1mpggok">
-        <bpmn:targetRef>DataStoreReference_0p40nep</bpmn:targetRef>
-      </bpmn:dataOutputAssociation>
       <bpmn:script>from connectordb.hana import Hana
 
 baseSap = get_secret('baseSap')
@@ -50,18 +47,13 @@ query = f"""
     INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode" 
     WHERE 
         t1."AvgPrice" &gt; 0
-    ORDER BY t0."ItemCode", t1."WhsCode"
+    ORDER BY t0."ItemCode", t1."WhsCode" TOP 10
 """
 
 produtosDespositos = Hana(connection).selectDb(query)
 totalRegistros = len(produtosDespositos)
 contador = 0
-
-produtosDesposito = [
-    {
-        "CodProduto": 1
-    }
-]</bpmn:script>
+</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1vqrmxu" sourceRef="ViewDadosProdutos" targetRef="EndEvent_1" />
     <bpmn:manualTask id="ViewDadosProdutos" name="View Dados Produtos">
@@ -72,45 +64,33 @@ produtosDesposito = [
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1vqrmxu</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:dataStoreReference id="DataStoreReference_0p40nep" name="ProdutosDesposito" dataStoreRef="produtosdesposito" type="json" />
   </bpmn:process>
-  <bpmn:dataStore id="produtosdesposito" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="602" y="159" width="36" height="36" />
+        <dc:Bounds x="122" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
-        <dc:Bounds x="270" y="137" width="100" height="80" />
+        <dc:Bounds x="210" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0i1lwhb_di" bpmnElement="ViewDadosProdutos">
-        <dc:Bounds x="440" y="137" width="100" height="80" />
+        <dc:Bounds x="370" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_0p40nep_di" bpmnElement="DataStoreReference_0p40nep">
-        <dc:Bounds x="405" y="-25" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="390" y="32" width="84" height="27" />
-        </bpmndi:BPMNLabel>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="652" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
-        <di:waypoint x="215" y="177" />
-        <di:waypoint x="270" y="177" />
+        <di:waypoint x="158" y="177" />
+        <di:waypoint x="210" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
+        <di:waypoint x="310" y="177" />
         <di:waypoint x="370" y="177" />
-        <di:waypoint x="440" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataOutputAssociation_1mpggok_di" bpmnElement="DataOutputAssociation_1mpggok">
-        <di:waypoint x="344" y="137" />
-        <di:waypoint x="413" y="25" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1vqrmxu_di" bpmnElement="Flow_1vqrmxu">
-        <di:waypoint x="540" y="177" />
-        <di:waypoint x="602" y="177" />
+        <di:waypoint x="470" y="177" />
+        <di:waypoint x="652" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
