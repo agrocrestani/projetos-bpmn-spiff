@@ -50,7 +50,7 @@ query = f"""
     ORDER BY t0."ItemCode", t1."WhsCode"
 """
 
-produtosDespositos = Hana(connection).executeDb(query)
+produtosDespositos = Hana(connection).selectDb(query)
 </bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
