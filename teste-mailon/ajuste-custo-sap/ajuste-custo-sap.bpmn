@@ -56,13 +56,13 @@ contador = 0
 </bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1vqrmxu" sourceRef="ViewDadosProdutos" targetRef="EndEvent_1" />
-    <bpmn:userTask id="ViewDadosProdutos" name="View Dados Produtos">
+    <bpmn:manualTask id="ViewDadosProdutos" name="View Dados Produtos">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>contador</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser>{{contador}}</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1vqrmxu</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
@@ -76,9 +76,8 @@ contador = 0
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="602" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0ykt7be_di" bpmnElement="ViewDadosProdutos">
+      <bpmndi:BPMNShape id="Activity_0i1lwhb_di" bpmnElement="ViewDadosProdutos">
         <dc:Bounds x="440" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
