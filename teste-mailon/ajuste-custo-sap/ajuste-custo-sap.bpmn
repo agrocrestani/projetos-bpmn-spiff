@@ -30,21 +30,21 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-query = f"""
+query = """
     SELECT 
-        t0."ItemCode" || ' - ' || t0."ItemName"     AS "Produto"
-        t1."WhsCode"                                 AS "Cod. Deposito" , 
-        str(t1."OnHand")                                  AS "Em Estoque" , 
-        t0."InvntryUom"                              AS "Unidade Medida Estoque" ,
-        t1."AvgPrice"                                AS "Custo Médio do Deposito" ,
+        t0."ItemCode" || ' - ' || t0."ItemName" AS "Produto",
+        t1."WhsCode" AS "Cod. Deposito", 
+        CAST(t1."OnHand" AS VARCHAR(50)) AS "Em Estoque", 
+        t0."InvntryUom" AS "Unidade Medida Estoque",
+        CAST(t1."AvgPrice" AS VARCHAR(50)) AS "Custo Médio do Deposito",
         CASE 
-            WHEN t1."OnHand" &lt;&gt; 0 THEN t1."AvgPrice" / t1."OnHand"
+            WHEN t1."OnHand" &lt;&gt; 0 THEN CAST(t1."AvgPrice" / t1."OnHand" AS VARCHAR(50))
             ELSE '0'
-        END                                            AS "Custo Médio do Item Deposito" 
+        END AS "Custo Médio do Item Deposito" 
     FROM OITM t0
     INNER JOIN OITW t1 ON t1."ItemCode" = t0."ItemCode" 
     WHERE 
-        t1."AvgPrice" &gt; '0'
+        t1."AvgPrice" &gt; 0
     ORDER BY t0."ItemCode", t1."WhsCode"
 """
 
