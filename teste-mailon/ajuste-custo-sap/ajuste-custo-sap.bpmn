@@ -35,14 +35,14 @@ connection = {
 query = f"""
     SELECT 
         t0."ItemCode" || ' - ' || t0."ItemName" AS "Produto",
-        t1."WhsCode" AS "Cod. Deposito", 
-        CAST(t1."OnHand" AS VARCHAR(50)) AS "Em Estoque", 
+        t1."WhsCode" AS "CodDeposito", 
+        CAST(t1."OnHand" AS VARCHAR(50)) AS "EmEstoque", 
         t0."InvntryUom" AS "Unidade Medida Estoque",
-        CAST(t1."AvgPrice" AS VARCHAR(50)) AS "Custo Médio do Deposito",
+        CAST(t1."AvgPrice" AS VARCHAR(50)) AS "CustoMedioDeposito",
         CASE 
             WHEN t1."OnHand" &lt;&gt; 0 THEN CAST(t1."AvgPrice" / t1."OnHand" AS VARCHAR(50))
             ELSE '0'
-        END AS "Custo Médio do Item Deposito" 
+        END AS "CustoMedioItemDeposito" 
     FROM {baseSap}.OITM t0
     INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode" 
     WHERE 
@@ -61,8 +61,11 @@ produtoDeposito = produtosDespositos[0]
     <bpmn:sequenceFlow id="Flow_1vqrmxu" sourceRef="ViewDadosProdutos" targetRef="EndEvent_1" />
     <bpmn:manualTask id="ViewDadosProdutos" name="View Dados Produtos">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>{{contador}}
-{{totalRegistros}}</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser>
+| Cod. Produto | Cod. Deposito |
+| ----------------- | ------------------- |
+| {{produtoDeposito['Produto']}} | produtoDeposito['CodDeposito'] |
+</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1vqrmxu</bpmn:outgoing>
