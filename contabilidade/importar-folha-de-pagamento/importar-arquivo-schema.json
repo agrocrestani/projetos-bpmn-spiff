@@ -10,20 +10,6 @@
         "options_from_task_data_var:n_filiais"
       ]
     },
-    "alternative": {
-      "title": "Alternative",
-      "description": "These work on most platforms.",
-      "type": "object",
-      "properties": {
-        "alt-datetime": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "alt-date": {
-          "type": "string",
-          "format": "date"
-        }
-      }
-    }
+    
   }
 }
