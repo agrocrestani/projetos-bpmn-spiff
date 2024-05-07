@@ -1,6 +1,8 @@
 {
   "favoriteFruit": "apples",
-  "alternative": {},
+  "alternative": {
+    "alt-date": "2024-05-07"
+  },
   "n_filiais": [
     {
       "value": "apples",
