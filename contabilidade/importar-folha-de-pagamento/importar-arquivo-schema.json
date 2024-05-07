@@ -10,7 +10,7 @@
         "options_from_task_data_var:n_filiais"
       ]
     },
-    "dataContabi": {
+    "dataContabil": {
         "title": "Data Contabil",
         "type": "string",
         "format": "date"
