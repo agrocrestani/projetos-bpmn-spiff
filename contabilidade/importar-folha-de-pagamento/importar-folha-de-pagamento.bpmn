@@ -51,7 +51,7 @@ arquivo = file_link.replace("]","],").replace("(","").replace(")","").split(",")
       <bpmn:script>from connectordb.importaFolha import preparaArquivo
 
 
-teste = preparaArquivo(uploaded_file_link)</bpmn:script>
+teste = preparaArquivo(arquivo)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
