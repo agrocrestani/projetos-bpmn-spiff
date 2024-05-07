@@ -11,7 +11,7 @@
       ]
     },
     "dataContabi": {
-        ""
+        "title"
         "type": "string",
         "format": "date"
         }
