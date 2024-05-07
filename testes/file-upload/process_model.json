@@ -1,9 +1,22 @@
 {
-    "description": "",
-    "display_name": "File Upload",
+    "description": null,
+    "display_name": "file upload",
     "exception_notification_addresses": [],
     "fault_or_suspend_on_exception": "fault",
-    "metadata_extraction_paths": null,
+    "metadata_extraction_paths": [
+        {
+            "key": "summary",
+            "path": "summary"
+        },
+        {
+            "key": "description",
+            "path": "description"
+        },
+        {
+            "key": "filefield",
+            "path": "filefield"
+        }
+    ],
     "primary_file_name": "file-upload.bpmn",
-    "primary_process_id": "Process_file_upload_m9twzzy"
+    "primary_process_id": "file-upload_process2"
 }
