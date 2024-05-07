@@ -9,5 +9,9 @@
         "format": "date"
         }
     },
-    
+    "file": {
+      "type": "string",
+      "format": "data-url",
+      "title": "Single file"
+    }
 }
