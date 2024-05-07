@@ -11,7 +11,7 @@
     "file": {
       "type": "string",
       "format": "data-url",
-      "title": "Selec"
+      "title": "Selecione o Arquivo"
     }
     }
 }
