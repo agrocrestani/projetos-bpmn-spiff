@@ -33,7 +33,8 @@ for f in filiais:
           <spiffworkflow:property name="formUiSchemaFilename" value="importar-arquivo-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:postScript>file_link = markdown_file_download_link(file)
-arquivo = file_link.replace("]","],").replace("(","").replace(")","").split(",")[0]</spiffworkflow:postScript>
+# arquivo = file_link.replace("]","],").replace("(","").replace(")","").split(",")[0]
+arquivo = txt.replace("]","],").replace("(","").replace(")","").replace("[","").replace("]","").split(",")[0]</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
