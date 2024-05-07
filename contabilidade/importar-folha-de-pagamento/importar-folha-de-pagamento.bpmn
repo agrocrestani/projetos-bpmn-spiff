@@ -6,7 +6,7 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_17mlr1d</bpmn:incoming>
+      <bpmn:incoming>Flow_08ecwd3</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_0hyxzj1" />
     <bpmn:userTask id="Activity_0qpzdpu" name="Example manual task">
@@ -43,7 +43,7 @@ for f in filiais:
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
     <bpmn:dataStoreReference id="DataStoreReference_1no0hgx" name="Filiais" dataStoreRef="filiais" type="json" />
-    <bpmn:sequenceFlow id="Flow_08ecwd3" sourceRef="Activity_0hyxzj1" targetRef="Activity_0yhe9cl" />
+    <bpmn:sequenceFlow id="Flow_08ecwd3" sourceRef="Activity_0hyxzj1" targetRef="EndEvent_1" />
     <bpmn:scriptTask id="Activity_0hyxzj1" name="Preparar arquivo">
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_08ecwd3</bpmn:outgoing>
@@ -52,38 +52,6 @@ for f in filiais:
 
 teste = preparaArquivo(uploaded_file_link)</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:subProcess id="Activity_0yhe9cl">
-      <bpmn:incoming>Flow_08ecwd3</bpmn:incoming>
-      <bpmn:outgoing>Flow_17mlr1d</bpmn:outgoing>
-      <bpmn:startEvent id="Event_18mw02w">
-        <bpmn:outgoing>Flow_0aex4rr</bpmn:outgoing>
-      </bpmn:startEvent>
-      <bpmn:task id="Activity_13mpjtr" name="DePara Conta1">
-        <bpmn:incoming>Flow_0aex4rr</bpmn:incoming>
-        <bpmn:outgoing>Flow_0gx03ud</bpmn:outgoing>
-      </bpmn:task>
-      <bpmn:sequenceFlow id="Flow_0aex4rr" sourceRef="Event_18mw02w" targetRef="Activity_13mpjtr" />
-      <bpmn:task id="Activity_0res7u7" name="DePara Conta2">
-        <bpmn:incoming>Flow_0gx03ud</bpmn:incoming>
-        <bpmn:outgoing>Flow_0nr5piy</bpmn:outgoing>
-      </bpmn:task>
-      <bpmn:sequenceFlow id="Flow_0gx03ud" sourceRef="Activity_13mpjtr" targetRef="Activity_0res7u7" />
-      <bpmn:task id="Activity_1c25gk1" name="DePara Filial">
-        <bpmn:incoming>Flow_0nr5piy</bpmn:incoming>
-        <bpmn:outgoing>Flow_0mt4u0g</bpmn:outgoing>
-      </bpmn:task>
-      <bpmn:sequenceFlow id="Flow_0nr5piy" sourceRef="Activity_0res7u7" targetRef="Activity_1c25gk1" />
-      <bpmn:task id="Activity_14sjnrd" name="DePara Centro de Custo">
-        <bpmn:incoming>Flow_0mt4u0g</bpmn:incoming>
-        <bpmn:outgoing>Flow_06o7txt</bpmn:outgoing>
-      </bpmn:task>
-      <bpmn:sequenceFlow id="Flow_0mt4u0g" sourceRef="Activity_1c25gk1" targetRef="Activity_14sjnrd" />
-      <bpmn:task id="Activity_0k2qja9">
-        <bpmn:incoming>Flow_06o7txt</bpmn:incoming>
-      </bpmn:task>
-      <bpmn:sequenceFlow id="Flow_06o7txt" sourceRef="Activity_14sjnrd" targetRef="Activity_0k2qja9" />
-    </bpmn:subProcess>
-    <bpmn:sequenceFlow id="Flow_17mlr1d" sourceRef="Activity_0yhe9cl" targetRef="EndEvent_1" />
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -105,53 +73,8 @@ teste = preparaArquivo(uploaded_file_link)</bpmn:script>
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1632" y="152" width="36" height="36" />
+        <dc:Bounds x="672" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0yhe9cl_di" bpmnElement="Activity_0yhe9cl" isExpanded="true">
-        <dc:Bounds x="580" y="70" width="970" height="200" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_18mw02w_di" bpmnElement="Event_18mw02w">
-        <dc:Bounds x="620" y="152" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_13mpjtr_di" bpmnElement="Activity_13mpjtr">
-        <dc:Bounds x="710" y="130" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0res7u7_di" bpmnElement="Activity_0res7u7">
-        <dc:Bounds x="870" y="130" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1c25gk1_di" bpmnElement="Activity_1c25gk1">
-        <dc:Bounds x="1030" y="130" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_14sjnrd_di" bpmnElement="Activity_14sjnrd">
-        <dc:Bounds x="1190" y="130" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0k2qja9_di" bpmnElement="Activity_0k2qja9">
-        <dc:Bounds x="1350" y="130" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_0aex4rr_di" bpmnElement="Flow_0aex4rr">
-        <di:waypoint x="656" y="170" />
-        <di:waypoint x="710" y="170" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0gx03ud_di" bpmnElement="Flow_0gx03ud">
-        <di:waypoint x="810" y="170" />
-        <di:waypoint x="870" y="170" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0nr5piy_di" bpmnElement="Flow_0nr5piy">
-        <di:waypoint x="970" y="170" />
-        <di:waypoint x="1030" y="170" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0mt4u0g_di" bpmnElement="Flow_0mt4u0g">
-        <di:waypoint x="1130" y="170" />
-        <di:waypoint x="1190" y="170" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_06o7txt_di" bpmnElement="Flow_06o7txt">
-        <di:waypoint x="1290" y="170" />
-        <di:waypoint x="1350" y="170" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -166,11 +89,7 @@ teste = preparaArquivo(uploaded_file_link)</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_08ecwd3_di" bpmnElement="Flow_08ecwd3">
         <di:waypoint x="520" y="177" />
-        <di:waypoint x="580" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_17mlr1d_di" bpmnElement="Flow_17mlr1d">
-        <di:waypoint x="1550" y="170" />
-        <di:waypoint x="1632" y="170" />
+        <di:waypoint x="672" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
