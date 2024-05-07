@@ -10,7 +10,7 @@
         "options_from_task_data_var:n_filiais"
       ]
     },
-    "date": {
+    "data": {
           "type": "string",
           "format": "date"
         }
