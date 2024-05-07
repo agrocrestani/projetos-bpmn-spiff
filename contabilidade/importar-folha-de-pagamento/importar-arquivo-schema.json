@@ -11,7 +11,7 @@
       ]
     },
     "dataContabi": {
-        "title": "Data Contabil"
+        "title": "Data Contabil",
         "type": "string",
         "format": "date"
         }
