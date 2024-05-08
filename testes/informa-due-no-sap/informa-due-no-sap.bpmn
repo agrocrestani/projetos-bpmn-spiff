@@ -262,6 +262,7 @@ del(rsp)</spiffworkflow:postScript>
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
   </bpmn:process>
+  <bpmn:signal id="Signal_1v5y8tb" name="Signal_1v5y8tb" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_informa_due_no_sap_ha8p30j">
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
