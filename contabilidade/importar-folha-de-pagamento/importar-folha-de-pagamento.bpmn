@@ -51,8 +51,9 @@ arquivo = file_link.replace("]","],").replace("(","").replace(")","").replace("[
       <bpmn:outgoing>Flow_08ecwd3</bpmn:outgoing>
       <bpmn:script>from connectordb.importaFolha import preparaArquivo
 
+arquivo = get_encoded_file_data(file_link)
 
-teste = preparaArquivo(file)</bpmn:script>
+teste = preparaArquivo(arquivo)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
