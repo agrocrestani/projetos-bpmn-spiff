@@ -25,6 +25,11 @@ You can also change the text you are reading here by updating the *Instructions*
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
+    <bpmn:dataObject id="DataObject_05subw1" name="Data Object 05 Subw 1" />
+    <bpmn:dataObject id="DataObject_1e4wjob" name="Data Object 1 E 4 Wjob" />
+    <bpmn:dataObject id="DataObject_0sx8k2k" name="Data Object 0 Sx 8 K 2 K" />
+    <bpmn:dataObject id="DataObject_1d7yk9j" name="Data Object 1 D 7 Yk 9 J" />
+    <bpmn:dataObject id="DataObject_15z9vwj" name="Data Object 15 Z 9 Vwj" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1mzzg6m">
