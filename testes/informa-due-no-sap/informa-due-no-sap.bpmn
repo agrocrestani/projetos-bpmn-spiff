@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:process id="Process_informa_due_no_sap_ha8p30j" isExecutable="true">
-    <bpmn:startEvent id="StartEvent_1">
-      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
-    </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
     <bpmn:endEvent id="EndEvent_1">
       <bpmn:extensionElements>
@@ -254,12 +251,19 @@ del(rsp)</spiffworkflow:postScript>
       </bpmn:manualTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_0ccgix8" sourceRef="Activity_1398pii" targetRef="EndEvent_1" />
+    <bpmn:dataObject id="DataObject_1iospy7" name="Data Object 1 Iospy 7" />
+    <bpmn:dataObject id="DataObject_0bnv24l" name="Data Object 0 Bnv 24 L" />
+    <bpmn:dataObject id="DataObject_0sokqu0" name="Data Object 0 Sokqu 0" />
+    <bpmn:dataObject id="DataObject_0e50yo8" name="Data Object 0 E 50 Yo 8" />
+    <bpmn:dataObject id="DataObject_0jtkb4z" name="Data Object 0 Jtkb 4 Z" />
+    <bpmn:dataObject id="DataObject_07vjecv" name="Data Object 07 Vjecv" />
+    <bpmn:dataObject id="DataObject_11aro3y" name="Data Object 11 Aro 3 Y" />
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_informa_due_no_sap_ha8p30j">
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="1462" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -267,11 +271,18 @@ del(rsp)</spiffworkflow:postScript>
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_070ryku_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1398pii_di" bpmnElement="Activity_1398pii" isExpanded="true">
         <dc:Bounds x="420" y="77" width="990" height="213" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0k10jva_di" bpmnElement="Activity_0nhlv6j">
         <dc:Bounds x="820" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18vvxc9_di" bpmnElement="Activity_0od9hbe">
+        <dc:Bounds x="990" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0wkbi6q_di" bpmnElement="Gateway_0wkbi6q" isMarkerVisible="true">
         <dc:Bounds x="705" y="152" width="50" height="50" />
@@ -287,10 +298,6 @@ del(rsp)</spiffworkflow:postScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1s8aivm_di" bpmnElement="Activity_1j1cc8f">
         <dc:Bounds x="1130" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_18vvxc9_di" bpmnElement="Activity_0od9hbe">
-        <dc:Bounds x="990" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0o0tp2q_di" bpmnElement="Flow_0o0tp2q">
