@@ -55,6 +55,12 @@ lcm = []</bpmn:script>
     <bpmn:subProcess id="Activity_14bim7r">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>del(l)
+creditoConta = ""
+creditoValor = 0
+debitoConta = ""
+debitoValor = 0
+
+
 if tipoLancamento == 'C:
     creditoConta = novaConta1
     creditoValor = l['valor']
@@ -65,7 +71,8 @@ else:
     creditoValor = l['valor']
     debitoConta = novaConta1
     debitoValor = l['valor']
-# datalcto
+
+
 lcm.append(
     {
         "ReferenceDate": datalacto,
