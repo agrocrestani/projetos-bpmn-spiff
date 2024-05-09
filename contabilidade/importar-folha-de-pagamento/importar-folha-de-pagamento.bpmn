@@ -121,7 +121,7 @@ lcm = []</bpmn:script>
           <spiffworkflow:calledDecisionId>deparaFilial</spiffworkflow:calledDecisionId>
           <spiffworkflow:preScript>empresa = l['empresa']
 filial = l['filial']</spiffworkflow:preScript>
-          <spiffworkflow:postScript>bplid = BPLId[0]
+          <spiffworkflow:postScript>bplid = int(bplid)
 del(empresa)
 del(filial)
 del(BPLId)</spiffworkflow:postScript>
