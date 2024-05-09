@@ -8,7 +8,7 @@
         </inputExpression>
       </input>
       <input id="InputClause_0p2gv3j">
-        <inputExpression id="LiteralExpression_09p2chw" typeRef="string">
+        <inputExpression id="LiteralExpression_09p2chw" typeRef="Any">
           <text>ccusto</text>
         </inputExpression>
       </input>
