@@ -53,6 +53,9 @@ for f in filiais:
 lancamentos = json.loads(preparaArquivo(get_encoded_file_data(file)))</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_14bim7r">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript>del(l)</spiffworkflow:postScript>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_09ozpct</bpmn:incoming>
       <bpmn:outgoing>Flow_03hwcuw</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics isSequential="true">
