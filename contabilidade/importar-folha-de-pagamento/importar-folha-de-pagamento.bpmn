@@ -35,7 +35,11 @@ for f in filiais:
 </spiffworkflow:preScript>
         <spiffworkflow:postScript># arquivo = file.split(';')[2]
 
-uploaded_file = markdown_file_download_link(file)</spiffworkflow:postScript>
+teste1 = file
+
+uploaded_file = markdown_file_download_link(file)
+
+teste1 = uploaded_file</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
