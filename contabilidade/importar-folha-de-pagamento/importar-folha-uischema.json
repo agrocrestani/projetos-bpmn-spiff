@@ -3,4 +3,9 @@
     "ui:widget": "date",
     "ui:help": "Escolha a data para os lançamentos contabeis."
   },
+  "filesAccept": {
+    "ui:options": {
+      "accept": ".pdf"
+    }
+  }
 }
