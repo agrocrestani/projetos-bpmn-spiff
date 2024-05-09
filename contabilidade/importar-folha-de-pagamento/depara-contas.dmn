@@ -72,6 +72,110 @@
           <text>"2.1.1.01.02.001"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1f2k495">
+        <inputEntry id="UnaryTests_0rjdhiz">
+          <text>"20102002"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kytl76">
+          <text>"2.1.1.01.02.002"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09e18do">
+        <inputEntry id="UnaryTests_06vq8fd">
+          <text>"20102003"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_099qz9d">
+          <text>"2.1.1.01.02.003"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14489t7">
+        <inputEntry id="UnaryTests_1fmyg7p">
+          <text>"20102004"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sp9sq8">
+          <text>"2.1.1.01.02.004"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1srabon">
+        <inputEntry id="UnaryTests_0u5in8s">
+          <text>"20102005"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tsjvcl">
+          <text>"2.1.1.01.02.005"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1tg3hyq">
+        <inputEntry id="UnaryTests_04batpl">
+          <text>"20102006"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hzaato">
+          <text>"2.1.1.01.02.006"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kphj6f">
+        <inputEntry id="UnaryTests_1k2za53">
+          <text>"30201003"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1afio2k">
+          <text>"3.1.3.02.01.003"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cj7x94">
+        <inputEntry id="UnaryTests_0az23p4">
+          <text>"30201006"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19jfe4y">
+          <text>"3.1.3.02.01.006"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0nno3se">
+        <inputEntry id="UnaryTests_08sfgu8">
+          <text>"30201007"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1maw78m">
+          <text>"3.1.3.02.01.007"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1x3lojm">
+        <inputEntry id="UnaryTests_1rplqa1">
+          <text>"30201008"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jcb75r">
+          <text>"3.1.3.02.01.008"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0aiggro">
+        <inputEntry id="UnaryTests_06ry31d">
+          <text>"30201009"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0m81ccb">
+          <text>"3.1.3.02.01.009"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00vnm2x">
+        <inputEntry id="UnaryTests_0c9x0k7">
+          <text>"30201010"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1u2nrv7">
+          <text>"3.1.3.02.01.010"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0sxkgma">
+        <inputEntry id="UnaryTests_0ek7rwf">
+          <text>"30201012"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hrs8xb">
+          <text>"3.1.3.02.01.012"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gl0qro">
+        <inputEntry id="UnaryTests_1fzvuqj">
+          <text>"30201014"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0z32y2t">
+          <text>"3.1.3.02.01.014"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
