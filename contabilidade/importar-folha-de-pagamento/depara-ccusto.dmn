@@ -3,7 +3,7 @@
   <decision id="DeParaCCusto" name="DePara Centro de Custo">
     <decisionTable id="decisionTable_1">
       <input id="InputClause_0eubyw3">
-        <inputExpression id="LiteralExpression_04prayq" typeRef="string">
+        <inputExpression id="LiteralExpression_04prayq" typeRef="Any">
           <text>bplid</text>
         </inputExpression>
       </input>
