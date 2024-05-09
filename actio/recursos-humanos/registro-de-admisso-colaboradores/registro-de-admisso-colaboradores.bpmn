@@ -11,14 +11,9 @@
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="ACTIORH01" targetRef="Activity_0tow411" />
     <bpmn:userTask id="ACTIORH01" name="Inserir dados Colaboradores">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser># Informações do Usuário
-
-Nome: John Doe
-
-{% if correcao%}
-Corrija os dados dos colaboradores
-{% endif %}
-</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser>{% if not done %}
+&lt;font color="red"&gt;&lt;strong&gt;Corrija os dados dos colaboradores!!&lt;/strong&gt;&lt;/font&gt;
+{% endif %}</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="action-rh01-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="action-rh01-uischema.json" />
