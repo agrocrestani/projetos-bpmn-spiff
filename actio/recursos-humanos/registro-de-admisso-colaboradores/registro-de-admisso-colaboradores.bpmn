@@ -15,8 +15,8 @@
 
 Nome: John Doe
 
-{% if done%}
-Idade: 30
+{% if correcao%}
+Corrija os dados dos colaboradores
 {% endif %}
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
@@ -24,7 +24,7 @@ Idade: 30
           <spiffworkflow:property name="formUiSchemaFilename" value="action-rh01-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:preScript>meses = []
-done = False
+correcao = False
 meses = [
     {"value": "1", "label": "Janeiro"},
     {"value": "2", "label": "Fevereiro"},
@@ -202,6 +202,7 @@ data = [
 | Demitidos | {{filialCamposDeJulio['camposDeJulioDemitidos']}} |
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript />
+        <spiffworkflow:postScript>correcao = !done</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0etx8vl</bpmn:outgoing>
