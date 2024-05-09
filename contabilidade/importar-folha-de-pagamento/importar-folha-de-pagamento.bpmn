@@ -55,11 +55,12 @@ lcm = []</bpmn:script>
     <bpmn:subProcess id="Activity_14bim7r">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>del(l)
+datalcto
 lcm.append(
     {
-        "ReferenceDate": 1,
-        "TaxDate": "",
-        "Memo": "",
+        "ReferenceDate": datalcto,
+        "TaxDate": datalcto,
+        "Memo": l['nomeEvento'],
         "JournalEntryLines": [
             {
                 "Line_ID": 0,
