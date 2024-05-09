@@ -33,7 +33,7 @@ for f in filiais:
         }
     )
 </spiffworkflow:preScript>
-        <spiffworkflow:postScript># arquivo = file.split(';')[2]
+        <spiffworkflow:postScript>arquivo = file.split(';')[2]
 
 teste1 = file
 
