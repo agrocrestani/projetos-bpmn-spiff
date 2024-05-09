@@ -1,6 +1,6 @@
 {
   "title": "Importar Folha de Pagamento",
-  "description": "Create a date field with a date picker (delivery_date).",
+  "description": "Importar lança.",
   "type": "object",
   "properties": {
     "datalacto": {
