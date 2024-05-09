@@ -202,7 +202,8 @@ data = [
 | Demitidos | {{filialCamposDeJulio['camposDeJulioDemitidos']}} |
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript />
-        <spiffworkflow:postScript>correcao = !done</spiffworkflow:postScript>
+        <spiffworkflow:postScript>correcao = not done
+</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0etx8vl</bpmn:outgoing>
