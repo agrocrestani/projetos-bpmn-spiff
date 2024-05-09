@@ -7,9 +7,13 @@
       "title": "Select your favorite fruit",
       "type": "string",
       "anyOf": [
-        "options_from_task_data_var:fruits"
+        "options_from_task_data_var:n_filiais"
       ]
     },
-    
+    "file": {
+      "type": "string",
+      "format": "data-url",
+      "title": "Single file"
+    }
   }
 }
