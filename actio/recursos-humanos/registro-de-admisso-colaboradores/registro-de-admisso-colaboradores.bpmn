@@ -11,7 +11,7 @@
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="ACTIORH01" targetRef="Activity_0tow411" />
     <bpmn:userTask id="ACTIORH01" name="Inserir dados Colaboradores">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>{% if not done %}
+        <spiffworkflow:instructionsForEndUser>{% if correcao %}
 &lt;font color="red"&gt;&lt;strong&gt;Corrija os dados dos colaboradores!!&lt;/strong&gt;&lt;/font&gt;
 {% endif %}</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
