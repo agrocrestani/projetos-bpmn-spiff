@@ -4,7 +4,7 @@
     <decisionTable id="decisionTable_1">
       <input id="InputClause_0eubyw3">
         <inputExpression id="LiteralExpression_04prayq" typeRef="string">
-          <text></text>
+          <text>bplid</text>
         </inputExpression>
       </input>
       <input id="InputClause_0p2gv3j">
