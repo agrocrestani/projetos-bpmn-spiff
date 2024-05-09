@@ -55,35 +55,51 @@ lcm = []</bpmn:script>
     <bpmn:subProcess id="Activity_14bim7r">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>del(l)
-datalcto
-lcm.append(
-    {
-        "ReferenceDate": datalcto,
-        "TaxDate": datalcto,
-        "Memo": l['nomeEvento'],
-        "JournalEntryLines": [
-            {
-                "Line_ID": 0,
-                "AccountCode": "3.1.3.02.01.014",
-                "Debit": 192144.190,
-                "Credit": 0.0,
-                "CostingCode": "CORPADM",
-                "DebitSys": 192144.190,
-                "BPLID": 1
-            },
-                    {
-                "Line_ID": 0,
-                "AccountCode": "3.1.3.02.01.014",
-                "Debit": 192144.190,
-                "Credit": 0.0,
-                "CostingCode": "CORPADM",
-                "DebitSys": 192144.190,
-                "BPLID": 1
-            }
-        ]
+# datalcto
+# lcm.append(
+#     {
+#         "ReferenceDate": datalcto,
+#         "TaxDate": datalcto,
+#         "Memo": l['nomeEvento'],
+#         "JournalEntryLines": [
+#             {
+#                 "Line_ID": 0,
+#                 "AccountCode": "3.1.3.02.01.014",
+#                 "Debit": 192144.190,
+#                 "Credit": 0.0,
+#                 "CostingCode": "CORPADM",
+#                 "DebitSys": 192144.190,
+#                 "BPLID": bplid
+#             },
+#                     {
+#                 "Line_ID": 0,
+#                 "AccountCode": "3.1.3.02.01.014",
+#                 "Debit": 192144.190,
+#                 "Credit": 0.0,
+#                 "CostingCode": "CORPADM",
+#                 "DebitSys": 192144.190,
+#                 "BPLID": bplid
+#             }
+#         ]
 
-    }
-)</spiffworkflow:postScript>
+#     }
+# )
+
+
+#   "l": {
+#     "conta1": "20101007",
+#     "conta2": "20101001",
+#     "nomeEvento": "INSS S/FOLHA",
+#     "valor": 17540.84,
+#     "tipoLancamento": "C",
+#     "codigoEvento": 15,
+#     "empresa": 1,
+#     "filial": 1,
+#     "ccusto": 11102
+
+#       "bplid": "1",
+#   "novaConta1": "2.1.1.01.01.007",
+#   "novaConta2": "2.1.1.01.01.001"</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_09ozpct</bpmn:incoming>
       <bpmn:outgoing>Flow_03hwcuw</bpmn:outgoing>
