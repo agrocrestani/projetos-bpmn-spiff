@@ -2,17 +2,17 @@
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="DeParaFilial" name="DePara Filial" namespace="http://camunda.org/schema/1.0/dmn">
   <decision id="decision_1" name="DePara Filial">
     <decisionTable id="decisionTable_1" hitPolicy="COLLECT">
-      <input id="InputClause_0ai80qg" label="l[&#39;empresa&#39;]">
+      <input id="InputClause_0ai80qg">
         <inputExpression id="LiteralExpression_1adqe0t" typeRef="number">
-          <text></text>
+          <text>empresa</text>
         </inputExpression>
       </input>
-      <input id="input_1" label="l[&#39;filial&#39;]">
+      <input id="input_1">
         <inputExpression id="inputExpression_1" typeRef="number">
           <text>filial</text>
         </inputExpression>
       </input>
-      <output id="output_1" typeRef="string" />
+      <output id="output_1" name="BPLid" typeRef="number" />
       <rule id="DecisionRule_01wbopx">
         <inputEntry id="UnaryTests_0kalvwf">
           <text>1</text>
