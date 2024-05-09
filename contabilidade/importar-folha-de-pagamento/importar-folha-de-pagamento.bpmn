@@ -58,7 +58,7 @@ lancamentos = json.loads(preparaArquivo(get_encoded_file_data(file)))</bpmn:scri
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_09ozpct</bpmn:incoming>
       <bpmn:outgoing>Flow_03hwcuw</bpmn:outgoing>
-      <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
         <bpmn:loopDataInputRef>lancamentos</bpmn:loopDataInputRef>
         <bpmn:loopDataOutputRef>lcm</bpmn:loopDataOutputRef>
         <bpmn:inputDataItem id="l" name="l" />
