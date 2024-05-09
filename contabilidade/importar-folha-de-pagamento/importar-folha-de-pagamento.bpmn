@@ -49,8 +49,8 @@ for f in filiais:
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_09ozpct</bpmn:outgoing>
       <bpmn:script>from connectordb.importaFolha import preparaArquivo
-
-lancamentos = preparaArquivo(get_encoded_file_data(file))</bpmn:script>
+arquivo = get_encoded_file_data(file)
+lancamentos = preparaArquivo(arquivo)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_14bim7r">
       <bpmn:extensionElements>
@@ -84,7 +84,7 @@ filial = l['filial']</spiffworkflow:preScript>
       <bpmn:manualTask id="Activity_0ijcvzu">
         <bpmn:extensionElements>
           <spiffworkflow:instructionsForEndUser>{{l}}</spiffworkflow:instructionsForEndUser>
-          <spiffworkflow:preScript></spiffworkflow:preScript>
+          <spiffworkflow:preScript />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1irc6y0</bpmn:incoming>
         <bpmn:outgoing>Flow_0eft3k6</bpmn:outgoing>
@@ -108,6 +108,9 @@ filial = l['filial']</spiffworkflow:preScript>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1442" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0q7htqc_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -120,9 +123,6 @@ filial = l['filial']</spiffworkflow:preScript>
       <bpmndi:BPMNShape id="Activity_0gqw7um_di" bpmnElement="Activity_1iknn77">
         <dc:Bounds x="420" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1442" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_14bim7r_di" bpmnElement="Activity_14bim7r" isExpanded="true">
         <dc:Bounds x="580" y="77" width="560" height="200" />
