@@ -60,13 +60,28 @@ contador = 0
 total_preco_unitario = 0
 total_quantidade = 0
 
-for produto in produtosDespositos:
-    preco_unitario = float(produto["preço unitario"])
-    quantidade = float(produto["quantidade"])
-    total_preco_unitario += preco_unitario * quantidade
-    total_quantidade += quantidade
+# Verifique se produtosDespositos é uma lista
+if isinstance(produtosDespositos, list):
+    for produto in produtosDespositos:
+        # Verifique se o produto contém as chaves necessárias
+        if "preço unitario" in produto and "quantidade" in produto:
+            try:
+                preco_unitario = float(produto["preço unitario"].replace(",", "."))
+                quantidade = float(produto["quantidade"].replace(",", "."))
+                total_preco_unitario += preco_unitario * quantidade
+                total_quantidade += quantidade
+            except ValueError:
+                print("Erro: Valor inválido encontrado. Ignorando este produto.")
+else:
+    print("Erro: 'produtosDespositos' não é uma lista.")
 
-custo_medio_unitario = total_preco_unitario / total_quantidade</spiffworkflow:preScript>
+# Verifique se houve algum produto na lista
+if total_quantidade != 0:
+    custo_medio_unitario = total_preco_unitario / total_quantidade
+    print("Custo médio unitário:", custo_medio_unitario)
+else:
+    print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
+</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1jvyitl</bpmn:outgoing>
