@@ -6,7 +6,7 @@
     "datalacto": {
       "title": "Select your favorite fruit",
       "type": "string",
-      "format": 
+      "format": "date"
     },
     "file": {
       "type": "string",
