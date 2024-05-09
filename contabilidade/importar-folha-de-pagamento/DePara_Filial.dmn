@@ -22,7 +22,7 @@
           <text>1</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_11xgi2y">
-          <text>"1"</text>
+          <text>1</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_18ezxa0">
@@ -34,7 +34,7 @@
           <text>2</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_15422te">
-          <text>"2"</text>
+          <text>2</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0nakofn">
@@ -46,7 +46,7 @@
           <text>3</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1i9ctw4">
-          <text>"3"</text>
+          <text>3</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1u7ti98">
@@ -58,7 +58,7 @@
           <text>4</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_157yb3g">
-          <text>"4"</text>
+          <text>4</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0d19uos">
@@ -70,7 +70,7 @@
           <text>5</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_19krqyf">
-          <text>"5"</text>
+          <text>5</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1t9a418">
@@ -82,7 +82,7 @@
           <text>6</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1fnsfdm">
-          <text>"6"</text>
+          <text>6</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0e14awc">
@@ -94,7 +94,7 @@
           <text>1</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1ubf53z">
-          <text>"7"</text>
+          <text>7</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0bj96ue">
@@ -106,7 +106,7 @@
           <text>2</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1wfvsl5">
-          <text>"8"</text>
+          <text>8</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0gmsqja">
@@ -118,7 +118,7 @@
           <text>1</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0d2dhnl">
-          <text>"9"</text>
+          <text>9</text>
         </outputEntry>
       </rule>
     </decisionTable>
