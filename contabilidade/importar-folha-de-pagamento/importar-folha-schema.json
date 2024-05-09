@@ -1,6 +1,6 @@
 {
   "title": "Importar Folha de Pagamento",
-  "description": "Importar lança.",
+  "description": "Importar lançamentos c.",
   "type": "object",
   "properties": {
     "datalacto": {
