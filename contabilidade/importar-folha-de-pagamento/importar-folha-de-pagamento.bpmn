@@ -58,46 +58,47 @@ lcm = []</bpmn:script>
 creditoValor = 0
 debitoConta = ""
 debitoValor = 0
+tipoLacto = l['tipoLancamento']
 
-if l['tipoLancamento'] == 'C:
-    creditoConta = novaConta1
-    creditoValor = l['valor']
-    debitoConta = novaConta2
-    debitoValor = l['valor']
-else:    
-    creditoConta = novaConta2 
-    creditoValor = l['valor']
-    debitoConta = novaConta1
-    debitoValor = l['valor']
+# if l['tipoLancamento'] == 'C:
+#     creditoConta = novaConta1
+#     creditoValor = l['valor']
+#     debitoConta = novaConta2
+#     debitoValor = l['valor']
+# else:    
+#     creditoConta = novaConta2 
+#     creditoValor = l['valor']
+#     debitoConta = novaConta1
+#     debitoValor = l['valor']
 
 
-lcm.append(
-    {
-        "ReferenceDate": datalacto,
-        "TaxDate": datalacto,
-        "Memo": l['nomeEvento'],
-        "JournalEntryLines": [
-            {
-                "Line_ID": 0,
-                "AccountCode": creditoConta,
-                "Debit": 0.0,
-                "Credit": creditoValor,
-                "CostingCode": novoCcusto,
-                "DebitSys": creditoValor,
-                "BPLID": bplid
-            },
-                    {
-                "Line_ID": 0,
-                "AccountCode": debitoConta,
-                "Debit": debitoValor,
-                "Credit": 0.0,
-                "CostingCode": novoCcusto,
-                "DebitSys": debitoValor,
-                "BPLID": bplid
-            }
-        ]
-    }
-)
+# lcm.append(
+#     {
+#         "ReferenceDate": datalacto,
+#         "TaxDate": datalacto,
+#         "Memo": l['nomeEvento'],
+#         "JournalEntryLines": [
+#             {
+#                 "Line_ID": 0,
+#                 "AccountCode": creditoConta,
+#                 "Debit": 0.0,
+#                 "Credit": creditoValor,
+#                 "CostingCode": novoCcusto,
+#                 "DebitSys": creditoValor,
+#                 "BPLID": bplid
+#             },
+#                     {
+#                 "Line_ID": 0,
+#                 "AccountCode": debitoConta,
+#                 "Debit": debitoValor,
+#                 "Credit": 0.0,
+#                 "CostingCode": novoCcusto,
+#                 "DebitSys": debitoValor,
+#                 "BPLID": bplid
+#             }
+#         ]
+#     }
+# )
 
 del(l)
 #   "l": {
