@@ -50,9 +50,9 @@ uploaded_file = markdown_file_download_link(file)</spiffworkflow:postScript>
     <bpmn:scriptTask id="Activity_1iknn77">
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_09ozpct</bpmn:outgoing>
-      <bpmn:script># from connectordb.importaFolha import preparaArquivo
+      <bpmn:script>from connectordb.importaFolha import preparaArquivo
 
-arquivo = get_encoded_file_data(uploaded_file)</bpmn:script>
+arquivo = preparaArquivo(file)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
