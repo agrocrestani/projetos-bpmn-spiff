@@ -3,7 +3,7 @@
   "properties": {
     "done": {
       "type": "boolean",
-      "title": "Done?",
+      "title": "COnfirg?",
       "default": false
     }
   }
