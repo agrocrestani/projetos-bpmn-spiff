@@ -61,8 +61,8 @@ total_preco_unitario = 0
 total_quantidade = 0
 
 for produto in produtosDespositos:
-    preco_unitario = float(produto["Preço Unitario"])
-    quantidade = float(produto["Quantidade"])
+    preco_unitario = float(produto["preço unitario"])
+    quantidade = float(produto["quantidade"])
     total_preco_unitario += preco_unitario * quantidade
     total_quantidade += quantidade
 
