@@ -49,8 +49,8 @@ for f in filiais:
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_09ozpct</bpmn:outgoing>
       <bpmn:script>from connectordb.importaFolha import preparaArquivo
-arquivo = get_encoded_file_data(file)
-lancamentos = preparaArquivo(arquivo)</bpmn:script>
+lancamentos = preparaArquivo(get_encoded_file_data(file))
+lcm = []</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_14bim7r">
       <bpmn:extensionElements>
