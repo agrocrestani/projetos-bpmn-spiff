@@ -58,9 +58,8 @@ lcm = []</bpmn:script>
 creditoValor = 0
 debitoConta = ""
 debitoValor = 0
-tipoLacto = l['tipoLancamento']
 
-if tipoLacto == 'C:
+if l['tipoLancamento']:
     creditoConta = novaConta1
     creditoValor = l['valor']
     debitoConta = novaConta2
