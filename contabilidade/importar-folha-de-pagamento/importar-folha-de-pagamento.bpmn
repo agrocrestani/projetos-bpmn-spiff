@@ -22,11 +22,29 @@ You can also change the text you are reading here by updating the *Instructions*
           <spiffworkflow:property name="formJsonSchemaFilename" value="importar-folha-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="importar-folha-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:preScript>n_filiais = []
+for f in filiais:
+    BPLId = f['BPLId']
+    BPLName = f['BPLName']
+    n_filiais.append(
+        {
+            "value": BPLId,
+            "label": BPLName
+        }
+    )
+</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
+      <bpmn:property id="Property_04zfk6a" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1q46cct">
+        <bpmn:sourceRef>DataStoreReference_02ac4a1</bpmn:sourceRef>
+        <bpmn:targetRef>Property_04zfk6a</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
     </bpmn:userTask>
+    <bpmn:dataStoreReference id="DataStoreReference_02ac4a1" name="Filiais" dataStoreRef="filiais" type="json" />
   </bpmn:process>
+  <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_importar_folha_de_pagamento_rq1s2au">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -38,6 +56,12 @@ You can also change the text you are reading here by updating the *Instructions*
       <bpmndi:BPMNShape id="Activity_0q7htqc_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_02ac4a1_di" bpmnElement="DataStoreReference_02ac4a1">
+        <dc:Bounds x="215" y="295" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="226" y="352" width="28" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -45,6 +69,10 @@ You can also change the text you are reading here by updating the *Instructions*
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="370" y="177" />
         <di:waypoint x="432" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1q46cct_di" bpmnElement="DataInputAssociation_1q46cct">
+        <di:waypoint x="258" y="295" />
+        <di:waypoint x="313" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
