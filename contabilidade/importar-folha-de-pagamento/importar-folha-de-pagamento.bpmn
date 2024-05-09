@@ -39,7 +39,7 @@ teste1 = file
 
 uploaded_file = markdown_file_download_link(file)
 
-teste2 = get_encoded_file_data(uploaded_file)</spiffworkflow:postScript>
+teste2 = get_encoded_file_data(file)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
