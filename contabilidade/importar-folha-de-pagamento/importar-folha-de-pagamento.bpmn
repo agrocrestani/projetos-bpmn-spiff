@@ -50,7 +50,7 @@ for f in filiais:
       <bpmn:outgoing>Flow_09ozpct</bpmn:outgoing>
       <bpmn:script>from connectordb.importaFolha import preparaArquivo
 
-lancamentos = json.loads(preparaArquivo(get_encoded_file_data(file)))</bpmn:script>
+lancamentos = preparaArquivo(get_encoded_file_data(file))</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_14bim7r">
       <bpmn:extensionElements>
@@ -123,20 +123,17 @@ filial = l['filial']</spiffworkflow:preScript>
         <dc:Bounds x="420" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_08m9lx3_di" bpmnElement="Activity_1ilc925">
-        <dc:Bounds x="1250" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_14bim7r_di" bpmnElement="Activity_14bim7r" isExpanded="true">
         <dc:Bounds x="580" y="77" width="560" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0ijstwu_di" bpmnElement="Event_0ijstwu">
         <dc:Bounds x="620" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1tva01d_di" bpmnElement="Activity_00gm0or">
-        <dc:Bounds x="710" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1nxxcjy_di" bpmnElement="Event_1nxxcjy">
         <dc:Bounds x="1062" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1tva01d_di" bpmnElement="Activity_00gm0or">
+        <dc:Bounds x="710" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0yrphep_di" bpmnElement="Activity_0ijcvzu">
         <dc:Bounds x="880" y="137" width="100" height="80" />
@@ -153,6 +150,9 @@ filial = l['filial']</spiffworkflow:preScript>
         <di:waypoint x="980" y="177" />
         <di:waypoint x="1062" y="177" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_08m9lx3_di" bpmnElement="Activity_1ilc925">
+        <dc:Bounds x="1250" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
