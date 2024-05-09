@@ -55,22 +55,23 @@ lcm = []</bpmn:script>
     <bpmn:subProcess id="Activity_14bim7r">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>del(l)
+
 creditoConta = ""
 creditoValor = 0
 debitoConta = ""
 debitoValor = 0
+tipoLacto = l['tipoLancamento']
 
-
-if l['tipoLancamento'] == 'C:
-    creditoConta = novaConta1
-    creditoValor = l['valor']
-    debitoConta = novaConta2
-    debitoValor = l['valor']
-else:    
-    creditoConta = novaConta2 
-    creditoValor = l['valor']
-    debitoConta = novaConta1
-    debitoValor = l['valor']
+# if l['tipoLancamento'] == 'C:
+#     creditoConta = novaConta1
+#     creditoValor = l['valor']
+#     debitoConta = novaConta2
+#     debitoValor = l['valor']
+# else:    
+#     creditoConta = novaConta2 
+#     creditoValor = l['valor']
+#     debitoConta = novaConta1
+#     debitoValor = l['valor']
 
 
 # lcm.append(
