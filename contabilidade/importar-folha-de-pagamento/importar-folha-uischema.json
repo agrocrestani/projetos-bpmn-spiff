@@ -5,7 +5,7 @@
   },
   "file": {
     "ui:options": {
-      "accept": ".x"
+      "accept": ".xlsx"
     }
   }
 }
