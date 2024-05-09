@@ -1,6 +1,6 @@
 {
   "datalacto": {
     "ui:widget": "date",
-    "ui:help": "Escolha a data para os lançamentos contabeis"
+    "ui:help": "Escolha a data para os lançamentos contabeis."
   }
 }
