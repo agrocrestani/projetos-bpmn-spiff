@@ -3,7 +3,7 @@
   "properties": {
     "done": {
       "type": "boolean",
-      "title": "Confirmo que ?",
+      "title": "Confirmo que as ?",
       "default": false
     }
   }
