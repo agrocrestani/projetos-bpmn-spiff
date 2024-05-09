@@ -19,7 +19,6 @@
           <spiffworkflow:property name="formUiSchemaFilename" value="action-rh01-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:preScript>meses = []
-correcao = True
 meses = [
     {"value": "1", "label": "Janeiro"},
     {"value": "2", "label": "Fevereiro"},
