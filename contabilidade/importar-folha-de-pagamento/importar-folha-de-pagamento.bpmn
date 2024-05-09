@@ -60,16 +60,16 @@ debitoConta = ""
 debitoValor = 0
 tipoLacto = l['tipoLancamento']
 
-# if l['tipoLancamento'] == 'C:
-#     creditoConta = novaConta1
-#     creditoValor = l['valor']
-#     debitoConta = novaConta2
-#     debitoValor = l['valor']
-# else:    
-#     creditoConta = novaConta2 
-#     creditoValor = l['valor']
-#     debitoConta = novaConta1
-#     debitoValor = l['valor']
+if tipoLacto == 'C:
+    creditoConta = novaConta1
+    creditoValor = l['valor']
+    debitoConta = novaConta2
+    debitoValor = l['valor']
+else:    
+    creditoConta = novaConta2 
+    creditoValor = l['valor']
+    debitoConta = novaConta1
+    debitoValor = l['valor']
 
 
 # lcm.append(
