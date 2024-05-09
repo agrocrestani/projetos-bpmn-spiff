@@ -84,6 +84,7 @@ filial = l['filial']</spiffworkflow:preScript>
       <bpmn:manualTask id="Activity_0ijcvzu">
         <bpmn:extensionElements>
           <spiffworkflow:instructionsForEndUser>{{l}}</spiffworkflow:instructionsForEndUser>
+          <spiffworkflow:preScript></spiffworkflow:preScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1irc6y0</bpmn:incoming>
         <bpmn:outgoing>Flow_0eft3k6</bpmn:outgoing>
