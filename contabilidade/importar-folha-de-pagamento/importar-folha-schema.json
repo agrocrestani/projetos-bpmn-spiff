@@ -5,7 +5,7 @@
   "properties": {
     "datalacto": {
       "title": "Select your favorite fruit",
-      "type": "string",
+      "type": "date",
       "anyOf": [
         "options_from_task_data_var:n_filiais"
       ]
