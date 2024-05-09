@@ -5,7 +5,8 @@
   "properties": {
     "datalacto": {
       "title": "Select your favorite fruit",
-      "type": "string"
+      "type": "string",
+      "format"
     },
     "file": {
       "type": "string",
