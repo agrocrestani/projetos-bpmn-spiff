@@ -86,10 +86,14 @@ filial = l['filial']</spiffworkflow:preScript>
         <bpmn:outgoing>Flow_1irc6y0</bpmn:outgoing>
       </bpmn:businessRuleTask>
       <bpmn:sequenceFlow id="Flow_0eft3k6" sourceRef="Activity_0ijcvzu" targetRef="Event_1nxxcjy" />
-      <bpmn:businessRuleTask id="Activity_0ijcvzu">
+      <bpmn:businessRuleTask id="Activity_0ijcvzu" name="DePara Conta1">
         <bpmn:extensionElements>
           <spiffworkflow:instructionsForEndUser>{{l}}</spiffworkflow:instructionsForEndUser>
-          <spiffworkflow:preScript />
+          <spiffworkflow:preScript>conta = l['conta1']</spiffworkflow:preScript>
+          <spiffworkflow:calledDecisionId>depara-contas</spiffworkflow:calledDecisionId>
+          <spiffworkflow:postScript>novaConta1 = novaConta
+del(novaConta)
+del(conta)</spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1irc6y0</bpmn:incoming>
         <bpmn:outgoing>Flow_0eft3k6</bpmn:outgoing>
@@ -113,9 +117,6 @@ filial = l['filial']</spiffworkflow:preScript>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1442" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0q7htqc_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -129,8 +130,14 @@ filial = l['filial']</spiffworkflow:preScript>
         <dc:Bounds x="420" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1632" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_08m9lx3_di" bpmnElement="Activity_1ilc925">
+        <dc:Bounds x="1460" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_14bim7r_di" bpmnElement="Activity_14bim7r" isExpanded="true">
-        <dc:Bounds x="580" y="77" width="560" height="200" />
+        <dc:Bounds x="580" y="77" width="810" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0ijstwu_di" bpmnElement="Event_0ijstwu">
         <dc:Bounds x="620" y="159" width="36" height="36" />
@@ -143,6 +150,7 @@ filial = l['filial']</spiffworkflow:preScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_19a4yky_di" bpmnElement="Activity_0ijcvzu">
         <dc:Bounds x="880" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1a5u0e2_di" bpmnElement="Flow_1a5u0e2">
         <di:waypoint x="656" y="177" />
@@ -156,9 +164,6 @@ filial = l['filial']</spiffworkflow:preScript>
         <di:waypoint x="980" y="177" />
         <di:waypoint x="1062" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Activity_08m9lx3_di" bpmnElement="Activity_1ilc925">
-        <dc:Bounds x="1250" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -176,12 +181,12 @@ filial = l['filial']</spiffworkflow:preScript>
         <di:waypoint x="580" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_03hwcuw_di" bpmnElement="Flow_03hwcuw">
-        <di:waypoint x="1140" y="177" />
-        <di:waypoint x="1250" y="177" />
+        <di:waypoint x="1390" y="177" />
+        <di:waypoint x="1460" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_14m2b3h_di" bpmnElement="Flow_14m2b3h">
-        <di:waypoint x="1350" y="177" />
-        <di:waypoint x="1442" y="177" />
+        <di:waypoint x="1560" y="177" />
+        <di:waypoint x="1632" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
