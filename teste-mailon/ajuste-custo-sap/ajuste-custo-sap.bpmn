@@ -35,16 +35,15 @@ connection = {
 query = f"""
     SELECT 
         t0."ItemCode" || ' - ' || t0."ItemName" AS "Produto" , 
-        t2."Price" AS "Preço Unitario" , 
-        t2."Quantity" AS "Quantidade" ,
-        t2."LineTotal" AS "Preço Total"
+        CAST(t2."Price" AS VARCHAR(50)) AS "Preço Unitario" , 
+        CAST(t2."Quantity" AS VARCHAR(50)) AS "Quantidade" ,
+        CAST(t2."LineTotal" AS VARCHAR(50)) AS "Preço Total"
     FROM {baseSap}.OITM t0
     INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
     INNER JOIN {baseSap}.PCH1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '03.FCOL'
     INNER JOIN {baseSap}.OPCH t3 ON t3."DocEntry" = t2."DocEntry" AND t3.CANCELED = 'N'
     WHERE t0."ItemCode" = '011021' AND t1."WhsCode" = '03.FCOL'
 """
-
 produtosDespositos = Hana(connection).selectDb(query)
 totalRegistros = len(produtosDespositos)
 contador = 0
