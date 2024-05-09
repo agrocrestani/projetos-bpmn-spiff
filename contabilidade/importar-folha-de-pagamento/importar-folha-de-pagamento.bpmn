@@ -57,7 +57,30 @@ lcm = []</bpmn:script>
         <spiffworkflow:postScript>del(l)
 lcm.append(
     {
-        "a": 1
+        "ReferenceDate": 1,
+        "TaxDate": "",
+        "Memo": "",
+        "JournalEntryLines": [
+            {
+                "Line_ID": 0,
+                "AccountCode": "3.1.3.02.01.014",
+                "Debit": 192144.190,
+                "Credit": 0.0,
+                "CostingCode": "CORPADM",
+                "DebitSys": 192144.190,
+                "BPLID": 1
+            },
+                    {
+                "Line_ID": 0,
+                "AccountCode": "3.1.3.02.01.014",
+                "Debit": 192144.190,
+                "Credit": 0.0,
+                "CostingCode": "CORPADM",
+                "DebitSys": 192144.190,
+                "BPLID": 1
+            }
+        ]
+
     }
 )</spiffworkflow:postScript>
       </bpmn:extensionElements>
