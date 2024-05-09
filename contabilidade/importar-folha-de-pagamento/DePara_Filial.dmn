@@ -86,6 +86,7 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0e14awc">
+        <description>Germinare Sementes</description>
         <inputEntry id="UnaryTests_05hssw2">
           <text>2</text>
         </inputEntry>
@@ -97,6 +98,7 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0bj96ue">
+        <description>Germinare Servicos</description>
         <inputEntry id="UnaryTests_1jmfdnk">
           <text>2</text>
         </inputEntry>
@@ -108,6 +110,7 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0gmsqja">
+        <description>Querencia Empreendimentos Tangara</description>
         <inputEntry id="UnaryTests_0ggty84">
           <text>3</text>
         </inputEntry>
