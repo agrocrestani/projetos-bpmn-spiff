@@ -33,7 +33,7 @@ for f in filiais:
         }
     )
 </spiffworkflow:preScript>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
@@ -50,7 +50,7 @@ for f in filiais:
       <bpmn:outgoing>Flow_09ozpct</bpmn:outgoing>
       <bpmn:script>from connectordb.importaFolha import preparaArquivo
 
-arquivo = preparaArquivo(get_encoded_file_data(file))</bpmn:script>
+arquivo = json.loads(preparaArquivo(get_encoded_file_data(file)))</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
