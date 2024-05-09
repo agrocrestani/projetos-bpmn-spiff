@@ -60,7 +60,7 @@ lancamentos = preparaArquivo(get_encoded_file_data(file))</bpmn:script>
       <bpmn:outgoing>Flow_03hwcuw</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
         <bpmn:loopDataInputRef>lancamentos</bpmn:loopDataInputRef>
-        <bpmn:loopDataOutputRef>lcm</bpmn:loopDataOutputRef>
+        <bpmn:loopDataOutputRef>lancamentos</bpmn:loopDataOutputRef>
         <bpmn:inputDataItem id="l" name="l" />
       </bpmn:multiInstanceLoopCharacteristics>
       <bpmn:startEvent id="Event_0ijstwu">
