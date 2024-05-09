@@ -4,6 +4,6 @@
     "exception_notification_addresses": [],
     "fault_or_suspend_on_exception": "fault",
     "metadata_extraction_paths": null,
-    "primary_file_name": "show.bpmn",
-    "primary_process_id": "Process_show_d10nr03"
+    "primary_file_name": "on_load.bpmn",
+    "primary_process_id": "Process_ApiKeyShowLoad"
 }
