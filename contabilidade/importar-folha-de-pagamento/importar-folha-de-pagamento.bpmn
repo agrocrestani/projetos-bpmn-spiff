@@ -61,7 +61,7 @@ debitoConta = ""
 debitoValor = 0
 
 
-if tipoLancamento == 'C:
+if l['tipoLancamento'] == 'C:
     creditoConta = novaConta1
     creditoValor = l['valor']
     debitoConta = novaConta2
