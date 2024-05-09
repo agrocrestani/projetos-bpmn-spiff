@@ -6,7 +6,7 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_09ozpct</bpmn:incoming>
+      <bpmn:incoming>Flow_03hwcuw</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_1iknn77" />
     <bpmn:userTask id="Activity_0qpzdpu" name="Example manual task">
@@ -44,23 +44,57 @@ for f in filiais:
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
     <bpmn:dataStoreReference id="DataStoreReference_02ac4a1" name="Filiais" dataStoreRef="filiais" type="json" />
-    <bpmn:sequenceFlow id="Flow_09ozpct" sourceRef="Activity_1iknn77" targetRef="EndEvent_1" />
-    <bpmn:scriptTask id="Activity_1iknn77">
+    <bpmn:sequenceFlow id="Flow_09ozpct" sourceRef="Activity_1iknn77" targetRef="Activity_14bim7r" />
+    <bpmn:scriptTask id="Activity_1iknn77" name="Processa Arquivo">
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_09ozpct</bpmn:outgoing>
       <bpmn:script>from connectordb.importaFolha import preparaArquivo
 
-arquivo = json.loads(preparaArquivo(get_encoded_file_data(file)))</bpmn:script>
+lancamentos = json.loads(preparaArquivo(get_encoded_file_data(file)))</bpmn:script>
     </bpmn:scriptTask>
+    <bpmn:subProcess id="Activity_14bim7r">
+      <bpmn:incoming>Flow_09ozpct</bpmn:incoming>
+      <bpmn:outgoing>Flow_03hwcuw</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+        <bpmn:loopDataInputRef>lancamentos</bpmn:loopDataInputRef>
+        <bpmn:loopDataOutputRef>lancamentos</bpmn:loopDataOutputRef>
+        <bpmn:inputDataItem id="l" name="l" />
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="Event_0ijstwu">
+        <bpmn:outgoing>Flow_1a5u0e2</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_1a5u0e2" sourceRef="Event_0ijstwu" targetRef="Activity_0uaqu1z" />
+      <bpmn:sequenceFlow id="Flow_0cvkasb" sourceRef="Activity_0uaqu1z" targetRef="Activity_0fk3t3t" />
+      <bpmn:sequenceFlow id="Flow_1oynypm" sourceRef="Activity_0fk3t3t" targetRef="Activity_1ekt8az" />
+      <bpmn:task id="Activity_00gm0or" name="Inserir no SAP">
+        <bpmn:incoming>Flow_1v171ut</bpmn:incoming>
+        <bpmn:outgoing>Flow_0rq81n8</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:sequenceFlow id="Flow_1v171ut" sourceRef="Activity_1ekt8az" targetRef="Activity_00gm0or" />
+      <bpmn:endEvent id="Event_0jrnk51">
+        <bpmn:incoming>Flow_0rq81n8</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0rq81n8" sourceRef="Activity_00gm0or" targetRef="Event_0jrnk51" />
+      <bpmn:businessRuleTask id="Activity_0uaqu1z" name="Depara Conta1">
+        <bpmn:incoming>Flow_1a5u0e2</bpmn:incoming>
+        <bpmn:outgoing>Flow_0cvkasb</bpmn:outgoing>
+      </bpmn:businessRuleTask>
+      <bpmn:businessRuleTask id="Activity_0fk3t3t" name="Depara Conta2">
+        <bpmn:incoming>Flow_0cvkasb</bpmn:incoming>
+        <bpmn:outgoing>Flow_1oynypm</bpmn:outgoing>
+      </bpmn:businessRuleTask>
+      <bpmn:businessRuleTask id="Activity_1ekt8az" name="DePara Centro de Custo">
+        <bpmn:incoming>Flow_1oynypm</bpmn:incoming>
+        <bpmn:outgoing>Flow_1v171ut</bpmn:outgoing>
+      </bpmn:businessRuleTask>
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_03hwcuw" sourceRef="Activity_14bim7r" targetRef="EndEvent_1" />
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_importar_folha_de_pagamento_rq1s2au">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="682" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0q7htqc_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
@@ -73,7 +107,53 @@ arquivo = json.loads(preparaArquivo(get_encoded_file_data(file)))</bpmn:script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0gqw7um_di" bpmnElement="Activity_1iknn77">
         <dc:Bounds x="420" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1502" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_14bim7r_di" bpmnElement="Activity_14bim7r" isExpanded="true">
+        <dc:Bounds x="590" y="77" width="840" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ijstwu_di" bpmnElement="Event_0ijstwu">
+        <dc:Bounds x="630" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_00gm0or_di" bpmnElement="Activity_00gm0or">
+        <dc:Bounds x="1200" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0jrnk51_di" bpmnElement="Event_0jrnk51">
+        <dc:Bounds x="1362" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0l195wn_di" bpmnElement="Activity_0uaqu1z">
+        <dc:Bounds x="720" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15jsrxz_di" bpmnElement="Activity_0fk3t3t">
+        <dc:Bounds x="880" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ips5fg_di" bpmnElement="Activity_1ekt8az">
+        <dc:Bounds x="1040" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1a5u0e2_di" bpmnElement="Flow_1a5u0e2">
+        <di:waypoint x="666" y="177" />
+        <di:waypoint x="720" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cvkasb_di" bpmnElement="Flow_0cvkasb">
+        <di:waypoint x="820" y="177" />
+        <di:waypoint x="880" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1oynypm_di" bpmnElement="Flow_1oynypm">
+        <di:waypoint x="980" y="177" />
+        <di:waypoint x="1040" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1v171ut_di" bpmnElement="Flow_1v171ut">
+        <di:waypoint x="1140" y="177" />
+        <di:waypoint x="1200" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0rq81n8_di" bpmnElement="Flow_0rq81n8">
+        <di:waypoint x="1300" y="177" />
+        <di:waypoint x="1362" y="177" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -88,7 +168,11 @@ arquivo = json.loads(preparaArquivo(get_encoded_file_data(file)))</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_09ozpct_di" bpmnElement="Flow_09ozpct">
         <di:waypoint x="520" y="177" />
-        <di:waypoint x="682" y="177" />
+        <di:waypoint x="590" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_03hwcuw_di" bpmnElement="Flow_03hwcuw">
+        <di:waypoint x="1430" y="177" />
+        <di:waypoint x="1502" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
