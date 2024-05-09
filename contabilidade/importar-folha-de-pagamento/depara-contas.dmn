@@ -4,10 +4,10 @@
     <decisionTable id="decisionTable_1">
       <input id="input_1">
         <inputExpression id="inputExpression_1" typeRef="string">
-          <text>conta1</text>
+          <text>conta</text>
         </inputExpression>
       </input>
-      <output id="output_1" name="novaConta1" typeRef="Any" />
+      <output id="output_1" name="novaConta" typeRef="Any" />
       <rule id="DecisionRule_1g3tv2i">
         <inputEntry id="UnaryTests_0ymuo7n">
           <text>"10102001"</text>
