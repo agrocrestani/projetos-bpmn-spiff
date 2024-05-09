@@ -5,7 +5,7 @@
   },
   "file": {
     "ui:options": {
-      "accept": ".pdf"
+      "accept": ".x"
     }
   }
 }
