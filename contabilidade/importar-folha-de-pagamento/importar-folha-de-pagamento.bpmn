@@ -54,15 +54,19 @@ lcm = []</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_14bim7r">
       <bpmn:extensionElements>
-        <spiffworkflow:postScript>del(l)</spiffworkflow:postScript>
+        <spiffworkflow:postScript>del(l)
+lcm.append(
+    {
+        "a": 1
+    }
+)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_09ozpct</bpmn:incoming>
       <bpmn:outgoing>Flow_03hwcuw</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
         <bpmn:loopDataInputRef>lancamentos</bpmn:loopDataInputRef>
-        <bpmn:loopDataOutputRef>lcm</bpmn:loopDataOutputRef>
+        <bpmn:loopDataOutputRef>lancamentos</bpmn:loopDataOutputRef>
         <bpmn:inputDataItem id="l" name="l" />
-        <bpmn:outputDataItem id="c" name="c" />
       </bpmn:multiInstanceLoopCharacteristics>
       <bpmn:startEvent id="Event_0ijstwu">
         <bpmn:outgoing>Flow_1a5u0e2</bpmn:outgoing>
