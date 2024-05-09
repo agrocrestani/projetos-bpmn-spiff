@@ -83,7 +83,8 @@ lcm.append(
 filial = l['filial']</spiffworkflow:preScript>
           <spiffworkflow:postScript>bplid = BPLId[0]
 del(empresa)
-del(filial)</spiffworkflow:postScript>
+del(filial)
+del(BPLId)</spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1a5u0e2</bpmn:incoming>
         <bpmn:outgoing>Flow_1irc6y0</bpmn:outgoing>
