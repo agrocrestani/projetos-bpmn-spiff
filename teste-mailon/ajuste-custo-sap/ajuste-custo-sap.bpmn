@@ -6,9 +6,9 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="BuscaProdutosPorDepositoSAP" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_1vqrmxu</bpmn:incoming>
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="BuscaProdutosPorDepositoSAP" targetRef="BuscaMovimentacoesProdutoDeposito" />
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="BuscaProdutosPorDepositoSAP" targetRef="EndEvent_1" />
     <bpmn:scriptTask id="BuscaProdutosPorDepositoSAP" name="Busca Produtos por Deposito no SAP">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
@@ -34,22 +34,15 @@ connection = {
 
 query = f"""
     SELECT 
-        t0."ItemCode" AS CodProduto,
-        t0."ItemName" AS "Produto",
-        t1."WhsCode" AS "CodDeposito", 
-        CAST(t1."OnHand" AS VARCHAR(50)) AS "EmEstoque", 
-        t0."InvntryUom" AS "UnidadeMedidaEstoque",
-        CAST(t1."AvgPrice" AS VARCHAR(50)) AS "CustoMedioDeposito",
-        CASE 
-            WHEN t1."OnHand" &lt;&gt; 0 THEN CAST(t1."AvgPrice" / t1."OnHand" AS VARCHAR(50))
-            ELSE '0'
-        END AS "CustoMedioItemDeposito" 
+        t0."ItemCode" || ' - ' || t0."ItemName" AS "Produto" , 
+        t2."Price" AS "Preço Unitario" , 
+        t2."Quantity" AS "Quantidade" ,
+        t2."LineTotal" AS "Preço Total"
     FROM {baseSap}.OITM t0
-    INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode" 
-    WHERE 
-        t1."AvgPrice" &gt; 0 AND
-        t0."ItemCode"  	= '011021'
-    ORDER BY t0."ItemCode", t1."WhsCode" limit 10
+    INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
+    INNER JOIN {baseSap}.PCH1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '03.FCOL'
+    INNER JOIN {baseSap}.OPCH t3 ON t3."DocEntry" = t2."DocEntry" AND t3.CANCELED = 'N'
+    WHERE t0."ItemCode" = '011021' AND t1."WhsCode" = '03.FCOL'
 """
 
 produtosDespositos = Hana(connection).selectDb(query)
@@ -59,68 +52,18 @@ contador = 0
 produtoDeposito = produtosDespositos[0]
 </bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:sequenceFlow id="Flow_1vqrmxu" sourceRef="ViewDadosProdutos" targetRef="EndEvent_1" />
-    <bpmn:manualTask id="ViewDadosProdutos" name="View Dados Produtos">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>
-| Cod. Produto | Cod. Deposito | Em Estoque | Custo Deposito|  Custo Item Deposito|
-| ----------------- | -------------- | ------------------- | -----------  | ----------- | 
-| {{produtoDeposito['produto']}} | {{produtoDeposito['coddeposito']}} | {{produtoDeposito['emestoque']}} | {{produtoDeposito['customediodeposito']}} | {{produtoDeposito['customedioitemdeposito']}} | 
-</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_01jbn5b</bpmn:incoming>
-      <bpmn:outgoing>Flow_1vqrmxu</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:sequenceFlow id="Flow_01jbn5b" sourceRef="BuscaMovimentacoesProdutoDeposito" targetRef="ViewDadosProdutos" />
-    <bpmn:scriptTask id="BuscaMovimentacoesProdutoDeposito" name="Busca Movimentações Produto Deposito">
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
-      <bpmn:outgoing>Flow_01jbn5b</bpmn:outgoing>
-      <bpmn:script>from connectordb.hana import Hana
-
-query2 = f"""SELECT 
-	t0."ItemCode" || ' - ' || t0."ItemName" 		AS "Produto" , 
-	t2."DocDate"									AS "Data" ,
-	t1."WhsCode"									AS "CodDeposito" , 
-	CAST(t2."Quantity" AS VARCHAR(50)) 				AS "QuantidadeLancamento" ,
-	CASE 
-		WHEN t2."Currency" = 'R$' THEN t2."Price"
-		ELSE '0'
-	END												AS "ValorItem" , 
-	t2."LineTotal" 									AS "ValorTotal" ,
-	t3."DocNum" || ' - ' || t2."LineNum" 			AS "NumDocLinha"
-FROM {baseSap}.OITM t0
-INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode" 
-INNER JOIN {baseSap}.PCH1 t2 ON t2."ItemCode" = t1."ItemCode" AND t2."WhsCode" = t1."WhsCode"
-INNER JOIN {baseSap}.OPCH t3 ON t3."DocNum"   = t2."DocEntry" 
-WHERE 
-	t0."ItemCode"  	= '{produtoDeposito['codproduto']}' 	AND
-	t1."AvgPrice" 	&gt; 0 		AND
-	t1."WhsCode" 	= '{produtoDeposito['coddeposito']}'	AND
-	t3.CANCELED     = 'N'
-ORDER BY t2."DocDate"
-"""
-movProdutoDesposito = Hana(connection).selectDb(query2)
-
-</bpmn:script>
-    </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
-      <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
-        <dc:Bounds x="210" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="92" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="912" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0i1lwhb_di" bpmnElement="ViewDadosProdutos">
-        <dc:Bounds x="590" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1xq25v8_di" bpmnElement="BuscaMovimentacoesProdutoDeposito">
-        <dc:Bounds x="380" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
+        <dc:Bounds x="210" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="128" y="177" />
@@ -128,15 +71,7 @@ movProdutoDesposito = Hana(connection).selectDb(query2)
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="310" y="177" />
-        <di:waypoint x="380" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1vqrmxu_di" bpmnElement="Flow_1vqrmxu">
-        <di:waypoint x="690" y="177" />
         <di:waypoint x="912" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_01jbn5b_di" bpmnElement="Flow_01jbn5b">
-        <di:waypoint x="480" y="177" />
-        <di:waypoint x="590" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
