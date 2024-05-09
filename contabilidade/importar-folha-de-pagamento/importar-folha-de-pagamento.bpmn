@@ -81,7 +81,8 @@ lcm.append(
           <spiffworkflow:calledDecisionId>deparaFilial</spiffworkflow:calledDecisionId>
           <spiffworkflow:preScript>empresa = l['empresa']
 filial = l['filial']</spiffworkflow:preScript>
-          <spiffworkflow:postScript>del(empresa)
+          <spiffworkflow:postScript>bplid = BPLId[0]
+del(empresa)
 del(filial)</spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1a5u0e2</bpmn:incoming>
