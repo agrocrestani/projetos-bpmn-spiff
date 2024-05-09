@@ -6,9 +6,9 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="BuscaProdutosPorDepositoSAP" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:incoming>Flow_1jvyitl</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="BuscaProdutosPorDepositoSAP" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="BuscaProdutosPorDepositoSAP" targetRef="Activity_0pxv5ok" />
     <bpmn:scriptTask id="BuscaProdutosPorDepositoSAP" name="Busca Produtos por Deposito no SAP">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
@@ -51,6 +51,30 @@ contador = 0
 produtoDeposito = produtosDespositos[0]
 </bpmn:script>
     </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_1jvyitl" sourceRef="Activity_0pxv5ok" targetRef="EndEvent_1" />
+    <bpmn:userTask id="Activity_0pxv5ok" name="Iterando">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="" />
+        </spiffworkflow:properties>
+        <spiffworkflow:preScript># Inicialize as variáveis para calcular o custo médio unitário
+total_preco_unitario = 0
+total_quantidade = 0
+
+# Iterar sobre cada objeto na lista
+for produto in produtosDespositos:
+    preco_unitario = float(produto["preço unitario"])
+    quantidade = float(produto["quantidade"])
+    total_preco_unitario += preco_unitario * quantidade
+    total_quantidade += quantidade
+
+# Calcular o custo médio unitário
+custo_medio_unitario = total_preco_unitario / total_quantidade</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jvyitl</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
@@ -64,12 +88,20 @@ produtoDeposito = produtosDespositos[0]
         <dc:Bounds x="210" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10q61xe_di" bpmnElement="Activity_0pxv5ok">
+        <dc:Bounds x="390" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="128" y="177" />
         <di:waypoint x="210" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="310" y="177" />
+        <di:waypoint x="390" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jvyitl_di" bpmnElement="Flow_1jvyitl">
+        <di:waypoint x="490" y="177" />
         <di:waypoint x="912" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
