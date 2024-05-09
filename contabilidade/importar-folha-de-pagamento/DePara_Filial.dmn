@@ -2,12 +2,12 @@
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="DeParaFilial" name="DePara Filial" namespace="http://camunda.org/schema/1.0/dmn">
   <decision id="decision_1" name="DePara Filial">
     <decisionTable id="decisionTable_1" hitPolicy="COLLECT">
-      <input id="InputClause_0ai80qg" label="empresa">
+      <input id="InputClause_0ai80qg" label="l[&#39;empresa&#39;]">
         <inputExpression id="LiteralExpression_1adqe0t" typeRef="number">
-          <text>empresa</text>
+          <text></text>
         </inputExpression>
       </input>
-      <input id="input_1" label="filial">
+      <input id="input_1" label="l[&#39;filial&#39;]">
         <inputExpression id="inputExpression_1" typeRef="number">
           <text>filial</text>
         </inputExpression>
