@@ -117,6 +117,7 @@ del(conta)</spiffworkflow:postScript>
         <bpmn:extensionElements>
           <spiffworkflow:preScript>ccusto = l['ccusto']</spiffworkflow:preScript>
           <spiffworkflow:postScript>del(ccusto)</spiffworkflow:postScript>
+          <spiffworkflow:calledDecisionId>DeParaCCusto</spiffworkflow:calledDecisionId>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_03n7hvc</bpmn:incoming>
         <bpmn:outgoing>Flow_0ry1zs4</bpmn:outgoing>
