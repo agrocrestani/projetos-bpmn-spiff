@@ -47,8 +47,6 @@ query = f"""
 produtosDespositos = Hana(connection).selectDb(query)
 totalRegistros = len(produtosDespositos)
 contador = 0
-
-produtoDeposito = produtosDespositos[0]
 </bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1jvyitl" sourceRef="Activity_0pxv5ok" targetRef="EndEvent_1" />
@@ -62,14 +60,12 @@ produtoDeposito = produtosDespositos[0]
 total_preco_unitario = 0
 total_quantidade = 0
 
-# Iterar sobre cada objeto na lista
 for produto in produtosDespositos:
-    preco_unitario = float(produto["preço unitario"])
-    quantidade = float(produto["quantidade"])
+    preco_unitario = float(produto["Preço Unitario"])
+    quantidade = float(produto["Quantidade"])
     total_preco_unitario += preco_unitario * quantidade
     total_quantidade += quantidade
 
-# Calcular o custo médio unitário
 custo_medio_unitario = total_preco_unitario / total_quantidade</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
