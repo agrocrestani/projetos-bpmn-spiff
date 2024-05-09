@@ -68,8 +68,8 @@ else:
 # datalcto
 lcm.append(
     {
-        "ReferenceDate": datalcto,
-        "TaxDate": datalcto,
+        "ReferenceDate": datalacto,
+        "TaxDate": datalacto,
         "Memo": l['nomeEvento'],
         "JournalEntryLines": [
             {
