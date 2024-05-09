@@ -1,6 +1,6 @@
 {
   "title": "Importar Folha de Pagamento",
-  "description": "Importar lançamentos c.",
+  "description": "Importar lançamentos contabeis da folha de pagamento.",
   "type": "object",
   "properties": {
     "datalacto": {
