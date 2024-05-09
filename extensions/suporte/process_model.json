@@ -1,9 +1,0 @@
-{
-    "description": "",
-    "display_name": "Suporte",
-    "exception_notification_addresses": [],
-    "fault_or_suspend_on_exception": "fault",
-    "metadata_extraction_paths": null,
-    "primary_file_name": "suporte.bpmn",
-    "primary_process_id": "Process_suporte_tcyjlb3"
-}
