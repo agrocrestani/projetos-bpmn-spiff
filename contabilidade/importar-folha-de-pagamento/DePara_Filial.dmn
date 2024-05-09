@@ -12,7 +12,7 @@
           <text>filial</text>
         </inputExpression>
       </input>
-      <output id="output_1" name="BPLid" typeRef="number" />
+      <output id="output_1" name="BPLid" typeRef="Any" />
       <rule id="DecisionRule_01wbopx">
         <inputEntry id="UnaryTests_0kalvwf">
           <text>1</text>
