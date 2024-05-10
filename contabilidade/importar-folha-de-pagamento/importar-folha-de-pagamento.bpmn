@@ -155,15 +155,6 @@ del(l)
       <bpmn:sequenceFlow id="Flow_0eft3k6" sourceRef="Activity_0ijcvzu" targetRef="Activity_1yp1264" />
       <bpmn:sequenceFlow id="Flow_03n7hvc" sourceRef="Activity_1yp1264" targetRef="Activity_1rac236" />
       <bpmn:sequenceFlow id="Flow_0ry1zs4" sourceRef="Activity_1rac236" targetRef="Event_1nxxcjy" />
-      <bpmn:businessRuleTask id="Activity_1rac236" name="DePara CCusto">
-        <bpmn:extensionElements>
-          <spiffworkflow:preScript>ccusto = str(l['ccusto'])</spiffworkflow:preScript>
-          <spiffworkflow:postScript>del(ccusto)</spiffworkflow:postScript>
-          <spiffworkflow:calledDecisionId>DeParaCCusto</spiffworkflow:calledDecisionId>
-        </bpmn:extensionElements>
-        <bpmn:incoming>Flow_03n7hvc</bpmn:incoming>
-        <bpmn:outgoing>Flow_0ry1zs4</bpmn:outgoing>
-      </bpmn:businessRuleTask>
       <bpmn:scriptTask id="Activity_00gm0or" name="DePara Filial">
         <bpmn:extensionElements>
           <spiffworkflow:calledDecisionId>deparaFilial</spiffworkflow:calledDecisionId>
@@ -271,6 +262,41 @@ result = Hana(connection).selectDb(query)
 
 novaConta2 = result['acctcode']</bpmn:script>
       </bpmn:scriptTask>
+      <bpmn:scriptTask id="Activity_1rac236" name="DePara CCusto">
+        <bpmn:extensionElements>
+          <spiffworkflow:preScript>ccusto = str(l['ccusto'])</spiffworkflow:preScript>
+          <spiffworkflow:postScript>del(ccusto)</spiffworkflow:postScript>
+          <spiffworkflow:calledDecisionId>DeParaCCusto</spiffworkflow:calledDecisionId>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_03n7hvc</bpmn:incoming>
+        <bpmn:outgoing>Flow_0ry1zs4</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+
+ccusto = str(l['ccusto'])
+
+env = get_env()
+baseSap = get_secret('baseSap')
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+            SELECT 
+                a."U_CcustoSAP" 
+            FROM 
+                "@AC_CCUSTO_SENIOR" a
+            WHERE 
+                a."U_Filial" = {bplid}
+                a."U_CCusto_Senior" = {ccusto}
+        """
+result = Hana(connection).selectDb(query)
+
+novoCCusto = result['u_ccustosap']</bpmn:script>
+      </bpmn:scriptTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_03hwcuw" sourceRef="Activity_14bim7r" targetRef="Activity_1ilc925" />
     <bpmn:sequenceFlow id="Flow_14m2b3h" sourceRef="Activity_1ilc925" targetRef="EndEvent_1" />
@@ -354,9 +380,6 @@ novaConta2 = result['acctcode']</bpmn:script>
       <bpmndi:BPMNShape id="Event_1nxxcjy_di" bpmnElement="Event_1nxxcjy">
         <dc:Bounds x="1322" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0a5fa7t_di" bpmnElement="Activity_1rac236">
-        <dc:Bounds x="1180" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_13lpypp_di" bpmnElement="Activity_00gm0or">
         <dc:Bounds x="710" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -365,6 +388,9 @@ novaConta2 = result['acctcode']</bpmn:script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0pzmajd_di" bpmnElement="Activity_1yp1264">
         <dc:Bounds x="1040" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_08jj6xs_di" bpmnElement="Activity_1rac236">
+        <dc:Bounds x="1180" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1a5u0e2_di" bpmnElement="Flow_1a5u0e2">
         <di:waypoint x="656" y="177" />
