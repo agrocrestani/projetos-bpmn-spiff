@@ -89,7 +89,7 @@ else:
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12354sq</bpmn:incoming>
       <bpmn:outgoing>Flow_0kxg7eo</bpmn:outgoing>
-      <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
         <bpmn:loopDataInputRef>produtosDepositos</bpmn:loopDataInputRef>
         <bpmn:loopDataOutputRef>produtosDepositos</bpmn:loopDataOutputRef>
         <bpmn:inputDataItem id="x" name="x" />
