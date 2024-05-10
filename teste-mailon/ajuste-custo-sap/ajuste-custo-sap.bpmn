@@ -37,9 +37,9 @@ query = f"""
         t0."InvntryUom" AS "Unidade Estoque"
     FROM {baseSap}.OITM t0
     INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
-    INNER JOIN {baseSap}.PCH1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '{{deposito}}'
+    INNER JOIN {baseSap}.PCH1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '{deposito}'
     INNER JOIN {baseSap}.OPCH t3 ON t3."DocEntry" = t2."DocEntry" AND t3.CANCELED = 'N'
-    WHERE t0."ItemCode" = {{produto}} AND t1."WhsCode" = '{{deposito}}'
+    WHERE t0."ItemCode" = '{produto}' AND t1."WhsCode" = '{deposito}'
 """
 produtosDepositos = Hana(connection).selectDb(query)
 
