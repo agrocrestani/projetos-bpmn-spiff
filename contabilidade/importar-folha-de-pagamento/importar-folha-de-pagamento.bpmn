@@ -293,7 +293,7 @@ query = f"""
                 a."U_Filial" = '{bplid}'
                 a."U_CCusto_Senior" = '{ccusto}'
         """
-result = Hana(connection).selectDb(query)
+result = Hana(connection).selectDb(query)[0]
 
 novoCCusto = result['u_ccustosap']</bpmn:script>
       </bpmn:scriptTask>
