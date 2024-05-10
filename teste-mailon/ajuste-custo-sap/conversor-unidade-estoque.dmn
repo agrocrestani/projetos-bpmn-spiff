@@ -4,12 +4,12 @@
     <decisionTable id="decisionTable_1">
       <input id="input_1" label="Input Unidade Documento" biodi:width="192">
         <inputExpression id="inputExpression_1" typeRef="string">
-          <text></text>
+          <text>unidadeDocumento</text>
         </inputExpression>
       </input>
       <input id="InputClause_0wf2l3l" label="Input Unidade Estoque">
         <inputExpression id="LiteralExpression_0na4jb0" typeRef="string">
-          <text></text>
+          <text>unidadeEstoque</text>
         </inputExpression>
       </input>
       <output id="output_1" label="Multiplicador" name="multiplicador" typeRef="number" />
@@ -22,6 +22,17 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_0i31ehr">
           <text>0.001</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pd0fzd">
+        <inputEntry id="UnaryTests_03g0fpt">
+          <text>"QUILOGRAM"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tsql67">
+          <text>"QUILOGRAM"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_050je3w">
+          <text>1</text>
         </outputEntry>
       </rule>
     </decisionTable>
