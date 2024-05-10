@@ -168,9 +168,7 @@ del(quantidadeEstoqueNormalizada)
 del(precoProdutoNormalizado)
 del(precoTotalNormalizado)
 
-x['documento'] = nomeObjeto
-
-del(nomeObjeto)</bpmn:script>
+x['documento'] = nomeObjeto</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:endEvent id="Event_1dydh6d">
         <bpmn:incoming>Flow_14z5yhx</bpmn:incoming>
