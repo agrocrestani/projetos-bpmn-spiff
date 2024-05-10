@@ -5,6 +5,5 @@
     "ui:placeholder": "Digite o codigo de um produto",
     "ui:autocomplete": "family-name",
     "ui:enableMarkdownInDescription": true,
-    "ui:description": "Make text **bold** or *italic*. Take a look at other options [here](https://probablyup.com/markdown-to-jsx/)."
   }
 }
