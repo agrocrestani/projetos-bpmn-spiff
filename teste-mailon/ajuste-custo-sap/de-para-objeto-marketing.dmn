@@ -24,6 +24,14 @@
           <text>"Recebimento de Mercadoria"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1ofayfd">
+        <inputEntry id="UnaryTests_0exckl3">
+          <text>"60"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1whertc">
+          <text>"Saída de Mercadoria"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
