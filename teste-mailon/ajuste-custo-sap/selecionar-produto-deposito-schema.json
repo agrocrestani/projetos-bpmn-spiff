@@ -9,6 +9,10 @@
     "produto": {
       "type": "string",
       "title": "Produto"
+    },
+    "produto": {
+      "type": "string",
+      "title": "Produto"
     }
   }
 }
