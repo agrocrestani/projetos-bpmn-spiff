@@ -37,7 +37,8 @@ query = f"""
         t0."ItemCode" || ' - ' || t0."ItemName" AS "Produto" , 
         CAST(t2."Price" AS VARCHAR(50)) AS "Preço Unitario" , 
         CAST(t2."Quantity" AS VARCHAR(50)) AS "Quantidade" ,
-        CAST(t2."LineTotal" AS VARCHAR(50)) AS "Preço Total"
+        CAST(t2."LineTotal" AS VARCHAR(50)) AS "Preço Total" ,
+        t2."unitMsr" AS "Unidade"
     FROM {baseSap}.OITM t0
     INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
     INNER JOIN {baseSap}.PCH1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '03.FCOL'
@@ -50,7 +51,7 @@ contador = 0
 </bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1jvyitl" sourceRef="Activity_0pxv5ok" targetRef="EndEvent_1" />
-    <bpmn:userTask id="Activity_0pxv5ok" name="Iterando">
+    <bpmn:manualTask id="Activity_0pxv5ok" name="Iterando">
       <bpmn:extensionElements>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="" />
@@ -65,13 +66,11 @@ if isinstance(produtosDespositos, list):
     for produto in produtosDespositos:
         # Verifique se o produto contém as chaves necessárias
         if "preço unitario" in produto and "quantidade" in produto:
-            try:
-                preco_unitario = float(produto["preço unitario"].replace(",", "."))
-                quantidade = float(produto["quantidade"].replace(",", "."))
-                total_preco_unitario += preco_unitario * quantidade
-                total_quantidade += quantidade
-            except ValueError:
-                print("Erro: Valor inválido encontrado. Ignorando este produto.")
+            preco_unitario = float(produto["preço unitario"].replace(",", "."))
+            quantidade = float(produto["quantidade"].replace(",", "."))
+            total_preco_unitario += preco_unitario * quantidade
+            total_quantidade += quantidade
+         
 else:
     print("Erro: 'produtosDespositos' não é uma lista.")
 
@@ -82,10 +81,11 @@ if total_quantidade != 0:
 else:
     print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
 </spiffworkflow:preScript>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1jvyitl</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
@@ -99,9 +99,8 @@ else:
         <dc:Bounds x="210" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_10q61xe_di" bpmnElement="Activity_0pxv5ok">
+      <bpmndi:BPMNShape id="Activity_1oot5j9_di" bpmnElement="Activity_0pxv5ok">
         <dc:Bounds x="390" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="128" y="177" />
