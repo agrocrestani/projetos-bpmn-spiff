@@ -185,7 +185,7 @@ query = f"""
         SELECT 
             "BPLId" 
         FROM 
-            {baseSap}.OBPL o 
+            SBO_CRESTANI_PRD.OBPL o 
         WHERE 
             o."U_AC_EmpFilialSenior" = {filialSenior}
         """
@@ -196,7 +196,7 @@ bplid = result['bplid']</bpmn:script>
       <bpmn:scriptTask id="Activity_0ijcvzu" name="DePara Conta1">
         <bpmn:extensionElements>
           <spiffworkflow:instructionsForEndUser>{{l}}</spiffworkflow:instructionsForEndUser>
-          <spiffworkflow:preScript></spiffworkflow:preScript>
+          <spiffworkflow:preScript />
           <spiffworkflow:calledDecisionId>depara-contas</spiffworkflow:calledDecisionId>
           <spiffworkflow:postScript>novaConta1 = novaConta
 del(novaConta)
@@ -220,7 +220,7 @@ query = f"""
         SELECT 
 			"AcctCode"
 		FROM 
-			{baseSap}.OACT o 
+			SBO_CRESTANI_PRD.OACT o 
 		WHERE 
 			o."U_AC_Conta_Senior" = '{l['conta1']}'
         """
@@ -254,7 +254,7 @@ query = f"""
         SELECT 
 			"AcctCode"
 		FROM 
-			{baseSap}.OACT o 
+			SBO_CRESTANI_PRD.OACT o 
 		WHERE 
 			o."U_AC_Conta_Senior" = '{l['conta2']}'
         """
@@ -288,7 +288,7 @@ query = f"""
             SELECT 
                 a."U_CcustoSAP" 
             FROM 
-                "@AC_CCUSTO_SENIOR" a
+                SBO_CRESTANI_PRD."@AC_CCUSTO_SENIOR" a
             WHERE 
                 a."U_Filial" = {bplid}
                 a."U_CCusto_Senior" = {ccusto}
