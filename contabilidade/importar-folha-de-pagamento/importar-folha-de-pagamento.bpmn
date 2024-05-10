@@ -94,6 +94,35 @@ lcm.append(
     }
 )
 
+empresas = []
+if l['empresa'] not in empresas:
+    empresas.append(l['empresa'])
+
+filiais = []
+if l['filiais'] not in filiais:
+    filiais.append(l['filiais'])
+
+ccustos = []
+if l['ccusto'] not in ccustos:
+    ccustos.append(l['ccusto'])
+
+tabela = []
+tabela.append(
+    {
+        "data": datalacto,
+        "evento": l['nomeEvento'],
+        "credito": creditoConta,
+        "debito": debitoConta,
+        "novaFilial": bplid,
+        "valor": l['valor'],
+        "ccusto": l['ccusto'],
+        "novoCcusto": novoCcusto,
+        "filial": l['filial'],
+        "empresa": l['empresa']
+    }
+)
+
+
 del(l)
 #   "l": {
 #     "conta1": "20101007",
@@ -174,7 +203,7 @@ del(conta)</spiffworkflow:postScript>
         <bpmn:outgoing>Flow_0ry1zs4</bpmn:outgoing>
       </bpmn:businessRuleTask>
     </bpmn:subProcess>
-    <bpmn:sequenceFlow id="Flow_03hwcuw" sourceRef="Activity_14bim7r" targetRef="Activity_1ilc925" />
+    <bpmn:sequenceFlow id="Flow_03hwcuw" sourceRef="Activity_14bim7r" targetRef="Activity_18dk923" />
     <bpmn:sequenceFlow id="Flow_14m2b3h" sourceRef="Activity_1ilc925" targetRef="EndEvent_1" />
     <bpmn:manualTask id="Activity_1ilc925">
       <bpmn:extensionElements>
@@ -189,19 +218,7 @@ del(conta)</spiffworkflow:postScript>
 
 
 </spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript>tabela = []
-for l in lcm:
-    tabela.append(
-        {
-            "data": l['TaxDate'],
-            "evento": l['Memo'],
-            "credito": l['JournalEntryLines'][0]['AccountCode'],
-            "debito": l['JournalEntryLines'][1]['AccountCode'],
-            "filial": l['JournalEntryLines'][0]['BPLID'],
-            "valor": l['JournalEntryLines'][0]['Credit'],
-            "ccusto": l['JournalEntryLines'][0]['CostingCode']
-        }
-    )
+        <spiffworkflow:preScript>
     
 
 
@@ -232,18 +249,102 @@ for l in lcm:
 #       ]
 </spiffworkflow:preScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_03hwcuw</bpmn:incoming>
+      <bpmn:incoming>Flow_0c8p939</bpmn:incoming>
       <bpmn:outgoing>Flow_14m2b3h</bpmn:outgoing>
     </bpmn:manualTask>
+    <bpmn:subProcess id="Activity_18dk923">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript>del(e)</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_03hwcuw</bpmn:incoming>
+      <bpmn:outgoing>Flow_0c8p939</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+        <bpmn:loopDataInputRef>empresas</bpmn:loopDataInputRef>
+        <bpmn:loopDataOutputRef>empresas</bpmn:loopDataOutputRef>
+        <bpmn:inputDataItem id="e" name="e" />
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="Event_1k5s916">
+        <bpmn:outgoing>Flow_1oj2e5a</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:subProcess id="Activity_0lx6pyp">
+        <bpmn:extensionElements>
+          <spiffworkflow:postScript>del(f)</spiffworkflow:postScript>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1oj2e5a</bpmn:incoming>
+        <bpmn:outgoing>Flow_17jff7g</bpmn:outgoing>
+        <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+          <bpmn:loopDataInputRef>filiais</bpmn:loopDataInputRef>
+          <bpmn:loopDataOutputRef>filiais</bpmn:loopDataOutputRef>
+          <bpmn:inputDataItem id="f" name="f" />
+        </bpmn:multiInstanceLoopCharacteristics>
+        <bpmn:startEvent id="Event_1kgiaz4">
+          <bpmn:outgoing>Flow_0vnj39p</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:subProcess id="Activity_1ix0wgp">
+          <bpmn:extensionElements>
+            <spiffworkflow:postScript>del(c)</spiffworkflow:postScript>
+          </bpmn:extensionElements>
+          <bpmn:incoming>Flow_0vnj39p</bpmn:incoming>
+          <bpmn:outgoing>Flow_1l2nqdt</bpmn:outgoing>
+          <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+            <bpmn:loopDataInputRef>ccustos</bpmn:loopDataInputRef>
+            <bpmn:loopDataOutputRef>ccustos</bpmn:loopDataOutputRef>
+            <bpmn:inputDataItem id="c" name="c" />
+          </bpmn:multiInstanceLoopCharacteristics>
+          <bpmn:startEvent id="Event_0rg1m4f">
+            <bpmn:outgoing>Flow_1pcy4ki</bpmn:outgoing>
+          </bpmn:startEvent>
+          <bpmn:sequenceFlow id="Flow_1pcy4ki" sourceRef="Event_0rg1m4f" targetRef="Activity_1jd8m0c" />
+          <bpmn:task id="Activity_075niau">
+            <bpmn:incoming>Flow_0txz75i</bpmn:incoming>
+            <bpmn:outgoing>Flow_04aacom</bpmn:outgoing>
+          </bpmn:task>
+          <bpmn:sequenceFlow id="Flow_0txz75i" sourceRef="Activity_1jd8m0c" targetRef="Activity_075niau" />
+          <bpmn:endEvent id="Event_0dfyldt">
+            <bpmn:incoming>Flow_04aacom</bpmn:incoming>
+          </bpmn:endEvent>
+          <bpmn:sequenceFlow id="Flow_04aacom" sourceRef="Activity_075niau" targetRef="Event_0dfyldt" />
+          <bpmn:manualTask id="Activity_1jd8m0c">
+            <bpmn:extensionElements>
+              <spiffworkflow:instructionsForEndUser>## Lançamentos da Folha de Pagamento
+
+{% for l in tabela %}
+{% if l['empresa'] == e and l['filial'] == f and l['ccusto'] == c %}
+
+**Empresa Senior:** {{ e }}
+**Filial Senior:** {{ f }}
+**Centro de Custo Senior:** {{ c }}
+
+| Data | Evento | Credito | Debito | Valor | Filial | Centro de Custo |
+| ------ | --------- | :---------: | :-------: | -------: | :------: | :---------------------- |
+|{{ l['data'] }} | {{ l['evento'] }} | {{ l['credito'] }} | {{ l['debito'] }} | {{ l['valor'] }} | {{ l['filial'] }} | {{ l['ccusto'] }} | 
+
+{% endfor %}
+</spiffworkflow:instructionsForEndUser>
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_1pcy4ki</bpmn:incoming>
+            <bpmn:outgoing>Flow_0txz75i</bpmn:outgoing>
+          </bpmn:manualTask>
+        </bpmn:subProcess>
+        <bpmn:sequenceFlow id="Flow_0vnj39p" sourceRef="Event_1kgiaz4" targetRef="Activity_1ix0wgp" />
+        <bpmn:endEvent id="Event_1ufvdhw">
+          <bpmn:incoming>Flow_1l2nqdt</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow id="Flow_1l2nqdt" sourceRef="Activity_1ix0wgp" targetRef="Event_1ufvdhw" />
+      </bpmn:subProcess>
+      <bpmn:sequenceFlow id="Flow_1oj2e5a" sourceRef="Event_1k5s916" targetRef="Activity_0lx6pyp" />
+      <bpmn:endEvent id="Event_0ro6bj3">
+        <bpmn:incoming>Flow_17jff7g</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_17jff7g" sourceRef="Activity_0lx6pyp" targetRef="Event_0ro6bj3" />
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_0c8p939" sourceRef="Activity_18dk923" targetRef="Activity_1ilc925" />
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_importar_folha_de_pagamento_rq1s2au">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1632" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0q7htqc_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
@@ -258,6 +359,12 @@ for l in lcm:
       <bpmndi:BPMNShape id="Activity_0gqw7um_di" bpmnElement="Activity_1iknn77">
         <dc:Bounds x="420" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="3212" y="172" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_08m9lx3_di" bpmnElement="Activity_1ilc925">
+        <dc:Bounds x="3050" y="150" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_14bim7r_di" bpmnElement="Activity_14bim7r" isExpanded="true">
         <dc:Bounds x="580" y="77" width="810" height="200" />
@@ -302,9 +409,67 @@ for l in lcm:
         <di:waypoint x="1280" y="177" />
         <di:waypoint x="1322" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Activity_08m9lx3_di" bpmnElement="Activity_1ilc925">
-        <dc:Bounds x="1460" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_18dk923_di" bpmnElement="Activity_18dk923" isExpanded="true">
+        <dc:Bounds x="1470" y="-50" width="1440" height="450" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1k5s916_di" bpmnElement="Event_1k5s916">
+        <dc:Bounds x="1510" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ro6bj3_di" bpmnElement="Event_0ro6bj3">
+        <dc:Bounds x="2812" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0lx6pyp_di" bpmnElement="Activity_0lx6pyp" isExpanded="true">
+        <dc:Bounds x="1600" y="10" width="1140" height="330" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1kgiaz4_di" bpmnElement="Event_1kgiaz4">
+        <dc:Bounds x="1640" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ufvdhw_di" bpmnElement="Event_1ufvdhw">
+        <dc:Bounds x="2622" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ix0wgp_di" bpmnElement="Activity_1ix0wgp" isExpanded="true">
+        <dc:Bounds x="1730" y="77" width="660" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0rg1m4f_di" bpmnElement="Event_0rg1m4f">
+        <dc:Bounds x="1770" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0dfyldt_di" bpmnElement="Event_0dfyldt">
+        <dc:Bounds x="2142" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_075niau_di" bpmnElement="Activity_075niau">
+        <dc:Bounds x="1990" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1rj8zgl_di" bpmnElement="Activity_1jd8m0c">
+        <dc:Bounds x="1840" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1pcy4ki_di" bpmnElement="Flow_1pcy4ki">
+        <di:waypoint x="1806" y="177" />
+        <di:waypoint x="1840" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0txz75i_di" bpmnElement="Flow_0txz75i">
+        <di:waypoint x="1940" y="177" />
+        <di:waypoint x="1990" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04aacom_di" bpmnElement="Flow_04aacom">
+        <di:waypoint x="2090" y="177" />
+        <di:waypoint x="2142" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vnj39p_di" bpmnElement="Flow_0vnj39p">
+        <di:waypoint x="1676" y="177" />
+        <di:waypoint x="1730" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1l2nqdt_di" bpmnElement="Flow_1l2nqdt">
+        <di:waypoint x="2390" y="177" />
+        <di:waypoint x="2622" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1oj2e5a_di" bpmnElement="Flow_1oj2e5a">
+        <di:waypoint x="1546" y="177" />
+        <di:waypoint x="1600" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17jff7g_di" bpmnElement="Flow_17jff7g">
+        <di:waypoint x="2740" y="177" />
+        <di:waypoint x="2812" y="177" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -323,11 +488,15 @@ for l in lcm:
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_03hwcuw_di" bpmnElement="Flow_03hwcuw">
         <di:waypoint x="1390" y="177" />
-        <di:waypoint x="1460" y="177" />
+        <di:waypoint x="1470" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_14m2b3h_di" bpmnElement="Flow_14m2b3h">
-        <di:waypoint x="1560" y="177" />
-        <di:waypoint x="1632" y="177" />
+        <di:waypoint x="3150" y="190" />
+        <di:waypoint x="3212" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0c8p939_di" bpmnElement="Flow_0c8p939">
+        <di:waypoint x="2910" y="190" />
+        <di:waypoint x="3050" y="190" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
