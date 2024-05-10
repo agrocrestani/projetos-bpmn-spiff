@@ -207,7 +207,7 @@ del(conta)</spiffworkflow:postScript>
 
 | Data | Evento | Credito | Debito | Valor | Filial | Centro de Custo |
 | ------ | --------- | :---------: | :-------: | -------: | :------: | :---------------------- |
-{%for l in tabela%}
+{%for l in novaTabela%}
 |{{l['data']}} | {{l['evento']}} | {{l['credito']}} | {{l['debito']}} | {{l['valor']}} | {{l['filial']}} | {{l['ccusto']}} | 
 {%endfor%}
 </spiffworkflow:instructionsForEndUser>
