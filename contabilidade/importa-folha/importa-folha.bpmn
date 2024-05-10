@@ -39,7 +39,8 @@ for f in filiais:
       <bpmn:script>from connectordb.importaFolha import preparaArquivo
 lancamentos = preparaArquivo(get_encoded_file_data(file))
 lcm = []
-tabela = []</bpmn:script>
+tabela = []
+controles = []</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_00vuw5a">
       <bpmn:extensionElements>
@@ -83,17 +84,9 @@ lcm.append(
     }
 )
 
-empresas = []
-if l['empresa'] not in empresas:
-    empresas.append(l['empresa'])
-
-filiais = []
-if l['filial'] not in filiais:
-    filiais.append(l['filial'])
-
-ccustos = []
-if l['ccusto'] not in ccustos:
-    ccustos.append(l['ccusto'])
+controle = str(l['empresa']) + str(l['filial']) + str(l['ccusto'])
+if controle not in controles:
+    empresas.append(controle)
 
 tabela.append(
     {
@@ -230,12 +223,6 @@ del(conta)</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Activity_1fn7pr1_di" bpmnElement="Activity_1gq0mev">
         <dc:Bounds x="430" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_04l5djm_di" bpmnElement="Activity_0w2moib">
-        <dc:Bounds x="1620" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_15s6ejv_di" bpmnElement="Event_15s6ejv">
-        <dc:Bounds x="1812" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="620" y="77" width="910" height="200" />
       </bpmndi:BPMNShape>
@@ -280,6 +267,12 @@ del(conta)</spiffworkflow:postScript>
         <di:waypoint x="1330" y="177" />
         <di:waypoint x="1392" y="177" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_04l5djm_di" bpmnElement="Activity_0w2moib">
+        <dc:Bounds x="1620" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_15s6ejv_di" bpmnElement="Event_15s6ejv">
+        <dc:Bounds x="1812" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
