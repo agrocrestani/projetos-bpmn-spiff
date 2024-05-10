@@ -79,14 +79,16 @@ else:
         <spiffworkflow:postScript />
         <spiffworkflow:instructionsForEndUser>Produto: **{{ produtoAux['produto'] }}**
 
+Unidade de Medida: **{{produto['unidade estoque']}}**
+
 Preço Médio Unidade: **{{ '{:.6f}'.format(custo_medio_unitario) }}** &lt;br&gt;
 Quantidade Total: **{{ total_quantidade }}** &lt;br&gt;
 Preço Total: **{{ '{:.6f}'.format(total_preco_unitario) }}**
 
-| Numero Documento | Preço Unitário | Quantidade | Unidade Estoque |
+| Numero Documento | Preço Unitário | Quantidade | Preço Total |
 | ------- | -------------- | ---------- | --------------- |
 {% for produto in produtosDepositosNormalizados %}
-| {{ produto['docnum'] }} | {{ '{:.6f}'.format(produto['preço unitario']) }} | {{ produto['quantidade'] }} | {{ produto['unidade estoque'] }} |
+| {{ produto['docnum'] }} | {{ '{:.6f}'.format(produto['preço unitario']) }} | {{ produto['quantidade'] }} | {{ produto['preço total'] }} |
 {% endfor %}
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
@@ -128,11 +130,15 @@ unidadeEstoque = x['unidade estoque']</spiffworkflow:preScript>
         <bpmn:script>quantidadeEstoqueNormalizada = multiplicador * float(x["quantidade"].replace(",", "."))
 precoProdutoNormalizado = float(x["preço unitario"].replace(",", ".")) / multiplicador
 
+precoTotalNormalizado = precoProdutoNormalizado * quantidadeEstoqueNormalizada
+
 x['quantidade'] = quantidadeEstoqueNormalizada
 x['preço unitario'] = precoProdutoNormalizado
+x['preço total'] = precoTotalNormalizado
 
 del(quantidadeEstoqueNormalizada)
-del(precoProdutoNormalizado)</bpmn:script>
+del(precoProdutoNormalizado)
+del(precoTotalNormalizado)</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:endEvent id="Event_1dydh6d">
         <bpmn:incoming>Flow_14z5yhx</bpmn:incoming>
