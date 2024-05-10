@@ -57,7 +57,7 @@ total_quantidade = 0
 
 # Verifique se produtosDespositos é uma lista
 if isinstance(produtosDepositosNormalizados, list):
-    for produtoAux in AuxsDepositosNormalizados:
+    for produtoAux in produtosDepositosNormalizados:
         # Verifique se o produto contém as chaves necessárias
         if "preço unitario" in produtoAux and "quantidade" in produtoAux:
             preco_unitario = float(produtoAux["preço unitario"])
