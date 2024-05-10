@@ -1,5 +1,5 @@
 {
-  "title": "Selecione ",
+  "title": "Selecione o produto e o depo",
   "description": "A simple text field that is required, has a default value, sets a placeholder, includes a description. (field name will be 'firstname')",
   "type": "object",
   "required": [
