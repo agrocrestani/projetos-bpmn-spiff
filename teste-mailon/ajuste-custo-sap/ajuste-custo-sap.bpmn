@@ -37,15 +37,13 @@ query = f"""
         t0."InvntryUom" AS "Unidade Estoque"
     FROM {baseSap}.OITM t0
     INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
-    INNER JOIN {baseSap}.PCH1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '03.FCOL'
+    INNER JOIN {baseSap}.PCH1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '{{deposito}}'
     INNER JOIN {baseSap}.OPCH t3 ON t3."DocEntry" = t2."DocEntry" AND t3.CANCELED = 'N'
-    WHERE t0."ItemCode" = '011021' AND t1."WhsCode" = '03.FCOL'
+    WHERE t0."ItemCode" = {{produto}} AND t1."WhsCode" = '{{deposito}}'
 """
 produtosDepositos = Hana(connection).selectDb(query)
 
-totalRegistros = len(produtosDepositos)
-contador = 0
-</bpmn:script>
+totalRegistros = len(produtosDepositos)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="Activity_0pxv5ok" name="Iterando">
       <bpmn:extensionElements>
@@ -59,11 +57,11 @@ total_quantidade = 0
 
 # Verifique se produtosDespositos é uma lista
 if isinstance(produtosDepositosNormalizados, list):
-    for produto in produtosDepositosNormalizados:
+    for produtoAux in AuxsDepositosNormalizados:
         # Verifique se o produto contém as chaves necessárias
-        if "preço unitario" in produto and "quantidade" in produto:
-            preco_unitario = float(produto["preço unitario"])
-            quantidade = float(produto["quantidade"])
+        if "preço unitario" in produtoAux and "quantidade" in produtoAux:
+            preco_unitario = float(produtoAux["preço unitario"])
+            quantidade = float(produtoAux["quantidade"])
             total_preco_unitario += preco_unitario * quantidade
             total_quantidade += quantidade
 else:
@@ -77,7 +75,7 @@ else:
     print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
 </spiffworkflow:preScript>
         <spiffworkflow:postScript />
-        <spiffworkflow:instructionsForEndUser>Produto: **{{produtosDepositosNormalizados['produto']}}**
+        <spiffworkflow:instructionsForEndUser>Produto: **{{ produtosDepositosNormalizados[0]['produto'] }}**
 
 Preço Médio Unidade:  **{{custo_medio_unitario}}** &lt;br&gt;
 Quantidade Total: **{{total_quantidade}}** &lt;br&gt;
