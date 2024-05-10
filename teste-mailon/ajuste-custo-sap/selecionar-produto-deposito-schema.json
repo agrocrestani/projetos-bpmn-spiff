@@ -15,7 +15,7 @@
       "type": "string",
       "title": "Deposito",
       "anyOf": [
-        "options_from_task_data_var:deposito"
+        "options_from_task_data_var:depositos"
       ]
     }
   }
