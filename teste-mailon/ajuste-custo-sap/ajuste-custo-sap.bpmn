@@ -64,7 +64,6 @@ query_transferencias = f"""
     WHERE t0."ItemCode" = '{produto}' AND t1."WhsCode" = '{deposito}'
     ORDER BY t3."DocEntry"
 """
-
 # Executar as consultas
 consulta_compras = Hana(connection).selectDb(query_compras)
 consulta_transferencias = Hana(connection).selectDb(query_transferencias)
@@ -72,9 +71,10 @@ consulta_transferencias = Hana(connection).selectDb(query_transferencias)
 # Combinar os resultados
 produtosDepositos = consulta_compras + consulta_transferencias
 
-totalRegistros = len(produtosDepositos)
-
-del(connection)</bpmn:script>
+del(connection)
+del(consulta_compras)
+del(consulta_transferencias)
+del(baseSap)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="EntradasItens" name="Entradas dos Itens">
       <bpmn:extensionElements>
@@ -106,7 +106,9 @@ else:
     print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
 </spiffworkflow:preScript>
         <spiffworkflow:postScript />
-        <spiffworkflow:instructionsForEndUser>Produto: **{{ produtoAux['produto'] }}**         UM: **{{produtoAux['unidade estoque']}}**
+        <spiffworkflow:instructionsForEndUser>Produto: **{{ produtoAux['produto'] }}**         Deposito: **{{ deposito}}**
+
+UM: **{{produtoAux['unidade estoque']}}**
 
 Custo Médio Unitário: **{{ '{:,.3f}'.format(custo_medio_unitario).replace(',', ' ').replace('.', ',').replace(' ', '.') }}** &lt;br&gt;
 Quantidade Total: **{{ total_quantidade }}** &lt;br&gt;
