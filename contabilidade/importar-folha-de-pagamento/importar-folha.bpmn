@@ -60,7 +60,7 @@ lcm = []</bpmn:script>
       </bpmn:startEvent>
       <bpmn:sequenceFlow id="Flow_0uhx84e" sourceRef="Event_1x8i9tu" targetRef="Activity_0huvav9" />
       <bpmn:endEvent id="Event_13af83c">
-        <bpmn:incoming>Flow_0on0isj</bpmn:incoming>
+        <bpmn:incoming>Flow_15c79h9</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:scriptTask id="Activity_0huvav9" name="DePara Filial">
         <bpmn:incoming>Flow_0uhx84e</bpmn:incoming>
@@ -93,10 +93,10 @@ del(filialSenior)
 del(result)</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:sequenceFlow id="Flow_1m4tdrd" sourceRef="Activity_0huvav9" targetRef="Activity_0evdcmq" />
-      <bpmn:sequenceFlow id="Flow_0on0isj" sourceRef="Activity_0evdcmq" targetRef="Event_13af83c" />
+      <bpmn:sequenceFlow id="Flow_0on0isj" sourceRef="Activity_0evdcmq" targetRef="Activity_0kmye5t" />
       <bpmn:scriptTask id="Activity_0evdcmq" name="DePara Conta1">
         <bpmn:extensionElements>
-          <spiffworkflow:postScript></spiffworkflow:postScript>
+          <spiffworkflow:postScript />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1m4tdrd</bpmn:incoming>
         <bpmn:outgoing>Flow_0on0isj</bpmn:outgoing>
@@ -120,6 +120,35 @@ query = f"""
 result = Hana(connection).selectDb(query)[0]
 
 novaConta1 = result['acctcode']
+
+del(connection)
+del(query)
+del(result)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_15c79h9" sourceRef="Activity_0kmye5t" targetRef="Event_13af83c" />
+      <bpmn:scriptTask id="Activity_0kmye5t" name="DePara Conta2">
+        <bpmn:incoming>Flow_0on0isj</bpmn:incoming>
+        <bpmn:outgoing>Flow_15c79h9</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+        SELECT 
+			"AcctCode"
+		FROM 
+			SBO_CRESTANI_PRD.OACT o 
+		WHERE 
+			o."U_AC_Conta_Senior" = '{l['conta2']}'
+        """
+result = Hana(connection).selectDb(query)[0]
+
+novaConta2 = result['acctcode']
 
 del(connection)
 del(query)
@@ -168,6 +197,9 @@ del(result)</bpmn:script>
         <dc:Bounds x="260" y="50" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1wi8edp_di" bpmnElement="Activity_0kmye5t">
+        <dc:Bounds x="420" y="50" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0uhx84e_di" bpmnElement="Flow_0uhx84e">
         <di:waypoint x="46" y="90" />
         <di:waypoint x="100" y="90" />
@@ -178,6 +210,10 @@ del(result)</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0on0isj_di" bpmnElement="Flow_0on0isj">
         <di:waypoint x="360" y="90" />
+        <di:waypoint x="420" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15c79h9_di" bpmnElement="Flow_15c79h9">
+        <di:waypoint x="520" y="90" />
         <di:waypoint x="802" y="90" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_09zzjml_di" bpmnElement="Flow_09zzjml">
