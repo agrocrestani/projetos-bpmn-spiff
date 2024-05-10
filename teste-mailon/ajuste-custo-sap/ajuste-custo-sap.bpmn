@@ -451,9 +451,15 @@ Produto: **{{ produtoAux['produto'] }}**  &lt;br&gt;
 Deposito: **{{ deposito}}** &lt;br&gt;
 UM: **{{produtoAux['unidade estoque']}}** &lt;br&gt;
 
-Custo Médio Unitário: **{{ '{:,.3f}'.format(custo_medio_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}** &lt;br&gt;
 Quantidade Total: **{{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.')}}** &lt;br&gt;
-Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}**
+Custo Médio Unitário Documento: **{{ '{:,.3f}'.format(custo_medio_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}** &lt;br&gt;
+Custo Total Documento: **{{ '{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}**  &lt;br&gt;
+
+Custo Médio Unitário Estoque: **{{ '{:,.3f}'.format(custo_medio_unitario_estoque_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}** &lt;br&gt;
+Custo Total Estoque: **{{ '{:,.3f}'.format(total_preco_unitario_estoque_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}**&lt;br&gt;
+
+Custo Médio Unitário: **{{ '{:,.3f}'.format(custo_medio_unitario_medio_estoque_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}** &lt;br&gt;
+Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}**
 
 | Numero Documento | Custo Unitário | Quantidade | Custo Total | Objeto | Custo Unitario Estoque | Custo Total Estoque |
 | ------- | -------------- | ---------- | --------------- | --------------------- | ------------- | --------------- |
