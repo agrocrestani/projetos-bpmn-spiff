@@ -75,11 +75,19 @@ else:
     print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
 </spiffworkflow:preScript>
         <spiffworkflow:postScript />
-        <spiffworkflow:instructionsForEndUser>Produto: **{{ produtosDepositosNormalizados[0]['produto'] }}**
+        <spiffworkflow:instructionsForEndUser>Produto: **{{ x['produto'] }}**
 
 Preço Médio Unidade:  **{{custo_medio_unitario}}** &lt;br&gt;
 Quantidade Total: **{{total_quantidade}}** &lt;br&gt;
-Preço Total: **{{total_preco_unitario}}**</spiffworkflow:instructionsForEndUser>
+Preço Total: **{{total_preco_unitario}}**
+
+| Produto | Preço Unitário | Quantidade | Unidade Estoque |
+| ------- | -------------- | ---------- | --------------- | ----------------- |
+{% for produto in produtosDepositosNormalizados %}
+| {{ produto['produto'] }} | {{ produto['preço unitario'] }} | {{ produto['quantidade'] }} | {{ produto['unidade estoque'] }} |
+{% endfor %}
+
+</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0kxg7eo</bpmn:incoming>
       <bpmn:outgoing>Flow_1n8yish</bpmn:outgoing>
