@@ -369,6 +369,7 @@ precoTotalNormalizado = precoProdutoNormalizado * quantidadeEstoqueNormalizada
 y['quantidade'] = quantidadeEstoqueNormalizada
 y['preço unitario'] = precoProdutoNormalizado
 y['preço total'] = precoTotalNormalizado
+y['preco unitario total'] = float(y['preco unitario total'].replace(",", "."))
 
 del(quantidadeEstoqueNormalizada)
 del(precoProdutoNormalizado)
