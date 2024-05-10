@@ -82,7 +82,7 @@ Quantidade Total: **{{total_quantidade}}** &lt;br&gt;
 Preço Total: **{{total_preco_unitario}}**
 
 | Produto | Preço Unitário | Quantidade | Unidade Estoque |
-| ------- | -------------- | ---------- | --------------- | ----------------- |
+| ------- | -------------- | ---------- | --------------- |
 {% for produto in produtosDepositosNormalizados %}
 | {{ produto['produto'] }} | {{ produto['preço unitario'] }} | {{ produto['quantidade'] }} | {{ produto['unidade estoque'] }} |
 {% endfor %}
