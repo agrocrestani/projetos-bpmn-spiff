@@ -7,6 +7,7 @@
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_00bh8bd" />
     <bpmn:endEvent id="EndEvent_1">
       <bpmn:incoming>Flow_1n8yish</bpmn:incoming>
+      <bpmn:incoming>Flow_1tjhwv5</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:scriptTask id="BuscaProdutosPorDepositoSAP" name="Busca Produtos por Deposito no SAP">
       <bpmn:extensionElements>
@@ -19,6 +20,8 @@
 baseSap = get_secret('baseSap')
 
 produtosDepositosNormalizados = []
+
+produtosDepositos = []
 
 connection = {
     "address": "172.20.1.4",
@@ -132,7 +135,7 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario).replace(',', ' ').repla
 
 del(x)</spiffworkflow:postScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_12354sq</bpmn:incoming>
+      <bpmn:incoming>Flow_1yez69d</bpmn:incoming>
       <bpmn:outgoing>Flow_0kxg7eo</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
         <bpmn:loopDataInputRef>produtosDepositos</bpmn:loopDataInputRef>
@@ -189,7 +192,7 @@ x['documento'] = nomeObjeto</bpmn:script>
         <bpmn:outgoing>Flow_1xlv71s</bpmn:outgoing>
       </bpmn:businessRuleTask>
     </bpmn:subProcess>
-    <bpmn:sequenceFlow id="Flow_12354sq" sourceRef="BuscaProdutosPorDepositoSAP" targetRef="Activity_1d1r8sl" />
+    <bpmn:sequenceFlow id="Flow_12354sq" sourceRef="BuscaProdutosPorDepositoSAP" targetRef="Gateway_0mqija0" />
     <bpmn:sequenceFlow id="Flow_0kxg7eo" sourceRef="Activity_1d1r8sl" targetRef="EntradasItens" />
     <bpmn:sequenceFlow id="Flow_13pu6hq" sourceRef="Activity_00bh8bd" targetRef="BuscaProdutosPorDepositoSAP" />
     <bpmn:userTask id="Activity_00bh8bd" name="Selecionar Produto e Deposito">
@@ -210,6 +213,7 @@ for a in depositos:
         <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:incoming>Flow_0ho3zz6</bpmn:incoming>
       <bpmn:outgoing>Flow_13pu6hq</bpmn:outgoing>
       <bpmn:property id="Property_1fajqs9" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_04skp3m">
@@ -218,23 +222,72 @@ for a in depositos:
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
     <bpmn:dataStoreReference id="DataStoreReference_1y3s6q4" name="Depositos" dataStoreRef="depositos" type="json" />
+    <bpmn:exclusiveGateway id="Gateway_0mqija0" default="Flow_1yez69d">
+      <bpmn:incoming>Flow_12354sq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yez69d</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1462x9u</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1yez69d" sourceRef="Gateway_0mqija0" targetRef="Activity_1d1r8sl">
+      <bpmn:conditionExpression>produtosDepositos != []</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1462x9u" sourceRef="Gateway_0mqija0" targetRef="Activity_01z33ta">
+      <bpmn:conditionExpression>produtosDepositos == []</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_0zhxafw">
+      <bpmn:incoming>Flow_0n3n3cb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ho3zz6</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1tjhwv5</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0n3n3cb" sourceRef="Activity_01z33ta" targetRef="Gateway_0zhxafw" />
+    <bpmn:sequenceFlow id="Flow_0ho3zz6" sourceRef="Gateway_0zhxafw" targetRef="Activity_00bh8bd" />
+    <bpmn:userTask id="Activity_01z33ta" name="Movimento não encontrado">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>&lt;span style="font-weight: bold; color: red;"&gt;Nenhum movimento encontrado para o &lt;/span&gt;&lt;span style="color: black;"&gt;produto &lt;span style="font-style: italic;"&gt; **{{produto}}**&lt;/span&gt; e depósito &lt;span style="font-style: italic;"&gt;**{{deposito}}**&lt;/span&gt;&lt;/span&gt;
+</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-produto-deposito-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1462x9u</bpmn:incoming>
+      <bpmn:outgoing>Flow_0n3n3cb</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1tjhwv5" sourceRef="Gateway_0zhxafw" targetRef="EndEvent_1" />
   </bpmn:process>
   <bpmn:dataStore id="depositos" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="-158" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="982" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
-        <dc:Bounds x="70" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1oot5j9_di" bpmnElement="EntradasItens">
         <dc:Bounds x="830" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="-218" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_122wunj_di" bpmnElement="Activity_00bh8bd">
+        <dc:Bounds x="-150" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1y3s6q4_di" bpmnElement="DataStoreReference_1y3s6q4">
+        <dc:Bounds x="-125" y="-75" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-125" y="-105" width="50" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
+        <dc:Bounds x="-10" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0mqija0_di" bpmnElement="Gateway_0mqija0" isMarkerVisible="true">
+        <dc:Bounds x="125" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1gw7jjv" bpmnElement="Gateway_0zhxafw" isMarkerVisible="true">
+        <dc:Bounds x="15" y="365" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0tm9ngj_di" bpmnElement="Activity_01z33ta">
+        <dc:Bounds x="-10" y="250" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
@@ -273,38 +326,52 @@ for a in depositos:
         <di:waypoint x="540" y="177" />
         <di:waypoint x="570" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Activity_122wunj_di" bpmnElement="Activity_00bh8bd">
-        <dc:Bounds x="-80" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1y3s6q4_di" bpmnElement="DataStoreReference_1y3s6q4">
-        <dc:Bounds x="-55" y="-45" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="-55" y="-75" width="50" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
-        <di:waypoint x="-122" y="177" />
-        <di:waypoint x="-80" y="177" />
+        <di:waypoint x="-182" y="177" />
+        <di:waypoint x="-150" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1n8yish_di" bpmnElement="Flow_1n8yish">
         <di:waypoint x="930" y="177" />
         <di:waypoint x="982" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12354sq_di" bpmnElement="Flow_12354sq">
-        <di:waypoint x="170" y="177" />
-        <di:waypoint x="220" y="177" />
+        <di:waypoint x="90" y="177" />
+        <di:waypoint x="125" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0kxg7eo_di" bpmnElement="Flow_0kxg7eo">
         <di:waypoint x="770" y="177" />
         <di:waypoint x="830" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13pu6hq_di" bpmnElement="Flow_13pu6hq">
-        <di:waypoint x="20" y="177" />
-        <di:waypoint x="70" y="177" />
+        <di:waypoint x="-50" y="177" />
+        <di:waypoint x="-10" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_04skp3m_di" bpmnElement="DataInputAssociation_04skp3m">
-        <di:waypoint x="-30" y="5" />
-        <di:waypoint x="-30" y="137" />
+        <di:waypoint x="-100" y="-25" />
+        <di:waypoint x="-100" y="137" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yez69d_di" bpmnElement="Flow_1yez69d">
+        <di:waypoint x="175" y="177" />
+        <di:waypoint x="220" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1462x9u_di" bpmnElement="Flow_1462x9u">
+        <di:waypoint x="150" y="202" />
+        <di:waypoint x="150" y="290" />
+        <di:waypoint x="90" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0n3n3cb_di" bpmnElement="Flow_0n3n3cb">
+        <di:waypoint x="40" y="330" />
+        <di:waypoint x="40" y="365" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ho3zz6_di" bpmnElement="Flow_0ho3zz6">
+        <di:waypoint x="15" y="390" />
+        <di:waypoint x="-100" y="390" />
+        <di:waypoint x="-100" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1tjhwv5_di" bpmnElement="Flow_1tjhwv5">
+        <di:waypoint x="65" y="390" />
+        <di:waypoint x="1000" y="390" />
+        <di:waypoint x="1000" y="195" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
