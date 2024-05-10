@@ -10,7 +10,7 @@
       "type": "string",
       "title": "Produto"
     },
-    "produto": {
+    "deposito": {
       "type": "string",
       "title": "Produto"
     }
