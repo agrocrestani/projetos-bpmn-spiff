@@ -410,11 +410,8 @@ y['documento'] = nomeObjeto</bpmn:script>
         <spiffworkflow:preScript># Inicialize as variáveis para calcular o custo médio unitário
 total_preco_unitario_saida = 0
 total_quantidade_saida = 0
-
-y['preço unitario estoque'] = precoUnitarioEstoqueNormalizado
-y['preço total estoque'] = quantidadeEstoqueNormalizada * precoUnitarioEstoqueNormalizado
-y['preço total custo medio'] = quantidadeEstoqueNormalizada * custo_medio_unitario
-
+total_preco_unitario_estoque_saida = 0
+total_preco_unitario_medio_estoque_saida = 0
 
 # Verifique se produtosDespositos é uma lista
 if isinstance(produtosDepositosSaidaNormalizados, list):
