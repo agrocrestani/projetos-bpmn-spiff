@@ -5,10 +5,6 @@
       <bpmn:outgoing>Flow_09zzjml</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_09zzjml" sourceRef="StartEvent_1" targetRef="Activity_19fj0ss" />
-    <bpmn:task id="Activity_15xim33">
-      <bpmn:incoming>Flow_0nlod8v</bpmn:incoming>
-      <bpmn:outgoing>Flow_0na0ifj</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_0nlod8v" sourceRef="Activity_19fj0ss" targetRef="Activity_15xim33" />
     <bpmn:endEvent id="Event_122av5w">
       <bpmn:incoming>Flow_0na0ifj</bpmn:incoming>
@@ -23,14 +19,18 @@
       <bpmn:incoming>Flow_09zzjml</bpmn:incoming>
       <bpmn:outgoing>Flow_0nlod8v</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:scriptTask id="Activity_15xim33">
+      <bpmn:incoming>Flow_0nlod8v</bpmn:incoming>
+      <bpmn:outgoing>Flow_0na0ifj</bpmn:outgoing>
+      <bpmn:script>from connectordb.importaFolha import preparaArquivo
+lancamentos = preparaArquivo(get_encoded_file_data(file))
+lcm = []</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_r411ms5">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-428" y="72" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_15xim33_di" bpmnElement="Activity_15xim33">
-        <dc:Bounds x="-180" y="50" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_122av5w_di" bpmnElement="Event_122av5w">
         <dc:Bounds x="-18" y="72" width="36" height="36" />
@@ -38,6 +38,9 @@
       <bpmndi:BPMNShape id="Activity_083u9n6_di" bpmnElement="Activity_19fj0ss">
         <dc:Bounds x="-340" y="50" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02aoxti_di" bpmnElement="Activity_15xim33">
+        <dc:Bounds x="-180" y="50" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_09zzjml_di" bpmnElement="Flow_09zzjml">
         <di:waypoint x="-392" y="90" />
