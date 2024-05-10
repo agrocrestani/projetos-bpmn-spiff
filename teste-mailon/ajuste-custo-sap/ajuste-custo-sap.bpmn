@@ -93,8 +93,8 @@ else:
     <bpmn:sequenceFlow id="Flow_1upg8gv" sourceRef="Activity_1vcjpb9" targetRef="Activity_0pxv5ok" />
     <bpmn:businessRuleTask id="Activity_1vcjpb9" name="Decision">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>unidadeDocumento = produtoDeposito['unidade documento']
-unidadeEstoque = produtoDeposito['unidade estoque']</spiffworkflow:preScript>
+        <spiffworkflow:preScript>unidadeDocumento = produtoDesposito['unidade documento']
+unidadeEstoque = produtoDesposito['unidade estoque']</spiffworkflow:preScript>
         <spiffworkflow:postScript>multiplicador = multiplicador</spiffworkflow:postScript>
         <spiffworkflow:calledDecisionId>decision_1</spiffworkflow:calledDecisionId>
       </bpmn:extensionElements>
