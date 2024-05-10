@@ -10,7 +10,7 @@
       <output id="output_1" name="nomeObjeto" typeRef="string" biodi:width="227" />
       <rule id="DecisionRule_0t6s23g">
         <inputEntry id="UnaryTests_1nlt8cs">
-          <text>18</text>
+          <text>"18"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0vp0g7l">
           <text>"Nota Fiscal de Entrada"</text>
@@ -18,7 +18,7 @@
       </rule>
       <rule id="DecisionRule_04288bh">
         <inputEntry id="UnaryTests_1rmye8e">
-          <text>20</text>
+          <text>"20"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0wihluf">
           <text>"Recebimento de Mercadoria"</text>
