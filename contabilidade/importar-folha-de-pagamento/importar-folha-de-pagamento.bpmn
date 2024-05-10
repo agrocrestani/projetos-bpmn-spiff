@@ -258,7 +258,7 @@ del(conta)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_03hwcuw</bpmn:incoming>
       <bpmn:outgoing>Flow_0c8p939</bpmn:outgoing>
-      <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
         <bpmn:loopDataInputRef>empresas</bpmn:loopDataInputRef>
         <bpmn:loopDataOutputRef>empresas</bpmn:loopDataOutputRef>
         <bpmn:inputDataItem id="e" name="e" />
@@ -272,7 +272,7 @@ del(conta)</spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1oj2e5a</bpmn:incoming>
         <bpmn:outgoing>Flow_17jff7g</bpmn:outgoing>
-        <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+        <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
           <bpmn:loopDataInputRef>filiais</bpmn:loopDataInputRef>
           <bpmn:loopDataOutputRef>filiais</bpmn:loopDataOutputRef>
           <bpmn:inputDataItem id="f" name="f" />
@@ -286,7 +286,7 @@ del(conta)</spiffworkflow:postScript>
           </bpmn:extensionElements>
           <bpmn:incoming>Flow_0vnj39p</bpmn:incoming>
           <bpmn:outgoing>Flow_1l2nqdt</bpmn:outgoing>
-          <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+          <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
             <bpmn:loopDataInputRef>ccustos</bpmn:loopDataInputRef>
             <bpmn:loopDataOutputRef>ccustos</bpmn:loopDataOutputRef>
             <bpmn:inputDataItem id="c" name="c" />
