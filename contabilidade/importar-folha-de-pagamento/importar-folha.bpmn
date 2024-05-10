@@ -46,6 +46,7 @@ lcm = []</bpmn:script>
     <bpmn:subProcess id="Activity_0vqrgca">
       <bpmn:incoming>Flow_0na0ifj</bpmn:incoming>
       <bpmn:outgoing>Flow_08nb3yf</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" />
       <bpmn:startEvent id="Event_1x8i9tu" />
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_08nb3yf" sourceRef="Activity_0vqrgca" targetRef="Event_122av5w" />
