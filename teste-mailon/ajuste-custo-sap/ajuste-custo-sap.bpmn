@@ -197,8 +197,15 @@ x['documento'] = nomeObjeto</bpmn:script>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_13pu6hq</bpmn:outgoing>
+      <bpmn:property id="Property_1fajqs9" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_04skp3m">
+        <bpmn:sourceRef>DataStoreReference_1y3s6q4</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1fajqs9</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
     </bpmn:userTask>
+    <bpmn:dataStoreReference id="DataStoreReference_1y3s6q4" name="Almoxarifados" dataStoreRef="almoxarifados" type="json" />
   </bpmn:process>
+  <bpmn:dataStore id="almoxarifados" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -214,6 +221,12 @@ x['documento'] = nomeObjeto</bpmn:script>
       <bpmndi:BPMNShape id="Activity_1oot5j9_di" bpmnElement="EntradasItens">
         <dc:Bounds x="830" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1y3s6q4_di" bpmnElement="DataStoreReference_1y3s6q4">
+        <dc:Bounds x="-55" y="-45" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-65" y="-75" width="70" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
@@ -274,6 +287,10 @@ x['documento'] = nomeObjeto</bpmn:script>
       <bpmndi:BPMNEdge id="Flow_13pu6hq_di" bpmnElement="Flow_13pu6hq">
         <di:waypoint x="20" y="177" />
         <di:waypoint x="70" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_04skp3m_di" bpmnElement="DataInputAssociation_04skp3m">
+        <di:waypoint x="-30" y="5" />
+        <di:waypoint x="-30" y="137" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
