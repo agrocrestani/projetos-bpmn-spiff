@@ -17,13 +17,6 @@
       "anyOf": [
         "options_from_task_data_var:depositos"
       ]
-    },
-    "favoriteFruit": {
-      "title": "Select your favorite fruit",
-      "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:fruits"
-      ]
     }
   }
 }
