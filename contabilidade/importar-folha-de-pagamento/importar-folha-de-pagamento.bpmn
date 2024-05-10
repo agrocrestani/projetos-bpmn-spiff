@@ -183,7 +183,7 @@ del(conta)</spiffworkflow:postScript>
 | Data | Evento | Credito | Debito | Valor | Filial | Centro de Custo |
 | ------ | --------- | :---------: | :-------: | -------: | :------: | :---------------------- |
 {%for l in tabela%}
-|{{l['data']}} | {{l['evento']}} | {{l['credito']}} | {{l['debito']}} | {{l['filial']}} | {{l['valor']}} | {{l['ccusto']}} | 
+|{{l['data']}} | {{l['evento']}} | {{l['credito']}} | {{l['debito']}} | {{l['valor']}} | {{l['filial']}} | {{l['ccusto']}} | 
 {%endfor%}
 
 
