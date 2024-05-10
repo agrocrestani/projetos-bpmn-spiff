@@ -179,7 +179,7 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-filialSenior = l['empresa']+l['filial']
+filialSenior = str(l['empresa'])+str(l['filial'])
 
 query = f"""
         SELECT 
@@ -380,9 +380,6 @@ novoCCusto = result['u_ccustosap']</bpmn:script>
       <bpmndi:BPMNShape id="Event_1nxxcjy_di" bpmnElement="Event_1nxxcjy">
         <dc:Bounds x="1322" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_13lpypp_di" bpmnElement="Activity_00gm0or">
-        <dc:Bounds x="710" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0iw5gmz_di" bpmnElement="Activity_0ijcvzu">
         <dc:Bounds x="880" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -391,6 +388,9 @@ novoCCusto = result['u_ccustosap']</bpmn:script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_08jj6xs_di" bpmnElement="Activity_1rac236">
         <dc:Bounds x="1180" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_13lpypp_di" bpmnElement="Activity_00gm0or">
+        <dc:Bounds x="710" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1a5u0e2_di" bpmnElement="Flow_1a5u0e2">
         <di:waypoint x="656" y="177" />
