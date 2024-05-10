@@ -38,7 +38,8 @@ for f in filiais:
       <bpmn:outgoing>Flow_1tvkyw7</bpmn:outgoing>
       <bpmn:script>from connectordb.importaFolha import preparaArquivo
 lancamentos = preparaArquivo(get_encoded_file_data(file))
-lcm = []</bpmn:script>
+lcm = []
+tabela = []</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_00vuw5a">
       <bpmn:extensionElements>
@@ -94,7 +95,6 @@ ccustos = []
 if l['ccusto'] not in ccustos:
     ccustos.append(l['ccusto'])
 
-tabela = []
 tabela.append(
     {
         "data": datalacto,
