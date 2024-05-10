@@ -185,6 +185,48 @@ del(conta)</spiffworkflow:postScript>
 {%for l in lcm%}
 |{{l['TaxDate']}} | {{l['Memo']}} | 
 {%endfor%}</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript>tabela = []
+for l in lcm:
+    tabela.append(
+        {
+            "data": l['TaxDate'],
+            "evento": l['Memo'],
+            "credito": l['JournalEntryLines'][0]['AccountCode'],
+            "debito": l['JournalEntryLines'][1]['AccountCode'],
+            "filial": l['JournalEntryLines'][0]['BPLID'],
+            "valor": l['JournalEntryLines'][0]['Credit'],
+            "ccusto": l['JournalEntryLines'][0]['CostingCode']
+        }
+    )
+    
+
+
+# "lcm": [
+#     {
+#       "ReferenceDate": "2024-01-31",
+#       "TaxDate": "2024-01-31",
+#       "Memo": "SALARIOS E ORDENADOS",
+#       "JournalEntryLines": [
+#         {
+#           "Line_ID": 0,
+#           "AccountCode": "2.1.1.01.01.001",
+#           "Debit": 0,
+#           "Credit": 192144.19,
+#           "CostingCode": "CORPADM",
+#           "DebitSys": 192144.19,
+#           "BPLID": 1
+#         },
+#         {
+#           "Line_ID": 0,
+#           "AccountCode": "3.1.3.02.01.014",
+#           "Debit": 192144.19,
+#           "Credit": 0,
+#           "CostingCode": "CORPADM",
+#           "DebitSys": 192144.19,
+#           "BPLID": 1
+#         }
+#       ]
+</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_03hwcuw</bpmn:incoming>
       <bpmn:outgoing>Flow_14m2b3h</bpmn:outgoing>
