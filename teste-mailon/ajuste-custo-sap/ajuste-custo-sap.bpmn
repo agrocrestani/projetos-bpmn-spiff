@@ -62,8 +62,8 @@ if isinstance(produtosDepositosNormalizados, list):
     for produto in produtosDepositosNormalizados:
         # Verifique se o produto contém as chaves necessárias
         if "preço unitario" in produto and "quantidade" in produto:
-            preco_unitario = float(produto["preço unitario"].replace(",", "."))
-            quantidade = float(produto["quantidade"].replace(",", "."))
+            preco_unitario = float(produto["preço unitario"])
+            quantidade = float(produto["quantidade"])
             total_preco_unitario += preco_unitario * quantidade
             total_quantidade += quantidade
          
