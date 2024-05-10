@@ -5,5 +5,12 @@
     "ui:placeholder": "Digite o codigo de um produto",
     "ui:autocomplete": "family-name",
     "ui:enableMarkdownInDescription": true
+  },
+  "produto": {
+    "ui:autofocus": true,
+    "ui:emptyValue": "",
+    "ui:placeholder": "Digite o codigo de um produto",
+    "ui:autocomplete": "family-name",
+    "ui:enableMarkdownInDescription": true
   }
 }
