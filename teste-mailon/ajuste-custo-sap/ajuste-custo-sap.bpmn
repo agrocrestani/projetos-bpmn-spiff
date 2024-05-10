@@ -195,10 +195,10 @@ x['documento'] = nomeObjeto</bpmn:script>
           <spiffworkflow:property name="formJsonSchemaFilename" value="selecionar-produto-deposito-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-produto-deposito-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript>depositos = []
+        <spiffworkflow:preScript>depositosList = []
 
-for a in almoxarifados:
-    depositos.append(
+for a in depositos:
+    depositosList.append(
         {
             "value":a["WhsCode"],
             "label":a["WhsCode"] + ' - ' + a["WhsName"]
