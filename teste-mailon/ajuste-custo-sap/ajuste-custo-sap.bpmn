@@ -212,9 +212,9 @@ for a in almoxarifados:
         <bpmn:targetRef>Property_1fajqs9</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
-    <bpmn:dataStoreReference id="DataStoreReference_1y3s6q4" name="Almoxarifados" dataStoreRef="almoxarifados" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_1y3s6q4" name="Depositos" dataStoreRef="depositos" type="json" />
   </bpmn:process>
-  <bpmn:dataStore id="almoxarifados" name="JSONDataStore" />
+  <bpmn:dataStore id="depositos" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -274,7 +274,7 @@ for a in almoxarifados:
       <bpmndi:BPMNShape id="DataStoreReference_1y3s6q4_di" bpmnElement="DataStoreReference_1y3s6q4">
         <dc:Bounds x="-55" y="-45" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="-65" y="-75" width="70" height="14" />
+          <dc:Bounds x="-55" y="-75" width="50" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
