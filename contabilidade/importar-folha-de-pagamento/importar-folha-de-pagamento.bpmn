@@ -221,7 +221,9 @@ query = f"""
         WHERE 
             o."U_AC_EmpFilialSenior" = {filialSenior}
         """
-result = Hana(connection).selectDb(query)</bpmn:script>
+result = Hana(connection).selectDb(query)
+
+bplid = result['BPLId']</bpmn:script>
       </bpmn:scriptTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_03hwcuw" sourceRef="Activity_14bim7r" targetRef="Activity_1ilc925" />
@@ -317,7 +319,7 @@ result = Hana(connection).selectDb(query)</bpmn:script>
       <bpmndi:BPMNShape id="Activity_0a5fa7t_di" bpmnElement="Activity_1rac236">
         <dc:Bounds x="1180" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1cc4zm8_di" bpmnElement="Activity_00gm0or">
+      <bpmndi:BPMNShape id="Activity_13lpypp_di" bpmnElement="Activity_00gm0or">
         <dc:Bounds x="710" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1a5u0e2_di" bpmnElement="Flow_1a5u0e2">
