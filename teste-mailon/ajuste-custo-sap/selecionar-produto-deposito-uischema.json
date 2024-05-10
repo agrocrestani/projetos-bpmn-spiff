@@ -4,6 +4,6 @@
     "ui:emptyValue": "",
     "ui:placeholder": "Digite o codigo de um produto",
     "ui:autocomplete": "family-name",
-    "ui:enableMarkdownInDescription": true,
+    "ui:enableMarkdownInDescription": true
   }
 }
