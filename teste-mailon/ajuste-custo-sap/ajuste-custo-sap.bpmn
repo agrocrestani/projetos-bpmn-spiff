@@ -73,7 +73,8 @@ consulta_transferencias = Hana(connection).selectDb(query_transferencias)
 produtosDepositos = consulta_compras + consulta_transferencias
 
 totalRegistros = len(produtosDepositos)
-</bpmn:script>
+
+del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="EntradasItens" name="Entradas dos Itens">
       <bpmn:extensionElements>
