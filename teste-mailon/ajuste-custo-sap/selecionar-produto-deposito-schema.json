@@ -1,6 +1,6 @@
 {
   "title": "Selecionar Paramentos",
-  "description": ",
+  "description": "",
   "type": "object",
   "required": [
     "produto"
