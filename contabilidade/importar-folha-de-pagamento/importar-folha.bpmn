@@ -43,7 +43,7 @@ for f in filiais:
 lancamentos = preparaArquivo(get_encoded_file_data(file))
 lcm = []</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:dataStoreReference id="DataStoreReference_19ma0pn" />
+    <bpmn:dataStoreReference id="DataStoreReference_19ma0pn" name="Filiais" dataStoreRef="filiais" type="json" />
     <bpmn:subProcess id="Activity_0vqrgca">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>del(l)</spiffworkflow:postScript>
@@ -96,6 +96,7 @@ del(result)</bpmn:script>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_08nb3yf" sourceRef="Activity_0vqrgca" targetRef="Event_122av5w" />
   </bpmn:process>
+  <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_r411ms5">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -114,6 +115,9 @@ del(result)</bpmn:script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_19ma0pn_di" bpmnElement="DataStoreReference_19ma0pn">
         <dc:Bounds x="-335" y="215" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-324" y="272" width="28" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0vqrgca_di" bpmnElement="Activity_0vqrgca" isExpanded="true">
         <dc:Bounds x="-30" y="-10" width="910" height="200" />
