@@ -434,7 +434,7 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ')
 
 | Numero Documento | Custo Unitário | Quantidade | Custo Total | Objeto |
 | ------- | -------------- | ---------- | --------------- | --------------------- |
-{% for produto in produtosDepositosNormalizados %}
+{% for produto in produtosDepositosSaidaNormalizados%}
 | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['preço unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ produto['quantidade'] }} | {{ '{:,.3f}'.format(produto['preço total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['documento']}} |
 {% endfor %}
 </spiffworkflow:instructionsForEndUser>
