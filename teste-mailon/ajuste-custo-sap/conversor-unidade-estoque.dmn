@@ -35,6 +35,28 @@
           <text>1</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_02rglz5">
+        <inputEntry id="UnaryTests_0vrh2yr">
+          <text>"TONELADA"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_116runl">
+          <text>"QUILOGRAM"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xhjd1l">
+          <text>1000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1q28168">
+        <inputEntry id="UnaryTests_1tuuce5">
+          <text>"TONELADA"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1il2z4s">
+          <text>"TONELADA"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ayljtp">
+          <text>1</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
