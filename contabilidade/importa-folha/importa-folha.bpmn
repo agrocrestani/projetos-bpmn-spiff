@@ -7,7 +7,7 @@
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
     <bpmn:userTask id="Activity_0qpzdpu" name="Escolher Arquivo">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:preScript>n_filiais = []
 for f in filiais:
     BPLId = f['BPLId']
@@ -42,7 +42,90 @@ lcm = []</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_00vuw5a">
       <bpmn:extensionElements>
-        <spiffworkflow:postScript>del(l)</spiffworkflow:postScript>
+        <spiffworkflow:postScript>creditoConta = ""
+creditoValor = 0
+debitoConta = ""
+debitoValor = 0
+
+if l['tipoLancamento'] == "C":
+    creditoConta = novaConta1
+    creditoValor = l['valor']
+    debitoConta = novaConta2
+    debitoValor = l['valor']
+else:    
+    creditoConta = novaConta2 
+    creditoValor = l['valor']
+    debitoConta = novaConta1
+    debitoValor = l['valor']
+
+
+lcm.append(
+    {
+        "ReferenceDate": datalacto,
+        "TaxDate": datalacto,
+        "Memo": l['nomeEvento'],
+        "TransactionCode": "FOL",
+        "JournalEntryLines": [
+            {
+                "AccountCode": creditoConta,
+                "Credit": creditoValor,
+                "CostingCode": novoCcusto,
+                "BPLID": bplid
+            },
+                    {
+                "AccountCode": debitoConta,
+                "Debit": debitoValor,
+                "CostingCode": novoCcusto,
+                "BPLID": bplid
+            }
+        ]
+    }
+)
+
+empresas = []
+if l['empresa'] not in empresas:
+    empresas.append(l['empresa'])
+
+filiais = []
+if l['filial'] not in filiais:
+    filiais.append(l['filial'])
+
+ccustos = []
+if l['ccusto'] not in ccustos:
+    ccustos.append(l['ccusto'])
+
+tabela = []
+tabela.append(
+    {
+        "data": datalacto,
+        "evento": l['nomeEvento'],
+        "credito": creditoConta,
+        "debito": debitoConta,
+        "novaFilial": bplid,
+        "valor": l['valor'],
+        "ccusto": l['ccusto'],
+        "novoCcusto": novoCcusto,
+        "filial": l['filial'],
+        "empresa": l['empresa']
+    }
+)
+
+
+del(l)
+#   "l": {
+#     "conta1": "20101007",
+#     "conta2": "20101001",
+#     "nomeEvento": "INSS S/FOLHA",
+#     "valor": 17540.84,
+#     "tipoLancamento": "C",
+#     "codigoEvento": 15,
+#     "empresa": 1,
+#     "filial": 1,
+#     "ccusto": 11102
+
+#       "bplid": "1",
+#   "novaConta1": "2.1.1.01.01.007",
+#   "novaConta2": "2.1.1.01.01.001"</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1tvkyw7</bpmn:incoming>
       <bpmn:outgoing>Flow_06rvkdp</bpmn:outgoing>
@@ -132,9 +215,6 @@ del(conta)</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Activity_1fn7pr1_di" bpmnElement="Activity_1gq0mev">
         <dc:Bounds x="430" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0er7ho5_di" bpmnElement="Event_0er7ho5">
-        <dc:Bounds x="1622" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="620" y="77" width="910" height="200" />
       </bpmndi:BPMNShape>
@@ -179,6 +259,9 @@ del(conta)</spiffworkflow:postScript>
         <di:waypoint x="1330" y="177" />
         <di:waypoint x="1392" y="177" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0er7ho5_di" bpmnElement="Event_0er7ho5">
+        <dc:Bounds x="1622" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
