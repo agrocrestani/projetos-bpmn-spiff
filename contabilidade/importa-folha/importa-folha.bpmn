@@ -214,7 +214,7 @@ del(conta)</spiffworkflow:postScript>
           <spiffworkflow:preScript>novaTabela = []
 
 for t in tabela[0]:
-    centroCusto = str(t['empresa']) + str(t['filial']) + t['ccusto']
+    centroCusto = str(t['empresa']) + str(t['filial']) + str(t['ccusto'])
     if c == centroCusto:
         novaTabela.append(t)
 </spiffworkflow:preScript>
