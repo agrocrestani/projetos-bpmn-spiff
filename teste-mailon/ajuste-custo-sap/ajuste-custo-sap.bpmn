@@ -106,8 +106,9 @@ else:
     print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
 </spiffworkflow:preScript>
         <spiffworkflow:postScript />
-        <spiffworkflow:instructionsForEndUser>Produto: **{{ produtoAux['produto'] }}**         Deposito: **{{ deposito}}**
-
+        <spiffworkflow:instructionsForEndUser>
+Produto: **{{ produtoAux['produto'] }}** 
+Deposito: **{{ deposito}}**
 UM: **{{produtoAux['unidade estoque']}}**
 
 Custo Médio Unitário: **{{ '{:,.3f}'.format(custo_medio_unitario).replace(',', ' ').replace('.', ',').replace(' ', '.') }}** &lt;br&gt;
@@ -206,6 +207,7 @@ for a in depositos:
             "label":a["WhsCode"] + ' - ' + a["WhsName"]
         }
     )</spiffworkflow:preScript>
+        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_13pu6hq</bpmn:outgoing>
