@@ -258,7 +258,7 @@ query = f"""
 		WHERE 
 			o."U_AC_Conta_Senior" = '{l['conta2']}'
         """
-result = Hana(connection).selectDb(query)
+result = Hana(connection).selectDb(query)[0]
 
 novaConta2 = result['acctcode']</bpmn:script>
       </bpmn:scriptTask>
