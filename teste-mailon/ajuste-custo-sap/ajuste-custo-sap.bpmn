@@ -41,10 +41,7 @@ query = f"""
 """
 produtosDepositos = Hana(connection).selectDb(query)
 totalRegistros = len(produtosDepositos)
-contador = 0
-
-produtoDesposito = produtosDepositos[0]
-</bpmn:script>
+contador = 0</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="Activity_0pxv5ok" name="Iterando">
       <bpmn:extensionElements>
