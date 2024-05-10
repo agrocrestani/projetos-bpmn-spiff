@@ -77,16 +77,19 @@ else:
     print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
 </spiffworkflow:preScript>
         <spiffworkflow:postScript />
-        <spiffworkflow:instructionsForEndUser>Produto: **{{ produtoAux['produto'] }}**         UM: **{{produtoAux['unidade estoque']}}**
+        <spiffworkflow:instructionsForEndUser>import locale
+locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+
+Produto: **{{ produtoAux['produto'] }}**         UM: **{{produtoAux['unidade estoque']}}**
 
 Custo Médio Unitário: **{{ '{:.6f}'.format(custo_medio_unitario) }}** &lt;br&gt;
 Quantidade Total: **{{ total_quantidade }}** &lt;br&gt;
-Custo Total: **{{ '{:.6f}'.format(total_preco_unitario) }}**
+Custo Total: **{{ locale.format('%.2f', total_preco_unitario, grouping=True).replace('.', ',') }}**
 
 | Numero Documento | Custo Unitário | Quantidade | Custo Total |
 | ------- | -------------- | ---------- | --------------- |
 {% for produto in produtosDepositosNormalizados %}
-| {{ produto['docnum'] }} | {{ '{:.6f}'.format(produto['preço unitario']) }} | {{ produto['quantidade'] }} | {{  '{:.6f}'.format(produto['preço total']) }} |
+| {{ produto['docnum'] }} | {{ '{:.6f}'.format(produto['preço unitario']) }} | {{ produto['quantidade'] }} | {{ locale.format('%.2f', produto['preço total'], grouping=True).replace('.', ',') }} |
 {% endfor %}
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
