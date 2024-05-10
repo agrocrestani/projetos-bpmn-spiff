@@ -56,8 +56,8 @@ total_preco_unitario = 0
 total_quantidade = 0
 
 # Verifique se produtosDespositos é uma lista
-if isinstance(x, list):
-    for produto in x:
+if isinstance(produtosDepositosNormalizados, list):
+    for produto in produtosDepositosNormalizados:
         # Verifique se o produto contém as chaves necessárias
         if "preço unitario" in produto and "quantidade" in produto:
             preco_unitario = float(produto["preço unitario"].replace(",", "."))
@@ -85,7 +85,9 @@ else:
     <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="Activity_0pxv5ok" targetRef="EndEvent_1" />
     <bpmn:subProcess id="Activity_1d1r8sl">
       <bpmn:extensionElements>
-        <spiffworkflow:postScript>del(x)</spiffworkflow:postScript>
+        <spiffworkflow:postScript>produtosDepositosNormalizados.append(x)
+
+del(x)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12354sq</bpmn:incoming>
       <bpmn:outgoing>Flow_0kxg7eo</bpmn:outgoing>
