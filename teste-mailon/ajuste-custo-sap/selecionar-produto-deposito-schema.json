@@ -5,7 +5,7 @@
   "required": [
     "produto"
   ],
-  "properties": {
+  "produto": {
     "firstName": {
       "type": "string",
       "title": "First name",
