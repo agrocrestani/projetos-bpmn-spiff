@@ -35,7 +35,7 @@ query = f"""
         CAST(t2."LineTotal" AS VARCHAR(50)) AS "Preço Total" ,
         t2."unitMsr" AS "Unidade Documento" , 
         t0."InvntryUom" AS "Unidade Estoque" , 
-        t3."DocNum" AS "DocNum" ,
+        CAST(t3."DocNum" AS VARCHAR(50)) AS "DocNum" ,
         CAST(t3."ObjType" AS VARCHAR(50)) AS "Documento"
     FROM {baseSap}.OITM t0
     INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
@@ -50,7 +50,7 @@ query = f"""
         CAST(t2."LineTotal" AS VARCHAR(50)) AS "Preço Total" ,
         t2."unitMsr" AS "Unidade Documento" , 
         t0."InvntryUom" AS "Unidade Estoque" , 
-        t3."DocNum" AS "DocNum" ,
+        CAST(t3."DocNum" AS VARCHAR(50)) AS "DocNum" ,
         CAST(t3."ObjType" AS VARCHAR(50)) AS "Documento"
     FROM {baseSap}.OITM t0
     INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
