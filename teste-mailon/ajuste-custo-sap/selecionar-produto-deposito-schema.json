@@ -8,6 +8,7 @@
   "properties": {
     "produto": {
       "type": "string",
-      "title": "Produto",    }
+      "title": "Produto"
+      }
   }
 }
