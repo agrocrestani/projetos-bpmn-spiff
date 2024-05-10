@@ -92,9 +92,15 @@ del(query)
 del(filialSenior)
 del(result)</bpmn:script>
       </bpmn:scriptTask>
-      <bpmn:task id="Activity_0evdcmq">
+      <bpmn:sequenceFlow id="Flow_1m4tdrd" sourceRef="Activity_0huvav9" targetRef="Activity_0evdcmq" />
+      <bpmn:sequenceFlow id="Flow_0on0isj" sourceRef="Activity_0evdcmq" targetRef="Event_13af83c" />
+      <bpmn:scriptTask id="Activity_0evdcmq">
         <bpmn:extensionElements>
-          <spiffworkflow:postScript>from connectordb.hana import Hana
+          <spiffworkflow:postScript></spiffworkflow:postScript>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1m4tdrd</bpmn:incoming>
+        <bpmn:outgoing>Flow_0on0isj</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
 
 connection = {
     "address": "172.20.1.4",
@@ -117,13 +123,8 @@ novaConta1 = result['acctcode']
 
 del(connection)
 del(query)
-del(result)</spiffworkflow:postScript>
-        </bpmn:extensionElements>
-        <bpmn:incoming>Flow_1m4tdrd</bpmn:incoming>
-        <bpmn:outgoing>Flow_0on0isj</bpmn:outgoing>
-      </bpmn:task>
-      <bpmn:sequenceFlow id="Flow_1m4tdrd" sourceRef="Activity_0huvav9" targetRef="Activity_0evdcmq" />
-      <bpmn:sequenceFlow id="Flow_0on0isj" sourceRef="Activity_0evdcmq" targetRef="Event_13af83c" />
+del(result)</bpmn:script>
+      </bpmn:scriptTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_08nb3yf" sourceRef="Activity_0vqrgca" targetRef="Event_122av5w" />
   </bpmn:process>
@@ -163,7 +164,7 @@ del(result)</spiffworkflow:postScript>
         <dc:Bounds x="100" y="50" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0evdcmq_di" bpmnElement="Activity_0evdcmq">
+      <bpmndi:BPMNShape id="Activity_1t7d598_di" bpmnElement="Activity_0evdcmq">
         <dc:Bounds x="260" y="50" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0uhx84e_di" bpmnElement="Flow_0uhx84e">
