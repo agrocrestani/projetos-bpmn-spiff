@@ -370,7 +370,7 @@ precoUnitarioEstoqueNormalizado = float(y['preco unitario total'].replace(",", "
 y['quantidade'] = quantidadeEstoqueNormalizada
 y['preço unitario'] = precoProdutoNormalizado
 y['preço total'] = precoTotalNormalizado
-y['preco unitario total'] = precoUnitarioEstoqueNormalizado
+y['preço unitario total'] = precoUnitarioEstoqueNormalizado
 
 del(quantidadeEstoqueNormalizada)
 del(precoProdutoNormalizado)
@@ -386,7 +386,7 @@ y['documento'] = nomeObjeto</bpmn:script>
         <bpmn:extensionElements>
           <spiffworkflow:calledDecisionId>ObjetoMarketing</spiffworkflow:calledDecisionId>
           <spiffworkflow:preScript>objeto = y['documento']</spiffworkflow:preScript>
-          <spiffworkflow:postScript />
+          <spiffworkflow:postScript></spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1h9w6p8</bpmn:incoming>
         <bpmn:outgoing>Flow_1lutyyg</bpmn:outgoing>
