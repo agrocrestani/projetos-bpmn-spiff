@@ -60,12 +60,11 @@ lcm = []</bpmn:script>
       </bpmn:startEvent>
       <bpmn:sequenceFlow id="Flow_0uhx84e" sourceRef="Event_1x8i9tu" targetRef="Activity_0huvav9" />
       <bpmn:endEvent id="Event_13af83c">
-        <bpmn:incoming>Flow_0rr8d7e</bpmn:incoming>
+        <bpmn:incoming>Flow_0on0isj</bpmn:incoming>
       </bpmn:endEvent>
-      <bpmn:sequenceFlow id="Flow_0rr8d7e" sourceRef="Activity_0huvav9" targetRef="Event_13af83c" />
       <bpmn:scriptTask id="Activity_0huvav9" name="DePara Filial">
         <bpmn:incoming>Flow_0uhx84e</bpmn:incoming>
-        <bpmn:outgoing>Flow_0rr8d7e</bpmn:outgoing>
+        <bpmn:outgoing>Flow_1m4tdrd</bpmn:outgoing>
         <bpmn:script>from connectordb.hana import Hana
 
 connection = {
@@ -93,6 +92,38 @@ del(query)
 del(filialSenior)
 del(result)</bpmn:script>
       </bpmn:scriptTask>
+      <bpmn:task id="Activity_0evdcmq">
+        <bpmn:extensionElements>
+          <spiffworkflow:postScript>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+        SELECT 
+			"AcctCode"
+		FROM 
+			SBO_CRESTANI_PRD.OACT o 
+		WHERE 
+			o."U_AC_Conta_Senior" = '{l['conta1']}'
+        """
+result = Hana(connection).selectDb(query)[0]
+
+novaConta1 = result['acctcode']
+
+del(connection)
+del(query)
+del(result)</spiffworkflow:postScript>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1m4tdrd</bpmn:incoming>
+        <bpmn:outgoing>Flow_0on0isj</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:sequenceFlow id="Flow_1m4tdrd" sourceRef="Activity_0huvav9" targetRef="Activity_0evdcmq" />
+      <bpmn:sequenceFlow id="Flow_0on0isj" sourceRef="Activity_0evdcmq" targetRef="Event_13af83c" />
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_08nb3yf" sourceRef="Activity_0vqrgca" targetRef="Event_122av5w" />
   </bpmn:process>
@@ -132,12 +163,19 @@ del(result)</bpmn:script>
         <dc:Bounds x="100" y="50" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0evdcmq_di" bpmnElement="Activity_0evdcmq">
+        <dc:Bounds x="260" y="50" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0uhx84e_di" bpmnElement="Flow_0uhx84e">
         <di:waypoint x="46" y="90" />
         <di:waypoint x="100" y="90" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0rr8d7e_di" bpmnElement="Flow_0rr8d7e">
+      <bpmndi:BPMNEdge id="Flow_1m4tdrd_di" bpmnElement="Flow_1m4tdrd">
         <di:waypoint x="200" y="90" />
+        <di:waypoint x="260" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0on0isj_di" bpmnElement="Flow_0on0isj">
+        <di:waypoint x="360" y="90" />
         <di:waypoint x="802" y="90" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_09zzjml_di" bpmnElement="Flow_09zzjml">
