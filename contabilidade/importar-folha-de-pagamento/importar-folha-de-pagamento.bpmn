@@ -206,8 +206,6 @@ del(conta)</spiffworkflow:postScript>
         <bpmn:outgoing>Flow_0eft3k6</bpmn:outgoing>
         <bpmn:script>from connectordb.hana import Hana
 
-bplid = result['bplid']
-
 env = get_env()
 baseSap = get_secret('baseSap')
 
@@ -226,7 +224,7 @@ query = f"""
 		WHERE 
 			o."U_AC_Conta_Senior" = '{l['conta1']}'
         """
-result = Hana(connection).selectDb(query)
+result = Hana(connection).selectDb(query)[0]
 
 novaConta1 = result['acctcode']</bpmn:script>
       </bpmn:scriptTask>
