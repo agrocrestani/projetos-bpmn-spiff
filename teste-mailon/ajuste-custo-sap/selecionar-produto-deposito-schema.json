@@ -3,7 +3,8 @@
   "description": "",
   "type": "object",
   "required": [
-    "produto"
+    "produto",
+    
   ],
   "properties": {
     "produto": {
