@@ -1,6 +1,5 @@
 {
   "title": "Deseja realizar uma nova buscar?",
-  "description": "A super simple checkbox",
   "properties": {
     "done": {
       "type": "boolean",
