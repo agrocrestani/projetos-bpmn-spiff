@@ -34,7 +34,8 @@ query = f"""
         CAST(t2."Quantity" AS VARCHAR(50)) AS "Quantidade" ,
         CAST(t2."LineTotal" AS VARCHAR(50)) AS "Preço Total" ,
         t2."unitMsr" AS "Unidade Documento" , 
-        t0."InvntryUom" AS "Unidade Estoque"
+        t0."InvntryUom" AS "Unidade Estoque" , 
+        t3."DocEntry" AS "DocNum"
     FROM {baseSap}.OITM t0
     INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
     INNER JOIN {baseSap}.PCH1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '{deposito}'
@@ -45,7 +46,7 @@ produtosDepositos = Hana(connection).selectDb(query)
 
 totalRegistros = len(produtosDepositos)</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:manualTask id="Activity_0pxv5ok" name="Iterando">
+    <bpmn:manualTask id="EntradasItens" name="Entradas dos Itens">
       <bpmn:extensionElements>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="" />
@@ -77,22 +78,21 @@ else:
         <spiffworkflow:postScript />
         <spiffworkflow:instructionsForEndUser>Produto: **{{ produtoAux['produto'] }}**
 
-Preço Médio Unidade:  **{{custo_medio_unitario}}** &lt;br&gt;
-Quantidade Total: **{{total_quantidade}}** &lt;br&gt;
-Preço Total: **{{total_preco_unitario}}**
+Preço Médio Unidade: **{{ '{:.6f}'.format(custo_medio_unitario) }}** &lt;br&gt;
+Quantidade Total: **{{ total_quantidade }}** &lt;br&gt;
+Preço Total: **{{ '{:.6f}'.format(total_preco_unitario) }}**
 
-| Produto | Preço Unitário | Quantidade | Unidade Estoque |
+| Numero Documento | Preço Unitário | Quantidade | Unidade Estoque |
 | ------- | -------------- | ---------- | --------------- |
 {% for produto in produtosDepositosNormalizados %}
-| {{ produto['produto'] }} | {{ produto['preço unitario'] }} | {{ produto['quantidade'] }} | {{ produto['unidade estoque'] }} |
+| {{ produto['docnum'] }} | {{ '{:.6f}'.format(produto['preço unitario']) }} | {{ produto['quantidade'] }} | {{ produto['unidade estoque'] }} |
 {% endfor %}
-
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0kxg7eo</bpmn:incoming>
       <bpmn:outgoing>Flow_1n8yish</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="Activity_0pxv5ok" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="EntradasItens" targetRef="EndEvent_1" />
     <bpmn:subProcess id="Activity_1d1r8sl">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>produtosDepositosNormalizados.append(x)
@@ -139,7 +139,7 @@ del(precoProdutoNormalizado)</bpmn:script>
       <bpmn:sequenceFlow id="Flow_14z5yhx" sourceRef="NormalizandoEstoque" targetRef="Event_1dydh6d" />
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_12354sq" sourceRef="BuscaProdutosPorDepositoSAP" targetRef="Activity_1d1r8sl" />
-    <bpmn:sequenceFlow id="Flow_0kxg7eo" sourceRef="Activity_1d1r8sl" targetRef="Activity_0pxv5ok" />
+    <bpmn:sequenceFlow id="Flow_0kxg7eo" sourceRef="Activity_1d1r8sl" targetRef="EntradasItens" />
     <bpmn:sequenceFlow id="Flow_13pu6hq" sourceRef="Activity_00bh8bd" targetRef="BuscaProdutosPorDepositoSAP" />
     <bpmn:userTask id="Activity_00bh8bd" name="Selecionar Produto e Deposito">
       <bpmn:extensionElements>
@@ -158,20 +158,21 @@ del(precoProdutoNormalizado)</bpmn:script>
         <dc:Bounds x="70" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1112" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1oot5j9_di" bpmnElement="Activity_0pxv5ok">
-        <dc:Bounds x="960" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-158" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_122wunj_di" bpmnElement="Activity_00bh8bd">
         <dc:Bounds x="-80" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1oot5j9_di" bpmnElement="EntradasItens">
+        <dc:Bounds x="830" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="982" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
-        <dc:Bounds x="220" y="77" width="640" height="200" />
+        <dc:Bounds x="220" y="77" width="550" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_117o128_di" bpmnElement="Event_117o128">
         <dc:Bounds x="260" y="159" width="36" height="36" />
@@ -180,12 +181,12 @@ del(precoProdutoNormalizado)</bpmn:script>
         <dc:Bounds x="340" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1dydh6d_di" bpmnElement="Event_1dydh6d">
-        <dc:Bounds x="742" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_01u9h9m_di" bpmnElement="NormalizandoEstoque">
         <dc:Bounds x="510" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1dydh6d_di" bpmnElement="Event_1dydh6d">
+        <dc:Bounds x="692" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1l99k7c_di" bpmnElement="Flow_1l99k7c">
         <di:waypoint x="296" y="177" />
@@ -197,7 +198,7 @@ del(precoProdutoNormalizado)</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_14z5yhx_di" bpmnElement="Flow_14z5yhx">
         <di:waypoint x="610" y="177" />
-        <di:waypoint x="742" y="177" />
+        <di:waypoint x="692" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-122" y="177" />
@@ -208,12 +209,12 @@ del(precoProdutoNormalizado)</bpmn:script>
         <di:waypoint x="220" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1n8yish_di" bpmnElement="Flow_1n8yish">
-        <di:waypoint x="1060" y="177" />
-        <di:waypoint x="1112" y="177" />
+        <di:waypoint x="930" y="177" />
+        <di:waypoint x="982" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0kxg7eo_di" bpmnElement="Flow_0kxg7eo">
-        <di:waypoint x="860" y="177" />
-        <di:waypoint x="960" y="177" />
+        <di:waypoint x="770" y="177" />
+        <di:waypoint x="830" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13pu6hq_di" bpmnElement="Flow_13pu6hq">
         <di:waypoint x="20" y="177" />
