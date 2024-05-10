@@ -6,7 +6,7 @@
     "produto"
   ],
   "properties": {
-    "firstName": {
+    "produto": {
       "type": "string",
       "title": "First name",
       "default": "Chuck"
