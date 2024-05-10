@@ -210,7 +210,7 @@ for a in depositos:
             "label":a["WhsCode"] + ' - ' + a["WhsName"]
         }
     )</spiffworkflow:preScript>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:incoming>Flow_0ho3zz6</bpmn:incoming>
@@ -233,61 +233,47 @@ for a in depositos:
     <bpmn:sequenceFlow id="Flow_1462x9u" sourceRef="Gateway_0mqija0" targetRef="Activity_01z33ta">
       <bpmn:conditionExpression>produtosDepositos == []</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:exclusiveGateway id="Gateway_0zhxafw">
+    <bpmn:exclusiveGateway id="Gateway_0zhxafw" default="Flow_0ho3zz6">
       <bpmn:incoming>Flow_0n3n3cb</bpmn:incoming>
       <bpmn:outgoing>Flow_0ho3zz6</bpmn:outgoing>
       <bpmn:outgoing>Flow_1tjhwv5</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0n3n3cb" sourceRef="Activity_01z33ta" targetRef="Gateway_0zhxafw" />
-    <bpmn:sequenceFlow id="Flow_0ho3zz6" sourceRef="Gateway_0zhxafw" targetRef="Activity_00bh8bd" />
+    <bpmn:sequenceFlow id="Flow_0ho3zz6" sourceRef="Gateway_0zhxafw" targetRef="Activity_00bh8bd">
+      <bpmn:conditionExpression>novaBusca == True</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:userTask id="Activity_01z33ta" name="Movimento não encontrado">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>&lt;span style="font-weight: bold; color: red;"&gt;Nenhum movimento encontrado para o &lt;/span&gt;&lt;span style="color: black;"&gt;produto &lt;span style="font-style: italic;"&gt; **{{produto}}**&lt;/span&gt; e depósito &lt;span style="font-style: italic;"&gt;**{{deposito}}**&lt;/span&gt;&lt;/span&gt;
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="" />
-          <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-produto-deposito-uischema.json" />
+          <spiffworkflow:property name="formJsonSchemaFilename" value="selecionar-novos-parametros-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-novos-parametros-uischema.json" />
         </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1462x9u</bpmn:incoming>
       <bpmn:outgoing>Flow_0n3n3cb</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_1tjhwv5" sourceRef="Gateway_0zhxafw" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_1tjhwv5" sourceRef="Gateway_0zhxafw" targetRef="EndEvent_1">
+      <bpmn:conditionExpression>novaBusca == False</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
   </bpmn:process>
   <bpmn:dataStore id="depositos" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="982" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1oot5j9_di" bpmnElement="EntradasItens">
-        <dc:Bounds x="830" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-218" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_122wunj_di" bpmnElement="Activity_00bh8bd">
-        <dc:Bounds x="-150" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1y3s6q4_di" bpmnElement="DataStoreReference_1y3s6q4">
-        <dc:Bounds x="-125" y="-75" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="-125" y="-105" width="50" height="14" />
-        </bpmndi:BPMNLabel>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="982" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0mqija0_di" bpmnElement="Gateway_0mqija0" isMarkerVisible="true">
-        <dc:Bounds x="125" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_1gw7jjv" bpmnElement="Gateway_0zhxafw" isMarkerVisible="true">
-        <dc:Bounds x="15" y="365" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0tm9ngj_di" bpmnElement="Activity_01z33ta">
-        <dc:Bounds x="-10" y="250" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_1oot5j9_di" bpmnElement="EntradasItens">
+        <dc:Bounds x="830" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
@@ -326,6 +312,24 @@ for a in depositos:
         <di:waypoint x="540" y="177" />
         <di:waypoint x="570" y="177" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_122wunj_di" bpmnElement="Activity_00bh8bd">
+        <dc:Bounds x="-150" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1y3s6q4_di" bpmnElement="DataStoreReference_1y3s6q4">
+        <dc:Bounds x="-125" y="-75" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-125" y="-105" width="50" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0mqija0_di" bpmnElement="Gateway_0mqija0" isMarkerVisible="true">
+        <dc:Bounds x="125" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1gw7jjv" bpmnElement="Gateway_0zhxafw" isMarkerVisible="true">
+        <dc:Bounds x="15" y="365" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0tm9ngj_di" bpmnElement="Activity_01z33ta">
+        <dc:Bounds x="-10" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-182" y="177" />
         <di:waypoint x="-150" y="177" />
