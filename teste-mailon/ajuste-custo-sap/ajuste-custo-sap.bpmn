@@ -365,15 +365,17 @@ unidadeEstoque = y['unidade estoque']</spiffworkflow:preScript>
 precoProdutoNormalizado = float(y["preço unitario"].replace(",", ".")) / multiplicador
 
 precoTotalNormalizado = precoProdutoNormalizado * quantidadeEstoqueNormalizada
+precoUnitarioEstoqueNormalizado = float(y['preco unitario total'].replace(",", "."))
 
 y['quantidade'] = quantidadeEstoqueNormalizada
 y['preço unitario'] = precoProdutoNormalizado
 y['preço total'] = precoTotalNormalizado
-y['preco unitario total'] = float(y['preco unitario total'].replace(",", "."))
+y['preco unitario total'] = precoUnitarioEstoqueNormalizado
 
 del(quantidadeEstoqueNormalizada)
 del(precoProdutoNormalizado)
 del(precoTotalNormalizado)
+del(precoUnitarioEstoqueNormalizado)
 
 y['documento'] = nomeObjeto</bpmn:script>
       </bpmn:scriptTask>
