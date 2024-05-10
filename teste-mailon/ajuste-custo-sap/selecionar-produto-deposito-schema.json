@@ -8,7 +8,7 @@
   "properties": {
     "produto": {
       "type": "string",
-      "title": "First name",
+      "title": "Prodti",
       "default": "Chuck"
     }
   }
