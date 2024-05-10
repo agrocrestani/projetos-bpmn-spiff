@@ -59,7 +59,7 @@ creditoValor = 0
 debitoConta = ""
 debitoValor = 0
 
-if l['tipoLancamento']:
+if l['tipoLancamento'] == "C":
     creditoConta = novaConta1
     creditoValor = l['valor']
     debitoConta = novaConta2
