@@ -178,8 +178,12 @@ del(conta)</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_14m2b3h" sourceRef="Activity_1ilc925" targetRef="EndEvent_1" />
     <bpmn:manualTask id="Activity_1ilc925">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>{%for l in lcm%}
-{{l}}
+        <spiffworkflow:instructionsForEndUser>## Lançamentos da Folha de Pagamento
+
+| Data | Evento | Conta | Conta | Valor | Filial | Centro de Custo |
+| ------ | --------- | --------- | ------- | ------- | ------ | ---------------------- |
+{%for l in lcm%}
+|{{l['TaxDate']}} | {{l['Memo']}} | 
 {%endfor%}</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_03hwcuw</bpmn:incoming>
