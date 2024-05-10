@@ -91,7 +91,7 @@ else:
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_1k3e8mw" sourceRef="BuscaProdutosPorDepositoSAP" targetRef="Activity_1vcjpb9" />
     <bpmn:sequenceFlow id="Flow_1upg8gv" sourceRef="Activity_1vcjpb9" targetRef="Activity_0pxv5ok" />
-    <bpmn:businessRuleTask id="Activity_1vcjpb9">
+    <bpmn:businessRuleTask id="Activity_1vcjpb9" name="Decision">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>unidadeDocumento = produtoDeposito['unidade documento']
 unidadeEstoque = produtoDeposito['unidade estoque']</spiffworkflow:preScript>
@@ -120,6 +120,7 @@ unidadeEstoque = produtoDeposito['unidade estoque']</spiffworkflow:preScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0s2c0do_di" bpmnElement="Activity_1vcjpb9">
         <dc:Bounds x="360" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="128" y="177" />
