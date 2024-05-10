@@ -180,11 +180,15 @@ del(conta)</spiffworkflow:postScript>
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## Lançamentos da Folha de Pagamento
 
-| Data | Evento | Conta | Conta | Valor | Filial | Centro de Custo |
-| ------ | --------- | --------- | ------- | ------- | ------ | ---------------------- |
+| Data | Evento | Credito | Debito | Valor | Filial | Centro de Custo |
+| ------ | --------- | :---------: | :-------: | -------: | :------: | :---------------------- |
 {%for l in lcm%}
-|{{l['TaxDate']}} | {{l['Memo']}} | 
-{%endfor%}</spiffworkflow:instructionsForEndUser>
+|{{l['data']}} | {{l['evento']}} | {{l['credito']}} | {{l['debito']}} | {{l['filial']}} | {{l['valor']}} | {{l['ccusto']}} | 
+{%endfor%}
+
+
+
+</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>tabela = []
 for l in lcm:
     tabela.append(
