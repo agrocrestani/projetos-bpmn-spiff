@@ -40,8 +40,11 @@ query = f"""
     WHERE t0."ItemCode" = '011021' AND t1."WhsCode" = '03.FCOL'
 """
 produtosDepositos = Hana(connection).selectDb(query)
+
 totalRegistros = len(produtosDepositos)
-contador = 0</bpmn:script>
+contador = 0
+
+del(produtoDeposito)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="Activity_0pxv5ok" name="Iterando">
       <bpmn:extensionElements>
