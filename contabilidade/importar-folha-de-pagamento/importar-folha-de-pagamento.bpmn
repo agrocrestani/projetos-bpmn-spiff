@@ -98,13 +98,13 @@ empresas = []
 if l['empresa'] not in empresas:
     empresas.append(l['empresa'])
 
-# filiais = []
-# if l['filiais'] not in filiais:
-#     filiais.append(l['filiais'])
+filiais = []
+if l['filial'] not in filiais:
+    filiais.append(l['filial'])
 
-# ccustos = []
-# if l['ccusto'] not in ccustos:
-#     ccustos.append(l['ccusto'])
+ccustos = []
+if l['ccusto'] not in ccustos:
+    ccustos.append(l['ccusto'])
 
 tabela = []
 tabela.append(
