@@ -41,6 +41,7 @@ query = f"""
     INNER JOIN {baseSap}.PCH1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '{deposito}'
     INNER JOIN {baseSap}.OPCH t3 ON t3."DocEntry" = t2."DocEntry" AND t3.CANCELED = 'N'
     WHERE t0."ItemCode" = '{produto}' AND t1."WhsCode" = '{deposito}'
+    ORDER BY t3."DocEntry"
 """
 produtosDepositos = Hana(connection).selectDb(query)
 
