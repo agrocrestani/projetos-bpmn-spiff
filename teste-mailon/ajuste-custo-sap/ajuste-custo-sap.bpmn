@@ -66,7 +66,6 @@ if isinstance(produtosDepositosNormalizados, list):
             quantidade = float(produto["quantidade"])
             total_preco_unitario += preco_unitario * quantidade
             total_quantidade += quantidade
-         ,
 else:
     print("Erro: 'produtosDespositos' não é uma lista.")
 
