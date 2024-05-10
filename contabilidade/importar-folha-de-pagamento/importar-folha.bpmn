@@ -60,7 +60,7 @@ lcm = []</bpmn:script>
       </bpmn:startEvent>
       <bpmn:sequenceFlow id="Flow_0uhx84e" sourceRef="Event_1x8i9tu" targetRef="Activity_0huvav9" />
       <bpmn:endEvent id="Event_13af83c">
-        <bpmn:incoming>Flow_15c79h9</bpmn:incoming>
+        <bpmn:incoming>Flow_1jic2xl</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:scriptTask id="Activity_0huvav9" name="DePara Filial">
         <bpmn:incoming>Flow_0uhx84e</bpmn:incoming>
@@ -125,7 +125,7 @@ del(connection)
 del(query)
 del(result)</bpmn:script>
       </bpmn:scriptTask>
-      <bpmn:sequenceFlow id="Flow_15c79h9" sourceRef="Activity_0kmye5t" targetRef="Event_13af83c" />
+      <bpmn:sequenceFlow id="Flow_15c79h9" sourceRef="Activity_0kmye5t" targetRef="Activity_1afkrdp" />
       <bpmn:scriptTask id="Activity_0kmye5t" name="DePara Conta2">
         <bpmn:incoming>Flow_0on0isj</bpmn:incoming>
         <bpmn:outgoing>Flow_15c79h9</bpmn:outgoing>
@@ -149,6 +149,38 @@ query = f"""
 result = Hana(connection).selectDb(query)[0]
 
 novaConta2 = result['acctcode']
+
+del(connection)
+del(query)
+del(result)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_1jic2xl" sourceRef="Activity_1afkrdp" targetRef="Event_13af83c" />
+      <bpmn:scriptTask id="Activity_1afkrdp" name="DePara Centro de Custo">
+        <bpmn:incoming>Flow_15c79h9</bpmn:incoming>
+        <bpmn:outgoing>Flow_1jic2xl</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+
+ccusto = str(l['ccusto'])
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+            SELECT 
+                a."U_CcustoSAP" 
+            FROM 
+                SBO_CRESTANI_PRD."@AC_CCUSTO_SENIOR" a
+            WHERE 
+                a."U_Filial" = '{bplid}'
+                and a."U_CCusto_Senior" = '{ccusto}'
+        """
+result = Hana(connection).selectDb(query)[0]
+
+novoCcusto = result['u_ccustosap']
 
 del(connection)
 del(query)
@@ -200,6 +232,9 @@ del(result)</bpmn:script>
       <bpmndi:BPMNShape id="Activity_1wi8edp_di" bpmnElement="Activity_0kmye5t">
         <dc:Bounds x="420" y="50" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1tmfafy_di" bpmnElement="Activity_1afkrdp">
+        <dc:Bounds x="580" y="50" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0uhx84e_di" bpmnElement="Flow_0uhx84e">
         <di:waypoint x="46" y="90" />
         <di:waypoint x="100" y="90" />
@@ -214,6 +249,10 @@ del(result)</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_15c79h9_di" bpmnElement="Flow_15c79h9">
         <di:waypoint x="520" y="90" />
+        <di:waypoint x="580" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jic2xl_di" bpmnElement="Flow_1jic2xl">
+        <di:waypoint x="680" y="90" />
         <di:waypoint x="802" y="90" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_09zzjml_di" bpmnElement="Flow_09zzjml">
