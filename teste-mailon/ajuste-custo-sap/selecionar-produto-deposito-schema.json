@@ -12,7 +12,7 @@
     },
     "deposito": {
       "type": "string",
-      "title": "Depo"
+      "title": "Deposito"
     }
   }
 }
