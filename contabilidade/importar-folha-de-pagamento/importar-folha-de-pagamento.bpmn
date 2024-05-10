@@ -152,19 +152,6 @@ del(l)
       <bpmn:endEvent id="Event_1nxxcjy">
         <bpmn:incoming>Flow_0ry1zs4</bpmn:incoming>
       </bpmn:endEvent>
-      <bpmn:businessRuleTask id="Activity_00gm0or" name="DePara Filial">
-        <bpmn:extensionElements>
-          <spiffworkflow:calledDecisionId>deparaFilial</spiffworkflow:calledDecisionId>
-          <spiffworkflow:preScript>empresa = l['empresa']
-filial = l['filial']</spiffworkflow:preScript>
-          <spiffworkflow:postScript>bplid = int(bplid[0])
-del(empresa)
-del(filial)
-del(BPLId)</spiffworkflow:postScript>
-        </bpmn:extensionElements>
-        <bpmn:incoming>Flow_1a5u0e2</bpmn:incoming>
-        <bpmn:outgoing>Flow_1irc6y0</bpmn:outgoing>
-      </bpmn:businessRuleTask>
       <bpmn:sequenceFlow id="Flow_0eft3k6" sourceRef="Activity_0ijcvzu" targetRef="Activity_1yp1264" />
       <bpmn:businessRuleTask id="Activity_0ijcvzu" name="DePara Conta1">
         <bpmn:extensionElements>
@@ -200,6 +187,42 @@ del(conta)</spiffworkflow:postScript>
         <bpmn:incoming>Flow_03n7hvc</bpmn:incoming>
         <bpmn:outgoing>Flow_0ry1zs4</bpmn:outgoing>
       </bpmn:businessRuleTask>
+      <bpmn:scriptTask id="Activity_00gm0or" name="DePara Filial">
+        <bpmn:extensionElements>
+          <spiffworkflow:calledDecisionId>deparaFilial</spiffworkflow:calledDecisionId>
+          <spiffworkflow:preScript>empresa = l['empresa']
+filial = l['filial']</spiffworkflow:preScript>
+          <spiffworkflow:postScript>bplid = int(bplid[0])
+del(empresa)
+del(filial)
+del(BPLId)</spiffworkflow:postScript>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1a5u0e2</bpmn:incoming>
+        <bpmn:outgoing>Flow_1irc6y0</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+
+env = get_env()
+baseSap = get_secret('baseSap')
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+filialSenior = l['empresa']+l['filial']
+
+query = f"""
+        SELECT 
+            "BPLId" 
+        FROM 
+            {baseSap}.OBPL o 
+        WHERE 
+            o."U_AC_EmpFilialSenior" = {filialSenior}
+        """
+result = Hana(connection).selectDb(query)</bpmn:script>
+      </bpmn:scriptTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_03hwcuw" sourceRef="Activity_14bim7r" targetRef="Activity_1ilc925" />
     <bpmn:sequenceFlow id="Flow_14m2b3h" sourceRef="Activity_1ilc925" targetRef="EndEvent_1" />
@@ -257,6 +280,9 @@ del(conta)</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1762" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0q7htqc_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -271,12 +297,6 @@ del(conta)</spiffworkflow:postScript>
         <dc:Bounds x="420" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_08m9lx3_di" bpmnElement="Activity_1ilc925">
-        <dc:Bounds x="1520" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1762" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_14bim7r_di" bpmnElement="Activity_14bim7r" isExpanded="true">
         <dc:Bounds x="580" y="77" width="810" height="200" />
       </bpmndi:BPMNShape>
@@ -285,9 +305,6 @@ del(conta)</spiffworkflow:postScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1nxxcjy_di" bpmnElement="Event_1nxxcjy">
         <dc:Bounds x="1322" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1tva01d_di" bpmnElement="Activity_00gm0or">
-        <dc:Bounds x="710" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_19a4yky_di" bpmnElement="Activity_0ijcvzu">
         <dc:Bounds x="880" y="137" width="100" height="80" />
@@ -299,6 +316,9 @@ del(conta)</spiffworkflow:postScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0a5fa7t_di" bpmnElement="Activity_1rac236">
         <dc:Bounds x="1180" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1cc4zm8_di" bpmnElement="Activity_00gm0or">
+        <dc:Bounds x="710" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1a5u0e2_di" bpmnElement="Flow_1a5u0e2">
         <di:waypoint x="656" y="177" />
@@ -320,6 +340,9 @@ del(conta)</spiffworkflow:postScript>
         <di:waypoint x="1280" y="177" />
         <di:waypoint x="1322" y="177" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_08m9lx3_di" bpmnElement="Activity_1ilc925">
+        <dc:Bounds x="1520" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
