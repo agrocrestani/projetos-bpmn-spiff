@@ -109,11 +109,11 @@ unidadeEstoque = x['unidade estoque']</spiffworkflow:preScript>
       <bpmn:scriptTask id="NormalizandoEstoque" name="Normalizando Estoque">
         <bpmn:incoming>Flow_0f953hs</bpmn:incoming>
         <bpmn:outgoing>Flow_14z5yhx</bpmn:outgoing>
-        <bpmn:script>quantidadeEstoqueNormalizada = multiplicador * produtoDeposito['quantidade']
-precoProdutoNormalizado = multiplicador * produtoDeposito['preço unitario']
+        <bpmn:script>quantidadeEstoqueNormalizada = multiplicador * x['quantidade']
+precoProdutoNormalizado = multiplicador * x['preço unitario']
 
-produtoDeposito['quantidade'] = quantidadeEstoqueNormalizada
-produtoDeposito['preço unitario'] = precoProdutoNormalizado</bpmn:script>
+x['quantidade'] = quantidadeEstoqueNormalizada
+x['preço unitario'] = precoProdutoNormalizado</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:endEvent id="Event_1dydh6d">
         <bpmn:incoming>Flow_14z5yhx</bpmn:incoming>
