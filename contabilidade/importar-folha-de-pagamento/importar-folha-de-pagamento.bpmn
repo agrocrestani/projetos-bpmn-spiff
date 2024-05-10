@@ -291,8 +291,8 @@ query = f"""
             FROM 
                 SBO_CRESTANI_PRD."@AC_CCUSTO_SENIOR" a
             WHERE 
-                a."U_Filial" = {bplid}
-                a."U_CCusto_Senior" = {ccusto}
+                a."U_Filial" = '{bplid}'
+                a."U_CCusto_Senior" = '{ccusto}'
         """
 result = Hana(connection).selectDb(query)
 
