@@ -44,10 +44,28 @@ lcm = []</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_19ma0pn" />
     <bpmn:subProcess id="Activity_0vqrgca">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript>del(l)</spiffworkflow:postScript>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0na0ifj</bpmn:incoming>
       <bpmn:outgoing>Flow_08nb3yf</bpmn:outgoing>
-      <bpmn:multiInstanceLoopCharacteristics isSequential="true" />
-      <bpmn:startEvent id="Event_1x8i9tu" />
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
+        <bpmn:loopDataInputRef>lancamentos</bpmn:loopDataInputRef>
+        <bpmn:loopDataOutputRef>lancamentos</bpmn:loopDataOutputRef>
+        <bpmn:inputDataItem id="l" name="l" />
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="Event_1x8i9tu">
+        <bpmn:outgoing>Flow_0uhx84e</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:task id="Activity_0huvav9">
+        <bpmn:incoming>Flow_0uhx84e</bpmn:incoming>
+        <bpmn:outgoing>Flow_0rr8d7e</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:sequenceFlow id="Flow_0uhx84e" sourceRef="Event_1x8i9tu" targetRef="Activity_0huvav9" />
+      <bpmn:endEvent id="Event_13af83c">
+        <bpmn:incoming>Flow_0rr8d7e</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0rr8d7e" sourceRef="Activity_0huvav9" targetRef="Event_13af83c" />
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_08nb3yf" sourceRef="Activity_0vqrgca" targetRef="Event_122av5w" />
   </bpmn:process>
@@ -76,6 +94,20 @@ lcm = []</bpmn:script>
       <bpmndi:BPMNShape id="Event_1x8i9tu_di" bpmnElement="Event_1x8i9tu">
         <dc:Bounds x="10" y="72" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0huvav9_di" bpmnElement="Activity_0huvav9">
+        <dc:Bounds x="100" y="50" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_13af83c_di" bpmnElement="Event_13af83c">
+        <dc:Bounds x="802" y="72" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0uhx84e_di" bpmnElement="Flow_0uhx84e">
+        <di:waypoint x="46" y="90" />
+        <di:waypoint x="100" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0rr8d7e_di" bpmnElement="Flow_0rr8d7e">
+        <di:waypoint x="200" y="90" />
+        <di:waypoint x="802" y="90" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_09zzjml_di" bpmnElement="Flow_09zzjml">
         <di:waypoint x="-392" y="90" />
         <di:waypoint x="-340" y="90" />
