@@ -100,6 +100,9 @@ del(connection)
 del(consulta_compras)
 del(consulta_transferencias)
 del(consulta_saida_mercadoria)
+del(query_compras)
+del(query_transferencias)
+del(query_saida_mercadoria)
 del(baseSap)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="EntradasItens" name="Entradas dos Itens">
@@ -407,7 +410,10 @@ y['documento'] = nomeObjeto</bpmn:script>
           <spiffworkflow:property name="formJsonSchemaFilename" value="" />
           <spiffworkflow:property name="formUiSchemaFilename" value="" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript># Inicialize as variáveis para calcular o custo médio unitário
+        <spiffworkflow:preScript>del(produtosDepositos)
+del(produtosDepositosSaida)
+
+# Inicialize as variáveis para calcular o custo médio unitário
 total_preco_unitario_saida = 0
 total_quantidade_saida = 0
 total_preco_unitario_estoque_saida = 0
