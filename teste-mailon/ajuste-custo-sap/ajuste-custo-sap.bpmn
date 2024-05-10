@@ -110,12 +110,12 @@ else:
 </spiffworkflow:preScript>
         <spiffworkflow:postScript />
         <spiffworkflow:instructionsForEndUser>
-Produto: **{{ produtoAux['produto'] }}** 
-Deposito: **{{ deposito}}**
-UM: **{{produtoAux['unidade estoque']}}**
+Produto: **{{ produtoAux['produto'] }}**  &lt;br&gt;
+Deposito: **{{ deposito}}** &lt;br&gt;
+UM: **{{produtoAux['unidade estoque']}}** &lt;br&gt;
 
 Custo Médio Unitário: **{{ '{:,.3f}'.format(custo_medio_unitario).replace(',', ' ').replace('.', ',').replace(' ', '.') }}** &lt;br&gt;
-Quantidade Total: **{{ total_quantidade }}** &lt;br&gt;
+Quantidade Total: **{{ '{:,.3f}'.format(total_quantidade).replace(',', ' ').replace('.', ',').replace(' ', '.')}}** &lt;br&gt;
 Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario).replace(',', ' ').replace('.', ',').replace(' ', '.') }}**
 
 | Numero Documento | Custo Unitário | Quantidade | Custo Total | Objeto |
