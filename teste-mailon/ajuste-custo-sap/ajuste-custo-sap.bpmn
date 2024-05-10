@@ -66,7 +66,7 @@ if isinstance(produtosDepositosNormalizados, list):
             quantidade = float(produto["quantidade"])
             total_preco_unitario += preco_unitario * quantidade
             total_quantidade += quantidade
-         
+         ,
 else:
     print("Erro: 'produtosDespositos' não é uma lista.")
 
@@ -117,7 +117,7 @@ unidadeEstoque = x['unidade estoque']</spiffworkflow:preScript>
         <bpmn:incoming>Flow_0f953hs</bpmn:incoming>
         <bpmn:outgoing>Flow_14z5yhx</bpmn:outgoing>
         <bpmn:script>quantidadeEstoqueNormalizada = multiplicador * float(x["quantidade"].replace(",", "."))
-precoProdutoNormalizado = multiplicador * float(x["preço unitario"].replace(",", "."))
+precoProdutoNormalizado = float(x["preço unitario"].replace(",", ".")) / multiplicador
 
 x['quantidade'] = quantidadeEstoqueNormalizada
 x['preço unitario'] = precoProdutoNormalizado
