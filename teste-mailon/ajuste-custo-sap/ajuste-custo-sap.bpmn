@@ -194,6 +194,7 @@ x['documento'] = nomeObjeto</bpmn:script>
           <spiffworkflow:property name="formJsonSchemaFilename" value="selecionar-produto-deposito-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-produto-deposito-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:preScript>depositos = almoxarifados</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_13pu6hq</bpmn:outgoing>
