@@ -1,6 +1,6 @@
 {
   "produto": "",
-  "depositos": [
+  "almoxarifados": [
     {
       "value": "apples",
       "label": "Apples"
