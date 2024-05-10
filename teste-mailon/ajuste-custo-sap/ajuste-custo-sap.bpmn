@@ -35,7 +35,7 @@ query = f"""
         CAST(t2."LineTotal" AS VARCHAR(50)) AS "Preço Total" ,
         t2."unitMsr" AS "Unidade Documento" , 
         t0."InvntryUom" AS "Unidade Estoque" , 
-        t3."DocEntry" AS "DocNum"
+        t3."DocNum" AS "DocNum"
     FROM {baseSap}.OITM t0
     INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
     INNER JOIN {baseSap}.PCH1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '{deposito}'
@@ -77,15 +77,13 @@ else:
     print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
 </spiffworkflow:preScript>
         <spiffworkflow:postScript />
-        <spiffworkflow:instructionsForEndUser>Produto: **{{ produtoAux['produto'] }}**
+        <spiffworkflow:instructionsForEndUser>Produto: **{{ produtoAux['produto'] }}**         UM: **{{produtoAux['unidade estoque']}}**
 
-Unidade de Medida: **{{produtoAux['unidade estoque']}}**
-
-Preço Médio Unidade: **{{ '{:.6f}'.format(custo_medio_unitario) }}** &lt;br&gt;
+Custo Médio Unitário: **{{ '{:.6f}'.format(custo_medio_unitario) }}** &lt;br&gt;
 Quantidade Total: **{{ total_quantidade }}** &lt;br&gt;
-Preço Total: **{{ '{:.6f}'.format(total_preco_unitario) }}**
+Custo Total: **{{ '{:.6f}'.format(total_preco_unitario) }}**
 
-| Numero Documento | Preço Unitário | Quantidade | Preço Total |
+| Numero Documento | Custo Unitário | Quantidade | Custo Total |
 | ------- | -------------- | ---------- | --------------- |
 {% for produto in produtosDepositosNormalizados %}
 | {{ produto['docnum'] }} | {{ '{:.6f}'.format(produto['preço unitario']) }} | {{ produto['quantidade'] }} | {{  '{:.6f}'.format(produto['preço total']) }} |
