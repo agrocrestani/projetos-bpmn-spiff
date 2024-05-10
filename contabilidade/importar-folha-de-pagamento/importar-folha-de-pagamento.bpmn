@@ -148,11 +148,10 @@ del(l)
         <bpmn:outgoing>Flow_1a5u0e2</bpmn:outgoing>
       </bpmn:startEvent>
       <bpmn:sequenceFlow id="Flow_1a5u0e2" sourceRef="Event_0ijstwu" targetRef="Activity_00gm0or" />
-      <bpmn:sequenceFlow id="Flow_1irc6y0" sourceRef="Activity_00gm0or" targetRef="Activity_0ijcvzu" />
+      <bpmn:sequenceFlow id="Flow_1irc6y0" sourceRef="Activity_00gm0or" targetRef="Activity_1mqqtka" />
       <bpmn:endEvent id="Event_1nxxcjy">
         <bpmn:incoming>Flow_0ry1zs4</bpmn:incoming>
       </bpmn:endEvent>
-      <bpmn:sequenceFlow id="Flow_0eft3k6" sourceRef="Activity_0ijcvzu" targetRef="Activity_1yp1264" />
       <bpmn:sequenceFlow id="Flow_03n7hvc" sourceRef="Activity_1yp1264" targetRef="Activity_1rac236" />
       <bpmn:sequenceFlow id="Flow_0ry1zs4" sourceRef="Activity_1rac236" targetRef="Event_1nxxcjy" />
       <bpmn:scriptTask id="Activity_00gm0or" name="DePara Filial">
@@ -193,41 +192,6 @@ result = Hana(connection).selectDb(query)[0]
 bplid = result['bplid']
 </bpmn:script>
       </bpmn:scriptTask>
-      <bpmn:scriptTask id="Activity_0ijcvzu" name="DePara Conta1">
-        <bpmn:extensionElements>
-          <spiffworkflow:instructionsForEndUser>{{l}}</spiffworkflow:instructionsForEndUser>
-          <spiffworkflow:preScript />
-          <spiffworkflow:calledDecisionId>depara-contas</spiffworkflow:calledDecisionId>
-          <spiffworkflow:postScript>novaConta1 = novaConta
-del(novaConta)
-del(conta)</spiffworkflow:postScript>
-        </bpmn:extensionElements>
-        <bpmn:incoming>Flow_1irc6y0</bpmn:incoming>
-        <bpmn:outgoing>Flow_0eft3k6</bpmn:outgoing>
-        <bpmn:script>from connectordb.hana import Hana
-
-env = get_env()
-baseSap = get_secret('baseSap')
-
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
-
-query = f"""
-        SELECT 
-			"AcctCode"
-		FROM 
-			SBO_CRESTANI_PRD.OACT o 
-		WHERE 
-			o."U_AC_Conta_Senior" = '{l['conta1']}'
-        """
-result = Hana(connection).selectDb(query)[0]
-
-novaConta1 = result['acctcode']</bpmn:script>
-      </bpmn:scriptTask>
       <bpmn:scriptTask id="Activity_1yp1264" name="DePara Conta2">
         <bpmn:extensionElements>
           <spiffworkflow:calledDecisionId>depara-contas</spiffworkflow:calledDecisionId>
@@ -236,7 +200,7 @@ novaConta1 = result['acctcode']</bpmn:script>
 del(novaConta)
 del(conta)</spiffworkflow:postScript>
         </bpmn:extensionElements>
-        <bpmn:incoming>Flow_0eft3k6</bpmn:incoming>
+        <bpmn:incoming>Flow_0pigitw</bpmn:incoming>
         <bpmn:outgoing>Flow_03n7hvc</bpmn:outgoing>
         <bpmn:script>from connectordb.hana import Hana
 
@@ -296,6 +260,34 @@ query = f"""
 result = Hana(connection).selectDb(query)[0]
 
 novoCcusto = result['u_ccustosap']</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_0pigitw" sourceRef="Activity_1mqqtka" targetRef="Activity_1yp1264" />
+      <bpmn:scriptTask id="Activity_1mqqtka" name="DePara Conta1">
+        <bpmn:incoming>Flow_1irc6y0</bpmn:incoming>
+        <bpmn:outgoing>Flow_0pigitw</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+
+env = get_env()
+baseSap = get_secret('baseSap')
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+        SELECT 
+			"AcctCode"
+		FROM 
+			SBO_CRESTANI_PRD.OACT o 
+		WHERE 
+			o."U_AC_Conta_Senior" = '{l['conta1']}'
+        """
+result = Hana(connection).selectDb(query)[0]
+
+novaConta1 = result['acctcode']</bpmn:script>
       </bpmn:scriptTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_03hwcuw" sourceRef="Activity_14bim7r" targetRef="Activity_1ilc925" />
@@ -383,14 +375,15 @@ novoCcusto = result['u_ccustosap']</bpmn:script>
       <bpmndi:BPMNShape id="Activity_13lpypp_di" bpmnElement="Activity_00gm0or">
         <dc:Bounds x="710" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0iw5gmz_di" bpmnElement="Activity_0ijcvzu">
-        <dc:Bounds x="880" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0pzmajd_di" bpmnElement="Activity_1yp1264">
         <dc:Bounds x="1040" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_08jj6xs_di" bpmnElement="Activity_1rac236">
         <dc:Bounds x="1180" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1bxbsxr_di" bpmnElement="Activity_1mqqtka">
+        <dc:Bounds x="870" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1a5u0e2_di" bpmnElement="Flow_1a5u0e2">
         <di:waypoint x="656" y="177" />
@@ -398,11 +391,7 @@ novoCcusto = result['u_ccustosap']</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1irc6y0_di" bpmnElement="Flow_1irc6y0">
         <di:waypoint x="810" y="177" />
-        <di:waypoint x="880" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0eft3k6_di" bpmnElement="Flow_0eft3k6">
-        <di:waypoint x="980" y="177" />
-        <di:waypoint x="1040" y="177" />
+        <di:waypoint x="870" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_03n7hvc_di" bpmnElement="Flow_03n7hvc">
         <di:waypoint x="1140" y="177" />
@@ -411,6 +400,10 @@ novoCcusto = result['u_ccustosap']</bpmn:script>
       <bpmndi:BPMNEdge id="Flow_0ry1zs4_di" bpmnElement="Flow_0ry1zs4">
         <di:waypoint x="1280" y="177" />
         <di:waypoint x="1322" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0pigitw_di" bpmnElement="Flow_0pigitw">
+        <di:waypoint x="970" y="177" />
+        <di:waypoint x="1040" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Activity_08m9lx3_di" bpmnElement="Activity_1ilc925">
         <dc:Bounds x="1520" y="137" width="100" height="80" />
