@@ -56,8 +56,8 @@ total_preco_unitario = 0
 total_quantidade = 0
 
 # Verifique se produtosDespositos é uma lista
-if isinstance(produtosDespositos, list):
-    for produto in produtosDespositos:
+if isinstance(x, list):
+    for produto in x:
         # Verifique se o produto contém as chaves necessárias
         if "preço unitario" in produto and "quantidade" in produto:
             preco_unitario = float(produto["preço unitario"].replace(",", "."))
