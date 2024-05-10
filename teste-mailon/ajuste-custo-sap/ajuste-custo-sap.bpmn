@@ -79,7 +79,7 @@ else:
         <spiffworkflow:postScript />
         <spiffworkflow:instructionsForEndUser>Produto: **{{ produtoAux['produto'] }}**
 
-Unidade de Medida: **{{produto['unidade estoque']}}**
+Unidade de Medida: **{{produtoAux['unidade estoque']}}**
 
 Preço Médio Unidade: **{{ '{:.6f}'.format(custo_medio_unitario) }}** &lt;br&gt;
 Quantidade Total: **{{ total_quantidade }}** &lt;br&gt;
@@ -88,7 +88,7 @@ Preço Total: **{{ '{:.6f}'.format(total_preco_unitario) }}**
 | Numero Documento | Preço Unitário | Quantidade | Preço Total |
 | ------- | -------------- | ---------- | --------------- |
 {% for produto in produtosDepositosNormalizados %}
-| {{ produto['docnum'] }} | {{ '{:.6f}'.format(produto['preço unitario']) }} | {{ produto['quantidade'] }} | {{ produto['preço total'] }} |
+| {{ produto['docnum'] }} | {{ '{:.6f}'.format(produto['preço unitario']) }} | {{ produto['quantidade'] }} | {{  '{:.6f}'.format(produto['preço total']) }} |
 {% endfor %}
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
