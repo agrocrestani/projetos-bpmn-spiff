@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="DeParaCentroCusto" name="DePara Centro de Custo" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="DeParaCCusto" name="DePara Centro de Custo">
+    <decisionTable id="decisionTable_1">
+      <input id="InputClause_0eubyw3">
+        <inputExpression id="LiteralExpression_04prayq" typeRef="Any">
+          <text>bplid</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0p2gv3j">
+        <inputExpression id="LiteralExpression_09p2chw" typeRef="Any">
+          <text>ccusto</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" name="novoCcusto" typeRef="Any" />
+      <rule id="DecisionRule_1m2ej8m">
+        <description>Produção Lavoura</description>
+        <inputEntry id="UnaryTests_12dblqm">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ufr3f5">
+          <text>"12101"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ihp7g7">
+          <text>"QUEPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19z15qx">
+        <description>Sede Produção</description>
+        <inputEntry id="UnaryTests_0x52qki">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12ilk38">
+          <text>"12102"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0x4so00">
+          <text>"QUEPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02fcj52">
+        <description>Administrativo Fazenda</description>
+        <inputEntry id="UnaryTests_0g2o84x">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01lbckj">
+          <text>"12103"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mpkdam">
+          <text>"QUEPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0o6qaq2">
+        <description>Pecuaria</description>
+        <inputEntry id="UnaryTests_0jaxk41">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1e4v58k">
+          <text>"12106"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zyauoa">
+          <text>"QUEPEC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0z9cpt7">
+        <description>UBA</description>
+        <inputEntry id="UnaryTests_00bf6l6">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gy6hju">
+          <text>"12201"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tup51y">
+          <text>"QUEUBA"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ox44j3">
+        <description>UBS</description>
+        <inputEntry id="UnaryTests_0q1oet9">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08ohfwx">
+          <text>"12202"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14r1kfx">
+          <text>"QUEUBS"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ruhphq">
+        <description>Armazem</description>
+        <inputEntry id="UnaryTests_024ry9p">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xz4n6l">
+          <text>"12203"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10bjyla">
+          <text>"QUEARM"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ebedgq">
+        <description>Cantina</description>
+        <inputEntry id="UnaryTests_0d9oe0n">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17w4n47">
+          <text>"12302"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tf60gb">
+          <text>"QUEPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ghihze">
+        <description>Oficina/Manutenção</description>
+        <inputEntry id="UnaryTests_1mujnnb">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qfz9vo">
+          <text>"12303"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1w6rkq5">
+          <text>"QUEMEC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09pageu">
+        <description>Comercial</description>
+        <inputEntry id="UnaryTests_0ele9l5">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gt6g4p">
+          <text>"12304"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xo9gmt">
+          <text>"CORPCOM"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0doj3iq">
+        <description>UBS02</description>
+        <inputEntry id="UnaryTests_03sqc39">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0iqtrg3">
+          <text>"12305"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18o4hbd">
+          <text>"QUEUBS"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vkb2s7">
+        <description>Produção Corporativo</description>
+        <inputEntry id="UnaryTests_02wpkgh">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_108bwmr">
+          <text>"12306"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kaqxqf">
+          <text>"FAZDIR"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0npzp97">
+        <description>Aprendizagem</description>
+        <inputEntry id="UnaryTests_0h238l1">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sj1uke">
+          <text>"12307"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1nct4mp">
+          <text>"CORPADM"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xypmhf">
+        <description>Aviação Comercial</description>
+        <inputEntry id="UnaryTests_09d2s0j">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gx90ro">
+          <text>"12308"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0yhtkql">
+          <text>"CORPAVIA"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0scgizq">
+        <description>Cerca</description>
+        <inputEntry id="UnaryTests_1rrbfc7">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_153gda0">
+          <text>"12309"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1m36ifg">
+          <text>"QUEPEC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16bw3uj">
+        <description>Conselho ADM</description>
+        <inputEntry id="UnaryTests_11b26xl">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04e0il6">
+          <text>"12310"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_145coqi">
+          <text>"CORPADM"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hbge12">
+        <description>Administrativo - Escritório</description>
+        <inputEntry id="UnaryTests_06fa3lo">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0waz4r3">
+          <text>"11102"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fg0ly3">
+          <text>"CORPADM"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10wtwoi">
+        <description>Produção Lavoura</description>
+        <inputEntry id="UnaryTests_1h3sri0">
+          <text>2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fhhhl3">
+          <text>"12101"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1j75vsz">
+          <text>"TGAPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bcc4l7">
+        <description>Sede Produção</description>
+        <inputEntry id="UnaryTests_14hav2z">
+          <text>2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hndk91">
+          <text>"12102"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03o8ah8">
+          <text>"TGAPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07vvrso">
+        <description>Administrativo Fazenda</description>
+        <inputEntry id="UnaryTests_1ptl1tk">
+          <text>2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10ztszn">
+          <text>"12103"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lwp2at">
+          <text>"TGAPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18hrh33">
+        <description>Cantina</description>
+        <inputEntry id="UnaryTests_1n53h5q">
+          <text>2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01e5bpj">
+          <text>"12302"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17tj86u">
+          <text>"TGAPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gnvtey">
+        <description>Oficina/Manutenção</description>
+        <inputEntry id="UnaryTests_0u633iv">
+          <text>2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0h2jbbn">
+          <text>"12303"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1r2xh8k">
+          <text>"TGAMEC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1s7u5pi">
+        <description>Produção Corporativo</description>
+        <inputEntry id="UnaryTests_0g8a60n">
+          <text>2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kjvuxs">
+          <text>"12306"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1nuyadn">
+          <text>"FAZDIR"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0s4sqvf">
+        <description>Produção Lavoura</description>
+        <inputEntry id="UnaryTests_19faq4x">
+          <text>3</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fcunep">
+          <text>"12101"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13kfy29">
+          <text>"TGAPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1f42805">
+        <description>Sede Produção</description>
+        <inputEntry id="UnaryTests_1wc0fhp">
+          <text>3</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qudfrs">
+          <text>"12102"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ua9bdq">
+          <text>"TGAPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0msof5k">
+        <description>Administrativo Fazenda</description>
+        <inputEntry id="UnaryTests_1k8uhht">
+          <text>3</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wmbsym">
+          <text>"12103"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ni4s81">
+          <text>"TGAPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15tod4l">
+        <description>Cantina</description>
+        <inputEntry id="UnaryTests_0u6dzqx">
+          <text>3</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1weot9x">
+          <text>"12302"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01pkt9y">
+          <text>"TGAPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ik7ymb">
+        <description>Oficina/Manutenção</description>
+        <inputEntry id="UnaryTests_1n49zqc">
+          <text>3</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bqaxdt">
+          <text>"12303"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0in7iag">
+          <text>"TGAMEC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0s0mxqi">
+        <description>Produção Corporativo</description>
+        <inputEntry id="UnaryTests_1w08599">
+          <text>3</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nhdtsi">
+          <text>"12306"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ijgnkn">
+          <text>"FAZDIR"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_161f9j4">
+        <description>Produção Lavoura</description>
+        <inputEntry id="UnaryTests_18bvbqe">
+          <text>4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_137a9qg">
+          <text>"12101"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0z92m3p">
+          <text>"CJOPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tgg33c">
+        <description>Sede Produção</description>
+        <inputEntry id="UnaryTests_1bgb33v">
+          <text>4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0re67zc">
+          <text>"12102"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1r80chu">
+          <text>"CJOPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0n931s2">
+        <description>Administrativo Fazenda</description>
+        <inputEntry id="UnaryTests_1nkcjfq">
+          <text>4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1he9yik">
+          <text>"12103"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f0r3rx">
+          <text>"CJOPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16sj4g6">
+        <description>Cantina</description>
+        <inputEntry id="UnaryTests_1mrxx2d">
+          <text>4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k6q32m">
+          <text>"12302"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ffm0zs">
+          <text>"CJOPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qgl32h">
+        <description>Oficina/Manutenção</description>
+        <inputEntry id="UnaryTests_0lzp81s">
+          <text>4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wghx6t">
+          <text>"12303"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1c7ufgd">
+          <text>"CJOMEC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kvq5b9">
+        <description>Produção Corporativo</description>
+        <inputEntry id="UnaryTests_0v21zfb">
+          <text>4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lpb48e">
+          <text>"12306"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1x6t0o8">
+          <text>"FAZDIR"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0dqz430">
+        <description>Produção Lavoura</description>
+        <inputEntry id="UnaryTests_0ztyo66">
+          <text>5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1u0xqe7">
+          <text>"12101"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1iedw9r">
+          <text>"BRAPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09gbxq5">
+        <description>Sede Produção</description>
+        <inputEntry id="UnaryTests_14blmgf">
+          <text>5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0odes23">
+          <text>"12102"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0svdlq6">
+          <text>"BRAPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hdm38m">
+        <description>Cantina</description>
+        <inputEntry id="UnaryTests_0zeyr7l">
+          <text>5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t2lwab">
+          <text>"12302"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cpzsvk">
+          <text>"BRAPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09ccrrb">
+        <description>Administrativo Fazenda</description>
+        <inputEntry id="UnaryTests_0arf4ht">
+          <text>5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09ot10k">
+          <text>"12103"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wdq36x">
+          <text>"BRAPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1e17xif">
+        <description>Oficina/Manutenção</description>
+        <inputEntry id="UnaryTests_0pfpcap">
+          <text>5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gnasze">
+          <text>"12303"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1moez78">
+          <text>"BRAMEC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0m00ly5">
+        <description>Produção Corporativo</description>
+        <inputEntry id="UnaryTests_0dpxmqj">
+          <text>5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1scfk9u">
+          <text>"12306"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1t5u4rv">
+          <text>"FAZDIR"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_1cykosu">
+      <dmndi:DMNShape id="DMNShape_1dhfq2s" dmnElementRef="DeParaCCusto">
+        <dc:Bounds height="80" width="180" x="157" y="151" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
