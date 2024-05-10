@@ -1,7 +1,6 @@
 {
   "produto": "fdf",
-  "deposito": "fdfd",
-  "fruits": [
+  "deposito": [
     {
       "value": "apples",
       "label": "Apples"
