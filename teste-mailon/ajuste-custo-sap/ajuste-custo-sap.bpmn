@@ -43,8 +43,7 @@ produtosDepositos = Hana(connection).selectDb(query)
 
 totalRegistros = len(produtosDepositos)
 contador = 0
-
-del(produtoDeposito)</bpmn:script>
+</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="Activity_0pxv5ok" name="Iterando">
       <bpmn:extensionElements>
@@ -90,15 +89,15 @@ else:
       <bpmn:multiInstanceLoopCharacteristics isSequential="true">
         <bpmn:loopDataInputRef>produtosDepositos</bpmn:loopDataInputRef>
         <bpmn:loopDataOutputRef>produtosDepositos</bpmn:loopDataOutputRef>
-        <bpmn:inputDataItem id="produtoDeposito" name="produtoDeposito" />
+        <bpmn:inputDataItem id="x" name="x" />
       </bpmn:multiInstanceLoopCharacteristics>
       <bpmn:startEvent id="Event_117o128">
         <bpmn:outgoing>Flow_1l99k7c</bpmn:outgoing>
       </bpmn:startEvent>
       <bpmn:businessRuleTask id="Activity_1vcjpb9" name="Decision">
         <bpmn:extensionElements>
-          <spiffworkflow:preScript>unidadeDocumento = produtoDeposito['unidade documento']
-unidadeEstoque = produtoDeposito['unidade estoque']</spiffworkflow:preScript>
+          <spiffworkflow:preScript>unidadeDocumento = x['unidade documento']
+unidadeEstoque = x['unidade estoque']</spiffworkflow:preScript>
           <spiffworkflow:postScript>multiplicador = multiplicador</spiffworkflow:postScript>
           <spiffworkflow:calledDecisionId>decision_1</spiffworkflow:calledDecisionId>
         </bpmn:extensionElements>
