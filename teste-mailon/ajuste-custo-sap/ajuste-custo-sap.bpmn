@@ -27,7 +27,8 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
-query = f"""
+# Consulta para produtos comprados (PCH1/OPCH)
+query_compras = f"""
     SELECT 
         t0."ItemCode" || ' - ' || t0."ItemName" AS "Produto" , 
         CAST(t2."Price" AS VARCHAR(50)) AS "Preço Unitario" , 
@@ -43,7 +44,10 @@ query = f"""
     INNER JOIN {baseSap}.OPCH t3 ON t3."DocEntry" = t2."DocEntry" AND t3.CANCELED = 'N'
     WHERE t0."ItemCode" = '{produto}' AND t1."WhsCode" = '{deposito}'
     ORDER BY t3."DocEntry"
-    UNION
+"""
+
+# Consulta para produtos de transferência (PDN1/OPDN)
+query_transferencias = f"""
     SELECT 
         t0."ItemCode" || ' - ' || t0."ItemName" AS "Produto" , 
         CAST(t2."Price" AS VARCHAR(50)) AS "Preço Unitario" , 
@@ -60,9 +64,16 @@ query = f"""
     WHERE t0."ItemCode" = '{produto}' AND t1."WhsCode" = '{deposito}'
     ORDER BY t3."DocEntry"
 """
-produtosDepositos = Hana(connection).selectDb(query)
 
-totalRegistros = len(produtosDepositos)</bpmn:script>
+# Executar as consultas
+consulta_compras = Hana(connection).selectDb(query_compras)
+consulta_transferencias = Hana(connection).selectDb(query_transferencias)
+
+# Combinar os resultados
+produtosDepositos = consulta_compras + consulta_transferencias
+
+totalRegistros = len(produtosDepositos)
+</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="EntradasItens" name="Entradas dos Itens">
       <bpmn:extensionElements>
