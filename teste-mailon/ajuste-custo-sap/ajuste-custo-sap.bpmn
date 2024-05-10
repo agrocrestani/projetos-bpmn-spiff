@@ -194,7 +194,15 @@ x['documento'] = nomeObjeto</bpmn:script>
           <spiffworkflow:property name="formJsonSchemaFilename" value="selecionar-produto-deposito-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-produto-deposito-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript>almoxarifados = almoxarifados</spiffworkflow:preScript>
+        <spiffworkflow:preScript>depositos = []
+
+for a in almoxarifados:
+    depositos.append(
+        {
+            "value":a["WhsCode"],
+            "label":a["WhsCode"] + ' - ' + a["WhsName"]
+        }
+    )</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_13pu6hq</bpmn:outgoing>
@@ -222,12 +230,6 @@ x['documento'] = nomeObjeto</bpmn:script>
       <bpmndi:BPMNShape id="Activity_1oot5j9_di" bpmnElement="EntradasItens">
         <dc:Bounds x="830" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1y3s6q4_di" bpmnElement="DataStoreReference_1y3s6q4">
-        <dc:Bounds x="-55" y="-45" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="-65" y="-75" width="70" height="14" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
@@ -268,6 +270,12 @@ x['documento'] = nomeObjeto</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Activity_122wunj_di" bpmnElement="Activity_00bh8bd">
         <dc:Bounds x="-80" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1y3s6q4_di" bpmnElement="DataStoreReference_1y3s6q4">
+        <dc:Bounds x="-55" y="-45" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-65" y="-75" width="70" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-122" y="177" />
