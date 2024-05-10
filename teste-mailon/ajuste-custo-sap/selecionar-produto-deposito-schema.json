@@ -1,5 +1,5 @@
 {
-  "title": "Dropdown list",
+  "title": "Selecionar ",
   "type": "object",
   "required": [
     "produto",
