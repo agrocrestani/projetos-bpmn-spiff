@@ -371,6 +371,7 @@ y['quantidade'] = quantidadeEstoqueNormalizada
 y['preço unitario'] = precoProdutoNormalizado
 y['preço total'] = precoTotalNormalizado
 y['preço unitario estoque'] = precoUnitarioEstoqueNormalizado
+y['preço total estoque'] = quantidadeEstoqueNormalizada * precoUnitarioEstoqueNormalizado
 
 del(quantidadeEstoqueNormalizada)
 del(precoProdutoNormalizado)
