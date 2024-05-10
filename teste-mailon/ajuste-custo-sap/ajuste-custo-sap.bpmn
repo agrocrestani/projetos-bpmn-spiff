@@ -306,6 +306,7 @@ query_saida_mercadoria = f"""
         CAST(t2."Price" AS VARCHAR(50)) AS "Preço Unitario" , 
         CAST(t2."Quantity" AS VARCHAR(50)) AS "Quantidade" ,
         CAST(t2."LineTotal" AS VARCHAR(50)) AS "Preço Total" ,
+        CAST(t2."StockPrice" AS VARCHAR(50)) AS "Preço Unitario Estoque" ,
         t2."unitMsr" AS "Unidade Documento" , 
         t0."InvntryUom" AS "Unidade Estoque" , 
         CAST(t3."DocNum" AS VARCHAR(50)) AS "DocNum" ,
@@ -432,10 +433,10 @@ Custo Médio Unitário: **{{ '{:,.3f}'.format(custo_medio_unitario_saida).replac
 Quantidade Total: **{{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.')}}** &lt;br&gt;
 Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}**
 
-| Numero Documento | Custo Unitário | Quantidade | Custo Total | Objeto |
-| ------- | -------------- | ---------- | --------------- | --------------------- |
+| Numero Documento | Custo Unitário | Quantidade | Custo Total | Objeto | Custo Unitario Estoque | Custo Total Estoque |
+| ------- | -------------- | ---------- | --------------- | --------------------- | ------------- | --------------- |
 {% for produto in produtosDepositosSaidaNormalizados%}
-| {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['preço unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ produto['quantidade'] }} | {{ '{:,.3f}'.format(produto['preço total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['documento']}} |
+| {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['preço unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ produto['quantidade'] }} | {{ '{:,.3f}'.format(produto['preço total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['documento']}} | {{ '{:,.3f}'.format(produto['preço unitario estoque']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | sadasd |
 {% endfor %}
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
