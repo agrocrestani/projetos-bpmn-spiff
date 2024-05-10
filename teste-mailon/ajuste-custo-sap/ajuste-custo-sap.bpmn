@@ -179,7 +179,7 @@ x['documento'] = nomeObjeto</bpmn:script>
         <bpmn:extensionElements>
           <spiffworkflow:calledDecisionId>ObjetoMarketing</spiffworkflow:calledDecisionId>
           <spiffworkflow:preScript>objeto = x['documento']</spiffworkflow:preScript>
-          <spiffworkflow:postScript>nomeObjeto = nomeObjeto</spiffworkflow:postScript>
+          <spiffworkflow:postScript></spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0f953hs</bpmn:incoming>
         <bpmn:outgoing>Flow_1xlv71s</bpmn:outgoing>
