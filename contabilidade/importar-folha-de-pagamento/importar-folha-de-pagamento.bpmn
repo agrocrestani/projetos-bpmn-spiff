@@ -94,9 +94,9 @@ lcm.append(
     }
 )
 
-# empresas = []
-# if l['empresa'] not in empresas:
-#     empresas.append(l['empresa'])
+empresas = []
+if l['empresa'] not in empresas:
+    empresas.append(l['empresa'])
 
 # filiais = []
 # if l['filiais'] not in filiais:
