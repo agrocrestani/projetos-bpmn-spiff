@@ -29,6 +29,13 @@
                 "name": "Departamentos",
                 "schema": {}
             },
+            "depositos": {
+                "description": "",
+                "identifier": "depositos",
+                "location": "",
+                "name": "Depositos",
+                "schema": {}
+            },
             "filiais": {
                 "description": "",
                 "identifier": "filiais",
