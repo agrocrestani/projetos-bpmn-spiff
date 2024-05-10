@@ -43,6 +43,7 @@ query = f"""
     INNER JOIN {baseSap}.OPCH t3 ON t3."DocEntry" = t2."DocEntry" AND t3.CANCELED = 'N'
     WHERE t0."ItemCode" = '{produto}' AND t1."WhsCode" = '{deposito}'
     ORDER BY t3."DocEntry"
+    UNION
     SELECT 
         t0."ItemCode" || ' - ' || t0."ItemName" AS "Produto" , 
         CAST(t2."Price" AS VARCHAR(50)) AS "Preço Unitario" , 
