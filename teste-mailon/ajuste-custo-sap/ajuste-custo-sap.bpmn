@@ -179,7 +179,7 @@ x['documento'] = nomeObjeto</bpmn:script>
         <bpmn:extensionElements>
           <spiffworkflow:calledDecisionId>ObjetoMarketing</spiffworkflow:calledDecisionId>
           <spiffworkflow:preScript>objeto = x['documento']</spiffworkflow:preScript>
-          <spiffworkflow:postScript></spiffworkflow:postScript>
+          <spiffworkflow:postScript />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0f953hs</bpmn:incoming>
         <bpmn:outgoing>Flow_1xlv71s</bpmn:outgoing>
@@ -225,15 +225,15 @@ x['documento'] = nomeObjeto</bpmn:script>
         <dc:Bounds x="310" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_01u9h9m_di" bpmnElement="NormalizandoEstoque">
+        <dc:Bounds x="570" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1dydh6d_di" bpmnElement="Event_1dydh6d">
         <dc:Bounds x="712" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0dkscvs_di" bpmnElement="DEPARAObjetoMarketing">
         <dc:Bounds x="440" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_01u9h9m_di" bpmnElement="NormalizandoEstoque">
-        <dc:Bounds x="570" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1l99k7c_di" bpmnElement="Flow_1l99k7c">
