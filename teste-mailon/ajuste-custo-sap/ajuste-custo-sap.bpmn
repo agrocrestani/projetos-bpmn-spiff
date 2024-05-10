@@ -84,6 +84,9 @@ else:
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="Activity_0pxv5ok" targetRef="EndEvent_1" />
     <bpmn:subProcess id="Activity_1d1r8sl">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript>del(x)</spiffworkflow:postScript>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_12354sq</bpmn:incoming>
       <bpmn:outgoing>Flow_0kxg7eo</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics isSequential="true">
