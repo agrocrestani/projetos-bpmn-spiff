@@ -461,10 +461,10 @@ Custo Total Estoque: **{{ '{:,.3f}'.format(total_preco_unitario_estoque_saida).r
 Custo Médio Unitário: **{{ '{:,.3f}'.format(custo_medio_unitario_medio_estoque_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}** &lt;br&gt;
 Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}**
 
-| Numero Documento | Custo Unitário | Quantidade | Custo Total | Objeto | Custo Unitario Estoque | Custo Total Estoque |
-| ------- | -------------- | ---------- | --------------- | --------------------- | ------------- | --------------- |
+| Numero Documento | Custo Unitário | Quantidade | Custo Total | Objeto | Custo Unitario Estoque | Custo Total Estoque | Custo Total Medio |
+| ------- | -------------- | ---------- | --------------- | --------------------- | ------------- | --------------- | ----------- |
 {% for produto in produtosDepositosSaidaNormalizados%}
-| {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['preço unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ produto['quantidade'] }} | {{ '{:,.3f}'.format(produto['preço total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['documento']}} | {{ '{:,.3f}'.format(produto['preço unitario estoque']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | sadasd |
+| {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['preço unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ produto['quantidade'] }} | {{ '{:,.3f}'.format(produto['preço total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['documento']}} | {{ '{:,.3f}'.format(produto['preço unitario estoque']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preço total estoque']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preço total custo medio']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
 {% endfor %}
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
