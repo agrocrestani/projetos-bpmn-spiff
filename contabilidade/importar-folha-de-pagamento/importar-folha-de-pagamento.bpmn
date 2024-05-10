@@ -295,7 +295,7 @@ query = f"""
         """
 result = Hana(connection).selectDb(query)[0]
 
-novoCCusto = result['u_ccustosap']</bpmn:script>
+novoCcusto = result['u_ccustosap']</bpmn:script>
       </bpmn:scriptTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_03hwcuw" sourceRef="Activity_14bim7r" targetRef="Activity_1ilc925" />
