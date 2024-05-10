@@ -6,8 +6,8 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_00bh8bd" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_1n8yish</bpmn:incoming>
       <bpmn:incoming>Flow_1tjhwv5</bpmn:incoming>
+      <bpmn:incoming>Flow_00do74e</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:scriptTask id="BuscaProdutosPorDepositoSAP" name="Busca Produtos por Deposito no SAP">
       <bpmn:extensionElements>
@@ -67,16 +67,39 @@ query_transferencias = f"""
     WHERE t0."ItemCode" = '{produto}' AND t1."WhsCode" = '{deposito}'
     ORDER BY t3."DocEntry"
 """
+
+query_saida_mercadoria = f"""
+    SELECT 
+        t0."ItemCode" || ' - ' || t0."ItemName" AS "Produto" , 
+        CAST(t2."Price" AS VARCHAR(50)) AS "Preço Unitario" , 
+        CAST(t2."Quantity" AS VARCHAR(50)) AS "Quantidade" ,
+        CAST(t2."LineTotal" AS VARCHAR(50)) AS "Preço Total" ,
+        t2."unitMsr" AS "Unidade Documento" , 
+        t0."InvntryUom" AS "Unidade Estoque" , 
+        CAST(t3."DocNum" AS VARCHAR(50)) AS "DocNum" ,
+        CAST(t3."ObjType" AS VARCHAR(50)) AS "Documento"
+    FROM {baseSap}.OITM t0
+    INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
+    INNER JOIN {baseSap}.IGE1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '{deposito}'
+    INNER JOIN {baseSap}.OIGE t3 ON t3."DocEntry" = t2."DocEntry" AND t3.CANCELED = 'N'
+    WHERE t0."ItemCode" = '{produto}' AND t1."WhsCode" = '{deposito}'
+    ORDER BY t3."DocEntry"
+"""
+
 # Executar as consultas
 consulta_compras = Hana(connection).selectDb(query_compras)
 consulta_transferencias = Hana(connection).selectDb(query_transferencias)
+consulta_saida_mercadoria = Hana(connection).selectDb(query_saida_mercadoria)
 
 # Combinar os resultados
 produtosDepositos = consulta_compras + consulta_transferencias
 
+produtosDepositosSaida = consulta_saida_mercadoria
+
 del(connection)
 del(consulta_compras)
 del(consulta_transferencias)
+del(consulta_saida_mercadoria)
 del(baseSap)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="EntradasItens" name="Entradas dos Itens">
@@ -128,7 +151,7 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario).replace(',', ' ').repla
       <bpmn:incoming>Flow_0kxg7eo</bpmn:incoming>
       <bpmn:outgoing>Flow_1n8yish</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="EntradasItens" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="EntradasItens" targetRef="BuscaMovimentosSaidaSAP" />
     <bpmn:subProcess id="Activity_1d1r8sl">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>produtosDepositosNormalizados.append(x)
@@ -258,6 +281,168 @@ for a in depositos:
     <bpmn:sequenceFlow id="Flow_1tjhwv5" sourceRef="Gateway_0zhxafw" targetRef="EndEvent_1">
       <bpmn:conditionExpression>novaBusca == False</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
+    <bpmn:scriptTask id="BuscaMovimentosSaidaSAP" name="Busca Movimentos de Saida no SAP">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1n8yish</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ubbx6l</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+baseSap = get_secret('baseSap')
+
+produtosDepositosSaidaNormalizados = []
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query_saida_mercadoria = f"""
+    SELECT 
+        t0."ItemCode" || ' - ' || t0."ItemName" AS "Produto" , 
+        CAST(t2."Price" AS VARCHAR(50)) AS "Preço Unitario" , 
+        CAST(t2."Quantity" AS VARCHAR(50)) AS "Quantidade" ,
+        CAST(t2."LineTotal" AS VARCHAR(50)) AS "Preço Total" ,
+        t2."unitMsr" AS "Unidade Documento" , 
+        t0."InvntryUom" AS "Unidade Estoque" , 
+        CAST(t3."DocNum" AS VARCHAR(50)) AS "DocNum" ,
+        CAST(t3."ObjType" AS VARCHAR(50)) AS "Documento"
+    FROM {baseSap}.OITM t0
+    INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
+    INNER JOIN {baseSap}.IGE1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '{deposito}'
+    INNER JOIN {baseSap}.OIGE t3 ON t3."DocEntry" = t2."DocEntry" AND t3.CANCELED = 'N'
+    WHERE t0."ItemCode" = '{produto}' AND t1."WhsCode" = '{deposito}'
+    ORDER BY t3."DocEntry"
+"""
+
+# Executar as consultas
+consulta_saida_mercadoria = Hana(connection).selectDb(query_saida_mercadoria)
+
+# Combinar os resultados
+produtosDepositosSaida = consulta_saida_mercadoria
+
+del(connection)
+del(consulta_saida_mercadoria)
+del(baseSap)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_0ubbx6l" sourceRef="BuscaMovimentosSaidaSAP" targetRef="Activity_0v6aoxc" />
+    <bpmn:subProcess id="Activity_0v6aoxc">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript>produtosDepositosSaidaNormalizados.append(y)
+
+del(y)</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ubbx6l</bpmn:incoming>
+      <bpmn:outgoing>Flow_0cx01to</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
+        <bpmn:loopDataInputRef>produtosDepositosSaida</bpmn:loopDataInputRef>
+        <bpmn:loopDataOutputRef>produtosDepositosSaida</bpmn:loopDataOutputRef>
+        <bpmn:inputDataItem id="y" name="y" />
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="Event_09gfe3l">
+        <bpmn:outgoing>Flow_10pu0iu</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:businessRuleTask id="Activity_1ah3spi" name="Conversor de Unidade de Medida">
+        <bpmn:extensionElements>
+          <spiffworkflow:preScript>unidadeDocumento = y['unidade documento']
+unidadeEstoque = y['unidade estoque']</spiffworkflow:preScript>
+          <spiffworkflow:postScript>multiplicador = multiplicador
+
+</spiffworkflow:postScript>
+          <spiffworkflow:calledDecisionId>decision_1</spiffworkflow:calledDecisionId>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_10pu0iu</bpmn:incoming>
+        <bpmn:outgoing>Flow_1h9w6p8</bpmn:outgoing>
+      </bpmn:businessRuleTask>
+      <bpmn:scriptTask id="Activity_1fcb378" name="Normalizando Estoque">
+        <bpmn:incoming>Flow_1lutyyg</bpmn:incoming>
+        <bpmn:outgoing>Flow_0d0tcve</bpmn:outgoing>
+        <bpmn:script>quantidadeEstoqueNormalizada = multiplicador * float(y["quantidade"].replace(",", "."))
+precoProdutoNormalizado = float(y["preço unitario"].replace(",", ".")) / multiplicador
+
+precoTotalNormalizado = precoProdutoNormalizado * quantidadeEstoqueNormalizada
+
+y['quantidade'] = quantidadeEstoqueNormalizada
+y['preço unitario'] = precoProdutoNormalizado
+y['preço total'] = precoTotalNormalizado
+
+del(quantidadeEstoqueNormalizada)
+del(precoProdutoNormalizado)
+del(precoTotalNormalizado)
+
+y['documento'] = nomeObjeto</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:endEvent id="Event_18fxrzx">
+        <bpmn:incoming>Flow_0d0tcve</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:businessRuleTask id="Activity_0bdd7ta" name="DE PARA Objeto Marketing">
+        <bpmn:extensionElements>
+          <spiffworkflow:calledDecisionId>ObjetoMarketing</spiffworkflow:calledDecisionId>
+          <spiffworkflow:preScript>objeto = y['documento']</spiffworkflow:preScript>
+          <spiffworkflow:postScript />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1h9w6p8</bpmn:incoming>
+        <bpmn:outgoing>Flow_1lutyyg</bpmn:outgoing>
+      </bpmn:businessRuleTask>
+      <bpmn:sequenceFlow id="Flow_10pu0iu" sourceRef="Event_09gfe3l" targetRef="Activity_1ah3spi" />
+      <bpmn:sequenceFlow id="Flow_1h9w6p8" sourceRef="Activity_1ah3spi" targetRef="Activity_0bdd7ta" />
+      <bpmn:sequenceFlow id="Flow_1lutyyg" sourceRef="Activity_0bdd7ta" targetRef="Activity_1fcb378" />
+      <bpmn:sequenceFlow id="Flow_0d0tcve" sourceRef="Activity_1fcb378" targetRef="Event_18fxrzx" />
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_0cx01to" sourceRef="Activity_0v6aoxc" targetRef="SaidaItens" />
+    <bpmn:manualTask id="SaidaItens" name="Saida dos Itens">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="" />
+        </spiffworkflow:properties>
+        <spiffworkflow:preScript># Inicialize as variáveis para calcular o custo médio unitário
+total_preco_unitario_saida = 0
+total_quantidade_saida = 0
+
+# Verifique se produtosDespositos é uma lista
+if isinstance(produtosDepositosSaidaNormalizados, list):
+    for produtoAux in produtosDepositosSaidaNormalizados:
+        # Verifique se o produto contém as chaves necessárias
+        if "preço unitario" in produtoAux and "quantidade" in produtoAux:
+            preco_unitario_saida = float(produtoAux["preço unitario"])
+            quantidade_saida = float(produtoAux["quantidade"])
+            total_preco_unitario_saida += preco_unitario_saida * quantidade_saida
+            total_quantidade_saida += quantidade_saida
+else:
+    print("Erro: 'produtosDepositosSaidaNormalizados' não é uma lista.")
+
+# Verifique se houve algum produto na lista
+if total_quantidade_saida != 0:
+    custo_medio_unitario_saida = total_preco_unitario_saida / total_quantidade_saida
+    print("Custo médio unitário:", custo_medio_unitario_saida)
+else:
+    print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
+</spiffworkflow:preScript>
+        <spiffworkflow:postScript />
+        <spiffworkflow:instructionsForEndUser>
+Produto: **{{ produtoAux['produto'] }}**  &lt;br&gt;
+Deposito: **{{ deposito}}** &lt;br&gt;
+UM: **{{produtoAux['unidade estoque']}}** &lt;br&gt;
+
+Custo Médio Unitário: **{{ '{:,.3f}'.format(custo_medio_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}** &lt;br&gt;
+Quantidade Total: **{{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.')}}** &lt;br&gt;
+Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}**
+
+| Numero Documento | Custo Unitário | Quantidade | Custo Total | Objeto |
+| ------- | -------------- | ---------- | --------------- | --------------------- |
+{% for produto in produtosDepositosNormalizados %}
+| {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['preço unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ produto['quantidade'] }} | {{ '{:,.3f}'.format(produto['preço total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['documento']}} |
+{% endfor %}
+</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0cx01to</bpmn:incoming>
+      <bpmn:outgoing>Flow_00do74e</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_00do74e" sourceRef="SaidaItens" targetRef="EndEvent_1" />
   </bpmn:process>
   <bpmn:dataStore id="depositos" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -265,15 +450,23 @@ for a in depositos:
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-218" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="982" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1oot5j9_di" bpmnElement="EntradasItens">
         <dc:Bounds x="830" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0pzmp4f" bpmnElement="BuscaMovimentosSaidaSAP">
+        <dc:Bounds x="990" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1972" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_006mvds" bpmnElement="SaidaItens">
+        <dc:Bounds x="1790" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
@@ -331,13 +524,50 @@ for a in depositos:
       <bpmndi:BPMNShape id="Activity_0tm9ngj_di" bpmnElement="Activity_01z33ta">
         <dc:Bounds x="-10" y="250" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0nepfng" bpmnElement="Activity_0v6aoxc" isExpanded="true">
+        <dc:Bounds x="1180" y="77" width="550" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_19bwiw7" bpmnElement="Event_09gfe3l">
+        <dc:Bounds x="1202" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1v0t226" bpmnElement="Activity_1ah3spi">
+        <dc:Bounds x="1270" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0s2hj59" bpmnElement="Activity_1fcb378">
+        <dc:Bounds x="1530" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_13s3rvv" bpmnElement="Event_18fxrzx">
+        <dc:Bounds x="1672" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0l7a7om" bpmnElement="Activity_0bdd7ta">
+        <dc:Bounds x="1400" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_1kqtgak" bpmnElement="Flow_10pu0iu">
+        <di:waypoint x="1238" y="177" />
+        <di:waypoint x="1270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_18hck36" bpmnElement="Flow_1h9w6p8">
+        <di:waypoint x="1370" y="177" />
+        <di:waypoint x="1400" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_1giw19v" bpmnElement="Flow_1lutyyg">
+        <di:waypoint x="1500" y="177" />
+        <di:waypoint x="1530" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0p4illk" bpmnElement="Flow_0d0tcve">
+        <di:waypoint x="1630" y="177" />
+        <di:waypoint x="1672" y="177" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-182" y="177" />
         <di:waypoint x="-150" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1n8yish_di" bpmnElement="Flow_1n8yish">
         <di:waypoint x="930" y="177" />
-        <di:waypoint x="982" y="177" />
+        <di:waypoint x="990" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12354sq_di" bpmnElement="Flow_12354sq">
         <di:waypoint x="90" y="177" />
@@ -375,8 +605,20 @@ for a in depositos:
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1tjhwv5_di" bpmnElement="Flow_1tjhwv5">
         <di:waypoint x="65" y="390" />
-        <di:waypoint x="1000" y="390" />
-        <di:waypoint x="1000" y="195" />
+        <di:waypoint x="1990" y="390" />
+        <di:waypoint x="1990" y="195" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ubbx6l_di" bpmnElement="Flow_0ubbx6l">
+        <di:waypoint x="1090" y="177" />
+        <di:waypoint x="1180" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cx01to_di" bpmnElement="Flow_0cx01to">
+        <di:waypoint x="1730" y="177" />
+        <di:waypoint x="1790" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00do74e_di" bpmnElement="Flow_00do74e">
+        <di:waypoint x="1890" y="177" />
+        <di:waypoint x="1972" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
