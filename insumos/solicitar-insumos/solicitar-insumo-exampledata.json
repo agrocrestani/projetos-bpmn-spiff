@@ -9,7 +9,7 @@
       "quantidade": 1000
     },
     {
-      "insumo": "{\"name\":\"MALATHION UL\",\"code\":\"022777\",\"OnHand\":\"6000.00\",\"InvntryUom\":\"LITRO\"}",
+      "insumo": "{\"name\":\"MALATHION UL\",\"ItemCode\":\"022777\",\"OnHand\":\"6000.00\",\"InvntryUom\":\"LITRO\"}",
       "quantidade": 200
     }
   ],
