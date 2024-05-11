@@ -1,11 +1,11 @@
 {
   "solicitacao": [
     {
-      "insumo": "{\"name\":\"JAVA 200 SP\",\"code\":\"022771\",\"OnHand\":\"5.00\",\"InvntryUom\":\"QUILOGRAM\"}",
+      "insumo": "{\"name\":\"JAVA 200 SP\",\"ItemCode\":\"022771\",\"OnHand\":\"5.00\",\"InvntryUom\":\"QUILOGRAM\"}",
       "quantidade": 1
     },
     {
-      "insumo": "{\"name\":\"FINISH\",\"code\":\"022835\",\"OnHand\":\"28460.00\",\"InvntryUom\":\"LITRO\"}",
+      "insumo": "{\"name\":\"FINISH\",\"ItemCode\":\"022835\",\"OnHand\":\"28460.00\",\"InvntryUom\":\"LITRO\"}",
       "quantidade": 1000
     },
     {
