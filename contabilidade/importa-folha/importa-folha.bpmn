@@ -44,7 +44,24 @@ controles = []</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_00vuw5a">
       <bpmn:extensionElements>
-        <spiffworkflow:postScript>controle = str(l['empresa']) + str(l['filial']) + str(l['ccusto'])
+        <spiffworkflow:postScript>creditoConta = ""
+creditoValor = 0
+debitoConta = ""
+debitoValor = 0
+
+for l in tabela:
+    if l['tipoLancamento'] == "C":
+        creditoConta = novaConta1
+        creditoValor = l['valor']
+        debitoConta = novaConta2
+        debitoValor = l['valor']
+    else:    
+        creditoConta = novaConta2 
+        creditoValor = l['valor']
+        debitoConta = novaConta1
+        debitoValor = l['valor']
+        
+controle = str(l['empresa']) + str(l['filial']) + str(l['ccusto'])
 if controle not in controles:
     controles.append(controle)
 
