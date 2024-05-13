@@ -225,20 +225,20 @@ user = get_user_properties()</spiffworkflow:preScript>
         {
             "ReferenceDate": datalacto,
             "TaxDate": datalacto,
-            "Memo": l['nomeEvento'],
+            "Memo": l['evento'],
             "TransactionCode": "FOL",
             "JournalEntryLines": [
                 {
-                    "AccountCode": l['creditoConta'],
-                    "Credit": l['creditoValor'],
+                    "AccountCode": l['credito'],
+                    "Credit": l['valor'],
                     "CostingCode": l['novoCcusto'],
-                    "BPLID": l['bplid']
+                    "BPLID": l['novaFilial']
                 },
                         {
-                    "AccountCode": l['debitoConta'],
-                    "Debit": l['debitoValor'],
+                    "AccountCode": l['debito'],
+                    "Debit": l['valor'],
                     "CostingCode": l['novoCcusto'],
-                    "BPLID": l['bplid']
+                    "BPLID": l['novaFilial']
                 }
             ]
         }
