@@ -211,11 +211,15 @@ del(conta)</spiffworkflow:postScript>
 |{{l['data']}} | {{l['evento']}} | {{l['credito']}} | {{l['debito']}} | {{l['valor']}} | {{l['filial']}} | {{l['ccusto']}} | 
 {%endfor%}
 </spiffworkflow:instructionsForEndUser>
-          <spiffworkflow:preScript>novaTabela = []
+          <spiffworkflow:preScript>import locale
+locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+
+novaTabela = []
 
 for t in tabela:
     centroCusto = str(t['empresa']) + str(t['filial']) + str(t['ccusto'])
     if c == centroCusto:
+        t['valor'] = locale.format('%s', t['valor'], True)
         novaTabela.append(t)
 </spiffworkflow:preScript>
         </bpmn:extensionElements>
