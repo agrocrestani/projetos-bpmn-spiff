@@ -1,6 +1,6 @@
 {
   "title": "Verifique as informações acima e confirme caso esteja tudo correto.",
-  "description": "Os",
+  "description": "Os lançamentos apresentados for",
   "properties": {
     "done": {
       "type": "boolean",
