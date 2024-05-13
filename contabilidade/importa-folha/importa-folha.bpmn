@@ -195,7 +195,7 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 | ---------- | ------- |
 | Id da instancia | {{spiff_instancia}} |
 | Id da tarefa | {{spiff_tarefa}} |
-| Responsável pela verificação | {{spiff_usuario]}} |
+| Responsável pela verificação | {{spiff_usuario}} |
 
 
 ### Informações do Sênior
