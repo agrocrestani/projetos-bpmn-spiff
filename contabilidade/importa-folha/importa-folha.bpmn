@@ -219,10 +219,10 @@ for t in tabela:
         novaTabela.append(t)
 total =  "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X", ".")
 
-task = get_current_task_info()
 user = get_current_user()
 # userLast = get_last_user_completing_task()</spiffworkflow:preScript>
-          <spiffworkflow:postScript>items = []
+          <spiffworkflow:postScript>task = get_current_task_info()
+items = []
 for l in novaTabela:
     items.append({
                     "AccountCode": l['credito'],
