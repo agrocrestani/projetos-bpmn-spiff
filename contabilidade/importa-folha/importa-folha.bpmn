@@ -222,7 +222,8 @@ for t in tabela:
         novaTabela.append(t)
 total =  "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X", ".")
 
-task = get_task_data_value()</spiffworkflow:preScript>
+# task = get_task_data_value()
+user = get_user_properties()</spiffworkflow:preScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1tk8uye</bpmn:incoming>
         <bpmn:outgoing>Flow_08p6xgu</bpmn:outgoing>
