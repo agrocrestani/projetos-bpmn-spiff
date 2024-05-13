@@ -220,14 +220,12 @@ total =  "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X"
 
 # task = get_task_data_value()
 user = get_user_properties()</spiffworkflow:preScript>
-          <spiffworkflow:postScript>for l in novaTabela:
-    lcm.append(
-        {
-            "ReferenceDate": datalacto,
-            "TaxDate": datalacto,
-            "Memo": l['evento'],
-            "TransactionCode": "FOL",
-            "JournalEntryLines": [
+          <spiffworkflow:postScript>lcm = {
+    "ReferenceDate": datalacto,
+    "TaxDate": datalacto,
+    "Memo": l['evento'],
+    "TransactionCode": "FOL",
+    "JournalEntryLines": [
                 {
                     "AccountCode": l['credito'],
                     "Credit": l['valor'],
@@ -240,9 +238,33 @@ user = get_user_properties()</spiffworkflow:preScript>
                     "CostingCode": l['novoCcusto'],
                     "BPLID": l['novaFilial']
                 }
-            ]
-        }
-    )</spiffworkflow:postScript>
+            ] for l in novaTabela
+}
+
+
+# 
+#     lcm.append(
+#         {
+#             "ReferenceDate": datalacto,
+#             "TaxDate": datalacto,
+#             "Memo": l['evento'],
+#             "TransactionCode": "FOL",
+#             "JournalEntryLines": [
+#                 {
+#                     "AccountCode": l['credito'],
+#                     "Credit": l['valor'],
+#                     "CostingCode": l['novoCcusto'],
+#                     "BPLID": l['novaFilial']
+#                 },
+#                         {
+#                     "AccountCode": l['debito'],
+#                     "Debit": l['valor'],
+#                     "CostingCode": l['novoCcusto'],
+#                     "BPLID": l['novaFilial']
+#                 }
+#             ]
+#         }
+#     )</spiffworkflow:postScript>
           <spiffworkflow:properties>
             <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-lancamentos-schema.json" />
             <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-lancamentos-uischema.json" />
