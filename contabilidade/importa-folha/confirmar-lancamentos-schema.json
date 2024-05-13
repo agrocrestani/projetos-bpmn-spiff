@@ -1,6 +1,6 @@
 {
   "title": "Verifique as informações acima e confirme caso esteja tudo correto.",
-  "description": "Confirme ",
+  "description": "Confirme s",
   "properties": {
     "done": {
       "type": "boolean",
