@@ -210,7 +210,7 @@ del(conta)</spiffworkflow:postScript>
 {%for l in novaTabela%}
 |{{l['data']}} | {{l['evento']}} | {{l['credito']}} | {{l['debito']}} | {{l['valor']}} | {{l['filial']}} | {{l['ccusto']}} | 
 {%endfor%}
-</spiffworkflow:instructionsForEndUser>
+**Total**: | {{total}}</spiffworkflow:instructionsForEndUser>
           <spiffworkflow:preScript>novaTabela = []
 total = 0
 
