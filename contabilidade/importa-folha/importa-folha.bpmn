@@ -220,41 +220,25 @@ total =  "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X"
 
 # task = get_task_data_value()
 user = get_user_properties()</spiffworkflow:preScript>
-          <spiffworkflow:postScript>creditoConta = ""
-creditoValor = 0
-debitoConta = ""
-debitoValor = 0
-
-for l in tabela:
-    if l['tipoLancamento'] == "C":
-        creditoConta = novaConta1
-        creditoValor = l['valor']
-        debitoConta = novaConta2
-        debitoValor = l['valor']
-    else:    
-        creditoConta = novaConta2 
-        creditoValor = l['valor']
-        debitoConta = novaConta1
-        debitoValor = l['valor']
-
+          <spiffworkflow:postScript>for l in novaTabela:
     lcm.append(
         {
-            "ReferenceDate": datalacto,
-            "TaxDate": datalacto,
+            "ReferenceDate": l['datalacto'],
+            "TaxDate": l['datalacto'],
             "Memo": l['nomeEvento'],
             "TransactionCode": "FOL",
             "JournalEntryLines": [
                 {
-                    "AccountCode": creditoConta,
-                    "Credit": creditoValor,
-                    "CostingCode": novoCcusto,
-                    "BPLID": bplid
+                    "AccountCode": l['creditoConta'],
+                    "Credit": l['creditoValor'],
+                    "CostingCode": l['novoCcusto'],
+                    "BPLID": l['bplid']
                 },
                         {
-                    "AccountCode": debitoConta,
-                    "Debit": debitoValor,
-                    "CostingCode": novoCcusto,
-                    "BPLID": bplid
+                    "AccountCode": l['debitoConta'],
+                    "Debit": l['debitoValor'],
+                    "CostingCode": l['novoCcusto'],
+                    "BPLID": l['bplid']
                 }
             ]
         }
