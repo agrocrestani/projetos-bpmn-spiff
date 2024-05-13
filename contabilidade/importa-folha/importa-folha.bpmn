@@ -216,6 +216,7 @@ del(conta)</spiffworkflow:postScript>
 for t in tabela:
     centroCusto = str(t['empresa']) + str(t['filial']) + str(t['ccusto'])
     if c == centroCusto:
+        t['valor'] = "{:,.2f}".format(t['valor']).replace(",", "X").replace(".", ",").replace("X", ".")
         novaTabela.append(t)
 </spiffworkflow:preScript>
         </bpmn:extensionElements>
