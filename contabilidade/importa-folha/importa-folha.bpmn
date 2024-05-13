@@ -205,10 +205,23 @@ del(conta)</spiffworkflow:postScript>
         <bpmn:extensionElements>
           <spiffworkflow:instructionsForEndUser>## Lançamentos da Folha de Pagamento
 
+Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Filial e Centro de Custo no SAP**.
+
+
+
+### Informações do Sênior
+| Campo | Valor |
+| ---------- | ------- |
+| Empresa | {{l.empresa}} |
+| Filial | {{l.filial}} |
+| Centro de Custo | {{l.ccusto}} |
+
+
+### Informações que serão inputados no SAP
 | Data | Evento | Credito | Debito | Valor | Filial | Centro de Custo |
 | ------ | --------- | :---------: | :-------: | -------: | :------: | :---------------------- |
 {%for l in novaTabela%}
-|{{l['data']}} | {{l['evento']}} | {{l['credito']}} | {{l['debito']}} | {{l['valor']}} | {{l['filial']}} | {{l['ccusto']}} | 
+|{{l['data']}} | {{l['evento']}} | {{l['credito']}} | {{l['debito']}} | {{l['valor']}} | {{l['novaFilial']}} | {{l['novoCcusto']}} | 
 {%endfor%}
 **Total**: | {{total}}</spiffworkflow:instructionsForEndUser>
           <spiffworkflow:preScript>novaTabela = []
@@ -224,6 +237,7 @@ total =  "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X"
 
 # task = get_task_data_value()
 user = get_user_properties()</spiffworkflow:preScript>
+          <spiffworkflow:postScript></spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1tk8uye</bpmn:incoming>
         <bpmn:outgoing>Flow_08p6xgu</bpmn:outgoing>
