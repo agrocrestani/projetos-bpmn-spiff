@@ -223,8 +223,8 @@ user = get_user_properties()</spiffworkflow:preScript>
           <spiffworkflow:postScript>for l in novaTabela:
     lcm.append(
         {
-            "ReferenceDate": l['datalacto'],
-            "TaxDate": l['datalacto'],
+            "ReferenceDate": datalacto,
+            "TaxDate": datalacto,
             "Memo": l['nomeEvento'],
             "TransactionCode": "FOL",
             "JournalEntryLines": [
