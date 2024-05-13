@@ -202,10 +202,6 @@ del(conta)</spiffworkflow:postScript>
         <bpmn:outgoing>Flow_1tk8uye</bpmn:outgoing>
       </bpmn:startEvent>
       <bpmn:sequenceFlow id="Flow_1tk8uye" sourceRef="Event_1p5tyci" targetRef="Activity_0w2moib" />
-      <bpmn:endEvent id="Event_03wyolj">
-        <bpmn:incoming>Flow_08p6xgu</bpmn:incoming>
-      </bpmn:endEvent>
-      <bpmn:sequenceFlow id="Flow_08p6xgu" sourceRef="Activity_0w2moib" targetRef="Event_03wyolj" />
       <bpmn:userTask id="Activity_0w2moib" name="Verifica as informações">
         <bpmn:extensionElements>
           <spiffworkflow:instructionsForEndUser>## Lançamentos da Folha de Pagamento
@@ -287,8 +283,35 @@ lcm.append(
           </spiffworkflow:properties>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1tk8uye</bpmn:incoming>
-        <bpmn:outgoing>Flow_08p6xgu</bpmn:outgoing>
+        <bpmn:outgoing>Flow_0w0pxn1</bpmn:outgoing>
       </bpmn:userTask>
+      <bpmn:sequenceFlow id="Flow_0w0pxn1" sourceRef="Activity_0w2moib" targetRef="Activity_17s619s" />
+      <bpmn:endEvent id="Event_1kx644d">
+        <bpmn:incoming>Flow_10mvpwr</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_10mvpwr" sourceRef="Activity_17s619s" targetRef="Event_1kx644d" />
+      <bpmn:serviceTask id="Activity_17s619s" name="Lança no SAP">
+        <bpmn:extensionElements>
+          <spiffworkflow:postScript>del(l)</spiffworkflow:postScript>
+          <spiffworkflow:serviceTaskOperator id="http/PostRequestV2">
+            <spiffworkflow:parameters>
+              <spiffworkflow:parameter id="url" type="str" />
+              <spiffworkflow:parameter id="headers" type="any" />
+              <spiffworkflow:parameter id="data" type="any" />
+              <spiffworkflow:parameter id="basic_auth_username" type="str" />
+              <spiffworkflow:parameter id="basic_auth_password" type="str" />
+              <spiffworkflow:parameter id="verify" type="bool" />
+            </spiffworkflow:parameters>
+          </spiffworkflow:serviceTaskOperator>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0w0pxn1</bpmn:incoming>
+        <bpmn:outgoing>Flow_10mvpwr</bpmn:outgoing>
+        <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+          <bpmn:loopDataInputRef>lcm</bpmn:loopDataInputRef>
+          <bpmn:loopDataOutputRef>lcm</bpmn:loopDataOutputRef>
+          <bpmn:inputDataItem id="l" name="l" />
+        </bpmn:multiInstanceLoopCharacteristics>
+      </bpmn:serviceTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_0gu16ye" sourceRef="Activity_00vuw5a" targetRef="Activity_1v7cf9d" />
     <bpmn:sequenceFlow id="Flow_1890863" sourceRef="Activity_1v7cf9d" targetRef="Event_15s6ejv" />
@@ -311,6 +334,9 @@ lcm.append(
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1fn7pr1_di" bpmnElement="Activity_1gq0mev">
         <dc:Bounds x="430" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_15s6ejv_di" bpmnElement="Event_15s6ejv">
+        <dc:Bounds x="2402" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="620" y="77" width="910" height="200" />
@@ -356,17 +382,18 @@ lcm.append(
         <di:waypoint x="1330" y="177" />
         <di:waypoint x="1392" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Event_15s6ejv_di" bpmnElement="Event_15s6ejv">
-        <dc:Bounds x="2042" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1v7cf9d_di" bpmnElement="Activity_1v7cf9d" isExpanded="true">
-        <dc:Bounds x="1620" y="77" width="370" height="200" />
+        <dc:Bounds x="1620" y="77" width="690" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1p5tyci_di" bpmnElement="Event_1p5tyci">
         <dc:Bounds x="1660" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_03wyolj_di" bpmnElement="Event_03wyolj">
-        <dc:Bounds x="1912" y="159" width="36" height="36" />
+      <bpmndi:BPMNShape id="Event_1kx644d_di" bpmnElement="Event_1kx644d">
+        <dc:Bounds x="2102" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02u8nxm_di" bpmnElement="Activity_17s619s">
+        <dc:Bounds x="1930" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_04dfdfx_di" bpmnElement="Activity_0w2moib">
         <dc:Bounds x="1760" y="137" width="100" height="80" />
@@ -375,9 +402,13 @@ lcm.append(
         <di:waypoint x="1696" y="177" />
         <di:waypoint x="1760" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_08p6xgu_di" bpmnElement="Flow_08p6xgu">
+      <bpmndi:BPMNEdge id="Flow_0w0pxn1_di" bpmnElement="Flow_0w0pxn1">
         <di:waypoint x="1860" y="177" />
-        <di:waypoint x="1912" y="177" />
+        <di:waypoint x="1930" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10mvpwr_di" bpmnElement="Flow_10mvpwr">
+        <di:waypoint x="2030" y="177" />
+        <di:waypoint x="2102" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
@@ -400,8 +431,8 @@ lcm.append(
         <di:waypoint x="1620" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1890863_di" bpmnElement="Flow_1890863">
-        <di:waypoint x="1990" y="177" />
-        <di:waypoint x="2042" y="177" />
+        <di:waypoint x="2310" y="177" />
+        <di:waypoint x="2402" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
