@@ -217,9 +217,9 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 ### Informações do Sênior
 | Campo | Valor |
 | ---------- | ------- |
-| Empresa | {{l.empresa}} |
-| Filial | {{l.filial}} |
-| Centro de Custo | {{l.ccusto}} |
+| Empresa | {{c[0]}} |
+| Filial | {{c[1]}} |
+| Centro de Custo | {{c[2:]}} |
 
 
 ### Informações que serão inputados no SAP
@@ -242,7 +242,7 @@ total =  "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X"
 
 # task = get_task_data_value()
 user = get_user_properties()</spiffworkflow:preScript>
-          <spiffworkflow:postScript></spiffworkflow:postScript>
+          <spiffworkflow:postScript />
           <spiffworkflow:properties>
             <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-lancamentos-schema.json" />
             <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-lancamentos-uischema.json" />
