@@ -190,6 +190,12 @@ del(conta)</spiffworkflow:postScript>
 
 Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Filial e Centro de Custo no SAP**.
 
+### Dados do Processo
+| Campo | Valor |
+| ---------- | ------- |
+| Id da instancia | {{spiff_instancia}} |
+| Id da tarefa | {{spiff_tarefa}} |
+| Responsável pela verificação | {{spiff_usuario]}} |
 
 
 ### Informações do Sênior
@@ -198,7 +204,6 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 | Empresa | {{c[0]}} |
 | Filial | {{c[1]}} |
 | Centro de Custo | {{c[2:]}} |
-| Responsável pela verificação | {{user['display_name']}}
 
 
 ### Informações que serão inputados no SAP
@@ -219,10 +224,9 @@ for t in tabela:
         novaTabela.append(t)
 total =  "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X", ".")
 
-user = get_current_user()
-taskInfo = get_current_task_info()['id']
-infoProcess = get_toplevel_process_info()['process_instance_id']
-</spiffworkflow:preScript>
+spiff_instancia = get_toplevel_process_info()['process_instance_id']
+spiff_tarefa = taskInfo = get_current_task_info()['id']
+spiff_usuario = get_current_user()</spiffworkflow:preScript>
           <spiffworkflow:postScript>items = []
 for l in novaTabela:
     items.append({
@@ -247,10 +251,16 @@ lcm = {
     "TaxDate": datalacto,
     "Memo": l['evento'],
     "TransactionCode": "FOL",
+    "U_AC_Spiff_Instancia": spiff_instancia,
+    "U_AC_spiff_Tarega": spiff_tarefa,
+    "U_AC_Spiff_Usuario": spiff_usuario,
     "JournalEntryLines": [
                 items
             ] 
 }
+
+
+
 
 
 # 
