@@ -1,6 +1,6 @@
 {
   "title": "Verifique as informações acima e confirme caso esteja tudo correto.",
-  "description": "A super simple checkbox",
+  "description": "Cib,
   "properties": {
     "done": {
       "type": "boolean",
