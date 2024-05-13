@@ -198,6 +198,7 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 | Empresa | {{c[0]}} |
 | Filial | {{c[1]}} |
 | Centro de Custo | {{c[2:]}} |
+| Responsável pela verificação | {{user}}
 
 
 ### Informações que serão inputados no SAP
