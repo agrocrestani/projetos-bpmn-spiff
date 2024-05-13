@@ -220,25 +220,33 @@ total =  "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X"
 
 # task = get_task_data_value()
 user = get_user_properties()</spiffworkflow:preScript>
-          <spiffworkflow:postScript>lcm = {
+          <spiffworkflow:postScript>items = []
+for l in novaTabela:
+    items.append({
+                    "AccountCode": l['credito'],
+                    "Credit": l['valor'],
+                    "CostingCode": l['novoCcusto'],
+                    "BPLID": l['novaFilial']
+                }
+            )
+    
+for l in novaTabela:
+    items.append({
+                    "AccountCode": l['debito'],
+                    "Credit": l['valor'],
+                    "CostingCode": l['novoCcusto'],
+                    "BPLID": l['novaFilial']
+                }
+            )
+
+lcm = {
     "ReferenceDate": datalacto,
     "TaxDate": datalacto,
     "Memo": l['evento'],
     "TransactionCode": "FOL",
     "JournalEntryLines": [
-                {
-                    "AccountCode": l['credito'],
-                    "Credit": l['valor'],
-                    "CostingCode": l['novoCcusto'],
-                    "BPLID": l['novaFilial']
-                },
-                        {
-                    "AccountCode": l['debito'],
-                    "Debit": l['valor'],
-                    "CostingCode": l['novoCcusto'],
-                    "BPLID": l['novaFilial']
-                }
-            ] for l in novaTabela
+                items
+            ] 
 }
 
 
