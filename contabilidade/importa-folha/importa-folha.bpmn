@@ -202,6 +202,10 @@ del(conta)</spiffworkflow:postScript>
         <bpmn:outgoing>Flow_1tk8uye</bpmn:outgoing>
       </bpmn:startEvent>
       <bpmn:sequenceFlow id="Flow_1tk8uye" sourceRef="Event_1p5tyci" targetRef="Activity_0w2moib" />
+      <bpmn:sequenceFlow id="Flow_0w0pxn1" sourceRef="Activity_0w2moib" targetRef="Event_1kx644d" />
+      <bpmn:endEvent id="Event_1kx644d">
+        <bpmn:incoming>Flow_0w0pxn1</bpmn:incoming>
+      </bpmn:endEvent>
       <bpmn:userTask id="Activity_0w2moib" name="Verifica as informações">
         <bpmn:extensionElements>
           <spiffworkflow:instructionsForEndUser>## Lançamentos da Folha de Pagamento
@@ -243,40 +247,40 @@ creditoValor = 0
 debitoConta = ""
 debitoValor = 0
 
-if l['tipoLancamento'] == "C":
-    creditoConta = novaConta1
-    creditoValor = l['valor']
-    debitoConta = novaConta2
-    debitoValor = l['valor']
-else:    
-    creditoConta = novaConta2 
-    creditoValor = l['valor']
-    debitoConta = novaConta1
-    debitoValor = l['valor']
+for l in tabela:
+    if l['tipoLancamento'] == "C":
+        creditoConta = novaConta1
+        creditoValor = l['valor']
+        debitoConta = novaConta2
+        debitoValor = l['valor']
+    else:    
+        creditoConta = novaConta2 
+        creditoValor = l['valor']
+        debitoConta = novaConta1
+        debitoValor = l['valor']
 
-
-lcm.append(
-    {
-        "ReferenceDate": datalacto,
-        "TaxDate": datalacto,
-        "Memo": l['nomeEvento'],
-        "TransactionCode": "FOL",
-        "JournalEntryLines": [
-            {
-                "AccountCode": creditoConta,
-                "Credit": creditoValor,
-                "CostingCode": novoCcusto,
-                "BPLID": bplid
-            },
-                    {
-                "AccountCode": debitoConta,
-                "Debit": debitoValor,
-                "CostingCode": novoCcusto,
-                "BPLID": bplid
-            }
-        ]
-    }
-)</spiffworkflow:postScript>
+    lcm.append(
+        {
+            "ReferenceDate": datalacto,
+            "TaxDate": datalacto,
+            "Memo": l['nomeEvento'],
+            "TransactionCode": "FOL",
+            "JournalEntryLines": [
+                {
+                    "AccountCode": creditoConta,
+                    "Credit": creditoValor,
+                    "CostingCode": novoCcusto,
+                    "BPLID": bplid
+                },
+                        {
+                    "AccountCode": debitoConta,
+                    "Debit": debitoValor,
+                    "CostingCode": novoCcusto,
+                    "BPLID": bplid
+                }
+            ]
+        }
+    )</spiffworkflow:postScript>
           <spiffworkflow:properties>
             <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-lancamentos-schema.json" />
             <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-lancamentos-uischema.json" />
@@ -285,10 +289,6 @@ lcm.append(
         <bpmn:incoming>Flow_1tk8uye</bpmn:incoming>
         <bpmn:outgoing>Flow_0w0pxn1</bpmn:outgoing>
       </bpmn:userTask>
-      <bpmn:sequenceFlow id="Flow_0w0pxn1" sourceRef="Activity_0w2moib" targetRef="Event_1kx644d" />
-      <bpmn:endEvent id="Event_1kx644d">
-        <bpmn:incoming>Flow_0w0pxn1</bpmn:incoming>
-      </bpmn:endEvent>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_0gu16ye" sourceRef="Activity_00vuw5a" targetRef="Activity_1v7cf9d" />
     <bpmn:sequenceFlow id="Flow_1890863" sourceRef="Activity_1v7cf9d" targetRef="Event_15s6ejv" />
@@ -311,9 +311,6 @@ lcm.append(
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1fn7pr1_di" bpmnElement="Activity_1gq0mev">
         <dc:Bounds x="430" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_15s6ejv_di" bpmnElement="Event_15s6ejv">
-        <dc:Bounds x="2402" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="620" y="77" width="910" height="200" />
@@ -359,6 +356,9 @@ lcm.append(
         <di:waypoint x="1330" y="177" />
         <di:waypoint x="1392" y="177" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_15s6ejv_di" bpmnElement="Event_15s6ejv">
+        <dc:Bounds x="2402" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1v7cf9d_di" bpmnElement="Activity_1v7cf9d" isExpanded="true">
         <dc:Bounds x="1620" y="77" width="690" height="200" />
       </bpmndi:BPMNShape>
@@ -368,7 +368,7 @@ lcm.append(
       <bpmndi:BPMNShape id="Event_1kx644d_di" bpmnElement="Event_1kx644d">
         <dc:Bounds x="2102" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_04dfdfx_di" bpmnElement="Activity_0w2moib">
+      <bpmndi:BPMNShape id="Activity_1v3eutn_di" bpmnElement="Activity_0w2moib">
         <dc:Bounds x="1760" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1tk8uye_di" bpmnElement="Flow_1tk8uye">
