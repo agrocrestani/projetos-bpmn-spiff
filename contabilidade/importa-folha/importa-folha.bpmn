@@ -219,7 +219,7 @@ for t in tabela:
     if c == centroCusto:
         t['valor'] = "{:,.2f}".format(t['valor']).replace(",", "X").replace(".", ",").replace("X", ".")
         novaTabela.append(t)
-        total += t['valor']</spiffworkflow:preScript>
+        total = total + t['valor']</spiffworkflow:preScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1tk8uye</bpmn:incoming>
         <bpmn:outgoing>Flow_08p6xgu</bpmn:outgoing>
