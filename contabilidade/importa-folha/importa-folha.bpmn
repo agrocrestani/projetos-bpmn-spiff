@@ -221,7 +221,7 @@ total =  "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X"
 
 user = get_current_user()
 taskInfo = get_current_task_info()['id']
-infoProcess = get_toplevel_process_info()
+infoProcess = get_toplevel_process_info()['process_instance_id']
 </spiffworkflow:preScript>
           <spiffworkflow:postScript>items = []
 for l in novaTabela:
