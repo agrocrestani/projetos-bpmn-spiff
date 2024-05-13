@@ -44,47 +44,7 @@ controles = []</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_00vuw5a">
       <bpmn:extensionElements>
-        <spiffworkflow:postScript>creditoConta = ""
-creditoValor = 0
-debitoConta = ""
-debitoValor = 0
-
-if l['tipoLancamento'] == "C":
-    creditoConta = novaConta1
-    creditoValor = l['valor']
-    debitoConta = novaConta2
-    debitoValor = l['valor']
-else:    
-    creditoConta = novaConta2 
-    creditoValor = l['valor']
-    debitoConta = novaConta1
-    debitoValor = l['valor']
-
-
-lcm.append(
-    {
-        "ReferenceDate": datalacto,
-        "TaxDate": datalacto,
-        "Memo": l['nomeEvento'],
-        "TransactionCode": "FOL",
-        "JournalEntryLines": [
-            {
-                "AccountCode": creditoConta,
-                "Credit": creditoValor,
-                "CostingCode": novoCcusto,
-                "BPLID": bplid
-            },
-                    {
-                "AccountCode": debitoConta,
-                "Debit": debitoValor,
-                "CostingCode": novoCcusto,
-                "BPLID": bplid
-            }
-        ]
-    }
-)
-
-controle = str(l['empresa']) + str(l['filial']) + str(l['ccusto'])
+        <spiffworkflow:postScript>controle = str(l['empresa']) + str(l['filial']) + str(l['ccusto'])
 if controle not in controles:
     controles.append(controle)
 
@@ -95,6 +55,7 @@ tabela.append(
         "credito": creditoConta,
         "debito": debitoConta,
         "novaFilial": bplid,
+        "tipoLancamento": l['tipoLancamento'],
         "valor": l['valor'],
         "ccusto": l['ccusto'],
         "novoCcusto": novoCcusto,
