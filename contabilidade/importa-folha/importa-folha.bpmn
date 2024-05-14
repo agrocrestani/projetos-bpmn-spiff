@@ -248,7 +248,7 @@ for l in novaTabela:
                     "Debit": l['valor'],
                     "CostingCode": l['novoCcusto'],
                     "CostingCode2": cultura,
-                    "CostingCode3": safra
+                    "CostingCode3": safra,
                     "BPLID": l['novaFilial']
                 }
             )
@@ -257,7 +257,7 @@ for l in novaTabela:
                     "Credit": l['valor'],
                     "CostingCode": l['novoCcusto'],
                     "CostingCode2": cultura,
-                    "CostingCode3": safra
+                    "CostingCode3": safra,
                     "BPLID": l['novaFilial']
                 }
             )
@@ -434,12 +434,12 @@ headers = {
       <bpmndi:BPMNShape id="Activity_1v3eutn_di" bpmnElement="Activity_0w2moib">
         <dc:Bounds x="1770" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0gbbrla_di" bpmnElement="Gateway_0gbbrla" isMarkerVisible="true">
-        <dc:Bounds x="2105" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1g5hxev_di" bpmnElement="Activity_0nynyx4">
         <dc:Bounds x="1940" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0gbbrla_di" bpmnElement="Gateway_0gbbrla" isMarkerVisible="true">
+        <dc:Bounds x="2105" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1tk8uye_di" bpmnElement="Flow_1tk8uye">
         <di:waypoint x="1696" y="177" />
