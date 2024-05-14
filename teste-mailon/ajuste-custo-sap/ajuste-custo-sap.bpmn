@@ -145,7 +145,7 @@ Quantidade Total: **{{ '{:,.3f}'.format(total_quantidade).replace(',', ' ').repl
 Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario).replace(',', ' ').replace('.', ',').replace(' ', '.') }}**
 
 | Numero Documento | Custo Unitário | Quantidade | Custo Total | Objeto |
-| ------- | -------------- | ---------- | --------------- | --------------------- |
+| ------- | --------------: | ----------: | ---------------: | --------------------- |
 {% for produto in produtosDepositosNormalizados %}
 | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['preço unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ produto['quantidade'] }} | {{ '{:,.3f}'.format(produto['preço total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['documento']}} |
 {% endfor %}
@@ -393,7 +393,7 @@ y['documento'] = nomeObjeto</bpmn:script>
         <bpmn:extensionElements>
           <spiffworkflow:calledDecisionId>ObjetoMarketing</spiffworkflow:calledDecisionId>
           <spiffworkflow:preScript>objeto = y['documento']</spiffworkflow:preScript>
-          <spiffworkflow:postScript></spiffworkflow:postScript>
+          <spiffworkflow:postScript />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1h9w6p8</bpmn:incoming>
         <bpmn:outgoing>Flow_1lutyyg</bpmn:outgoing>
@@ -462,7 +462,7 @@ Custo Médio Unitário: **{{ '{:,.3f}'.format(custo_medio_unitario_medio_estoque
 Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}**
 
 | Numero Documento | Objeto | Quantidade  |Custo Unitário | Custo Total | Custo Unitario Estoque | Custo Total Estoque | Custo Total Medio |
-| ------- | -------------- | ---------- | --------------- | --------------------- | ------------- | --------------- | ----------- |
+| ------- | -------------- | ----------: | ---------------: | ---------------------: | -------------: | ---------------: | -----------: |
 {% for produto in produtosDepositosSaidaNormalizados%}
 | {{ produto['docnum'] }} | {{produto['documento']}} | {{ produto['quantidade'] }} | {{ '{:,.3f}'.format(produto['preço unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}| {{ '{:,.3f}'.format(produto['preço total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}  | {{ '{:,.3f}'.format(produto['preço unitario estoque']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preço total estoque']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preço total custo medio']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
 {% endfor %}
@@ -479,23 +479,15 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-218" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1972" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1oot5j9_di" bpmnElement="EntradasItens">
         <dc:Bounds x="830" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_0pzmp4f" bpmnElement="BuscaMovimentosSaidaSAP">
-        <dc:Bounds x="990" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1972" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_006mvds" bpmnElement="SaidaItens">
-        <dc:Bounds x="1790" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
@@ -553,6 +545,10 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
       <bpmndi:BPMNShape id="Activity_0tm9ngj_di" bpmnElement="Activity_01z33ta">
         <dc:Bounds x="-10" y="250" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0pzmp4f" bpmnElement="BuscaMovimentosSaidaSAP">
+        <dc:Bounds x="990" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0nepfng" bpmnElement="Activity_0v6aoxc" isExpanded="true">
         <dc:Bounds x="1180" y="77" width="550" height="200" />
       </bpmndi:BPMNShape>
@@ -590,6 +586,10 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
         <di:waypoint x="1630" y="177" />
         <di:waypoint x="1672" y="177" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BPMNShape_006mvds" bpmnElement="SaidaItens">
+        <dc:Bounds x="1790" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-182" y="177" />
         <di:waypoint x="-150" y="177" />
