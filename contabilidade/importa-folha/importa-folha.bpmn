@@ -19,8 +19,8 @@ for f in filiais:
         }
     )
 
-safras = safras
-culturas = culturas</spiffworkflow:preScript>
+n_safras = safras
+n_culturas = culturas</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="importar-folha-schema.json" />
         </spiffworkflow:properties>
