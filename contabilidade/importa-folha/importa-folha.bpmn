@@ -205,19 +205,17 @@ del(conta)</spiffworkflow:postScript>
 Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Filial e Centro de Custo no SAP**.
 
 ### Dados do Processo
-| Campo | Valor |
-| ---------- | ------- |
-| Id da instancia | {{spiff_instancia}} |
-| Id da tarefa | {{spiff_tarefa}} |
+| Campo | Valor | Campo | Valor |
+| ---------- | ------- | ---------- | ------- |
+| Id da instancia | {{spiff_instancia}} | **Safra** | {{ Safra }} |
+| Id da tarefa | {{spiff_tarefa}} | **Cultura**| {{ cultura }} |
 | Responsável pela verificação | {{spiff_usuario}} |
 
-
 ### Informações do Sênior
-| Campo | Valor |
-| ---------- | ------- |
+| Campo | Valor | Campo | Valor |
+| ---------- | ------- | ---------- | ------- |
 | Empresa | {{c[0]}} |
-| Filial | {{c[1]}} |
-| Centro de Custo | {{c[2:]}} |
+| Filial | {{c[1]}} | Centro de Custo | {{c[2:]}} |
 
 
 ### Informações que serão inputados no SAP
