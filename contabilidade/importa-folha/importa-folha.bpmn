@@ -18,7 +18,9 @@ for f in filiais:
             "label": BPLName
         }
     )
-</spiffworkflow:preScript>
+
+safras = safras
+culturas = culturas</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="importar-folha-schema.json" />
         </spiffworkflow:properties>
@@ -367,18 +369,6 @@ headers = {
       <bpmndi:BPMNShape id="Activity_1fn7pr1_di" bpmnElement="Activity_1gq0mev">
         <dc:Bounds x="430" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_14r9weh_di" bpmnElement="DataStoreReference_14r9weh">
-        <dc:Bounds x="325" y="315" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="333" y="372" width="35" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_044vwcr_di" bpmnElement="DataStoreReference_044vwcr">
-        <dc:Bounds x="405" y="315" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="409" y="372" width="42" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="620" y="77" width="910" height="200" />
       </bpmndi:BPMNShape>
@@ -467,6 +457,18 @@ headers = {
           <dc:Bounds x="2026" y="-47" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_14r9weh_di" bpmnElement="DataStoreReference_14r9weh">
+        <dc:Bounds x="325" y="315" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="333" y="372" width="35" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_044vwcr_di" bpmnElement="DataStoreReference_044vwcr">
+        <dc:Bounds x="405" y="315" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="409" y="372" width="42" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -474,6 +476,14 @@ headers = {
       <bpmndi:BPMNEdge id="DataInputAssociation_0kaqi1r_di" bpmnElement="DataInputAssociation_0kaqi1r">
         <di:waypoint x="279" y="315" />
         <di:waypoint x="316" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0p5pd4m_di" bpmnElement="DataInputAssociation_0p5pd4m">
+        <di:waypoint x="344" y="315" />
+        <di:waypoint x="322" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1jf3cq3_di" bpmnElement="DataInputAssociation_1jf3cq3">
+        <di:waypoint x="409" y="315" />
+        <di:waypoint x="328" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_081crpr_di" bpmnElement="Flow_081crpr">
         <di:waypoint x="370" y="177" />
@@ -494,14 +504,6 @@ headers = {
       <bpmndi:BPMNEdge id="Flow_1890863_di" bpmnElement="Flow_1890863">
         <di:waypoint x="2310" y="177" />
         <di:waypoint x="2402" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0p5pd4m_di" bpmnElement="DataInputAssociation_0p5pd4m">
-        <di:waypoint x="344" y="315" />
-        <di:waypoint x="322" y="217" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_1jf3cq3_di" bpmnElement="DataInputAssociation_1jf3cq3">
-        <di:waypoint x="409" y="315" />
-        <di:waypoint x="328" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
