@@ -433,12 +433,12 @@ headers = {
       <bpmndi:BPMNShape id="Activity_1v3eutn_di" bpmnElement="Activity_0w2moib">
         <dc:Bounds x="1770" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1g5hxev_di" bpmnElement="Activity_0nynyx4">
-        <dc:Bounds x="1950" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0gbbrla_di" bpmnElement="Gateway_0gbbrla" isMarkerVisible="true">
         <dc:Bounds x="2105" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1g5hxev_di" bpmnElement="Activity_0nynyx4">
+        <dc:Bounds x="1950" y="130" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1tk8uye_di" bpmnElement="Flow_1tk8uye">
         <di:waypoint x="1696" y="177" />
@@ -446,10 +446,14 @@ headers = {
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0w0pxn1_di" bpmnElement="Flow_0w0pxn1">
         <di:waypoint x="1870" y="177" />
-        <di:waypoint x="1950" y="177" />
+        <di:waypoint x="1910" y="177" />
+        <di:waypoint x="1910" y="170" />
+        <di:waypoint x="1950" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1uj6iy3_di" bpmnElement="Flow_1uj6iy3">
-        <di:waypoint x="2050" y="177" />
+        <di:waypoint x="2050" y="170" />
+        <di:waypoint x="2078" y="170" />
+        <di:waypoint x="2078" y="177" />
         <di:waypoint x="2105" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0a1062q_di" bpmnElement="Flow_0a1062q">
@@ -500,7 +504,7 @@ headers = {
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1ww8r6l_di" bpmnElement="DataInputAssociation_1ww8r6l">
         <di:waypoint x="2043" y="25" />
-        <di:waypoint x="2011" y="137" />
+        <di:waypoint x="2012" y="130" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0gu16ye_di" bpmnElement="Flow_0gu16ye">
         <di:waypoint x="1530" y="177" />
