@@ -479,14 +479,6 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
     <bpmn:sequenceFlow id="Flow_0to091p" sourceRef="Gateway_0mb0jym" targetRef="MovimentoSaidaEncontrado">
       <bpmn:conditionExpression>produtosDepositosSaida == []</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:userTask id="MovimentoSaidaEncontrado" name="Movimento de Saída não Encontrado">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>## &lt;span style="font-weight: bold; color: red;"&gt;Nenhum movimento de Saída encontrado para o &lt;br&gt;Produto &lt;span style="color: black;"&gt; **{{produto}}**&lt;/span&gt; e depósito &lt;span style="color: black;"&gt;**{{deposito}}**&lt;/span&gt; !!&lt;/span&gt;
-</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0to091p</bpmn:incoming>
-      <bpmn:outgoing>Flow_1dp3683</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:endEvent id="Event_1n8n9v9">
       <bpmn:incoming>Flow_0gpghte</bpmn:incoming>
       <bpmn:incoming>Flow_1dp3683</bpmn:incoming>
@@ -495,6 +487,14 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
       <bpmn:conditionExpression>novaBusca == False</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1dp3683" sourceRef="MovimentoSaidaEncontrado" targetRef="Event_1n8n9v9" />
+    <bpmn:manualTask id="MovimentoSaidaEncontrado" name="Movimento de Saída não Encontrado">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## &lt;span style="font-weight: bold; color: red;"&gt;Nenhum movimento de Saída encontrado para o &lt;br&gt;Produto &lt;span style="color: black;"&gt; **{{produto}}**&lt;/span&gt; e depósito &lt;span style="color: black;"&gt;**{{deposito}}**&lt;/span&gt; !!&lt;/span&gt;
+</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0to091p</bpmn:incoming>
+      <bpmn:outgoing>Flow_1dp3683</bpmn:outgoing>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:dataStore id="depositos" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -523,7 +523,7 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
       <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
         <dc:Bounds x="1142" y="372" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1y81pim_di" bpmnElement="MovimentoSaidaEncontrado">
+      <bpmndi:BPMNShape id="Activity_0jzl9cj_di" bpmnElement="MovimentoSaidaEncontrado">
         <dc:Bounds x="1110" y="250" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
