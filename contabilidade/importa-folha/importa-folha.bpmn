@@ -312,9 +312,8 @@ lcm = {
 
 url = 'https://172.20.1.9:50000/b1s/v1/JournalEntries'
 
-
 headers = {
-  'Cookie': f"'B1SESSION={loginSap}'",
+  'Cookie': f"B1SESSION={loginSap}",
   'Content-Type': 'application/json'
 }
 
