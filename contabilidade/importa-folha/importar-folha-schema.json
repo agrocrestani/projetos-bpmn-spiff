@@ -1,6 +1,7 @@
 {
   "title": "Contabilização da Folha de Pagamento",
   "type": "object",
+  
   "properties": {
     "datalacto": {
       "title": "Data de Lançamento",
