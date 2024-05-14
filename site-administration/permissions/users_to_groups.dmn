@@ -161,7 +161,7 @@
           <text>"emerson.leandro@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1xdgu24">
-          <text>"controladoria"</text>
+          <text>["controladoria","everybody"]</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0vliomv">
@@ -195,6 +195,17 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1c8f9iq">
           <text>"rh"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0f30w70">
+        <inputEntry id="UnaryTests_089f4l7">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ayvlcz">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h07rra">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
