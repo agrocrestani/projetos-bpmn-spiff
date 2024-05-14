@@ -1,6 +1,6 @@
 {
-  "title": "Importar Folha de Pagamento",
-  "description": "Importar lançamentos contabeis da folha de pagamento.",
+  "title": "Dropdown list",
+  "description": "A dropdown list with options pulled form existing Task Data. IMPORTANT - Add 'fruits' to Task Data before using this component!!!",
   "type": "object",
   "properties": {
     "datalacto": {
@@ -12,6 +12,13 @@
       "type": "string",
       "format": "data-url",
       "title": "Selecione o arquivo"
+    },
+    "favoriteFruit": {
+      "title": "Select your favorite fruit",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:fruits"
+      ]
     }
   }
 }
