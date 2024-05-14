@@ -8,5 +8,5 @@
       "accept": ".xlsx"
     }
   },
-  "ui"
+  "ui:layout": 
 }
