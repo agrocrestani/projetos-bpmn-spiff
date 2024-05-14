@@ -161,7 +161,7 @@
           <text>"emerson.leandro@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1xdgu24">
-          <text>["controladoria","everybody"]</text>
+          <text>"controladoria","everybody"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0vliomv">
