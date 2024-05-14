@@ -2,7 +2,7 @@
   "title": "Contabilização da Folha de Pagamento",
   "type": "object",
   "required": {
-    "datalacto"
+    "datalacto",
   },
   "properties": {
     "datalacto": {
