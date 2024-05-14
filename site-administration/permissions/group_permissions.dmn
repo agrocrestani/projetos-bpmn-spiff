@@ -278,7 +278,7 @@
           <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nxenh3">
-          <text>"PG:contabilidade"</text>
+          <text>"PM:contabilidade/importa-folha"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_10uy0hk">
