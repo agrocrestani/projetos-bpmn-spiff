@@ -223,7 +223,7 @@ lcm = {
           <spiffworkflow:postScript>lancado = rsp['http_status']
 number = rsp['body']['Number']
 
-del(lancamento)
+del(lancamentos)
 del(c)
 del(f)
 del(lcm)
@@ -462,17 +462,14 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
           <dc:Bounds x="409" y="372" width="42" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0x3itur_di" bpmnElement="Event_0x3itur">
-        <dc:Bounds x="2302" y="252" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1tzg16p_di" bpmnElement="Activity_1nr33uk">
-        <dc:Bounds x="2080" y="230" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1v7cf9d_di" bpmnElement="Activity_1v7cf9d" isExpanded="true">
         <dc:Bounds x="1160" y="590" width="800" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1p5tyci_di" bpmnElement="Event_1p5tyci">
         <dc:Bounds x="1200" y="672" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1kx644d_di" bpmnElement="Event_1kx644d">
+        <dc:Bounds x="1892" y="672" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1v3eutn_di" bpmnElement="Activity_0w2moib">
         <dc:Bounds x="1310" y="650" width="100" height="80" />
@@ -480,9 +477,6 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
       <bpmndi:BPMNShape id="Activity_1g5hxev_di" bpmnElement="Activity_0nynyx4">
         <dc:Bounds x="1480" y="650" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1kx644d_di" bpmnElement="Event_1kx644d">
-        <dc:Bounds x="1892" y="672" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0gbbrla_di" bpmnElement="Gateway_0gbbrla" isMarkerVisible="true">
         <dc:Bounds x="1625" y="665" width="50" height="50" />
@@ -566,6 +560,12 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1506" y="453" width="47" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0x3itur_di" bpmnElement="Event_0x3itur">
+        <dc:Bounds x="2302" y="252" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1tzg16p_di" bpmnElement="Activity_1nr33uk">
+        <dc:Bounds x="2080" y="230" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
