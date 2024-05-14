@@ -7,14 +7,7 @@
       "title": "Data de Lançamento",
       "type": "string",
       "format": "date"
-    },,
-    "favoriteFruit": {
-      "title": "Select your favorite fruit",
-      "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:fruits"
-      ]
-    }
+    },
     "file": {
       "type": "string",
       "format": "data-url",
