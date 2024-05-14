@@ -240,17 +240,7 @@ spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
 spiff_usuario = get_current_user()['display_name']</spiffworkflow:preScript>
           <spiffworkflow:postScript>items = []
-for l in novaTabela:
-    items.append({
-                    "AccountCode": l['credito'],
-                    "Credit": l['valor'],
-                    "CostingCode": l['novoCcusto'],
-                    "CostingCode2": cultura,
-                    "CostingCode3": safra
-                    "BPLID": l['novaFilial']
-                }
-            )
-    
+
 for l in novaTabela:
     items.append({
                     "AccountCode": l['debito'],
@@ -261,15 +251,24 @@ for l in novaTabela:
                     "BPLID": l['novaFilial']
                 }
             )
-
+    items.append({
+                    "AccountCode": l['credito'],
+                    "Credit": l['valor'],
+                    "CostingCode": l['novoCcusto'],
+                    "CostingCode2": cultura,
+                    "CostingCode3": safra
+                    "BPLID": l['novaFilial']
+                }
+            )
+    
 lcm = {
     "ReferenceDate": datalacto,
     "TaxDate": datalacto,
     "Memo": l['evento'],
     "TransactionCode": "FOL",
-    # "U_AC_Spiff_Instancia": spiff_instancia,
-    # "U_AC_spiff_Tarega": spiff_tarefa,
-    # "U_AC_Spiff_Usuario": spiff_usuario,
+    "U_AC_Spiff_Instancia": spiff_instancia,
+    "U_AC_spiff_Tarega": spiff_tarefa,
+    "U_AC_Spiff_Usuario": spiff_usuario,
     "JournalEntryLines": items
 }
 
