@@ -19,7 +19,7 @@
       "title": "Select your favorite fruit",
       "type": "string",
       "anyOf": [
-        "options_from_task_data_var:mc"
+        "options_from_task_data_var:n_"
       ]
     },
     "file": {
