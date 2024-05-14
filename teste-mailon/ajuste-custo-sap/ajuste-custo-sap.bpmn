@@ -77,10 +77,8 @@ produtosDepositos = consulta_compras + consulta_transferencias
 del(connection)
 del(consulta_compras)
 del(consulta_transferencias)
-del(consulta_saida_mercadoria)
 del(query_compras)
 del(query_transferencias)
-del(query_saida_mercadoria)
 del(baseSap)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="EntradasItens" name="Entradas dos Itens">
