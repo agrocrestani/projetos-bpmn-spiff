@@ -6,7 +6,6 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_00bh8bd" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_1tjhwv5</bpmn:incoming>
       <bpmn:incoming>Flow_00do74e</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:scriptTask id="BuscaProdutosPorDepositoSAP" name="Busca Produtos por Deposito no SAP">
@@ -263,7 +262,7 @@ for a in depositos:
     <bpmn:exclusiveGateway id="Gateway_0zhxafw" default="Flow_0ho3zz6">
       <bpmn:incoming>Flow_0n3n3cb</bpmn:incoming>
       <bpmn:outgoing>Flow_0ho3zz6</bpmn:outgoing>
-      <bpmn:outgoing>Flow_1tjhwv5</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0gpghte</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0n3n3cb" sourceRef="Activity_01z33ta" targetRef="Gateway_0zhxafw" />
     <bpmn:sequenceFlow id="Flow_0ho3zz6" sourceRef="Gateway_0zhxafw" targetRef="Activity_00bh8bd">
@@ -271,7 +270,7 @@ for a in depositos:
     </bpmn:sequenceFlow>
     <bpmn:userTask id="Activity_01z33ta" name="Movimento não encontrado">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>## &lt;span style="font-weight: bold; color: red;"&gt;Nenhum movimento encontrado para o &lt;br&gt;Produto &lt;span style="color: black;"&gt; **{{produto}}**&lt;/span&gt; e depósito &lt;span style="color: black;"&gt;**{{deposito}}**&lt;/span&gt; !!&lt;/span&gt;
+        <spiffworkflow:instructionsForEndUser>## &lt;span style="font-weight: bold; color: red;"&gt;Nenhum movimento de entrada encontrado para o &lt;br&gt;Produto &lt;span style="color: black;"&gt; **{{produto}}**&lt;/span&gt; e depósito &lt;span style="color: black;"&gt;**{{deposito}}**&lt;/span&gt; !!&lt;/span&gt;
 
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
@@ -282,9 +281,6 @@ for a in depositos:
       <bpmn:incoming>Flow_1462x9u</bpmn:incoming>
       <bpmn:outgoing>Flow_0n3n3cb</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_1tjhwv5" sourceRef="Gateway_0zhxafw" targetRef="EndEvent_1">
-      <bpmn:conditionExpression>novaBusca == False</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
     <bpmn:scriptTask id="BuscaMovimentosSaidaSAP" name="Busca Movimentos de Saida no SAP">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser />
@@ -333,14 +329,14 @@ del(connection)
 del(consulta_saida_mercadoria)
 del(baseSap)</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:sequenceFlow id="Flow_0ubbx6l" sourceRef="BuscaMovimentosSaidaSAP" targetRef="Activity_0v6aoxc" />
+    <bpmn:sequenceFlow id="Flow_0ubbx6l" sourceRef="BuscaMovimentosSaidaSAP" targetRef="Gateway_0mb0jym" />
     <bpmn:subProcess id="Activity_0v6aoxc">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>produtosDepositosSaidaNormalizados.append(y)
 
 del(y)</spiffworkflow:postScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0ubbx6l</bpmn:incoming>
+      <bpmn:incoming>Flow_1vgj80b</bpmn:incoming>
       <bpmn:outgoing>Flow_0cx01to</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
         <bpmn:loopDataInputRef>produtosDepositosSaida</bpmn:loopDataInputRef>
@@ -472,15 +468,39 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
       <bpmn:outgoing>Flow_00do74e</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_00do74e" sourceRef="SaidaItens" targetRef="EndEvent_1" />
+    <bpmn:exclusiveGateway id="Gateway_0mb0jym" default="Flow_1vgj80b">
+      <bpmn:incoming>Flow_0ubbx6l</bpmn:incoming>
+      <bpmn:outgoing>Flow_1vgj80b</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0to091p</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1vgj80b" sourceRef="Gateway_0mb0jym" targetRef="Activity_0v6aoxc">
+      <bpmn:conditionExpression>produtosDepositosSaida != []</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0to091p" sourceRef="Gateway_0mb0jym" targetRef="MovimentoSaidaEncontrado">
+      <bpmn:conditionExpression>produtosDepositosSaida == []</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:userTask id="MovimentoSaidaEncontrado" name="Movimento de Saída não Encontrado">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## &lt;span style="font-weight: bold; color: red;"&gt;Nenhum movimento de Saída encontrado para o &lt;br&gt;Produto &lt;span style="color: black;"&gt; **{{produto}}**&lt;/span&gt; e depósito &lt;span style="color: black;"&gt;**{{deposito}}**&lt;/span&gt; !!&lt;/span&gt;
+</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0to091p</bpmn:incoming>
+      <bpmn:outgoing>Flow_1dp3683</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_1n8n9v9">
+      <bpmn:incoming>Flow_0gpghte</bpmn:incoming>
+      <bpmn:incoming>Flow_1dp3683</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0gpghte" sourceRef="Gateway_0zhxafw" targetRef="Event_1n8n9v9">
+      <bpmn:conditionExpression>novaBusca == False</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1dp3683" sourceRef="MovimentoSaidaEncontrado" targetRef="Event_1n8n9v9" />
   </bpmn:process>
   <bpmn:dataStore id="depositos" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-218" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1972" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="-10" y="137" width="100" height="80" />
@@ -489,6 +509,22 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
       <bpmndi:BPMNShape id="Activity_1oot5j9_di" bpmnElement="EntradasItens">
         <dc:Bounds x="830" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="2012" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_006mvds" bpmnElement="SaidaItens">
+        <dc:Bounds x="1860" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0mb0jym_di" bpmnElement="Gateway_0mb0jym" isMarkerVisible="true">
+        <dc:Bounds x="1135" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
+        <dc:Bounds x="1142" y="372" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1y81pim_di" bpmnElement="MovimentoSaidaEncontrado">
+        <dc:Bounds x="1110" y="250" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
@@ -550,46 +586,42 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0nepfng" bpmnElement="Activity_0v6aoxc" isExpanded="true">
-        <dc:Bounds x="1180" y="77" width="550" height="200" />
+        <dc:Bounds x="1230" y="77" width="550" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_19bwiw7" bpmnElement="Event_09gfe3l">
-        <dc:Bounds x="1202" y="159" width="36" height="36" />
+        <dc:Bounds x="1252" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_1v0t226" bpmnElement="Activity_1ah3spi">
-        <dc:Bounds x="1270" y="137" width="100" height="80" />
+        <dc:Bounds x="1320" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0s2hj59" bpmnElement="Activity_1fcb378">
-        <dc:Bounds x="1530" y="137" width="100" height="80" />
+        <dc:Bounds x="1580" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_13s3rvv" bpmnElement="Event_18fxrzx">
-        <dc:Bounds x="1672" y="159" width="36" height="36" />
+        <dc:Bounds x="1722" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0l7a7om" bpmnElement="Activity_0bdd7ta">
-        <dc:Bounds x="1400" y="137" width="100" height="80" />
+        <dc:Bounds x="1450" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_1kqtgak" bpmnElement="Flow_10pu0iu">
-        <di:waypoint x="1238" y="177" />
-        <di:waypoint x="1270" y="177" />
+        <di:waypoint x="1288" y="177" />
+        <di:waypoint x="1320" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_18hck36" bpmnElement="Flow_1h9w6p8">
-        <di:waypoint x="1370" y="177" />
-        <di:waypoint x="1400" y="177" />
+        <di:waypoint x="1420" y="177" />
+        <di:waypoint x="1450" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_1giw19v" bpmnElement="Flow_1lutyyg">
-        <di:waypoint x="1500" y="177" />
-        <di:waypoint x="1530" y="177" />
+        <di:waypoint x="1550" y="177" />
+        <di:waypoint x="1580" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_0p4illk" bpmnElement="Flow_0d0tcve">
-        <di:waypoint x="1630" y="177" />
-        <di:waypoint x="1672" y="177" />
+        <di:waypoint x="1680" y="177" />
+        <di:waypoint x="1722" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="BPMNShape_006mvds" bpmnElement="SaidaItens">
-        <dc:Bounds x="1790" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-182" y="177" />
         <di:waypoint x="-150" y="177" />
@@ -632,22 +664,33 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
         <di:waypoint x="-100" y="390" />
         <di:waypoint x="-100" y="217" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1tjhwv5_di" bpmnElement="Flow_1tjhwv5">
-        <di:waypoint x="65" y="390" />
-        <di:waypoint x="1990" y="390" />
-        <di:waypoint x="1990" y="195" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ubbx6l_di" bpmnElement="Flow_0ubbx6l">
         <di:waypoint x="1090" y="177" />
-        <di:waypoint x="1180" y="177" />
+        <di:waypoint x="1135" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0cx01to_di" bpmnElement="Flow_0cx01to">
-        <di:waypoint x="1730" y="177" />
-        <di:waypoint x="1790" y="177" />
+        <di:waypoint x="1780" y="177" />
+        <di:waypoint x="1860" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_00do74e_di" bpmnElement="Flow_00do74e">
-        <di:waypoint x="1890" y="177" />
-        <di:waypoint x="1972" y="177" />
+        <di:waypoint x="1960" y="177" />
+        <di:waypoint x="2012" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vgj80b_di" bpmnElement="Flow_1vgj80b">
+        <di:waypoint x="1185" y="177" />
+        <di:waypoint x="1230" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0to091p_di" bpmnElement="Flow_0to091p">
+        <di:waypoint x="1160" y="202" />
+        <di:waypoint x="1160" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gpghte_di" bpmnElement="Flow_0gpghte">
+        <di:waypoint x="65" y="390" />
+        <di:waypoint x="1142" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dp3683_di" bpmnElement="Flow_1dp3683">
+        <di:waypoint x="1160" y="330" />
+        <di:waypoint x="1160" y="372" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
