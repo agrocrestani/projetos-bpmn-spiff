@@ -17,7 +17,7 @@
       <bpmn:lane id="Lane_1aovmuh">
         <bpmn:flowNodeRef>Activity_00vuw5a</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_controladoria" name="controladoria">
+      <bpmn:lane id="Lane_contabil" name="contabil">
         <bpmn:flowNodeRef>Event_15s6ejv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1v7cf9d</bpmn:flowNodeRef>
       </bpmn:lane>
@@ -381,7 +381,7 @@ headers = {
       <bpmndi:BPMNShape id="Participant_0x0t826_di" bpmnElement="Participant_0x0t826" isHorizontal="true">
         <dc:Bounds x="129" y="116" width="1031" height="910" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_0kxqtlx_di" bpmnElement="Lane_controladoria" isHorizontal="true">
+      <bpmndi:BPMNShape id="Lane_0kxqtlx_di" bpmnElement="Lane_contabil" isHorizontal="true">
         <dc:Bounds x="159" y="722" width="1001" height="304" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
