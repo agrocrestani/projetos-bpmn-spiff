@@ -381,15 +381,15 @@ headers = {
       <bpmndi:BPMNShape id="Participant_0x0t826_di" bpmnElement="Participant_0x0t826" isHorizontal="true">
         <dc:Bounds x="129" y="116" width="1031" height="910" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_0c5w8vb_di" bpmnElement="Lane_rh" isHorizontal="true">
-        <dc:Bounds x="159" y="116" width="1001" height="303" />
+      <bpmndi:BPMNShape id="Lane_0kxqtlx_di" bpmnElement="Lane_controladoria" isHorizontal="true">
+        <dc:Bounds x="159" y="722" width="1001" height="304" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1aovmuh_di" bpmnElement="Lane_1aovmuh" isHorizontal="true">
         <dc:Bounds x="159" y="419" width="1001" height="303" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_0kxqtlx_di" bpmnElement="Lane_controladoria" isHorizontal="true">
-        <dc:Bounds x="159" y="722" width="1001" height="304" />
+      <bpmndi:BPMNShape id="Lane_0c5w8vb_di" bpmnElement="Lane_rh" isHorizontal="true">
+        <dc:Bounds x="159" y="116" width="1001" height="303" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -418,15 +418,6 @@ headers = {
         <dc:Bounds x="405" y="315" width="50" height="50" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="409" y="372" width="42" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_15s6ejv_di" bpmnElement="Event_15s6ejv">
-        <dc:Bounds x="1064" y="862" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1175xbr_di" bpmnElement="DataStoreReference_1175xbr">
-        <dc:Bounds x="975" y="765" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="976" y="743" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
@@ -496,10 +487,6 @@ headers = {
         <di:waypoint x="276" y="880" />
         <di:waypoint x="350" y="880" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0a1062q_di" bpmnElement="Flow_0a1062q">
-        <di:waypoint x="735" y="880" />
-        <di:waypoint x="832" y="880" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0w0pxn1_di" bpmnElement="Flow_0w0pxn1">
         <di:waypoint x="450" y="880" />
         <di:waypoint x="520" y="880" />
@@ -508,6 +495,19 @@ headers = {
         <di:waypoint x="620" y="880" />
         <di:waypoint x="685" y="880" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0a1062q_di" bpmnElement="Flow_0a1062q">
+        <di:waypoint x="735" y="880" />
+        <di:waypoint x="832" y="880" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_15s6ejv_di" bpmnElement="Event_15s6ejv">
+        <dc:Bounds x="1064" y="862" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1175xbr_di" bpmnElement="DataStoreReference_1175xbr">
+        <dc:Bounds x="975" y="765" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="976" y="743" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
