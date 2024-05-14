@@ -15,9 +15,9 @@
         <bpmn:flowNodeRef>Activity_1gq0mev</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_contabil" name="contabil">
-        <bpmn:flowNodeRef>Event_15s6ejv</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1v7cf9d</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_00vuw5a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1v7cf9d</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_15s6ejv</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="StartEvent_1">
@@ -97,11 +97,16 @@ controles = []</bpmn:script>
       <bpmn:sequenceFlow id="Flow_1tk8uye" sourceRef="Event_1p5tyci" targetRef="Activity_0w2moib" />
       <bpmn:sequenceFlow id="Flow_0w0pxn1" sourceRef="Activity_0w2moib" targetRef="Activity_0nynyx4" />
       <bpmn:endEvent id="Event_1kx644d">
-        <bpmn:incoming>Flow_0a1062q</bpmn:incoming>
+        <bpmn:incoming>Flow_00l9ldx</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:userTask id="Activity_0w2moib" name="Verifica as informações">
         <bpmn:extensionElements>
           <spiffworkflow:instructionsForEndUser>## Lançamentos da Folha de Pagamento
+
+{% if lancado %}
+    &lt;font color="red"&gt;&lt;strong&gt;Ocorreu um erro na inserção dos dados no SAP. Tente novamente, caso persista, procure o TI. &lt;/strong&gt;&lt;/font&gt;
+{% endif %}
+
 
 Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Filial e Centro de Custo no SAP**.
 
@@ -209,12 +214,13 @@ lcm = {
           </spiffworkflow:properties>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1tk8uye</bpmn:incoming>
+        <bpmn:incoming>Flow_0hhyppq</bpmn:incoming>
         <bpmn:outgoing>Flow_0w0pxn1</bpmn:outgoing>
       </bpmn:userTask>
       <bpmn:sequenceFlow id="Flow_1uj6iy3" sourceRef="Activity_0nynyx4" targetRef="Gateway_0gbbrla" />
       <bpmn:serviceTask id="Activity_0nynyx4" name="Lança no SAP">
         <bpmn:extensionElements>
-          <spiffworkflow:postScript />
+          <spiffworkflow:postScript>lancado = rsp['http_status']</spiffworkflow:postScript>
           <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
             <spiffworkflow:parameters>
               <spiffworkflow:parameter id="url" type="str" value="url" />
@@ -244,11 +250,20 @@ headers = {
           <bpmn:targetRef>Property_1l4lyj2</bpmn:targetRef>
         </bpmn:dataInputAssociation>
       </bpmn:serviceTask>
-      <bpmn:exclusiveGateway id="Gateway_0gbbrla">
+      <bpmn:exclusiveGateway id="Gateway_0gbbrla" default="Flow_0a1062q">
         <bpmn:incoming>Flow_1uj6iy3</bpmn:incoming>
         <bpmn:outgoing>Flow_0a1062q</bpmn:outgoing>
+        <bpmn:outgoing>Flow_0hhyppq</bpmn:outgoing>
       </bpmn:exclusiveGateway>
-      <bpmn:sequenceFlow id="Flow_0a1062q" sourceRef="Gateway_0gbbrla" targetRef="Event_1kx644d" />
+      <bpmn:sequenceFlow id="Flow_0a1062q" sourceRef="Gateway_0gbbrla" targetRef="Activity_0pk9g8b" />
+      <bpmn:task id="Activity_0pk9g8b">
+        <bpmn:incoming>Flow_0a1062q</bpmn:incoming>
+        <bpmn:outgoing>Flow_00l9ldx</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:sequenceFlow id="Flow_00l9ldx" sourceRef="Activity_0pk9g8b" targetRef="Event_1kx644d" />
+      <bpmn:sequenceFlow id="Flow_0hhyppq" sourceRef="Gateway_0gbbrla" targetRef="Activity_0w2moib">
+        <bpmn:conditionExpression>lancado != 201</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
     </bpmn:subProcess>
     <bpmn:subProcess id="Activity_00vuw5a">
       <bpmn:extensionElements>
@@ -377,14 +392,14 @@ del(conta)</spiffworkflow:postScript>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1nlwobl">
       <bpmndi:BPMNShape id="Participant_0x0t826_di" bpmnElement="Participant_0x0t826" isHorizontal="true">
-        <dc:Bounds x="129" y="116" width="1901" height="714" />
+        <dc:Bounds x="129" y="116" width="2191" height="714" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1aovmuh_di" bpmnElement="Lane_contabil" isHorizontal="true">
-        <dc:Bounds x="159" y="419" width="1871" height="411" />
+        <dc:Bounds x="159" y="419" width="2161" height="411" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0c5w8vb_di" bpmnElement="Lane_rh" isHorizontal="true">
-        <dc:Bounds x="159" y="116" width="1871" height="303" />
+        <dc:Bounds x="159" y="116" width="2161" height="303" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -415,23 +430,14 @@ del(conta)</spiffworkflow:postScript>
           <dc:Bounds x="409" y="372" width="42" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1175xbr_di" bpmnElement="DataStoreReference_1175xbr">
-        <dc:Bounds x="1505" y="475" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1506" y="453" width="47" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_15s6ejv_di" bpmnElement="Event_15s6ejv">
-        <dc:Bounds x="1952" y="662" width="36" height="36" />
+        <dc:Bounds x="2012" y="662" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1v7cf9d_di" bpmnElement="Activity_1v7cf9d" isExpanded="true">
-        <dc:Bounds x="1160" y="590" width="690" height="200" />
+        <dc:Bounds x="1160" y="590" width="800" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1p5tyci_di" bpmnElement="Event_1p5tyci">
         <dc:Bounds x="1200" y="672" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1kx644d_di" bpmnElement="Event_1kx644d">
-        <dc:Bounds x="1792" y="672" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1v3eutn_di" bpmnElement="Activity_0w2moib">
         <dc:Bounds x="1310" y="650" width="100" height="80" />
@@ -440,16 +446,18 @@ del(conta)</spiffworkflow:postScript>
         <dc:Bounds x="1480" y="650" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1kx644d_di" bpmnElement="Event_1kx644d">
+        <dc:Bounds x="1892" y="672" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0pk9g8b_di" bpmnElement="Activity_0pk9g8b">
+        <dc:Bounds x="1740" y="650" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0gbbrla_di" bpmnElement="Gateway_0gbbrla" isMarkerVisible="true">
-        <dc:Bounds x="1645" y="665" width="50" height="50" />
+        <dc:Bounds x="1625" y="665" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1tk8uye_di" bpmnElement="Flow_1tk8uye">
         <di:waypoint x="1236" y="690" />
         <di:waypoint x="1310" y="690" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0a1062q_di" bpmnElement="Flow_0a1062q">
-        <di:waypoint x="1695" y="690" />
-        <di:waypoint x="1792" y="690" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0w0pxn1_di" bpmnElement="Flow_0w0pxn1">
         <di:waypoint x="1410" y="690" />
@@ -457,7 +465,21 @@ del(conta)</spiffworkflow:postScript>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1uj6iy3_di" bpmnElement="Flow_1uj6iy3">
         <di:waypoint x="1580" y="690" />
-        <di:waypoint x="1645" y="690" />
+        <di:waypoint x="1625" y="690" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0a1062q_di" bpmnElement="Flow_0a1062q">
+        <di:waypoint x="1675" y="690" />
+        <di:waypoint x="1740" y="690" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00l9ldx_di" bpmnElement="Flow_00l9ldx">
+        <di:waypoint x="1840" y="690" />
+        <di:waypoint x="1892" y="690" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hhyppq_di" bpmnElement="Flow_0hhyppq">
+        <di:waypoint x="1650" y="715" />
+        <di:waypoint x="1650" y="760" />
+        <di:waypoint x="1360" y="760" />
+        <di:waypoint x="1360" y="730" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="180" y="590" width="910" height="200" />
@@ -503,6 +525,12 @@ del(conta)</spiffworkflow:postScript>
         <di:waypoint x="890" y="690" />
         <di:waypoint x="952" y="690" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DataStoreReference_1175xbr_di" bpmnElement="DataStoreReference_1175xbr">
+        <dc:Bounds x="1505" y="475" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1506" y="453" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -516,8 +544,8 @@ del(conta)</spiffworkflow:postScript>
         <di:waypoint x="480" y="590" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1890863_di" bpmnElement="Flow_1890863">
-        <di:waypoint x="1850" y="680" />
-        <di:waypoint x="1952" y="680" />
+        <di:waypoint x="1960" y="680" />
+        <di:waypoint x="2012" y="680" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0gu16ye_di" bpmnElement="Flow_0gu16ye">
         <di:waypoint x="1090" y="690" />
