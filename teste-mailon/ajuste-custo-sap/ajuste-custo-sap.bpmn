@@ -67,33 +67,12 @@ query_transferencias = f"""
     ORDER BY t3."DocEntry"
 """
 
-query_saida_mercadoria = f"""
-    SELECT 
-        t0."ItemCode" || ' - ' || t0."ItemName" AS "Produto" , 
-        CAST(t2."Price" AS VARCHAR(50)) AS "Preço Unitario" , 
-        CAST(t2."Quantity" AS VARCHAR(50)) AS "Quantidade" ,
-        CAST(t2."LineTotal" AS VARCHAR(50)) AS "Preço Total" ,
-        t2."unitMsr" AS "Unidade Documento" , 
-        t0."InvntryUom" AS "Unidade Estoque" , 
-        CAST(t3."DocNum" AS VARCHAR(50)) AS "DocNum" ,
-        CAST(t3."ObjType" AS VARCHAR(50)) AS "Documento"
-    FROM {baseSap}.OITM t0
-    INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
-    INNER JOIN {baseSap}.IGE1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '{deposito}'
-    INNER JOIN {baseSap}.OIGE t3 ON t3."DocEntry" = t2."DocEntry" AND t3.CANCELED = 'N'
-    WHERE t0."ItemCode" = '{produto}' AND t1."WhsCode" = '{deposito}'
-    ORDER BY t3."DocEntry"
-"""
-
 # Executar as consultas
 consulta_compras = Hana(connection).selectDb(query_compras)
 consulta_transferencias = Hana(connection).selectDb(query_transferencias)
-consulta_saida_mercadoria = Hana(connection).selectDb(query_saida_mercadoria)
 
 # Combinar os resultados
 produtosDepositos = consulta_compras + consulta_transferencias
-
-produtosDepositosSaida = consulta_saida_mercadoria
 
 del(connection)
 del(consulta_compras)
@@ -499,9 +478,6 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
   <bpmn:dataStore id="depositos" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="-218" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -525,6 +501,9 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0jzl9cj_di" bpmnElement="MovimentoSaidaEncontrado">
         <dc:Bounds x="1110" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="-478" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
@@ -624,7 +603,7 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
         <di:waypoint x="1722" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
-        <di:waypoint x="-182" y="177" />
+        <di:waypoint x="-442" y="177" />
         <di:waypoint x="-150" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1n8yish_di" bpmnElement="Flow_1n8yish">
