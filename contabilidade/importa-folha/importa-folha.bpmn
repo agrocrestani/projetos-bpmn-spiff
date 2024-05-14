@@ -220,7 +220,19 @@ lcm = {
       <bpmn:sequenceFlow id="Flow_1uj6iy3" sourceRef="Activity_0nynyx4" targetRef="Gateway_0gbbrla" />
       <bpmn:serviceTask id="Activity_0nynyx4" name="Lança no SAP">
         <bpmn:extensionElements>
-          <spiffworkflow:postScript>lancado = rsp['http_status']</spiffworkflow:postScript>
+          <spiffworkflow:postScript>lancado = rsp['http_status']
+number = rsp['body']['Number']
+
+del(lancamento)
+del(c)
+del(f)
+del(lcm)
+del(tabela)
+del(novaTabela)
+del(t)
+del(items)
+del(l)
+del(rsp)</spiffworkflow:postScript>
           <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
             <spiffworkflow:parameters>
               <spiffworkflow:parameter id="url" type="str" value="url" />
