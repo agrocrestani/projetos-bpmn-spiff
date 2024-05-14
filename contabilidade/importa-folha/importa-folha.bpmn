@@ -23,6 +23,7 @@ n_safras = safras
 n_culturas = culturas</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="importar-folha-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="importar-folha-uischema.json" />
         </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
