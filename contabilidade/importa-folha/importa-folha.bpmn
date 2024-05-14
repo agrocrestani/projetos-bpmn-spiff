@@ -266,7 +266,7 @@ headers = {
 
 ### Lançamento contabil inserido com sucesso no SAP. 
 
-Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o número: **{{rsp['body']['number']}}**.</spiffworkflow:instructionsForEndUser>
+Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o número: **{{rsp['body']['Number']}}**.</spiffworkflow:instructionsForEndUser>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0a1062q</bpmn:incoming>
         <bpmn:outgoing>Flow_00l9ldx</bpmn:outgoing>
@@ -403,7 +403,7 @@ del(conta)</spiffworkflow:postScript>
 
 ### Lançamento contabil inserido com sucesso no SAP. 
 
-Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o número: **{{rsp['body']['number']}}**.</spiffworkflow:instructionsForEndUser>
+Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o número: **{{rsp['body']['Number']}}**.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1xkflpo</bpmn:incoming>
       <bpmn:outgoing>Flow_1ejzlor</bpmn:outgoing>
