@@ -308,13 +308,13 @@ lcm = {
               <spiffworkflow:parameter id="verify" type="bool" />
             </spiffworkflow:parameters>
           </spiffworkflow:serviceTaskOperator>
-          <spiffworkflow:preScript>loginSap = saplogin
+          <spiffworkflow:preScript>loginSap = saplogin['SessionId']
 
 url = 'https://172.20.1.9:50000/b1s/v1/JournalEntries'
 
 
 headers = {
-  'Cookie': f"B1SESSION={loginSap['SessionId']}",
+  'Cookie': f"'B1SESSION={loginSap}'",
   'Content-Type': 'application/json'
 }
 
