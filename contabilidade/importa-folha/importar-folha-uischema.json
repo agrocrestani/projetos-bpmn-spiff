@@ -11,6 +11,9 @@
   "ui:layout": [
     {
       "datalacto": {}
+    },
+    {
+      "datalacto": {}
     }
   ]
 }
