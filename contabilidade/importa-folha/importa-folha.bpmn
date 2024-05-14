@@ -207,15 +207,16 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 ### Dados do Processo
 | Campo | Valor | Campo | Valor |
 | ---------- | ------- | ---------- | ------- |
-| Id da instancia | {{spiff_instancia}} | **Safra** | {{ Safra }} |
+| Id da instancia | {{spiff_instancia}} | **Safra** | {{ safra }} |
 | Id da tarefa | {{spiff_tarefa}} | **Cultura**| {{ cultura }} |
 | Responsável pela verificação | {{spiff_usuario}} |
 
 ### Informações do Sênior
-| Campo | Valor | Campo | Valor |
-| ---------- | ------- | ---------- | ------- |
+| Campo | Valor | 
+| ---------- | ------- | 
 | Empresa | {{c[0]}} |
-| Filial | {{c[1]}} | Centro de Custo | {{c[2:]}} |
+| Filial | {{c[1]}} |
+| Centro de Custo | {{c[2:]}} |
 
 
 ### Informações que serão inputados no SAP
@@ -437,7 +438,7 @@ headers = {
         <dc:Bounds x="2105" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1g5hxev_di" bpmnElement="Activity_0nynyx4">
-        <dc:Bounds x="1950" y="130" width="100" height="80" />
+        <dc:Bounds x="1940" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1tk8uye_di" bpmnElement="Flow_1tk8uye">
@@ -446,14 +447,10 @@ headers = {
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0w0pxn1_di" bpmnElement="Flow_0w0pxn1">
         <di:waypoint x="1870" y="177" />
-        <di:waypoint x="1910" y="177" />
-        <di:waypoint x="1910" y="170" />
-        <di:waypoint x="1950" y="170" />
+        <di:waypoint x="1940" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1uj6iy3_di" bpmnElement="Flow_1uj6iy3">
-        <di:waypoint x="2050" y="170" />
-        <di:waypoint x="2078" y="170" />
-        <di:waypoint x="2078" y="177" />
+        <di:waypoint x="2040" y="177" />
         <di:waypoint x="2105" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0a1062q_di" bpmnElement="Flow_0a1062q">
@@ -503,8 +500,8 @@ headers = {
         <di:waypoint x="620" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1ww8r6l_di" bpmnElement="DataInputAssociation_1ww8r6l">
-        <di:waypoint x="2043" y="25" />
-        <di:waypoint x="2012" y="130" />
+        <di:waypoint x="2042" y="25" />
+        <di:waypoint x="2004" y="137" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0gu16ye_di" bpmnElement="Flow_0gu16ye">
         <di:waypoint x="1530" y="177" />
