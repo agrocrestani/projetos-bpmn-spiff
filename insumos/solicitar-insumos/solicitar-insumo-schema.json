@@ -8,7 +8,10 @@
       "title": "",
       "items": {
         "type": "object",
-        v,
+        "required": [
+          "insumo",
+          "quantidade"
+        ],
         "properties": {
           "insumo": {
             "type": "string",
