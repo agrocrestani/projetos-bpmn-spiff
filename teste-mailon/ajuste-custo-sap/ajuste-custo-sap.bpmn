@@ -143,10 +143,10 @@ Custo Médio Unitário: **{{ '{:,.3f}'.format(custo_medio_unitario).replace(',',
 Quantidade Total: **{{ '{:,.3f}'.format(total_quantidade).replace(',', ' ').replace('.', ',').replace(' ', '.')}}** &lt;br&gt;
 Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario).replace(',', ' ').replace('.', ',').replace(' ', '.') }}**
 
-| Numero Documento | Custo Unitário | Quantidade | Custo Total | Objeto |
+| Numero Documento | Quantidade | Custo Unitário | Custo Total | Objeto |
 | ------- | --------------: | ----------: | ---------------: | --------------------- |
 {% for produto in produtosDepositosNormalizados %}
-| {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['preço unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ produto['quantidade'] }} | {{ '{:,.3f}'.format(produto['preço total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['documento']}} |
+| {{ produto['docnum'] }} | {{ produto['quantidade'] }} | {{ '{:,.3f}'.format(produto['preço unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preço total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['documento']}} |
 {% endfor %}
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
@@ -256,7 +256,7 @@ for a in depositos:
     <bpmn:sequenceFlow id="Flow_1yez69d" sourceRef="Gateway_0mqija0" targetRef="Activity_1d1r8sl">
       <bpmn:conditionExpression>produtosDepositos != []</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_1462x9u" sourceRef="Gateway_0mqija0" targetRef="Activity_01z33ta">
+    <bpmn:sequenceFlow id="Flow_1462x9u" sourceRef="Gateway_0mqija0" targetRef="MovimentoEntradaNaoEncontrado">
       <bpmn:conditionExpression>produtosDepositos == []</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="Gateway_0zhxafw" default="Flow_0ho3zz6">
@@ -264,11 +264,11 @@ for a in depositos:
       <bpmn:outgoing>Flow_0ho3zz6</bpmn:outgoing>
       <bpmn:outgoing>Flow_0gpghte</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0n3n3cb" sourceRef="Activity_01z33ta" targetRef="Gateway_0zhxafw" />
+    <bpmn:sequenceFlow id="Flow_0n3n3cb" sourceRef="MovimentoEntradaNaoEncontrado" targetRef="Gateway_0zhxafw" />
     <bpmn:sequenceFlow id="Flow_0ho3zz6" sourceRef="Gateway_0zhxafw" targetRef="Activity_00bh8bd">
       <bpmn:conditionExpression>novaBusca == True</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:userTask id="Activity_01z33ta" name="Movimento não encontrado">
+    <bpmn:userTask id="MovimentoEntradaNaoEncontrado" name="Movimento de Entrada não encontrado">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## &lt;span style="font-weight: bold; color: red;"&gt;Nenhum movimento de entrada encontrado para o &lt;br&gt;Produto &lt;span style="color: black;"&gt; **{{produto}}**&lt;/span&gt; e depósito &lt;span style="color: black;"&gt;**{{deposito}}**&lt;/span&gt; !!&lt;/span&gt;
 
@@ -578,8 +578,9 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
       <bpmndi:BPMNShape id="BPMNShape_1gw7jjv" bpmnElement="Gateway_0zhxafw" isMarkerVisible="true">
         <dc:Bounds x="15" y="365" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0tm9ngj_di" bpmnElement="Activity_01z33ta">
+      <bpmndi:BPMNShape id="Activity_0tm9ngj_di" bpmnElement="MovimentoEntradaNaoEncontrado">
         <dc:Bounds x="-10" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0pzmp4f" bpmnElement="BuscaMovimentosSaidaSAP">
         <dc:Bounds x="990" y="137" width="100" height="80" />
