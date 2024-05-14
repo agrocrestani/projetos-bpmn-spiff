@@ -245,6 +245,8 @@ for l in novaTabela:
                     "AccountCode": l['credito'],
                     "Credit": l['valor'],
                     "CostingCode": l['novoCcusto'],
+                    "CostingCode2": cultura,
+                    "CostingCode3": safra
                     "BPLID": l['novaFilial']
                 }
             )
@@ -254,6 +256,8 @@ for l in novaTabela:
                     "AccountCode": l['debito'],
                     "Debit": l['valor'],
                     "CostingCode": l['novoCcusto'],
+                    "CostingCode2": cultura,
+                    "CostingCode3": safra
                     "BPLID": l['novaFilial']
                 }
             )
