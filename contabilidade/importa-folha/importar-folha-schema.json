@@ -2,6 +2,10 @@
   "title": "Contabilização da Folha de Pagamento",
   "type": "object",
   "properties": {
+    "required": [
+          "insumo",
+          "quantidade"
+        ]
     "datalacto": {
       "title": "Data de Lançamento",
       "type": "string",
