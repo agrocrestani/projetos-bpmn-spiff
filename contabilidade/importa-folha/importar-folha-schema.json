@@ -16,7 +16,7 @@
       ]
     },
     "cultura": {
-      "title": "Select your favorite fruit",
+      "title": "Cultura",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:n_culturas"
