@@ -4,7 +4,7 @@
   "required": [
           "datalacto",
           "safra",
-          ""
+          "file"
         ],
   "properties": {
     "datalacto": {
