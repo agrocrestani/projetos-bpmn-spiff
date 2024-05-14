@@ -251,9 +251,9 @@ lcm = {
     "TaxDate": datalacto,
     "Memo": l['evento'],
     "TransactionCode": "FOL",
-    "U_AC_Spiff_Instancia": spiff_instancia,
-    "U_AC_spiff_Tarega": spiff_tarefa,
-    "U_AC_Spiff_Usuario": spiff_usuario,
+    # "U_AC_Spiff_Instancia": spiff_instancia,
+    # "U_AC_spiff_Tarega": spiff_tarefa,
+    # "U_AC_Spiff_Usuario": spiff_usuario,
     "JournalEntryLines": items
 }
 
