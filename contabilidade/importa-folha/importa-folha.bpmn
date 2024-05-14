@@ -240,7 +240,7 @@ for l in novaTabela:
 for l in novaTabela:
     items.append({
                     "AccountCode": l['debito'],
-                    "Credit": l['valor'],
+                    "Debit": l['valor'],
                     "CostingCode": l['novoCcusto'],
                     "BPLID": l['novaFilial']
                 }
