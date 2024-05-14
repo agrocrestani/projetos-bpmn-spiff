@@ -3,7 +3,8 @@
   "type": "object",
   "required": [
           "datalacto",
-          "safra"
+          "safra",
+          
         ],
   "properties": {
     "datalacto": {
