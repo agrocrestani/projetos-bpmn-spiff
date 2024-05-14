@@ -295,6 +295,20 @@
           <text>"/can-run-privileged-script/*"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0e37x7s">
+        <inputEntry id="UnaryTests_0tgwezk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16sakt9">
+          <text>"controladoria"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i2jxbq">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uhr9od">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
