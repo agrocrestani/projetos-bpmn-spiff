@@ -8,7 +8,7 @@
       "type": "string",
       "format": "date"
     },
-    "favoriteFruit": {
+    "safra": {
       "title": "Select your favorite fruit",
       "type": "string",
       "anyOf": [
