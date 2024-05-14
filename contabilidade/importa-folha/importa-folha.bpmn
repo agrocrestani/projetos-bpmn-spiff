@@ -103,7 +103,7 @@ controles = []</bpmn:script>
         <bpmn:extensionElements>
           <spiffworkflow:instructionsForEndUser>## Lançamentos da Folha de Pagamento
 
-{% if lancado %}
+{% if lancado and (lancado != 201) %}
     &lt;font color="red"&gt;&lt;strong&gt;Ocorreu um erro na inserção dos dados no SAP. Tente novamente, caso persista, procure o TI. &lt;/strong&gt;&lt;/font&gt;
 {% endif %}
 
