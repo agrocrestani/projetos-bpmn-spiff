@@ -5,7 +5,7 @@
     "required": [
           "insumo",
           "quantidade"
-        ]
+        ],
     "datalacto": {
       "title": "Data de Lançamento",
       "type": "string",
