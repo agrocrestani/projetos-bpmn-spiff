@@ -295,9 +295,9 @@ lcm = {
         <bpmn:outgoing>Flow_0w0pxn1</bpmn:outgoing>
       </bpmn:userTask>
       <bpmn:sequenceFlow id="Flow_1uj6iy3" sourceRef="Activity_0nynyx4" targetRef="Event_1kx644d" />
-      <bpmn:serviceTask id="Activity_0nynyx4">
+      <bpmn:serviceTask id="Activity_0nynyx4" name="Lança no SAP">
         <bpmn:extensionElements>
-          <spiffworkflow:postScript></spiffworkflow:postScript>
+          <spiffworkflow:postScript />
           <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
             <spiffworkflow:parameters>
               <spiffworkflow:parameter id="url" type="str" value="url" />
@@ -305,7 +305,7 @@ lcm = {
               <spiffworkflow:parameter id="data" type="any" value="lcm" />
               <spiffworkflow:parameter id="basic_auth_username" type="str" />
               <spiffworkflow:parameter id="basic_auth_password" type="str" />
-              <spiffworkflow:parameter id="verify" type="bool" value="&#34;False&#34;" />
+              <spiffworkflow:parameter id="verify" type="bool" />
             </spiffworkflow:parameters>
           </spiffworkflow:serviceTaskOperator>
           <spiffworkflow:preScript>SessionId = saplogin['SessionId']
@@ -352,12 +352,6 @@ headers = {
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1fn7pr1_di" bpmnElement="Activity_1gq0mev">
         <dc:Bounds x="430" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1175xbr_di" bpmnElement="DataStoreReference_1175xbr">
-        <dc:Bounds x="2025" y="-25" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="2026" y="-47" width="47" height="14" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="620" y="77" width="910" height="200" />
@@ -412,14 +406,15 @@ headers = {
       <bpmndi:BPMNShape id="Event_1p5tyci_di" bpmnElement="Event_1p5tyci">
         <dc:Bounds x="1660" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1v3eutn_di" bpmnElement="Activity_0w2moib">
-        <dc:Bounds x="1770" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1kx644d_di" bpmnElement="Event_1kx644d">
         <dc:Bounds x="2162" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1v3eutn_di" bpmnElement="Activity_0w2moib">
+        <dc:Bounds x="1770" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1g5hxev_di" bpmnElement="Activity_0nynyx4">
         <dc:Bounds x="1940" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1tk8uye_di" bpmnElement="Flow_1tk8uye">
         <di:waypoint x="1696" y="177" />
@@ -433,6 +428,12 @@ headers = {
         <di:waypoint x="2040" y="177" />
         <di:waypoint x="2162" y="177" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DataStoreReference_1175xbr_di" bpmnElement="DataStoreReference_1175xbr">
+        <dc:Bounds x="2025" y="-25" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2026" y="-47" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -449,6 +450,10 @@ headers = {
         <di:waypoint x="530" y="177" />
         <di:waypoint x="620" y="177" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1ww8r6l_di" bpmnElement="DataInputAssociation_1ww8r6l">
+        <di:waypoint x="2042" y="25" />
+        <di:waypoint x="2004" y="137" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0gu16ye_di" bpmnElement="Flow_0gu16ye">
         <di:waypoint x="1530" y="177" />
         <di:waypoint x="1620" y="177" />
@@ -456,10 +461,6 @@ headers = {
       <bpmndi:BPMNEdge id="Flow_1890863_di" bpmnElement="Flow_1890863">
         <di:waypoint x="2310" y="177" />
         <di:waypoint x="2402" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_1ww8r6l_di" bpmnElement="DataInputAssociation_1ww8r6l">
-        <di:waypoint x="2042" y="25" />
-        <di:waypoint x="2004" y="137" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
