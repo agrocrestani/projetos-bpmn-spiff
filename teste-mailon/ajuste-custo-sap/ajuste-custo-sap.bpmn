@@ -36,12 +36,14 @@ query_movimento = f"""
                     CAST(t0."DocNum" AS VARCHAR(100)) AS "DocNum",
                     CAST(t0."QTDE" AS VARCHAR(100)) AS "QTDE",
                     CAST(t0."LineTotal" AS VARCHAR(100)) AS "LineTotal",
-                    CAST(t0."unitMsr" AS VARCHAR(100)) AS "unitMsr"
+                    CAST(t0."unitMsr" AS VARCHAR(100)) AS "unitMsr" 
                 FROM {baseSap}.AC_MOVIMENTOS t0
                 WHERE 
                     t0."ItemCode" = '{produto}' AND
 	                t0."WhsCode" = '{deposito}' AND
-                    t0."CANCELED" = 'N'
+                    t0."CANCELED" = 'N'         AND
+                    t0."ORIGEM" != '2-Ent.Mercadoria' AND
+                    t0."BaseType" != 20
                 ORDER BY t0."DocDueDate", t0."DocNum"
                 """
 
