@@ -75,8 +75,8 @@ total_quantidade_entrada = 0
 if isinstance(consulta_movimentos_out, list):
     for produtoAux in consulta_movimentos_out:
         if "preco_unitario" in produtoAux and "qtde" in produtoAux and produtoAux['tipo'] == "E":
-            preco_unitario = float(produtoAux["preço unitario"])
-            quantidade = float(produtoAux["quantidade"])
+            preco_unitario = produtoAux["preco_unitario"]
+            quantidade = produtoAux["qtde"]
             total_preco_unitario_entrada += preco_unitario * quantidade
             total_quantidade_entrada += quantidade
 else:
