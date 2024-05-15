@@ -100,8 +100,8 @@ del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser>Custo Total Entrada: {{'{:,.3f}'.format(total_preco_unitario_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 Quantidade Total  Entrada: {{ '{:,.3f}'.format(total_quantidade_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 
-Custo Total Entrada: {{'{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
-Quantidade Total  Entrada: {{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
+Custo Total Saída: {{'{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
+Quantidade Total  Saída: {{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 
 | Origem | Numero Documento | Quantidade | Custo Unitário | Custo Total | Data |
 | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- |
@@ -147,7 +147,7 @@ unidadeEstoque = um_produto_estoque[0]['invntryuom']</spiffworkflow:preScript>
         <bpmn:incoming>Flow_0f953hs</bpmn:incoming>
         <bpmn:outgoing>Flow_14z5yhx</bpmn:outgoing>
         <bpmn:script>
-precoProdutoNormalizado = float(x["qtde"].replace(",", ".")) / float(x["linetotal"].replace(",", "."))
+precoProdutoNormalizado = float(x["linetotal"].replace(",", ".")) / float(x["qtde"].replace(",", ".")) 
 quantidadeEstoqueNormalizada = multiplicador * float(x["qtde"].replace(",", "."))
 precoTotalNormalizado = float(x["linetotal"].replace(",", ".")) / multiplicador
 
