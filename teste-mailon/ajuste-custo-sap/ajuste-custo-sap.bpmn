@@ -34,8 +34,8 @@ query_movimento = f"""
                     t0."ORIGEM" ,
                     COALESCE(CAST(t0."ItemCode" AS VARCHAR(100))) AS "Produto" ,
                     t0."TIPO" ,
-                    COALESCE(CAST(t0."DocDueDate" AS VARCHAR(100))) ,
-                    COALESCE(CAST(t0."DocNum" AS VARCHAR(100))) ,
+                    CAST(t0."DocDueDate" AS VARCHAR(100)) ,
+                    CAST(t0."DocNum" AS VARCHAR(100)) ,
                     COALESCE(CAST(t0."QTDE" AS VARCHAR(100))) ,
                     COALESCE(CAST(t0."LineTotal" AS VARCHAR(100))) ,
                     COALESCE(CAST(t0."unitMsr" AS VARCHAR(100)))
