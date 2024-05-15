@@ -46,10 +46,19 @@ query_movimento = f"""
 
 consulta_movimentos = Hana(connection).selectDb(query_movimento)
 
+query_um_produto_estoque =  f"""
+                SELECT  
+                    t0."InvntryUom"
+                FROM OITM t0
+                WHERE t0."ItemCode" = '{produto}';
+                """
+
+um_produto_estoque = Hana(connection).selectDb(query_um_produto_estoque)
 
 del(connection)
 del(query_movimento)
 del(baseSap)
+del(query_um_produto_estoque)
 </bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="EntradasItens" name="Entradas dos Itens">
@@ -104,15 +113,14 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario).replace(',', ' ').repla
     <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="EntradasItens" targetRef="BuscaMovimentosSaidaSAP" />
     <bpmn:subProcess id="Activity_1d1r8sl">
       <bpmn:extensionElements>
-        <spiffworkflow:postScript>produtosDepositosNormalizados.append(x)
-
-del(x)</spiffworkflow:postScript>
+        <spiffworkflow:postScript>del(x)</spiffworkflow:postScript>
+        <spiffworkflow:preScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1yez69d</bpmn:incoming>
       <bpmn:outgoing>Flow_0kxg7eo</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
-        <bpmn:loopDataInputRef>produtosDepositos</bpmn:loopDataInputRef>
-        <bpmn:loopDataOutputRef>produtosDepositos</bpmn:loopDataOutputRef>
+        <bpmn:loopDataInputRef>consulta_movimentos</bpmn:loopDataInputRef>
+        <bpmn:loopDataOutputRef>consulta_movimentos</bpmn:loopDataOutputRef>
         <bpmn:inputDataItem id="x" name="x" />
       </bpmn:multiInstanceLoopCharacteristics>
       <bpmn:startEvent id="Event_117o128">
@@ -120,8 +128,8 @@ del(x)</spiffworkflow:postScript>
       </bpmn:startEvent>
       <bpmn:businessRuleTask id="ConversorUnidadeMedida" name="Conversor de Unidade de Medida">
         <bpmn:extensionElements>
-          <spiffworkflow:preScript>unidadeDocumento = x['unidade documento']
-unidadeEstoque = x['unidade estoque']</spiffworkflow:preScript>
+          <spiffworkflow:preScript>unidadeDocumento = x['unitmsr']
+unidadeEstoque = um_produto_estoque</spiffworkflow:preScript>
           <spiffworkflow:postScript>multiplicador = multiplicador
 
 </spiffworkflow:postScript>
@@ -131,39 +139,28 @@ unidadeEstoque = x['unidade estoque']</spiffworkflow:preScript>
         <bpmn:outgoing>Flow_0f953hs</bpmn:outgoing>
       </bpmn:businessRuleTask>
       <bpmn:sequenceFlow id="Flow_1l99k7c" sourceRef="Event_117o128" targetRef="ConversorUnidadeMedida" />
-      <bpmn:sequenceFlow id="Flow_0f953hs" sourceRef="ConversorUnidadeMedida" targetRef="DEPARAObjetoMarketing" />
+      <bpmn:sequenceFlow id="Flow_0f953hs" sourceRef="ConversorUnidadeMedida" targetRef="NormalizandoEstoque" />
       <bpmn:scriptTask id="NormalizandoEstoque" name="Normalizando Estoque">
-        <bpmn:incoming>Flow_1xlv71s</bpmn:incoming>
+        <bpmn:incoming>Flow_0f953hs</bpmn:incoming>
         <bpmn:outgoing>Flow_14z5yhx</bpmn:outgoing>
-        <bpmn:script>quantidadeEstoqueNormalizada = multiplicador * float(x["quantidade"].replace(",", "."))
-precoProdutoNormalizado = float(x["preço unitario"].replace(",", ".")) / multiplicador
+        <bpmn:script># quantidadeEstoqueNormalizada = multiplicador * float(x["quantidade"].replace(",", "."))
+# precoProdutoNormalizado = float(x["preço unitario"].replace(",", ".")) / multiplicador
 
-precoTotalNormalizado = precoProdutoNormalizado * quantidadeEstoqueNormalizada
+# precoTotalNormalizado = precoProdutoNormalizado * quantidadeEstoqueNormalizada
 
-x['quantidade'] = quantidadeEstoqueNormalizada
-x['preço unitario'] = precoProdutoNormalizado
-x['preço total'] = precoTotalNormalizado
+# x['quantidade'] = quantidadeEstoqueNormalizada
+# x['preço unitario'] = precoProdutoNormalizado
+# x['preço total'] = precoTotalNormalizado
 
-del(quantidadeEstoqueNormalizada)
-del(precoProdutoNormalizado)
-del(precoTotalNormalizado)
-
-x['documento'] = nomeObjeto</bpmn:script>
+# del(quantidadeEstoqueNormalizada)
+# del(precoProdutoNormalizado)
+# del(precoTotalNormalizado)
+</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:endEvent id="Event_1dydh6d">
         <bpmn:incoming>Flow_14z5yhx</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:sequenceFlow id="Flow_14z5yhx" sourceRef="NormalizandoEstoque" targetRef="Event_1dydh6d" />
-      <bpmn:sequenceFlow id="Flow_1xlv71s" sourceRef="DEPARAObjetoMarketing" targetRef="NormalizandoEstoque" />
-      <bpmn:businessRuleTask id="DEPARAObjetoMarketing" name="DE PARA Objeto Marketing">
-        <bpmn:extensionElements>
-          <spiffworkflow:calledDecisionId>ObjetoMarketing</spiffworkflow:calledDecisionId>
-          <spiffworkflow:preScript>objeto = x['documento']</spiffworkflow:preScript>
-          <spiffworkflow:postScript />
-        </bpmn:extensionElements>
-        <bpmn:incoming>Flow_0f953hs</bpmn:incoming>
-        <bpmn:outgoing>Flow_1xlv71s</bpmn:outgoing>
-      </bpmn:businessRuleTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_12354sq" sourceRef="BuscaProdutosPorDepositoSAP" targetRef="Gateway_0mqija0" />
     <bpmn:sequenceFlow id="Flow_0kxg7eo" sourceRef="Activity_1d1r8sl" targetRef="EntradasItens" />
@@ -519,36 +516,28 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
       <bpmndi:BPMNShape id="Event_117o128_di" bpmnElement="Event_117o128">
         <dc:Bounds x="242" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0s2c0do_di" bpmnElement="ConversorUnidadeMedida">
-        <dc:Bounds x="310" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_01u9h9m_di" bpmnElement="NormalizandoEstoque">
-        <dc:Bounds x="570" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1dydh6d_di" bpmnElement="Event_1dydh6d">
         <dc:Bounds x="712" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0dkscvs_di" bpmnElement="DEPARAObjetoMarketing">
-        <dc:Bounds x="440" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_01u9h9m_di" bpmnElement="NormalizandoEstoque">
+        <dc:Bounds x="510" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0s2c0do_di" bpmnElement="ConversorUnidadeMedida">
+        <dc:Bounds x="330" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1l99k7c_di" bpmnElement="Flow_1l99k7c">
         <di:waypoint x="278" y="177" />
-        <di:waypoint x="310" y="177" />
+        <di:waypoint x="330" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0f953hs_di" bpmnElement="Flow_0f953hs">
-        <di:waypoint x="410" y="177" />
-        <di:waypoint x="440" y="177" />
+        <di:waypoint x="430" y="177" />
+        <di:waypoint x="510" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_14z5yhx_di" bpmnElement="Flow_14z5yhx">
-        <di:waypoint x="670" y="177" />
+        <di:waypoint x="610" y="177" />
         <di:waypoint x="712" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1xlv71s_di" bpmnElement="Flow_1xlv71s">
-        <di:waypoint x="540" y="177" />
-        <di:waypoint x="570" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Activity_122wunj_di" bpmnElement="Activity_00bh8bd">
         <dc:Bounds x="-150" y="137" width="100" height="80" />
