@@ -32,8 +32,7 @@ connection = {
 query_movimento = f"""
                 SELECT 
                     t0."ORIGEM" ,
-                    COALESCE(CAST(t0."ItemCode" AS VARCHAR(100))) AS "Produto" ,
-                    t0."TIPO" 
+                    CAST(t0."ItemCode" AS VARCHAR(100)) AS "Produto" 
                 FROM {baseSap}.AC_MOVIMENTOS t0
                 WHERE 
                     t0."ItemCode" = '{produto}' AND
