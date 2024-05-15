@@ -135,18 +135,18 @@ unidadeEstoque = um_produto_estoque[0]['invntryuom']</spiffworkflow:preScript>
       <bpmn:scriptTask id="NormalizandoEstoque" name="Normalizando Estoque">
         <bpmn:incoming>Flow_0f953hs</bpmn:incoming>
         <bpmn:outgoing>Flow_14z5yhx</bpmn:outgoing>
-        <bpmn:script># quantidadeEstoqueNormalizada = multiplicador * float(x["quantidade"].replace(",", "."))
-# precoProdutoNormalizado = float(x["preço unitario"].replace(",", ".")) / multiplicador
+        <bpmn:script>quantidadeEstoqueNormalizada = multiplicador * float(x["qtde"].replace(",", "."))
+precoTotalNormalizado = float(x["linetotal"].replace(",", ".")) / multiplicador
 
-# precoTotalNormalizado = precoProdutoNormalizado * quantidadeEstoqueNormalizada
+precoProdutoNormalizado =  quantidadeEstoqueNormalizada / precoProdutoNormalizado
 
-# x['quantidade'] = quantidadeEstoqueNormalizada
-# x['preço unitario'] = precoProdutoNormalizado
-# x['preço total'] = precoTotalNormalizado
+x['qtde'] = quantidadeEstoqueNormalizada
+x['preco_unitario'] = precoProdutoNormalizado
+x['linetotal'] = precoTotalNormalizado
 
-# del(quantidadeEstoqueNormalizada)
-# del(precoProdutoNormalizado)
-# del(precoTotalNormalizado)
+del(quantidadeEstoqueNormalizada)
+del(precoProdutoNormalizado)
+del(precoTotalNormalizado)
 </bpmn:script>
       </bpmn:scriptTask>
       <bpmn:endEvent id="Event_1dydh6d">
