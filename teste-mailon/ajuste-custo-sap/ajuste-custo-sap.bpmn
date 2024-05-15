@@ -255,6 +255,8 @@ for produto in consulta_produtos:
         }
     )
 
+del(produto)
+
 depositosList = []
 for deposito in consulta_depositos:
     depositosList.append(
@@ -263,9 +265,11 @@ for deposito in consulta_depositos:
             "label" : deposito['whscode'] + ' - ' + deposito['whsname']
         }
     )
+
+del(deposito)
 </spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser />
-        <spiffworkflow:postScript>del(depositosList)</spiffworkflow:postScript>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:incoming>Flow_0ho3zz6</bpmn:incoming>
