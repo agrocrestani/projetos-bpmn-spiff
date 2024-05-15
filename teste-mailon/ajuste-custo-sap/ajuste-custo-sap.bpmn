@@ -228,7 +228,7 @@ query_produtos = f"""
 query_depositos = f"""
                     SELECT DISTINCT 
                         t0."WhsCode" ,
-                        t1."WhsName" 
+                        CAST(t1."WhsName" AS VARCHAR(50))
                     FROM 
                         {baseSap}.OITW t0
                         INNER JOIN {baseSap}.OWHS t1 ON t1."WhsCode" = t0."WhsCode"
