@@ -233,7 +233,7 @@ query_depositos = f"""
                         {baseSap}.OITW t0
                         INNER JOIN {baseSap}.OWHS t1 ON t1."WhsCode" = t0."WhsCode"
                     WHERE t0."AvgPrice" &gt; 0
-                    ORDER BY t0."ItemCode"
+                    ORDER BY t0."WhsCode"
                 """
 
 consulta_produtos = Hana(connection).selectDb(query_produtos)
