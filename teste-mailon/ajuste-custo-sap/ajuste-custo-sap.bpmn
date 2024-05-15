@@ -31,11 +31,19 @@ connection = {
 
 query_movimento = f"""
                 SELECT 
-                     t0."ItemCode" AS "Produto" 
+                    t0."ORIGEM" ,
+                    t0."ItemCode" AS "Produto" ,
+                    t0."TIPO" ,
+                    t0."DocDueDate" ,
+                    t0."DocNum" ,
+                    t0."QTDE" ,
+                    t0."LineTotal" ,
+                    t0."unitMsr"
                 FROM {baseSap}.AC_MOVIMENTOS t0
                 WHERE 
                     t0."ItemCode" = '{produto}' AND
-	                t0."WhsCode" = '{deposito}'
+	                t0."WhsCode" = '{deposito}' AND
+                    t0."CANCELED" = 'N'
                 """
 
 consulta_movimentos = Hana(connection).selectDb(query_movimento)
