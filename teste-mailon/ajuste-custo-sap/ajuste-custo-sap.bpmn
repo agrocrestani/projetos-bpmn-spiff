@@ -49,7 +49,7 @@ consulta_movimentos = Hana(connection).selectDb(query_movimento)
 query_um_produto_estoque =  f"""
                 SELECT  
                     t0."InvntryUom"
-                FROM OITM t0
+                FROM {baseSap}.OITM t0
                 WHERE t0."ItemCode" = '{produto}';
                 """
 
