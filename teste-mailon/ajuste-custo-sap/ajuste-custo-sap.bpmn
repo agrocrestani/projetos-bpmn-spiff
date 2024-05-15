@@ -129,7 +129,7 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario).replace(',', ' ').repla
       <bpmn:businessRuleTask id="ConversorUnidadeMedida" name="Conversor de Unidade de Medida">
         <bpmn:extensionElements>
           <spiffworkflow:preScript>unidadeDocumento = x['unitmsr']
-unidadeEstoque = um_produto_estoque['invntryuom']</spiffworkflow:preScript>
+unidadeEstoque = um_produto_estoque[0]['invntryuom']</spiffworkflow:preScript>
           <spiffworkflow:postScript>multiplicador = multiplicador
 
 </spiffworkflow:postScript>
