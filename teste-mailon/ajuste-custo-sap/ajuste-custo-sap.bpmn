@@ -112,7 +112,7 @@ del(query_um_produto_estoque)
       <bpmn:outgoing>Flow_0kxg7eo</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
         <bpmn:loopDataInputRef>consulta_movimentos</bpmn:loopDataInputRef>
-        <bpmn:loopDataOutputRef>consulta_movimentos</bpmn:loopDataOutputRef>
+        <bpmn:loopDataOutputRef>consulta_movimentos_out</bpmn:loopDataOutputRef>
         <bpmn:inputDataItem id="x" name="x" />
       </bpmn:multiInstanceLoopCharacteristics>
       <bpmn:startEvent id="Event_117o128">
