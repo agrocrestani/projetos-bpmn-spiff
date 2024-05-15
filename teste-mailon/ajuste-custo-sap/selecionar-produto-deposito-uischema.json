@@ -9,7 +9,7 @@
   "deposito": {
     "ui:autofocus": true,
     "ui:emptyValue": "",
-    "ui:placeholder": "Digite o codigo de um deposito",
+    "ui:placeholder": "Selecione o codigo de um deposito",
     "ui:autocomplete": "family-name",
     "ui:enableMarkdownInDescription": true
   }
