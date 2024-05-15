@@ -79,12 +79,12 @@ total_quantidade_saida = 0
 if isinstance(consulta_movimentos_out, list):
     for produtoAux in consulta_movimentos_out:
         if "preco_unitario" in produtoAux and "qtde" in produtoAux and produtoAux['tipo'] == "E":
-            total_preco_unitario_entrada += linetotal
+            total_preco_unitario_entrada += produtoAux['linetotal']
             total_quantidade_entrada += quantidade
 
     for produtoAux in consulta_movimentos_out:
         if "preco_unitario" in produtoAux and "qtde" in produtoAux and produtoAux['tipo'] == "E":
-            total_preco_unitario_saida += linetotal
+            total_preco_unitario_saida += produtoAux['linetotal']
             total_quantidade_saida += quantidade
 else:
     print("Erro: 'produtosDespositos' não é uma lista.")
