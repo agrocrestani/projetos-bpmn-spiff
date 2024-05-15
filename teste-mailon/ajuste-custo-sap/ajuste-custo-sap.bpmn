@@ -291,7 +291,8 @@ del(deposito)
 del(consulta_depositos)
 </spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser />
-        <spiffworkflow:postScript />
+        <spiffworkflow:postScript>del(depositosList)
+del(produtosList)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:incoming>Flow_0ho3zz6</bpmn:incoming>
