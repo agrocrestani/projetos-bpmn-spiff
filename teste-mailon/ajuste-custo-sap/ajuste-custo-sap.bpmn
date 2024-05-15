@@ -33,12 +33,7 @@ query_movimento = f"""
                 SELECT 
                     t0."ORIGEM" ,
                     COALESCE(CAST(t0."ItemCode" AS VARCHAR(100))) AS "Produto" ,
-                    t0."TIPO" ,
-                    CAST(t0."DocDueDate" AS VARCHAR(100)) ,
-                    CAST(t0."DocNum" AS VARCHAR(100)) ,
-                    COALESCE(CAST(t0."QTDE" AS VARCHAR(100))) ,
-                    COALESCE(CAST(t0."LineTotal" AS VARCHAR(100))) ,
-                    COALESCE(CAST(t0."unitMsr" AS VARCHAR(100)))
+                    t0."TIPO" 
                 FROM {baseSap}.AC_MOVIMENTOS t0
                 WHERE 
                     t0."ItemCode" = '{produto}' AND
