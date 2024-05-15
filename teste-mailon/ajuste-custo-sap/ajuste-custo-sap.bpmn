@@ -60,7 +60,8 @@ del(connection)
 del(query_movimento)
 del(baseSap)
 del(query_um_produto_estoque)
-</bpmn:script>
+
+num_movimentos = 0</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="EntradasItens" name="Entradas dos Itens">
       <bpmn:extensionElements>
@@ -103,11 +104,10 @@ Quantidade Total  Entrada: {{ '{:,.3f}'.format(total_quantidade_entrada).replace
 Custo Total Saída: {{'{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 Quantidade Total  Saída: {{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 
-| Origem | Numero Documento | Quantidade | Custo Unitário | Custo Total | Data | Contagem |
-| ------ | --------------- | ---------- | -------------- | ----------- | ---- | -------- |
-{% set count = 0 %}
-{% for produto in consulta_movimentos_out %}
-| {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['linetotal']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['docduedate']}} | {{ count := count + 1 }} |
+| Num | Origem | Numero Documento | Quantidade | Custo Unitário | Custo Total | Data |
+| ------- | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- |
+{% for produto in consulta_movimentos_out%}
+| {{ produto['num_movimentos'] }} | {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |{{ '{:,.3f}'.format(produto['linetotal']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['docduedate']}} |
 {% endfor %}
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
@@ -147,7 +147,7 @@ unidadeEstoque = um_produto_estoque[0]['invntryuom']</spiffworkflow:preScript>
       <bpmn:scriptTask id="NormalizandoEstoque" name="Normalizando Estoque">
         <bpmn:incoming>Flow_0f953hs</bpmn:incoming>
         <bpmn:outgoing>Flow_14z5yhx</bpmn:outgoing>
-        <bpmn:script>
+        <bpmn:script>num_movimentos += 1
 precoProdutoNormalizado = float(x["linetotal"].replace(",", ".")) / float(x["qtde"].replace(",", ".")) / multiplicador
 quantidadeEstoqueNormalizada = multiplicador * float(x["qtde"].replace(",", "."))
 precoTotalNormalizado = float(x["linetotal"].replace(",", "."))
@@ -155,6 +155,7 @@ precoTotalNormalizado = float(x["linetotal"].replace(",", "."))
 x['qtde'] = quantidadeEstoqueNormalizada
 x['preco_unitario'] = precoProdutoNormalizado
 x['linetotal'] = precoTotalNormalizado
+x['num_movimentos'] = num_movimentos
 
 consulta_movimentos_out.append(x)
 
