@@ -228,7 +228,7 @@ query_produtos = f"""
 query_depositos = f"""
                     SELECT DISTINCT 
                         t0."WhsCode" ,
-                        CAST(t1."WhsName" AS VARCHAR(50))
+                        CAST(t1."WhsName" AS VARCHAR(50)) AS "whsname"
                     FROM 
                         {baseSap}.OITW t0
                         INNER JOIN {baseSap}.OWHS t1 ON t1."WhsCode" = t0."WhsCode"
@@ -241,6 +241,27 @@ consulta_depositos = Hana(connection).selectDb(query_depositos)
 
 del(query_depositos)
 del(query_produtos)
+del(baseSap)
+del(connection)
+
+
+produtosList = []
+for produto in consulta_produtos:
+    produtosList.append(
+        {
+            "value" : produto['itemcode'] ,
+            "label" : produto['itemcode'] + ' - ' produto['itemname']
+        }
+    )
+
+depositosList = []
+for deposito in consulta_depositos:
+    depositosList.append(
+        {
+            "value" : deposito['whscode'] ,
+            "label" : deposito['whscode'] + ' - ' deposito['whsname']
+        }
+    )
 </spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:postScript>del(depositosList)</spiffworkflow:postScript>
