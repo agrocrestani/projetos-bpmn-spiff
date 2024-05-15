@@ -1,5 +1,5 @@
 {
-  "title": "Selecione o Produto e o Deposito",
+  "title": "Selecionar o Produto e o Deposito",
   "type": "object",
   "required": [
     "produto",
