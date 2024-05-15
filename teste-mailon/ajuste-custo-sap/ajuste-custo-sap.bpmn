@@ -89,12 +89,12 @@ del(query_um_produto_estoque)
 #     print("Custo médio unitário:", custo_medio_unitario)
 # else:
 #     print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
-</spiffworkflow:preScript>
+del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript />
         <spiffworkflow:instructionsForEndUser>
 | Origem | Numero Documento | Quantidade | Custo Total | Data |
 | ------- | -------------- | ----------: | ---------------: | --------------------- |
-{% for produto in consulta_movimentos%}
+{% for produto in consulta_movimentos_out%}
 | {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['linetotal']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['docduedate']}} |
 {% endfor %}
 </spiffworkflow:instructionsForEndUser>
