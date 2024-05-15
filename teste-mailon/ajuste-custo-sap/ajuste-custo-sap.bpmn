@@ -203,15 +203,31 @@ x['documento'] = nomeObjeto</bpmn:script>
           <spiffworkflow:property name="formJsonSchemaFilename" value="selecionar-produto-deposito-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-produto-deposito-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript>depositosList = []
+        <spiffworkflow:preScript>from connectordb.hana import Hana
 
-for a in depositos:
-    depositosList.append(
-        {
-            "value":a["WhsCode"],
-            "label":a["WhsCode"] + ' - ' + a["WhsName"]
-        }
-    )</spiffworkflow:preScript>
+baseSap = get_secret('baseSap')
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query_produtos = f"""
+                    SELECT DISTINCT 
+                        t0."ItemCode" ,
+                        t1."ItemName" 
+                    FROM 
+                        {baseSap}.OITW t0
+                        INNER JOIN {baseSap}.OITM t1 ON t1."ItemCode" = t0."ItemCode"
+                    WHERE t0."AvgPrice" &gt; 0
+                    ORDER BY t0."ItemCode"
+                """
+
+consulta_produtos = Hana(connection).selectDb(query_produtos)
+
+</spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:postScript>del(depositosList)</spiffworkflow:postScript>
       </bpmn:extensionElements>
@@ -476,6 +492,12 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
   <bpmn:dataStore id="depositos" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="-478" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="2012" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -483,25 +505,6 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
       <bpmndi:BPMNShape id="Activity_1oot5j9_di" bpmnElement="EntradasItens">
         <dc:Bounds x="830" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="2012" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_006mvds" bpmnElement="SaidaItens">
-        <dc:Bounds x="1860" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0mb0jym_di" bpmnElement="Gateway_0mb0jym" isMarkerVisible="true">
-        <dc:Bounds x="1135" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
-        <dc:Bounds x="1142" y="372" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0jzl9cj_di" bpmnElement="MovimentoSaidaEncontrado">
-        <dc:Bounds x="1110" y="250" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="-478" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
@@ -600,6 +603,19 @@ Custo Total: **{{ '{:,.3f}'.format(total_preco_unitario_medio_estoque_saida).rep
         <di:waypoint x="1680" y="177" />
         <di:waypoint x="1722" y="177" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BPMNShape_006mvds" bpmnElement="SaidaItens">
+        <dc:Bounds x="1860" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0mb0jym_di" bpmnElement="Gateway_0mb0jym" isMarkerVisible="true">
+        <dc:Bounds x="1135" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
+        <dc:Bounds x="1142" y="372" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0jzl9cj_di" bpmnElement="MovimentoSaidaEncontrado">
+        <dc:Bounds x="1110" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-442" y="177" />
         <di:waypoint x="-150" y="177" />
