@@ -29,6 +29,17 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
+query_movimento = f"""
+                SELECT * 
+                FROM {baseSap}.AC_MOVIMENTOS t0
+                WHERE 
+                    t0."ItemCode" = '{produto}' AND
+	                t0."WhsCode" = '{deposito}'
+                """
+
+consulta_movimentos = Hana(connection).selectDb(query_movimento)
+
+
 # Consulta para produtos comprados (PCH1/OPCH)
 query_compras = f"""
     SELECT 
