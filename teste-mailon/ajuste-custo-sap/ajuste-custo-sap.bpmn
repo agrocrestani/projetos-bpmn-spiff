@@ -32,13 +32,13 @@ connection = {
 query_movimento = f"""
                 SELECT 
                     t0."ORIGEM" ,
-                    t0."ItemCode" AS "Produto" ,
+                    COALESCE(CAST(t0."ItemCode" AS VARCHAR(100))) AS "Produto" ,
                     t0."TIPO" ,
-                    t0."DocDueDate" ,
-                    t0."DocNum" ,
-                    t0."QTDE" ,
-                    t0."LineTotal" ,
-                    t0."unitMsr"
+                    COALESCE(CAST(t0."DocDueDate" AS VARCHAR(100))) ,
+                    COALESCE(CAST(t0."DocNum" AS VARCHAR(100))) ,
+                    COALESCE(CAST(t0."QTDE" AS VARCHAR(100))) ,
+                    COALESCE(CAST(t0."LineTotal" AS VARCHAR(100))) ,
+                    COALESCE(CAST(t0."unitMsr" AS VARCHAR(100)))
                 FROM {baseSap}.AC_MOVIMENTOS t0
                 WHERE 
                     t0."ItemCode" = '{produto}' AND
