@@ -103,10 +103,10 @@ Quantidade Total  Entrada: {{ '{:,.3f}'.format(total_quantidade_entrada).replace
 Custo Total Entrada: {{'{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 Quantidade Total  Entrada: {{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 
-| Origem | Numero Documento | Quantidade | Custo Total | Data |
-| ------- | -------------- | ----------: | ---------------: | --------------------- |
+| Origem | Numero Documento | Quantidade | Custo Unitário | Custo Total | Data |
+| ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- |
 {% for produto in consulta_movimentos_out%}
-| {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['linetotal']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['docduedate']}} |
+| {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |{{ '{:,.3f}'.format(produto['linetotal']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['docduedate']}} |
 {% endfor %}
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
