@@ -8,8 +8,7 @@
   "properties": {
     "produto": {
       "type": "string",
-      "title": "Produto",
-  
+      "title": "Produto"
     },
     "deposito": {
       "type": "string",
