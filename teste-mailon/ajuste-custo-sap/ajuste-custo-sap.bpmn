@@ -6,7 +6,7 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_00bh8bd" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_0skfk7t</bpmn:incoming>
+      <bpmn:incoming>Flow_1n8yish</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:scriptTask id="BuscaProdutosPorDepositoSAP" name="Busca Produtos por Deposito no SAP">
       <bpmn:extensionElements>
@@ -102,7 +102,7 @@ del(query_um_produto_estoque)
       <bpmn:incoming>Flow_0kxg7eo</bpmn:incoming>
       <bpmn:outgoing>Flow_1n8yish</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="EntradasItens" targetRef="BuscaMovimentosSaidaSAP" />
+    <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="EntradasItens" targetRef="EndEvent_1" />
     <bpmn:subProcess id="Activity_1d1r8sl">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>del(x)</spiffworkflow:postScript>
@@ -271,61 +271,12 @@ del(produtosList)</spiffworkflow:postScript>
       <bpmn:incoming>Flow_1462x9u</bpmn:incoming>
       <bpmn:outgoing>Flow_0n3n3cb</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:scriptTask id="BuscaMovimentosSaidaSAP" name="Busca Movimentos de Saida no SAP">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser />
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1n8yish</bpmn:incoming>
-      <bpmn:outgoing>Flow_0skfk7t</bpmn:outgoing>
-      <bpmn:script>from connectordb.hana import Hana
-
-baseSap = get_secret('baseSap')
-
-produtosDepositosSaidaNormalizados = []
-
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
-
-query_saida_mercadoria = f"""
-    SELECT 
-        t0."ItemCode" || ' - ' || t0."ItemName" AS "Produto" , 
-        CAST(t2."Price" AS VARCHAR(50)) AS "Preço Unitario" , 
-        CAST(t2."Quantity" AS VARCHAR(50)) AS "Quantidade" ,
-        CAST(t2."LineTotal" AS VARCHAR(50)) AS "Preço Total" ,
-        CAST(t2."StockPrice" AS VARCHAR(50)) AS "Preço Unitario Estoque" ,
-        t2."unitMsr" AS "Unidade Documento" , 
-        t0."InvntryUom" AS "Unidade Estoque" , 
-        CAST(t3."DocNum" AS VARCHAR(50)) AS "DocNum" ,
-        CAST(t3."ObjType" AS VARCHAR(50)) AS "Documento"
-    FROM {baseSap}.OITM t0
-    INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
-    INNER JOIN {baseSap}.IGE1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '{deposito}'
-    INNER JOIN {baseSap}.OIGE t3 ON t3."DocEntry" = t2."DocEntry" AND t3.CANCELED = 'N'
-    WHERE t0."ItemCode" = '{produto}' AND t1."WhsCode" = '{deposito}'
-    ORDER BY t3."DocEntry"
-"""
-
-# Executar as consultas
-consulta_saida_mercadoria = Hana(connection).selectDb(query_saida_mercadoria)
-
-# Combinar os resultados
-produtosDepositosSaida = consulta_saida_mercadoria
-
-del(connection)
-del(consulta_saida_mercadoria)
-del(baseSap)</bpmn:script>
-    </bpmn:scriptTask>
     <bpmn:endEvent id="Event_1n8n9v9">
       <bpmn:incoming>Flow_0gpghte</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0gpghte" sourceRef="Gateway_0zhxafw" targetRef="Event_1n8n9v9">
       <bpmn:conditionExpression>novaBusca == False</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_0skfk7t" sourceRef="BuscaMovimentosSaidaSAP" targetRef="EndEvent_1" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
@@ -341,7 +292,7 @@ del(baseSap)</bpmn:script>
         <dc:Bounds x="-258" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1212" y="159" width="36" height="36" />
+        <dc:Bounds x="1072" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
@@ -385,10 +336,6 @@ del(baseSap)</bpmn:script>
         <dc:Bounds x="-10" y="250" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_0pzmp4f" bpmnElement="BuscaMovimentosSaidaSAP">
-        <dc:Bounds x="990" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
         <dc:Bounds x="1142" y="372" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -398,7 +345,7 @@ del(baseSap)</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1n8yish_di" bpmnElement="Flow_1n8yish">
         <di:waypoint x="930" y="177" />
-        <di:waypoint x="990" y="177" />
+        <di:waypoint x="1072" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12354sq_di" bpmnElement="Flow_12354sq">
         <di:waypoint x="90" y="177" />
@@ -433,10 +380,6 @@ del(baseSap)</bpmn:script>
       <bpmndi:BPMNEdge id="Flow_0gpghte_di" bpmnElement="Flow_0gpghte">
         <di:waypoint x="65" y="390" />
         <di:waypoint x="1142" y="390" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0skfk7t_di" bpmnElement="Flow_0skfk7t">
-        <di:waypoint x="1090" y="177" />
-        <di:waypoint x="1212" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
