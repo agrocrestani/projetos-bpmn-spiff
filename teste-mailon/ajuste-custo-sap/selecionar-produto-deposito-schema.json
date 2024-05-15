@@ -20,6 +20,5 @@
         "options_from_task_data_var:depositosList"
       ]
     }
-  },
-  "description": "Connect a field to a data store to auto-complete entered values."
+  }
 }
