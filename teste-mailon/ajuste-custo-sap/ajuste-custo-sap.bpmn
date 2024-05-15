@@ -18,9 +18,7 @@
 
 baseSap = get_secret('baseSap')
 
-produtosDepositosNormalizados = []
-
-produtosDepositos = []
+consulta_movimentos = []
 
 connection = {
     "address": "172.20.1.4",
@@ -49,57 +47,10 @@ query_movimento = f"""
 consulta_movimentos = Hana(connection).selectDb(query_movimento)
 
 
-# Consulta para produtos comprados (PCH1/OPCH)
-query_compras = f"""
-    SELECT 
-        t0."ItemCode" || ' - ' || t0."ItemName" AS "Produto" , 
-        CAST(t2."Price" AS VARCHAR(50)) AS "Preço Unitario" , 
-        CAST(t2."Quantity" AS VARCHAR(50)) AS "Quantidade" ,
-        CAST(t2."LineTotal" AS VARCHAR(50)) AS "Preço Total" ,
-        t2."unitMsr" AS "Unidade Documento" , 
-        t0."InvntryUom" AS "Unidade Estoque" , 
-        CAST(t3."DocNum" AS VARCHAR(50)) AS "DocNum" ,
-        CAST(t3."ObjType" AS VARCHAR(50)) AS "Documento"
-    FROM {baseSap}.OITM t0
-    INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
-    INNER JOIN {baseSap}.PCH1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '{deposito}'
-    INNER JOIN {baseSap}.OPCH t3 ON t3."DocEntry" = t2."DocEntry" AND t3.CANCELED = 'N'
-    WHERE t0."ItemCode" = '{produto}' AND t1."WhsCode" = '{deposito}'
-    ORDER BY t3."DocEntry"
-"""
-
-# Consulta para produtos de transferência (PDN1/OPDN)
-query_transferencias = f"""
-    SELECT 
-        t0."ItemCode" || ' - ' || t0."ItemName" AS "Produto" , 
-        CAST(t2."Price" AS VARCHAR(50)) AS "Preço Unitario" , 
-        CAST(t2."Quantity" AS VARCHAR(50)) AS "Quantidade" ,
-        CAST(t2."LineTotal" AS VARCHAR(50)) AS "Preço Total" ,
-        t2."unitMsr" AS "Unidade Documento" , 
-        t0."InvntryUom" AS "Unidade Estoque" , 
-        CAST(t3."DocNum" AS VARCHAR(50)) AS "DocNum" ,
-        CAST(t3."ObjType" AS VARCHAR(50)) AS "Documento"
-    FROM {baseSap}.OITM t0
-    INNER JOIN {baseSap}.OITW t1 ON t1."ItemCode" = t0."ItemCode"
-    INNER JOIN {baseSap}.PDN1 t2 ON t2."ItemCode" = t0."ItemCode" AND t2."WhsCode" = '{deposito}'
-    INNER JOIN {baseSap}.OPDN t3 ON t3."DocEntry" = t2."DocEntry" AND t3.CANCELED = 'N'
-    WHERE t0."ItemCode" = '{produto}' AND t1."WhsCode" = '{deposito}'
-    ORDER BY t3."DocEntry"
-"""
-
-# Executar as consultas
-consulta_compras = Hana(connection).selectDb(query_compras)
-consulta_transferencias = Hana(connection).selectDb(query_transferencias)
-
-# Combinar os resultados
-produtosDepositos = consulta_compras + consulta_transferencias
-
 del(connection)
-del(consulta_compras)
-del(consulta_transferencias)
-del(query_compras)
-del(query_transferencias)
-del(baseSap)</bpmn:script>
+del(query_movimento)
+del(baseSap)
+</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="EntradasItens" name="Entradas dos Itens">
       <bpmn:extensionElements>
@@ -304,10 +255,10 @@ del(produtosList)</spiffworkflow:postScript>
       <bpmn:outgoing>Flow_1462x9u</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1yez69d" sourceRef="Gateway_0mqija0" targetRef="Activity_1d1r8sl">
-      <bpmn:conditionExpression>produtosDepositos != []</bpmn:conditionExpression>
+      <bpmn:conditionExpression>consulta_movimentos != []</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1462x9u" sourceRef="Gateway_0mqija0" targetRef="MovimentoEntradaNaoEncontrado">
-      <bpmn:conditionExpression>produtosDepositos == []</bpmn:conditionExpression>
+      <bpmn:conditionExpression>consulta_movimentos == []</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="Gateway_0zhxafw" default="Flow_0ho3zz6">
       <bpmn:incoming>Flow_0n3n3cb</bpmn:incoming>
