@@ -250,7 +250,7 @@ for produto in consulta_produtos:
     produtosList.append(
         {
             "value" : produto['itemcode'] ,
-            "label" : produto['itemcode'] + ' - ' produto['itemname']
+            "label" : produto['itemcode'] + ' - ' + produto['itemname']
         }
     )
 
@@ -259,7 +259,7 @@ for deposito in consulta_depositos:
     depositosList.append(
         {
             "value" : deposito['whscode'] ,
-            "label" : deposito['whscode'] + ' - ' deposito['whsname']
+            "label" : deposito['whscode'] + ' - ' + deposito['whsname']
         }
     )
 </spiffworkflow:preScript>
