@@ -2,7 +2,7 @@
   "produto": {
     "ui:autofocus": true,
     "ui:emptyValue": "",
-    "ui:placeholder": "Selecione o codigo de um produto",
+    "ui:placeholder": "Selecione um produto",
     "ui:autocomplete": "family-name",
     "ui:enableMarkdownInDescription": true
   },
