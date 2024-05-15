@@ -256,6 +256,7 @@ for produto in consulta_produtos:
     )
 
 del(produto)
+del(consulta_produtos)
 
 depositosList = []
 for deposito in consulta_depositos:
@@ -267,6 +268,7 @@ for deposito in consulta_depositos:
     )
 
 del(deposito)
+del(consulta_depositos)
 </spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:postScript></spiffworkflow:postScript>
