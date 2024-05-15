@@ -247,11 +247,11 @@ del(connection)
 
 
 produtosList = []
-for produto in consulta_produtos:
+for produto in consulta_depositos:
     produtosList.append(
         {
-            "value" : produto['itemcode'] ,
-            "label" : produto['itemcode'] + ' - ' + produto['itemname']
+            "value" : produto['whscode'] ,
+            "label" : produto['whscode'] + ' - ' + produto['whsname']
         }
     )
 
@@ -271,7 +271,7 @@ del(deposito)
 del(consulta_depositos)
 </spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser />
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:incoming>Flow_0ho3zz6</bpmn:incoming>
