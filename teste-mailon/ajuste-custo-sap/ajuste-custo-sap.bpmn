@@ -144,6 +144,8 @@ x['qtde'] = quantidadeEstoqueNormalizada
 x['preco_unitario'] = precoProdutoNormalizado
 x['linetotal'] = precoTotalNormalizado
 
+consulta_movimentos_out.append(x)
+
 del(quantidadeEstoqueNormalizada)
 del(precoProdutoNormalizado)
 del(precoTotalNormalizado)
