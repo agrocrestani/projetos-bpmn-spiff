@@ -42,6 +42,7 @@ query_movimento = f"""
                     t0."ItemCode" = '{produto}' AND
 	                t0."WhsCode" = '{deposito}' AND
                     t0."CANCELED" = 'N'
+                ORDER BY t0."DocDueDate", t0."DocNum"
                 """
 
 consulta_movimentos = Hana(connection).selectDb(query_movimento)
