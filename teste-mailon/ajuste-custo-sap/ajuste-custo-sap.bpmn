@@ -67,28 +67,28 @@ del(query_um_produto_estoque)
           <spiffworkflow:property name="formJsonSchemaFilename" value="" />
           <spiffworkflow:property name="formUiSchemaFilename" value="" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript># Inicialize as variáveis para calcular o custo médio unitário
-total_preco_unitario = 0
-total_quantidade = 0
+        <spiffworkflow:preScript># # Inicialize as variáveis para calcular o custo médio unitário
+# total_preco_unitario = 0
+# total_quantidade = 0
 
-# Verifique se produtosDespositos é uma lista
-if isinstance(produtosDepositosNormalizados, list):
-    for produtoAux in produtosDepositosNormalizados:
-        # Verifique se o produto contém as chaves necessárias
-        if "preço unitario" in produtoAux and "quantidade" in produtoAux:
-            preco_unitario = float(produtoAux["preço unitario"])
-            quantidade = float(produtoAux["quantidade"])
-            total_preco_unitario += preco_unitario * quantidade
-            total_quantidade += quantidade
-else:
-    print("Erro: 'produtosDespositos' não é uma lista.")
+# # Verifique se produtosDespositos é uma lista
+# if isinstance(produtosDepositosNormalizados, list):
+#     for produtoAux in produtosDepositosNormalizados:
+#         # Verifique se o produto contém as chaves necessárias
+#         if "preço unitario" in produtoAux and "quantidade" in produtoAux:
+#             preco_unitario = float(produtoAux["preço unitario"])
+#             quantidade = float(produtoAux["quantidade"])
+#             total_preco_unitario += preco_unitario * quantidade
+#             total_quantidade += quantidade
+# else:
+#     print("Erro: 'produtosDespositos' não é uma lista.")
 
-# Verifique se houve algum produto na lista
-if total_quantidade != 0:
-    custo_medio_unitario = total_preco_unitario / total_quantidade
-    print("Custo médio unitário:", custo_medio_unitario)
-else:
-    print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
+# # Verifique se houve algum produto na lista
+# if total_quantidade != 0:
+#     custo_medio_unitario = total_preco_unitario / total_quantidade
+#     print("Custo médio unitário:", custo_medio_unitario)
+# else:
+#     print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
 </spiffworkflow:preScript>
         <spiffworkflow:postScript />
         <spiffworkflow:instructionsForEndUser>
