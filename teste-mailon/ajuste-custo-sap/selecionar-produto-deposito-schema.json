@@ -19,11 +19,6 @@
       "anyOf": [
         "options_from_task_data_var:depositosList"
       ]
-    },
-    "city": {
-      "type": "string",
-      "format": "date",
-      "title": "Select a city"
     }
   },
   "description": "Connect a field to a data store to auto-complete entered values."
