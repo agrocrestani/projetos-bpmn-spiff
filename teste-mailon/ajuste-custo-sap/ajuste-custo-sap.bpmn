@@ -36,7 +36,9 @@ query_movimento = f"""
                     CAST(t0."DocNum" AS VARCHAR(100)) AS "DocNum",
                     CAST(t0."QTDE" AS VARCHAR(100)) AS "QTDE",
                     CAST(t0."LineTotal" AS VARCHAR(100)) AS "LineTotal",
-                    CAST(t0."unitMsr" AS VARCHAR(100)) AS "unitMsr" 
+                    CAST(t0."unitMsr" AS VARCHAR(100)) AS "unitMsr" ,
+                    CAST(t0."BaseType" AS VARCHAR(100)) AS "BaseType" 
+                    CAST(t0."BaseRef" AS VARCHAR(100)) AS "BaseRef" 
                 FROM {baseSap}.AC_MOVIMENTOS t0
                 WHERE 
                     t0."ItemCode" = '{produto}' AND
