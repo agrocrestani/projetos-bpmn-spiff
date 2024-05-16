@@ -2,7 +2,7 @@
   "solicitacao": [
     {
       "confirmaItem": false,
-      "insumo": "{\"ItemCode\":\"022722\",\"ItemName\":\"ABADAY\",\"ItmsGrpNam\":\"INSETICIDAS\",\"InvntryUom\":\"LITRO\",\"OnHand\":\"40,00\",\"WhsCode\":\"03.FQUE\"}"
+      "insumo": null
     }
   ],
   "unidade": "apples",
