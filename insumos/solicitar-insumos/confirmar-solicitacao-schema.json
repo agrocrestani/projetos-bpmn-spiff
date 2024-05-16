@@ -3,7 +3,7 @@
   "description": "A super simple checkbox",
   "type": "object",
   "required": [
-          "insumo",
+          "solicitacao",
           "quantidade"
         ],
   "properties": {
