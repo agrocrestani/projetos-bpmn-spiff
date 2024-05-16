@@ -2,29 +2,12 @@
   "solicitacao": [
     {
       "confirmaItem": false,
-      "confirmItem": false,
-      "confirma": false,
       "insumo": "{\"ItemName\":\"MALATHION UL\",\"ItemCode\":\"022777\",\"OnHand\":\"6000.00\",\"InvntryUom\":\"LITRO\"}",
       "quantidade": 200
+    },
+    {
+      "confirmaItem": false
     }
   ],
-  "unidade": "apples",
-  "confirmaPedido": false,
-  "confirma": false,
-  "con": false,
-  "done": false,
-  "n_filiais": [
-    {
-      "value": "apples",
-      "label": "Apples"
-    },
-    {
-      "value": "oranges",
-      "label": "Oranges"
-    },
-    {
-      "value": "bananas",
-      "label": "Bananas"
-    }
-  ]
+  "unidade": "apples"
 }
