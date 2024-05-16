@@ -1,10 +1,5 @@
 {
-  "solicitacao": [
-    {
-      "confirmaItem": false,
-      "insumo": null
-    }
-  ],
+  "solicitacao": [],
   "unidade": "apples",
   "n_filiais": [
     {
