@@ -19,7 +19,7 @@
         "ui:widget": "typeahead",
         "ui:options": {
           "category": "estoque_de_insumos",
-          "itemFormat": "{ItemName} - {ItemCode} (Estoque: {OnHand} {InvntryUom} - {WhsCode})"
+          "itemFormat": "{ItemName} - {ItemCode} (Estoque: {OnHand} {InvntryUom} {WhsCode})"
         }
       }
     }
