@@ -7,7 +7,7 @@
       "default": false
     },
     "mainusage": {
-      "title": "Utilizaç",
+      "title": "Uso P",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:fruits"
