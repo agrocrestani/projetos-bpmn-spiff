@@ -7,7 +7,7 @@
       "default": false
     },
     "mainusage": {
-      "title": "Select your favorite fruit",
+      "title": "Utilizaç",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:fruits"
