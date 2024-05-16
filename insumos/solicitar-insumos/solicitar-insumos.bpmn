@@ -78,14 +78,7 @@ for f in filiais:
     <bpmn:sequenceFlow id="Flow_0f3ld08" sourceRef="Activity_02zzhyq" targetRef="Activity_0jn1u2s" />
     <bpmn:userTask id="Activity_02zzhyq" name="Confirmar itens solicitados">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>for s in solicitacao:
-    s['insumo'] = json.loads(s['insumo'])
-
-
-descricaoFilial = ""
-for f in n_filiais:
-    if f['value'] == unidade:
-      descricaoFilial = f['label']</spiffworkflow:preScript>
+        <spiffworkflow:preScript></spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-solicitacao-uischema.json" />
