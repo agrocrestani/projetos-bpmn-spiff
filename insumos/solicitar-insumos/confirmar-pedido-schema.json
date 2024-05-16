@@ -1,5 +1,5 @@
 {
-  "description": "Clique na ",
+  "description": "Clique na caixa para ",
   "properties": {
     "done": {
       "type": "boolean",
