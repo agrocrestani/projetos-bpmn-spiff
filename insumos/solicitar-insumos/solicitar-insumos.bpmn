@@ -132,7 +132,7 @@ for f in n_filiais:
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0sfji19_di" bpmnElement="Activity_0jn1u2s">
-        <dc:Bounds x="590" y="137" width="100" height="80" />
+        <dc:Bounds x="600" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_108mqy4_di" bpmnElement="Flow_108mqy4">
         <di:waypoint x="960" y="177" />
@@ -159,12 +159,12 @@ for f in n_filiais:
         <di:waypoint x="302" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1o5dvob_di" bpmnElement="Flow_1o5dvob">
-        <di:waypoint x="690" y="177" />
+        <di:waypoint x="700" y="177" />
         <di:waypoint x="860" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0f3ld08_di" bpmnElement="Flow_0f3ld08">
         <di:waypoint x="530" y="177" />
-        <di:waypoint x="590" y="177" />
+        <di:waypoint x="600" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
