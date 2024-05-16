@@ -55,11 +55,12 @@ for r in rsp:
             }
         )
 
-del(rsp)
+
 
 typeahead = {"material_expediente": material_expediente}
 
-del(connection)</bpmn:script>
+del(connection)
+del(rsp)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_09p4nvv" sourceRef="Activity_MatExpediente" targetRef="Event_0jxoz7s" />
   </bpmn:process>
