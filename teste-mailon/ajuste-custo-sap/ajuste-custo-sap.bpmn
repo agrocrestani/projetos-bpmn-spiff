@@ -42,11 +42,13 @@ query_movimento = f"""
                 FROM {baseSap}.AC_MOVIMENTOS t0
                 WHERE 
                     t0."ItemCode" = '{produto}' AND
-	                t0."WhsCode" = '{deposito}' AND
-                    t0."CANCELED" = 'N'         
+	                t0."WhsCode" = '{deposito}' 
                 ORDER BY t0."DocDueDate", t0."DocNum"
                 """
 
+# AND
+                    # t0."CANCELED" = 'N'         
+                    
 consulta_movimentos = Hana(connection).selectDb(query_movimento)
 
 query_um_produto_estoque =  f"""
