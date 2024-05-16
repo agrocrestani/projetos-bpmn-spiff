@@ -60,13 +60,22 @@ for f in filiais:
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## Solicitação de Insumos 
 
-### Filial: {{descricaoFilial}}
 
 | Código | Descrição | Quantidade | UN| Deposito |
 | --------- | ------------ | :---------------: | ---- | --------- |
 {%for s in solicitacao %}
 | {{s['insumo']['ItemCode']}} | {{s['insumo']['ItemName']}} | {{s['quantidade']}} | {{s['insumo']['InvntryUom']}} | {{s['insumo']['WhsCode']}} |
-{%endfor%}</spiffworkflow:instructionsForEndUser>
+{%endfor%}
+
+## Dados para NFe
+
+| Campo | Valor
+| --------- | ------------ | 
+| Filial: |{{descricaoFilial}}|
+| Vededor: | {{Slpcode}} |
+| Titular:    | {{OwnerCode}} |
+| Uso Principal: | {{mainusage}} |
+</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-pedido-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-pedido-uischema.json" />
