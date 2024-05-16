@@ -1,5 +1,5 @@
 {
-  "description": "Verifique todos",
+  "description": "Verifique todos iten",
   "properties": {
     "done": {
       "type": "boolean",
