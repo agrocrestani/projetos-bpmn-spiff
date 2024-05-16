@@ -74,9 +74,17 @@ solicitante = get_current_user()</spiffworkflow:preScript>
 
 | Campo | Valor
 | --------- | ------------ | 
-| Filial: |{{descricaoFilial}}|
+| Filial Destino: |{{descricaoFilial}}|
+| Códgo Cliente | {{CardCode}} |
 | Vededor: | {{SlpCode}} |
 | Titular:    | {{OwnerCode}} |
+| Solicitante: | {{solicitante}}
+| 
+
+
+-----------
+
+
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-pedido-schema.json" />
