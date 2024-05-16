@@ -1,7 +1,8 @@
 {
   "type": "object",
   "required": [
-        "solicitacao"
+        "solicitacao",
+        
       ],
   "properties": {
     "solicitacao": {
