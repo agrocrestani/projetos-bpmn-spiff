@@ -1,6 +1,6 @@
 {
   "required": [
-    "done"
+    "done",
   ],
   "properties": {
     "done": {
