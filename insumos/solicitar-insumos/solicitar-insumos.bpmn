@@ -35,7 +35,7 @@ for f in filiais:
         }
     )
 
-solicitante = get_current_user()</spiffworkflow:preScript>
+solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
         <spiffworkflow:postScript />
         <spiffworkflow:instructionsForEndUser># Solicitação de insumos
 
