@@ -79,7 +79,7 @@ solicitante = get_current_user()</spiffworkflow:preScript>
 | Vededor: | {{SlpCode}} |
 | Titular:    | {{OwnerCode}} |
 | Solicitante: | {{solicitante}}
-| 
+| Usuario Emissor NFe: | {{usuarioEmissorNFe}}|
 
 
 -----------
