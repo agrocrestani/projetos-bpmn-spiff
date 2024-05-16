@@ -78,7 +78,7 @@
       "item": {
         "ui:widget": "typeahead",
         "ui:options": {
-          "category": "oitm",
+          "category": "M",
           "itemFormat": "{ItemName} ({ItemCode} - {ItmsGrpNam})"
         }
       }
