@@ -1,18 +1,21 @@
 {
   "solicitacao": [
     {
+      "confirmaItem": false,
       "confirmItem": false,
       "confirma": false,
       "insumo": "{\"ItemName\":\"JAVA 200 SP\",\"ItemCode\":\"022771\",\"OnHand\":\"5.00\",\"InvntryUom\":\"QUILOGRAM\"}",
       "quantidade": 1
     },
     {
+      "confirmaItem": false,
       "confirmItem": false,
       "confirma": false,
       "insumo": "{\"ItemName\":\"FINISH\",\"ItemCode\":\"022835\",\"OnHand\":\"28460.00\",\"InvntryUom\":\"LITRO\"}",
       "quantidade": 1000
     },
     {
+      "confirmaItem": false,
       "confirmItem": false,
       "confirma": false,
       "insumo": "{\"ItemName\":\"MALATHION UL\",\"ItemCode\":\"022777\",\"OnHand\":\"6000.00\",\"InvntryUom\":\"LITRO\"}",

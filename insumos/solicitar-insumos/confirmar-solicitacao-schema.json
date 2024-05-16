@@ -21,7 +21,7 @@
             "type": "number",
             "title": "Quantidade"
             },
-            "confirmItem": {
+            "confirmaItem": {
             "type": "boolean",
             "title": "Confirma o envio deste item?",
             "default": false
