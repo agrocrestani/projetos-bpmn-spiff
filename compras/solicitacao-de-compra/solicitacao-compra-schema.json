@@ -110,10 +110,6 @@
           }
         }
       }
-    },
-    "required": [
-      "BPLId",
-      "Department"
-    ]
+    }
   }
 }
