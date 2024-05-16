@@ -1,7 +1,7 @@
 {
   "done": false,
   "mainusage": "1",
-  "fruits": [
+  "main_usage": [
     {
       "value": "",
       "label": ""
