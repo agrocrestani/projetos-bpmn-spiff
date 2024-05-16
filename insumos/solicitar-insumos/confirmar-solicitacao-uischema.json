@@ -12,7 +12,10 @@
             "sm": 2,
             "md": 2,
             "lg": 2
-          }
+          },
+        {
+            "confirmaItem": {}
+        }
         }
       ],
       "insumo": {
