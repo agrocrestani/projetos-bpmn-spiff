@@ -35,9 +35,5 @@
         "solicitacao": {}
     }
   ],
-  "ui:disabled": [
-    {
-      "unidade"
-    }
-  ]
+  "ui:disabled": 
 }
