@@ -2,7 +2,7 @@
   "title": "Verifique as informações acima e confirme caso esteja tudo correto.",
   "description": "Os lançamentos apresentados foram conferidos e estão corretos?",
   "required": [
-      
+    
   ],
   "properties": {
     "done": {
