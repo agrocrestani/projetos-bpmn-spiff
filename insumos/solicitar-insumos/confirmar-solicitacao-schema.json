@@ -38,9 +38,9 @@
       ]
     },
     "confirmaItem": {
-        "type": "boolean",
-        "title": "Confirma o envio deste item?",
-        "default": false
+    "type": "boolean",
+    "title": "Confirma o envio deste item?",
+    "default": false
         
   }
 }
