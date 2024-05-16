@@ -72,9 +72,8 @@ for f in filiais:
 | Campo | Valor
 | --------- | ------------ | 
 | Filial: |{{descricaoFilial}}|
-| Vededor: | {{Slpcode}} |
+| Vededor: | {{SlpCode}} |
 | Titular:    | {{OwnerCode}} |
-| Uso Principal: | {{mainusage}} |
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-pedido-schema.json" />
@@ -129,6 +128,18 @@ for u in utilizacoes:
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="1392" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1juz99w_di" bpmnElement="Activity_1juz99w">
+        <dc:Bounds x="750" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1txulrf_di" bpmnElement="Activity_1txulrf">
+        <dc:Bounds x="900" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1i9wp10_di" bpmnElement="Activity_1i9wp10">
+        <dc:Bounds x="1060" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1sk3qsl_di" bpmnElement="Activity_0jw3ade">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -139,24 +150,12 @@ for u in utilizacoes:
           <dc:Bounds x="226" y="342" width="28" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0sfji19_di" bpmnElement="Activity_0jn1u2s">
+        <dc:Bounds x="588" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_09ay0t4_di" bpmnElement="Activity_02zzhyq">
         <dc:Bounds x="430" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1juz99w_di" bpmnElement="Activity_1juz99w">
-        <dc:Bounds x="750" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1i9wp10_di" bpmnElement="Activity_1i9wp10">
-        <dc:Bounds x="1060" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1txulrf_di" bpmnElement="Activity_1txulrf">
-        <dc:Bounds x="900" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0sfji19_di" bpmnElement="Activity_0jn1u2s">
-        <dc:Bounds x="588" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_09apfr1_di" bpmnElement="DataStoreReference_09apfr1">
         <dc:Bounds x="575" y="285" width="50" height="50" />
@@ -192,13 +191,13 @@ for u in utilizacoes:
         <di:waypoint x="688" y="177" />
         <di:waypoint x="750" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0f3ld08_di" bpmnElement="Flow_0f3ld08">
-        <di:waypoint x="530" y="177" />
-        <di:waypoint x="588" y="177" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_03oc4gb_di" bpmnElement="DataInputAssociation_03oc4gb">
         <di:waypoint x="607" y="285" />
         <di:waypoint x="627" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0f3ld08_di" bpmnElement="Flow_0f3ld08">
+        <di:waypoint x="530" y="177" />
+        <di:waypoint x="588" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
