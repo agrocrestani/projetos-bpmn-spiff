@@ -131,7 +131,7 @@ for u in utilizacoes:
     </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="Flow_0yzkj3x" sourceRef="Activity_026swb9" targetRef="Gateway_0oji0d2" />
     <bpmn:sequenceFlow id="Flow_1b9hnib" sourceRef="Gateway_0oji0d2" targetRef="Activity_1i9wp10" />
-    <bpmn:serviceTask id="Activity_1juz99w" name="Emitir NFE">
+    <bpmn:task id="Activity_1juz99w" name="Emitir NFE">
       <bpmn:extensionElements>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
           <spiffworkflow:parameters>
@@ -146,7 +146,7 @@ for u in utilizacoes:
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1o5dvob</bpmn:incoming>
       <bpmn:outgoing>Flow_03n0dbr</bpmn:outgoing>
-    </bpmn:serviceTask>
+    </bpmn:task>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
@@ -199,7 +199,7 @@ for u in utilizacoes:
       <bpmndi:BPMNShape id="Gateway_1b9nmwr_di" bpmnElement="Gateway_0oji0d2">
         <dc:Bounds x="1155" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0b1ab2d_di" bpmnElement="Activity_1juz99w">
+      <bpmndi:BPMNShape id="Activity_0qgaxjl_di" bpmnElement="Activity_1juz99w">
         <dc:Bounds x="740" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
