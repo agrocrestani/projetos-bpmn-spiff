@@ -191,7 +191,7 @@ query = f"""
     INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
     WHERE T2."OnHand" &gt; 0  
       AND  T2."WhsCode" = '03.MATR'
-      OR (T2."WhsCode" = '01.FQUE' AND T0."QryGroup2" = 'Y')
+      OR   T2."WhsCode" = '03.FQUE'
     ORDER BY T0."ItemName", T2."WhsCode" 
           """
 
