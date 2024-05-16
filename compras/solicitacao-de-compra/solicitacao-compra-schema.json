@@ -112,7 +112,7 @@
       }
     },
         "required": [
-          "filial",
+          "BPLId",
           "quantidade"
         ]
   }
