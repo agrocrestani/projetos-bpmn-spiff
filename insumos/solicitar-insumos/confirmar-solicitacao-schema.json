@@ -23,7 +23,7 @@
             },
             "confirma": {
             "type": "boolean",
-            "title": "Confirma ?",
+            "title": "Confirma o envio do I?",
             "default": false
             }
 
