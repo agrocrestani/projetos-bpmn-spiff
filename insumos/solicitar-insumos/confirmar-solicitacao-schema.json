@@ -20,7 +20,7 @@
           "quantidade": {
             "type": "number",
             "title": "Quantidade"
-          }
+          },
         }
       }
     },
