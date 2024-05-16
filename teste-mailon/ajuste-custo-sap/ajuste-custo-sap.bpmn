@@ -76,36 +76,46 @@ total_quantidade_entrada = 0
 total_preco_unitario_saida = 0
 total_quantidade_saida = 0
 
-# Verifique se produtosDespositos é uma lista
 if isinstance(consulta_movimentos_out, list):
     for produtoAux in consulta_movimentos_out:
-        if "preco_unitario" in produtoAux and "qtde" in produtoAux and produtoAux['tipo'] == "E":
+        if produtoAux['tipo'] == "E":
             total_preco_unitario_entrada += produtoAux['linetotal']
             total_quantidade_entrada += produtoAux['qtde']
-
-    for produtoAux in consulta_movimentos_out:
-        if "preco_unitario" in produtoAux and "qtde" in produtoAux and produtoAux['tipo'] == "S":
+        
+        if produtoAux['tipo'] == "S":
             total_preco_unitario_saida += produtoAux['linetotal']
-            total_quantidade_saida += produtoAux['qtde']
+            total_quantidade_saida += produtoAux['qtde']        
+            
 else:
     print("Erro: 'produtosDespositos' não é uma lista.")
 
 
 total_estoque = total_quantidade_saida + total_quantidade_entrada
 
-# # Verifique se houve algum produto na lista
-# if total_quantidade != 0:
-#     custo_medio_unitario = total_preco_unitario / total_quantidade
-#     print("Custo médio unitário:", custo_medio_unitario)
-# else:
-#     print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
+if total_quantidade_entrada != 0:
+    custo_medio_unitario_entrada = total_preco_unitario_entrada / total_quantidade_entrada
+    print("Custo médio unitário:", custo_medio_unitario_entrada)
+else:
+    print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
+
+if total_quantidade_saida != 0:
+    custo_medio_unitario_saida = total_preco_unitario_saida / total_quantidade_saida
+    print("Custo médio unitário:", custo_medio_unitario_saida)
+else:
+    print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
+
+
 del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript />
-        <spiffworkflow:instructionsForEndUser>Custo Total Entrada: {{'{:,.3f}'.format(total_preco_unitario_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
+        <spiffworkflow:instructionsForEndUser>Produto: {{produto}}    | Deposito: {{deposito}}
+
+Custo Total Entrada: {{'{:,.3f}'.format(total_preco_unitario_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 Quantidade Total  Entrada: {{ '{:,.3f}'.format(total_quantidade_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
+Custo Médio Entrada: {{custo_medio_unitario_entrada}}&lt;br&gt;
 
 Custo Total Saída: {{'{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 Quantidade Total  Saída: {{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;&lt;br&gt;
+Custo Médio Saída: {{custo_medio_unitario_saida}}&lt;br&gt;
 
 Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 
@@ -300,6 +310,12 @@ del(produtosList)</spiffworkflow:postScript>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="-258" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1072" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -308,28 +324,22 @@ del(produtosList)</spiffworkflow:postScript>
         <dc:Bounds x="830" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="-258" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1072" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_117o128_di" bpmnElement="Event_117o128">
         <dc:Bounds x="242" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1dydh6d_di" bpmnElement="Event_1dydh6d">
-        <dc:Bounds x="712" y="159" width="36" height="36" />
+      <bpmndi:BPMNShape id="Activity_0s2c0do_di" bpmnElement="ConversorUnidadeMedida">
+        <dc:Bounds x="330" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_01u9h9m_di" bpmnElement="NormalizandoEstoque">
         <dc:Bounds x="510" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0s2c0do_di" bpmnElement="ConversorUnidadeMedida">
-        <dc:Bounds x="330" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
+      <bpmndi:BPMNShape id="Event_1dydh6d_di" bpmnElement="Event_1dydh6d">
+        <dc:Bounds x="712" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1l99k7c_di" bpmnElement="Flow_1l99k7c">
         <di:waypoint x="278" y="177" />
