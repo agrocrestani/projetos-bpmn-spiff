@@ -217,10 +217,17 @@ payload = {
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1o5dvob</bpmn:incoming>
       <bpmn:outgoing>Flow_03n0dbr</bpmn:outgoing>
+      <bpmn:property id="Property_1g83a8u" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1w53wrp">
+        <bpmn:sourceRef>DataStoreReference_18o5ipe</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1g83a8u</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
     </bpmn:serviceTask>
+    <bpmn:dataStoreReference id="DataStoreReference_18o5ipe" name="SapLogin" dataStoreRef="saplogin" type="json" />
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
+  <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_solicitacao_de_insumos_rqoml0p">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -276,6 +283,12 @@ payload = {
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_15hba4n_di" bpmnElement="Activity_1juz99w">
         <dc:Bounds x="880" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_18o5ipe_di" bpmnElement="DataStoreReference_18o5ipe">
+        <dc:Bounds x="905" y="295" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="907" y="352" width="47" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
         <di:waypoint x="1510" y="177" />
@@ -334,6 +347,10 @@ payload = {
       <bpmndi:BPMNEdge id="Flow_11ns8sw_di" bpmnElement="Flow_11ns8sw">
         <di:waypoint x="680" y="177" />
         <di:waypoint x="728" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1w53wrp_di" bpmnElement="DataInputAssociation_1w53wrp">
+        <di:waypoint x="930" y="295" />
+        <di:waypoint x="930" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
