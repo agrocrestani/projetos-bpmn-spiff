@@ -13,7 +13,7 @@
           "quantidade"
         ],
         "properties": {
-          "insumo": {
+            "insumo": {
             "type": "string",
             "title": "Selecione o Insumo"
             },
