@@ -3,10 +3,14 @@
     "items": {
       "ui:layout": [
         {
-          "insumo": {}
-        },
-        {
-          "quantidade": {}
+          "insumo": {
+
+          },
+          "quantidade": {
+            "sm": 2,
+            "md": 2,
+            "lg": 2
+          }
         }
       ],
       "insumo": {
