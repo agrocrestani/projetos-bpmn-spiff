@@ -107,7 +107,35 @@ main_usage = []
 for u in utilizacoes:
     main_usage.append(u)
 </spiffworkflow:preScript>
-        <spiffworkflow:postScript />
+        <spiffworkflow:postScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
+spiff_tarefa = taskInfo = get_current_task_info()['id']
+
+items = []
+
+for s in solicitacao:
+  items.append(
+    {
+      "ItemCode": s["insumo"]["ItemCode"],
+      "Quantity": s["insumo"]["WhsCode"],
+      "WarehouseCode": s["quantidade"]
+    }
+  )
+
+payload = {
+    "CardCode": CardCode,
+    "BPL_IDAssignedToInvoice": "1",
+    "DocumentsOwner": OwnerCode,
+    "SalesPersonCode": SlpCode,
+    "JournalMemo": f"Solicitante: {solicitante}",
+    "U_AC_Spiff_Instancia": spiff_instancia,
+    "U_AC_Spiff_Tarefa": spiff_tarefa,
+    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
+    "DocumentLines": items,
+    "TaxExtension": {
+      "MainUsage": mainusage,
+      "Incoterms": "0"
+    }
+}</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_11ns8sw</bpmn:incoming>
       <bpmn:outgoing>Flow_1o5dvob</bpmn:outgoing>
@@ -183,37 +211,7 @@ headers = {
   'Content-Type': 'application/json'
 }
 
-spiff_instancia = get_toplevel_process_info()['process_instance_id']
-spiff_tarefa = taskInfo = get_current_task_info()['id']
-
-items = []
-
-for s in solicitacao:
-  items.append(
-    {
-      "ItemCode": s["insumo"]["ItemCode"],
-      "Quantity": s["insumo"]["WhsCode"],
-      "WarehouseCode": s["quantidade"]
-    }
-  )
-
-payload = {
-  {
-    "CardCode": CardCode,
-    "BPL_IDAssignedToInvoice": "1",
-    "DocumentsOwner": OwnerCode,
-    "SalesPersonCode": SlpCode,
-    "JournalMemo": f"Solicitante: {solicitante}",
-    "U_AC_Spiff_Instancia": spiff_instancia,
-    "U_AC_Spiff_Tarefa": spiff_tarefa,
-    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
-    "DocumentLines": items,
-    "TaxExtension": {
-      "MainUsage": mainusage,
-      "Incoterms": "0"
-    }
-  }
-}</spiffworkflow:preScript>
+</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1o5dvob</bpmn:incoming>
       <bpmn:outgoing>Flow_03n0dbr</bpmn:outgoing>
