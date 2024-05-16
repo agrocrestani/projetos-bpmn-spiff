@@ -36,11 +36,6 @@
       "anyOf": [
         "options_from_task_data_var:n_filiais"
       ]
-    },
-    "confirmaPedido": {
-        "type": "boolean",
-        "title": "Confirma o Pedido?",
-        "default": false
-    }    
+    }
   }
 }
