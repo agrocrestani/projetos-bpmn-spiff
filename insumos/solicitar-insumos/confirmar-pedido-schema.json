@@ -1,5 +1,5 @@
 {
-  "description": "Verifique todos os ite",
+  "description": "Verifique todos",
   "properties": {
     "done": {
       "type": "boolean",
