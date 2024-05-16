@@ -11,7 +11,7 @@
       "OcrCode2",
       "OcrCode3",
       "WhsCode",
-      
+      ""
     ],
   "properties": {
     "BPLId": {
