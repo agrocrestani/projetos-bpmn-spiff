@@ -21,6 +21,11 @@
             "type": "number",
             "title": "Quantidade"
           },
+    "confirma": {
+      "type": "boolean",
+      "title": "Done?",
+      "default": false
+    }
 
         }
       }
