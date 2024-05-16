@@ -111,9 +111,9 @@
         }
       }
     },
-        "required": [
-          "BPLId",
-          "quantidade"
-        ]
+    "required": [
+      "BPLId",
+      "quantidade"
+    ]
   }
 }
