@@ -27,7 +27,7 @@
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1azxpfs" sourceRef="Activity_1i9wp10" targetRef="EndEvent_1" />
     <bpmn:sequenceFlow id="Flow_1jn3emy" sourceRef="StartEvent_1" targetRef="Activity_0jw3ade" />
-    <bpmn:sequenceFlow id="Flow_1roexn7" sourceRef="Activity_0jw3ade" targetRef="Activity_0y3xwhg" />
+    <bpmn:sequenceFlow id="Flow_1roexn7" sourceRef="Activity_0jw3ade" targetRef="Activity_02zzhyq" />
     <bpmn:userTask id="Activity_0jw3ade" name="Solicitar Insumos">
       <bpmn:extensionElements>
         <spiffworkflow:properties>
@@ -56,25 +56,6 @@ for f in filiais:
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
     <bpmn:dataStoreReference id="DataStoreReference_1ismram" name="Filiais" dataStoreRef="filiais" type="json" />
-    <bpmn:userTask id="Activity_0y3xwhg" name="Verificar itens solicitados">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript>for s in solicitacao:
-    s['insumo'] = json.loads(s['insumo'])
-
-
-descricaoFilial = ""
-for f in n_filiais:
-    if f['value'] == unidade:
-      descricaoFilial = f['label']</spiffworkflow:preScript>
-        <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-solicitacao-schema.json" />
-          <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-solicitacao-uischema.json" />
-        </spiffworkflow:properties>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
-      <bpmn:outgoing>Flow_09et6e0</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_1o5dvob" sourceRef="Activity_0jn1u2s" targetRef="Activity_1juz99w" />
     <bpmn:userTask id="Activity_0jn1u2s" name="Confirmar pedido">
       <bpmn:extensionElements>
@@ -94,6 +75,43 @@ for f in n_filiais:
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_09et6e0</bpmn:incoming>
       <bpmn:outgoing>Flow_1o5dvob</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0f3ld08" sourceRef="Activity_02zzhyq" targetRef="Activity_0y3xwhg" />
+    <bpmn:userTask id="Activity_02zzhyq" name="Confirmar itens solicitados">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>for s in solicitacao:
+    s['insumo'] = json.loads(s['insumo'])
+
+
+descricaoFilial = ""
+for f in n_filiais:
+    if f['value'] == unidade:
+      descricaoFilial = f['label']</spiffworkflow:preScript>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-solicitacao-schema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
+      <bpmn:outgoing>Flow_0f3ld08</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0y3xwhg" name="Verificar itens solicitados">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser />
+        <spiffworkflow:preScript>for s in solicitacao:
+    s['insumo'] = json.loads(s['insumo'])
+
+
+descricaoFilial = ""
+for f in n_filiais:
+    if f['value'] == unidade:
+      descricaoFilial = f['label']</spiffworkflow:preScript>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-solicitacao-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-solicitacao-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0f3ld08</bpmn:incoming>
+      <bpmn:outgoing>Flow_09et6e0</bpmn:outgoing>
     </bpmn:userTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
@@ -127,16 +145,19 @@ for f in n_filiais:
           <dc:Bounds x="226" y="342" width="28" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1fmj68c_di" bpmnElement="Activity_0y3xwhg">
-        <dc:Bounds x="420" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_0sfji19_di" bpmnElement="Activity_0jn1u2s">
+        <dc:Bounds x="740" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09ay0t4_di" bpmnElement="Activity_02zzhyq">
+        <dc:Bounds x="430" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0sfji19_di" bpmnElement="Activity_0jn1u2s">
-        <dc:Bounds x="590" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_03mkkx2_di" bpmnElement="Activity_0y3xwhg">
+        <dc:Bounds x="620" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_09et6e0_di" bpmnElement="Flow_09et6e0">
-        <di:waypoint x="520" y="177" />
-        <di:waypoint x="590" y="177" />
+        <di:waypoint x="720" y="177" />
+        <di:waypoint x="740" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_108mqy4_di" bpmnElement="Flow_108mqy4">
         <di:waypoint x="960" y="177" />
@@ -156,15 +177,19 @@ for f in n_filiais:
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1roexn7_di" bpmnElement="Flow_1roexn7">
         <di:waypoint x="370" y="177" />
-        <di:waypoint x="420" y="177" />
+        <di:waypoint x="430" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1hak9da_di" bpmnElement="DataInputAssociation_1hak9da">
         <di:waypoint x="257" y="285" />
         <di:waypoint x="302" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1o5dvob_di" bpmnElement="Flow_1o5dvob">
-        <di:waypoint x="690" y="177" />
+        <di:waypoint x="840" y="177" />
         <di:waypoint x="860" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0f3ld08_di" bpmnElement="Flow_0f3ld08">
+        <di:waypoint x="530" y="177" />
+        <di:waypoint x="620" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
