@@ -17,7 +17,7 @@
   },
     "ui:submitButtonOptions": {
     "submitText": "Confirma os dados NFe?",
-    "norender": truee,
+    "norender": true,
     "props": {
       "disabled": false,
       "className": "btn btn-info"
