@@ -29,9 +29,13 @@
     <bpmn:userTask id="Activity_0qpzdpu" name="Escolher Arquivo">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># Importar lançamentos contabeis da folha de pagamento
+&lt;br&gt;
 
-**IMPORTANTE**
-Para importar os lançamentos, deve ser gerado um arquivo para cada centro de custo da filial. Depois que importar todos os arquivos, entregar o resumo da folha para o Departamento Contabil para fazerem a conferência.</spiffworkflow:instructionsForEndUser>
+##  &lt;font color="red"&gt;&lt;strong&gt;IMPORTANTE &lt;/strong&gt;&lt;/font&gt;
+
+- Para importar os lançamentos, deve ser gerado um arquivo para cada centro de custo da filial. 
+- Apontar **Cultura** para os centros de custo cuja tenha o apontamento direto. Por exemplo UBA &gt; Algodão.
+- Depois que importar todos os arquivos, entregar o resumo da folha para o Departamento Contabil para fazerem a conferência.</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>n_filiais = []
 for f in filiais:
     BPLId = f['BPLId']
@@ -432,15 +436,15 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
       <bpmndi:BPMNShape id="Participant_0x0t826_di" bpmnElement="Participant_0x0t826" isHorizontal="true">
         <dc:Bounds x="129" y="116" width="2309" height="1004" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0ggjzat_di" bpmnElement="Lane_contabil" isHorizontal="true">
+        <dc:Bounds x="159" y="750" width="2279" height="370" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1aovmuh_di" bpmnElement="Lane" isHorizontal="true">
         <dc:Bounds x="159" y="419" width="2279" height="331" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0c5w8vb_di" bpmnElement="Lane_rh" isHorizontal="true">
         <dc:Bounds x="159" y="116" width="2279" height="303" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_0ggjzat_di" bpmnElement="Lane_contabil" isHorizontal="true">
-        <dc:Bounds x="159" y="750" width="2279" height="370" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -476,12 +480,6 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1tzg16p_di" bpmnElement="Activity_1nr33uk">
         <dc:Bounds x="2080" y="230" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1175xbr_di" bpmnElement="DataStoreReference_1175xbr">
-        <dc:Bounds x="1375" y="795" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1376" y="773" width="47" height="14" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="230" y="480" width="910" height="200" />
@@ -527,6 +525,12 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
         <di:waypoint x="940" y="580" />
         <di:waypoint x="1002" y="580" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DataStoreReference_1175xbr_di" bpmnElement="DataStoreReference_1175xbr">
+        <dc:Bounds x="1375" y="795" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1376" y="773" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1v7cf9d_di" bpmnElement="Activity_1v7cf9d" isExpanded="true">
         <dc:Bounds x="1210" y="880" width="800" height="200" />
       </bpmndi:BPMNShape>
@@ -554,16 +558,6 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
         <di:waypoint x="1286" y="980" />
         <di:waypoint x="1360" y="980" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_00l9ldx_di" bpmnElement="Flow_00l9ldx">
-        <di:waypoint x="1900" y="980" />
-        <di:waypoint x="1942" y="980" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0hhyppq_di" bpmnElement="Flow_0hhyppq">
-        <di:waypoint x="1700" y="1005" />
-        <di:waypoint x="1700" y="1050" />
-        <di:waypoint x="1410" y="1050" />
-        <di:waypoint x="1410" y="1020" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0w0pxn1_di" bpmnElement="Flow_0w0pxn1">
         <di:waypoint x="1460" y="980" />
         <di:waypoint x="1530" y="980" />
@@ -575,6 +569,16 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
       <bpmndi:BPMNEdge id="Flow_0a1062q_di" bpmnElement="Flow_0a1062q">
         <di:waypoint x="1725" y="980" />
         <di:waypoint x="1800" y="980" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00l9ldx_di" bpmnElement="Flow_00l9ldx">
+        <di:waypoint x="1900" y="980" />
+        <di:waypoint x="1942" y="980" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hhyppq_di" bpmnElement="Flow_0hhyppq">
+        <di:waypoint x="1700" y="1005" />
+        <di:waypoint x="1700" y="1050" />
+        <di:waypoint x="1410" y="1050" />
+        <di:waypoint x="1410" y="1020" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
