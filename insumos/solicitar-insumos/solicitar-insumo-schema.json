@@ -9,7 +9,7 @@
     "solicitacao": {
       "type": "array",
       "title": "Items",
-      "description": "Selecione os i"
+      "description": "Selecione os ite"
       "items": {
         "type": "object",
         "required": [
