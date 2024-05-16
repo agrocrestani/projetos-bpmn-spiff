@@ -14,8 +14,8 @@
         ],
         "properties": {
             "insumo": {
-            "type": "string",
-            "title": "Selecione o Insumo"
+              "type": "string",
+              "title": "Selecione o Insumo"
             },
             "quantidade": {
             "type": "number",
