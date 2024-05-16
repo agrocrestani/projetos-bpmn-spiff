@@ -23,7 +23,7 @@
             },
             "confirma": {
             "type": "boolean",
-            "title": "Done?",
+            "title": "Con?",
             "default": false
             }
 
