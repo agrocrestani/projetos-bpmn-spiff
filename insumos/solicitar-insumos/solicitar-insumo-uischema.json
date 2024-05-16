@@ -4,10 +4,7 @@
       "ui:layout": [
         {
           "insumo": {          },
-          "quantidade": {
-            "sm": 2,
-            "md": 2,
-            "lg": 2
+          "quantidade": 
           }
         }
       ],
