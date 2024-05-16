@@ -21,7 +21,7 @@
             "type": "number",
             "title": "Quantidade"
           },
-          
+
         }
       }
     },
@@ -31,11 +31,6 @@
       "anyOf": [
         "options_from_task_data_var:n_filiais"
       ]
-    },
-    "confirma": {
-      "type": "boolean",
-      "title": "Done?",
-      "default": false
     }
   }
 }
