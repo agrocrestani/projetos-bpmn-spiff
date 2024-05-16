@@ -58,15 +58,7 @@ for f in filiais:
     <bpmn:dataStoreReference id="DataStoreReference_1ismram" name="Filiais" dataStoreRef="filiais" type="json" />
     <bpmn:userTask id="Activity_0y3xwhg" name="Verificar itens solicitados">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>## Solicitação de Insumos 
-
-### Filial: {{descricaoFilial}}
-
-| Código | Descrição | Quantidade | UN| Deposito |
-| --------- | ------------ | :---------------: | ---- | --------- |
-{%for s in solicitacao %}
-| {{s['insumo']['ItemCode']}} | {{s['insumo']['ItemName']}} | {{s['quantidade']}} | {{s['insumo']['InvntryUom']}} | {{s['insumo']['WhsCode']}} |
-{%endfor%}</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>for s in solicitacao:
     s['insumo'] = json.loads(s['insumo'])
 
