@@ -1,14 +1,5 @@
 {
-  "solicitacao": [
-    {
-      "insumo": "{\"ItemName\":\"FINISH\",\"ItemCode\":\"022835\",\"OnHand\":\"28460.00\",\"InvntryUom\":\"LITRO\"}",
-      "quantidade": 1000
-    },
-    {
-      "insumo": "{\"ItemName\":\"MALATHION UL\",\"ItemCode\":\"022777\",\"OnHand\":\"6000.00\",\"InvntryUom\":\"LITRO\"}",
-      "quantidade": 200
-    }
-  ],
+  "solicitacao": [],
   "unidade": "apples",
   "n_filiais": [
     {
