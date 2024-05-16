@@ -9,6 +9,7 @@
       </input>
       <output id="output_1" typeRef="string" />
       <rule id="DecisionRule_0ktew7z">
+        <description>Querencia</description>
         <inputEntry id="UnaryTests_1jhstxh">
           <text>1</text>
         </inputEntry>
@@ -17,6 +18,7 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_03adkgd">
+        <description>Promissao</description>
         <inputEntry id="UnaryTests_1j390ic">
           <text>2</text>
         </inputEntry>
@@ -25,6 +27,7 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0akklem">
+        <description>Colorado</description>
         <inputEntry id="UnaryTests_0lhdw62">
           <text>3</text>
         </inputEntry>
@@ -33,6 +36,7 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0toiink">
+        <description>Sao Carlos</description>
         <inputEntry id="UnaryTests_1bhcstj">
           <text>4</text>
         </inputEntry>
@@ -41,6 +45,7 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1qzddl1">
+        <description>Curupai</description>
         <inputEntry id="UnaryTests_0ezps6u">
           <text>5</text>
         </inputEntry>
