@@ -6,7 +6,7 @@
       "BPLId",
       "Department",
       "U_RSD_Prioridade",
-      "U_RSD_Aplicacao"
+      "U_RSD_Aplicacao",
     ],
   "properties": {
     "BPLId": {
