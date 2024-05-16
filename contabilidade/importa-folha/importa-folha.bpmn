@@ -28,7 +28,10 @@
     </bpmn:startEvent>
     <bpmn:userTask id="Activity_0qpzdpu" name="Escolher Arquivo">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser />
+        <spiffworkflow:instructionsForEndUser># Importar lançamentos contabeis da folha de pagamento
+
+**IMPORTANTE**
+Para importar os lançamentos, deve ser gerado um arquivo para cada centro de custo da filial. Depois que importar todos os arquivos, entregar o resumo da folha para o Departamento Contabil para fazerem a conferência.</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>n_filiais = []
 for f in filiais:
     BPLId = f['BPLId']
