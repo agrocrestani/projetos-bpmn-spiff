@@ -1,7 +1,7 @@
 {
   "required": [
     "done",
-    "main"
+    "mainusage"
   ],
   "properties": {
     "done": {
