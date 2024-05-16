@@ -10,7 +10,8 @@
       "OcrCode",
       "OcrCode2",
       "OcrCode3",
-      "WhsCode"
+      "WhsCode",
+      
     ],
   "properties": {
     "BPLId": {
