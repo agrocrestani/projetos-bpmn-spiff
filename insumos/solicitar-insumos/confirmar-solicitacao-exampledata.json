@@ -9,6 +9,7 @@
     }
   ],
   "unidade": "apples",
+  "confirmaPedido": false,
   "confirma": false,
   "con": false,
   "done": false,
