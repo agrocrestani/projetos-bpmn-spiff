@@ -175,6 +175,9 @@ spiff_tarefa = taskInfo = get_current_task_info()['id']
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_11ns8sw" sourceRef="Activity_1rmlu9t" targetRef="Activity_0jn1u2s" />
     <bpmn:businessRuleTask id="Activity_1rmlu9t" name="Definir cliente NFe">
+      <bpmn:extensionElements>
+        <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0f3ld08</bpmn:incoming>
       <bpmn:outgoing>Flow_11ns8sw</bpmn:outgoing>
     </bpmn:businessRuleTask>
@@ -186,6 +189,13 @@ spiff_tarefa = taskInfo = get_current_task_info()['id']
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1572" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1i9wp10_di" bpmnElement="Activity_1i9wp10">
+        <dc:Bounds x="1410" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1sk3qsl_di" bpmnElement="Activity_0jw3ade">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -196,19 +206,12 @@ spiff_tarefa = taskInfo = get_current_task_info()['id']
           <dc:Bounds x="306" y="342" width="28" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0sfji19_di" bpmnElement="Activity_0jn1u2s">
+        <dc:Bounds x="728" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_09ay0t4_di" bpmnElement="Activity_02zzhyq">
         <dc:Bounds x="430" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1572" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1i9wp10_di" bpmnElement="Activity_1i9wp10">
-        <dc:Bounds x="1410" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0sfji19_di" bpmnElement="Activity_0jn1u2s">
-        <dc:Bounds x="728" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_09apfr1_di" bpmnElement="DataStoreReference_09apfr1">
         <dc:Bounds x="753" y="295" width="50" height="50" />
