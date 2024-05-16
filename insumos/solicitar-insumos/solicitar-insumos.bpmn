@@ -154,13 +154,21 @@ for u in utilizacoes:
     </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="Flow_0yzkj3x" sourceRef="Activity_026swb9" targetRef="Gateway_0oji0d2" />
     <bpmn:sequenceFlow id="Flow_1b9hnib" sourceRef="Gateway_0oji0d2" targetRef="Activity_1i9wp10" />
-    <bpmn:task id="Activity_1juz99w" name="Emitir NFE">
+    <bpmn:sequenceFlow id="Flow_11ns8sw" sourceRef="Activity_1rmlu9t" targetRef="Activity_0jn1u2s" />
+    <bpmn:businessRuleTask id="Activity_1rmlu9t" name="Definir cliente NFe">
+      <bpmn:extensionElements>
+        <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0f3ld08</bpmn:incoming>
+      <bpmn:outgoing>Flow_11ns8sw</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:serviceTask id="Activity_1juz99w" name="Emitir NFE">
       <bpmn:extensionElements>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
           <spiffworkflow:parameters>
-            <spiffworkflow:parameter id="url" type="str" />
-            <spiffworkflow:parameter id="headers" type="any" />
-            <spiffworkflow:parameter id="data" type="any" />
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="payload" />
             <spiffworkflow:parameter id="basic_auth_username" type="str" />
             <spiffworkflow:parameter id="basic_auth_password" type="str" />
             <spiffworkflow:parameter id="verify" type="bool" />
@@ -178,19 +186,35 @@ headers = {
 spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
 
-</spiffworkflow:preScript>
+items = []
+
+for s in solicitacao:
+  items.append(
+    {
+      "ItemCode": s["insumo"]["ItemCode"],
+      "Quantity": s["insumo"]["WhsCode"],
+      "WarehouseCode": s["quantidade"]
+    }
+  )
+
+payload = {
+  {
+    "CardCode": CardCode,
+    "BPL_IDAssignedToInvoice": "1",
+    "DocumentsOwner": OwnerCode,
+    "SalesPersonCode": SlpCode,
+    "JournalMemo": f"Solicitante: {solicitante}",
+    "DocumentLines": items,
+    "TaxExtension": {
+      "MainUsage": mainusage,
+      "Incoterms": "0"
+    }
+  }
+}</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1o5dvob</bpmn:incoming>
       <bpmn:outgoing>Flow_03n0dbr</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:sequenceFlow id="Flow_11ns8sw" sourceRef="Activity_1rmlu9t" targetRef="Activity_0jn1u2s" />
-    <bpmn:businessRuleTask id="Activity_1rmlu9t" name="Definir cliente NFe">
-      <bpmn:extensionElements>
-        <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0f3ld08</bpmn:incoming>
-      <bpmn:outgoing>Flow_11ns8sw</bpmn:outgoing>
-    </bpmn:businessRuleTask>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
@@ -243,12 +267,12 @@ spiff_tarefa = taskInfo = get_current_task_info()['id']
       <bpmndi:BPMNShape id="Gateway_1b9nmwr_di" bpmnElement="Gateway_0oji0d2">
         <dc:Bounds x="1295" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0qgaxjl_di" bpmnElement="Activity_1juz99w">
-        <dc:Bounds x="880" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1ce9xnd_di" bpmnElement="Activity_1rmlu9t">
         <dc:Bounds x="580" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15hba4n_di" bpmnElement="Activity_1juz99w">
+        <dc:Bounds x="880" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
         <di:waypoint x="1510" y="177" />
