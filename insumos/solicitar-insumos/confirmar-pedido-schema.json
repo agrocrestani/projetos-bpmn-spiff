@@ -1,5 +1,7 @@
 {
-  "required": []
+  "required": [
+
+  ],
   "properties": {
     "done": {
       "type": "boolean",
