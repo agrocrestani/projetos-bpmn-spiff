@@ -71,6 +71,14 @@ for f in filiais:
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-pedido-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-pedido-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:preScript>for s in solicitacao:
+    s['insumo'] = json.loads(s['insumo'])
+
+
+descricaoFilial = ""
+for f in n_filiais:
+    if f['value'] == unidade:
+      descricaoFilial = f['label']</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0f3ld08</bpmn:incoming>
       <bpmn:outgoing>Flow_1o5dvob</bpmn:outgoing>
@@ -119,12 +127,12 @@ for f in filiais:
           <dc:Bounds x="226" y="342" width="28" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0sfji19_di" bpmnElement="Activity_0jn1u2s">
-        <dc:Bounds x="740" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_09ay0t4_di" bpmnElement="Activity_02zzhyq">
         <dc:Bounds x="430" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0sfji19_di" bpmnElement="Activity_0jn1u2s">
+        <dc:Bounds x="590" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_108mqy4_di" bpmnElement="Flow_108mqy4">
         <di:waypoint x="960" y="177" />
@@ -151,12 +159,12 @@ for f in filiais:
         <di:waypoint x="302" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1o5dvob_di" bpmnElement="Flow_1o5dvob">
-        <di:waypoint x="840" y="177" />
+        <di:waypoint x="690" y="177" />
         <di:waypoint x="860" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0f3ld08_di" bpmnElement="Flow_0f3ld08">
         <di:waypoint x="530" y="177" />
-        <di:waypoint x="740" y="177" />
+        <di:waypoint x="590" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
