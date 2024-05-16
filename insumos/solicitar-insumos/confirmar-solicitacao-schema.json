@@ -39,7 +39,7 @@
     },
     "confirmaPedido": {
         "type": "boolean",
-        "title": "Confirma o envio deste item?",
+        "title": "Confirma o Pedido?",
         "default": false
     }    
   }
