@@ -1,6 +1,7 @@
 {
   "title": "Verifique as informações acima e confirme caso esteja tudo correto.",
   "description": "Os lançamentos apresentados foram conferidos e estão corretos?",
+  
   "properties": {
     "done": {
       "type": "boolean",
