@@ -5,7 +5,7 @@
   "properties": {
     "solicitacao": {
       "type": "array",
-      "title": "",
+      "title": "Items",
       "items": {
         "type": "object",
         "required": [
