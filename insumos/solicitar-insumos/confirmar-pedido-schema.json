@@ -6,7 +6,7 @@
       "title": "Confirma a solicitação?",
       "default": false
     },
-    "favoriteFruit": {
+    "Uso": {
       "title": "Select your favorite fruit",
       "type": "string",
       "anyOf": [
