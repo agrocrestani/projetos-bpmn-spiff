@@ -31,7 +31,7 @@ query = f"""
             SELECT T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom" 
             FROM {baseSap}."OITM" T0
             INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"  
-            WHERE o."ItmsGrpCod" = '327'
+            WHERE T0."ItmsGrpCod" = 327
             ORDER BY T0."ItemName"
           """
 
