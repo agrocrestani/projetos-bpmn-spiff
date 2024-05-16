@@ -3,7 +3,8 @@
     "items": {
       "ui:layout": [
         {
-          "insumo": {          },
+          "insumo": {},
+        
           "quantidade": {
             "sm": 2,
             "md": 2,
