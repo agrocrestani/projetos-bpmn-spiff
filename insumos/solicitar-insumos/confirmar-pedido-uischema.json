@@ -16,7 +16,7 @@
     "ui:description": "Make text **bold** or *italic*. Take a look at other options [here](https://probablyup.com/markdown-to-jsx/)."
   },
     "ui:submitButtonOptions": {
-    "submitText": "Confirma a Emissão da NFe",
+    "submitText": "Confirma a Emissão da NFe?",
     "norender": false,
     "props": {
       "disabled": false,
