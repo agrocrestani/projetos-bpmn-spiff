@@ -13,7 +13,8 @@
             "md": 2,
             "lg": 2
           }
-        }
+        },
+        
       ],
       "insumo": {
         "ui:widget": "typeahead",
