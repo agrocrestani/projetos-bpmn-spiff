@@ -99,13 +99,15 @@ for f in n_filiais:
     if f['value'] == unidade:
       descricaoFilial = f['label']
 
+usuarioPedido = get_current_user()
+
 SlpCode = 8
 OwnerCode = 1
 main_usage = []
 for u in utilizacoes:
     main_usage.append(u)
 </spiffworkflow:preScript>
-        <spiffworkflow:postScript>usuarioPedido = get_current_user()</spiffworkflow:postScript>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_11ns8sw</bpmn:incoming>
       <bpmn:outgoing>Flow_1o5dvob</bpmn:outgoing>
