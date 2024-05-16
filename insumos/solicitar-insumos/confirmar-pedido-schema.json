@@ -1,5 +1,5 @@
 {
-  "description": "Verifique todos iten",
+  "description": "Verifique todos itens e dados da solicitação e ",
   "properties": {
     "done": {
       "type": "boolean",
