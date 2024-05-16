@@ -8,7 +8,7 @@
     "mainusage": {
       "title": "Uso principal",
       "type": "string",
-      "default": "2",
+      "default": "952",
       "anyOf": [
         "options_from_task_data_var:main_usage"
       ]
