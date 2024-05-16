@@ -95,6 +95,10 @@ for f in n_filiais:
 {%for s in solicitacao %}
 | {{s['insumo']['ItemCode']}} | {{s['insumo']['ItemName']}} | {{s['quantidade']}} | {{s['insumo']['InvntryUom']}} | {{s['insumo']['WhsCode']}} |
 {%endfor%}</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-pedido-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-pedido-uischema.json" />
+        </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_09et6e0</bpmn:incoming>
       <bpmn:outgoing>Flow_1o5dvob</bpmn:outgoing>
