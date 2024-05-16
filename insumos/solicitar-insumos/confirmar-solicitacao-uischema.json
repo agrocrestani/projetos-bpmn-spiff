@@ -35,5 +35,7 @@
         "solicitacao": {}
     }
   ],
-  "ui:disabled"
+  "ui:disabled": [
+    
+  ]
 }
