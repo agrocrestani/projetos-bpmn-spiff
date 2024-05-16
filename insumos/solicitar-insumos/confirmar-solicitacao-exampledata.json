@@ -4,13 +4,6 @@
       "confirmaItem": false,
       "confirmItem": false,
       "confirma": false,
-      "insumo": "{\"ItemName\":\"FINISH\",\"ItemCode\":\"022835\",\"OnHand\":\"28460.00\",\"InvntryUom\":\"LITRO\"}",
-      "quantidade": 1000
-    },
-    {
-      "confirmaItem": false,
-      "confirmItem": false,
-      "confirma": false,
       "insumo": "{\"ItemName\":\"MALATHION UL\",\"ItemCode\":\"022777\",\"OnHand\":\"6000.00\",\"InvntryUom\":\"LITRO\"}",
       "quantidade": 200
     }
