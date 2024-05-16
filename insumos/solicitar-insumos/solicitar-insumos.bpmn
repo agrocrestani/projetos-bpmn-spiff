@@ -35,6 +35,17 @@ for f in filiais:
         }
     )</spiffworkflow:preScript>
         <spiffworkflow:postScript />
+        <spiffworkflow:instructionsForEndUser># Solicitação de insumos
+
+### Instruções:
+
+1. Selecione a sua unidade;
+2. Selecione os itens que deseja para complementar o seu estoque.
+3. O pedido sendo aceito pelo Depto de Insumos, o mesmo seguirá na próxima carga, conforme agendamento.
+ 
+-----------
+
+</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1jn3emy</bpmn:incoming>
       <bpmn:outgoing>Flow_1roexn7</bpmn:outgoing>
@@ -166,24 +177,12 @@ for u in utilizacoes:
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1ismram_di" bpmnElement="DataStoreReference_1ismram">
-        <dc:Bounds x="215" y="285" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="226" y="342" width="28" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0sfji19_di" bpmnElement="Activity_0jn1u2s">
         <dc:Bounds x="588" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_09ay0t4_di" bpmnElement="Activity_02zzhyq">
         <dc:Bounds x="430" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_09apfr1_di" bpmnElement="DataStoreReference_09apfr1">
-        <dc:Bounds x="565" y="295" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="563" y="352" width="55" height="14" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0vfyrfp_di" bpmnElement="Gateway_1s1k51w">
         <dc:Bounds x="895" y="152" width="50" height="50" />
@@ -202,6 +201,18 @@ for u in utilizacoes:
       <bpmndi:BPMNShape id="Activity_0qgaxjl_di" bpmnElement="Activity_1juz99w">
         <dc:Bounds x="740" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_09apfr1_di" bpmnElement="DataStoreReference_09apfr1">
+        <dc:Bounds x="613" y="295" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="611" y="352" width="55" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1ismram_di" bpmnElement="DataStoreReference_1ismram">
+        <dc:Bounds x="295" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="306" y="342" width="28" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
         <di:waypoint x="1370" y="177" />
         <di:waypoint x="1432" y="177" />
@@ -215,16 +226,16 @@ for u in utilizacoes:
         <di:waypoint x="430" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1hak9da_di" bpmnElement="DataInputAssociation_1hak9da">
-        <di:waypoint x="257" y="285" />
-        <di:waypoint x="302" y="217" />
+        <di:waypoint x="322" y="285" />
+        <di:waypoint x="326" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1o5dvob_di" bpmnElement="Flow_1o5dvob">
         <di:waypoint x="688" y="177" />
         <di:waypoint x="740" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_03oc4gb_di" bpmnElement="DataInputAssociation_03oc4gb">
-        <di:waypoint x="599" y="295" />
-        <di:waypoint x="625" y="217" />
+        <di:waypoint x="639" y="295" />
+        <di:waypoint x="638" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0f3ld08_di" bpmnElement="Flow_0f3ld08">
         <di:waypoint x="530" y="177" />
