@@ -14,7 +14,9 @@
             "lg": 2
           }
         },
-        
+        {
+            
+        }
       ],
       "insumo": {
         "ui:widget": "typeahead",
