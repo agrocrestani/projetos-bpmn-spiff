@@ -7,7 +7,7 @@
     "done": {
       "type": "boolean",
       "title": "Confirma a solicitação?",
-      "description": "Voc",
+      "description": "Você deve conferir ",
       "default": false
     },
     "mainusage": {
