@@ -75,7 +75,7 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
 | Campo | Valor
 | --------- | ------------ | 
 | Filial Destino: |{{descricaoFilial}}|
-| Códgo Cliente | {{CardCode}} |
+| Códgo Cliente: | {{CardCode}} |
 | Vededor: | {{SlpCode}} |
 | Titular:    | {{OwnerCode}} |
 | Solicitante: | {{solicitante}}
@@ -204,6 +204,9 @@ payload = {
     "DocumentsOwner": OwnerCode,
     "SalesPersonCode": SlpCode,
     "JournalMemo": f"Solicitante: {solicitante}",
+    "U_AC_Spiff_Instancia": spiff_instancia,
+    "U_AC_Spiff_Tarefa": spiff_tarefa,
+    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
     "DocumentLines": items,
     "TaxExtension": {
       "MainUsage": mainusage,
