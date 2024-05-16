@@ -88,6 +88,7 @@ for f in n_filiais:
       descricaoFilial = f['label']</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-solicitacao-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-solicitacao-uischema.json" />
         </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
