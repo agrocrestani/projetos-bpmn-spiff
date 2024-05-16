@@ -2,6 +2,10 @@
   "title": "Solicitação de Compras",
   "description": "Solicitação de compras de items para estoque",
   "type": "object",
+    "required": [
+      "BPLId",
+      "Department"
+    ],
   "properties": {
     "BPLId": {
       "title": "Filial",
