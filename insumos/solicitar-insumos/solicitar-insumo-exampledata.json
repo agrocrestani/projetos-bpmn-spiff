@@ -5,7 +5,8 @@
       "quantidade": 100
     },
     {
-      "insumo": "{\"ItemCode\":\"022736\",\"ItemName\":\"BELT SC\",\"ItmsGrpNam\":\"INSETICIDAS\",\"InvntryUom\":\"LITRO\",\"OnHand\":\"140.000000\",\"WhsCode\":\"03.FQUE\"}"
+      "insumo": "{\"ItemCode\":\"022736\",\"ItemName\":\"BELT SC\",\"ItmsGrpNam\":\"INSETICIDAS\",\"InvntryUom\":\"LITRO\",\"OnHand\":\"140.000000\",\"WhsCode\":\"03.FQUE\"}",
+      "quantidade": 100
     }
   ],
   "unidade": "apples",
