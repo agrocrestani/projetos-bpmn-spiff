@@ -5,7 +5,10 @@
       "insumo": "{\"ItemCode\":\"022592\",\"ItemName\":\"ABACUS HC\",\"ItmsGrpNam\":\"FUNGICIDAS\",\"InvntryUom\":\"LITRO\",\"OnHand\":\"2250.000000\",\"WhsCode\":\"03.MATR\"}",
       "quantidade": 1
     },
-    {}
+    {
+      "insumo": "{\"ItemCode\":\"022601\",\"ItemName\":\"BELYAN\",\"ItmsGrpNam\":\"FUNGICIDAS\",\"InvntryUom\":\"LITRO\",\"OnHand\":\"400.000000\",\"WhsCode\":\"03.MATR\"}",
+      "quantidade": 2
+    }
   ],
   "unidade": "apples",
   "n_filiais": [
