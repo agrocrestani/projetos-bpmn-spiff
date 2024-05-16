@@ -43,9 +43,7 @@ query_movimento = f"""
                 WHERE 
                     t0."ItemCode" = '{produto}' AND
 	                t0."WhsCode" = '{deposito}' AND
-                    t0.CANCELED  = 'N' AND
-                    t0.ORIGEM != '8-Sai.Transf.Estoque' AND
-                    t0.ORIGEM != '9-Ent.Transf.Estoque'
+                    t0.CANCELED  = 'N' 
                 ORDER BY t0."DocDueDate", t0."DocNum"
                 """
 
