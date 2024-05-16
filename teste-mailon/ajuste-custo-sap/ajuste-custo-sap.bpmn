@@ -67,20 +67,20 @@ del(query_um_produto_estoque)
 
 num_movimentos = 0
 
-# Lista para armazenar os elementos a serem removidos
-indices_para_remover = []
+# # Lista para armazenar os elementos a serem removidos
+# indices_para_remover = []
 
-# Iterar sobre os elementos da lista
-for i, movimento in enumerate(consulta_movimentos):
-    # Verificar se a origem é "7-Ent.Ret.Simbolico" e basetype é 20 e baseref é igual ao docnum do elemento de "11-Recebimento de Mercadoria"
-    if movimento["origem"] == "7-Ent.Ret.Simbolico" and movimento["basetype"] == "20":
-        for movimento_recebimento in consulta_movimentos:
-            if movimento_recebimento["origem"] == "11-Recebimento de Mercadoria" and movimento_recebimento["docnum"] == movimento["baseref"]:
-                indices_para_remover.append(i)
+# # Iterar sobre os elementos da lista
+# for i, movimento in enumerate(consulta_movimentos):
+#     # Verificar se a origem é "7-Ent.Ret.Simbolico" e basetype é 20 e baseref é igual ao docnum do elemento de "11-Recebimento de Mercadoria"
+#     if movimento["origem"] == "7-Ent.Ret.Simbolico" and movimento["basetype"] == "20":
+#         for movimento_recebimento in consulta_movimentos:
+#             if movimento_recebimento["origem"] == "11-Recebimento de Mercadoria" and movimento_recebimento["docnum"] == movimento["baseref"]:
+#                 indices_para_remover.append(i)
 
-# Remover os elementos da lista
-for indice in sorted(indices_para_remover, reverse=True):
-    del consulta_movimentos[indice]
+# # Remover os elementos da lista
+# for indice in sorted(indices_para_remover, reverse=True):
+#     del consulta_movimentos[indice]
 </bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="EntradasItens" name="Entradas dos Itens">
