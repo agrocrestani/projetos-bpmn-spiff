@@ -1,10 +1,19 @@
 {
-  "description": "Verifique todos itens e dados da solicitação e clique em 'Confirma a solicitação'.",
+  "description": "A dropdown list with options pulled form existing Task Data. IMPORTANT - Add 'fruits' to Task Data before using this component!!!",
   "properties": {
     "done": {
       "type": "boolean",
       "title": "Confirma a solicitação?",
       "default": false
+    },
+    "favoriteFruit": {
+      "title": "Select your favorite fruit",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:fruits"
+      ]
     }
-  }
+  },
+  "title": "Dropdown list",
+  "type": "object"
 }
