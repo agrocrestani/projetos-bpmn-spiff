@@ -205,7 +205,7 @@ for r in rsp:
     ItemName = str(r['itemname'])
     ItmsGrpNam = str(r['itmsgrpnam'])
     InvntryUom = str(r['invntryuom'])
-    OnHand = r['onhand']
+    OnHand = "{:,.2f}".format(r['onhand']).replace(",", "X").replace(".", ",").replace("X", ".")
     WhsCode = str(r['whscode'])
     estoque_de_insumos.append(
         {
@@ -215,7 +215,7 @@ for r in rsp:
                 "ItemName": ItemName, 
                 "ItmsGrpNam": ItmsGrpNam,
                 "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
-                "OnHand": "{:,.2f}".format(OnHand).replace(",", "X").replace(".", ",").replace("X", "."),
+                "OnHand": OnHand,
                 "WhsCode": WhsCode
                 }
             }
