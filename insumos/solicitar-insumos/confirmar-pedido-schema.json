@@ -10,7 +10,7 @@
       "title": "Uso principal",
       "type": "string",
       "anyOf": [
-        "options_from_task_data_var:main_"
+        "options_from_task_data_var:main_usage"
       ]
     }
   }
