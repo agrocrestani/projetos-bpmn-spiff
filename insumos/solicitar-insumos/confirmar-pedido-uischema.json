@@ -16,7 +16,7 @@
     "ui:description": "Make text **bold** or *italic*. Take a look at other options [here](https://probablyup.com/markdown-to-jsx/)."
   },
     "ui:submitButtonOptions": {
-    "submitText": "Confirm Details",
+    "submitText": "Confi",
     "norender": false,
     "props": {
       "disabled": false,
