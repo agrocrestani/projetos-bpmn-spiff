@@ -84,8 +84,8 @@ for f in n_filiais:
 SlpCode = 8
 OwnerCode = 1
 main_usage = []
-for t in tipo_requisicao:
-    main_usage.append(t)
+for u in utilizacoes:
+    main_usage.append(u)
 </spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0f3ld08</bpmn:incoming>
@@ -108,10 +108,10 @@ for t in tipo_requisicao:
       <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
       <bpmn:outgoing>Flow_0f3ld08</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:dataStoreReference id="DataStoreReference_09apfr1" name="Tipo Requisição" dataStoreRef="tipo_requisicao" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_09apfr1" name="Utilizações" dataStoreRef="utilizacoes" type="json" />
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
-  <bpmn:dataStore id="tipo_requisicao" name="JSONDataStore" />
+  <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_solicitacao_de_insumos_rqoml0p">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -152,7 +152,7 @@ for t in tipo_requisicao:
       <bpmndi:BPMNShape id="DataStoreReference_09apfr1_di" bpmnElement="DataStoreReference_09apfr1">
         <dc:Bounds x="575" y="285" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="561" y="342" width="78" height="14" />
+          <dc:Bounds x="573" y="342" width="55" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_108mqy4_di" bpmnElement="Flow_108mqy4">
