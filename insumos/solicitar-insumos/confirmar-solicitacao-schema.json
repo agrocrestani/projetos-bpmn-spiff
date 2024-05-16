@@ -18,8 +18,8 @@
               "title": "Selecione o Insumo"
             },
             "quantidade": {
-            "type": "number",
-            "title": "Quantidade"
+              "type": "number",
+              "title": "Quantidade"
             }
           }
         }
