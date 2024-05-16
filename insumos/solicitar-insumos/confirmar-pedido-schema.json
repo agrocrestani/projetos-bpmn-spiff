@@ -4,7 +4,7 @@
   "properties": {
     "done": {
       "type": "boolean",
-      "title": "Confirma o pedido ?",
+      "title": "Confirma o pedido para a ?",
       "default": false
     }
   }
