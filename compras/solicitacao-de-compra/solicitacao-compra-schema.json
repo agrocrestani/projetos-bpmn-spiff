@@ -113,7 +113,7 @@
     },
     "required": [
       "BPLId",
-      "quantidade"
+      "Department"
     ]
   }
 }
