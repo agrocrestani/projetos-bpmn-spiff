@@ -215,7 +215,7 @@ for r in rsp:
                 "ItemName": ItemName, 
                 "ItmsGrpNam": ItmsGrpNam,
                 "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
-                "OnHand": "{:,.2f}".format(OnHand).replace(",", "X").replace(".", ",").replace("X", "."),
+                "OnHand": str("{:,.2f}".format(OnHand).replace(",", "X").replace(".", ",").replace("X", ".")),
                 "WhsCode": WhsCode
                 }
             }
