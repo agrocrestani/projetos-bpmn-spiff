@@ -9,7 +9,8 @@
       "quantidade": 100
     },
     {
-      "insumo": "{\"ItemCode\":\"015121\",\"ItemName\":\"GRAFITE\",\"ItmsGrpNam\":\"OUTROS DEFENSIVOS\",\"InvntryUom\":\"QUILOGRAM\",\"OnHand\":\"14660.000000\",\"WhsCode\":\"03.FQUE\"}"
+      "insumo": "{\"ItemCode\":\"015121\",\"ItemName\":\"GRAFITE\",\"ItmsGrpNam\":\"OUTROS DEFENSIVOS\",\"InvntryUom\":\"QUILOGRAM\",\"OnHand\":\"14660.000000\",\"WhsCode\":\"03.FQUE\"}",
+      "quantidade": 335
     }
   ],
   "unidade": "apples",
