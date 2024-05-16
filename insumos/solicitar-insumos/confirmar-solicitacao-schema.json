@@ -13,14 +13,14 @@
           "quantidade"
         ],
         "properties": {
-        "insumo": {
-        "type": "string",
-        "title": "Selecione o Insumo"
-        },
-        "quantidade": {
-        "type": "number",
-        "title": "Quantidade"
-        },
+            "insumo": {
+            "type": "string",
+            "title": "Selecione o Insumo"
+            },
+            "quantidade": {
+            "type": "number",
+            "title": "Quantidade"
+            },
             "confirma": {
             "type": "boolean",
             "title": "Done?",
