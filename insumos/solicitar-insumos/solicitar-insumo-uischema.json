@@ -25,7 +25,7 @@
   "ui:layout": [
     {
       "unidade": {},
-      "safras": {}
+      "safra": {}
     },
     {
       "solicitacao": {}
