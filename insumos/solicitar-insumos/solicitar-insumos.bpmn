@@ -211,6 +211,7 @@ BPLName = nfe['BPLName']
 VATRegNum = nfe['VATRegNum']
 
 itens = []
+Total = 0
 for i in nfeItens:
     itens.append(
         {
@@ -228,6 +229,10 @@ for i in nfeItens:
 
 itensMatriz = []
 itensQuerencia = []
+carregaMatriz = False
+TotaMatriz = 0
+carregaQuerencia = False
+TotalQuerencia = 0
 for i in itens:
     if i['WarehouseCode'] == '03.MATR':
         carregaMatriz = True
