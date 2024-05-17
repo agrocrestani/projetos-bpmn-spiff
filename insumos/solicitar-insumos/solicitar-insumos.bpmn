@@ -214,12 +214,12 @@ itens = []
 for i in nfeItens:
     itens.append(
         {
-            "LineNum": i['LineNum']
-            "ItemCode": i['ItemCode']
-            "ItemDescription": i['ItemDescription']
-            "Quantity": i['Quantity']
-            "Price": i['Price']
-            "WarehouseCode": i['WarehouseCode']
+            "LineNum": i['LineNum'],
+            "ItemCode": i['ItemCode'],
+            "ItemDescription": i['ItemDescription'],
+            "Quantity": i['Quantity'],
+            "Price": i['Price'],
+            "WarehouseCode": i['WarehouseCode'],
             "LineTotal": i['LineTotal']
         }
     )
