@@ -46,7 +46,7 @@ query_movimento = f"""
                 WHERE 
                     t0."ItemCode" = '{produto}' AND
 	                t0."WhsCode" = '{deposito}' 
-                ORDER BY t0."DocDueDate", t0."CreateTS"
+                ORDER BY t0."DocDate", t0."CreateTS"
                 """
 
 # AND
