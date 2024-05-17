@@ -421,6 +421,7 @@ headers = {
   'Content-Type': 'application/json'
 }
 
+n_tipo_requisicao = tipo_requisicao
 
 spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
@@ -431,7 +432,6 @@ for s in nfeItens:
   items.append(
     {
       "ItemCode": s["ItemCode"],
-      "TaxDate": "",
       "Quantity": s["Quantity"],
       "WarehouseCode": WarehouseCode,
       "Price": s['Price'],
@@ -443,9 +443,11 @@ for s in nfeItens:
 payload = {
     "CardCode": CardCodeFor,
     "BPL_IDAssignedToInvoice": unidade,
+    "TaxDate": DocDate[0:10],
     "DocumentsOwner": OwnerCode,
     "SalesPersonCode": SlpCode,
     "Comments": f"Solicitante: {solicitante}",
+    "U_RSD_Aplicacao": 2,
     "U_AC_Spiff_Instancia": spiff_instancia,
     "U_AC_Spiff_Tarefa": spiff_tarefa,
     "U_AC_Spiff_Usuario": usuarioEmissorNFe,
@@ -615,16 +617,16 @@ payload = {
       <bpmndi:BPMNShape id="Activity_04en3cs_di" bpmnElement="Activity_1dj6q2p">
         <dc:Bounds x="2210" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1rvva0b_di" bpmnElement="DataStoreReference_1rvva0b">
-        <dc:Bounds x="2575" y="285" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="2577" y="342" width="47" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_1xlk2yu_di" bpmnElement="DataStoreReference_1xlk2yu">
         <dc:Bounds x="215" y="285" width="50" height="50" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="223" y="342" width="35" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1rvva0b_di" bpmnElement="DataStoreReference_1rvva0b">
+        <dc:Bounds x="2615" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2617" y="342" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
@@ -721,8 +723,8 @@ payload = {
         <di:waypoint x="2060" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_09gs45o_di" bpmnElement="DataInputAssociation_09gs45o">
-        <di:waypoint x="2600" y="285" />
-        <di:waypoint x="2600" y="217" />
+        <di:waypoint x="2632" y="285" />
+        <di:waypoint x="2612" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0onnrrk_di" bpmnElement="Flow_0onnrrk">
         <di:waypoint x="2160" y="177" />
