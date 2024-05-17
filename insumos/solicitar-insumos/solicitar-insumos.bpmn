@@ -197,7 +197,30 @@ headers = {
 }
 
 </spiffworkflow:preScript>
-        <spiffworkflow:postScript>lancado = rsp['http_status']</spiffworkflow:postScript>
+        <spiffworkflow:postScript>lancado = rsp['http_status']
+del(n_filiais)
+del(BPLId)
+del(BPLName)
+del(AliasName)
+del(solicitante)
+del(solicitacao)
+del(unidade)
+del(CardCode)
+del(s)
+del(descricaoFilial)
+del(usuarioEmissorNFe)
+del(SlpCode)
+del(OwnerCode)
+del(main_usage)
+del(done)
+del(mainusage)
+del(spiff_instancia)
+del(spiff_tarefa)
+del(taskInfo)
+del(items)
+del(payload)
+
+</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1o5dvob</bpmn:incoming>
       <bpmn:outgoing>Flow_03n0dbr</bpmn:outgoing>
