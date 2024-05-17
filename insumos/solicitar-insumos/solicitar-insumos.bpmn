@@ -512,6 +512,10 @@ payload = {
 | {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
 {%endfor%}
 | | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-entrada-nfe-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="confirma-entrada-nfe-uischema.json" />
+        </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_14nmhlh</bpmn:incoming>
       <bpmn:outgoing>Flow_0ohhdbh</bpmn:outgoing>
