@@ -241,6 +241,34 @@ headers = {
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0wkxjzc" sourceRef="Activity_0nja6u2" targetRef="Gateway_1s1k51w" />
     <bpmn:manualTask id="Activity_0nja6u2" name="Dados da NFe">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>nfe = rsp["body"]
+nfeItens = nfe['DocumentLines']
+
+DocEntry = nfe['DocEntry']
+DocNum = nfe['DocNum']
+Serial = nfe['Serial']
+DocDate = nfe['DocDate']
+CardCode = nfe['CardCode']
+CardNamve = nfe['CardNamve']
+BPLName = nfe['BPLName']
+VATRegNum = nfe['VATRegNum']
+
+itens = []
+for i in nfeItens:
+    itens.append(
+        {
+            "LineNum" = i['LineNum']
+            "ItemCode" = i['ItemCode']
+            "ItemDescription" = i['ItemDescription']
+            "Quantity" = i['Quantity']
+            "Price" = i['Price']
+            "WarehouseCode" = i['WarehouseCode']
+            "LineTotal" = i['LineTotal']
+        }
+    )
+    Total += LineTotal</spiffworkflow:preScript>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_104oa3v</bpmn:incoming>
       <bpmn:outgoing>Flow_0wkxjzc</bpmn:outgoing>
     </bpmn:manualTask>
