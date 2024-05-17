@@ -6,7 +6,7 @@
     }
   ],
   "unidade": "apples",
-  "n_filiais": [
+  "n_safras": [
     {
       "value": "apples",
       "label": "Apples"
