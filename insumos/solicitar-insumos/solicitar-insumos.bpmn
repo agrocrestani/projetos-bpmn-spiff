@@ -424,9 +424,10 @@ items = []
 for s in nfeItens:
   items.append(
     {
-      "ItemCode": s["insumo"]["ItemCode"],
-      "Quantity": s["quantidade"],
-      "WarehouseCode": s["insumo"]["WhsCode"]
+      "ItemCode": s["ItemCode"],
+      "Quantity": s["Quantity"],
+      "WarehouseCode": WarehouseCode
+      "Price": s['Price']
       "CostingCode": ccustoEntrada
       "CosgingCode3": safra
     }
@@ -462,7 +463,7 @@ payload = {
       <bpmn:incoming>Flow_0ohhdbh</bpmn:incoming>
       <bpmn:outgoing>Flow_1azxpfs</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="Flow_0onnrrk" sourceRef="Activity_1wnqyml" targetRef="Activity_0m43k23" />
+    <bpmn:sequenceFlow id="Flow_0onnrrk" sourceRef="Activity_1wnqyml" targetRef="Activity_1dj6q2p" />
     <bpmn:businessRuleTask id="Activity_1wnqyml" name="Definir Fornecedor NFe">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>BPLId = nfe['BPL_IDAssignedToInvoice']</spiffworkflow:preScript>
@@ -500,9 +501,17 @@ payload = {
 {%endfor%}
 | | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0onnrrk</bpmn:incoming>
+      <bpmn:incoming>Flow_14nmhlh</bpmn:incoming>
       <bpmn:outgoing>Flow_0ohhdbh</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_14nmhlh" sourceRef="Activity_1dj6q2p" targetRef="Activity_0m43k23" />
+    <bpmn:businessRuleTask id="Activity_1dj6q2p" name="Define Deposito de entrada">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0onnrrk</bpmn:incoming>
+      <bpmn:outgoing>Flow_14nmhlh</bpmn:outgoing>
+    </bpmn:businessRuleTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
@@ -511,9 +520,6 @@ payload = {
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_solicitacao_de_insumos_rqoml0p">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="2742" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1sk3qsl_di" bpmnElement="Activity_0jw3ade">
         <dc:Bounds x="270" y="137" width="100" height="80" />
@@ -572,22 +578,28 @@ payload = {
       <bpmndi:BPMNShape id="Activity_02jwc4t_di" bpmnElement="Activity_1lebhx2">
         <dc:Bounds x="1910" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_15nxcsy_di" bpmnElement="Activity_1i9wp10">
-        <dc:Bounds x="2380" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_13a99eo_di" bpmnElement="Activity_1wnqyml">
         <dc:Bounds x="2060" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="2912" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15nxcsy_di" bpmnElement="Activity_1i9wp10">
+        <dc:Bounds x="2550" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0bybtef_di" bpmnElement="Activity_0bybtef">
-        <dc:Bounds x="2570" y="137" width="100" height="80" />
+        <dc:Bounds x="2740" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1itk8hu_di" bpmnElement="Activity_0m43k23">
+        <dc:Bounds x="2380" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_04en3cs_di" bpmnElement="Activity_1dj6q2p">
         <dc:Bounds x="2210" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
-        <di:waypoint x="2480" y="177" />
-        <di:waypoint x="2570" y="177" />
+        <di:waypoint x="2650" y="177" />
+        <di:waypoint x="2740" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1jn3emy_di" bpmnElement="Flow_1jn3emy">
         <di:waypoint x="215" y="177" />
@@ -679,10 +691,14 @@ payload = {
         <di:waypoint x="2210" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1xppm89_di" bpmnElement="Flow_1xppm89">
-        <di:waypoint x="2670" y="177" />
-        <di:waypoint x="2742" y="177" />
+        <di:waypoint x="2840" y="177" />
+        <di:waypoint x="2912" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ohhdbh_di" bpmnElement="Flow_0ohhdbh">
+        <di:waypoint x="2480" y="177" />
+        <di:waypoint x="2550" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14nmhlh_di" bpmnElement="Flow_14nmhlh">
         <di:waypoint x="2310" y="177" />
         <di:waypoint x="2380" y="177" />
       </bpmndi:BPMNEdge>
