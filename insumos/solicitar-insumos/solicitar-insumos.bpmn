@@ -102,7 +102,7 @@ for f in n_filiais:
 usuarioEmissorNFe = get_current_user()['display_name']
 
 SlpCode = 8
-OwnerCode = 1
+OwnerCode = 2
 main_usage = []
 for u in utilizacoes:
     main_usage.append(u)
