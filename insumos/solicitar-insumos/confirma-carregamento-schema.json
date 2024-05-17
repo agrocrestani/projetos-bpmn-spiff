@@ -6,7 +6,7 @@
   "properties": {
     "confirma": {
       "type": "boolean",
-      "title": "Confirma o carregamento?",
+      "title": "Confirma que os ite carregamento?",
       "default": false
     }
   }
