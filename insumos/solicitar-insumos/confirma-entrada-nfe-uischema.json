@@ -1,6 +1,6 @@
 {   
     "ui:submitButtonOptions": {
-        "submitText": "Confirma a ?",
+        "submitText": "Confirma a entrada da ?",
         "norender": false,
         "props": {
         "disabled": false,
