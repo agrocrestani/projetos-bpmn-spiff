@@ -113,18 +113,18 @@ count_saida = 0
 if isinstance(consulta_movimentos_out, list):
     for produtoAux in consulta_movimentos_out:
         if produtoAux['tipo'] == "E" :
-            count_entrada += 1
             total_preco_unitario_entrada += produtoAux['linetotal']
             total_quantidade_entrada += produtoAux['qtde']
         
         if produtoAux['tipo'] == "S":
-            count_saida += 1
             total_preco_unitario_saida += produtoAux['linetotal']
             total_quantidade_saida += produtoAux['qtde']
             
         total_preco_unitario += produtoAux['linetotal']
         total_quantidade += produtoAux['qtde']
-        produtoAux['custo_medio'] = total_preco_unitario / total_quantidade
+        
+        if total_quantidade != 0:
+            produtoAux['custo_medio'] = total_preco_unitario / total_quantidade
 
         
 
