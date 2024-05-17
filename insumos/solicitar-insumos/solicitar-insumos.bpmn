@@ -324,9 +324,9 @@ for i in itens:
 |CNPJ Fornecedor: |{{VATRegNum}}|
 
 
-{% for i in itens %} 
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
 | -------- | --------- |  -------------- | ---------------- | -----------: | ----------: | ------------- |
+{% for i in itens %} 
 | {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}}|
 {% endfor %}
 |||||Total -&gt; | {{Total}}|</spiffworkflow:instructionsForEndUser>
@@ -351,9 +351,9 @@ for i in itens:
 |CNPJ Fornecedor: |{{VATRegNum}}|
 
 
-{% for i in itensMatriz %} 
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
 | -------- | --------- |  -------------- | ---------------- | ----------- | -----------| ------------- |
+{% for i in itensMatriz %} 
 | {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}}|
 {%endfor%}
 |||||Total | {{TotalMatriz}}|</spiffworkflow:instructionsForEndUser>
@@ -376,10 +376,9 @@ for i in itens:
 |Nome Fornecedor: |{{BPLName}}|
 |CNPJ Fornecedor: |{{VATRegNum}}|
 
-
-{% for i in itensQuerencia %} 
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
 | -------- | --------- |  -------------- | ---------------- | ----------- | -----------| ------------- |
+{% for i in itensQuerencia %} 
 | {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}}|
 {%endfor%}
 |||||Total | {{TotalQuerencia}}|</spiffworkflow:instructionsForEndUser>
