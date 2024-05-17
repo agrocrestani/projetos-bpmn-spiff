@@ -40,7 +40,8 @@ query_movimento = f"""
                     CAST(t0."BaseType" AS VARCHAR(100)) AS "BaseType" ,
                     CAST(t0."BaseRef" AS VARCHAR(100)) AS "BaseRef" ,
                     CAST(t0."CreateDate" AS VARCHAR(100)) AS "CreateDate" ,
-                    CAST(t0."CreateTS" AS VARCHAR(100)) AS "CreateTS"
+                    CAST(t0."CreateTS" AS VARCHAR(100)) AS "CreateTS" ,
+                    CAST(t0.CANCELED AS VARCHAR(2)) AS "CANCELED"
                 FROM {baseSap}.AC_MOVIMENTOS t0
                 WHERE 
                     t0."ItemCode" = '{produto}' AND
