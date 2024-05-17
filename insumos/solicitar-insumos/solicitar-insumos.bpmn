@@ -31,6 +31,7 @@ for f in filiais:
         }
     )
 
+n_safras = safras
 solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
         <spiffworkflow:postScript />
         <spiffworkflow:instructionsForEndUser># Solicitação de insumos
@@ -50,6 +51,10 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
       <bpmn:property id="Property_13gdj9d" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_1hak9da">
         <bpmn:sourceRef>DataStoreReference_1ismram</bpmn:sourceRef>
+        <bpmn:targetRef>Property_13gdj9d</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_0xv34tf">
+        <bpmn:sourceRef>DataStoreReference_1xlk2yu</bpmn:sourceRef>
         <bpmn:targetRef>Property_13gdj9d</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
@@ -519,10 +524,12 @@ payload = {
       <bpmn:outgoing>Flow_14nmhlh</bpmn:outgoing>
     </bpmn:businessRuleTask>
     <bpmn:dataStoreReference id="DataStoreReference_1rvva0b" name="SapLogin" dataStoreRef="saplogin" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_1xlk2yu" name="Safras" dataStoreRef="safras" type="json" />
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
+  <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_solicitacao_de_insumos_rqoml0p">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -608,6 +615,12 @@ payload = {
         <dc:Bounds x="2575" y="285" width="50" height="50" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="2577" y="342" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1xlk2yu_di" bpmnElement="DataStoreReference_1xlk2yu">
+        <dc:Bounds x="215" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="223" y="342" width="35" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
@@ -718,6 +731,10 @@ payload = {
       <bpmndi:BPMNEdge id="Flow_14nmhlh_di" bpmnElement="Flow_14nmhlh">
         <di:waypoint x="2310" y="177" />
         <di:waypoint x="2380" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0xv34tf_di" bpmnElement="DataInputAssociation_0xv34tf">
+        <di:waypoint x="250" y="285" />
+        <di:waypoint x="277" y="216" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
