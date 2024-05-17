@@ -513,6 +513,7 @@ payload = {
     <bpmn:businessRuleTask id="Activity_1dj6q2p" name="Define Deposito de entrada">
       <bpmn:extensionElements>
         <spiffworkflow:postScript />
+        <spiffworkflow:calledDecisionId>decision_DefinirDeposito</spiffworkflow:calledDecisionId>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0onnrrk</bpmn:incoming>
       <bpmn:outgoing>Flow_14nmhlh</bpmn:outgoing>
