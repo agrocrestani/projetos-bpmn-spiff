@@ -1,6 +1,6 @@
 {   
     "ui:submitButtonOptions": {
-        "submitText": "Confirma o carregamento?",
+        "submitText": "Confirma a ?",
         "norender": false,
         "props": {
         "disabled": false,
