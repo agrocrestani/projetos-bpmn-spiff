@@ -75,8 +75,8 @@ indices_para_remover = []
 
 # Iterar sobre os elementos da lista
 for i, movimento in enumerate(consulta_movimentos):
-    # Verificar se a origem é "7-Ent.Ret.Simbolico" e basetype é 20 e baseref é igual ao docnum do elemento de "11-Recebimento de Mercadoria"
-    if movimento["origem"] == "7-Ent.Ret.Simbolico" and movimento["basetype"] == "20":
+    # Verificar se a origem é "	7-Nfe.Entrada" e basetype é 20 e baseref é igual ao docnum do elemento de "11-Recebimento de Mercadoria"
+    if movimento["origem"] == "	7-Nfe.Entrada" and movimento["basetype"] == "20":
         for movimento_recebimento in consulta_movimentos:
             if movimento_recebimento["origem"] == "11-Recebimento de Mercadoria" and movimento_recebimento["docnum"] == movimento["baseref"]:
                 indices_para_remover.append(i)
