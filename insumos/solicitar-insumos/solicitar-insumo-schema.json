@@ -35,7 +35,7 @@
       ]
     },
     "safra": {
-      "title": "Selecione a S",
+      "title": "Selecione a safra",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:n_safras"
