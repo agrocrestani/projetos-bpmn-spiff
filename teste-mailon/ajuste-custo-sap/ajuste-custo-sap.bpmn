@@ -84,7 +84,11 @@ for i, movimento in enumerate(consulta_movimentos):
 # Remover os elementos da lista
 for indice in sorted(indices_para_remover, reverse=True):
     del consulta_movimentos[indice]
-</bpmn:script>
+
+del(indices_para_remover)
+del(movimento)
+del(indice)
+del(movimento_recebimento)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="EntradasItens" name="Entradas dos Itens">
       <bpmn:extensionElements>
