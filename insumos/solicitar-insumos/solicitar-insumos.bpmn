@@ -302,11 +302,11 @@ for i in itens:
     if i['WarehouseCode'] == '03.MATR':
         carregaMatriz = True
         itensMatriz.append(i)
-        TotaMatriz += LineTotal
+        TotaMatriz += i['LineTotal']
     elif i['WarehouseCode'] == '03.FQUE':
         carregaQuerencia = True
         itensQuerencia.append(i)
-        TotalQuerencia += LineTotal
+        TotalQuerencia += i['LineTotal']
 
 
 </spiffworkflow:preScript>
