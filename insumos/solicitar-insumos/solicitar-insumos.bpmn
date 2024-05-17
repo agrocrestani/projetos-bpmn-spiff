@@ -317,33 +317,6 @@ for i in itens:
       <bpmn:incoming>Flow_104oa3v</bpmn:incoming>
       <bpmn:outgoing>Flow_0wkxjzc</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:manualTask id="Activity_026swb9" name="Carregar na Querência">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser># Itens para carregamento
-
-| Campo | Valor |
-| ----------: | ------- |
-|Id Sap:|{{DocEntry}}|
-|Número Sap:|{{DocNum}}|
-|Número da NFe:|{{Serial}}|
-|Data:|{{DocDate}}|
-|Código Cliente:|{{CardCode}}|
-|Nome Cliente: |{{CardName}}|
-|Nome Fornecedor: |{{BPLName}}|
-|CNPJ Fornecedor: |{{VATRegNum}}|
-
-----------
-
-| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
-| -------- | --------- |  -------------- | ---------------- | ----------: | ---------: | ------------- |
-{% for i in itensQuerencia %} 
-| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
-{%endfor%}
-|||||Total -&gt; | {{TotalQuerencia}} |</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0epng85</bpmn:incoming>
-      <bpmn:outgoing>Flow_0e87txz</bpmn:outgoing>
-    </bpmn:manualTask>
     <bpmn:exclusiveGateway id="Gateway_1s1k51w" default="Flow_171vapw">
       <bpmn:incoming>Flow_0wkxjzc</bpmn:incoming>
       <bpmn:outgoing>Flow_171vapw</bpmn:outgoing>
@@ -395,6 +368,36 @@ for i in itens:
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_171vapw</bpmn:incoming>
       <bpmn:outgoing>Flow_1ngeegg</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_026swb9" name="Carregar na Querência">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Itens para carregamento
+
+| Campo | Valor |
+| ----------: | ------- |
+|Id Sap:|{{DocEntry}}|
+|Número Sap:|{{DocNum}}|
+|Número da NFe:|{{Serial}}|
+|Data:|{{DocDate}}|
+|Código Cliente:|{{CardCode}}|
+|Nome Cliente: |{{CardName}}|
+|Nome Fornecedor: |{{BPLName}}|
+|CNPJ Fornecedor: |{{VATRegNum}}|
+
+----------
+
+| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
+| -------- | --------- |  -------------- | ---------------- | ----------: | ---------: | ------------- |
+{% for i in itensQuerencia %} 
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
+{%endfor%}
+|||||Total -&gt; | {{TotalQuerencia}} |</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-carregamento-schema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0epng85</bpmn:incoming>
+      <bpmn:outgoing>Flow_0e87txz</bpmn:outgoing>
     </bpmn:userTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
@@ -454,9 +457,6 @@ for i in itens:
       <bpmndi:BPMNShape id="Activity_02yrm3x_di" bpmnElement="Activity_0nja6u2">
         <dc:Bounds x="1160" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1e7hg66_di" bpmnElement="Activity_026swb9">
-        <dc:Bounds x="1730" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_013j3ko_di" bpmnElement="Gateway_1s1k51w" isMarkerVisible="true">
         <dc:Bounds x="1325" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -465,6 +465,9 @@ for i in itens:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_12y8ti2_di" bpmnElement="Activity_1bdps63">
         <dc:Bounds x="1440" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1v3my6c_di" bpmnElement="Activity_026swb9">
+        <dc:Bounds x="1730" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
         <di:waypoint x="2020" y="177" />
