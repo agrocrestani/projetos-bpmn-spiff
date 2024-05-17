@@ -427,15 +427,15 @@ spiff_tarefa = taskInfo = get_current_task_info()['id']
 usuarioEmissorNFe = get_current_user()['display_name']
 
 items = []
-
 for s in nfeItens:
   items.append(
     {
       "ItemCode": s["ItemCode"],
+      "TaxDate": "",
       "Quantity": s["Quantity"],
-      "WarehouseCode": WarehouseCode
-      "Price": s['Price']
-      "CostingCode": ccustoEntrada
+      "WarehouseCode": WarehouseCode,
+      "Price": s['Price'],
+      "CostingCode": ccustoEntrada,
       "CosgingCode3": safra
     }
   )
@@ -496,10 +496,8 @@ payload = {
 
 | Campo | Valor |
 | ----------: | ------- |
-|Id Sap:|{{DocEntry}}|
-|Número Sap:|{{DocNum}}|
 |Número da NFe:|{{Serial}}|
-|Data:|{{DocDate}}|
+|Data de emissão:|{{DocDate}}|
 |Código Cliente:|{{CardCode}}|
 |Nome Cliente: |{{CardName}}|
 |Nome Fornecedor: |{{BPLName}}|
