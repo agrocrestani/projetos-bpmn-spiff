@@ -44,8 +44,7 @@ query_movimento = f"""
                 FROM {baseSap}.AC_MOVIMENTOS t0
                 WHERE 
                     t0."ItemCode" = '{produto}' AND
-	                t0."WhsCode" = '{deposito}' AND
-                    t0.CANCELED  = 'N' 
+	                t0."WhsCode" = '{deposito}' 
                 ORDER BY t0."CreateDate", t0."CreateTS"
                 """
 
@@ -347,9 +346,6 @@ del(produtosList)</spiffworkflow:postScript>
         <dc:Bounds x="830" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
-        <dc:Bounds x="1072" y="372" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
       </bpmndi:BPMNShape>
@@ -391,6 +387,9 @@ del(produtosList)</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Activity_0tm9ngj_di" bpmnElement="MovimentoEntradaNaoEncontrado">
         <dc:Bounds x="-10" y="250" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
+        <dc:Bounds x="1072" y="372" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-222" y="177" />
