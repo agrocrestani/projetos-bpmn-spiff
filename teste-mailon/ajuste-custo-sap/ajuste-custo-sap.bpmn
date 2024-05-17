@@ -149,7 +149,6 @@ if total_quantidade_saida != 0:
 else:
     print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
 
-custo_medio_unitario_nf_in = total_preco_unitario_nf_in / total_quantidade_nf_in
 del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript />
         <spiffworkflow:instructionsForEndUser>Produto: {{produto}}    | Deposito: {{deposito}}
