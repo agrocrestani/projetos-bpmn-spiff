@@ -4,7 +4,7 @@
   "properties": {
     "done": {
       "type": "boolean",
-      "title": "Done?",
+      "title": "DoCne?",
       "default": false
     }
   }
