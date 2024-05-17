@@ -99,6 +99,9 @@ total_quantidade_entrada = 0
 total_preco_unitario_saida = 0
 total_quantidade_saida = 0
 
+total_preco_unitario = 0
+total_quantidade = 0
+
 if isinstance(consulta_movimentos_out, list):
     for produtoAux in consulta_movimentos_out:
         if produtoAux['tipo'] == "E" and produtoAux['canceled'] == 'N':
@@ -107,8 +110,11 @@ if isinstance(consulta_movimentos_out, list):
         
         if produtoAux['tipo'] == "S" and produtoAux['canceled'] == 'N':
             total_preco_unitario_saida += produtoAux['linetotal']
-            total_quantidade_saida += produtoAux['qtde']        
-            
+            total_quantidade_saida += produtoAux['qtde']
+        
+        if produtoAux['canceled'] == 'N':
+            total_preco_unitario += produtoAux['linetotal']
+            total_quantidade += produtoAux['qtde']
 else:
     print("Erro: 'produtosDespositos' não é uma lista.")
 
@@ -127,6 +133,12 @@ if total_quantidade_saida != 0:
 else:
     print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
 
+if total_quantidade != 0:
+    custo_medio_unitario = total_preco_unitario / total_quantidade
+    print("Custo médio unitário:", custo_medio_unitario)
+else:
+    print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
+
 
 del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript />
@@ -142,6 +154,7 @@ Custo Médio Saída: {{  '{:,.3f}'.format(custo_medio_unitario_saida).replace(',
 
 Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 
+Custo Médio: {{ '{:,.3f}'.format(custo_medio_unitario).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 | Num | Origem | Numero Documento | Quantidade | Custo Unitário | Custo Total | Data |
 | ------- | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- |
 {% for produto in consulta_movimentos_out%}
