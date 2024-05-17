@@ -131,7 +131,7 @@ if isinstance(consulta_movimentos_out, list):
 
             produtoAux['custo_medio'] = custo_medio
                 
-            total_quantidade = total_quantidade - produtoAux['qtde']
+            total_quantidade = produtoAux['qtde'] +  total_quantidade
         
 
            
