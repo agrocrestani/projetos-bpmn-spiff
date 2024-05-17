@@ -7,7 +7,7 @@
           <text>BPLId</text>
         </inputExpression>
       </input>
-      <output id="output_1" name="CostingCode" typeRef="string" />
+      <output id="output_1" name="CardCodeFor" typeRef="string" />
       <rule id="DecisionRule_0mofuv8">
         <inputEntry id="UnaryTests_1kd277r">
           <text>"1"</text>
