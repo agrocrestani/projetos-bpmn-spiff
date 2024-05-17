@@ -10,42 +10,6 @@
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1azxpfs</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Activity_1i9wp10" name="Confirma Entrega">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
-spiff_tarefa = taskInfo = get_current_task_info()['id']
-usuarioEmissorNFe = get_current_user()['display_name']
-
-items = []
-
-for s in solicitacao:
-  items.append(
-    {
-      "ItemCode": s["insumo"]["ItemCode"],
-      "Quantity": s["quantidade"],
-      "WarehouseCode": s["insumo"]["WhsCode"]
-    }
-  )
-
-payload = {
-    "CardCode": CardCode,
-    "BPL_IDAssignedToInvoice": "1",
-    "DocumentsOwner": OwnerCode,
-    "SalesPersonCode": SlpCode,
-    "Comments": f"Solicitante: {solicitante}",
-    "U_AC_Spiff_Instancia": spiff_instancia,
-    "U_AC_Spiff_Tarefa": spiff_tarefa,
-    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
-    "DocumentLines": items,
-    "TaxExtension": {
-      "MainUsage": mainusage,
-      "Incoterms": "0"
-    }
-}</spiffworkflow:preScript>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0opnsqm</bpmn:incoming>
-      <bpmn:outgoing>Flow_1azxpfs</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1azxpfs" sourceRef="Activity_1i9wp10" targetRef="EndEvent_1" />
     <bpmn:sequenceFlow id="Flow_1jn3emy" sourceRef="StartEvent_1" targetRef="Activity_0jw3ade" />
     <bpmn:sequenceFlow id="Flow_1roexn7" sourceRef="Activity_0jw3ade" targetRef="Activity_02zzhyq" />
@@ -430,14 +394,60 @@ for i in itens:
       <bpmn:incoming>Flow_0epng85</bpmn:incoming>
       <bpmn:outgoing>Flow_0e87txz</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_0opnsqm" sourceRef="Activity_1lebhx2" targetRef="Activity_1i9wp10" />
+    <bpmn:sequenceFlow id="Flow_0opnsqm" sourceRef="Activity_1lebhx2" targetRef="Activity_1wnqyml" />
     <bpmn:businessRuleTask id="Activity_1lebhx2" name="Definir Centro de Custo">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_DefinirCcusto</spiffworkflow:calledDecisionId>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0e87txz</bpmn:incoming>
       <bpmn:incoming>Flow_1aq1yiy</bpmn:incoming>
       <bpmn:outgoing>Flow_0opnsqm</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:serviceTask id="Activity_1i9wp10" name="Confirma Entrega">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
+spiff_tarefa = taskInfo = get_current_task_info()['id']
+usuarioEmissorNFe = get_current_user()['display_name']
+
+items = []
+
+for s in solicitacao:
+  items.append(
+    {
+      "ItemCode": s["insumo"]["ItemCode"],
+      "Quantity": s["quantidade"],
+      "WarehouseCode": s["insumo"]["WhsCode"]
+    }
+  )
+
+payload = {
+    "CardCode": CardCodeFor,
+    "BPL_IDAssignedToInvoice": unidade,
+    "DocumentsOwner": OwnerCode,
+    "SalesPersonCode": SlpCode,
+    "Comments": f"Solicitante: {solicitante}",
+    "U_AC_Spiff_Instancia": spiff_instancia,
+    "U_AC_Spiff_Tarefa": spiff_tarefa,
+    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
+    "DocumentLines": items,
+    "TaxExtension": {
+      "MainUsage": mainusage,
+      "Incoterms": "0"
+    }
+}</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0onnrrk</bpmn:incoming>
+      <bpmn:outgoing>Flow_1azxpfs</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0onnrrk" sourceRef="Activity_1wnqyml" targetRef="Activity_1i9wp10" />
+    <bpmn:businessRuleTask id="Activity_1wnqyml" name="Definir Fornecedor NFe">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>BPLId = nfe['BPL_IDAssignedToInvoice']</spiffworkflow:preScript>
+        <spiffworkflow:calledDecisionId></spiffworkflow:calledDecisionId>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0opnsqm</bpmn:incoming>
+      <bpmn:outgoing>Flow_0onnrrk</bpmn:outgoing>
     </bpmn:businessRuleTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
@@ -508,12 +518,15 @@ for i in itens:
       <bpmndi:BPMNShape id="Activity_02jwc4t_di" bpmnElement="Activity_1lebhx2">
         <dc:Bounds x="1910" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1i9wp10_di" bpmnElement="Activity_1i9wp10">
-        <dc:Bounds x="2070" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_15nxcsy_di" bpmnElement="Activity_1i9wp10">
+        <dc:Bounds x="2290" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_13a99eo_di" bpmnElement="Activity_1wnqyml">
+        <dc:Bounds x="2060" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
-        <di:waypoint x="2170" y="177" />
+        <di:waypoint x="2390" y="177" />
         <di:waypoint x="2622" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1jn3emy_di" bpmnElement="Flow_1jn3emy">
@@ -599,7 +612,11 @@ for i in itens:
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0opnsqm_di" bpmnElement="Flow_0opnsqm">
         <di:waypoint x="2010" y="177" />
-        <di:waypoint x="2070" y="177" />
+        <di:waypoint x="2060" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0onnrrk_di" bpmnElement="Flow_0onnrrk">
+        <di:waypoint x="2160" y="177" />
+        <di:waypoint x="2290" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
