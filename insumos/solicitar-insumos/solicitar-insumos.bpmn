@@ -63,6 +63,10 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## Solicitação de Insumos 
 
+{% if lancado and (lancado != 201) %}
+    &lt;font color="red"&gt;&lt;strong&gt;Ocorreu um erro na inserção dos dados no SAP. Tente novamente, caso persista, procure o TI. &lt;/strong&gt;&lt;/font&gt;
+{% endif %}
+
 
 | Código | Descrição | Quantidade | UN| Deposito |
 | --------- | ------------ | :---------------: | ---- | --------- |
@@ -376,7 +380,7 @@ headers = {
         <di:waypoint x="778" y="280" />
         <di:waypoint x="778" y="217" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="967" y="246" width="85" height="27" />
+          <dc:Bounds x="977" y="286" width="85" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
