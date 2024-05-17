@@ -421,7 +421,7 @@ usuarioEmissorNFe = get_current_user()['display_name']
 
 items = []
 
-for s in solicitacao:
+for s in nfeItens:
   items.append(
     {
       "ItemCode": s["insumo"]["ItemCode"],
@@ -457,6 +457,7 @@ payload = {
             <spiffworkflow:parameter id="verify" type="bool" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0ohhdbh</bpmn:incoming>
       <bpmn:outgoing>Flow_1azxpfs</bpmn:outgoing>
@@ -477,6 +478,28 @@ payload = {
     <bpmn:sequenceFlow id="Flow_1xppm89" sourceRef="Activity_0bybtef" targetRef="EndEvent_1" />
     <bpmn:sequenceFlow id="Flow_0ohhdbh" sourceRef="Activity_0m43k23" targetRef="Activity_1i9wp10" />
     <bpmn:userTask id="Activity_0m43k23" name="Validar ntoa de entrada">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Dados da Nota Fiscal de Entrada
+
+| Campo | Valor |
+| ----------: | ------- |
+|Id Sap:|{{DocEntry}}|
+|Número Sap:|{{DocNum}}|
+|Número da NFe:|{{Serial}}|
+|Data:|{{DocDate}}|
+|Código Cliente:|{{CardCode}}|
+|Nome Cliente: |{{CardName}}|
+|Nome Fornecedor: |{{BPLName}}|
+|CNPJ Fornecedor: |{{VATRegNum}}|
+
+### Itens da Nota
+| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
+| -------- | --------- |  -------------- | ---------------: | ----------: | ----------: | ------------ |
+{%for i in itens%}
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
+{%endfor%}
+| | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0onnrrk</bpmn:incoming>
       <bpmn:outgoing>Flow_0ohhdbh</bpmn:outgoing>
     </bpmn:userTask>
