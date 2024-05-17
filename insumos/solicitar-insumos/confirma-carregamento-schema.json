@@ -1,5 +1,5 @@
 {
-  "description": "Confirme se os items da lista acima foram carregados. Pode ser que nao",
+  "description": "Confirme se os items da lista acima foram carregados. Pode ser que nota tenha items q",
   "properties": {
     "done": {
       "type": "boolean",
