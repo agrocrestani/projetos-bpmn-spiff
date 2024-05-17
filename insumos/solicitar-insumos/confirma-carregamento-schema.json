@@ -1,5 +1,5 @@
 {
-  "description": "A super simple checkbox",
+  "description": "Confirme se os ",
   "properties": {
     "done": {
       "type": "boolean",
