@@ -19,5 +19,19 @@
       "value": "bananas",
       "label": "Bananas"
     }
+  ],
+   "n_safras": [
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
   ]
 }
