@@ -117,18 +117,17 @@ if isinstance(consulta_movimentos_out, list):
             total_quantidade_entrada += produtoAux['qtde']
             total_preco_unitario += produtoAux['linetotal']
             total_quantidade += produtoAux['qtde']
+            if total_quantidade != 0:
+                produtoAux['custo_medio'] = total_preco_unitario / total_quantidade
         
         if produtoAux['tipo'] == "S":
             total_preco_unitario_saida += produtoAux['linetotal']
             total_quantidade_saida += produtoAux['qtde']
-            
-            total_quantidade = total_quantidade - produtoAux['qtde']
-        
-        if total_quantidade != 0:
-            produtoAux['custo_medio'] = total_preco_unitario / total_quantidade
-        else:
-            produtoAux['custo_medio'] = total_preco_unitario
 
+            if total_quantidade != 0:
+                produtoAux['custo_medio'] = total_preco_unitario / total_quantidade
+                
+            total_quantidade = total_quantidade - produtoAux['qtde']
         
 
            
