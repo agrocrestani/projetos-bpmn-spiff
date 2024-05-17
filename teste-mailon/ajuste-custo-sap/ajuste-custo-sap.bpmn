@@ -89,6 +89,7 @@ for indice in sorted(indices_para_remover, reverse=True):
 for i in consulta_movimentos:
     if i['origem'] == '1-Saldo Inicial':
         i['unitmsr'] = um_produto_estoque[0]['invntryuom']
+        i['canceled'] = 'N'
 
 del(indices_para_remover)
 del(movimento)
