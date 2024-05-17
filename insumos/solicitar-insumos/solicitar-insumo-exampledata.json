@@ -6,6 +6,7 @@
     }
   ],
   "unidade": "apples",
+  "safra": "apples",
   "n_safras": [
     {
       "value": "apples",
