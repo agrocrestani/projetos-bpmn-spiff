@@ -101,11 +101,11 @@ total_quantidade_saida = 0
 
 if isinstance(consulta_movimentos_out, list):
     for produtoAux in consulta_movimentos_out:
-        if produtoAux['tipo'] == "E":
+        if produtoAux['tipo'] == "E" and produtoAux['canceled'] == 'N':
             total_preco_unitario_entrada += produtoAux['linetotal']
             total_quantidade_entrada += produtoAux['qtde']
         
-        if produtoAux['tipo'] == "S":
+        if produtoAux['tipo'] == "S" and produtoAux['canceled'] == 'N':
             total_preco_unitario_saida += produtoAux['linetotal']
             total_quantidade_saida += produtoAux['qtde']        
             
