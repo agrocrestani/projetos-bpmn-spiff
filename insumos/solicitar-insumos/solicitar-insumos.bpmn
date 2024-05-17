@@ -116,8 +116,8 @@ for s in solicitacao:
   items.append(
     {
       "ItemCode": s["insumo"]["ItemCode"],
-      "Quantity": s["insumo"]["WhsCode"],
-      "WarehouseCode": s["quantidade"]
+      "Quantity": s["quantidade"],
+      "WarehouseCode": s["insumo"]["WhsCode"]
     }
   )
 
@@ -126,7 +126,7 @@ payload = {
     "BPL_IDAssignedToInvoice": "1",
     "DocumentsOwner": OwnerCode,
     "SalesPersonCode": SlpCode,
-    "JournalMemo": f"Solicitante: {solicitante}",
+    "Comments": f"Solicitante: {solicitante}",
     "U_AC_Spiff_Instancia": spiff_instancia,
     "U_AC_Spiff_Tarefa": spiff_tarefa,
     "U_AC_Spiff_Usuario": usuarioEmissorNFe,
