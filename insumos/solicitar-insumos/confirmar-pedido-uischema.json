@@ -8,7 +8,8 @@
     }
   ],
     "ui:submitButtonOptions": {
-    "submitText": "Confirma os dados NFe?"
+    "submitText": "Confirma os dados NFe?",
+
     }
   }
 }
