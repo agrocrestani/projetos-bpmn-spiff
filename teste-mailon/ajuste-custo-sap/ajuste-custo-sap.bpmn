@@ -167,15 +167,10 @@ Teste:  {{ '{:,.3f}'.format(custo_medio_unitario_nf_in).replace(',', ' ').replac
 
 | Num | Origem | Numero Documento | Quantidade | Custo Unitário | Custo Total | Data |
 | ------- | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- |
-{% for produto in entrada%}
+{% for produto in consulta_movimentos_out%}
 | {{ produto['num_movimentos'] }} | {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |{{ '{:,.3f}'.format(produto['linetotal']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['docduedate']}} |
 {% endfor %}
 
-| Num | Origem | Numero Documento | Quantidade | Custo Unitário | Custo Total | Data |
-| ------- | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- |
-{% for produto in saida%}
-| {{ produto['num_movimentos'] }} | {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |{{ '{:,.3f}'.format(produto['linetotal']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['docduedate']}} |
-{% endfor %}
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0kxg7eo</bpmn:incoming>
