@@ -131,8 +131,8 @@ if isinstance(consulta_movimentos_out, list):
                 produtoAux['custo_medio'] = custo_medio
                 produtoAux['estoque_atual'] = total_quantidade
             else:
-                produtoAux['custo_medio'] = 0
-                produtoAux['estoque_atual'] = 0
+                produtoAux['custo_medio'] = 999999
+                produtoAux['estoque_atual'] = 999999
         
         if produtoAux['tipo'] == "S":
             total_preco_unitario_saida += produtoAux['linetotal']
