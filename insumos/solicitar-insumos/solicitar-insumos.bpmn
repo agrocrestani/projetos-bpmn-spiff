@@ -197,7 +197,7 @@ headers = {
 }
 
 </spiffworkflow:preScript>
-        <spiffworkflow:postScript>lancado = rsp['http_status']
+        <spiffworkflow:postScript># lancado = rsp['http_status']
 
 del(n_filiais)
 del(BPLId)
