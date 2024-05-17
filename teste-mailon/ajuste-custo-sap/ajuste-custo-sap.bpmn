@@ -120,7 +120,10 @@ if isinstance(consulta_movimentos_out, list):
             if produtoAux['canceled'] == 'N':
                 total_preco_unitario += produtoAux['linetotal']
                 total_quantidade += produtoAux['qtde']
-                custo_medio = total_preco_unitario / total_quantidade
+                
+                if total_quantidade != 0:
+                    custo_medio = total_preco_unitario / total_quantidade
+                
                 produtoAux['custo_medio'] = custo_medio
             else:
                 produtoAux['custo_medio'] = 0
