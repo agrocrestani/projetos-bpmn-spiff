@@ -203,10 +203,10 @@ nfeItens = nfe['DocumentLines']
 
 DocEntry = nfe['DocEntry']
 DocNum = nfe['DocNum']
-Serial = nfe['Serial']
+Serial = nfe['SequenceSerial']
 DocDate = nfe['DocDate']
 CardCode = nfe['CardCode']
-CardNamve = nfe['CardNamve']
+CardNamve = nfe['CardName']
 BPLName = nfe['BPLName']
 VATRegNum = nfe['VATRegNum']
 
