@@ -99,18 +99,20 @@ total_quantidade_entrada = 0
 total_preco_unitario_saida = 0
 total_quantidade_saida = 0
 
-count = 0
+entrada = []
+saida = []
 
 if isinstance(consulta_movimentos_out, list):
     for produtoAux in consulta_movimentos_out:
         if produtoAux['tipo'] == "E" :
             total_preco_unitario_entrada += produtoAux['linetotal']
             total_quantidade_entrada += produtoAux['qtde']
-            count += 1
+            entrada.append(produtoAux)
         
         if produtoAux['tipo'] == "S":
             total_preco_unitario_saida += produtoAux['linetotal']
             total_quantidade_saida += produtoAux['qtde']
+            saida.append(produtoAux)
            
 else:
     print("Erro: 'produtosDespositos' não é uma lista.")
@@ -148,7 +150,13 @@ Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').r
 
 | Num | Origem | Numero Documento | Quantidade | Custo Unitário | Custo Total | Data |
 | ------- | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- |
-{% for produto in consulta_movimentos_out%}
+{% for produto in entrada%}
+| {{ produto['num_movimentos'] }} | {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |{{ '{:,.3f}'.format(produto['linetotal']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['docduedate']}} |
+{% endfor %}
+
+| Num | Origem | Numero Documento | Quantidade | Custo Unitário | Custo Total | Data |
+| ------- | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- |
+{% for produto in saida%}
 | {{ produto['num_movimentos'] }} | {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |{{ '{:,.3f}'.format(produto['linetotal']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['docduedate']}} |
 {% endfor %}
 </spiffworkflow:instructionsForEndUser>
