@@ -277,14 +277,14 @@ for i in nfeItens:
 itensMatriz = []
 itensQuerencia = []
 carregaMatriz = False
-TotaMatriz = 0
+TotalMatriz = 0
 carregaQuerencia = False
 TotalQuerencia = 0
 for i in itens:
     if i['WarehouseCode'] == '03.MATR':
         carregaMatriz = True
         itensMatriz.append(i)
-        TotaMatriz += i['LineTotal']
+        TotalMatriz += i['LineTotal']
     elif i['WarehouseCode'] == '03.FQUE':
         carregaQuerencia = True
         itensQuerencia.append(i)
@@ -334,11 +334,11 @@ for i in itens:
 
 
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
-| -------- | --------- |  -------------- | ---------------- | ----------- | -----------| ------------- |
+| -------- | --------- |  -------------- | ---------------- | ----------: | ----------: | ------------- |
 {% for i in itensMatriz %} 
-| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}}|
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
 {%endfor%}
-|||||Total | {{TotalMatriz}}|</spiffworkflow:instructionsForEndUser>
+|||||Total-&gt; | {{TotalMatriz}}|</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_171vapw</bpmn:incoming>
       <bpmn:outgoing>Flow_1ngeegg</bpmn:outgoing>
@@ -358,12 +358,14 @@ for i in itens:
 |Nome Fornecedor: |{{BPLName}}|
 |CNPJ Fornecedor: |{{VATRegNum}}|
 
+----------
+
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
-| -------- | --------- |  -------------- | ---------------- | ----------- | -----------| ------------- |
+| -------- | --------- |  -------------- | ---------------- | ----------: | ---------: | ------------- |
 {% for i in itensQuerencia %} 
-| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}}|
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
 {%endfor%}
-|||||Total | {{TotalQuerencia}}|</spiffworkflow:instructionsForEndUser>
+|||||Total -&gt; | {{TotalQuerencia}} |</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0epng85</bpmn:incoming>
       <bpmn:outgoing>Flow_0e87txz</bpmn:outgoing>
