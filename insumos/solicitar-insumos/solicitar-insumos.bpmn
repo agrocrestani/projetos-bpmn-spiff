@@ -393,7 +393,9 @@ for i in itens:
 |||||Total -&gt; | {{TotalQuerencia}} |</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-carregamento-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="confirma-carregamento-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:preScript>confirma = False</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0epng85</bpmn:incoming>
       <bpmn:outgoing>Flow_0e87txz</bpmn:outgoing>
@@ -639,6 +641,10 @@ payload = {
         <di:waypoint x="322" y="285" />
         <di:waypoint x="326" y="217" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0xv34tf_di" bpmnElement="DataInputAssociation_0xv34tf">
+        <di:waypoint x="250" y="285" />
+        <di:waypoint x="277" y="216" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1o5dvob_di" bpmnElement="Flow_1o5dvob">
         <di:waypoint x="828" y="177" />
         <di:waypoint x="880" y="177" />
@@ -731,10 +737,6 @@ payload = {
       <bpmndi:BPMNEdge id="Flow_14nmhlh_di" bpmnElement="Flow_14nmhlh">
         <di:waypoint x="2310" y="177" />
         <di:waypoint x="2380" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0xv34tf_di" bpmnElement="DataInputAssociation_0xv34tf">
-        <di:waypoint x="250" y="285" />
-        <di:waypoint x="277" y="216" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
