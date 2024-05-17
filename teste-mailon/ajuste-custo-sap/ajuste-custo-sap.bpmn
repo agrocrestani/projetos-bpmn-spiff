@@ -145,7 +145,7 @@ Custo Médio Saída: {{  '{:,.3f}'.format(custo_medio_unitario_saida).replace(',
 
 Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 
-Custo Médio: {{ '{:,.3f}'.format(custo_medio_unitario).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
+
 | Num | Origem | Numero Documento | Quantidade | Custo Unitário | Custo Total | Data |
 | ------- | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- |
 {% for produto in consulta_movimentos_out%}
