@@ -430,7 +430,7 @@ for s in nfeItens:
       "WarehouseCode": WarehouseCode,
       "Price": s['Price'],
       "CostingCode": ccustoEntrada,
-      "CosgingCode3": safra
+      "CostingCode3": safra
     }
   )
 
