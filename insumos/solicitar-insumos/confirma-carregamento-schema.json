@@ -1,5 +1,5 @@
 {
-  "description": "Confirme se os ite",
+  "description": "Confirme se os items da lista a",
   "properties": {
     "done": {
       "type": "boolean",
