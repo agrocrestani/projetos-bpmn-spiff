@@ -99,6 +99,10 @@ total_quantidade_entrada = 0
 total_preco_unitario_saida = 0
 total_quantidade_saida = 0
 
+
+total_preco_unitario_nf_in = 0
+total_quantidade_nf_in = 0
+
 entrada = []
 saida = []
 
@@ -113,6 +117,11 @@ if isinstance(consulta_movimentos_out, list):
             total_quantidade_entrada += produtoAux['qtde']
             produtoAux['num_movimentos'] = count_entrada
             entrada.append(produtoAux)
+
+        if produtoAux['tipo'] == "E" and produtoAux['origem'] == '7-Nfe.Entrada':
+            count_entrada += 1
+            total_preco_unitario_nf_in += produtoAux['linetotal']
+            total_quantidade_nf_in += produtoAux['qtde']
         
         if produtoAux['tipo'] == "S":
             count_saida += 1
@@ -139,7 +148,7 @@ if total_quantidade_saida != 0:
 else:
     print("Não foi possível calcular o custo médio unitário. Total de quantidade é zero.")
 
-
+custo_medio_unitario_nf_in = total_preco_unitario_nf_in / total_quantidade_nf_in
 del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript />
         <spiffworkflow:instructionsForEndUser>Produto: {{produto}}    | Deposito: {{deposito}}
@@ -154,6 +163,8 @@ Custo Médio Saída: {{  '{:,.3f}'.format(custo_medio_unitario_saida).replace(',
 
 Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 
+
+Teste:  {{ '{:,.3f}'.format(custo_medio_unitario_nf_in).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 
 | Num | Origem | Numero Documento | Quantidade | Custo Unitário | Custo Total | Data |
 | ------- | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- |
