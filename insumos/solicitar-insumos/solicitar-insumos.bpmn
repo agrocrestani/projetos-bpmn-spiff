@@ -472,7 +472,7 @@ payload = {
     <bpmn:businessRuleTask id="Activity_1wnqyml" name="Definir Fornecedor NFe">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>BPLId = nfe['BPL_IDAssignedToInvoice']</spiffworkflow:preScript>
-        <spiffworkflow:calledDecisionId />
+        <spiffworkflow:calledDecisionId>decision_DefineFornec</spiffworkflow:calledDecisionId>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0opnsqm</bpmn:incoming>
       <bpmn:outgoing>Flow_0onnrrk</bpmn:outgoing>
