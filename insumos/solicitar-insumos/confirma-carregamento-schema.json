@@ -4,7 +4,7 @@
     "confirma"
   ],
   "properties": {
-    "done": {
+    "confirma": {
       "type": "boolean",
       "title": "Confirma o carregamento?",
       "default": false
