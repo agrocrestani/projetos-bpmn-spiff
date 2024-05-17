@@ -427,6 +427,8 @@ for s in solicitacao:
       "ItemCode": s["insumo"]["ItemCode"],
       "Quantity": s["quantidade"],
       "WarehouseCode": s["insumo"]["WhsCode"]
+      "CostingCode": ccustoEntrada
+      "CosgingCode3": safra
     }
   )
 
@@ -487,6 +489,9 @@ payload = {
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="2742" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1sk3qsl_di" bpmnElement="Activity_0jw3ade">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -544,18 +549,15 @@ payload = {
       <bpmndi:BPMNShape id="Activity_02jwc4t_di" bpmnElement="Activity_1lebhx2">
         <dc:Bounds x="1910" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15nxcsy_di" bpmnElement="Activity_1i9wp10">
+        <dc:Bounds x="2380" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_13a99eo_di" bpmnElement="Activity_1wnqyml">
         <dc:Bounds x="2060" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="2742" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0bybtef_di" bpmnElement="Activity_0bybtef">
         <dc:Bounds x="2570" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_15nxcsy_di" bpmnElement="Activity_1i9wp10">
-        <dc:Bounds x="2380" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1itk8hu_di" bpmnElement="Activity_0m43k23">
         <dc:Bounds x="2210" y="137" width="100" height="80" />
