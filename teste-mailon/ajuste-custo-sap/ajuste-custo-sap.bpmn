@@ -85,6 +85,11 @@ for i, movimento in enumerate(consulta_movimentos):
 for indice in sorted(indices_para_remover, reverse=True):
     del consulta_movimentos[indice]
 
+
+for i in consulta_movimentos:
+    if i['origem'] == '1-Saldo Inicial'
+        i['unitmsr'] = um_produto_estoque[0]['invntryuom']
+
 del(indices_para_remover)
 del(movimento)
 del(indice)
