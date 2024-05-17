@@ -4,7 +4,7 @@
     "confirmaQuerencia"
   ],
   "properties": {
-    "confirmaQuerencia": {
+    "confirma": {
       "type": "boolean",
       "title": "Confirma que os items foram carregados?",
       "default": false
