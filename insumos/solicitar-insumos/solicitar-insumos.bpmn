@@ -198,6 +198,47 @@ headers = {
 
 </spiffworkflow:preScript>
         <spiffworkflow:postScript>lancado = rsp['http_status']
+nfe = rsp["body"]
+nfeItens = nfe['DocumentLines']
+
+DocEntry = nfe['DocEntry']
+DocNum = nfe['DocNum']
+Serial = nfe['Serial']
+DocDate = nfe['DocDate']
+CardCode = nfe['CardCode']
+CardNamve = nfe['CardNamve']
+BPLName = nfe['BPLName']
+VATRegNum = nfe['VATRegNum']
+
+itens = []
+for i in nfeItens:
+    itens.append(
+        {
+            "LineNum": i['LineNum']
+            "ItemCode": i['ItemCode']
+            "ItemDescription": i['ItemDescription']
+            "Quantity": i['Quantity']
+            "Price": i['Price']
+            "WarehouseCode": i['WarehouseCode']
+            "LineTotal": i['LineTotal']
+        }
+    )
+    Total += LineTotal
+
+
+itensMatriz = []
+itensQuerencia = []
+for i in itens:
+    if i['WarehouseCode'] == '03.MATR':
+        carregaMatriz = True
+        itensMatriz.append(i)
+        TotaMatriz += LineTotal
+    elif i['WarehouseCode'] == '03.FQUE':
+        carregaQuerencia = True
+        itensQuerencia.append(i)
+        TotalQuerencia += LineTotal
+
+
 del(n_filiais)
 del(BPLId)
 del(BPLName)
@@ -219,7 +260,7 @@ del(spiff_tarefa)
 del(taskInfo)
 del(items)
 del(payload)
-
+del(rsp)
 </spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1o5dvob</bpmn:incoming>
