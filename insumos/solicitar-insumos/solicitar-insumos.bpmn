@@ -253,7 +253,7 @@ DocNum = nfe['DocNum']
 Serial = nfe['SequenceSerial']
 DocDate = nfe['DocDate']
 CardCode = nfe['CardCode']
-CardNamve = nfe['CardName']
+CardName = nfe['CardName']
 BPLName = nfe['BPLName']
 VATRegNum = nfe['VATRegNum']
 
@@ -398,6 +398,13 @@ for i in itens:
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="2122" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1i9wp10_di" bpmnElement="Activity_1i9wp10">
+        <dc:Bounds x="1920" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1sk3qsl_di" bpmnElement="Activity_0jw3ade">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -443,21 +450,14 @@ for i in itens:
       <bpmndi:BPMNShape id="Activity_0aae3hp_di" bpmnElement="Activity_1bdps63">
         <dc:Bounds x="1440" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1e7hg66_di" bpmnElement="Activity_026swb9">
+        <dc:Bounds x="1730" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_013j3ko_di" bpmnElement="Gateway_1s1k51w" isMarkerVisible="true">
         <dc:Bounds x="1325" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="2122" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1i9wp10_di" bpmnElement="Activity_1i9wp10">
-        <dc:Bounds x="1920" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1svd26v_di" bpmnElement="Gateway_1svd26v" isMarkerVisible="true">
         <dc:Bounds x="1605" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1e7hg66_di" bpmnElement="Activity_026swb9">
-        <dc:Bounds x="1730" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
         <di:waypoint x="2020" y="177" />
