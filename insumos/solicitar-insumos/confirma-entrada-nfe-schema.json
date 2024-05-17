@@ -6,7 +6,7 @@
   "properties": {
     "confirma": {
       "type": "boolean",
-      "title": "Confirma que os dados da nota estão corret?",
+      "title": "Confirma que os dados da nota estão corretos?",
       "default": false
     }
   }
