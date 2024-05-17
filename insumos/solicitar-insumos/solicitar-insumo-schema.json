@@ -34,7 +34,7 @@
         "options_from_task_data_var:n_filiais"
       ]
     },
-    "unidade": {
+    "s": {
       "title": "Selecione a unidade",
       "type": "string",
       "anyOf": [
