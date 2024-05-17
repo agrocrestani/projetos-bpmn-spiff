@@ -2,7 +2,8 @@
   "type": "object",
   "required": [
         "solicitacao",
-        "unidade"
+        "unidade",
+        
       ],
   "properties": {
     "solicitacao": {
