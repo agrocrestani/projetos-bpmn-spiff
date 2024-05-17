@@ -1,6 +1,6 @@
 {   
     "ui:submitButtonOptions": {
-        "submitText": "Confirma a entrada da ?",
+        "submitText": "Confirma a entrada da NFe?",
         "norender": false,
         "props": {
         "disabled": false,
