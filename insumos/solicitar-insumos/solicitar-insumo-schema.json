@@ -35,7 +35,7 @@
       ]
     },
     "safra": {
-      "title": "Selecione a unidade",
+      "title": "Selecione a S",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:n_safras"
