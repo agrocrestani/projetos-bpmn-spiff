@@ -1,5 +1,5 @@
 {
-  "description": "Confirme se os dados da nota estão corretos acima . Pode ser que nota tenha outros items que serão carregados em outro depósito.",
+  "description": "Confirme se os dados da nota estão corretos acima. Pode ser que nota tenha outros items que serão carregados em outro depósito.",
   "required": [
     "confirma"
   ],
