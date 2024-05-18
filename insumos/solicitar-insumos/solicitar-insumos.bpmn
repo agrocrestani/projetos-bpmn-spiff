@@ -629,7 +629,7 @@ sqlRsp = Hana(connection).selectDb(query)
 
 chaveAcesso = sqlRsp[0]['keynfe']
 cnpj = sqlRsp[0]['cnpj']
-linkNfe = f'file://srv-rds-02/CaminhosSAP/Anexos/NFe/{cnpj}/danfe/{chaveAcesso}.pdf'
+linkNfe = f'file:///srv-rds-02/CaminhosSAP/Anexos/NFe/{cnpj}/danfe/{chaveAcesso}.pdf'
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
