@@ -506,7 +506,7 @@ payload = {
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito | C.Custo |
 | -------- | --------- |  -------------- | ---------------: | ----------: | ----------: | ------------ | :----------: |
 {%for i in itens%}
-| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} | {{ccustoEntrada}}
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{WarehouseCode}} | {{ccustoEntrada}}
 {%endfor%}
 | | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
@@ -672,6 +672,9 @@ for i in itens:
       <bpmndi:BPMNShape id="Activity_02jwc4t_di" bpmnElement="Activity_1lebhx2">
         <dc:Bounds x="1910" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15nxcsy_di" bpmnElement="Activity_1i9wp10">
+        <dc:Bounds x="2550" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_13a99eo_di" bpmnElement="Activity_1wnqyml">
         <dc:Bounds x="2060" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -693,9 +696,6 @@ for i in itens:
         <bpmndi:BPMNLabel>
           <dc:Bounds x="223" y="342" width="35" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_15nxcsy_di" bpmnElement="Activity_1i9wp10">
-        <dc:Bounds x="2550" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0lt1bex_di" bpmnElement="Activity_0bybtef">
         <dc:Bounds x="2740" y="137" width="100" height="80" />
