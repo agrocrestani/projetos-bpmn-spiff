@@ -25,7 +25,8 @@ You can also change the text you are reading here by updating the *Instructions*
 
 baseSap = get_secret('baseSap')
 
-DocEntry = 2066
+if not DocEntry:
+  DocEntry = 2066
 
 connection = {
     "address": "172.20.1.4",
@@ -35,7 +36,7 @@ connection = {
 }
 
 query = f"""
-            select "KeyNfe" from AC_NfeRetorno nf where nf."DocEntry" = {DocEntry} AND "Tabela" = 'OINV' 
+            select "KeyNfe" from SBO_CRESTANI_PRD.AC_NfeRetorno nf where nf."DocEntry" = {DocEntry} AND "Tabela" = 'OINV' 
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
