@@ -500,6 +500,7 @@ payload = {
 |Codigo Filial Destino: | {{unidade}}
 |Nome Filial Destino: |{{BPLName}}|
 |CNPJ Destino: |{{VATRegNum}}|
+|Centro de Custo: | {{ccustoEntrada}}
 
 ### Itens da Nota
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
