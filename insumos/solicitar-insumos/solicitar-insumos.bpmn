@@ -299,6 +299,8 @@ for i in itens:
 |Nome Emitente: |{{BPLName}}|
 |CNPJ Emitente: |{{VATRegNum}}|
 
+Para visualizar a nota [clique aqui]({{linkNfe}})
+
 ### Itens da Nota
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
 | -------- | --------- |  -------------- | ---------------: | ----------: | ----------: | ------------ |
