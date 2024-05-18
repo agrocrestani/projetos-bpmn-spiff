@@ -341,8 +341,9 @@ for i in itens:
 |Número Sap:|{{DocNum}}|
 |Número da NFe:|{{Serial}}|
 |Data:|{{DocDate}}|
-|Código Cliente Destino:|{{CardCode}}|
+|**Código Cliente Destino**:|**{{CardCode}}**|
 |Nome Cliente Destino: |{{CardName}}|
+|**Código Remetente**: | **{{BPLId}}** |
 |Nome Remetente: |{{BPLName}}|
 |CNPJ Remetente: |{{VATRegNum}}|
 
@@ -368,14 +369,14 @@ for i in itens:
 
 | Campo | Valor |
 | ----------: | ------- |
-|Id Sap:|{{DocEntry}}|
 |Número Sap:|{{DocNum}}|
 |Número da NFe:|{{Serial}}|
 |Data:|{{DocDate}}|
-|Código Cliente:|{{CardCode}}|
-|Nome Cliente: |{{CardName}}|
-|Nome Fornecedor: |{{BPLName}}|
-|CNPJ Fornecedor: |{{VATRegNum}}|
+|**Código Cliente Destino**:|**{{CardCode}}**|
+|Nome Cliente Destino: |{{CardName}}|
+|**Código Remetente**: | **{{BPLId}}** |
+|Nome Remetente: |{{BPLName}}|
+|CNPJ Remetente: |{{VATRegNum}}|
 
 ----------
 
@@ -495,12 +496,11 @@ payload = {
 |Número da NFe:|{{Serial}}|
 |Data de emissão:|{{DocDate}}|
 |Chave de Acesso:
-|Código Fornecedor:|{{CardCodeFor}}|
+|**Código Fornecedor:**|**{{CardCodeFor}}**|
 |Nome Fornecedor: |{{CardName}}|
-|Codigo Filial Destino: | {{unidade}}
+|**Codigo Filial Destino:** | **{{unidade}}**
 |Nome Filial Destino: |{{BPLName}}|
 |CNPJ Destino: |{{VATRegNum}}|
-|Centro de Custo: | 
 
 ### Itens da Nota
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito | C.Custo | Safra |
