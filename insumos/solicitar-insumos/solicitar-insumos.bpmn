@@ -286,18 +286,17 @@ for i in itens:
 
 
 </spiffworkflow:preScript>
-        <spiffworkflow:instructionsForEndUser># Dados da Nota Fiscal
+        <spiffworkflow:instructionsForEndUser># Dados da Nota Fiscal de Saída
 
 | Campo | Valor |
 | ----------: | ------- |
-|Id Sap:|{{DocEntry}}|
-|Número Sap:|{{DocNum}}|
 |Número da NFe:|{{Serial}}|
+|Número Sap:|{{DocNum}}|
 |Data:|{{DocDate}}|
-|Código Cliente:|{{CardCode}}|
-|Nome Cliente: |{{CardName}}|
-|Nome Fornecedor: |{{BPLName}}|
-|CNPJ Fornecedor: |{{VATRegNum}}|
+|Código Cliente Destino:|{{CardCode}}|
+|Nome Cliente Destino: |{{CardName}}|
+|Nome Emitente: |{{BPLName}}|
+|CNPJ Emitente: |{{VATRegNum}}|
 
 ### Itens da Nota
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
@@ -485,10 +484,6 @@ payload = {
       <bpmn:incoming>Flow_0opnsqm</bpmn:incoming>
       <bpmn:outgoing>Flow_0onnrrk</bpmn:outgoing>
     </bpmn:businessRuleTask>
-    <bpmn:task id="Activity_0bybtef">
-      <bpmn:incoming>Flow_1azxpfs</bpmn:incoming>
-      <bpmn:outgoing>Flow_1xppm89</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1xppm89" sourceRef="Activity_0bybtef" targetRef="EndEvent_1" />
     <bpmn:sequenceFlow id="Flow_0ohhdbh" sourceRef="Activity_0m43k23" targetRef="Activity_1i9wp10" />
     <bpmn:userTask id="Activity_0m43k23" name="Validar ntoa de entrada">
@@ -531,6 +526,59 @@ payload = {
     </bpmn:businessRuleTask>
     <bpmn:dataStoreReference id="DataStoreReference_1rvva0b" name="SapLogin" dataStoreRef="saplogin" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_1xlk2yu" name="Safras" dataStoreRef="safras" type="json" />
+    <bpmn:userTask id="Activity_0bybtef">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>nfe = rsp["body"]
+nfeItens = nfe['DocumentLines']
+
+DocEntry = nfe['DocEntry']
+DocNum = nfe['DocNum']
+Serial = nfe['SequenceSerial']
+DocDate = nfe['DocDate']
+CardCode = nfe['CardCode']
+CardName = nfe['CardName']
+BPLName = nfe['BPLName']
+VATRegNum = nfe['VATRegNum']
+
+itens = []
+Total = 0
+for i in nfeItens:
+    itens.append(
+        {
+            "LineNum": i['LineNum'],
+            "ItemCode": i['ItemCode'],
+            "ItemDescription": i['ItemDescription'],
+            "Quantity": i['Quantity'],
+            "Price": i['Price'],
+            "WarehouseCode": i['WarehouseCode'],
+            "LineTotal": i['LineTotal']
+        }
+    )
+    Total += i['LineTotal']
+
+
+itensMatriz = []
+itensQuerencia = []
+carregaMatriz = False
+TotalMatriz = 0
+carregaQuerencia = False
+TotalQuerencia = 0
+for i in itens:
+    if i['WarehouseCode'] == '03.MATR':
+        carregaMatriz = True
+        itensMatriz.append(i)
+        TotalMatriz += i['LineTotal']
+    elif i['WarehouseCode'] == '03.FQUE':
+        carregaQuerencia = True
+        itensQuerencia.append(i)
+        TotalQuerencia += i['LineTotal']
+
+
+</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1azxpfs</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xppm89</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
@@ -601,15 +649,9 @@ payload = {
       <bpmndi:BPMNShape id="Activity_02jwc4t_di" bpmnElement="Activity_1lebhx2">
         <dc:Bounds x="1910" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_15nxcsy_di" bpmnElement="Activity_1i9wp10">
-        <dc:Bounds x="2550" y="134" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_13a99eo_di" bpmnElement="Activity_1wnqyml">
         <dc:Bounds x="2060" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0bybtef_di" bpmnElement="Activity_0bybtef">
-        <dc:Bounds x="2740" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1itk8hu_di" bpmnElement="Activity_0m43k23">
         <dc:Bounds x="2380" y="137" width="100" height="80" />
@@ -629,10 +671,14 @@ payload = {
           <dc:Bounds x="223" y="342" width="35" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15nxcsy_di" bpmnElement="Activity_1i9wp10">
+        <dc:Bounds x="2550" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15wuzz7_di" bpmnElement="Activity_0bybtef">
+        <dc:Bounds x="2740" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
-        <di:waypoint x="2650" y="174" />
-        <di:waypoint x="2695" y="174" />
-        <di:waypoint x="2695" y="177" />
+        <di:waypoint x="2650" y="177" />
         <di:waypoint x="2740" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1jn3emy_di" bpmnElement="Flow_1jn3emy">
@@ -725,8 +771,8 @@ payload = {
         <di:waypoint x="2060" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_09gs45o_di" bpmnElement="DataInputAssociation_09gs45o">
-        <di:waypoint x="2632" y="285" />
-        <di:waypoint x="2611" y="214" />
+        <di:waypoint x="2631" y="285" />
+        <di:waypoint x="2611" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0onnrrk_di" bpmnElement="Flow_0onnrrk">
         <di:waypoint x="2160" y="177" />
@@ -738,9 +784,7 @@ payload = {
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ohhdbh_di" bpmnElement="Flow_0ohhdbh">
         <di:waypoint x="2480" y="177" />
-        <di:waypoint x="2515" y="177" />
-        <di:waypoint x="2515" y="174" />
-        <di:waypoint x="2550" y="174" />
+        <di:waypoint x="2550" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_14nmhlh_di" bpmnElement="Flow_14nmhlh">
         <di:waypoint x="2310" y="177" />
