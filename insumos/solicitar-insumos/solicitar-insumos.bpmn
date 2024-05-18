@@ -248,6 +248,7 @@ Serial = nfe['SequenceSerial']
 DocDate = nfe['DocDate']
 CardCode = nfe['CardCode']
 CardName = nfe['CardName']
+BPLId = nfe['BPLId']
 BPLName = nfe['BPLName']
 VATRegNum = nfe['VATRegNum']
 
@@ -337,14 +338,13 @@ for i in itens:
 
 | Campo | Valor |
 | ----------: | ------- |
-|Id Sap:|{{DocEntry}}|
 |Número Sap:|{{DocNum}}|
 |Número da NFe:|{{Serial}}|
 |Data:|{{DocDate}}|
-|Código Cliente:|{{CardCode}}|
-|Nome Cliente: |{{CardName}}|
-|Nome Fornecedor: |{{BPLName}}|
-|CNPJ Fornecedor: |{{VATRegNum}}|
+|Código Cliente Destino:|{{CardCode}}|
+|Nome Cliente Destino: |{{CardName}}|
+|Nome Remetente: |{{BPLName}}|
+|CNPJ Remetente: |{{VATRegNum}}|
 
 ### Itens para carregar neste depósito
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
