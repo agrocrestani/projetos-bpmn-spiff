@@ -302,7 +302,7 @@ for i in itens:
 &lt;a href="file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf"&gt;Visualise a NFe&lt;/a&gt;
 
 
-Para visualizar a nota [clique aqui]({{linkNfe}})
+Para visualizar a nota [clique aqui](&lt;{{linkNfe}}&gt;)
 
 ### Itens da Nota
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
