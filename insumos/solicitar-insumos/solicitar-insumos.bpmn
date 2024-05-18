@@ -299,7 +299,7 @@ for i in itens:
 |Nome Emitente: |{{BPLName}}|
 |CNPJ Emitente: |{{VATRegNum}}|
 
-&lt;a href="file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf"&gt;Visualise a NFe&lt;/a&gt;
+Selecione o link abaixo e cole na barra de tarefas do Navegador para ver a NFe.
 
 file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf
 
@@ -633,7 +633,8 @@ sqlRsp = Hana(connection).selectDb(query)
 
 chaveAcesso = sqlRsp[0]['keynfe']
 cnpj = sqlRsp[0]['cnpj']
-linkNfe = f'file:////srv-rds-02/CaminhosSAP/Anexos/NFe/{cnpj}/danfe/{chaveAcesso}.pdf'
+linkNfe = f'file://///srv-rds-02/CaminhosSAP/Anexos/NFe/{cnpj}/danfe/{chaveAcesso}.pdf'
+
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
