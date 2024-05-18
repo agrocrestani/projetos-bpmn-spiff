@@ -248,7 +248,7 @@ Serial = nfe['SequenceSerial']
 DocDate = nfe['DocDate']
 CardCode = nfe['CardCode']
 CardName = nfe['CardName']
-BPLId = nfe['BPLId']
+BPLId = nfe['BPL_IDAssignedToInvoice']
 BPLName = nfe['BPLName']
 VATRegNum = nfe['VATRegNum']
 
