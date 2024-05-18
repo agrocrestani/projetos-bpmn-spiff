@@ -529,7 +529,7 @@ payload = {
     </bpmn:businessRuleTask>
     <bpmn:dataStoreReference id="DataStoreReference_1rvva0b" name="SapLogin" dataStoreRef="saplogin" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_1xlk2yu" name="Safras" dataStoreRef="safras" type="json" />
-    <bpmn:manualTask id="Activity_0bybtef">
+    <bpmn:manualTask id="Activity_0bybtef" name="Verifica Entrada da NFe no SAP">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>nfe = rsp["body"]
 nfeItens = nfe['DocumentLines']
@@ -700,6 +700,7 @@ for i in itens:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0lt1bex_di" bpmnElement="Activity_0bybtef">
         <dc:Bounds x="2740" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
         <di:waypoint x="2650" y="177" />
