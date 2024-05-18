@@ -586,10 +586,11 @@ for i in itens:
 |Número Sap:|{{DocNum}}|
 |Chave de acesso: | |
 |Data:|{{DocDate}}|
-|Código Cliente Destino:|{{CardCode}}|
-|Nome Cliente Destino: |{{CardName}}|
-|Nome Emitente: |{{BPLName}}|
-|CNPJ Emitente: |{{VATRegNum}}|
+|**Código Fornecedor**:|{{CardCode}}|
+|Nome Fornecedor: |{{CardName}}|
+|**Nome Unidade Destino:** |{{BPLName}}|
+|Código Unidade Destino: | {{BPLId}} |
+|CNPJ Unidade Destino: |{{VATRegNum}}|
 
 ### Itens da Nota
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
