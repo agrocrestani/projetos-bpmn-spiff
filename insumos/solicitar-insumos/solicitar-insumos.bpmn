@@ -495,18 +495,18 @@ payload = {
 |Número da NFe:|{{Serial}}|
 |Data de emissão:|{{DocDate}}|
 |Chave de Acesso:
-|Código Fornecedor:|{{CardCode}}|
+|Código Fornecedor:|{{CardCodeFor}}|
 |Nome Fornecedor: |{{CardName}}|
 |Codigo Filial Destino: | {{unidade}}
 |Nome Filial Destino: |{{BPLName}}|
 |CNPJ Destino: |{{VATRegNum}}|
-|Centro de Custo: | {{ccustoEntrada}}
+|Centro de Custo: | 
 
 ### Itens da Nota
-| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
-| -------- | --------- |  -------------- | ---------------: | ----------: | ----------: | ------------ |
+| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito | C.Custo |
+| -------- | --------- |  -------------- | ---------------: | ----------: | ----------: | ------------ | :----------: |
 {%for i in itens%}
-| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} | {{ccustoEntrada}}
 {%endfor%}
 | | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
