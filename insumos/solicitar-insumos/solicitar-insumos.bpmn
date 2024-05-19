@@ -299,7 +299,8 @@ for i in itens:
 |Nome Emitente: |{{BPLName}}|
 |CNPJ Emitente: |{{VATRegNum}}|
 
-Selecione o link abaixo e cole na barra de tarefas do Navegador para ver a NFe.
+Selecione o link abaixo e cole na barra de tarefas do Navegador para ver a NFe:
+
 &lt;{{linkNfe}}&gt;
 
 ### Itens da Nota
