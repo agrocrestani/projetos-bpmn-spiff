@@ -181,7 +181,7 @@ payload = {
     </bpmn:businessRuleTask>
     <bpmn:serviceTask id="Activity_1juz99w" name="Emitir NFE">
       <bpmn:extensionElements>
-        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="statuscode, rsp">
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
             <spiffworkflow:parameter id="headers" type="any" value="headers" />
@@ -201,15 +201,15 @@ headers = {
 }
 
 </spiffworkflow:preScript>
-        <spiffworkflow:postScript>lancado = ''
+        <spiffworkflow:postScript># lancado = ''
 
-try: 
-    if rsp['http_status'] == 201:
-        lancado = 1
-    else: 
-        lancado = 0
-except:
-    lancado = 0
+# try: 
+#     if rsp['http_status'] == 201:
+#         lancado = 1
+#     else: 
+#         lancado = 0
+# except:
+#     lancado = 0
 
 del(n_filiais)
 del(BPLId)
