@@ -38,7 +38,7 @@ arquivo_nfe = f'/NFe/03262185000109/danfe/51240103262185000109550010000257321290
 
 # nfeFile2 = get_encoded_file_data(nfeFile)
 
-with open(arquivo_nfe, "rb") as nfe2:
+with open(arquivo_nfe) as nfe2:
     nfeFile2 = get_encoded_file_data(nfe2)
 
 
