@@ -14,12 +14,11 @@
 
 CompanyDB = get_secret('baseSap')
 
-data = {f"""
-    "UserName": "spiff.workflow",
+data = {"UserName": "spiff.workflow",
     "Password": "Ll|24e3j4#&amp;z",
-    "CompanyDB": "{CompanyDB}",
+    "CompanyDB": f"{CompanyDB}",
     "Language":"29"
-"""}
+    }
 
 data = json.dumps(data)
 
