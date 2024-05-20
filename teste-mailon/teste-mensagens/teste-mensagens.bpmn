@@ -47,7 +47,7 @@
                 "b":"DD"
                 }]
 
-flag = True
+flag = False
 
 teste = teste_lista(flag)</spiffworkflow:preScript>
       </bpmn:extensionElements>
