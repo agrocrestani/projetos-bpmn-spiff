@@ -22,6 +22,9 @@
 &lt;a href="'filePathToUrl(file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf'"&gt;Teste&lt;/a&gt;
 
 [test](file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf)
+
+
+[Abra o arquivo PDF](file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf)
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
