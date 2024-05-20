@@ -145,9 +145,9 @@ if isinstance(consulta_movimentos_out, list):
                 produtoAux['custo_total_contabil'] = produtoAux['linetotal']
 
             else:
-                produtoAux['custo_medio'] = 999999.999
-                produtoAux['estoque_atual'] = 999999.999
-                produtoAux['custo_medio_calc'] = 999999.999
+                produtoAux['custo_medio'] = 000.000
+                produtoAux['estoque_atual'] = 000.000
+                produtoAux['custo_medio_calc'] = 000.000
                 produtoAux['custo_total_contabil'] = 000.000
         
         if produtoAux['tipo'] == "S":
@@ -162,9 +162,9 @@ if isinstance(consulta_movimentos_out, list):
                 produtoAux['custo_total_contabil'] = produtoAux['stockprice'] * produtoAux['qtde']
                 produtoAux['preco_unitario'] = produtoAux['stockprice']
             else:
-                produtoAux['custo_medio'] = 999999.999
-                produtoAux['estoque_atual'] = 999999.999
-                produtoAux['custo_medio_calc'] = 999999.999
+                produtoAux['custo_medio'] = 000.000
+                produtoAux['estoque_atual'] = 000.000
+                produtoAux['custo_medio_calc'] = 000.000
                 produtoAux['custo_total_contabil'] = 000.000
 
 else:
