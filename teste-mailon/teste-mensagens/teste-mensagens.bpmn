@@ -16,7 +16,6 @@
           <spiffworkflow:property name="formUiSchemaFilename" value="teste-download-arquivo-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:instructionsForEndUser>
-&lt;a href="#file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf" download&gt;Teste #&lt;/a&gt;
 
 
 {% for i in teste %}
@@ -49,7 +48,9 @@
     }
   }
 &lt;/script&gt;
-</spiffworkflow:instructionsForEndUser>
+
+
+-------------------</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>def teste_lista(flag):
 
     if flag:    
