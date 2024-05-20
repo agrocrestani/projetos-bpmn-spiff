@@ -44,23 +44,5 @@
         "ui:enableMarkdownInDescription": true
       }
     }
-  ],
-  "properties": {
-    "dataInicio": {
-      "type": "string",
-      "title": "Data de Início"
-    },
-    "dataFinal": {
-      "type": "string",
-      "title": "Data Final"
-    },
-    "produto": {
-      "type": "string",
-      "title": "Produto"
-    },
-    "deposito": {
-      "type": "string",
-      "title": "Deposito"
-    }
-  }
+  ]
 }
