@@ -13,8 +13,8 @@
         <spiffworkflow:preScript>url = "https://slayer.agrocrestani.com.br:50000/b1s/v1/Login"
 
 data = {
-    "UserName": "emerson.gregorio",
-    "Password": "A951753@roo",
+    "UserName": "spiff.workflow",
+    "Password": "Ll|24e3j4#&amp;z",
     "CompanyDB": "SBO_CRESTANI_QA",
     "Language":"29"
 }
