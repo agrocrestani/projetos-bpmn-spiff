@@ -303,6 +303,10 @@ for i in itens:
 
 &lt;{{linkNfe}}&gt;
 
+[Nota MarkDow]({{linkNfe}})
+
+&lt;a href="{{linkNfe}}"&gt;Abrir nota HRef&lt;/a&gt;
+
 ### Itens da Nota
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
 | -------- | --------- |  -------------- | ---------------: | ----------: | ----------: | ------------ |
