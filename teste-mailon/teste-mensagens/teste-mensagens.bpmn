@@ -39,6 +39,7 @@
 
 &lt;script&gt;
   function toggleVisibility() {
+    console.log('Teste Console')
     var checkBox = document.getElementById("toggleText");
     var text = document.getElementById("hiddenText");
     if (checkBox.checked == true){
