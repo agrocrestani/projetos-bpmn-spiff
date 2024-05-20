@@ -1,31 +1,33 @@
 {
-  "ui:order": [
-    "dataInicio",
-    "dataFinal",
-    "produto",
-    "deposito"
+  "type": "HorizontalLayout",
+  "elements": [
+    {
+      "type": "Control",
+      "scope": "#/properties/dataInicio",
+      "options": {
+        "ui:emptyValue": "",
+        "ui:placeholder": "Data de Início",
+        "ui:widget": "date"
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/dataFinal",
+      "options": {
+        "ui:emptyValue": "",
+        "ui:placeholder": "Data Final",
+        "ui:widget": "date"
+      }
+    }
   ],
-  "dataInicio": {
-    "ui:autofocus": true,
-    "ui:emptyValue": "",
-    "ui:placeholder": "Data de Início",
-    "ui:widget": "date"
-  },
-  "dataFinal": {
-    "ui:emptyValue": "",
-    "ui:placeholder": "Data Final",
-    "ui:widget": "date"
-  },
-  "produto": {
-    "ui:emptyValue": "",
-    "ui:placeholder": "Selecione um produto",
-    "ui:autocomplete": "family-name",
-    "ui:enableMarkdownInDescription": true
-  },
-  "deposito": {
-    "ui:emptyValue": "",
-    "ui:placeholder": "Selecione um deposito",
-    "ui:autocomplete": "family-name",
-    "ui:enableMarkdownInDescription": true
+  "properties": {
+    "dataInicio": {
+      "type": "string",
+      "title": "Data de Início"
+    },
+    "dataFinal": {
+      "type": "string",
+      "title": "Data Final"
+    }
   }
 }
