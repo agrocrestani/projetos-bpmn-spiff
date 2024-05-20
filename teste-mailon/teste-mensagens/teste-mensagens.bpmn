@@ -15,7 +15,7 @@
           <spiffworkflow:property name="formJsonSchemaFilename" value="teste-download-arquivo-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="teste-download-arquivo-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:instructionsForEndUser>{{&lt;a href="file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf"&gt;Teste&lt;/a&gt;}}</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser>&lt;a href="{{file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf}}"&gt;Teste&lt;/a&gt;</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_1af12yp</bpmn:outgoing>
