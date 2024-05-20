@@ -63,7 +63,7 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
     <bpmn:sequenceFlow id="Flow_1o5dvob" sourceRef="Activity_0jn1u2s" targetRef="Activity_1juz99w" />
     <bpmn:userTask id="Activity_0jn1u2s" name="Confirmar pedido">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>## Solicitação de Insumos 
+        <spiffworkflow:instructionsForEndUser># &lt;font color="blue"&gt;Prévia da NFe que será emitida.&lt;/font&gt; 
 
 {% if lancado and (lancado != 201) %}
     &lt;font color="red"&gt;&lt;strong&gt;Ocorreu um erro na inserção dos dados no SAP. Tente novamente, caso persista, procure o TI. &lt;/strong&gt;&lt;/font&gt;
@@ -160,6 +160,11 @@ payload = {
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-solicitacao-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser># Conferência pelo departamento &lt;font color="green "&gt;Insumos&lt;/font&gt; 
+
+
+- [ ] Confira todos os itens abaixo, observando principalmente as embalagens para que sejam carregadas as embalagem sem a necessidade de violação das mesmas.
+- [ ] Nesta estapa você deve  fazer todos os ajustes no pedido e valida-lo com o solicitante.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
       <bpmn:outgoing>Flow_0f3ld08</bpmn:outgoing>
