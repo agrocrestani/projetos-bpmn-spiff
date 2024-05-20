@@ -142,11 +142,13 @@ if isinstance(consulta_movimentos_out, list):
                 produtoAux['custo_medio'] = custo_medio
                 produtoAux['estoque_atual'] = total_quantidade
                 produtoAux['custo_medio_calc'] = custo_medio * produtoAux['qtde']
+                produtoAux['custo_total_contabil'] = produtoAux['linetotal']
 
             else:
                 produtoAux['custo_medio'] = 999999.999
                 produtoAux['estoque_atual'] = 999999.999
                 produtoAux['custo_medio_calc'] = 999999.999
+                produtoAux['custo_total_contabil'] = 000.000
         
         if produtoAux['tipo'] == "S":
             if produtoAux['canceled'] == 'N':
@@ -157,10 +159,12 @@ if isinstance(consulta_movimentos_out, list):
                 total_quantidade = produtoAux['qtde'] +  total_quantidade
                 produtoAux['estoque_atual'] = total_quantidade
                 total_custo_calc_saida += produtoAux['custo_medio_calc']
+                produtoAux['custo_total_contabil'] = produtoAux['stockprice'] * produtoAux['qtde']
             else:
                 produtoAux['custo_medio'] = 999999.999
                 produtoAux['estoque_atual'] = 999999.999
                 produtoAux['custo_medio_calc'] = 999999.999
+                produtoAux['custo_total_contabil'] = 000.000
 
 else:
     print("Erro: 'produtosDespositos' não é uma lista.")
@@ -201,7 +205,7 @@ Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').r
 | Num. | Origem | Num. Doc. | Quantidade | Custo Unitário | Custo Total | Custo Médio | Data | Estoque | Cancelado | Custo Calc. |
 | ------- | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- | --------- | ------- | ----- | ---- |
 {% for produto in consulta_movimentos_out %}
-| {{ produto['num_movimentos'] }} | {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['linetotal']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_medio']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |{{produto['docduedate']}} | {{ '{:,.3f}'.format(produto['estoque_atual']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['canceled']}} | {{ '{:,.3f}'.format(produto['custo_medio_calc']).replace(',', ' ').replace('.', ',').replace(' ', '.')}} |
+| {{ produto['num_movimentos'] }} | {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_total_contabil']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_medio']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |{{produto['docduedate']}} | {{ '{:,.3f}'.format(produto['estoque_atual']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['canceled']}} | {{ '{:,.3f}'.format(produto['custo_medio_calc']).replace(',', ' ').replace('.', ',').replace(' ', '.')}} |
 {% endfor %}
 
 </spiffworkflow:instructionsForEndUser>
