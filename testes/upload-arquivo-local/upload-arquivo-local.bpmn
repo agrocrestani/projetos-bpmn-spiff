@@ -21,17 +21,17 @@ You can also change the text you are reading here by updating the *Instructions*
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-      <bpmn:script>import base64
+      <bpmn:script># import base64
 # from pathlib import Path
 
-# arquivo_nfe = f'/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf'
+arquivo_nfe = f'/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf'
 # arquivo_nfe = '//NFe//03262185000109//danfe//51240103262185000109550010000257321290836637.pdf'
 
 # fileObj = Path(arquivo_nfe)
 
 # teste = fileObj.is_file()
 
-# file = open(arquivo_nfe)
+file = open(arquivo_nfe)
 
 # with open(arquivo_nfe, "rb") as nfe:
 #     nfeFile = base64.b64encode(nfe.read())
