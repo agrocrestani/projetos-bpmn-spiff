@@ -54,9 +54,7 @@ fileDown = markdown_file_download_link(uploadFile)
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## NFSe
 
-Para visualizar a uploadFile [clique aqui]({{[markdown_file_download_link(uploadFile)}})
-
-Para visualizar a uploaded_file_link [clique aqui]({{uploaded_file_link}})
+Para visualizar a uploaded_file_link [clique aqui]({{fileDown}})
 
 
 </spiffworkflow:instructionsForEndUser>
