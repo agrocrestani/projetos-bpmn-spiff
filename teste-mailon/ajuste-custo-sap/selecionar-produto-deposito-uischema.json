@@ -1,16 +1,46 @@
 {
-  "produto": {
-    "ui:autofocus": true,
-    "ui:emptyValue": "",
-    "ui:placeholder": "Selecione um produto",
-    "ui:autocomplete": "family-name",
-    "ui:enableMarkdownInDescription": true
-  },
-  "deposito": {
-    "ui:autofocus": true,
-    "ui:emptyValue": "",
-    "ui:placeholder": "Selecione um deposito",
-    "ui:autocomplete": "family-name",
-    "ui:enableMarkdownInDescription": true
-  }
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/dataInicial",
+          "options": {
+            "label": "Data Inicial"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/dataFinal",
+          "options": {
+            "label": "Data Final"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/produto",
+      "options": {
+        "ui:autofocus": true,
+        "ui:emptyValue": "",
+        "ui:placeholder": "Selecione um produto",
+        "ui:autocomplete": "family-name",
+        "ui:enableMarkdownInDescription": true
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/deposito",
+      "options": {
+        "ui:autofocus": true,
+        "ui:emptyValue": "",
+        "ui:placeholder": "Selecione um deposito",
+        "ui:autocomplete": "family-name",
+        "ui:enableMarkdownInDescription": true
+      }
+    }
+  ]
 }
