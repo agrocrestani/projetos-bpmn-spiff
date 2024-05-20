@@ -33,9 +33,9 @@ for f in filiais:
             "label": AliasName,
         }
     )</spiffworkflow:preScript>
-        <spiffworkflow:postScript>uploadFile = get_encoded_file_data(nfsePdf)
+        <spiffworkflow:postScript>upload_file_link = markdown_file_download_link(nfsePdf)
 
-fileDown = markdown_file_download_link(uploadFile)
+# fileDown = markdown_file_download_link(uploadFile)
 
 
 </spiffworkflow:postScript>
