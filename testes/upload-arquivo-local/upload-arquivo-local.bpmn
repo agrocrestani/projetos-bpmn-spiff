@@ -31,7 +31,7 @@ arquivo_nfe = f'/NFe/03262185000109/danfe/51240103262185000109550010000257321290
 
 # teste = fileObj.is_file()
 
-file = open(arquivo_nfe)
+# file = open(arquivo_nfe)
 
 # with open(arquivo_nfe, "rb") as nfe:
 #     nfeFile = base64.b64encode(nfe.read())
@@ -59,14 +59,18 @@ file = open(arquivo_nfe)
         <dc:Bounds x="432" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_10r9tfj_di" bpmnElement="Activity_0qpzdpu">
-        <dc:Bounds x="270" y="137" width="100" height="80" />
+        <dc:Bounds x="280" y="140" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
-        <di:waypoint x="270" y="177" />
+        <di:waypoint x="248" y="177" />
+        <di:waypoint x="248" y="180" />
+        <di:waypoint x="280" y="180" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
-        <di:waypoint x="370" y="177" />
+        <di:waypoint x="380" y="180" />
+        <di:waypoint x="406" y="180" />
+        <di:waypoint x="406" y="177" />
         <di:waypoint x="432" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
