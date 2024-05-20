@@ -36,7 +36,7 @@ arquivo_nfe = '/NFe/03262185000109/danfe/512401032621850001095500100002573212908
 # with open(arquivo_nfe, "rb") as nfe:
 #     nfeFile = base64.b64encode(nfe.read())
 
-nfeFile2 = get_encoded_file_data(nfe2)
+nfeFile2 = get_encoded_file_data(arquivo_nfe)
 
 # with open(arquivo_nfe, "rb") as nfe2:
 #     nfeFile2 = get_encoded_file_data(nfe2)
