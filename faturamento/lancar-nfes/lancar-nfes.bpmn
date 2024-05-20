@@ -35,9 +35,7 @@ for f in filiais:
     )</spiffworkflow:preScript>
         <spiffworkflow:postScript>uploadFile = get_encoded_file_data(nfsePdf)
 
-nfsePdf = get_encoded_file_data(nfsePdf)
-
-uploaded_file_link = markdown_file_download_link(nfsePdf)
+fileDown = markdown_file_download_link(uploadFile)
 
 
 </spiffworkflow:postScript>
@@ -56,9 +54,7 @@ uploaded_file_link = markdown_file_download_link(nfsePdf)
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## NFSe
 
-Para visualizar a nfsePdf[clique aqui]({{nfsePdf}}).
-
-Para visualizar a uploadFile [clique aqui]({{uploadFile}})
+Para visualizar a uploadFile [clique aqui]({{[markdown_file_download_link(uploadFile)}})
 
 Para visualizar a uploaded_file_link [clique aqui]({{uploaded_file_link}})
 
