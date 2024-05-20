@@ -54,7 +54,7 @@ query_movimento = f"""
                     
 consulta_movimentos = Hana(connection).selectDb(query_movimento)
 
-if(consulta_movimentos != [])
+if(consulta_movimentos != []):
     query_um_produto_estoque =  f"""
                     SELECT  
                         t0."InvntryUom"
