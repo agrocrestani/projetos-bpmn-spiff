@@ -79,19 +79,17 @@ if(consulta_movimentos != []):
         if movimento['origem'] == '1-Saldo Inicial':
             movimento['unitmsr'] = um_produto_estoque[0]['invntryuom']
             movimento['canceled'] = 'N'
+        
+        ano = movimento['docduedate'][0:4]
+        mes = movimento['docduedate'][5:7]
+        dia = movimento['docduedate'][8:10]
+
+        movimento['docduedate'] = "{}/{}/{}".format(dia, mes, ano)
 
     if(indices_para_remover != []):
         # Remover os elementos da lista
         for indice in sorted(indices_para_remover, reverse=True):
             del consulta_movimentos[indice]
-
-        for i in consulta_movimentos:
-
-            ano = i['docduedate'][0:4]
-            mes = i['docduedate'][5:7]
-            dia = i['docduedate'][8:10]
-
-            i['docduedate'] = "{}/{}/{}".format(dia, mes, ano)
     
         del(indice)
         del(movimento_recebimento)
