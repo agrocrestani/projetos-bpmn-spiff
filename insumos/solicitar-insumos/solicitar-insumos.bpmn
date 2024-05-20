@@ -201,7 +201,15 @@ headers = {
 }
 
 </spiffworkflow:preScript>
-        <spiffworkflow:postScript>lancado = rsp['http_status']
+        <spiffworkflow:postScript>lancado = ''
+
+try: 
+    if rsp['http_status'] == 201:
+        lancado = 1
+    else: 
+        lancado = 0
+except:
+    lancado = 0
 
 del(n_filiais)
 del(BPLId)
@@ -219,8 +227,7 @@ del(spiff_instancia)
 del(spiff_tarefa)
 del(taskInfo)
 del(items)
-del(payload)
-</spiffworkflow:postScript>
+del(payload)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1o5dvob</bpmn:incoming>
       <bpmn:outgoing>Flow_03n0dbr</bpmn:outgoing>
