@@ -77,26 +77,28 @@ if(consulta_movimentos != []):
                 if movimento_recebimento["origem"] == "11-Recebimento de Mercadoria" and movimento_recebimento["docnum"] == movimento["baseref"]:
                     indices_para_remover.append(i)
 
-    # Remover os elementos da lista
-    for indice in sorted(indices_para_remover, reverse=True):
-        del consulta_movimentos[indice]
+    if(indices_para_remover != []):
+        # Remover os elementos da lista
+        for indice in sorted(indices_para_remover, reverse=True):
+            del consulta_movimentos[indice]
 
 
-    for i in consulta_movimentos:
-        if i['origem'] == '1-Saldo Inicial':
-            i['unitmsr'] = um_produto_estoque[0]['invntryuom']
-            i['canceled'] = 'N'
-        
-        ano = i['docduedate'][0:4]
-        mes = i['docduedate'][5:7]
-        dia = i['docduedate'][8:10]
+        for i in consulta_movimentos:
+            if i['origem'] == '1-Saldo Inicial':
+                i['unitmsr'] = um_produto_estoque[0]['invntryuom']
+                i['canceled'] = 'N'
+            
+            ano = i['docduedate'][0:4]
+            mes = i['docduedate'][5:7]
+            dia = i['docduedate'][8:10]
 
-        i['docduedate'] = "{}/{}/{}".format(dia, mes, ano)
+            i['docduedate'] = "{}/{}/{}".format(dia, mes, ano)
+    
+        del(indice)
+        del(movimento_recebimento)
 
     del(indices_para_remover)
     del(movimento)
-    del(indice)
-    del(movimento_recebimento)
 
 del(connection)
 del(query_movimento)
