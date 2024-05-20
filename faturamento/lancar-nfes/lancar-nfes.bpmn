@@ -33,7 +33,9 @@ for f in filiais:
             "label": AliasName,
         }
     )</spiffworkflow:preScript>
-        <spiffworkflow:postScript>nfsePdf = get_encoded_file_data(nfsePdf)
+        <spiffworkflow:postScript>uploadFile = get_encoded_file_data(nfsePdf)
+
+nfsePdf = get_encoded_file_data(nfsePdf)
 
 uploaded_file_link = markdown_file_download_link(nfsePdf)
 
@@ -54,7 +56,12 @@ uploaded_file_link = markdown_file_download_link(nfsePdf)
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## NFSe
 
-Para visualizar a nota [clique aqui]({{uploaded_file_link}}).
+Para visualizar a nfsePdf[clique aqui]({{nfsePdf}}).
+
+Para visualizar a uploadFile [clique aqui]({{uploadFile}})
+
+Para visualizar a uploaded_file_link [clique aqui]({{uploaded_file_link}})
+
 
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
