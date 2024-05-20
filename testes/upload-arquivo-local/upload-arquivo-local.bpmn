@@ -29,9 +29,9 @@ arquivo_nfe = f'/NFe/03262185000109/danfe/51240103262185000109550010000257321290
 
 # fileObj = Path(arquivo_nfe)
 
-# teste = fileObj.is_file()
+arquivo_link = markdown_file_download_link(arquivo_nfe)
 
-file = get_encoded_file_data(open(arquivo_nfe))
+# teste = fileObj.is_file()
 
 # with open(arquivo_nfe, "rb") as nfe:
 #     nfeFile = base64.b64encode(nfe.read())
@@ -52,14 +52,14 @@ file = get_encoded_file_data(open(arquivo_nfe))
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_upload_arquivo_local_1xjqpfb">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="162" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="432" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_10r9tfj_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="280" y="140" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="162" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="180" />
