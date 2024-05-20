@@ -181,7 +181,7 @@ payload = {
     </bpmn:businessRuleTask>
     <bpmn:serviceTask id="Activity_1juz99w" name="Emitir NFE">
       <bpmn:extensionElements>
-        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="statuscode, rsp">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
             <spiffworkflow:parameter id="headers" type="any" value="headers" />
