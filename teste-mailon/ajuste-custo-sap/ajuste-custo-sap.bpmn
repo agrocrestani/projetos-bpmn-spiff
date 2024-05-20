@@ -78,7 +78,7 @@ if(consulta_movimentos != []):
                     indices_para_remover.append(i)
         if movimento['origem'] == '1-Saldo Inicial':
             movimento['unitmsr'] = um_produto_estoque[0]['invntryuom']
-            movimentoi['canceled'] = 'N'
+            movimento['canceled'] = 'N'
 
     if(indices_para_remover != []):
         # Remover os elementos da lista
