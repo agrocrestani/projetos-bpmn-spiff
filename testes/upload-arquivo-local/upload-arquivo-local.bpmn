@@ -46,7 +46,7 @@ from pathlib import Path
 
 
 import os.path
-if(os.path.exists('/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf')):
+if(os.path.exists('//NFe//03262185000109//danfe//51240103262185000109550010000257321290836637.pdf')):
   valida = "O arquivo existe"
 else:
   valida = "O arquivo não existe"
