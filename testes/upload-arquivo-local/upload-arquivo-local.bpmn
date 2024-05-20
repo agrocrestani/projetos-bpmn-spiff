@@ -29,7 +29,7 @@ arquivo_nfe = '/NFe/03262185000109/danfe/512401032621850001095500100002573212908
 
 fileObj = Path(arquivo_nfe)
 
-teste = fileObj.is_file()
+# teste = fileObj.is_file()
 
 # file = open(arquivo_nfe)
 
