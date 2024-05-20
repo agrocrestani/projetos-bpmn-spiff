@@ -11,6 +11,7 @@
           <spiffworkflow:property name="formUiSchemaFilename" value="file-upload-uischema.json" />
         </spiffworkflow:properties>
       </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0e84r7i</bpmn:incoming>
       <bpmn:outgoing>Flow_1nv52hu</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1n3sruk">
         <bpmn:targetRef>DataObjectReference_09cyvmw</bpmn:targetRef>
@@ -123,7 +124,7 @@ uploaded_files2:
       <bpmn:incoming>Flow_12zrppa</bpmn:incoming>
       <bpmn:outgoing>Flow_17zb7t0</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:sequenceFlow id="Flow_0e84r7i" sourceRef="StartEvent_1" targetRef="Activity_0j2adxt" />
+    <bpmn:sequenceFlow id="Flow_0e84r7i" sourceRef="StartEvent_1" targetRef="present_form" />
     <bpmn:sequenceFlow id="Flow_1j3txf1" sourceRef="Activity_075rqb7" targetRef="Activity_1kn0hc9" />
     <bpmn:scriptTask id="Activity_075rqb7">
       <bpmn:incoming>Flow_0manfs2</bpmn:incoming>
@@ -217,7 +218,6 @@ uploaded_files2_links = [markdown_file_download_link(digest_reference) for diges
     <bpmn:sequenceFlow id="Flow_0manfs2" sourceRef="Activity_0s91t1d" targetRef="Activity_075rqb7" />
     <bpmn:sequenceFlow id="Flow_0o94q3q" sourceRef="Activity_0j2adxt" targetRef="Activity_04k0ox3" />
     <bpmn:scriptTask id="Activity_0j2adxt">
-      <bpmn:incoming>Flow_0e84r7i</bpmn:incoming>
       <bpmn:outgoing>Flow_0o94q3q</bpmn:outgoing>
       <bpmn:script>sizes = [get_data_sizes()]</bpmn:script>
     </bpmn:scriptTask>
@@ -338,8 +338,8 @@ uploaded_files2_links = [markdown_file_download_link(digest_reference) for diges
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0e84r7i_di" bpmnElement="Flow_0e84r7i">
         <di:waypoint x="38" y="270" />
-        <di:waypoint x="104" y="270" />
-        <di:waypoint x="104" y="320" />
+        <di:waypoint x="170" y="270" />
+        <di:waypoint x="170" y="207" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1j3txf1_di" bpmnElement="Flow_1j3txf1">
         <di:waypoint x="510" y="640" />
