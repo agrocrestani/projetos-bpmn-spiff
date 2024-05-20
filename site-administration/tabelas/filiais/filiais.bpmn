@@ -44,13 +44,12 @@ query = f"""
             o."AliasName"
           FROM
             {baseSap}.OBPL o
-          INNER JOIN {baseSap}."Entidade" e ON
-            O."TaxIdNum" = e.CNPJ
+          INNER JOIN {baseSap}."Entidade" e ON o."TaxIdNum" = e.CNPJ
           order by o."AliasName"
         """
 
 rsp = Hana(connection).selectDb(query)
-rsp = json.loads(Hana(connection).selectDb(query))
+# rsp = json.loads(Hana(connection).selectDb(query))
 
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
