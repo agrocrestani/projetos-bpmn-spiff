@@ -182,7 +182,7 @@ payload = {
             <spiffworkflow:parameter id="data" type="any" value="payload" />
             <spiffworkflow:parameter id="basic_auth_username" type="str" />
             <spiffworkflow:parameter id="basic_auth_password" type="str" />
-            <spiffworkflow:parameter id="verify" type="bool" value="&#34;False&#34;" />
+            <spiffworkflow:parameter id="verify" type="bool" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
         <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
