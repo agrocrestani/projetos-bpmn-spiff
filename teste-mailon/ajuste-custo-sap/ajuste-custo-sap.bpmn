@@ -114,7 +114,7 @@ total_quantidade_entrada = 0
 
 total_preco_unitario_saida = 0
 total_quantidade_saida = 0
-
+total_custo_calc_saida = 0
 
 total_preco_unitario = 0
 total_quantidade = 0
@@ -124,7 +124,6 @@ saida = []
 
 count_entrada = 0
 count_saida = 0
-
 custo_medio = 0
 if isinstance(consulta_movimentos_out, list):
     for produtoAux in consulta_movimentos_out:
@@ -156,6 +155,7 @@ if isinstance(consulta_movimentos_out, list):
                 produtoAux['custo_medio_calc'] = custo_medio * produtoAux['qtde']
                 total_quantidade = produtoAux['qtde'] +  total_quantidade
                 produtoAux['estoque_atual'] = total_quantidade
+                total_custo_calc_saida += produtoAux['custo_medio_calc']
             else:
                 produtoAux['custo_medio'] = 999999.999
                 produtoAux['estoque_atual'] = 999999.999
@@ -190,6 +190,8 @@ Custo Médio Entrada: {{ '{:,.3f}'.format(custo_medio_unitario_entrada).replace(
 Custo Total Saída: {{ '{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 Quantidade Total  Saída: {{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 Custo Médio Saída: {{  '{:,.3f}'.format(custo_medio_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.')}}&lt;br&gt;
+Custo Total Saída Calc.: {{ '{:,.3f}'.format(total_custo_calc_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
+
 
 Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 
