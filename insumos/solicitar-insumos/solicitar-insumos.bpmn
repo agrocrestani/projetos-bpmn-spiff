@@ -181,16 +181,6 @@ payload = {
     </bpmn:businessRuleTask>
     <bpmn:serviceTask id="Activity_1juz99w" name="Emitir NFE">
       <bpmn:extensionElements>
-        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
-          <spiffworkflow:parameters>
-            <spiffworkflow:parameter id="url" type="str" value="url" />
-            <spiffworkflow:parameter id="headers" type="any" value="headers" />
-            <spiffworkflow:parameter id="data" type="any" value="payload" />
-            <spiffworkflow:parameter id="basic_auth_username" type="str" />
-            <spiffworkflow:parameter id="basic_auth_password" type="str" />
-            <spiffworkflow:parameter id="verify" type="bool" />
-          </spiffworkflow:parameters>
-        </spiffworkflow:serviceTaskOperator>
         <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
 
 url = 'https://172.20.1.9:50000/b1s/v2/Invoices'
@@ -228,6 +218,16 @@ del(spiff_tarefa)
 del(taskInfo)
 del(items)
 del(payload)</spiffworkflow:postScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequest" resultVariable="rsp">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headres" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="data" type="any" value="payload" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1o5dvob</bpmn:incoming>
       <bpmn:outgoing>Flow_03n0dbr</bpmn:outgoing>
