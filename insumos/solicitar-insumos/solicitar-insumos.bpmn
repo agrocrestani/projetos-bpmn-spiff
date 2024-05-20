@@ -24,12 +24,13 @@ for f in filiais:
     BPLId = f['BPLId']
     BPLName = f['BPLName']
     AliasName = f['AliasName']
-    n_filiais.append(
-        {
-            "value": BPLId,
-            "label": AliasName,
-        }
-    )
+    if BPLId in ['2', '3', '4', '5'] 
+        n_filiais.append(
+            {
+                "value": BPLId,
+                "label": AliasName,
+            }
+        )
 
 n_safras = safras
 solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
