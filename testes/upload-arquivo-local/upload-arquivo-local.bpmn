@@ -31,15 +31,15 @@ arquivo_nfe = f'/NFe/03262185000109/danfe/51240103262185000109550010000257321290
 
 # teste = fileObj.is_file()
 
-# file = open(arquivo_nfe)
+file = open(arquivo_nfe, 'r')
 
 # with open(arquivo_nfe, "rb") as nfe:
 #     nfeFile = base64.b64encode(nfe.read())
 
 # nfeFile2 = get_encoded_file_data(nfeFile)
 
-with open(arquivo_nfe) as nfe2:
-    nfeFile2 = get_encoded_file_data(nfe2)
+# with open(arquivo_nfe) as nfe2:
+#     nfeFile2 = get_encoded_file_data(nfe2)
 
 
 # nfe1 = markdown_file_download_link(arquivo)
