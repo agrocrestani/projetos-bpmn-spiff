@@ -56,6 +56,7 @@ for f in filiais:
 
 Para visualizar a uploaded_file_link [clique aqui]({{upload_file_link}})
 
+{{upload_file_link}}
 
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
