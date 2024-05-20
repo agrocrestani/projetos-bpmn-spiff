@@ -248,6 +248,8 @@ precoProdutoNormalizado = float(x["linetotal"].replace(",", ".")) / float(x["qtd
 quantidadeEstoqueNormalizada = multiplicador * float(x["qtde"].replace(",", "."))
 precoTotalNormalizado = float(x["linetotal"].replace(",", "."))
 
+x['stockprice'] = float(x["stockprice"].replace(",", "."))
+
 if(x['origem'] == '7-Nfe.Entrada' and (x['canceled'] == 'C')):
     quantidadeEstoqueNormalizada = quantidadeEstoqueNormalizada * -1
     precoProdutoNormalizado = precoProdutoNormalizado * -1
