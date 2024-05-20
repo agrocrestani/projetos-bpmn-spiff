@@ -21,6 +21,8 @@ data = {f"""
     "Language":"29"
 """}
 
+data = json.loads(data)
+
 headers = {
   'Content-Type': 'application/json'
 }
