@@ -20,8 +20,6 @@ data = {"UserName": "spiff.workflow",
     "Language":"29"
     }
 
-data = json.dumps(data)
-
 headers = {
   'Content-Type': 'application/json'
 }</spiffworkflow:preScript>
