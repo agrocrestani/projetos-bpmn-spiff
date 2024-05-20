@@ -17,7 +17,7 @@ CompanyDB = get_secret('baseSap')
 data = f"""{
     "UserName": "spiff.workflow",
     "Password": "Ll|24e3j4#&amp;z",
-    "CompanyDB": {CompanyDB},
+    "CompanyDB": "{CompanyDB}",
     "Language":"29"
 }"""
 
