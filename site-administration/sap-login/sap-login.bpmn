@@ -21,12 +21,11 @@ data = {f"""
     "Language":"29"
 """}
 
-data = json.loads(data)
+data = json.dumps(data)
 
 headers = {
   'Content-Type': 'application/json'
-}
-</spiffworkflow:preScript>
+}</spiffworkflow:preScript>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
