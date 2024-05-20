@@ -141,7 +141,7 @@ if isinstance(consulta_movimentos_out, list):
                 
                 produtoAux['custo_medio'] = custo_medio
                 produtoAux['estoque_atual'] = total_quantidade
-                produtoAux['custo_medio_calc'] = custo_medio * total_quantidade_entrada
+                produtoAux['custo_medio_calc'] = custo_medio * produtoAux['qtde']
 
             else:
                 produtoAux['custo_medio'] = 999999.999
@@ -153,7 +153,7 @@ if isinstance(consulta_movimentos_out, list):
                 total_preco_unitario_saida += produtoAux['linetotal']
                 total_quantidade_saida += produtoAux['qtde']
                 produtoAux['custo_medio'] = custo_medio
-                produtoAux['custo_medio_calc'] = custo_medio * total_quantidade_saida
+                produtoAux['custo_medio_calc'] = custo_medio * produtoAux['qtde']
                 total_quantidade = produtoAux['qtde'] +  total_quantidade
                 produtoAux['estoque_atual'] = total_quantidade
             else:
