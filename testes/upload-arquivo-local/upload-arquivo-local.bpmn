@@ -25,8 +25,10 @@ You can also change the text you are reading here by updating the *Instructions*
 
 arquivo_nfe = f'/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf'
 
-with open(arquivo_nfe, "rb") as nfe:
-    nfeFile = base64.b64encode(nfe.read())
+file = open(arquivo_nfe)
+
+# with open(arquivo_nfe, "rb") as nfe:
+#     nfeFile = base64.b64encode(nfe.read())
 
 # with open(arquivo_nfe, "rb") as nfe2:
 #     nfeFile2 = get_encoded_file_data(nfe2)
