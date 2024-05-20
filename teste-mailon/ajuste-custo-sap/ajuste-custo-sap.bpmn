@@ -133,7 +133,7 @@ if isinstance(consulta_movimentos_out, list):
             total_quantidade_entrada += produtoAux['qtde']
 
             if produtoAux['canceled'] == 'N':
-                total_preco_unitario += produtoAux['linetotal']
+                total_preco_unitario += produtoAux['stockprice'] * produtoAux['qtde']
                 total_quantidade += produtoAux['qtde']
                 
                 if total_quantidade != 0:
