@@ -244,10 +244,10 @@ del(payload)</spiffworkflow:postScript>
       <bpmn:outgoing>Flow_1h3fxg1</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_104oa3v" sourceRef="Gateway_12g4910" targetRef="Activity_16ok50w">
-      <bpmn:conditionExpression>lancado == 201</bpmn:conditionExpression>
+      <bpmn:conditionExpression>lancado = 1</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1h3fxg1" name="Erro ao lançar no SAP" sourceRef="Gateway_12g4910" targetRef="Activity_0jn1u2s">
-      <bpmn:conditionExpression>lancado != 201</bpmn:conditionExpression>
+      <bpmn:conditionExpression>lancado = 0</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0wkxjzc" sourceRef="Activity_0nja6u2" targetRef="Gateway_1s1k51w" />
     <bpmn:manualTask id="Activity_0nja6u2" name="Dados da NFe">
