@@ -14,12 +14,12 @@
 
 CompanyDB = get_secret('baseSap')
 
-data = f"""{
+data = {f"""
     "UserName": "spiff.workflow",
     "Password": "Ll|24e3j4#&amp;z",
     "CompanyDB": "{CompanyDB}",
     "Language":"29"
-}"""
+"""}
 
 headers = {
   'Content-Type': 'application/json'
