@@ -646,6 +646,13 @@ arquivo_nfe = f'/NFe/{cnpj}/danfe/{chaveAcesso}.pdf'
 with open(arquivo_nfe, "rb") as nfe:
     nfeFile = base64.b64encode(nfe.read())
 
+with open(arquivo_nfe, "rb") as nfe2:
+    nfeFile2 = get_encoded_file_data(nfe2)
+
+nfe1 = markdown_file_download_link(nfeFile)
+nfe2 = markdown_file_download_link(nfeFile2)
+
+
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
