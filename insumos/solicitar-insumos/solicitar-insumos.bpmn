@@ -301,11 +301,11 @@ for i in itens:
 
 **Selecione o link abaixo e cole na barra de tarefas do navegador para ver a NFe:**
 
-&lt;{{linkNfe}}&gt;
 
-[Nota MarkDow]({{linkNfe}})
+[Nota1 MarkDow]({{nfe1}})
 
-&lt;a href="{{linkNfe}}"&gt;Abrir nota HRef&lt;/a&gt;
+[Nota2 MarkDow]({{nfe2}})
+
 
 ### Itens da Nota
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
