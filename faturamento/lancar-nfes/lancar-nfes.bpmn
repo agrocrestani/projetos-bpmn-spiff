@@ -33,7 +33,11 @@ for f in filiais:
             "label": AliasName,
         }
     )</spiffworkflow:preScript>
-        <spiffworkflow:postScript>nfsePdf= markdown_file_download_link(nfsePdf)</spiffworkflow:postScript>
+        <spiffworkflow:postScript>nfsePdf = get_encoded_file_data(nfsePdf)
+
+
+
+</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
