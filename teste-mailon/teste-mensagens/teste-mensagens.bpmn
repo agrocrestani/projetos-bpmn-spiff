@@ -26,18 +26,30 @@
 | {{i['a']}} | {{i['b']}} |
 
 {% endfor %}</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript>def teste_lista():
-    return [{
-            "a":"A",
-            "b":"B"
-            },
-            {
-            "a":"AA",
-            "b":"BB"
-            }]
+        <spiffworkflow:preScript>def teste_lista(flag):
 
+    if flag:    
+        return [{
+                "a":"A",
+                "b":"B"
+                },
+                {
+                "a":"AA",
+                "b":"BB"
+                }]
+    else:
+        return [{
+                "a":"C",
+                "b":"D"
+                },
+                {
+                "a":"CC",
+                "b":"DD"
+                }]
 
-teste = teste_lista()</spiffworkflow:preScript>
+flag = True
+
+teste = teste_lista(flag)</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_1af12yp</bpmn:outgoing>
