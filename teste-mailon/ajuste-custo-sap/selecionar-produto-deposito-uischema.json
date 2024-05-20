@@ -1,5 +1,5 @@
 {
-  "ui:order": ["dataInicio", "dataFinal", "*", "produto", "deposito"],
+  "ui:order": ["dataInicio", "dataFinal", "produto", "deposito"],
   "dataInicio": {
     "ui:widget": "date",
     "ui:options": {
@@ -15,13 +15,9 @@
     }
   },
   "produto": {
-    "ui:options": {
-      "placeholder": "Selecione um produto"
-    }
+    "ui:placeholder": "Selecione um produto"
   },
   "deposito": {
-    "ui:options": {
-      "placeholder": "Selecione um depósito"
-    }
+    "ui:placeholder": "Selecione um depósito"
   }
 }
