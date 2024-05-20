@@ -25,7 +25,7 @@ You can also change the text you are reading here by updating the *Instructions*
 from pathlib import Path
 
 # arquivo_nfe = f'/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf'
-arquivo_nfe = '/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf'
+arquivo_nfe = '//NFe//03262185000109//danfe//51240103262185000109550010000257321290836637.pdf'
 
 fileObj = Path(arquivo_nfe)
 
