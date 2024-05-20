@@ -136,7 +136,7 @@ if isinstance(consulta_movimentos_out, list):
                 total_preco_unitario += produtoAux['linetotal']
                 total_quantidade += produtoAux['qtde']
                 
-                if total_quantidade != 0:
+                if total_quantidade &gt; 0:
                     custo_medio = total_preco_unitario / total_quantidade
                 
                 produtoAux['custo_medio'] = custo_medio
