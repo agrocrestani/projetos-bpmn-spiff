@@ -54,53 +54,54 @@ query_movimento = f"""
                     
 consulta_movimentos = Hana(connection).selectDb(query_movimento)
 
-query_um_produto_estoque =  f"""
-                SELECT  
-                    t0."InvntryUom"
-                FROM {baseSap}.OITM t0
-                WHERE t0."ItemCode" = '{produto}';
-                """
+if(consulta_movimentos != [])
+    query_um_produto_estoque =  f"""
+                    SELECT  
+                        t0."InvntryUom"
+                    FROM {baseSap}.OITM t0
+                    WHERE t0."ItemCode" = '{produto}';
+                    """
 
-um_produto_estoque = Hana(connection).selectDb(query_um_produto_estoque)
+    um_produto_estoque = Hana(connection).selectDb(query_um_produto_estoque)
+
+    num_movimentos = 0
+
+    # Lista para armazenar os elementos a serem removidos
+    indices_para_remover = []
+
+    # Iterar sobre os elementos da lista
+    for i, movimento in enumerate(consulta_movimentos):
+        # Verificar se a origem é "	7-Nfe.Entrada" e basetype é 20 e baseref é igual ao docnum do elemento de "11-Recebimento de Mercadoria"
+        if movimento["origem"] == "7-Nfe.Entrada" and movimento["basetype"] == "20":
+            for movimento_recebimento in consulta_movimentos:
+                if movimento_recebimento["origem"] == "11-Recebimento de Mercadoria" and movimento_recebimento["docnum"] == movimento["baseref"]:
+                    indices_para_remover.append(i)
+
+    # Remover os elementos da lista
+    for indice in sorted(indices_para_remover, reverse=True):
+        del consulta_movimentos[indice]
+
+
+    for i in consulta_movimentos:
+        if i['origem'] == '1-Saldo Inicial':
+            i['unitmsr'] = um_produto_estoque[0]['invntryuom']
+            i['canceled'] = 'N'
+        
+        ano = i['docduedate'][0:4]
+        mes = i['docduedate'][5:7]
+        dia = i['docduedate'][8:10]
+
+        i['docduedate'] = "{}/{}/{}".format(dia, mes, ano)
+
+    del(indices_para_remover)
+    del(movimento)
+    del(indice)
+    del(movimento_recebimento)
 
 del(connection)
 del(query_movimento)
 del(baseSap)
-del(query_um_produto_estoque)
-
-num_movimentos = 0
-
-# Lista para armazenar os elementos a serem removidos
-indices_para_remover = []
-
-# Iterar sobre os elementos da lista
-for i, movimento in enumerate(consulta_movimentos):
-    # Verificar se a origem é "	7-Nfe.Entrada" e basetype é 20 e baseref é igual ao docnum do elemento de "11-Recebimento de Mercadoria"
-    if movimento["origem"] == "7-Nfe.Entrada" and movimento["basetype"] == "20":
-        for movimento_recebimento in consulta_movimentos:
-            if movimento_recebimento["origem"] == "11-Recebimento de Mercadoria" and movimento_recebimento["docnum"] == movimento["baseref"]:
-                indices_para_remover.append(i)
-
-# Remover os elementos da lista
-for indice in sorted(indices_para_remover, reverse=True):
-    del consulta_movimentos[indice]
-
-
-for i in consulta_movimentos:
-    if i['origem'] == '1-Saldo Inicial':
-        i['unitmsr'] = um_produto_estoque[0]['invntryuom']
-        i['canceled'] = 'N'
-    
-    ano = i['docduedate'][0:4]
-    mes = i['docduedate'][5:7]
-    dia = i['docduedate'][8:10]
-
-    i['docduedate'] = "{}/{}/{}".format(dia, mes, ano)
-
-del(indices_para_remover)
-del(movimento)
-del(indice)
-del(movimento_recebimento)</bpmn:script>
+del(query_um_produto_estoque)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="EntradasItens" name="Entradas dos Itens">
       <bpmn:extensionElements>
