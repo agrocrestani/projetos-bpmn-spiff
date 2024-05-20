@@ -1,22 +1,47 @@
 {
-  "type": "HorizontalLayout",
+  "type": "VerticalLayout",
   "elements": [
     {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/dataInicio",
+          "options": {
+            "ui:emptyValue": "",
+            "ui:placeholder": "Data de Início",
+            "ui:widget": "date"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/dataFinal",
+          "options": {
+            "ui:emptyValue": "",
+            "ui:placeholder": "Data Final",
+            "ui:widget": "date"
+          }
+        }
+      ]
+    },
+    {
       "type": "Control",
-      "scope": "#/properties/dataInicio",
+      "scope": "#/properties/produto",
       "options": {
         "ui:emptyValue": "",
-        "ui:placeholder": "Data de Início",
-        "ui:widget": "date"
+        "ui:placeholder": "Selecione um produto",
+        "ui:autocomplete": "family-name",
+        "ui:enableMarkdownInDescription": true
       }
     },
     {
       "type": "Control",
-      "scope": "#/properties/dataFinal",
+      "scope": "#/properties/deposito",
       "options": {
         "ui:emptyValue": "",
-        "ui:placeholder": "Data Final",
-        "ui:widget": "date"
+        "ui:placeholder": "Selecione um deposito",
+        "ui:autocomplete": "family-name",
+        "ui:enableMarkdownInDescription": true
       }
     }
   ],
@@ -28,6 +53,14 @@
     "dataFinal": {
       "type": "string",
       "title": "Data Final"
+    },
+    "produto": {
+      "type": "string",
+      "title": "Produto"
+    },
+    "deposito": {
+      "type": "string",
+      "title": "Deposito"
     }
   }
 }
