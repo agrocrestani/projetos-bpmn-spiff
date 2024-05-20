@@ -7,7 +7,6 @@
       "placeholder": "Data de Início"
     }
   },
-  
   "dataFinal": {
     "ui:widget": "date",
     "ui:options": {
