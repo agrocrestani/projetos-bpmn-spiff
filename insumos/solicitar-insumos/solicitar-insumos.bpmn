@@ -221,7 +221,7 @@ del(payload)</spiffworkflow:postScript>
         <spiffworkflow:serviceTaskOperator id="http/PostRequest" resultVariable="rsp">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
-            <spiffworkflow:parameter id="headers" type="any" value="headres" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
             <spiffworkflow:parameter id="basic_auth_username" type="str" />
             <spiffworkflow:parameter id="basic_auth_password" type="str" />
             <spiffworkflow:parameter id="data" type="any" value="payload" />
