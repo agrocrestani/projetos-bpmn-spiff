@@ -21,10 +21,12 @@ You can also change the text you are reading here by updating the *Instructions*
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-      <bpmn:script>arquivo_nfe = f'/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf'
+      <bpmn:script>import base64
 
-# with open(arquivo_nfe, "rb") as nfe:
-#     nfeFile = base64.b64encode(nfe.read())
+arquivo_nfe = f'/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf'
+
+with open(arquivo_nfe, "rb") as nfe:
+    nfeFile = base64.b64encode(nfe.read())
 
 # with open(arquivo_nfe, "rb") as nfe2:
 #     nfeFile2 = get_encoded_file_data(nfe2)
