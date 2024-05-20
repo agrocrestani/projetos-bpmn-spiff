@@ -3,9 +3,7 @@
   "type": "object",
   "required": [
     "produto",
-    "deposito",
-    "dataInicial",
-    "dataFinal"
+    "deposito"
   ],
   "properties": {
     "produto": {
@@ -18,72 +16,6 @@
       "anyOf": [
         "options_from_task_data_var:depositosList"
       ]
-    },
-    "dataInicial": {
-      "type": "string",
-      "format": "date",
-      "title": "Data Inicial"
-    },
-    "dataFinal": {
-      "type": "string",
-      "format": "date",
-      "title": "Data Final"
-    }
-  },
-  "dependencies": {
-    "dataInicial": {
-      "oneOf": [
-        {
-          "properties": {
-            "dataInicial": { "format": "date" },
-            "dataFinal": { "format": "date" }
-          },
-          "required": ["dataFinal"]
-        }
-      ]
-    },
-    "dataFinal": {
-      "oneOf": [
-        {
-          "properties": {
-            "dataInicial": { "format": "date" },
-            "dataFinal": { "format": "date" }
-          },
-          "required": ["dataInicial"]
-        }
-      ]
-    }
-  },
-  "allOf": [
-    {
-      "if": {
-        "properties": {
-          "dataInicial": { "format": "date" },
-          "dataFinal": { "format": "date" }
-        },
-        "required": ["dataInicial", "dataFinal"]
-      },
-      "then": {
-        "properties": {
-          "dataFinal": {
-            "format": "date",
-            "const": { "$data": "1/dataInicial" },
-            "errorMessage": "A Data Final deve ser posterior ou igual à Data Inicial."
-          }
-        }
-      }
-    }
-  ],
-  "errorMessage": {
-    "required": {
-      "produto": "O campo Produto é obrigatório",
-      "deposito": "O campo Depósito é obrigatório",
-      "dataInicial": "O campo Data Inicial é obrigatório",
-      "dataFinal": "O campo Data Final é obrigatório"
-    },
-    "dependencies": {
-      "dataInicial": "Data Inicial e Data Final devem estar presentes",
-      "dataFinal": "Data Inicial e Data Final devem estar presentes"
     }
   }
 }
