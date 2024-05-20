@@ -302,9 +302,10 @@ for i in itens:
 **Selecione o link abaixo e cole na barra de tarefas do navegador para ver a NFe:**
 
 
-[Nota1 MarkDow]({{nfe1}})
+{{arquivo_nfe}}
 
-[Nota2 MarkDow]({{nfe2}})
+{{arquivo_teste}}
+
 
 
 ### Itens da Nota
