@@ -117,9 +117,8 @@ for u in utilizacoes:
         <spiffworkflow:postScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
 
-if not items :
+if not items:
   items = []
-
   for s in solicitacao:
     items.append(
       {
