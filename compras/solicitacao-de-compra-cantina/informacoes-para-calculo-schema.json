@@ -30,7 +30,7 @@
     "U_RSD_Prioridade": {
       "title": "Prioridade",
       "type": "string",
-      "default"
+      "default": 
       "anyOf": [
         {
           "type": "string",
