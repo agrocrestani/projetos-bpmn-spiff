@@ -328,7 +328,6 @@ try:
     print('Lista Boa')
 except:
     lista_documentos_ignorar = []
-  print("An exception occurred")
 
 
 origens_unicas = list(set(item["origem"] for item in consulta_movimentos))
