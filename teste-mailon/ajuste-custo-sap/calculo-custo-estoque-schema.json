@@ -24,7 +24,7 @@
             "type": "string",
             "title": "Nº do Documento",
             "anyOf": [
-              "options_from_task_data_var:depositosList"
+              "options_from_task_data_var:origens_unicas"
             ]
           }
         }
