@@ -145,6 +145,7 @@ payload = {
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_11ns8sw</bpmn:incoming>
       <bpmn:incoming>Flow_1h3fxg1</bpmn:incoming>
+      <bpmn:incoming>Flow_0ehicet</bpmn:incoming>
       <bpmn:outgoing>Flow_1o5dvob</bpmn:outgoing>
       <bpmn:property id="Property_1vt3imd" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_03oc4gb">
@@ -662,11 +663,21 @@ arquivo_teste = 'file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danf
 
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
+    <bpmn:boundaryEvent id="Event_17q397d" attachedToRef="Activity_1juz99w">
+      <bpmn:outgoing>Flow_0ehicet</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0mn40j6" errorRef="Error_1" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_0ehicet" sourceRef="Event_17q397d" targetRef="Activity_0jn1u2s" />
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmn:dataStore id="safras" name="JSONDataStore" />
+  <bpmn:error id="Error_1" name="Error_1">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>err1</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_solicitacao_de_insumos_rqoml0p">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -764,6 +775,9 @@ del(connection)</bpmn:script>
       <bpmndi:BPMNShape id="Activity_0e3ae20_di" bpmnElement="Activity_16ok50w">
         <dc:Bounds x="1190" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_10fg20w_di" bpmnElement="Event_17q397d">
+        <dc:Bounds x="942" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
         <di:waypoint x="2870" y="177" />
@@ -881,6 +895,12 @@ del(connection)</bpmn:script>
       <bpmndi:BPMNEdge id="Flow_13302fl_di" bpmnElement="Flow_13302fl">
         <di:waypoint x="1290" y="177" />
         <di:waypoint x="1400" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ehicet_di" bpmnElement="Flow_0ehicet">
+        <di:waypoint x="960" y="235" />
+        <di:waypoint x="960" y="270" />
+        <di:waypoint x="800" y="270" />
+        <di:waypoint x="800" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
