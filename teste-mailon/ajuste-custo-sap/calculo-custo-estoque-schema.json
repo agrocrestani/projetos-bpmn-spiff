@@ -24,7 +24,24 @@
             "type": "string",
             "title": "Nº do Documento",
             "anyOf": [
-              "options_from_task_data_var:origens_unicas_list"
+              "options_from_task_data_var:"origens_unicas_list": [
+    {
+      "value": "3-Sai.Mercadoria",
+      "label": "3-Sai.Mercadoria"
+    },
+    {
+      "value": "7-Nfe.Entrada",
+      "label": "7-Nfe.Entrada"
+    },
+    {
+      "value": "2-Ent.Mercadoria",
+      "label": "2-Ent.Mercadoria"
+    },
+    {
+      "value": "11-Recebimento de Mercadoria",
+      "label": "11-Recebimento de Mercadoria"
+    }
+  ]"
             ]
           }
         }
