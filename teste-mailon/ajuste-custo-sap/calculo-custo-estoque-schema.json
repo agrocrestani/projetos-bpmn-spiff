@@ -1,6 +1,6 @@
 {
   "properties": {
-    "recalculcar": {
+    "recalcular": {
       "type": "boolean",
       "title": "Done?",
       "default": false
