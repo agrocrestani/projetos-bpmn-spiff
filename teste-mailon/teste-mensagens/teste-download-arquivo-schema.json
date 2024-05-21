@@ -19,7 +19,6 @@
           "tipo_documento": {
             "type": "string",
             "title": "Tipo de Documento",
-            "description": "Please describe the task to complete"
           },
           "num_documento": {
             "type": "string",
