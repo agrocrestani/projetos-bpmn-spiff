@@ -171,7 +171,7 @@ for i in n_almoxarifados:
     if i['value'] == WhsCode:
         almoxarifado = i['label']
 
-solicitacao = json.loads(solicitacao)</spiffworkflow:preScript>
+solicitacao = json.dumps(solicitacao)</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1y37zi6</bpmn:outgoing>
