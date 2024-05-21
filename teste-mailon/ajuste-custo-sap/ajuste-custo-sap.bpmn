@@ -364,6 +364,7 @@ if isinstance(consulta_movimentos_out, list):
                 produtoAux['estoque_atual'] = 000.000
                 produtoAux['custo_medio_calc'] = 000.000
                 produtoAux['custo_total_contabil'] = 000.000
+    del(produtoAux)
 
 else:
     print("Erro: 'produtosDespositos' não é uma lista.")
@@ -390,7 +391,8 @@ else:
 recalcular = False
 
 del(consulta_movimentos)</spiffworkflow:preScript>
-        <spiffworkflow:postScript />
+        <spiffworkflow:postScript>del(consulta_movimentos_out)
+del(consulta_movimentos)</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser>Produto: {{produto}}    | Deposito: {{deposito}}
 
 
