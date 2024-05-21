@@ -183,8 +183,8 @@ query = f"""
             WHERE t0."QryGroup3" = 'Y' AND t0."validFor" = 'Y'
           """
 
-rsp = json.loads(Hana(connection).selectDb(query))
-# rsp = Hana(connection).selectDb(query)
+# rsp = json.loads(Hana(connection).selectDb(query))
+rsp = Hana(connection).selectDb(query)
 
 
 items_cantina = []
