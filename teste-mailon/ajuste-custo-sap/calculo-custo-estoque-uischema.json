@@ -17,7 +17,8 @@
                         }
                 }
             ],
-            "tipo_documento":{
+            "tipo_documen
+            to":{
                 "ui:widget": "select"
             }            
         }
