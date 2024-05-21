@@ -323,7 +323,7 @@ total_preco_unitario_entrada = 0
 total_quantidade_entrada = 0
 custo_medio_total_calculado_entrada = 0
 
-if(ignorar_doc)
+if(ignorar_doc):
     lista_documentos_ignorar = []
 
 origens_unicas = list(set(item["origem"] for item in consulta_movimentos))
