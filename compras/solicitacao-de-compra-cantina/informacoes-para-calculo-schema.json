@@ -101,7 +101,7 @@
       "type": "string",
       "title": "Observações"
     },
-    "MainUsage": {
+    "Q": {
       "title": "Utilizacao",
       "type": "string",
       "anyOf": [
