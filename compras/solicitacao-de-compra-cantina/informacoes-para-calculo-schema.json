@@ -23,7 +23,7 @@
     "Department": {
       "title": "Departamento",
       "type": "string",
-      
+      "default"
       "anyOf": [
         "options_from_task_data_var:n_departamentos"
       ]
