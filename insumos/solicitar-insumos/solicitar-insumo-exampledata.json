@@ -1,5 +1,7 @@
 {
-  "solicitacao": [],
+  "solicitacao": [
+    {}
+  ],
   "unidade": "apples",
   "safra": "oranges",
   "n_safras": [
