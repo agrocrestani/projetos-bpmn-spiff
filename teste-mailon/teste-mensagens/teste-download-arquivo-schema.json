@@ -18,7 +18,7 @@
         "properties": {
           "tipo_documento": {
             "type": "string",
-            "title": "Selecione um T",
+            "title": "Selecione um Tipo de Documento",
             "description": "Please describe the task to complete"
           },
           "num_documento": {
