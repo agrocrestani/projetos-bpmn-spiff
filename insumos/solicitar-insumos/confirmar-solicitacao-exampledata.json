@@ -1,5 +1,7 @@
 {
-  "solicitacao": [],
+  "solicitacao": [
+    {}
+  ],
   "unidade": "apples",
   "n_filiais": [
     {
