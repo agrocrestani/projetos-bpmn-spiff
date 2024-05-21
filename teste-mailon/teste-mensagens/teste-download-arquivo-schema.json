@@ -22,7 +22,7 @@
           },
           "num_documento": {
             "type": "string",
-            "title": "Title",
+            "title": "N",
             "description": "Please describe the task to complete"
           }
         }
