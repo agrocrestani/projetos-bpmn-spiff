@@ -18,7 +18,10 @@
                 }
             ],
             "tipo_documento":{
-                "ui:widget": "select"
+                "ui:widget": "select""ui:options": {
+      "enum_titles": ["Selecione..."],
+      "enum_source": "options_from_task_data_var:depositosList"
+    }
             }            
         }
     }
