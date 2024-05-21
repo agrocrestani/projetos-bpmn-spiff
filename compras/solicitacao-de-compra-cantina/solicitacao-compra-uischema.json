@@ -85,6 +85,3 @@
     }
   }
 }
-
-                "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
-                "QtdeSugerida": QtdeSugerida
