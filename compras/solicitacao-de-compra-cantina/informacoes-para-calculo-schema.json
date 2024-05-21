@@ -129,7 +129,7 @@
         {
           "type": "string",
           "enum": [
-            "2"
+            "30"
           ],
           "title": "2 - Mensal"
         }
