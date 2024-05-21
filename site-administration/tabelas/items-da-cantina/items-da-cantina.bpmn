@@ -5,13 +5,13 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_0tn4ed3</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_0tn4ed3" sourceRef="StartEvent_1" targetRef="Activity_09mu4sd" />
+    <bpmn:sequenceFlow id="Flow_0tn4ed3" sourceRef="StartEvent_1" targetRef="Activity_itensCantina" />
     <bpmn:endEvent id="Event_0jxoz7s">
       <bpmn:incoming>Flow_0w7oyed</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_09mu4sd" targetRef="Event_0jxoz7s" />
+    <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_itensCantina" targetRef="Event_0jxoz7s" />
     <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
-    <bpmn:scriptTask id="Activity_09mu4sd" name="Fetch itens cantina">
+    <bpmn:scriptTask id="Activity_itensCantina" name="Fetch itens cantina">
       <bpmn:extensionElements>
         <spiffworkflow:serviceTaskOperator id="postgres_v2/SelectValuesV2" resultVariable="rsp">
           <spiffworkflow:parameters>
@@ -115,7 +115,7 @@ del(connection)</bpmn:script>
           <dc:Bounds x="351" y="352" width="80" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_04tia02_di" bpmnElement="Activity_09mu4sd">
+      <bpmndi:BPMNShape id="Activity_04tia02_di" bpmnElement="Activity_itensCantina">
         <dc:Bounds x="250" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
