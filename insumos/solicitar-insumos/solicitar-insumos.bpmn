@@ -47,7 +47,7 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1jn3emy</bpmn:incoming>
-      <bpmn:outgoing>Flow_1ro6rfg</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1k0vyfe</bpmn:outgoing>
       <bpmn:property id="Property_13gdj9d" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_1hak9da">
         <bpmn:sourceRef>DataStoreReference_1ismram</bpmn:sourceRef>
@@ -124,7 +124,7 @@ main_usage = []
 for u in utilizacoes:
     main_usage.append(u)</spiffworkflow:postScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_16upfhe</bpmn:incoming>
+      <bpmn:incoming>Flow_1a5ox3k</bpmn:incoming>
       <bpmn:outgoing>Flow_11ns8sw</bpmn:outgoing>
       <bpmn:property id="Property_1ueheqc" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_03oc4gb">
@@ -662,22 +662,21 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
         <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1b012sp</bpmn:incoming>
-      <bpmn:outgoing>Flow_1h7oaji</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0p10cpv</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:userTask id="Activity_0tsupoq" name="Confirmar">
+    <bpmn:sequenceFlow id="Flow_1k0vyfe" sourceRef="Activity_0jw3ade" targetRef="Activity_1y2m02n" />
+    <bpmn:sequenceFlow id="Flow_1a5ox3k" sourceRef="Activity_1y2m02n" targetRef="Activity_1rmlu9t" />
+    <bpmn:userTask id="Activity_1y2m02n" name="Teste">
       <bpmn:extensionElements>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-solicitacao-schema.json" />
-          <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-solicitacao-uischema.json" />
         </spiffworkflow:properties>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1ro6rfg</bpmn:incoming>
-      <bpmn:incoming>Flow_1h7oaji</bpmn:incoming>
-      <bpmn:outgoing>Flow_16upfhe</bpmn:outgoing>
+      <bpmn:incoming>Flow_1k0vyfe</bpmn:incoming>
+      <bpmn:incoming>Flow_0p10cpv</bpmn:incoming>
+      <bpmn:outgoing>Flow_1a5ox3k</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_1ro6rfg" sourceRef="Activity_0jw3ade" targetRef="Activity_0tsupoq" />
-    <bpmn:sequenceFlow id="Flow_16upfhe" sourceRef="Activity_0tsupoq" targetRef="Activity_1rmlu9t" />
-    <bpmn:sequenceFlow id="Flow_1h7oaji" sourceRef="Activity_0z8kz3p" targetRef="Activity_0tsupoq" />
+    <bpmn:sequenceFlow id="Flow_0p10cpv" sourceRef="Activity_0z8kz3p" targetRef="Activity_1y2m02n" />
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
@@ -782,8 +781,8 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       <bpmndi:BPMNShape id="Activity_0dodh1z_di" bpmnElement="Activity_0z8kz3p">
         <dc:Bounds x="880" y="270" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_088pnq6_di" bpmnElement="Activity_0tsupoq">
-        <dc:Bounds x="420" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_14gccm6_di" bpmnElement="Activity_1y2m02n">
+        <dc:Bounds x="430" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_10fg20w_di" bpmnElement="Event_17q397d">
@@ -814,8 +813,8 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
         <di:waypoint x="1190" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_11ns8sw_di" bpmnElement="Flow_11ns8sw">
-        <di:waypoint x="680" y="177" />
-        <di:waypoint x="728" y="177" />
+        <di:waypoint x="680" y="160" />
+        <di:waypoint x="728" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_03oc4gb_di" bpmnElement="DataInputAssociation_03oc4gb">
         <di:waypoint x="613" y="285" />
@@ -889,19 +888,19 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
         <di:waypoint x="930" y="235" />
         <di:waypoint x="930" y="270" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1ro6rfg_di" bpmnElement="Flow_1ro6rfg">
+      <bpmndi:BPMNEdge id="Flow_1k0vyfe_di" bpmnElement="Flow_1k0vyfe">
         <di:waypoint x="370" y="177" />
-        <di:waypoint x="420" y="177" />
+        <di:waypoint x="430" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_16upfhe_di" bpmnElement="Flow_16upfhe">
-        <di:waypoint x="520" y="177" />
+      <bpmndi:BPMNEdge id="Flow_1a5ox3k_di" bpmnElement="Flow_1a5ox3k">
+        <di:waypoint x="530" y="177" />
         <di:waypoint x="580" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1h7oaji_di" bpmnElement="Flow_1h7oaji">
+      <bpmndi:BPMNEdge id="Flow_0p10cpv_di" bpmnElement="Flow_0p10cpv">
         <di:waypoint x="930" y="350" />
-        <di:waypoint x="930" y="370" />
-        <di:waypoint x="470" y="370" />
-        <di:waypoint x="470" y="217" />
+        <di:waypoint x="930" y="380" />
+        <di:waypoint x="480" y="380" />
+        <di:waypoint x="480" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
