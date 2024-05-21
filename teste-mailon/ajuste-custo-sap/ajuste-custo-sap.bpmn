@@ -74,7 +74,7 @@ if(consulta_movimentos != []):
                     """
     
     deposito_estoque = Hana(connection).selectDb(query_deposito)
-    custo_produto_deposito = deposito_estoque[0]['avgprice']
+    custo_produto_deposito = float(deposito_estoque[0]['avgprice'].replace(",", "."))
     del(deposito_estoque)
     del(query_deposito)
     
