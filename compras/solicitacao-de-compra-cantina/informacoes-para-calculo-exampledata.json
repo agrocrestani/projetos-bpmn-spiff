@@ -8,6 +8,20 @@
   "OcrCode3": "24/25",
   "WhsCode": "01.FCOL",
   "MainUsage": "1",
+  "periodo": [
+    {
+      "value": "0",
+      "label": "0 - Semanal"
+    },
+    {
+      "value": "1",
+      "label": "1 - Quinzenal"
+    },
+    {
+      "value": "2",
+      "label": "2 - Mensal"
+    }
+  ],
   "solicitacao": [
     {}
   ],
@@ -121,34 +135,6 @@
     {
       "value": "01.FCUR",
       "label": "01.FCUR - ALMOXAR CURUPAI"
-    }
-  ],
-  n_utilizacoes": [
-    {
-      "value": "1",
-      "label": "001-AMOSTRA GRÁTIS"
-    },
-    {
-      "value": "2",
-      "label": "002-BONIFICAÇÃO"
-    },
-    {
-      "value": "3",
-      "label": "003-C INDUSTRIAL PF"
-    }
-  ],
-  "periodo": [
-    {
-      "value": "0",
-      "label": "0 - Semanal"
-    },
-    {
-      "value": "1",
-      "label": "1 - Quinzenal"
-    },
-    {
-      "value": "2",
-      "label": "2 - Mensal"
     }
   ]
 }
