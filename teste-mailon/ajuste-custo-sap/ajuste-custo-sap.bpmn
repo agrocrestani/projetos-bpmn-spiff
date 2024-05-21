@@ -406,7 +406,7 @@ del(consulta_movimentos)</spiffworkflow:preScript>
 </spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser>Produto: **{{produto}}** - {{desc_produto}} &lt;br&gt;
 Deposito: {{deposito}} &lt;br&gt;
-Custo Produto: {{ '{:,.3f}.format('custo_produto_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }}
+Custo Produto: {{ '{:,.3f}'.format(custo_produto_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }}
 
 
 ### Entrada
