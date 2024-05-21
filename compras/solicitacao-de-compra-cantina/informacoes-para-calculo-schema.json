@@ -58,7 +58,7 @@
     "U_RSD_Aplicacao": {
       "title": "Tipo Requisicao",
       "type": "string",
-      "default": "2"
+      "default": "2",
       "anyOf": [
         "options_from_task_data_var:n_tipo_requisicao"
       ]
