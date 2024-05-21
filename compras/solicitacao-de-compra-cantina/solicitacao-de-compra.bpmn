@@ -183,32 +183,32 @@ query = f"""
             WHERE t0."QryGroup3" = 'Y' AND t0."validFor" = 'Y'
           """
 
-# rsp = json.loads(Hana(connection).selectDb(query))
-rsp = Hana(connection).selectDb(query)
+rsp = json.loads(Hana(connection).selectDb(query))
+# rsp = Hana(connection).selectDb(query)
 
 
-# items_cantina = []
+items_cantina = []
 
-# for r in rsp:
-#     ItemCode = str(r['itemcode'])
-#     ItemName = str(r['itemname'])
-#     InvntryUom = str(r['invntryuom'])
-#     QtdeSugerida = (int(r['u_ac_qtdepessoasmes'])/30)*(qtdeColaboradores*periodo)
-#     items_cantina.append(
-#         {
-#             "search_term": ItemName, 
-#             "result": {
-#                 "ItemCode": ItemCode, 
-#                 "ItemName": ItemName, 
-#                 "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
-#                 "QtdeSugerida": QtdeSugerida
-#                 }
-#             }
-#         )
+for r in rsp:
+    ItemCode = str(r['itemcode'])
+    ItemName = str(r['itemname'])
+    InvntryUom = str(r['invntryuom'])
+    QtdeSugerida = (int(r['u_ac_qtdepessoasmes'])/30)*(qtdeColaboradores*periodo)
+    items_cantina.append(
+        {
+            "search_term": ItemName, 
+            "result": {
+                "ItemCode": ItemCode, 
+                "ItemName": ItemName, 
+                "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
+                "QtdeSugerida": QtdeSugerida
+                }
+            }
+        )
 
-# typeahead = {"items_cantina": items_cantina}
+typeahead = {"items_cantina": items_cantina}
 
-# del(connection)</bpmn:script>
+del(connection)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
