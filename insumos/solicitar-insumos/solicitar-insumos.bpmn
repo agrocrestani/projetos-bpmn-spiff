@@ -96,18 +96,12 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-pedido-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-pedido-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript>
-</spiffworkflow:preScript>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:preScript />
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_11ns8sw</bpmn:incoming>
       <bpmn:incoming>Flow_07fbtgz</bpmn:incoming>
       <bpmn:outgoing>Flow_1o5dvob</bpmn:outgoing>
-      <bpmn:property id="Property_1vt3imd" name="__targetRef_placeholder" />
-      <bpmn:dataInputAssociation id="DataInputAssociation_03oc4gb">
-        <bpmn:sourceRef>DataStoreReference_09apfr1</bpmn:sourceRef>
-        <bpmn:targetRef>Property_1vt3imd</bpmn:targetRef>
-      </bpmn:dataInputAssociation>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_0f3ld08" sourceRef="Activity_02zzhyq" targetRef="Activity_1rmlu9t" />
     <bpmn:userTask id="Activity_02zzhyq" name="Confirmar itens solicitados">
@@ -151,6 +145,11 @@ for u in utilizacoes:
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0f3ld08</bpmn:incoming>
       <bpmn:outgoing>Flow_11ns8sw</bpmn:outgoing>
+      <bpmn:property id="Property_1ueheqc" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_03oc4gb">
+        <bpmn:sourceRef>DataStoreReference_09apfr1</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1ueheqc</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
     </bpmn:businessRuleTask>
     <bpmn:serviceTask id="Activity_1juz99w" name="Emitir NFE">
       <bpmn:extensionElements>
@@ -710,12 +709,6 @@ del(connection)</bpmn:script>
         <dc:Bounds x="430" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_09apfr1_di" bpmnElement="DataStoreReference_09apfr1">
-        <dc:Bounds x="675" y="265" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="673" y="322" width="55" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1ce9xnd_di" bpmnElement="Activity_1rmlu9t">
         <dc:Bounds x="580" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -786,6 +779,12 @@ del(connection)</bpmn:script>
       <bpmndi:BPMNShape id="Activity_0dodh1z_di" bpmnElement="Activity_0z8kz3p">
         <dc:Bounds x="910" y="270" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_09apfr1_di" bpmnElement="DataStoreReference_09apfr1">
+        <dc:Bounds x="575" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="573" y="342" width="55" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_10fg20w_di" bpmnElement="Event_17q397d">
         <dc:Bounds x="942" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -814,8 +813,8 @@ del(connection)</bpmn:script>
         <di:waypoint x="880" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_03oc4gb_di" bpmnElement="DataInputAssociation_03oc4gb">
-        <di:waypoint x="718" y="265" />
-        <di:waypoint x="750" y="217" />
+        <di:waypoint x="613" y="285" />
+        <di:waypoint x="647" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0f3ld08_di" bpmnElement="Flow_0f3ld08">
         <di:waypoint x="530" y="177" />
