@@ -115,6 +115,14 @@ for u in utilizacoes:
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_13fehm8" sourceRef="Activity_160ldmq" targetRef="Activity_0qpzdpu" />
+    <bpmn:dataStoreReference id="DataStoreReference_0rjpdye" name="Utilizações" dataStoreRef="utilizacoes" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_0ess18n" name="Filiais" dataStoreRef="filiais" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_1wxeqbg" name="Departamentos" dataStoreRef="departamentos" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_1ln8zd2" name="Culturas" dataStoreRef="culturas" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_1o5t6ge" name="Tipo Requisição" dataStoreRef="tipo_requisicao" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_0dm57aw" name="Centros de Custo" dataStoreRef="centros_de_custo" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_13uzln6" name="Almoxarifados" dataStoreRef="almoxarifados" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_07gc9qu" name="Safras" dataStoreRef="safras" type="json" />
     <bpmn:userTask id="Activity_160ldmq" name="Informações para calculo">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># Solicitação de compra de materiais para cantina.
@@ -135,6 +143,10 @@ n_safras = []
 for s in safras:
     n_safras.append(s)
 </spiffworkflow:preScript>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="" />
+        </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_13fehm8</bpmn:outgoing>
@@ -148,14 +160,6 @@ for s in safras:
         <bpmn:targetRef>Property_0dlyti3</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
-    <bpmn:dataStoreReference id="DataStoreReference_0rjpdye" name="Utilizações" dataStoreRef="utilizacoes" type="json" />
-    <bpmn:dataStoreReference id="DataStoreReference_0ess18n" name="Filiais" dataStoreRef="filiais" type="json" />
-    <bpmn:dataStoreReference id="DataStoreReference_1wxeqbg" name="Departamentos" dataStoreRef="departamentos" type="json" />
-    <bpmn:dataStoreReference id="DataStoreReference_1ln8zd2" name="Culturas" dataStoreRef="culturas" type="json" />
-    <bpmn:dataStoreReference id="DataStoreReference_1o5t6ge" name="Tipo Requisição" dataStoreRef="tipo_requisicao" type="json" />
-    <bpmn:dataStoreReference id="DataStoreReference_0dm57aw" name="Centros de Custo" dataStoreRef="centros_de_custo" type="json" />
-    <bpmn:dataStoreReference id="DataStoreReference_13uzln6" name="Almoxarifados" dataStoreRef="almoxarifados" type="json" />
-    <bpmn:dataStoreReference id="DataStoreReference_07gc9qu" name="Safras" dataStoreRef="safras" type="json" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1tyx2x2">
@@ -178,10 +182,6 @@ for s in safras:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0xq3fic_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="509" y="147" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0qutju8_di" bpmnElement="Activity_160ldmq">
-        <dc:Bounds x="270" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_0rjpdye_di" bpmnElement="DataStoreReference_0rjpdye">
@@ -231,6 +231,10 @@ for s in safras:
         <bpmndi:BPMNLabel>
           <dc:Bounds x="303" y="31" width="33" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0qutju8_di" bpmnElement="Activity_160ldmq">
+        <dc:Bounds x="270" y="147" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="216" y="187" />
