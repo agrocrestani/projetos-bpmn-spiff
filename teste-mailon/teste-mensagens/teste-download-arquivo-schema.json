@@ -21,7 +21,7 @@
             "title": "Title",
             "description": "Please describe the task to complete"
           },
-          "documento": {
+          "num_documento": {
             "type": "string",
             "title": "Title",
             "description": "Please describe the task to complete"
