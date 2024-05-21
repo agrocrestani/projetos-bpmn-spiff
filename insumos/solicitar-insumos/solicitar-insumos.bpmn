@@ -202,23 +202,23 @@ headers = {
 # except:
 #     lancado = 0
 
-del(n_filiais)
-del(BPLId)
-del(BPLName)
-del(AliasName)
-del(solicitacao)
-del(CardCode)
-del(s)
-del(u)
-del(f)
-del(descricaoFilial)
-del(usuarioEmissorNFe)
-del(done)
-del(spiff_instancia)
-del(spiff_tarefa)
-del(taskInfo)
-del(items)
-del(payload)</spiffworkflow:postScript>
+# del(n_filiais)
+# del(BPLId)
+# del(BPLName)
+# del(AliasName)
+# del(solicitacao)
+# del(CardCode)
+# del(s)
+# del(u)
+# del(f)
+# del(descricaoFilial)
+# del(usuarioEmissorNFe)
+# del(done)
+# del(spiff_instancia)
+# del(spiff_tarefa)
+# del(taskInfo)
+# del(items)
+# del(payload)</spiffworkflow:postScript>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
