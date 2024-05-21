@@ -13,6 +13,7 @@
         <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_13pu6hq</bpmn:incoming>
+      <bpmn:incoming>Flow_10e4xqh</bpmn:incoming>
       <bpmn:outgoing>Flow_12354sq</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
@@ -249,7 +250,6 @@ del(produtosList)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:incoming>Flow_0ho3zz6</bpmn:incoming>
-      <bpmn:incoming>Flow_01j7fl4</bpmn:incoming>
       <bpmn:outgoing>Flow_13pu6hq</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:exclusiveGateway id="Gateway_0mqija0" default="Flow_1yez69d">
@@ -294,7 +294,7 @@ del(produtosList)</spiffworkflow:postScript>
     <bpmn:exclusiveGateway id="Gateway_0p3bhmm" default="Flow_1pd10hb">
       <bpmn:incoming>Flow_1n8yish</bpmn:incoming>
       <bpmn:outgoing>Flow_1pd10hb</bpmn:outgoing>
-      <bpmn:outgoing>Flow_01j7fl4</bpmn:outgoing>
+      <bpmn:outgoing>Flow_10e4xqh</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1pd10hb" sourceRef="Gateway_0p3bhmm" targetRef="EndEvent_1">
       <bpmn:conditionExpression>recalcular == False</bpmn:conditionExpression>
@@ -425,9 +425,7 @@ Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').r
       <bpmn:incoming>Flow_0kxg7eo</bpmn:incoming>
       <bpmn:outgoing>Flow_1n8yish</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_01j7fl4" sourceRef="Gateway_0p3bhmm" targetRef="Activity_00bh8bd">
-      <bpmn:conditionExpression>recalcular == True</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_10e4xqh" sourceRef="Gateway_0p3bhmm" targetRef="BuscaProdutosPorDepositoSAP" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
@@ -538,11 +536,11 @@ Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').r
         <di:waypoint x="1025" y="177" />
         <di:waypoint x="1122" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_01j7fl4_di" bpmnElement="Flow_01j7fl4">
+      <bpmndi:BPMNEdge id="Flow_10e4xqh_di" bpmnElement="Flow_10e4xqh">
         <di:waypoint x="1000" y="152" />
         <di:waypoint x="1000" y="40" />
-        <di:waypoint x="-100" y="40" />
-        <di:waypoint x="-100" y="137" />
+        <di:waypoint x="40" y="40" />
+        <di:waypoint x="40" y="137" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
