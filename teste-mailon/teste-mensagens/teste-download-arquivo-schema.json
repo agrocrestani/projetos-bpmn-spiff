@@ -21,5 +21,14 @@
           }
         }
       }
- 
+    "firstName": {
+      "type": "string",
+      "title": "First name",
+      "default": "Chuck"
+    }
+  },
+  "type": "object",
+  "required": [
+    "firstName"
+  ]
 }
