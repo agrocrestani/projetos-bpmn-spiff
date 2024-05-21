@@ -54,7 +54,7 @@ for i in n_almoxarifados:
           <spiffworkflow:property name="formJsonSchemaFilename" value="solicitacao-compra-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="solicitacao-compra-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:preScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
