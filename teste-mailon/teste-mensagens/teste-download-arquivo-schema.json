@@ -21,6 +21,7 @@
           }
         }
       }
+    },
     "firstName": {
       "type": "string",
       "title": "First name",
