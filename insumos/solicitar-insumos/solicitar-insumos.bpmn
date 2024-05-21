@@ -661,7 +661,7 @@ del(connection)</bpmn:script>
     <bpmn:sequenceFlow id="Flow_1b012sp" sourceRef="Event_17q397d" targetRef="Activity_0z8kz3p" />
     <bpmn:manualTask id="Activity_0z8kz3p" name="Verifica o Erro e tenta novamente">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser># Esta operação resultou em  &lt;font color="red"&gt;erro&lt;/font&gt; :
+        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
 
 ### Informações
 
