@@ -475,11 +475,6 @@ del(documentos)</spiffworkflow:postScript>
 | {{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_medio_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.')}} | {{'{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
 
 
-Custo Total Saída Calc.: {{ '{:,.3f}'.format(total_custo_calc_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
-
-
-Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
-
 | Num. | Origem | Num. Doc. | Quantidade | Custo Unitário  | Custo Total | Custo Médio Calc. | Custo Calc. | Estoque | Data | Canc. |
 | ------- | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- | --------- | ------- | ----- | ---- |
 {% for produto in consulta_movimentos_out %}
