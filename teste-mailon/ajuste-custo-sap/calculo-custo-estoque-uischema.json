@@ -1,7 +1,11 @@
 {
     "documentos": {
         "items":{
-            "tipo_documento": {}
+            "tipo_documento": {
+                "sm": 2,
+            "md": 2,
+            "lg": 2
+            }
         }
     }
 }
