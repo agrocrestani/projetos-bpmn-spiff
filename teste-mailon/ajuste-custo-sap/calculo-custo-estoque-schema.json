@@ -1,6 +1,6 @@
 {
   "properties": {
-    "done": {
+    "ra": {
       "type": "boolean",
       "title": "Done?",
       "default": false
