@@ -162,9 +162,8 @@ for u in utilizacoes:
 
 | Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade |
 | --------- | --------------| ------------------: | --------------------: | ----------- |
-{% for s in solicitacao %}
-{{s = json.loads(s['item'])}}
-| {{ s['item']['ItemCode'] }} | {{s['item']['ItemName']}} | {{s['item']['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} 
+{% for s in sol%}
+| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} 
 {%endfor%}
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>almoxarifado = ""
