@@ -204,7 +204,7 @@ headers = {
 # del(taskInfo)
 # del(items)
 # del(payload)</spiffworkflow:postScript>
-        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2">
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
             <spiffworkflow:parameter id="headers" type="any" value="headers" />
@@ -675,7 +675,7 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-solicitacao-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1k0vyfe</bpmn:incoming>
       <bpmn:incoming>Flow_0p10cpv</bpmn:incoming>
