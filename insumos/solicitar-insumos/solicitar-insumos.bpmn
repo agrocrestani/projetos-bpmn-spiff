@@ -714,10 +714,6 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       <bpmndi:BPMNShape id="Activity_0sfji19_di" bpmnElement="Activity_0jn1u2s">
         <dc:Bounds x="728" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_09ay0t4_di" bpmnElement="Activity_02zzhyq">
-        <dc:Bounds x="430" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_09apfr1_di" bpmnElement="DataStoreReference_09apfr1">
         <dc:Bounds x="575" y="285" width="50" height="50" />
         <bpmndi:BPMNLabel>
@@ -791,6 +787,10 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       <bpmndi:BPMNShape id="Activity_0dodh1z_di" bpmnElement="Activity_0z8kz3p">
         <dc:Bounds x="880" y="270" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09ay0t4_di" bpmnElement="Activity_02zzhyq">
+        <dc:Bounds x="420" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_10fg20w_di" bpmnElement="Event_17q397d">
         <dc:Bounds x="912" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -804,7 +804,7 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1roexn7_di" bpmnElement="Flow_1roexn7">
         <di:waypoint x="370" y="177" />
-        <di:waypoint x="430" y="177" />
+        <di:waypoint x="420" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1hak9da_di" bpmnElement="DataInputAssociation_1hak9da">
         <di:waypoint x="355" y="285" />
@@ -819,7 +819,7 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
         <di:waypoint x="880" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0f3ld08_di" bpmnElement="Flow_0f3ld08">
-        <di:waypoint x="530" y="177" />
+        <di:waypoint x="520" y="177" />
         <di:waypoint x="580" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_03n0dbr_di" bpmnElement="Flow_03n0dbr">
@@ -905,8 +905,8 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       <bpmndi:BPMNEdge id="Flow_07fbtgz_di" bpmnElement="Flow_07fbtgz">
         <di:waypoint x="930" y="350" />
         <di:waypoint x="930" y="380" />
-        <di:waypoint x="480" y="380" />
-        <di:waypoint x="480" y="217" />
+        <di:waypoint x="470" y="380" />
+        <di:waypoint x="470" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
