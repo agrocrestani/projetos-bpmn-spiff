@@ -1,5 +1,4 @@
 {
-  "title": "Text Field",
   "properties": {
     "documentos": {
       "type": "array",
