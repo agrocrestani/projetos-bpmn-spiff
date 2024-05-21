@@ -377,12 +377,12 @@ if isinstance(consulta_movimentos_out, list):
                 #Calcular Custo Médio da Entrada Ignorando documentos Selecionados
                 if(lista_documentos_ignorar != []):
                     for doc_ignorar in lista_documentos_ignorar:
-                        ignorar = False
+                        ignorar = True
                         tipo_ignorar = doc_ignorar["tipo_documento"]
                         num_ignorar = doc_ignorar["num_documento"]
                         for movimento in consulta_movimentos:
                             if movimento["origem"] == tipo_ignorar and movimento["docnum"] == num_ignorar:
-                                ignorar = True
+                                ignorar = False
                                 break
                     
                     if(ignorar == False):
