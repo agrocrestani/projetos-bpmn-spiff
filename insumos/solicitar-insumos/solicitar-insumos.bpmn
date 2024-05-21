@@ -97,7 +97,7 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
           <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-pedido-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:preScript />
-        <spiffworkflow:postScript />
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_11ns8sw</bpmn:incoming>
       <bpmn:incoming>Flow_1o9xnnn</bpmn:incoming>
@@ -116,6 +116,7 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
 
 - [ ] Confira todos os itens abaixo, observando principalmente as embalagens para que sejam carregadas as embalagem sem a necessidade de violação das mesmas.
 - [ ] Nesta estapa você deve  fazer todos os ajustes no pedido e valida-lo com o solicitante.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
       <bpmn:outgoing>Flow_0f3ld08</bpmn:outgoing>
@@ -687,7 +688,9 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       <bpmn:extensionElements>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-solicitacao-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-solicitacao-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0fvum0a</bpmn:incoming>
       <bpmn:outgoing>Flow_1o9xnnn</bpmn:outgoing>
@@ -723,6 +726,10 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0sfji19_di" bpmnElement="Activity_0jn1u2s">
         <dc:Bounds x="728" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09ay0t4_di" bpmnElement="Activity_02zzhyq">
+        <dc:Bounds x="420" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_09apfr1_di" bpmnElement="DataStoreReference_09apfr1">
         <dc:Bounds x="575" y="285" width="50" height="50" />
@@ -796,10 +803,6 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0dodh1z_di" bpmnElement="Activity_0z8kz3p">
         <dc:Bounds x="880" y="270" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_09ay0t4_di" bpmnElement="Activity_02zzhyq">
-        <dc:Bounds x="420" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0u6nwgd_di" bpmnElement="Activity_04cehv4">
         <dc:Bounds x="880" y="390" width="100" height="80" />
