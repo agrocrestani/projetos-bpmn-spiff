@@ -144,8 +144,8 @@ for s in safras:
     n_safras.append(s)
 </spiffworkflow:preScript>
         <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="" />
-          <spiffworkflow:property name="formUiSchemaFilename" value="" />
+          <spiffworkflow:property name="formJsonSchemaFilename" value="informacoes-para-calculo-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="informacoes-para-calculo-uischema.json" />
         </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
@@ -272,6 +272,14 @@ for s in safras:
         <di:waypoint x="560" y="42" />
         <di:waypoint x="562" y="147" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0ri5kgb_di" bpmnElement="DataInputAssociation_0ri5kgb">
+        <di:waypoint x="685" y="38" />
+        <di:waypoint x="562" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_09dn80q_di" bpmnElement="DataInputAssociation_09dn80q">
+        <di:waypoint x="795" y="45" />
+        <di:waypoint x="608" y="154" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0w8lbnm_di" bpmnElement="DataInputAssociation_0w8lbnm">
         <di:waypoint x="235" y="105" />
         <di:waypoint x="308" y="147" />
@@ -279,14 +287,6 @@ for s in safras:
       <bpmndi:BPMNEdge id="DataInputAssociation_0ui77xh_di" bpmnElement="DataInputAssociation_0ui77xh">
         <di:waypoint x="320" y="105" />
         <di:waypoint x="320" y="147" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_09dn80q_di" bpmnElement="DataInputAssociation_09dn80q">
-        <di:waypoint x="795" y="45" />
-        <di:waypoint x="608" y="154" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0ri5kgb_di" bpmnElement="DataInputAssociation_0ri5kgb">
-        <di:waypoint x="685" y="38" />
-        <di:waypoint x="562" y="147" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
