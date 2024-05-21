@@ -100,7 +100,6 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
         <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_11ns8sw</bpmn:incoming>
-      <bpmn:incoming>Flow_07fbtgz</bpmn:incoming>
       <bpmn:outgoing>Flow_1o5dvob</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_0f3ld08" sourceRef="Activity_02zzhyq" targetRef="Activity_1rmlu9t" />
@@ -118,6 +117,7 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
 - [ ] Nesta estapa você deve  fazer todos os ajustes no pedido e valida-lo com o solicitante.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
+      <bpmn:incoming>Flow_07fbtgz</bpmn:incoming>
       <bpmn:outgoing>Flow_0f3ld08</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:dataStoreReference id="DataStoreReference_09apfr1" name="Utilizações" dataStoreRef="utilizacoes" type="json" />
@@ -682,7 +682,7 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       <bpmn:incoming>Flow_1b012sp</bpmn:incoming>
       <bpmn:outgoing>Flow_07fbtgz</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:sequenceFlow id="Flow_07fbtgz" sourceRef="Activity_0z8kz3p" targetRef="Activity_0jn1u2s" />
+    <bpmn:sequenceFlow id="Flow_07fbtgz" sourceRef="Activity_0z8kz3p" targetRef="Activity_02zzhyq" />
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
@@ -903,9 +903,10 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
         <di:waypoint x="930" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_07fbtgz_di" bpmnElement="Flow_07fbtgz">
-        <di:waypoint x="880" y="310" />
-        <di:waypoint x="790" y="310" />
-        <di:waypoint x="790" y="217" />
+        <di:waypoint x="930" y="350" />
+        <di:waypoint x="930" y="380" />
+        <di:waypoint x="480" y="380" />
+        <di:waypoint x="480" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
