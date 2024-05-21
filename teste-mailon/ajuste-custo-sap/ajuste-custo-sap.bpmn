@@ -425,7 +425,9 @@ Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').r
       <bpmn:incoming>Flow_0kxg7eo</bpmn:incoming>
       <bpmn:outgoing>Flow_1n8yish</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_10e4xqh" sourceRef="Gateway_0p3bhmm" targetRef="BuscaProdutosPorDepositoSAP" />
+    <bpmn:sequenceFlow id="Flow_10e4xqh" sourceRef="Gateway_0p3bhmm" targetRef="BuscaProdutosPorDepositoSAP">
+      <bpmn:conditionExpression>recalcular == True</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
@@ -538,8 +540,8 @@ Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').r
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_10e4xqh_di" bpmnElement="Flow_10e4xqh">
         <di:waypoint x="1000" y="152" />
-        <di:waypoint x="1000" y="40" />
-        <di:waypoint x="40" y="40" />
+        <di:waypoint x="1000" y="20" />
+        <di:waypoint x="40" y="20" />
         <di:waypoint x="40" y="137" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
