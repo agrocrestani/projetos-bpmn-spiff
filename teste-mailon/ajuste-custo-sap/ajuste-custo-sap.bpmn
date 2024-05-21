@@ -322,6 +322,7 @@ del(produtosList)</spiffworkflow:postScript>
 total_preco_unitario_entrada = 0
 total_quantidade_entrada = 0
 custo_medio_total_calculado_entrada = 0
+custo_medio_unitario_calculado_entrada = 0
 
 try:
   if(lista_documentos_ignorar):
@@ -387,6 +388,11 @@ if isinstance(consulta_movimentos_out, list):
                     
                     if(ignorar == False):
                         custo_medio_total_calculado_entrada += produtoAux['custo_medio_calc']
+
+                        if(custo_medio_unitario_calculado_entrada &gt; 0 ):
+                            custo_medio_unitario_calculado_entrada = (custo_medio_unitario_calculado_entrada + produtoAux['custo_medio'])/2
+                        else:
+                            custo_medio_unitario_calculado_entrada =  produtoAux['custo_medio']
                 else:
                     custo_medio_total_calculado_entrada += produtoAux['custo_medio_calc']
             else:
