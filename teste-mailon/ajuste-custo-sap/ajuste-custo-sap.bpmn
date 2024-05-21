@@ -423,7 +423,9 @@ Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').r
       <bpmn:incoming>Flow_0kxg7eo</bpmn:incoming>
       <bpmn:outgoing>Flow_1n8yish</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_01j7fl4" sourceRef="Gateway_0p3bhmm" targetRef="Activity_00bh8bd" />
+    <bpmn:sequenceFlow id="Flow_01j7fl4" sourceRef="Gateway_0p3bhmm" targetRef="Activity_00bh8bd">
+      <bpmn:conditionExpression>recalcular == True</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
