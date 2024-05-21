@@ -101,7 +101,7 @@
       "type": "string",
       "title": "Observações"
     },
-    "qtdeRefe": {
+    "qtde": {
       "title": "Utilizacao",
       "type": "string",
       "anyOf": [
