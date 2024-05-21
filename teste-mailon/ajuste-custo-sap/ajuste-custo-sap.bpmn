@@ -13,7 +13,6 @@
         <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_13pu6hq</bpmn:incoming>
-      <bpmn:incoming>Flow_15z4322</bpmn:incoming>
       <bpmn:outgoing>Flow_12354sq</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
@@ -250,6 +249,7 @@ del(produtosList)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:incoming>Flow_0ho3zz6</bpmn:incoming>
+      <bpmn:incoming>Flow_01j7fl4</bpmn:incoming>
       <bpmn:outgoing>Flow_13pu6hq</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:exclusiveGateway id="Gateway_0mqija0" default="Flow_1yez69d">
@@ -294,13 +294,10 @@ del(produtosList)</spiffworkflow:postScript>
     <bpmn:exclusiveGateway id="Gateway_0p3bhmm" default="Flow_1pd10hb">
       <bpmn:incoming>Flow_1n8yish</bpmn:incoming>
       <bpmn:outgoing>Flow_1pd10hb</bpmn:outgoing>
-      <bpmn:outgoing>Flow_15z4322</bpmn:outgoing>
+      <bpmn:outgoing>Flow_01j7fl4</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1pd10hb" sourceRef="Gateway_0p3bhmm" targetRef="EndEvent_1">
       <bpmn:conditionExpression>recalcular == False</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_15z4322" sourceRef="Gateway_0p3bhmm" targetRef="BuscaProdutosPorDepositoSAP">
-      <bpmn:conditionExpression>recalcular == True</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:userTask id="EntradasItens" name="Entradas dos Itens">
       <bpmn:extensionElements>
@@ -426,24 +423,19 @@ Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').r
       <bpmn:incoming>Flow_0kxg7eo</bpmn:incoming>
       <bpmn:outgoing>Flow_1n8yish</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_01j7fl4" sourceRef="Gateway_0p3bhmm" targetRef="Activity_00bh8bd" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-258" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
-        <dc:Bounds x="-10" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0p3bhmm_di" bpmnElement="Gateway_0p3bhmm" isMarkerVisible="true">
-        <dc:Bounds x="975" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="1122" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="EntradasItens">
-        <dc:Bounds x="830" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
+        <dc:Bounds x="-10" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
@@ -489,6 +481,12 @@ Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').r
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
         <dc:Bounds x="1072" y="372" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0p3bhmm_di" bpmnElement="Gateway_0p3bhmm" isMarkerVisible="true">
+        <dc:Bounds x="975" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="EntradasItens">
+        <dc:Bounds x="830" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-222" y="177" />
@@ -536,11 +534,11 @@ Quantidade Total Estoque: {{ '{:,.3f}'.format(total_estoque).replace(',', ' ').r
         <di:waypoint x="1025" y="177" />
         <di:waypoint x="1122" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_15z4322_di" bpmnElement="Flow_15z4322">
+      <bpmndi:BPMNEdge id="Flow_01j7fl4_di" bpmnElement="Flow_01j7fl4">
         <di:waypoint x="1000" y="152" />
-        <di:waypoint x="1000" y="30" />
-        <di:waypoint x="40" y="30" />
-        <di:waypoint x="40" y="137" />
+        <di:waypoint x="1000" y="40" />
+        <di:waypoint x="-100" y="40" />
+        <di:waypoint x="-100" y="137" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
