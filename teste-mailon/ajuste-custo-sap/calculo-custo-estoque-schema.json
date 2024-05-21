@@ -1,6 +1,6 @@
 {
   
-
+"type": "object",
   "properties": {
     "recalcular": {
       "type": "boolean",
