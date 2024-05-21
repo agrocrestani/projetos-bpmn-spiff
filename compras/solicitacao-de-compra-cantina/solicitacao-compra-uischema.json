@@ -79,7 +79,7 @@
         "ui:widget": "typeahead",
         "ui:options": {
           "category": "items_cantina",
-          "itemFormat": "{ItemName} - Sug.({ItemCode} -{InvntryUom})"
+          "itemFormat": "{ItemName} - Sug.Compra: ({ItemCode} -{InvntryUom})"
         }
       }
     }
