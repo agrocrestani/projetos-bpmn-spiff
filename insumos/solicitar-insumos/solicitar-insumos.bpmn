@@ -107,7 +107,9 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
     <bpmn:businessRuleTask id="Activity_1rmlu9t" name="Definir cliente NFe">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
-        <spiffworkflow:postScript>for s in solicitacao:
+        <spiffworkflow:postScript>solicitacao_bkp = solicitacao
+
+for s in solicitacao:
     s['insumo'] = json.loads(s['insumo'])
 
 
@@ -659,7 +661,7 @@ command = err1['command_response_body']
 command = json.loads(command)
 errorCode = command['body']['error']['code']
 errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
-        <spiffworkflow:postScript />
+        <spiffworkflow:postScript>solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1b012sp</bpmn:incoming>
       <bpmn:outgoing>Flow_0p10cpv</bpmn:outgoing>
