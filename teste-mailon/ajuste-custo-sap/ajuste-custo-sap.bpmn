@@ -380,7 +380,7 @@ if isinstance(consulta_movimentos_out, list):
                                 ignorar = True
                                 break
                     
-                    if(ignorar == False)
+                    if(ignorar == False):
                         custo_medio_total_calculado_entrada += produtoAux['custo_medio_calc']
                 else:
                     custo_medio_total_calculado_entrada += produtoAux['custo_medio_calc']
