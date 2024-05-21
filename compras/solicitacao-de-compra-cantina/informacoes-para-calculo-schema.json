@@ -126,7 +126,7 @@
         {
           "type": "string",
           "enum": [
-            "3"
+            "2"
           ],
           "title": "2 - Mensal"
         }
