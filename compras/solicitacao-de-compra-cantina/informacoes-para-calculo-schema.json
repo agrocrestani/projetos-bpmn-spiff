@@ -94,7 +94,7 @@
     "MainUsage": {
       "title": "Utilizacao",
       "type": "string",
-      "default": ""
+      "default": "12",
       "anyOf": [
         "options_from_task_data_var:n_utilizacoes"
       ]
