@@ -1,7 +1,7 @@
 {
     "documentos": {
         "items":{
-            "tipo_documento"
+            "tipo_documento": {}
         }
     }
 }
