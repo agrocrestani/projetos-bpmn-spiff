@@ -14,10 +14,7 @@
         "properties": {
           "tipo_documento": {
             "type": "string",
-            "title": "Tipo de Documento",
-            "anyOf": [
-              "options_from_task_data_var:depositosList"
-            ]
+            "title": "Tipo de Documento"
           },
           "num_documento": {
             "type": "string",
