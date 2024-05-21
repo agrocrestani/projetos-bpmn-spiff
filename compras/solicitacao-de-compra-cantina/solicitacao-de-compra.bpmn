@@ -193,7 +193,7 @@ for r in rsp:
     ItemCode = str(r['itemcode'])
     ItemName = str(r['itemname'])
     InvntryUom = str(r['invntryuom'])
-    QtdeSugerida = (int(r['u_ac_qtdepessoasmes'])/30)*(qtdeColaboradores*periodo)
+    QtdeSugerida = (int(r['u_ac_qtdepessoames'])/30)*(qtdeColaboradores*periodo)
     items_cantina.append(
         {
             "search_term": ItemName, 
