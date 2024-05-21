@@ -13,7 +13,7 @@
       "items": {
         "type": "object",
         "required": [
-          "title"
+          "tipo_documento"
         ],
         "properties": {
           "tipo_documento": {
