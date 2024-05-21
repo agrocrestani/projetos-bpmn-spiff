@@ -7,7 +7,7 @@
       "title": "Done?",
       "default": false
     },
-    "tasks": {
+    "documentos": {
       "type": "array",
       "title": "Tasks",
       "items": {
