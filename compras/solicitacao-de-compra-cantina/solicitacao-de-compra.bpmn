@@ -128,7 +128,6 @@ for u in utilizacoes:
       <bpmn:incoming>Flow_1hh3d5j</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1vv2v9g" sourceRef="Activity_1szha9h" targetRef="Activity_0qpzdpu" />
-    <bpmn:dataStoreReference id="DataStoreReference_1cglvny" name="Typeahead (modelo)" dataStoreRef="typeahead" />
     <bpmn:scriptTask id="Activity_0856rbm" name="Enviar para o SAP">
       <bpmn:incoming>Flow_1y37zi6</bpmn:incoming>
       <bpmn:outgoing>Flow_1hh3d5j</bpmn:outgoing>
@@ -163,6 +162,11 @@ for i in n_almoxarifados:
       <bpmn:incoming>Flow_1vv2v9g</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_16l24wu" sourceRef="Activity_13g9nwv" targetRef="Activity_1szha9h" />
+    <bpmn:callActivity id="Activity_13g9nwv" name="Atualiza Itens" calledElement="itens_cantina">
+      <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
+      <bpmn:outgoing>Flow_16l24wu</bpmn:outgoing>
+    </bpmn:callActivity>
     <bpmn:scriptTask id="Activity_1szha9h" name="Busca itens da cantina">
       <bpmn:incoming>Flow_16l24wu</bpmn:incoming>
       <bpmn:outgoing>Flow_1vv2v9g</bpmn:outgoing>
@@ -215,11 +219,7 @@ typeahead = {"items_cantina": items_cantina}
 
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:sequenceFlow id="Flow_16l24wu" sourceRef="Activity_13g9nwv" targetRef="Activity_1szha9h" />
-    <bpmn:callActivity id="Activity_13g9nwv" name="Atualiza Itens" calledElement="itens_cantina">
-      <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
-      <bpmn:outgoing>Flow_16l24wu</bpmn:outgoing>
-    </bpmn:callActivity>
+    <bpmn:dataStoreReference id="DataStoreReference_1cglvny" name="Typeahead (modelo)" dataStoreRef="typeahead" />
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -285,12 +285,6 @@ del(connection)</bpmn:script>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="1382" y="169" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1cglvny_di" bpmnElement="DataStoreReference_1cglvny">
-        <dc:Bounds x="655" y="25" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="653" y="82" width="54" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1ozxjmx_di" bpmnElement="Activity_0856rbm">
         <dc:Bounds x="1130" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -303,13 +297,19 @@ del(connection)</bpmn:script>
         <dc:Bounds x="860" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1qzb6rj_di" bpmnElement="Activity_1szha9h">
-        <dc:Bounds x="720" y="147" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1c7gl9e_di" bpmnElement="Activity_13g9nwv">
         <dc:Bounds x="470" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1qzb6rj_di" bpmnElement="Activity_1szha9h">
+        <dc:Bounds x="620" y="147" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1cglvny_di" bpmnElement="DataStoreReference_1cglvny">
+        <dc:Bounds x="725" y="25" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="723" y="82" width="54" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="216" y="187" />
@@ -332,12 +332,12 @@ del(connection)</bpmn:script>
         <di:waypoint x="470" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1vv2v9g_di" bpmnElement="Flow_1vv2v9g">
-        <di:waypoint x="820" y="187" />
+        <di:waypoint x="720" y="187" />
         <di:waypoint x="860" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_16l24wu_di" bpmnElement="Flow_16l24wu">
         <di:waypoint x="570" y="187" />
-        <di:waypoint x="720" y="187" />
+        <di:waypoint x="620" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0w8lbnm_di" bpmnElement="DataInputAssociation_0w8lbnm">
         <di:waypoint x="223" y="71" />
@@ -372,8 +372,8 @@ del(connection)</bpmn:script>
         <di:waypoint x="381" y="147" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_0icmctq_di" bpmnElement="DataOutputAssociation_0icmctq">
-        <di:waypoint x="744" y="147" />
-        <di:waypoint x="696" y="75" />
+        <di:waypoint x="693" y="147" />
+        <di:waypoint x="736" y="75" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
