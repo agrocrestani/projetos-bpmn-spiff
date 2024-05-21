@@ -74,7 +74,14 @@
           "md": 2,
           "lg": 2
         }
-      }]
+      }],
+      "item": {
+        "ui:widget": "typeahead",
+        "ui:options": {
+          "category": "material_expediente",
+          "itemFormat": "{ItemName} ({ItemCode} - {ItmsGrpNam})"
+        }
+      }
     }
   }
 }
