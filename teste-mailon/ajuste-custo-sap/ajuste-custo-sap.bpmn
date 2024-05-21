@@ -474,6 +474,7 @@ del(documentos)</spiffworkflow:postScript>
 | ---------------------: | ----------------: | --------------: |
 | {{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_medio_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.')}} | {{'{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
 
+### Movimentações
 
 | Num. | Origem | Num. Doc. | Quantidade | Custo Unitário  | Custo Total | Custo Médio Calc. | Custo Calc. | Estoque | Data | Canc. |
 | ------- | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- | --------- | ------- | ----- | ---- |
@@ -501,6 +502,9 @@ del(documentos)</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
+        <dc:Bounds x="1122" y="372" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
@@ -543,9 +547,6 @@ del(documentos)</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Activity_0tm9ngj_di" bpmnElement="MovimentoEntradaNaoEncontrado">
         <dc:Bounds x="-10" y="250" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
-        <dc:Bounds x="1072" y="372" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0p3bhmm_di" bpmnElement="Gateway_0p3bhmm" isMarkerVisible="true">
         <dc:Bounds x="975" y="152" width="50" height="50" />
@@ -593,7 +594,7 @@ del(documentos)</spiffworkflow:postScript>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0gpghte_di" bpmnElement="Flow_0gpghte">
         <di:waypoint x="65" y="390" />
-        <di:waypoint x="1072" y="390" />
+        <di:waypoint x="1122" y="390" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1pd10hb_di" bpmnElement="Flow_1pd10hb">
         <di:waypoint x="1025" y="177" />
