@@ -10,8 +10,7 @@
       "OcrCode",
       "OcrCode3",
       "WhsCode",
-      "MainUsage",
-      "solicitacao"
+      "MainUsage"
     ],
   "properties": {
     "BPLId": {
