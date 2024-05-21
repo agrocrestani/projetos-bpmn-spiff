@@ -187,26 +187,26 @@ query = f"""
 rsp = Hana(connection).selectDb(query)
 
 
-estoque_de_insumos = []
+items_cantina = []
 
 for r in rsp:
     ItemCode = str(r['itemcode'])
     ItemName = str(r['itemname'])
     InvntryUom = str(r['invntryuom'])
-    QtdeSugerida = int(r['u_ac_qtdepessoasmes'])*
-    estoque_de_insumos.append(
+    QtdeSugerida = (int(r['u_ac_qtdepessoasmes'])/30)*(qtdeColaboradores*periodo)
+    items_cantina.append(
         {
             "search_term": ItemName, 
             "result": {
                 "ItemCode": ItemCode, 
                 "ItemName": ItemName, 
-                "ItmsGrpNam": ItmsGrpNam,
                 "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
-                "OnHand": OnHand,
-                "WhsCode": WhsCode
+                "QtdeSugerida": QtdeSugerida
                 }
             }
         )
+
+typeahead = {"items_cantina": items_cantina}
 
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
