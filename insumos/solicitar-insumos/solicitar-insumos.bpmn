@@ -97,8 +97,7 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
           <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-pedido-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:preScript>for s in solicitacao:
-    if not s['insumo']:
-        s['insumo'] = json.loads(s['insumo'])
+    s['insumo'] = json.loads(s['insumo'])
 
 
 descricaoFilial = ""
