@@ -9,7 +9,7 @@
     },
     "documentos": {
       "type": "array",
-      "title": "Tasks",
+      "title": "Igno",
       "items": {
         "type": "object",
         "required": [
