@@ -121,17 +121,7 @@ for u in utilizacoes:
         <bpmn:targetRef>Property_0dlyti3</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
-    <bpmn:endEvent id="EndEvent_1">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1hh3d5j</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1vv2v9g" sourceRef="Activity_1szha9h" targetRef="Activity_0qpzdpu" />
-    <bpmn:scriptTask id="Activity_0856rbm" name="Enviar para o SAP">
-      <bpmn:incoming>Flow_1y37zi6</bpmn:incoming>
-      <bpmn:outgoing>Flow_1hh3d5j</bpmn:outgoing>
-    </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_16l24wu" sourceRef="Activity_13g9nwv" targetRef="Activity_1szha9h" />
     <bpmn:callActivity id="Activity_13g9nwv" name="Atualiza Itens" calledElement="itens_cantina">
       <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
@@ -204,13 +194,13 @@ del(connection)</bpmn:script>
     </bpmn:userTask>
     <bpmn:manualTask id="Activity_0xafkf4" name="Aprovação do gestor">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser># Solicitação de Compras para Cantina
 
-## Solicitação de Compras
-
-|**Unidade:** |{{unidade}}|
-
-|**Depósito**: |{{almoxarifado}}|
+| Campo | Conteudo |
+| ---------: | --------------|
+|Unidade: |{{unidade}}|
+|Depósito: |{{almoxarifado}}|
+|
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>almoxarifado = ""
 for i in n_almoxarifados:
@@ -220,6 +210,16 @@ for i in n_almoxarifados:
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1y37zi6</bpmn:outgoing>
     </bpmn:manualTask>
+    <bpmn:scriptTask id="Activity_0856rbm" name="Enviar para o SAP">
+      <bpmn:incoming>Flow_1y37zi6</bpmn:incoming>
+      <bpmn:outgoing>Flow_1hh3d5j</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1hh3d5j</bpmn:incoming>
+    </bpmn:endEvent>
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -282,13 +282,6 @@ for i in n_almoxarifados:
         <dc:Bounds x="320" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1382" y="169" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1ozxjmx_di" bpmnElement="Activity_0856rbm">
-        <dc:Bounds x="1130" y="147" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1c7gl9e_di" bpmnElement="Activity_13g9nwv">
         <dc:Bounds x="470" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -308,24 +301,31 @@ for i in n_almoxarifados:
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1izsqe5_di" bpmnElement="Activity_0xafkf4">
-        <dc:Bounds x="930" y="147" width="100" height="80" />
+        <dc:Bounds x="920" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ozxjmx_di" bpmnElement="Activity_0856rbm">
+        <dc:Bounds x="1090" y="147" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1282" y="169" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="216" y="187" />
         <di:waypoint x="320" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1hh3d5j_di" bpmnElement="Flow_1hh3d5j">
-        <di:waypoint x="1230" y="187" />
-        <di:waypoint x="1382" y="187" />
+        <di:waypoint x="1190" y="187" />
+        <di:waypoint x="1282" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="870" y="187" />
-        <di:waypoint x="930" y="187" />
+        <di:waypoint x="920" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1y37zi6_di" bpmnElement="Flow_1y37zi6">
-        <di:waypoint x="1030" y="187" />
-        <di:waypoint x="1130" y="187" />
+        <di:waypoint x="1020" y="187" />
+        <di:waypoint x="1090" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13fehm8_di" bpmnElement="Flow_13fehm8">
         <di:waypoint x="420" y="187" />
