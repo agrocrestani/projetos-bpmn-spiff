@@ -69,7 +69,20 @@ if(consulta_movimentos != []):
     um_produto_estoque = Hana(connection).selectDb(query_um_produto_estoque)
     
     desc_produto = um_produto_estoque[1]['itemname']
-
+    SELECT t0."AvgPrice"  FROM OITW t0 WHERE t0."ItemCode" = '011021' AND t0."WhsCode" = 
+    
+    query_deposito = f"""
+                    SELECT  
+                        CAST(t0."AvgPrice" AS VARCHAR(50)) AS "AvgPrice"
+                    FROM {baseSap}.OITW t0
+                    WHERE t0."ItemCode" = '{produto}' AND t0."WhsCode" = '{deposito}';
+                    """
+    
+    deposito_estoque = Hana(connection).selectDb(query_um_produto_estoque)
+    custo_produto_deposito = deposito_estoque[0]['avgprice']
+    del(deposito_estoque)
+    del(query_deposito)
+    
     num_movimentos = 0
 
     # Lista para armazenar os elementos a serem removidos
