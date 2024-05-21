@@ -325,6 +325,17 @@ custo_medio_total_calculado_entrada = 0
 lista_documentos_ignorar = []
 
 origens_unicas = list(set(item["origem"] for item in consulta_movimentos))
+origens_unicas_list = []
+for origem in origens_unicas:
+    origens_unicas_list.append(
+        {
+            "value" : origem ,
+            "label" : origem
+        }
+    )
+
+del(origens_unicas)
+del(origem)
 
 total_preco_unitario_saida = 0
 total_quantidade_saida = 0
