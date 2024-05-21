@@ -162,7 +162,7 @@ for i in n_almoxarifados:
       <bpmn:incoming>Flow_1y37zi6</bpmn:incoming>
       <bpmn:outgoing>Flow_1hh3d5j</bpmn:outgoing>
     </bpmn:scriptTask>
-    <bpmn:dataStoreReference id="DataStoreReference_1cglvny" name="Typeahead (modelo)" dataStoreRef="typeahead" type="kkv" />
+    <bpmn:dataStoreReference id="DataStoreReference_1cglvny" name="Typeahead (modelo)" dataStoreRef="typeahead" />
     <bpmn:scriptTask id="Activity_1szha9h" name="Busca itens da cantina">
       <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
       <bpmn:outgoing>Flow_1vv2v9g</bpmn:outgoing>
