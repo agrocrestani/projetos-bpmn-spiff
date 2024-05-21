@@ -124,7 +124,7 @@
           "enum": [
             "15"
           ],
-          "title": "1 - Quinzenal"
+          "title": "15 - Quinzenal"
         },
         {
           "type": "string",
