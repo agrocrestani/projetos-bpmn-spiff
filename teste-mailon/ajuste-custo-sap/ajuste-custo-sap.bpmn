@@ -409,7 +409,7 @@ del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser>
 | Produto | Deposito | Em Estoque | Custo Unitário |  
 | ----------- | ----------- | ----------------: | -----------------: |
-| **{{produto}}** - {{desc_produto}} | {{deposito}} | '{:,.3f}'.format(on_hand_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |{{ '{:,.3f}'.format(custo_produto_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | 
+| **{{produto}}** - {{desc_produto}} | {{deposito}} | {{ '{:,.3f}'.format(on_hand_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_produto_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | 
 
 
 ### Entrada
