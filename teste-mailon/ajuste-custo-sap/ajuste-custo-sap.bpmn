@@ -321,6 +321,10 @@ del(produtosList)</spiffworkflow:postScript>
         <spiffworkflow:preScript># Inicialize as variáveis para calcular o custo médio unitário
 total_preco_unitario_entrada = 0
 total_quantidade_entrada = 0
+custo_medio_total_calculado_entrada = 0
+lista_documentos_ignorar = []
+
+
 
 total_preco_unitario_saida = 0
 total_quantidade_saida = 0
@@ -355,6 +359,10 @@ if isinstance(consulta_movimentos_out, list):
                 produtoAux['custo_medio_calc'] = custo_medio * produtoAux['qtde']
                 produtoAux['custo_total_contabil'] = produtoAux['linetotal']
 
+                if(lista_documentos_ignorar != []):
+                    custo_medio_total_calculado_entrada += 0
+                else:
+                    custo_medio_total_calculado_entrada += produtoAux['custo_medio_calc']
             else:
                 produtoAux['custo_medio'] = 000.000
                 produtoAux['estoque_atual'] = 000.000
@@ -407,16 +415,18 @@ del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript>del(consulta_movimentos_out)
 </spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser>
-| Produto | Deposito | Em Estoque | Custo Unitário |  
+| Produto | Deposito | Em Estoque | Custo Unitário | 
 | ----------- | ----------- | ----------------: | -----------------: |
 | **{{produto}}** - {{desc_produto}} | {{deposito}} | {{ '{:,.3f}'.format(on_hand_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_produto_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | 
 
 
 ### Entrada
 
-| Quantidade Total | Custo Médio | Custo Total |
-| ---------------------: | ----------------: | --------------: |
+| Quantidade Total | Custo Médio | Custo Total | Custo Total Calc. |
+| ---------------------: | ----------------: | --------------: | ----------------------: |
 | {{ '{:,.3f}'.format(total_quantidade_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_medio_unitario_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.')}} | {{'{:,.3f}'.format(total_preco_unitario_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
+{{'{:,.3f}'.format(custo_medio_total_calculado_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
+
 
 ### Saida
 
