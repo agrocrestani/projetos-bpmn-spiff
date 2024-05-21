@@ -392,9 +392,14 @@ if isinstance(consulta_movimentos_out, list):
                         if(custo_medio_unitario_calculado_entrada &gt; 0 ):
                             custo_medio_unitario_calculado_entrada = (custo_medio_unitario_calculado_entrada + produtoAux['custo_medio'])/2
                         else:
-                            custo_medio_unitario_calculado_entrada =  produtoAux['custo_medio']
+                            custo_medio_unitario_calculado_entrada = produtoAux['custo_medio']                          
                 else:
                     custo_medio_total_calculado_entrada += produtoAux['custo_medio_calc']
+                    
+                    if(custo_medio_unitario_calculado_entrada &gt; 0 ):
+                        custo_medio_unitario_calculado_entrada = (custo_medio_unitario_calculado_entrada + produtoAux['custo_medio'])/2
+                    else:
+                        custo_medio_unitario_calculado_entrada = produtoAux['custo_medio']
             else:
                 produtoAux['custo_medio'] = 000.000
                 produtoAux['estoque_atual'] = 000.000
