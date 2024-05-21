@@ -60,12 +60,15 @@ consulta_movimentos = Hana(connection).selectDb(query_movimento)
 if(consulta_movimentos != []):
     query_um_produto_estoque =  f"""
                     SELECT  
-                        t0."InvntryUom"
+                        t0."InvntryUom",
+                        t0."ItemName"
                     FROM {baseSap}.OITM t0
                     WHERE t0."ItemCode" = '{produto}';
                     """
 
     um_produto_estoque = Hana(connection).selectDb(query_um_produto_estoque)
+    
+    desc_produto = um_produto_estoque[1]['itemname']
 
     num_movimentos = 0
 
@@ -393,7 +396,8 @@ recalcular = False
 del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript>del(consulta_movimentos_out)
 </spiffworkflow:postScript>
-        <spiffworkflow:instructionsForEndUser>Produto: {{produto}}    | Deposito: {{deposito}}
+        <spiffworkflow:instructionsForEndUser>Produto: **{{produto}}** - {{desc_produto}} &lt;br&gt;
+Deposito: {{deposito}}
 
 
 ### Entrada
