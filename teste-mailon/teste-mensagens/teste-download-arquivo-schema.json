@@ -22,7 +22,7 @@
           },
           "num_documento": {
             "type": "string",
-            "title": "Número do Documento",
+            "title": "Número do Documento"
           }
         }
       }
