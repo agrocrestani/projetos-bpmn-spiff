@@ -103,10 +103,7 @@
     },
     "qtdeColaboradores": {
       "title": "Quantidade de colaboradores",
-      "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:n_utilizacoes"
-      ]
+      "type": "string"
     },
     "periodo": {
       "title": "Periodo",
