@@ -145,7 +145,7 @@ baseSap = get_secret('baseSap')
 query = f"""
             SELECT 
               T0."ItemCode", T0."ItemName", T0."InvntryUom", T0."U_AC_QtdePessoaMes"
-            FROM "OITM" T0
+            FROM baseSap."OITM" T0
             WHERE t0."QryGroup3" = 'Y' AND "validFor" = 'Y'
           """
 
