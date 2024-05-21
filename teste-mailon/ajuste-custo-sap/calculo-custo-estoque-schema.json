@@ -1,6 +1,6 @@
 {
   "properties": {
-    "ra": {
+    "recalculcar": {
       "type": "boolean",
       "title": "Done?",
       "default": false
