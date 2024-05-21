@@ -29,10 +29,6 @@
           }
         }
       }
-    },
-    "safra": {
-      "title": "Selecione a safra",
-      "type": "string"
     }
   }
 }
