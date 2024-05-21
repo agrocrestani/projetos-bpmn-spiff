@@ -121,65 +121,10 @@ for u in utilizacoes:
         <bpmn:targetRef>Property_0dlyti3</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_1vv2v9g" sourceRef="Activity_1szha9h" targetRef="Activity_0qpzdpu" />
-    <bpmn:sequenceFlow id="Flow_16l24wu" sourceRef="Activity_13g9nwv" targetRef="Activity_1szha9h" />
     <bpmn:callActivity id="Activity_13g9nwv" name="Atualiza Itens" calledElement="itens_cantina">
       <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
-      <bpmn:outgoing>Flow_16l24wu</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1d8mo6p</bpmn:outgoing>
     </bpmn:callActivity>
-    <bpmn:scriptTask id="Activity_1szha9h" name="Busca itens da cantina">
-      <bpmn:incoming>Flow_16l24wu</bpmn:incoming>
-      <bpmn:outgoing>Flow_1vv2v9g</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_0icmctq">
-        <bpmn:targetRef>DataStoreReference_1cglvny</bpmn:targetRef>
-      </bpmn:dataOutputAssociation>
-      <bpmn:script>from connectordb.hana import Hana
-
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
-
-baseSap = get_secret('baseSap')
-
-query = f"""
-            SELECT 
-              T0."ItemCode", T0."ItemName", T0."InvntryUom", TO_ALPHANUM(ifnull(T0."U_AC_QtdePessoaMes",0)) as u_ac_qtdepessoames
-            FROM {baseSap}."OITM" T0
-            WHERE t0."QryGroup3" = 'Y' AND t0."validFor" = 'Y'
-          """
-
-# rsp = json.loads(Hana(connection).selectDb(query))
-rsp = Hana(connection).selectDb(query)
-
-
-items_cantina = []
-
-for r in rsp:
-    ItemCode = str(r['itemcode'])
-    ItemName = str(r['itemname'])
-    InvntryUom = str(r['invntryuom'])
-    QtdeSugerida = (float(r['u_ac_qtdepessoames'])*(qtdeColaboradores*int(periodo)))/30
-
-    items_cantina.append(
-        {
-            "search_term": ItemName, 
-            "result": {
-                "ItemCode": ItemCode, 
-                "ItemName": ItemName, 
-                "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
-                "QtdeSugerida": QtdeSugerida
-                }
-            }
-        )
-
-typeahead = {"items_cantina": items_cantina}
-
-del(connection)</bpmn:script>
-    </bpmn:scriptTask>
-    <bpmn:dataStoreReference id="DataStoreReference_1cglvny" name="Typeahead (modelo)" dataStoreRef="typeahead" />
     <bpmn:userTask id="Activity_0qpzdpu" name="Solicitacao Compras">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## Instruções sobre a solicitação de compras</spiffworkflow:instructionsForEndUser>
@@ -189,7 +134,7 @@ del(connection)</bpmn:script>
         </spiffworkflow:properties>
         <spiffworkflow:preScript />
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1vv2v9g</bpmn:incoming>
+      <bpmn:incoming>Flow_1d8mo6p</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:manualTask id="Activity_0xafkf4" name="Aprovação do gestor">
@@ -236,6 +181,7 @@ for i in n_almoxarifados:
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1hh3d5j</bpmn:incoming>
     </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1d8mo6p" sourceRef="Activity_13g9nwv" targetRef="Activity_0qpzdpu" />
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -302,16 +248,6 @@ for i in n_almoxarifados:
         <dc:Bounds x="470" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1qzb6rj_di" bpmnElement="Activity_1szha9h">
-        <dc:Bounds x="620" y="147" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1cglvny_di" bpmnElement="DataStoreReference_1cglvny">
-        <dc:Bounds x="725" y="25" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="723" y="82" width="54" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0xq3fic_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="770" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -347,13 +283,9 @@ for i in n_almoxarifados:
         <di:waypoint x="420" y="187" />
         <di:waypoint x="470" y="187" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1vv2v9g_di" bpmnElement="Flow_1vv2v9g">
-        <di:waypoint x="720" y="187" />
-        <di:waypoint x="770" y="187" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_16l24wu_di" bpmnElement="Flow_16l24wu">
+      <bpmndi:BPMNEdge id="Flow_1d8mo6p_di" bpmnElement="Flow_1d8mo6p">
         <di:waypoint x="570" y="187" />
-        <di:waypoint x="620" y="187" />
+        <di:waypoint x="770" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0w8lbnm_di" bpmnElement="DataInputAssociation_0w8lbnm">
         <di:waypoint x="223" y="71" />
@@ -386,10 +318,6 @@ for i in n_almoxarifados:
       <bpmndi:BPMNEdge id="DataInputAssociation_0o3vl14_di" bpmnElement="DataInputAssociation_0o3vl14">
         <di:waypoint x="396" y="75" />
         <di:waypoint x="381" y="147" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataOutputAssociation_0icmctq_di" bpmnElement="DataOutputAssociation_0icmctq">
-        <di:waypoint x="693" y="147" />
-        <di:waypoint x="736" y="75" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
