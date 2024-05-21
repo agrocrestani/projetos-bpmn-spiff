@@ -117,32 +117,34 @@ for u in utilizacoes:
         <spiffworkflow:postScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
 
-items = []
+if not items :
+  items = []
 
-for s in solicitacao:
-  items.append(
-    {
-      "ItemCode": s["insumo"]["ItemCode"],
-      "Quantity": s["quantidade"],
-      "WarehouseCode": s["insumo"]["WhsCode"]
-    }
-  )
+  for s in solicitacao:
+    items.append(
+      {
+        "ItemCode": s["insumo"]["ItemCode"],
+        "Quantity": s["quantidade"],
+        "WarehouseCode": s["insumo"]["WhsCode"]
+      }
+    )
 
-payload = {
-    "CardCode": CardCode,
-    "BPL_IDAssignedToInvoice": "1",
-    "DocumentsOwner": OwnerCode,
-    "SalesPersonCode": SlpCode,
-    "Comments": f"Solicitante: {solicitante}",
-    "U_AC_Spiff_Instancia": spiff_instancia,
-    "U_AC_Spiff_Tarefa": spiff_tarefa,
-    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
-    "DocumentLines": items,
-    "TaxExtension": {
-      "MainUsage": mainusage,
-      "Incoterms": "0"
-    }
-}</spiffworkflow:postScript>
+if not payload:
+  payload = {
+      "CardCode": CardCode,
+      "BPL_IDAssignedToInvoice": "1",
+      "DocumentsOwner": OwnerCode,
+      "SalesPersonCode": SlpCode,
+      "Comments": f"Solicitante: {solicitante}",
+      "U_AC_Spiff_Instancia": spiff_instancia,
+      "U_AC_Spiff_Tarefa": spiff_tarefa,
+      "U_AC_Spiff_Usuario": usuarioEmissorNFe,
+      "DocumentLines": items,
+      "TaxExtension": {
+        "MainUsage": mainusage,
+        "Incoterms": "0"
+      }
+  }</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_11ns8sw</bpmn:incoming>
       <bpmn:incoming>Flow_0n264hi</bpmn:incoming>
@@ -720,6 +722,12 @@ del(connection)</bpmn:script>
       <bpmndi:BPMNShape id="Activity_15hba4n_di" bpmnElement="Activity_1juz99w">
         <dc:Bounds x="880" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_18o5ipe_di" bpmnElement="DataStoreReference_18o5ipe">
+        <dc:Bounds x="1085" y="235" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1087" y="292" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_12g4910_di" bpmnElement="Gateway_12g4910" isMarkerVisible="true">
         <dc:Bounds x="1035" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -776,12 +784,6 @@ del(connection)</bpmn:script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0dodh1z_di" bpmnElement="Activity_0z8kz3p">
         <dc:Bounds x="910" y="280" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_18o5ipe_di" bpmnElement="DataStoreReference_18o5ipe">
-        <dc:Bounds x="1085" y="235" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1087" y="292" width="47" height="14" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_10fg20w_di" bpmnElement="Event_17q397d">
         <dc:Bounds x="942" y="199" width="36" height="36" />
