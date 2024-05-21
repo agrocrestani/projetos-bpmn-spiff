@@ -2,11 +2,7 @@
   "title": "Nested Form / Repeating Section",
   "description": "Allow the form submitter to add multiple entries for a set of fields.",
   "properties": {
-    "flag": {
-      "type": "boolean",
-      "title": "Done?",
-      "default": false
-    },
+
     "documentos": {
       "type": "array",
       "title": "Ignorar Documentos de Entrada",
