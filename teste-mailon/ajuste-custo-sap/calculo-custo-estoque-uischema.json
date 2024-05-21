@@ -1,7 +1,7 @@
 {
     "documentos": {
         "items":{
-             "ui:layout"
+            "ui:layout"
             "tipo_documento": {
                 "sm": 2,
                 "md": 2,
