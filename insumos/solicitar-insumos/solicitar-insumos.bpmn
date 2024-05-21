@@ -96,53 +96,9 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-pedido-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-pedido-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript>for s in solicitacao:
-    s['insumo'] = json.loads(s['insumo'])
-
-
-descricaoFilial = ""
-for f in n_filiais:
-    if f['value'] == unidade:
-      descricaoFilial = f['label']
-
-usuarioEmissorNFe = get_current_user()['display_name']
-
-SlpCode = 8
-OwnerCode = 2
-main_usage = []
-for u in utilizacoes:
-    main_usage.append(u)
+        <spiffworkflow:preScript>
 </spiffworkflow:preScript>
-        <spiffworkflow:postScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
-spiff_tarefa = taskInfo = get_current_task_info()['id']
-
-
-items = []
-for s in solicitacao:
-  items.append(
-    {
-      "ItemCode": s["insumo"]["ItemCode"],
-      "Quantity": s["quantidade"],
-      "WarehouseCode": s["insumo"]["WhsCode"]
-    }
-  )
-
-
-payload = {
-    "CardCode": CardCode,
-    "BPL_IDAssignedToInvoice": "1",
-    "DocumentsOwner": OwnerCode,
-    "SalesPersonCode": SlpCode,
-    "Comments": f"Solicitante: {solicitante}",
-    "U_AC_Spiff_Instancia": spiff_instancia,
-    "U_AC_Spiff_Tarefa": spiff_tarefa,
-    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
-    "DocumentLines": items,
-    "TaxExtension": {
-      "MainUsage": mainusage,
-      "Incoterms": "0"
-    }
-}</spiffworkflow:postScript>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_11ns8sw</bpmn:incoming>
       <bpmn:outgoing>Flow_1o5dvob</bpmn:outgoing>
@@ -175,13 +131,60 @@ payload = {
     <bpmn:businessRuleTask id="Activity_1rmlu9t" name="Definir cliente NFe">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
+        <spiffworkflow:postScript>for s in solicitacao:
+    s['insumo'] = json.loads(s['insumo'])
+
+
+descricaoFilial = ""
+for f in n_filiais:
+    if f['value'] == unidade:
+      descricaoFilial = f['label']
+
+usuarioEmissorNFe = get_current_user()['display_name']
+
+SlpCode = 8
+OwnerCode = 2
+main_usage = []
+for u in utilizacoes:
+    main_usage.append(u)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0f3ld08</bpmn:incoming>
       <bpmn:outgoing>Flow_11ns8sw</bpmn:outgoing>
     </bpmn:businessRuleTask>
     <bpmn:serviceTask id="Activity_1juz99w" name="Emitir NFE">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
+        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
+spiff_tarefa = taskInfo = get_current_task_info()['id']
+
+
+items = []
+for s in solicitacao:
+  items.append(
+    {
+      "ItemCode": s["insumo"]["ItemCode"],
+      "Quantity": s["quantidade"],
+      "WarehouseCode": s["insumo"]["WhsCode"]
+    }
+  )
+
+
+payload = {
+    "CardCode": CardCode,
+    "BPL_IDAssignedToInvoice": "1",
+    "DocumentsOwner": OwnerCode,
+    "SalesPersonCode": SlpCode,
+    "Comments": f"Solicitante: {solicitante}",
+    "U_AC_Spiff_Instancia": spiff_instancia,
+    "U_AC_Spiff_Tarefa": spiff_tarefa,
+    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
+    "DocumentLines": items,
+    "TaxExtension": {
+      "MainUsage": mainusage,
+      "Incoterms": "0"
+    }
+}
+
+loginSap = saplogin[0]['SessionId']
 
 url = 'https://172.20.1.9:50000/b1s/v1/Invoices'
 
