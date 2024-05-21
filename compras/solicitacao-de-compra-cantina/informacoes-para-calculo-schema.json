@@ -100,27 +100,6 @@
     "Comments": {
       "type": "string",
       "title": "Observações"
-    },
-    "solicitacao": {
-      "type": "array",
-      "title": "Items Solicitados ",
-      "items": {
-        "type": "object",
-        "required": [
-          "item",
-          "quantidade"
-        ],
-        "properties": {
-          "item": {
-            "type": "string",
-            "title": "Selecione o Item"
-          },
-          "quantidade": {
-            "type": "number",
-            "title": "Quantidade"
-          }
-        }
-      }
     }
   }
 }
