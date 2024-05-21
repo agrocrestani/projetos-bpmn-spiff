@@ -146,7 +146,6 @@ payload = {
 }</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_11ns8sw</bpmn:incoming>
-      <bpmn:incoming>Flow_0n264hi</bpmn:incoming>
       <bpmn:outgoing>Flow_1o5dvob</bpmn:outgoing>
       <bpmn:property id="Property_1vt3imd" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_03oc4gb">
@@ -665,14 +664,17 @@ del(connection)</bpmn:script>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_0mn40j6" errorRef="Error_1" />
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_1b012sp" sourceRef="Event_17q397d" targetRef="Activity_0z8kz3p" />
-    <bpmn:sequenceFlow id="Flow_0n264hi" sourceRef="Activity_0z8kz3p" targetRef="Activity_0jn1u2s" />
     <bpmn:manualTask id="Activity_0z8kz3p" name="Verifica o Erro e tenta novamente">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>{{err1}}</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1b012sp</bpmn:incoming>
-      <bpmn:outgoing>Flow_0n264hi</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0ean0nc</bpmn:outgoing>
     </bpmn:manualTask>
+    <bpmn:endEvent id="Event_0017wzi">
+      <bpmn:incoming>Flow_0ean0nc</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0ean0nc" sourceRef="Activity_0z8kz3p" targetRef="Event_0017wzi" />
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
@@ -782,7 +784,10 @@ del(connection)</bpmn:script>
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0dodh1z_di" bpmnElement="Activity_0z8kz3p">
-        <dc:Bounds x="910" y="280" width="100" height="80" />
+        <dc:Bounds x="910" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0017wzi_di" bpmnElement="Event_0017wzi">
+        <dc:Bounds x="942" y="392" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_10fg20w_di" bpmnElement="Event_17q397d">
         <dc:Bounds x="942" y="199" width="36" height="36" />
@@ -897,13 +902,11 @@ del(connection)</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1b012sp_di" bpmnElement="Flow_1b012sp">
         <di:waypoint x="960" y="235" />
-        <di:waypoint x="960" y="280" />
+        <di:waypoint x="960" y="270" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0n264hi_di" bpmnElement="Flow_0n264hi">
-        <di:waypoint x="960" y="360" />
-        <di:waypoint x="960" y="390" />
-        <di:waypoint x="778" y="390" />
-        <di:waypoint x="778" y="220" />
+      <bpmndi:BPMNEdge id="Flow_0ean0nc_di" bpmnElement="Flow_0ean0nc">
+        <di:waypoint x="960" y="350" />
+        <di:waypoint x="960" y="392" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
