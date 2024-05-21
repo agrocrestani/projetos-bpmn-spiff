@@ -102,7 +102,7 @@
       "title": "Observações"
     },
     "qtdeColaboradores": {
-      "title": "Qua",
+      "title": "Quantidade de col",
       "type": "string",
       "anyOf": [
         "options_from_task_data_var:n_utilizacoes"
