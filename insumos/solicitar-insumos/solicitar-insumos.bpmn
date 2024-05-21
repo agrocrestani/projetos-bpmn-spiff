@@ -33,7 +33,7 @@ for f in filiais:
 
 n_safras = safras
 solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
-        <spiffworkflow:postScript />
+        <spiffworkflow:postScript>solicitacao_bkp = solicitacao</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser># Solicitação de insumos
 
 ### Instruções:
@@ -107,7 +107,7 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
     <bpmn:businessRuleTask id="Activity_1rmlu9t" name="Definir cliente NFe">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
-        <spiffworkflow:postScript>solicitacao_bkp = solicitacao
+        <spiffworkflow:postScript>
 
 for s in solicitacao:
     s['insumo'] = json.loads(s['insumo'])
@@ -675,6 +675,7 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-solicitacao-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1k0vyfe</bpmn:incoming>
       <bpmn:incoming>Flow_0p10cpv</bpmn:incoming>
