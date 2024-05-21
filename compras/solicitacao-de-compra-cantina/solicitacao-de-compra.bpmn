@@ -210,6 +210,13 @@ del(connection)</bpmn:script>
 |Observações: | {{Comments}} |
 |Quantidade de colaboradores: | {{qtdeColaboradores}} |
 |Periodo em dias: | {{periodo}} |
+
+
+| Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade |
+| --------- | --------------| ------------------: | --------------------: | ----------- |
+{% for s in solicitacao%}
+| {{s['item']['ItemCode']}} | {{s['item']['ItemName']}} | {{s['item']['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} 
+{%endfor%}
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>almoxarifado = ""
 for i in n_almoxarifados:
