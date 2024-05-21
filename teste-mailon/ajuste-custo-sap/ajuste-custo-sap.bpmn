@@ -392,7 +392,7 @@ recalcular = False
 
 del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript>del(consulta_movimentos_out)
-del(consulta_movimentos)</spiffworkflow:postScript>
+</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser>Produto: {{produto}}    | Deposito: {{deposito}}
 
 
