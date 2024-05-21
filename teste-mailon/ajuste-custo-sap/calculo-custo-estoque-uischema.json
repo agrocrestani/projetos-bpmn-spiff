@@ -18,7 +18,10 @@
                 }
             ],
             "tipo_documento":{
-                "ui:widget": "select"
+                "ui:widget": "select",
+                "ui:options": {
+                    "enum_titles": ["Selecione..."],
+                }
             }            
         }
     }
