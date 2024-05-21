@@ -78,7 +78,7 @@
       "item": {
         "ui:widget": "typeahead",
         "ui:options": {
-          "category": "material_expediente",
+          "category": "items_cantina",
           "itemFormat": "{ItemName} ({ItemCode} - {ItmsGrpNam})"
         }
       }
