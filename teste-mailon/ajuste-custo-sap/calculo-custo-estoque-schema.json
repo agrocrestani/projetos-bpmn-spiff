@@ -20,7 +20,7 @@
             "type": "string",
             "title": "Tipo de Documento",
             "anyOf": [
-              "options_from_task_data_var:n_safras"
+              "options_from_task_data_var:origens_unicas_list"
             ]
           },
           "num_documento": {
