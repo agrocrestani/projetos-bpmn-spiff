@@ -1,5 +1,4 @@
 {
-  "properties": {
     "documentos": {
       "type": "array",
       "title": "Ignorar Documentos de Entrada",
