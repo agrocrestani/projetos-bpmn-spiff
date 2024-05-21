@@ -19,7 +19,7 @@
             "type": "string",
             "title": "Tipo de Documento",
             "anyOf": [
-              "options_from_task_data_var:depositosList"
+              "options_from_task_data_var:origens_unicas"
             ]
           },
           "num_documento": {
