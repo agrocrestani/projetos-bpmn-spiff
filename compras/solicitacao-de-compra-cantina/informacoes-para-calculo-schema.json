@@ -103,7 +103,7 @@
     },
     "qtdeColaboradores": {
       "title": "Quantidade de colaboradores",
-      "type": "number"
+      "type": "int"
     },
     "periodo": {
       "title": "Periodo",
