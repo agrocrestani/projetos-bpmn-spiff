@@ -198,7 +198,7 @@ del(connection)</bpmn:script>
 
 | Campo | Conteúdo |
 | ---------: | --------------|
-|Filial: |{{unidade}}|
+|Filial: |{{BPLName}}|
 |Departamento: |{{Department}}|
 |Prioridade: |{{U_RSD_Prioridade}}|
 |Tipo Requisição: | {{U_RSD_Aplicacao}} |
