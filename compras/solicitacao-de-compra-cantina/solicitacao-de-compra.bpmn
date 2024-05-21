@@ -54,37 +54,7 @@ for i in n_almoxarifados:
           <spiffworkflow:property name="formJsonSchemaFilename" value="solicitacao-compra-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="solicitacao-compra-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript>n_almoxarifados = []
-for a in almoxarifados:
-    WhsCode = a['WhsCode']
-    WhsName = a['WhsName']
-    n_almoxarifados.append(
-        {
-            "value": WhsCode,
-            "label": WhsCode + " - " + WhsName
-        }
-    )
-
-n_departamentos = []
-for d in departamentos:
-    n_departamentos.append(d)
-
-n_centros_de_custo = []
-for c in centros_de_custo:
-    n_centros_de_custo.append(c)
-
-n_culturas = []
-for c in culturas:
-    n_culturas.append(c)
-
-n_tipo_requisicao = []
-for t in tipo_requisicao:
-    n_tipo_requisicao.append(t)
-
-n_utilizacoes = []
-for u in utilizacoes:
-    n_utilizacoes.append(u)
-</spiffworkflow:preScript>
+        <spiffworkflow:preScript></spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
@@ -117,6 +87,38 @@ for f in filiais:
 n_safras = []
 for s in safras:
     n_safras.append(s)
+
+n_almoxarifados = []
+for a in almoxarifados:
+    WhsCode = a['WhsCode']
+    WhsName = a['WhsName']
+    n_almoxarifados.append(
+        {
+            "value": WhsCode,
+            "label": WhsCode + " - " + WhsName
+        }
+    )
+
+n_departamentos = []
+for d in departamentos:
+    n_departamentos.append(d)
+
+n_centros_de_custo = []
+for c in centros_de_custo:
+    n_centros_de_custo.append(c)
+
+n_culturas = []
+for c in culturas:
+    n_culturas.append(c)
+
+n_tipo_requisicao = []
+for t in tipo_requisicao:
+    n_tipo_requisicao.append(t)
+
+n_utilizacoes = []
+for u in utilizacoes:
+    n_utilizacoes.append(u)
+
 </spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="informacoes-para-calculo-schema.json" />
@@ -255,30 +257,6 @@ for s in safras:
         <di:waypoint x="420" y="187" />
         <di:waypoint x="509" y="187" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0dt2pn8_di" bpmnElement="DataInputAssociation_0dt2pn8">
-        <di:waypoint x="313" y="75" />
-        <di:waypoint x="349" y="147" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0d589na_di" bpmnElement="DataInputAssociation_0d589na">
-        <di:waypoint x="355" y="75" />
-        <di:waypoint x="369" y="147" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0ebsjnv_di" bpmnElement="DataInputAssociation_0ebsjnv">
-        <di:waypoint x="435" y="75" />
-        <di:waypoint x="392" y="147" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0o3vl14_di" bpmnElement="DataInputAssociation_0o3vl14">
-        <di:waypoint x="396" y="75" />
-        <di:waypoint x="381" y="147" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0ri5kgb_di" bpmnElement="DataInputAssociation_0ri5kgb">
-        <di:waypoint x="475" y="74" />
-        <di:waypoint x="403" y="147" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_09dn80q_di" bpmnElement="DataInputAssociation_09dn80q">
-        <di:waypoint x="525" y="68" />
-        <di:waypoint x="413" y="148" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0w8lbnm_di" bpmnElement="DataInputAssociation_0w8lbnm">
         <di:waypoint x="223" y="71" />
         <di:waypoint x="320" y="150" />
@@ -286,6 +264,30 @@ for s in safras:
       <bpmndi:BPMNEdge id="DataInputAssociation_0ui77xh_di" bpmnElement="DataInputAssociation_0ui77xh">
         <di:waypoint x="272" y="75" />
         <di:waypoint x="335" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0d589na_di" bpmnElement="DataInputAssociation_0d589na">
+        <di:waypoint x="355" y="75" />
+        <di:waypoint x="369" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0ri5kgb_di" bpmnElement="DataInputAssociation_0ri5kgb">
+        <di:waypoint x="475" y="74" />
+        <di:waypoint x="403" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0ebsjnv_di" bpmnElement="DataInputAssociation_0ebsjnv">
+        <di:waypoint x="435" y="75" />
+        <di:waypoint x="392" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_09dn80q_di" bpmnElement="DataInputAssociation_09dn80q">
+        <di:waypoint x="525" y="68" />
+        <di:waypoint x="413" y="148" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0dt2pn8_di" bpmnElement="DataInputAssociation_0dt2pn8">
+        <di:waypoint x="313" y="75" />
+        <di:waypoint x="349" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0o3vl14_di" bpmnElement="DataInputAssociation_0o3vl14">
+        <di:waypoint x="396" y="75" />
+        <di:waypoint x="381" y="147" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
