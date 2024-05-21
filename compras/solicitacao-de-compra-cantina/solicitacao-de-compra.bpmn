@@ -216,7 +216,7 @@ typeahead = {"items_cantina": items_cantina}
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_16l24wu" sourceRef="Activity_13g9nwv" targetRef="Activity_1szha9h" />
-    <bpmn:callActivity id="Activity_13g9nwv">
+    <bpmn:callActivity id="Activity_13g9nwv" name="Atualiza Itens" calledElement="itens_cantina">
       <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
       <bpmn:outgoing>Flow_16l24wu</bpmn:outgoing>
     </bpmn:callActivity>
@@ -309,6 +309,7 @@ del(connection)</bpmn:script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1c7gl9e_di" bpmnElement="Activity_13g9nwv">
         <dc:Bounds x="470" y="147" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="216" y="187" />
