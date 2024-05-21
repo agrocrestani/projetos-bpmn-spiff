@@ -3,8 +3,8 @@
         "items":{
             "tipo_documento": {
                 "sm": 2,
-            "md": 2,
-            "lg": 2
+                "md": 2,
+                "lg": 2
             }
         }
     }
