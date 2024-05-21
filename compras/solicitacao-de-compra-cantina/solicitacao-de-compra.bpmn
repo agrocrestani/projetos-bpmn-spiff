@@ -156,8 +156,8 @@ for u in utilizacoes:
 |Depósito: | {{WhsCode}} |
 |Utilização: | {{MainUsage}} |
 |Observações: | {{Comments}} |
-|Quantidade de colaboradores: | {{qtdeColaboradores}} |
-|Periodo em dias: | {{periodo}} |
+|**Quantidade de colaboradores:** | {{qtdeColaboradores}} |
+|**Periodo em dias:** | {{periodo}} |
 
 
 | Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade |
