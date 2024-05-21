@@ -347,8 +347,6 @@ total_quantidade = 0
 entrada = []
 saida = []
 
-count_entrada = 0
-count_saida = 0
 custo_medio = 0
 if isinstance(consulta_movimentos_out, list):
     for produtoAux in consulta_movimentos_out:
@@ -370,8 +368,20 @@ if isinstance(consulta_movimentos_out, list):
                 produtoAux['custo_medio_calc'] = custo_medio * produtoAux['qtde']
                 produtoAux['custo_total_contabil'] = produtoAux['linetotal']
 
+                #Calcular Custo Médio da Entrada Ignorando documentos Selecionados
                 if(lista_documentos_ignorar != []):
-                    custo_medio_total_calculado_entrada += 0
+                    ignorar = False
+                    
+                    for doc_ignorar in lista_documentos_ignorar:
+                        tipo_ignorar = doc_ignorar["tipo_documento"]
+                        num_ignorar = doc_ignorar["num_documento"]
+                        for movimento in consulta_movimentos:
+                            if movimento["origem"] == tipo_ignorar and movimento["docnum"] == num_ignorar:
+                                ignorar = True
+                                break
+                    
+                    if(ignorar == False)
+                        custo_medio_total_calculado_entrada += produtoAux['custo_medio_calc']
                 else:
                     custo_medio_total_calculado_entrada += produtoAux['custo_medio_calc']
             else:
@@ -423,8 +433,12 @@ else:
 recalcular = False
 
 del(consulta_movimentos)</spiffworkflow:preScript>
-        <spiffworkflow:postScript>del(consulta_movimentos_out)
-</spiffworkflow:postScript>
+        <spiffworkflow:postScript>lista_documentos_ignorar = documentos
+
+
+del(consulta_movimentos_out)
+del(origens_unicas_list)
+del(documentos)</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser>
 | Produto | Deposito | Em Estoque | Custo Unitário | 
 | ----------- | ----------- | ----------------: | -----------------: |
