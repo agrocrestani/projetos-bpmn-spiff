@@ -101,7 +101,7 @@
       "type": "string",
       "title": "Observações"
     },
-    "qtde": {
+    "qtdeColaboradores": {
       "title": "Utilizacao",
       "type": "string",
       "anyOf": [
