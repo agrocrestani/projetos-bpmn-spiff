@@ -50,10 +50,7 @@ query_movimento = f"""
 	                t0."WhsCode" = '{deposito}' AND
                     t0."DocDueDate" &gt;= '{dataInicio}' AND t0."DocDueDate" &lt;= '{dataFinal}'
                 ORDER BY t0."CreateDate", t0."CreateTS"
-                """
-
-# AND
-                    # t0."CANCELED" = 'N'         
+                """   
                     
 consulta_movimentos = Hana(connection).selectDb(query_movimento)
 
@@ -68,9 +65,7 @@ if(consulta_movimentos != []):
 
     um_produto_estoque = Hana(connection).selectDb(query_um_produto_estoque)
     
-    desc_produto = um_produto_estoque[1]['itemname']
-    SELECT t0."AvgPrice"  FROM OITW t0 WHERE t0."ItemCode" = '011021' AND t0."WhsCode" = 
-    
+    desc_produto = um_produto_estoque[1]['itemname']    
     query_deposito = f"""
                     SELECT  
                         CAST(t0."AvgPrice" AS VARCHAR(50)) AS "AvgPrice"
@@ -410,7 +405,8 @@ del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript>del(consulta_movimentos_out)
 </spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser>Produto: **{{produto}}** - {{desc_produto}} &lt;br&gt;
-Deposito: {{deposito}}
+Deposito: {{deposito}} &lt;br&gt;
+Custo Produto: {{ '{:,.3f}.format('custo_produto_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }}
 
 
 ### Entrada
