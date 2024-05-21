@@ -73,7 +73,7 @@ if(consulta_movimentos != []):
                     WHERE t0."ItemCode" = '{produto}' AND t0."WhsCode" = '{deposito}';
                     """
     
-    deposito_estoque = Hana(connection).selectDb(query_um_produto_estoque)
+    deposito_estoque = Hana(connection).selectDb(query_deposito)
     custo_produto_deposito = deposito_estoque[0]['avgprice']
     del(deposito_estoque)
     del(query_deposito)
