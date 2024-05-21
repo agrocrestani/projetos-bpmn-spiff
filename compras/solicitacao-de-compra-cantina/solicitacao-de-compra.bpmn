@@ -165,6 +165,50 @@ for i in n_almoxarifados:
     <bpmn:scriptTask id="Activity_1szha9h">
       <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
       <bpmn:outgoing>Flow_1vv2v9g</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+            SELECT 
+              T0."ItemCode", T0."ItemName", T0."InvntryUom", T0."U_AC_QtdePessoaMes"
+            FROM "OITM" T0
+            WHERE t0."QryGroup3" = 'Y' AND "validFor" = 'Y'
+          """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+rsp = Hana(connection).selectDb(query)
+
+
+estoque_de_insumos = []
+
+for r in rsp:
+    ItemCode = str(r['itemcode'])
+    ItemName = str(r['itemname'])
+    InvntryUom = str(r['invntryuom'])
+    QtdeSugerida = int(r['u_ac_qtdepessoasmes'])*
+    estoque_de_insumos.append(
+        {
+            "search_term": ItemName, 
+            "result": {
+                "ItemCode": ItemCode, 
+                "ItemName": ItemName, 
+                "ItmsGrpNam": ItmsGrpNam,
+                "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
+                "OnHand": OnHand,
+                "WhsCode": WhsCode
+                }
+            }
+        )
+
+del(connection)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
