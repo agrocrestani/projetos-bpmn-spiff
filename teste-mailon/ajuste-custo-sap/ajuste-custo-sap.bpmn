@@ -65,7 +65,7 @@ if(consulta_movimentos != []):
 
     um_produto_estoque = Hana(connection).selectDb(query_um_produto_estoque)
     
-    desc_produto = um_produto_estoque[1]['itemname']    
+    desc_produto = um_produto_estoque[0]['itemname']    
     query_deposito = f"""
                     SELECT  
                         CAST(t0."AvgPrice" AS VARCHAR(50)) AS "AvgPrice"
