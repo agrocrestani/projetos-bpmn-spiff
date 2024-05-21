@@ -1,11 +1,5 @@
 {
-  "solicitacao": [
-    {
-      "confirmaItem": false,
-      "insumo": "{\"ItemCode\":\"022592\",\"ItemName\":\"ABACUS HC\",\"ItmsGrpNam\":\"FUNGICIDAS\",\"InvntryUom\":\"LITRO\",\"OnHand\":\"1.750,00\",\"WhsCode\":\"03.MATR\"}",
-      "quantidade": 100
-    }
-  ],
+  "solicitacao": [],
   "unidade": "apples",
   "n_filiais": [
     {
