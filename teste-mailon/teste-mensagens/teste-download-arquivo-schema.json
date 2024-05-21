@@ -9,7 +9,7 @@
     },
     "documentos": {
       "type": "array",
-      "title": "Ignorar Documento",
+      "title": "Ignorar Documentos",
       "items": {
         "type": "object",
         "required": [
