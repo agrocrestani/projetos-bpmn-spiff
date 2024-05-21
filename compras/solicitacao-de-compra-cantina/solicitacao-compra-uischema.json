@@ -79,7 +79,7 @@
         "ui:widget": "typeahead",
         "ui:options": {
           "category": "items_cantina",
-          "itemFormat": "{ItemName} ({ItemCode} - {ItmsGrpNam})"
+          "itemFormat": "{ItemName} ({ItemCode} - {InvntryUom})"
         }
       }
     }
