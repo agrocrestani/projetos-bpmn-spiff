@@ -162,16 +162,16 @@ for u in utilizacoes:
 
 | Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade |
 | --------- | --------------| ------------------: | --------------------: | ----------- |
-{% for s in solicitacao%}
-| {{s['item']['ItemCode']}} | {{s['item']['ItemName']}} | {{s['item']['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} 
+{% for s in solicitacao %}
+{%s = json.loads(s['item'])%}
+| {{ s['item']['ItemCode'] }} | {{s['item']['ItemName']}} | {{s['item']['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} 
 {%endfor%}
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>almoxarifado = ""
 for i in n_almoxarifados:
     if i['value'] == WhsCode:
         almoxarifado = i['label']
-
-solicitacao = json.dumps(solicitacao)</spiffworkflow:preScript>
+</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1y37zi6</bpmn:outgoing>
