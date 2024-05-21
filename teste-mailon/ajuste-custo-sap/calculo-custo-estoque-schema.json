@@ -2,7 +2,7 @@
   "properties": {
     "recalcular": {
       "type": "boolean",
-      "title": "Dese?",
+      "title": "Deseja Recal?",
       "default": false
     }
   }
