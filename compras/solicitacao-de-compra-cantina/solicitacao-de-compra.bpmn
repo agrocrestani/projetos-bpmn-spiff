@@ -196,11 +196,20 @@ del(connection)</bpmn:script>
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># Solicitação de Compras para Cantina
 
-| Campo | Conteudo |
+| Campo | Conteúdo |
 | ---------: | --------------|
-|Unidade: |{{unidade}}|
-|Depósito: |{{almoxarifado}}|
-|
+|Filial: |{{unidade}}|
+|Departamento: |{{Department}}|
+|Prioridade: |{{U_RSD_Prioridade}}|
+|Tipo Requisição: | {{U_RSD_Aplicacao}} |
+|Centro de Custo: | {{OcrCode}} |
+|Cultura: | {{OcrCode2}} |
+|Safra: | {{OcrCode3}} |
+|Depósito: | {{WhsCode}} |
+|Utilização: | {{MainUsage}} |
+|Observações: | {{Comments}} |
+|Quantidade de colaboradores: | {{qtdeColaboradores}} |
+|Periodo em dias: | {{periodo}} |
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>almoxarifado = ""
 for i in n_almoxarifados:
