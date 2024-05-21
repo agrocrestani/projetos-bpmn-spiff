@@ -97,7 +97,8 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
           <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-pedido-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:preScript>for s in solicitacao:
-    s['insumo'] = json.loads(s['insumo'])
+    if not s['insumo']:
+        s['insumo'] = json.loads(s['insumo'])
 
 
 descricaoFilial = ""
@@ -719,12 +720,6 @@ del(connection)</bpmn:script>
       <bpmndi:BPMNShape id="Activity_15hba4n_di" bpmnElement="Activity_1juz99w">
         <dc:Bounds x="880" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_18o5ipe_di" bpmnElement="DataStoreReference_18o5ipe">
-        <dc:Bounds x="1065" y="265" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1067" y="322" width="47" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_12g4910_di" bpmnElement="Gateway_12g4910" isMarkerVisible="true">
         <dc:Bounds x="1035" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -782,6 +777,12 @@ del(connection)</bpmn:script>
       <bpmndi:BPMNShape id="Activity_0dodh1z_di" bpmnElement="Activity_0z8kz3p">
         <dc:Bounds x="910" y="280" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_18o5ipe_di" bpmnElement="DataStoreReference_18o5ipe">
+        <dc:Bounds x="1085" y="235" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1087" y="292" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_10fg20w_di" bpmnElement="Event_17q397d">
         <dc:Bounds x="942" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -826,8 +827,8 @@ del(connection)</bpmn:script>
         <di:waypoint x="728" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1w53wrp_di" bpmnElement="DataInputAssociation_1w53wrp">
-        <di:waypoint x="1065" y="272" />
-        <di:waypoint x="979" y="211" />
+        <di:waypoint x="1085" y="248" />
+        <di:waypoint x="980" y="199" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_104oa3v_di" bpmnElement="Flow_104oa3v">
         <di:waypoint x="1085" y="177" />
