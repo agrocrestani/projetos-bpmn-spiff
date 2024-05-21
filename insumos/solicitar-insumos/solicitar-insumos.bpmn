@@ -679,6 +679,7 @@ command = err1['command_response_body']
 command = json.loads(command)
 errorCode = command['body']['error']['code']
 errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1b012sp</bpmn:incoming>
       <bpmn:outgoing>Flow_0fvum0a</bpmn:outgoing>
