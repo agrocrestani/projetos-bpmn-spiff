@@ -194,13 +194,20 @@ del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript />
         <spiffworkflow:instructionsForEndUser>Produto: {{produto}}    | Deposito: {{deposito}}
 
-Custo Total Entrada: {{'{:,.3f}'.format(total_preco_unitario_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
-Quantidade Total  Entrada: {{ '{:,.3f}'.format(total_quantidade_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
-Custo Médio Entrada: {{ '{:,.3f}'.format(custo_medio_unitario_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.')}}&lt;br&gt;
 
-Custo Total Saída: {{ '{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
-Quantidade Total  Saída: {{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
-Custo Médio Saída: {{  '{:,.3f}'.format(custo_medio_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.')}}&lt;br&gt;
+### Entrada
+
+| Quantidade Total | Custo Médio | Custo Total |
+| ---------------------: | ----------------: | --------------: |
+| {{ '{:,.3f}'.format(total_quantidade_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_medio_unitario_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.')}} | {{'{:,.3f}'.format(total_preco_unitario_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
+
+### Saida
+
+| Quantidade Total | Custo Médio | Custo Total |
+| ---------------------: | ----------------: | --------------: |
+| {{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_medio_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.')}} | {{'{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
+
+
 Custo Total Saída Calc.: {{ '{:,.3f}'.format(total_custo_calc_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;br&gt;
 
 
@@ -356,7 +363,7 @@ for deposito in consulta_depositos:
 del(deposito)
 del(consulta_depositos)
 </spiffworkflow:preScript>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:postScript>del(depositosList)
 del(produtosList)</spiffworkflow:postScript>
       </bpmn:extensionElements>
