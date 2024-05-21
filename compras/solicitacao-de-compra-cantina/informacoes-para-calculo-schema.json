@@ -115,7 +115,7 @@
         {
           "type": "string",
           "enum": [
-            "0"
+            ""
           ],
           "title": "0 - Semanal"
         },
