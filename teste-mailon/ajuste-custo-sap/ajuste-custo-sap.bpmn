@@ -68,13 +68,15 @@ if(consulta_movimentos != []):
     desc_produto = um_produto_estoque[0]['itemname']    
     query_deposito = f"""
                     SELECT  
-                        CAST(t0."AvgPrice" AS VARCHAR(50)) AS "AvgPrice"
+                        CAST(t0."AvgPrice" AS VARCHAR(50)) AS "AvgPrice",
+                        CAST(t0."OnHand" AS VARCHAR(50)) AS "OnHand"
                     FROM {baseSap}.OITW t0
                     WHERE t0."ItemCode" = '{produto}' AND t0."WhsCode" = '{deposito}';
                     """
     
     deposito_estoque = Hana(connection).selectDb(query_deposito)
     custo_produto_deposito = float(deposito_estoque[0]['avgprice'].replace(",", "."))
+    on_hand_deposito = float(deposito_estoque[0]['onhand'].replace(",", "."))
     del(deposito_estoque)
     del(query_deposito)
     
@@ -404,9 +406,10 @@ recalcular = False
 del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript>del(consulta_movimentos_out)
 </spiffworkflow:postScript>
-        <spiffworkflow:instructionsForEndUser>Produto: **{{produto}}** - {{desc_produto}} &lt;br&gt;
-Deposito: {{deposito}} &lt;br&gt;
-Custo Produto: {{ '{:,.3f}'.format(custo_produto_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }}
+        <spiffworkflow:instructionsForEndUser>
+| Produto | Deposito | Em Estoque | Custo Unitário |  
+| ----------- | ----------- | ----------------: | -----------------: |
+| **{{produto}}** - {{desc_produto}} | {{deposito}} | '{:,.3f}'.format(on_hand_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |{{ '{:,.3f}'.format(custo_produto_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | 
 
 
 ### Entrada
