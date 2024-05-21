@@ -146,35 +146,35 @@ query = f"""
             SELECT 
               T0."ItemCode", T0."ItemName", T0."InvntryUom", T0."U_AC_QtdePessoaMes"
             FROM baseSap."OITM" T0
-            WHERE t0."QryGroup3" = 'Y' AND "validFor" = 'Y'
+            WHERE t0."QryGroup3" = 'Y' AND t0."validFor" = 'Y'
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
 rsp = Hana(connection).selectDb(query)
 
 
-items_cantina = []
+# items_cantina = []
 
-for r in rsp:
-    ItemCode = str(r['itemcode'])
-    ItemName = str(r['itemname'])
-    InvntryUom = str(r['invntryuom'])
-    QtdeSugerida = (int(r['u_ac_qtdepessoasmes'])/30)*(qtdeColaboradores*periodo)
-    items_cantina.append(
-        {
-            "search_term": ItemName, 
-            "result": {
-                "ItemCode": ItemCode, 
-                "ItemName": ItemName, 
-                "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
-                "QtdeSugerida": QtdeSugerida
-                }
-            }
-        )
+# for r in rsp:
+#     ItemCode = str(r['itemcode'])
+#     ItemName = str(r['itemname'])
+#     InvntryUom = str(r['invntryuom'])
+#     QtdeSugerida = (int(r['u_ac_qtdepessoasmes'])/30)*(qtdeColaboradores*periodo)
+#     items_cantina.append(
+#         {
+#             "search_term": ItemName, 
+#             "result": {
+#                 "ItemCode": ItemCode, 
+#                 "ItemName": ItemName, 
+#                 "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
+#                 "QtdeSugerida": QtdeSugerida
+#                 }
+#             }
+#         )
 
-typeahead = {"items_cantina": items_cantina}
+# typeahead = {"items_cantina": items_cantina}
 
-del(connection)</bpmn:script>
+# del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:userTask id="Activity_0qpzdpu" name="Solicitacao Compras">
       <bpmn:extensionElements>
