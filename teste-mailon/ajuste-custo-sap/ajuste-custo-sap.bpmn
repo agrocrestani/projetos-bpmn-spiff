@@ -130,10 +130,10 @@ custo_medio = 0
 if isinstance(consulta_movimentos_out, list):
     for produtoAux in consulta_movimentos_out:
         if produtoAux['tipo'] == "E" :
-            total_preco_unitario_entrada += produtoAux['linetotal']
-            total_quantidade_entrada += produtoAux['qtde']
-
             if produtoAux['canceled'] == 'N':
+                total_preco_unitario_entrada += produtoAux['linetotal']
+                total_quantidade_entrada += produtoAux['qtde']
+                
                 total_preco_unitario += produtoAux['linetotal']
                 total_quantidade += produtoAux['qtde']
                 
