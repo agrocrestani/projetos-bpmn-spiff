@@ -26,6 +26,7 @@
       "then": {
         "properties": {
           "comments": {
+            "title": "Motivo da correção?",
             "type": "string"
           }
         },
