@@ -1,5 +1,8 @@
 {
   "recalcular": true,
+  "documentos_entrada": [
+    {}
+  ],
   "documentos": [
     {}
   ],
