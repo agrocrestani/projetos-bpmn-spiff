@@ -30,7 +30,7 @@
         }
       }
     },
-    "documentos": {
+    "documentos_saida": {
       "type": "array",
       "title": "Ignorar Documentos de Entrada",
       "items": {
