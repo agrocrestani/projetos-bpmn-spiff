@@ -608,7 +608,8 @@ for objtype, docnums in agrupados_por_objtype.items():
             CAST(t1."Line_ID" AS VARCHAR(50)) AS "Line_ID", 
             CAST(t1."Account" AS VARCHAR(50)) AS "Account", 
             CAST(t1."Debit" AS VARCHAR(50)) AS "Debit", 
-            CAST(t1."Credit"AS VARCHAR(50)) AS "Credit"
+            CAST(t1."Credit"AS VARCHAR(50)) AS "Credit" ,
+            t2."AcctName" 
         FROM {baseSap}.OJDT t0
         INNER JOIN {baseSap}.JDT1 t1 ON t1."TransId" = t0."TransId"
         WHERE 
@@ -624,7 +625,7 @@ for objtype, docnums in agrupados_por_objtype.items():
 agrupados_por_account = {}
 
 for movimento_contabil in lista_movimento_contabil:
-    account = movimento_contabil["account"]
+    account = movimento_contabil["account"] + ' - ' movimento_contabil['acctname']
     debit = float(movimento_contabil["debit"])  # Certificando que os valores são numéricos
     credit = float(movimento_contabil["credit"])
     
