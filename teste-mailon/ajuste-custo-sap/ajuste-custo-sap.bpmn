@@ -494,12 +494,14 @@ else:
 recalcular = False
 
 del(consulta_movimentos)</spiffworkflow:preScript>
-        <spiffworkflow:postScript>lista_documentos_ignorar = documentos
+        <spiffworkflow:postScript>lista_documentos_ignorar = documentos_entrada
+lista_documentos_ignorar_saida = documentos_saida
 
 
 del(consulta_movimentos_out)
 del(origens_unicas_list)
-del(documentos)</spiffworkflow:postScript>
+del(documentos_entrada)
+del(documentos_saida)</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser>
 | Produto | Deposito | Em Estoque | Custo Unitário | 
 | ----------- | ----------- | ----------------: | -----------------: | 
