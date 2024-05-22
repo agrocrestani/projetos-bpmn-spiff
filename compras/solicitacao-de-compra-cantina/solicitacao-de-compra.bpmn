@@ -238,8 +238,8 @@ for s in sol:
 | ---------- | ---------------| --------------------: | --------------------: | ------------ | -----------------: | ----------: |
 {% for s in sol%}
 | {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio']}} | {{s['PrecoMedio']*s['quantidade']}}|
-||||||Total | {{total}}
 {%endfor%}
+||||||Total | {{total}}
 
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript />
