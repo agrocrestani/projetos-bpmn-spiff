@@ -500,7 +500,7 @@ del(consulta_movimentos_out)
 del(origens_unicas_list)
 del(documentos)</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser>
-| Produto | Deposito | Em Estoque | Custo Unitário | Custo Médio Calc. |Custo Total Calc. |
+| Produto | Deposito | Em Estoque | Custo Unitário | 
 | ----------- | ----------- | ----------------: | -----------------: | 
 | **{{produto}}** - {{desc_produto}} | {{deposito}} | {{ '{:,.3f}'.format(on_hand_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_produto_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | 
 
