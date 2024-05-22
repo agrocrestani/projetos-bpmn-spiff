@@ -1,6 +1,6 @@
 {
   "title": "Dropdown list",
-  "description": "Verifique os itens da solicitação e confirme para enviar a solicitação aprova",
+  "description": "Verifique os itens da solicitação e confirme para enviar a solicitação aprovação.",
   "type": "object",
   "properties": {
     "favoriteFruit": {
