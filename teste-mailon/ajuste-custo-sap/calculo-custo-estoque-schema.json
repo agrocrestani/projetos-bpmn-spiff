@@ -33,7 +33,7 @@
           },
           "custo_unitario":{
             "type": "number",
-            "title": "Quantidade Produto"
+            "title": "Custo Uni Produto"
           }
         }
       }
