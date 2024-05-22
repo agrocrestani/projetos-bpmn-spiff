@@ -64,13 +64,7 @@
         }
       }
     },
-    "mes": {
-      "title": "Selecione um mês de referência",
-      "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:meses"
-      ]
-      },
+
       "ano": {
         "title": "Selecione o ano de referência",
         "type" : "string",
