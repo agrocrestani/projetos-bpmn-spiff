@@ -408,8 +408,6 @@ if isinstance(consulta_movimentos_out, list):
                             custo_medio_unitario_calculado_entrada = (custo_medio_unitario_calculado_entrada + produtoAux['custo_medio'])/2
                         else:
                             custo_medio_unitario_calculado_entrada = produtoAux['custo_medio']
-                    else:
-                        produtoAux['qtde'] = doc_ignorar['qtde']
 
 
                     del(doc_ignorar)
