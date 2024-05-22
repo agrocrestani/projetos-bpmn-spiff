@@ -12,7 +12,7 @@
           "enum": [
             "0"
           ],
-          "title": "Normal"
+          "title": "Corrige"
         },
         {
           "type": "string",
