@@ -1,6 +1,6 @@
 {
   "title": "Dropdown list",
-  "description": "Verifique os itens da solicitação e confirme para enviar a solicitação",
+  "description": "Verifique os itens da solicitação e confirme para enviar a solicitação para arp",
   "type": "object",
   "properties": {
     "favoriteFruit": {
