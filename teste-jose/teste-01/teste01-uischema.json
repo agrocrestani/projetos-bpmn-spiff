@@ -29,7 +29,6 @@
       }
       ]
       },
-
   "mes": {
     "ui:widget": "select"
   },
