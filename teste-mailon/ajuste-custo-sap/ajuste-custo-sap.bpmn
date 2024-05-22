@@ -6,7 +6,7 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_00bh8bd" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_1pd10hb</bpmn:incoming>
+      <bpmn:incoming>Flow_11bq3ww</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:scriptTask id="BuscaProdutosPorDepositoSAP" name="Busca Produtos por Deposito no SAP">
       <bpmn:extensionElements>
@@ -43,7 +43,8 @@ query_movimento = f"""
                     CAST(t0."CreateDate" AS VARCHAR(100)) AS "CreateDate" ,
                     CAST(t0."CreateTS" AS VARCHAR(100)) AS "CreateTS" ,
                     CAST(t0.CANCELED AS VARCHAR(2)) AS "CANCELED" ,
-                    CAST(t0."StockPrice" AS VARCHAR(100)) AS "StockPrice"
+                    CAST(t0."StockPrice" AS VARCHAR(100)) AS "StockPrice",
+                    CAST(t0."ObjType" AS VARCHAR(3)) AS "ObjType"
                 FROM {baseSap}.AC_MOVIMENTOS t0
                 WHERE 
                     t0."ItemCode" = '{produto}' AND
@@ -118,7 +119,7 @@ del(connection)
 del(query_movimento)
 del(baseSap)</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="EntradasItens" targetRef="Gateway_0p3bhmm" />
+    <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="VISAO_ESTOQUE" targetRef="REPROCESSAR01" />
     <bpmn:subProcess id="Activity_1d1r8sl">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>del(x)</spiffworkflow:postScript>
@@ -182,7 +183,7 @@ del(precoTotalNormalizado)
       <bpmn:sequenceFlow id="Flow_14z5yhx" sourceRef="NormalizandoEstoque" targetRef="Event_1dydh6d" />
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_12354sq" sourceRef="BuscaProdutosPorDepositoSAP" targetRef="Gateway_0mqija0" />
-    <bpmn:sequenceFlow id="Flow_0kxg7eo" sourceRef="Activity_1d1r8sl" targetRef="EntradasItens" />
+    <bpmn:sequenceFlow id="Flow_0kxg7eo" sourceRef="Activity_1d1r8sl" targetRef="VISAO_ESTOQUE" />
     <bpmn:sequenceFlow id="Flow_13pu6hq" sourceRef="Activity_00bh8bd" targetRef="BuscaProdutosPorDepositoSAP" />
     <bpmn:userTask id="Activity_00bh8bd" name="Selecionar Produto e Deposito">
       <bpmn:extensionElements>
@@ -304,15 +305,15 @@ del(produtosList)</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_0gpghte" sourceRef="Gateway_0zhxafw" targetRef="Event_1n8n9v9">
       <bpmn:conditionExpression>novaBusca == False</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:exclusiveGateway id="Gateway_0p3bhmm" default="Flow_1pd10hb">
+    <bpmn:exclusiveGateway id="REPROCESSAR01" name="Reprocessar" default="Flow_1pd10hb">
       <bpmn:incoming>Flow_1n8yish</bpmn:incoming>
       <bpmn:outgoing>Flow_1pd10hb</bpmn:outgoing>
       <bpmn:outgoing>Flow_10e4xqh</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_1pd10hb" sourceRef="Gateway_0p3bhmm" targetRef="EndEvent_1">
+    <bpmn:sequenceFlow id="Flow_1pd10hb" sourceRef="REPROCESSAR01" targetRef="VISAO_CONTABIL">
       <bpmn:conditionExpression>recalcular == False</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:userTask id="EntradasItens" name="Entradas dos Itens">
+    <bpmn:userTask id="VISAO_ESTOQUE" name="Visão do Estoque">
       <bpmn:extensionElements>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="calculo-custo-estoque-schema.json" />
@@ -519,7 +520,17 @@ del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript>lista_documentos_ignorar = documentos_entrada
 lista_documentos_ignorar_saida = documentos_saida
 
+lista_documentos = []
 
+for mov in consulta_movimentos_out:
+    lista_documentos.append(
+        {
+            "docnum": mov['docnum']
+            "objtype" : mov['objtype']
+        }
+    )
+
+del(mov)
 del(consulta_movimentos_out)
 del(origens_unicas_list)
 del(documentos_entrada)
@@ -556,21 +567,67 @@ del(documentos_saida)</spiffworkflow:postScript>
       <bpmn:incoming>Flow_0kxg7eo</bpmn:incoming>
       <bpmn:outgoing>Flow_1n8yish</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_10e4xqh" sourceRef="Gateway_0p3bhmm" targetRef="BuscaProdutosPorDepositoSAP">
+    <bpmn:sequenceFlow id="Flow_10e4xqh" sourceRef="REPROCESSAR01" targetRef="BuscaProdutosPorDepositoSAP">
       <bpmn:conditionExpression>recalcular == True</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_11bq3ww" sourceRef="VISAO_CONTABIL" targetRef="EndEvent_1" />
+    <bpmn:userTask id="VISAO_CONTABIL" name="Visão Contábil">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>
+# connection = {
+#     "address": "172.20.1.4",
+#     "port": "30015",
+#     "user": "SYSTEM",
+#     "password": "9Ab63^Op33"
+# }
+
+lista_objtype = []
+lista_docnum = []
+
+lista_objtype = list(set(item["objtype"] for item in lista_documentos))
+lista_docnum = list(set(item["docnum"] for item in lista_documentos))
+
+
+# query_produtos = f"""
+#                     SELECT 
+#                         t0."TransId" ,
+#                         t0."TransType" , 
+#                         t0."BaseRef" ,
+#                         t0."Memo" ,
+#                         t0."DueDate" ,
+#                         t0."TaxDate" ,
+#                         t1."Line_ID" ,
+#                         t1."Account" ,
+#                         t1."Debit" ,
+#                         t1."Credit" 
+#                     FROM  {baseSap}.OJDT t0
+#                         INNER JOIN {baseSap}.JDT1 t1 ON t1."TransId" = t0."TransId"
+#                     WHERE 
+#                         t0."TransType" IN ({lista_objtype}) AND t0."BaseRef" IN (11506,5560)
+#                     ORDER BY t0."ItemCode"
+#                 """</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1pd10hb</bpmn:incoming>
+      <bpmn:outgoing>Flow_11bq3ww</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-258" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1122" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
+        <dc:Bounds x="1222" y="372" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1252" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18afsbp_di" bpmnElement="VISAO_CONTABIL">
+        <dc:Bounds x="1080" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
@@ -614,14 +671,12 @@ del(documentos_saida)</spiffworkflow:postScript>
         <dc:Bounds x="-10" y="250" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
-        <dc:Bounds x="1122" y="372" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0p3bhmm_di" bpmnElement="Gateway_0p3bhmm" isMarkerVisible="true">
+      <bpmndi:BPMNShape id="Gateway_0p3bhmm_di" bpmnElement="REPROCESSAR01" isMarkerVisible="true">
         <dc:Bounds x="975" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="EntradasItens">
+      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_ESTOQUE">
         <dc:Bounds x="830" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-222" y="177" />
@@ -663,17 +718,21 @@ del(documentos_saida)</spiffworkflow:postScript>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0gpghte_di" bpmnElement="Flow_0gpghte">
         <di:waypoint x="65" y="390" />
-        <di:waypoint x="1122" y="390" />
+        <di:waypoint x="1222" y="390" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1pd10hb_di" bpmnElement="Flow_1pd10hb">
         <di:waypoint x="1025" y="177" />
-        <di:waypoint x="1122" y="177" />
+        <di:waypoint x="1080" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_10e4xqh_di" bpmnElement="Flow_10e4xqh">
         <di:waypoint x="1000" y="152" />
         <di:waypoint x="1000" y="20" />
         <di:waypoint x="40" y="20" />
         <di:waypoint x="40" y="137" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11bq3ww_di" bpmnElement="Flow_11bq3ww">
+        <di:waypoint x="1180" y="177" />
+        <di:waypoint x="1252" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
