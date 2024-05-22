@@ -1,16 +1,5 @@
 {
-  "ui:layout": [
-    {
-      "operacao": {
-        "sm": 2,
-        "md": 2,
-        "lg": 2
-      }
-    },
-    {
-      "comments": {}
-    }
-  ],
+
   "comments": {
     "ui:widget": "textarea"
   }
