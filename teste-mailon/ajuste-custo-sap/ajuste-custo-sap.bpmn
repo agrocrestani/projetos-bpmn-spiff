@@ -331,14 +331,20 @@ custo_medio_total_calculado_saida = 0
 custo_medio_unitario_calculado_saida = 0
 
 try:
-  if(lista_documentos_ignorar):
-    print('Lista Boa')
+    if(lista_documentos_ignorar):
+        print('Lista Boa')
+
+    if lista_documentos_ignorar is None
+        lista_documentos_ignorar = []
+
 except:
-    lista_documentos_ignorar = []
+        lista_documentos_ignorar = []
 
 try:
-  if(lista_documentos_ignorar_saida):
-    print('Lista Boa')
+    if(lista_documentos_ignorar_saida):
+        print('Lista Boa')
+    if lista_documentos_ignorar_saida is None
+        lista_documentos_ignorar_saida = []
 except:
     lista_documentos_ignorar_saida = []
 
