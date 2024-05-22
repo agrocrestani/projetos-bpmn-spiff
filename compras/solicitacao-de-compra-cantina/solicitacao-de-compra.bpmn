@@ -17,7 +17,7 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_160ldmq" />
     <bpmn:sequenceFlow id="Flow_1hh3d5j" sourceRef="Activity_0856rbm" targetRef="EndEvent_1" />
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_0xafkf4" />
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_0z7hg1d" />
     <bpmn:sequenceFlow id="Flow_1y37zi6" sourceRef="Activity_0xafkf4" targetRef="Activity_0856rbm" />
     <bpmn:sequenceFlow id="Flow_13fehm8" sourceRef="Activity_160ldmq" targetRef="Activity_13g9nwv" />
     <bpmn:dataStoreReference id="DataStoreReference_0ess18n" name="Filiais" dataStoreRef="filiais" type="json" />
@@ -121,25 +121,21 @@ for u in utilizacoes:
         <bpmn:targetRef>Property_0dlyti3</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1d8mo6p" sourceRef="Activity_13g9nwv" targetRef="Activity_0qpzdpu" />
+    <bpmn:callActivity id="Activity_13g9nwv" name="Atualiza Itens" calledElement="itens_cantina">
+      <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
+      <bpmn:outgoing>Flow_1d8mo6p</bpmn:outgoing>
+    </bpmn:callActivity>
     <bpmn:endEvent id="EndEvent_1">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1hh3d5j</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1d8mo6p" sourceRef="Activity_13g9nwv" targetRef="Activity_0qpzdpu" />
-    <bpmn:userTask id="Activity_0qpzdpu" name="Solicitacao Compras">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>## Instruções sobre a solicitação de compras</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="solicitacao-compra-schema.json" />
-          <spiffworkflow:property name="formUiSchemaFilename" value="solicitacao-compra-uischema.json" />
-        </spiffworkflow:properties>
-        <spiffworkflow:preScript />
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1d8mo6p</bpmn:incoming>
-      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-    </bpmn:userTask>
+    <bpmn:scriptTask id="Activity_0856rbm" name="Enviar para o SAP">
+      <bpmn:incoming>Flow_1y37zi6</bpmn:incoming>
+      <bpmn:outgoing>Flow_1hh3d5j</bpmn:outgoing>
+    </bpmn:scriptTask>
     <bpmn:manualTask id="Activity_0xafkf4" name="Aprovação do gestor">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># Solicitação de Compras para Cantina
@@ -177,17 +173,52 @@ for s in solicitacao:
     s1['quantidade'] = s['quantidade']
     sol.append(s1)</spiffworkflow:preScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:incoming>Flow_0uyps62</bpmn:incoming>
       <bpmn:outgoing>Flow_1y37zi6</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:scriptTask id="Activity_0856rbm" name="Enviar para o SAP">
-      <bpmn:incoming>Flow_1y37zi6</bpmn:incoming>
-      <bpmn:outgoing>Flow_1hh3d5j</bpmn:outgoing>
-    </bpmn:scriptTask>
-    <bpmn:callActivity id="Activity_13g9nwv" name="Atualiza Itens" calledElement="itens_cantina">
-      <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
-      <bpmn:outgoing>Flow_1d8mo6p</bpmn:outgoing>
-    </bpmn:callActivity>
+    <bpmn:userTask id="Activity_0qpzdpu" name="Solicitacao Compras">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## Instruções sobre a solicitação de compras</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="solicitacao-compra-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="solicitacao-compra-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:preScript />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1d8mo6p</bpmn:incoming>
+      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0uyps62" sourceRef="Activity_0z7hg1d" targetRef="Activity_0xafkf4" />
+    <bpmn:manualTask id="Activity_0z7hg1d" name="Revisão da Solicitação">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Solicitação de Compras para Cantina
+
+| Campo | Conteúdo |
+| ---------: | --------------|
+|Filial: |{{BPLName}}|
+|Departamento: |{{Department}}|
+|Prioridade: |{{U_RSD_Prioridade}}|
+|Tipo Requisição: | {{U_RSD_Aplicacao}} |
+|Centro de Custo: | {{OcrCode}} |
+|Cultura: | {{OcrCode2}} |
+|Safra: | {{OcrCode3}} |
+|Depósito: | {{WhsCode}} |
+|Utilização: | {{MainUsage}} |
+|Observações: | {{Comments}} |
+|**Quantidade de colaboradores:** | {{qtdeColaboradores}} |
+|**Periodo em dias:** | {{periodo}} |
+
+
+| Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade |
+| --------- | --------------| ------------------: | --------------------: | ----------- |
+{% for s in sol%}
+| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} 
+{%endfor%}
+</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0uyps62</bpmn:outgoing>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -250,40 +281,43 @@ for s in solicitacao:
         <dc:Bounds x="320" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1c7gl9e_di" bpmnElement="Activity_13g9nwv">
+        <dc:Bounds x="490" y="147" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1282" y="169" width="36" height="36" />
+        <dc:Bounds x="1432" y="169" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ozxjmx_di" bpmnElement="Activity_0856rbm">
+        <dc:Bounds x="1260" y="147" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1izsqe5_di" bpmnElement="Activity_0xafkf4">
+        <dc:Bounds x="1080" y="147" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0xq3fic_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="680" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1izsqe5_di" bpmnElement="Activity_0xafkf4">
-        <dc:Bounds x="860" y="147" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1ozxjmx_di" bpmnElement="Activity_0856rbm">
-        <dc:Bounds x="1050" y="147" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1c7gl9e_di" bpmnElement="Activity_13g9nwv">
-        <dc:Bounds x="490" y="147" width="100" height="80" />
-        <bpmndi:BPMNLabel />
+      <bpmndi:BPMNShape id="Activity_0e43a4g_di" bpmnElement="Activity_0z7hg1d">
+        <dc:Bounds x="870" y="147" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="216" y="187" />
         <di:waypoint x="320" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1hh3d5j_di" bpmnElement="Flow_1hh3d5j">
-        <di:waypoint x="1150" y="187" />
-        <di:waypoint x="1282" y="187" />
+        <di:waypoint x="1360" y="187" />
+        <di:waypoint x="1432" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="780" y="187" />
-        <di:waypoint x="860" y="187" />
+        <di:waypoint x="870" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1y37zi6_di" bpmnElement="Flow_1y37zi6">
-        <di:waypoint x="960" y="187" />
-        <di:waypoint x="1050" y="187" />
+        <di:waypoint x="1180" y="187" />
+        <di:waypoint x="1260" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13fehm8_di" bpmnElement="Flow_13fehm8">
         <di:waypoint x="420" y="187" />
@@ -292,6 +326,10 @@ for s in solicitacao:
       <bpmndi:BPMNEdge id="Flow_1d8mo6p_di" bpmnElement="Flow_1d8mo6p">
         <di:waypoint x="590" y="187" />
         <di:waypoint x="680" y="187" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0uyps62_di" bpmnElement="Flow_0uyps62">
+        <di:waypoint x="970" y="187" />
+        <di:waypoint x="1080" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0w8lbnm_di" bpmnElement="DataInputAssociation_0w8lbnm">
         <di:waypoint x="223" y="71" />
