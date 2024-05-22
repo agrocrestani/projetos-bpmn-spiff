@@ -657,7 +657,7 @@ for movimento_contabil in lista_movimento_contabil:
     agrupados_por_account[account]["transactions"].append({
         "debit": debit,
         "credit": credit ,
-        "transtype" : transtype
+        "transtype" : transtype,
         "baseref" : baseref
     })
 
