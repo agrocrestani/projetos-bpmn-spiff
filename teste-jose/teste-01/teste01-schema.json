@@ -74,7 +74,9 @@
       "ano": {
         "title": "Selecione o ano de referência",
         "type" : "number",
-        "anyof": []
+        "anyof": [
+          ""
+        ]
       }
     }
   }
