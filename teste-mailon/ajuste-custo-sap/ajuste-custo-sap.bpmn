@@ -613,7 +613,6 @@ for objtype, docnums in agrupados_por_objtype.items():
         INNER JOIN {baseSap}.JDT1 t1 ON t1."TransId" = t0."TransId"
         WHERE 
             t0."TransType" = {objtype} AND t0."BaseRef" IN ({docnums_str})
-        ORDER BY t0."ItemCode"
     """
     
     consulta_movimentos_contabil = Hana(connection).selectDb(query_movimento_contabil)
