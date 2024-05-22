@@ -21,13 +21,13 @@
                         {
                             "sm": 2,
                             "md": 2,
-                            "lg": 
+                            "lg": 3
                         },
                     "custo_unitario": 
                         {
                             "sm": 2,
                             "md": 2,
-                            "lg": 2
+                            "lg": 
                         }
                 }
             ]      
