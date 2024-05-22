@@ -133,8 +133,7 @@ for u in utilizacoes:
           <spiffworkflow:property name="formJsonSchemaFilename" value="solicitacao-compra-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="solicitacao-compra-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript>if operacao == 'Corrige':
-    solicitacao = solicitacao_bkp</spiffworkflow:preScript>
+        <spiffworkflow:preScript />
         <spiffworkflow:postScript>solicitacao_bkp = solicitacao</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1d8mo6p</bpmn:incoming>
@@ -183,6 +182,8 @@ for u in utilizacoes:
           <spiffworkflow:property name="formJsonSchemaFilename" value="revisao-da-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="revisao-da-solicitacao-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:postScript>if operacao == 'Corrige':
+    solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0uyps62</bpmn:outgoing>
@@ -233,6 +234,8 @@ for s in solicitacao:
           <spiffworkflow:property name="formJsonSchemaFilename" value="aprovar-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="aprovar-solicitacao-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:postScript>if operacao == 'Corrige':
+    solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1evt79u</bpmn:incoming>
       <bpmn:outgoing>Flow_1y37zi6</bpmn:outgoing>
