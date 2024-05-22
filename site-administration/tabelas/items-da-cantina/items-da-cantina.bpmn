@@ -67,7 +67,7 @@ baseSap = get_secret('baseSap')
 query = f"""
             SELECT 
             T0."ItemCode", T0."ItemName", T0."InvntryUom", TO_ALPHANUM(ifnull(T0."U_AC_QtdePessoaMes",0)) as u_ac_qtdepessoame,
-            (SELECT T1."AvgPrice" FROM oitw t1 WHERE t1."ItemCode" = t0."ItemCode" AND t1."WhsCode" = '{WhsCode}') PrecoMedio
+            (SELECT T1."AvgPrice" FROM {baseSap}."OITW" t1 WHERE t1."ItemCode" = t0."ItemCode" AND t1."WhsCode" = '{WhsCode}') PrecoMedio
             FROM {baseSap}."OITM" T0
             WHERE t0."QryGroup3" = 'Y' AND t0."validFor" = 'Y'
           """
