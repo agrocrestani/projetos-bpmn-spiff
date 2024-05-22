@@ -182,7 +182,7 @@ obs_correcoes = []</spiffworkflow:preScript>
 | Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade | Custo Médio | V. Total |
 | ---------- | ---------------| --------------------: | --------------------: | ------------ | -----------------: | ----------: |
 {% for s in sol%}
-| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio]}} | {{s['PrecoMedio']*s['quantidade']|
+| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio']}} | {{s['PrecoMedio']*s['quantidade']|
 ||||||Total | {{total}}
 {%endfor%}
 </spiffworkflow:instructionsForEndUser>
@@ -237,12 +237,12 @@ for s in sol:
 | Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade | Custo Médio | V. Total |
 | ---------- | ---------------| --------------------: | --------------------: | ------------ | -----------------: | ----------: |
 {% for s in sol%}
-| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio]}} | {{s['PrecoMedio']*s['quantidade']|
+| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio']}} | {{s['PrecoMedio']*s['quantidade']|
 ||||||Total | {{total}}
 {%endfor%}
 
 </spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:preScript />
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="aprovar-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="aprovar-solicitacao-uischema.json" />
