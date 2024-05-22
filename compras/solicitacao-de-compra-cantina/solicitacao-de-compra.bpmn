@@ -271,6 +271,7 @@ obs_correcoes.append(comments)
       <bpmn:extensionElements>
         <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
+usuarioLancamento = get_current_user()['display_name']
 
 
 items = []
@@ -296,7 +297,7 @@ payload = {
     "Comments": f"Solicitante: {solicitante}. Quantidades calculadas para: {qtdeColaboradores} colaboradores, durante {periodo} dias",
     "U_AC_Spiff_Instancia": spiff_instancia,
     "U_AC_Spiff_Tarefa": spiff_tarefa,
-    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
+    "U_AC_Spiff_Usuario": usuarioLancamento,
     "DocumentLines": items,
     "TaxExtension": {
       "MainUsage": MainUsage
@@ -336,33 +337,33 @@ headers = {
 
 
 
-if operacao == 'Confirma':
-    for s in sol:
-        {
-    "Comments": "AUTO POSTO DAS BANDEIRAS NF 28528",
-    "BPL_IDAssignedToInvoice": 3,
-    "RequesterDepartment": 15,
-    "SendNotification": "tNO",
-    "RequriedDate": "2024-06-01",
-    "U_RSD_Prioridade": "3",
-    "U_RSD_Aplicacao": "1",
-    "U_AC_Spiff_Instancia": null,
-    "U_AC_Spiff_Tarefa": null,
-    "U_AC_Spiff_Usuario": null,
-    "DocumentLines": [
-        {
-            "ItemCode": "005800",
-            "Quantity": 22.80,
-            "WarehouseCode": "01.FCOL",
-            "CostingCode": "QUEPRO",
-            "CostingCode2": "SOJA",
-            "CostingCode3": "23/24"
-        }
-    ],
-    "TaxExtension": {
-                "MainUsage": 12
-            }
-}</spiffworkflow:preScript>
+# if operacao == 'Confirma':
+#     for s in sol:
+#         {
+#     "Comments": "AUTO POSTO DAS BANDEIRAS NF 28528",
+#     "BPL_IDAssignedToInvoice": 3,
+#     "RequesterDepartment": 15,
+#     "SendNotification": "tNO",
+#     "RequriedDate": "2024-06-01",
+#     "U_RSD_Prioridade": "3",
+#     "U_RSD_Aplicacao": "1",
+#     "U_AC_Spiff_Instancia": null,
+#     "U_AC_Spiff_Tarefa": null,
+#     "U_AC_Spiff_Usuario": null,
+#     "DocumentLines": [
+#         {
+#             "ItemCode": "005800",
+#             "Quantity": 22.80,
+#             "WarehouseCode": "01.FCOL",
+#             "CostingCode": "QUEPRO",
+#             "CostingCode2": "SOJA",
+#             "CostingCode3": "23/24"
+#         }
+#     ],
+#     "TaxExtension": {
+#                 "MainUsage": 12
+#             }
+# }</spiffworkflow:preScript>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
