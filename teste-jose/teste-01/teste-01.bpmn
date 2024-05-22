@@ -11,7 +11,7 @@
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
     <bpmn:userTask id="Activity_0qpzdpu" name="Example manual task">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="teste01-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="teste01-uischema.json" />
@@ -39,7 +39,7 @@ ano = [
     {"value": "4", "label": "2027"},
     {"value": "5", "label": "2028"}
 ]</spiffworkflow:preScript>
-        <spiffworkflow:guestConfirmation></spiffworkflow:guestConfirmation>
+        <spiffworkflow:guestConfirmation />
         <spiffworkflow:postScript>del(meses)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
