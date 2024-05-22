@@ -427,6 +427,7 @@ if isinstance(consulta_movimentos_out, list):
                 total_quantidade = produtoAux['qtde'] +  total_quantidade
                 produtoAux['estoque_atual'] = total_quantidade
                 total_custo_calc_saida += produtoAux['custo_medio_calc']
+                total_preco_unitario = produtoAux['custo_medio_calc'] + total_preco_unitario 
                 produtoAux['custo_total_contabil'] = produtoAux['stockprice'] * produtoAux['qtde']
                 produtoAux['preco_unitario'] = produtoAux['stockprice']
 
