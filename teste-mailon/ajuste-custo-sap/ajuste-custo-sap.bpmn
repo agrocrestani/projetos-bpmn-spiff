@@ -334,7 +334,7 @@ try:
     if(lista_documentos_ignorar):
         print('Lista Boa')
 
-    if lista_documentos_ignorar is None
+    if lista_documentos_ignorar is None:
         lista_documentos_ignorar = []
 
 except:
@@ -343,7 +343,7 @@ except:
 try:
     if(lista_documentos_ignorar_saida):
         print('Lista Boa')
-    if lista_documentos_ignorar_saida is None
+    if lista_documentos_ignorar_saida is None:
         lista_documentos_ignorar_saida = []
 except:
     lista_documentos_ignorar_saida = []
