@@ -237,7 +237,9 @@ sol = []
 for s in solicitacao:
     s1 = json.loads(s['item'])
     s1['quantidade'] = s['quantidade']
-    sol.append(s1)</spiffworkflow:preScript>
+    sol.append(s1)
+
+comments = ""</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="aprovar-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="aprovar-solicitacao-uischema.json" />
