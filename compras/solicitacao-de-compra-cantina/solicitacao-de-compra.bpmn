@@ -179,10 +179,11 @@ obs_correcoes = []</spiffworkflow:preScript>
 **Observações:** {{Comments}}
 
 
-| Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade |
-| --------- | --------------| ------------------: | --------------------: | ----------- |
+| Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade | Custo Médio | V. Total |
+| ---------- | ---------------| --------------------: | --------------------: | ------------ | -----------------: | ----------: |
 {% for s in sol%}
-| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} 
+| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio]}} | {{s['PrecoMedio']*s['quantidade']|
+||||||Total | {{total}}
 {%endfor%}
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
@@ -202,7 +203,11 @@ for s in solicitacao:
     s1['quantidade'] = s['quantidade']
     sol.append(s1)
 
-comments = ""</spiffworkflow:preScript>
+comments = ""
+
+total = 0
+for s in sol:
+    total += s['quantidade']*s['PrecoMedio']</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0uyps62</bpmn:outgoing>
