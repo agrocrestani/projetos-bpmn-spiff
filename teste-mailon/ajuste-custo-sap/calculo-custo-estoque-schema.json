@@ -6,7 +6,7 @@
       "title": "Deseja Recalcular ?",
       "default": false
     },
-    "documentos": {
+    "documentos_entrada": {
       "type": "array",
       "title": "Ignorar Documentos de Entrada",
       "items": {
