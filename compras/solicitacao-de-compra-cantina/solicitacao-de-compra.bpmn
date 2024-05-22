@@ -183,7 +183,7 @@ obs_correcoes = []</spiffworkflow:preScript>
 | ---------- | ---------------| --------------------: | --------------------: | ------------ | -----------------: | ----------: |
 {% for s in sol%}
 | {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio']}} | {{s['PrecoMedio']*s['quantidade']|
-||||||Total | {{total}}
+
 {%endfor%}
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
