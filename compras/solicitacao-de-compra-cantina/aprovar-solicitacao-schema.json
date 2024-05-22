@@ -25,7 +25,6 @@
       },
       "then": {
         "properties": {
-            
           "comments": {
             "type": "string"
           }
