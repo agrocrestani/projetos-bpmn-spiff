@@ -303,7 +303,7 @@ payload = {
 
 loginSap = saplogin[0]['SessionId']
 
-url = 'https://172.20.1.9:50000/b1s/v1/Invoices'
+url = 'https://172.20.1.9:50000/b1s/v1/PurchaseRequests'
 
 headers = {
   'Cookie': f"B1SESSION={loginSap}",
@@ -361,6 +361,16 @@ if operacao == 'Confirma':
                 "MainUsage": 12
             }
 }</spiffworkflow:preScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" />
+            <spiffworkflow:parameter id="headers" type="any" />
+            <spiffworkflow:parameter id="data" type="any" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_18wrock</bpmn:incoming>
       <bpmn:outgoing>Flow_1hh3d5j</bpmn:outgoing>
