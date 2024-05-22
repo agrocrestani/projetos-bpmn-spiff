@@ -387,7 +387,7 @@ if isinstance(consulta_movimentos_out, list):
                 produtoAux['custo_medio'] = custo_medio
                 produtoAux['estoque_atual'] = total_quantidade
                 produtoAux['custo_estoque_atual'] = custo_medio * total_quantidade
-                produtoAux['custo_medio_calc'] = custo_medio * produtoAux['qtde']
+                produtoAux['custo_medio_calc'] = produtoAux['linetotal']
                 produtoAux['custo_total_contabil'] = produtoAux['linetotal']
 
                 #Calcular Custo Médio da Entrada Ignorando documentos Selecionados
@@ -401,16 +401,18 @@ if isinstance(consulta_movimentos_out, list):
                             ignorar = True
                             break
 
-                    del(doc_ignorar)
-
                     if(ignorar == False):
                         custo_medio_total_calculado_entrada += produtoAux['custo_medio_calc']
 
                         if(custo_medio_unitario_calculado_entrada &gt; 0 ):
                             custo_medio_unitario_calculado_entrada = (custo_medio_unitario_calculado_entrada + produtoAux['custo_medio'])/2
                         else:
-                            custo_medio_unitario_calculado_entrada = produtoAux['custo_medio']    
+                            custo_medio_unitario_calculado_entrada = produtoAux['custo_medio']
+                    else:
+                        produtoAux['qtde'] = doc_ignorar['qtde']
 
+
+                    del(doc_ignorar)
                     del(ignorar)                      
                 else:
                     custo_medio_total_calculado_entrada += produtoAux['custo_medio_calc']
