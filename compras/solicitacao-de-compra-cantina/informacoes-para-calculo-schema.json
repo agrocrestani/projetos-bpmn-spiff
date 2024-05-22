@@ -9,7 +9,9 @@
     "OcrCode3",
     "WhsCode",
     "MainUsage",
-    
+    "        "sm": 2,
+        "md": 2,
+        "lg": 4"
   ],
   "properties": {
     "BPLId": {
