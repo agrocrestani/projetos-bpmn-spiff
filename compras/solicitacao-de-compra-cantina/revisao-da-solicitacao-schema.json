@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "favoriteFruit": {
-      "title": "Confirma ou ",
+      "title": "Confirma ou corrige?",
       "type": "string",
       "anyOf": [
         {
