@@ -73,7 +73,7 @@
       },
       "ano": {
         "title": "Selecione o ano de referência",
-        "type" : "number",
+        "type" : "numbe",
         "anyof": [
           "options_from_task_data_var:ano"
         ]
