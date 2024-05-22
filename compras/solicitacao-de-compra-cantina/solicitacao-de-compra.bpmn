@@ -235,7 +235,9 @@ for s in solicitacao:
           <spiffworkflow:property name="formUiSchemaFilename" value="aprovar-solicitacao-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:postScript>if operacao == 'Corrige':
-    solicitacao = solicitacao_bkp</spiffworkflow:postScript>
+    solicitacao = solicitacao_bkp
+
+obs_correcao.append(comments)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1evt79u</bpmn:incoming>
       <bpmn:outgoing>Flow_1y37zi6</bpmn:outgoing>
