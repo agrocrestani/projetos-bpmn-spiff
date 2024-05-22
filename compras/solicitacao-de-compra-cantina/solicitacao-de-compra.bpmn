@@ -129,7 +129,14 @@ obs_correcoes = []</spiffworkflow:preScript>
     </bpmn:callActivity>
     <bpmn:userTask id="Activity_0qpzdpu" name="Solicitacao Compras">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>## Instruções sobre a solicitação de compras</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser>## Instruções sobre a solicitação de compras
+
+{%if correcao == 'Corrige' %}
+    {%for o in obs_correcoes%}
+        - [ ] {{ o }}
+    {%endfor%}
+{%endif%}
+</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="solicitacao-compra-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="solicitacao-compra-uischema.json" />
