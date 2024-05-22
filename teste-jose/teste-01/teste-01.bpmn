@@ -40,6 +40,7 @@ ano = [
     {"value": "5", "label": "2028"}
 ]</spiffworkflow:preScript>
         <spiffworkflow:guestConfirmation></spiffworkflow:guestConfirmation>
+        <spiffworkflow:postScript>del(meses)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
