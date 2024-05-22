@@ -20,13 +20,6 @@
             "1"
           ],
           "title": "Confirma"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "3"
-          ],
-          "title": "Fora Processo"
         }
       ]
     }
