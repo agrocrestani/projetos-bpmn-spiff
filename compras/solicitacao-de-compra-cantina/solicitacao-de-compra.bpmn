@@ -183,7 +183,7 @@ for u in utilizacoes:
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0uyps62</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:manualTask id="Activity_0xafkf4" name="Aprovação do gestor">
+    <bpmn:userTask id="Activity_0xafkf4" name="Aprovação do gestor">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># Solicitação de Compras para Cantina
 
@@ -219,10 +219,14 @@ for s in solicitacao:
     s1 = json.loads(s['item'])
     s1['quantidade'] = s['quantidade']
     sol.append(s1)</spiffworkflow:preScript>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="aprovar-solicitacao-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="aprovar-solicitacao-uischema.json" />
+        </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0uyps62</bpmn:incoming>
       <bpmn:outgoing>Flow_1y37zi6</bpmn:outgoing>
-    </bpmn:manualTask>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -303,9 +307,8 @@ for s in solicitacao:
       <bpmndi:BPMNShape id="Activity_0ztm3rt_di" bpmnElement="Activity_0z7hg1d">
         <dc:Bounds x="870" y="147" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1izsqe5_di" bpmnElement="Activity_0xafkf4">
+      <bpmndi:BPMNShape id="Activity_0tel8em_di" bpmnElement="Activity_0xafkf4">
         <dc:Bounds x="1050" y="147" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="216" y="187" />
