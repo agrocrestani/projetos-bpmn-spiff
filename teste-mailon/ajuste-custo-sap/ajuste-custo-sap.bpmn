@@ -118,7 +118,22 @@ if(consulta_movimentos != []):
 
 del(connection)
 del(query_movimento)
-del(baseSap)</bpmn:script>
+del(baseSap)
+
+# Dicionário para agrupar os docnum por objtype
+agrupados_por_objtype = {}
+
+# Percorrendo a lista de documentos
+for documento in consulta_movimentos_out:
+    objtype = documento["objtype"]
+    docnum = documento["docnum"]
+    
+    # Se o objtype ainda não está no dicionário, adicionar uma nova lista
+    if objtype not in agrupados_por_objtype:
+        agrupados_por_objtype[objtype] = []
+    
+    # Adicionar o docnum à lista correspondente ao objtype
+    agrupados_por_objtype[objtype].append(docnum)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="VISAO_ESTOQUE" targetRef="REPROCESSAR01" />
     <bpmn:subProcess id="Activity_1d1r8sl">
@@ -520,8 +535,6 @@ recalcular = False
 del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript>lista_documentos_ignorar = documentos_entrada
 lista_documentos_ignorar_saida = documentos_saida
-
-lista_documentos = []
 
 # Dicionário para agrupar os docnum por objtype
 agrupados_por_objtype = {}
