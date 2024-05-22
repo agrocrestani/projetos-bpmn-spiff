@@ -75,7 +75,7 @@
         "title": "Selecione o ano de referência",
         "type" : "number",
         "anyof": [
-          "options_from_task_data_"
+          "options_from_task_data_var"
         ]
       }
     }
