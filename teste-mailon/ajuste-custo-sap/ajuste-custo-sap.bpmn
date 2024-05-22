@@ -612,6 +612,7 @@ for objtype, docnums in agrupados_por_objtype.items():
             t2."AcctName" 
         FROM {baseSap}.OJDT t0
         INNER JOIN {baseSap}.JDT1 t1 ON t1."TransId" = t0."TransId"
+        INNER JOIN {baseSap}.OACT t2 ON t2."AcctCode" = t1."Account"
         WHERE 
             t0."TransType" = {objtype} AND t0."BaseRef" IN ({docnums_str})
     """
