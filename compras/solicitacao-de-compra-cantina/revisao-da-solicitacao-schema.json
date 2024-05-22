@@ -39,7 +39,7 @@
       "if": {
         "properties": {
           "animal": {
-            "const": "Fish"
+            "const": "Corrige"
           }
         }
       },
