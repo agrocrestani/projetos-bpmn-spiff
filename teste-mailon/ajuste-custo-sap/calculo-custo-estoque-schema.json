@@ -29,7 +29,7 @@
           },
           "qtde":{
             "type": "number",
-            "title"
+            "title": 
           }
         }
       }
