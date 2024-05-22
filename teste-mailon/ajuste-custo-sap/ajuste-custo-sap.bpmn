@@ -598,16 +598,16 @@ for objtype, docnums in agrupados_por_objtype.items():
     
     query_movimento_contabil = f"""
         SELECT 
-            t0."TransId",
-            t0."TransType", 
-            t0."BaseRef",
-            t0."Memo",
-            t0."DueDate",
-            t0."TaxDate",
-            t1."Line_ID",
-            t1."Account",
-            t1."Debit",
-            t1."Credit"
+            CAST(t0."TransId" AS VARCHAR(50)) AS "TransId", 
+            CAST(t0."TransType" AS VARCHAR(50)) AS "TransType",  
+            CAST(t0."BaseRef" AS VARCHAR(50)) AS "BaseRef", 
+            CAST(t0."Memo" AS VARCHAR(50)) AS "Memo", 
+            CAST(t0."DueDate" AS VARCHAR(50)) AS "DueDate", 
+            CAST(t0."TaxDate" AS VARCHAR(50)) AS "TaxDate", 
+            CAST(t1."Line_ID" AS VARCHAR(50)) AS "Line_ID", 
+            CAST(t1."Account" AS VARCHAR(50)) AS "Account", 
+            CAST(t1."Debit" AS VARCHAR(50)) AS "Debit", 
+            CAST(t1."Credit"AS VARCHAR(50)) AS "Credit"
         FROM {baseSap}.OJDT t0
         INNER JOIN {baseSap}.JDT1 t1 ON t1."TransId" = t0."TransId"
         WHERE 
