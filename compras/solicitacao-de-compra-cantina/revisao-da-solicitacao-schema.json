@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "favoriteFruit": {
-      "title": "Select your favorite fruit",
+      "title": "Confirma ou ",
       "type": "string",
       "anyOf": [
         {
