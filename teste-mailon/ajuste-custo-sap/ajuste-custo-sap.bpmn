@@ -617,23 +617,37 @@ for objtype, docnums in agrupados_por_objtype.items():
     
     consulta_movimentos_contabil = Hana(connection).selectDb(query_movimento_contabil)
     
-    lista_movimento_contabil.append(consulta_movimentos_contabil)
+    lista_movimento_contabil.extend(consulta_movimentos_contabil)  # Use extend to add the results to the list
 
+
+# Agrupamento dos resultados e cálculo das somas
+agrupados_por_account = {}
 
 for movimento_contabil in lista_movimento_contabil:
-    account = movimento_contabil["account"]
-    debit = movimento_contabil["debit"]
-    credit = movimento_contabil["credit"]
+    account = movimento_contabil["Account"]
+    debit = float(movimento_contabil["Debit"])  # Certificando que os valores são numéricos
+    credit = float(movimento_contabil["Credit"])
     
-    if account not in movimento_contabil:
-        movimento_contabil[account] = []
+    if account not in agrupados_por_account:
+        agrupados_por_account[account] = {
+            "total_debit": 0.0,
+            "total_credit": 0.0,
+            "transactions": []
+        }
     
-    agrupados_por_objtype[account].append(
-            {
-                "debit" : movimento_contabil["debit"] ,
-                "credit" : movimento_contabil["credit"]
-            }
-        )</spiffworkflow:preScript>
+    agrupados_por_account[account]["total_debit"] += debit
+    agrupados_por_account[account]["total_credit"] += credit
+    agrupados_por_account[account]["transactions"].append({
+        "debit": debit,
+        "credit": credit
+    })
+
+# Calculando a diferença (saldo)
+for account, data in agrupados_por_account.items():
+    total_debit = data["total_debit"]
+    total_credit = data["total_credit"]
+    balance = total_debit - total_credit
+    data["balance"] = balance</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="visao-contabil-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="visao-contabil-uischema.json" />
