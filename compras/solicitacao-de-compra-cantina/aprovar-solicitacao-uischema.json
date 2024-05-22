@@ -4,7 +4,7 @@
   },
   "ui:layout": [
     {
-        "operacao"
+        "operacao": {}
     }
   ]
 }
