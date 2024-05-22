@@ -9,7 +9,7 @@
     "OcrCode3",
     "WhsCode",
     "MainUsage",
-    ""
+    "RequriedDate"
   ],
   "properties": {
     "BPLId": {
