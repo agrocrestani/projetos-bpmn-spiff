@@ -688,7 +688,7 @@ total_balance = sum(data['balance'] for account, data in agrupados_por_account.i
 | Debit | Credit | DocNum | Objeto |
 |-------|--------|-------------| -------------|
 {% for transaction in data['transactions'] %}
-| {{ transaction['debit'] }} | {{ transaction['credit'] }} | transaction['baseref'] | transaction['transtype'] |
+| {{ transaction['debit'] }} | {{ transaction['credit'] }} | {{transaction['baseref']}} | {{transaction['transtype']}} |
 {% endfor %}
 ---
 
