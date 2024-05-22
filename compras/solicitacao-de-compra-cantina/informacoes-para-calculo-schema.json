@@ -136,7 +136,7 @@
     "RequriedDate": {
       "type": "string",
       "format": "date",
-      "title": "Preferred Delivery Date",
+      "title": "Data",
       "validationErrorMessage": "Date must be today's date or later"
     }
   }
