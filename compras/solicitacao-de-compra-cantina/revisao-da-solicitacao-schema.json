@@ -38,7 +38,7 @@
     {
       "if": {
         "properties": {
-          "animal": {
+          "acao": {
             "const": "Corrige"
           }
         }
