@@ -6,7 +6,7 @@
   "properties": {
     "filialEscritorio": {
       "title": "Matriz",
-      "type": "object",http://192.168.1.222:8001/editor/process-models/teste-jose:teste-01/files/teste-01.bpmn
+      "type": "object",
       "required": ["escritorioAtivos", "escritorioDemitidos"],
       "properties": {
         "escritorioAtivos": {
