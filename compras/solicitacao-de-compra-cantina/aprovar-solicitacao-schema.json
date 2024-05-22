@@ -12,13 +12,14 @@
     }
   },
   "allOf": [
-    {
-    "if": {
-    "properties": {
-        "operacao": {
-        "const": "Corrige"
+     {
+      "if": {
+        "properties": {
+          "operacao": {
+            "const": "Corrige"
+          }
         }
-    },
+      },
     {
       "if": {
         "properties": {
