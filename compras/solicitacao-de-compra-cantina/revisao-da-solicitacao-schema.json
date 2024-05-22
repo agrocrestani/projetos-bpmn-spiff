@@ -10,7 +10,7 @@
         {
           "type": "string",
           "enum": [
-            "1"
+            "o"
           ],
           "title": "Normal"
         },
