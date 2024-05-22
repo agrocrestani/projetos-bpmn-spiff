@@ -247,10 +247,10 @@ for s in solicitacao:
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_18wrock" sourceRef="Gateway_1d3lf4s" targetRef="Activity_0856rbm" />
     <bpmn:sequenceFlow id="Flow_13sk1mn" sourceRef="Gateway_0g0isr7" targetRef="Activity_0qpzdpu">
-      <bpmn:conditionExpression>operacao = 'Corrige'</bpmn:conditionExpression>
+      <bpmn:conditionExpression>operacao == 'Corrige'</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0vu7th0" sourceRef="Gateway_1d3lf4s" targetRef="Activity_0qpzdpu">
-      <bpmn:conditionExpression>operacao = 'Corrige'</bpmn:conditionExpression>
+      <bpmn:conditionExpression>operacao == 'Corrige'</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
