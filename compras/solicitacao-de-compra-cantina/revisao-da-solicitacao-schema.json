@@ -14,7 +14,7 @@
     {
       "if": {
         "properties": {
-          "animal": {
+          "acao": {
             "const": "Confirma"
           }
         }
