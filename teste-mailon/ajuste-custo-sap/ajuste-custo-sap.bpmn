@@ -536,20 +536,20 @@ del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript>lista_documentos_ignorar = documentos_entrada
 lista_documentos_ignorar_saida = documentos_saida
 
-# Dicionário para agrupar os docnum por objtype
-agrupados_por_objtype = {}
+# # Dicionário para agrupar os docnum por objtype
+# agrupados_por_objtype = {}
 
-# Percorrendo a lista de documentos
-for documento in consulta_movimentos_out:
-    objtype = documento["objtype"]
-    docnum = documento["docnum"]
+# # Percorrendo a lista de documentos
+# for documento in consulta_movimentos_out:
+#     objtype = documento["objtype"]
+#     docnum = documento["docnum"]
     
-    # Se o objtype ainda não está no dicionário, adicionar uma nova lista
-    if objtype not in agrupados_por_objtype:
-        agrupados_por_objtype[objtype] = []
+#     # Se o objtype ainda não está no dicionário, adicionar uma nova lista
+#     if objtype not in agrupados_por_objtype:
+#         agrupados_por_objtype[objtype] = []
     
-    # Adicionar o docnum à lista correspondente ao objtype
-    agrupados_por_objtype[objtype].append(docnum)
+#     # Adicionar o docnum à lista correspondente ao objtype
+#     agrupados_por_objtype[objtype].append(docnum)
 
 del(documento)
 del(consulta_movimentos_out)
