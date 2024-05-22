@@ -1,7 +1,7 @@
 {
   "description": "Verifique os itens da solicitação e confirme para enviar a solicitação aprovação.",
   "type": "object",
-  "required"
+  "required":
   "properties": {
     "operacao": {
       "title": "Confirma ou corrige?",
