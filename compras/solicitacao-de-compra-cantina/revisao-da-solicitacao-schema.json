@@ -38,7 +38,7 @@
     {
       "if": {
         "properties": {
-          "acao": {
+          "operacao": {
             "const": "Corrige"
           }
         }
