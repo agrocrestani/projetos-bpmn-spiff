@@ -212,22 +212,18 @@ comments = ""</spiffworkflow:preScript>
     <bpmn:sequenceFlow id="Flow_1evt79u" sourceRef="Gateway_0g0isr7" targetRef="Activity_0xafkf4" />
     <bpmn:userTask id="Activity_0xafkf4" name="Aprovação do gestor">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser># Solicitação de Compras para Cantina
+        <spiffworkflow:instructionsForEndUser># Aprovação da Solicitação de Compras para Cantina
 
-| Campo | Conteúdo |
-| ---------: | --------------|
-|Filial: |{{BPLName}}|
-|Departamento: |{{Department}}|
-|Prioridade: |{{U_RSD_Prioridade}}|
-|Tipo Requisição: | {{U_RSD_Aplicacao}} |
-|Centro de Custo: | {{OcrCode}} |
-|Cultura: | {{OcrCode2}} |
-|Safra: | {{OcrCode3}} |
-|Depósito: | {{WhsCode}} |
-|Utilização: | {{MainUsage}} |
-|Observações: | {{Comments}} |
-|**Quantidade de colaboradores:** | {{qtdeColaboradores}} |
-|**Periodo em dias:** | {{periodo}} |
+| Campo | Conteúdo |  Campo | Conteúdo |
+| ---------: | --------------|  ---------: | --------------|
+|Filial: |{{BPLName}}|Departamento: |{{Department}}|
+|**Quantidade de colaboradores:** | {{qtdeColaboradores}} |**Periodo em dias:** | {{periodo}} |
+|Prioridade: |{{U_RSD_Prioridade}}| Tipo Requisição: | {{U_RSD_Aplicacao}} |
+|Centro de Custo: | {{OcrCode}} | Cultura: | {{OcrCode2}} |
+|Safra: | {{OcrCode3}} | Depósito: | {{WhsCode}} |
+|Utilização: | {{MainUsage}} | 
+
+**Observações:** {{Comments}}
 
 
 | Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade |
@@ -235,6 +231,7 @@ comments = ""</spiffworkflow:preScript>
 {% for s in sol%}
 | {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} 
 {%endfor%}
+
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript />
         <spiffworkflow:properties>
