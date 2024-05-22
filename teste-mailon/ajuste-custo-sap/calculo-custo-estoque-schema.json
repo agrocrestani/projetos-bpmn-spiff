@@ -28,7 +28,8 @@
             "title": "Nº do Documento"
           },
           "qtde":{
-            "type": "number"
+            "type": "number",
+            
           }
         }
       }
