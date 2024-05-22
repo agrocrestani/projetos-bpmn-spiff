@@ -13,7 +13,6 @@
     }
   },
   "allOf": [
-
     {
       "if": {
         "properties": {
