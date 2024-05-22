@@ -67,7 +67,7 @@ baseSap = get_secret('baseSap')
 query = f"""
             SELECT 
             T0."ItemCode", T0."ItemName", T0."InvntryUom", TO_ALPHANUM(ifnull(T0."U_AC_QtdePessoaMes",0)) as u_ac_qtdepessoames,
-            TO_ALPHANUM((SELECT T1."AvgPrice" FROM {baseSap}."OITW" t1 WHERE t1."ItemCode" = t0."ItemCode" AND t1."WhsCode" = '{WhsCode}')) PrecoMedio
+            TO_ALPHANUM((SELECT T1."AvgPrice" FROM {baseSap}."OITW" t1 WHERE t1."ItemCode" = t0."ItemCode" AND t1."WhsCode" = '{WhsCode}')) as PrecoMedio
             FROM {baseSap}."OITM" T0
             WHERE t0."QryGroup3" = 'Y' AND t0."validFor" = 'Y'
           """
@@ -83,7 +83,7 @@ for r in rsp:
     ItemName = str(r['itemname'])
     InvntryUom = str(r['invntryuom'])
     QtdeSugerida = (float(r['u_ac_qtdepessoames'])*(qtdeColaboradores*int(periodo)))/30
-    PrecoMedio = float['precomedio']
+    PrecoMedio = float(r['precomedio'])
 
     items_cantina.append(
         {
