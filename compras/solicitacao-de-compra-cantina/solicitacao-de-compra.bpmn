@@ -35,14 +35,15 @@
 ### Informe os dados abaixo e clique em continuar.</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>n_filiais = []
 for f in filiais:
-    BPLId = f['BPLId']
-    BPLName = f['BPLName']
-    n_filiais.append(
-        {
-            "value": BPLId,
-            "label": BPLName
-        }
-    )
+    if f['BPLId'] in ["1", "3", "4", "5"]:
+        BPLId = f['BPLId']
+        BPLName = f['BPLName']
+        n_filiais.append(
+            {
+                "value": BPLId,
+                "label": BPLName
+            }
+        )
 
 n_safras = []
 for s in safras:
@@ -50,14 +51,15 @@ for s in safras:
 
 n_almoxarifados = []
 for a in almoxarifados:
-    WhsCode = a['WhsCode']
-    WhsName = a['WhsName']
-    n_almoxarifados.append(
-        {
-            "value": WhsCode,
-            "label": WhsCode + " - " + WhsName
-        }
-    )
+    if a['WhsCode'] in ['07.FCUR', '07.FQUE', '07.FPRO', '07.FSCA']
+        WhsCode = a['WhsCode']
+        WhsName = a['WhsName']
+        n_almoxarifados.append(
+            {
+                "value": WhsCode,
+                "label": WhsCode + " - " + WhsName
+            }
+        )
 
 n_departamentos = []
 for d in departamentos:
@@ -65,7 +67,8 @@ for d in departamentos:
 
 n_centros_de_custo = []
 for c in centros_de_custo:
-    n_centros_de_custo.append(c)
+    if c['value'] in ['QUEPRO', 'TGAPRO', 'BRAPRO', 'CJOPRO']
+        n_centros_de_custo.append(c)
 
 n_culturas = []
 for c in culturas:
