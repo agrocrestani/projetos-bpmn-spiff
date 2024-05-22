@@ -1,8 +1,6 @@
 {
   "ui:layout": [
-    {
-      "BPLId": {}
-    },
+
     {
       "operacao": {
         "sm": 2,
