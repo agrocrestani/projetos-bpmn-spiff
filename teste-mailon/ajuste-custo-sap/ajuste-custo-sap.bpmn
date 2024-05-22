@@ -588,27 +588,35 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
+lista_movimento_contabil = []
 
+for objtype, docnums in agrupados_por_objtype.items():
+    docnums_str = ", ".join(f"'{docnum}'" for docnum in docnums)
+    
+    query_movimento_contabil = f"""
+        SELECT 
+            t0."TransId",
+            t0."TransType", 
+            t0."BaseRef",
+            t0."Memo",
+            t0."DueDate",
+            t0."TaxDate",
+            t1."Line_ID",
+            t1."Account",
+            t1."Debit",
+            t1."Credit"
+        FROM {baseSap}.OJDT t0
+        INNER JOIN {baseSap}.JDT1 t1 ON t1."TransId" = t0."TransId"
+        WHERE 
+            t0."TransType" = {objtype} AND t0."BaseRef" IN ({docnums_str})
+        ORDER BY t0."ItemCode"
+    """
+    
+    consulta_movimentos_contabil = Hana(connection).selectDb(query_movimento_contabil)
+    
+    lista_movimento_contabil.append(consulta_movimentos_contabil)
 
-
-# query_produtos = f"""
-#                     SELECT 
-#                         t0."TransId" ,
-#                         t0."TransType" , 
-#                         t0."BaseRef" ,
-#                         t0."Memo" ,
-#                         t0."DueDate" ,
-#                         t0."TaxDate" ,
-#                         t1."Line_ID" ,
-#                         t1."Account" ,
-#                         t1."Debit" ,
-#                         t1."Credit" 
-#                     FROM  {baseSap}.OJDT t0
-#                         INNER JOIN {baseSap}.JDT1 t1 ON t1."TransId" = t0."TransId"
-#                     WHERE 
-#                         t0."TransType" IN ({lista_objtype}) AND t0."BaseRef" IN (11506,5560)
-#                     ORDER BY t0."ItemCode"
-#                 """</spiffworkflow:preScript>
+</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="visao-contabil-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="visao-contabil-uischema.json" />
