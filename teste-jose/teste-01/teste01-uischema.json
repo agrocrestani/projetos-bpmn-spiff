@@ -20,7 +20,7 @@
     }
   ],
   "ano" :{
-    "ui.w"
+    "ui.widget"
   },
   "mes": {
     "ui:widget": "select"
