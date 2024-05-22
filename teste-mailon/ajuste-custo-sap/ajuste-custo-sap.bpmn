@@ -661,13 +661,7 @@ for account, data in agrupados_por_account.items():
 - **Total Credit:** {{ data['total_credit'] }}
 - **Balance:** {{ data['balance'] }}
 
-##### Transactions:
-
-| Debit | Credit |
-|-------|--------|
-{% for transaction in data['transactions'] %}
-| {{ transaction['debit'] }} | {{ transaction['credit'] }} |
-{% endfor %}
+---
 
 {% endfor %}
 </spiffworkflow:instructionsForEndUser>
