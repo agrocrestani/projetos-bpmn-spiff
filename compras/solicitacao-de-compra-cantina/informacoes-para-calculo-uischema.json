@@ -6,7 +6,11 @@
         "md": 2,
         "lg": 5
       },
-      "RequriedDate": {}
+      "RequriedDate": {
+                "sm": 2,
+        "md": 2,
+        "lg": 4
+      }
     },
     {
       "Department": {
