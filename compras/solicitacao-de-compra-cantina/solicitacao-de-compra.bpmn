@@ -84,6 +84,7 @@ obs_correcoes = []</spiffworkflow:preScript>
           <spiffworkflow:property name="formJsonSchemaFilename" value="informacoes-para-calculo-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="informacoes-para-calculo-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_13fehm8</bpmn:outgoing>
@@ -237,7 +238,7 @@ for s in solicitacao:
         <spiffworkflow:postScript>if operacao == 'Corrige':
     solicitacao = solicitacao_bkp
 
-obs_correcao.append(comments)</spiffworkflow:postScript>
+obs_correcoes.append(comments)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1evt79u</bpmn:incoming>
       <bpmn:outgoing>Flow_1y37zi6</bpmn:outgoing>
