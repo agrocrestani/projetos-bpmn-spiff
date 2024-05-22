@@ -192,6 +192,18 @@ obs_correcoes = []</spiffworkflow:preScript>
         </spiffworkflow:properties>
         <spiffworkflow:postScript>if operacao == 'Corrige':
     solicitacao = solicitacao_bkp</spiffworkflow:postScript>
+        <spiffworkflow:preScript>almoxarifado = ""
+for i in n_almoxarifados:
+    if i['value'] == WhsCode:
+        almoxarifado = i['label']
+
+sol = []
+for s in solicitacao:
+    s1 = json.loads(s['item'])
+    s1['quantidade'] = s['quantidade']
+    sol.append(s1)
+
+comments = ""</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0uyps62</bpmn:outgoing>
@@ -228,18 +240,7 @@ obs_correcoes = []</spiffworkflow:preScript>
 | {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} 
 {%endfor%}
 </spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript>almoxarifado = ""
-for i in n_almoxarifados:
-    if i['value'] == WhsCode:
-        almoxarifado = i['label']
-
-sol = []
-for s in solicitacao:
-    s1 = json.loads(s['item'])
-    s1['quantidade'] = s['quantidade']
-    sol.append(s1)
-
-comments = ""</spiffworkflow:preScript>
+        <spiffworkflow:preScript />
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="aprovar-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="aprovar-solicitacao-uischema.json" />
