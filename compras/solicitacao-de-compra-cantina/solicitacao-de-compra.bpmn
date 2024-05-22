@@ -84,7 +84,7 @@ obs_correcoes = []</spiffworkflow:preScript>
           <spiffworkflow:property name="formJsonSchemaFilename" value="informacoes-para-calculo-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="informacoes-para-calculo-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_13fehm8</bpmn:outgoing>
@@ -131,7 +131,7 @@ obs_correcoes = []</spiffworkflow:preScript>
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## Instruções sobre a solicitação de compras
 
-{%if correcao == 'Corrige' %}
+{%if operacao == 'Corrige' %}
     {%for o in obs_correcoes%}
         - [ ] {{ o }}
     {%endfor%}
