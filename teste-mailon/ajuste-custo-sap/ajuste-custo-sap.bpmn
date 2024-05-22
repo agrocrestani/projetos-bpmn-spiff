@@ -324,11 +324,23 @@ total_quantidade_entrada = 0
 custo_medio_total_calculado_entrada = 0
 custo_medio_unitario_calculado_entrada = 0
 
+total_preco_unitario_saida = 0
+total_quantidade_saida = 0
+total_custo_calc_saida = 0
+custo_medio_total_calculado_saida = 0
+custo_medio_unitario_calculado_saida = 0
+
 try:
   if(lista_documentos_ignorar):
     print('Lista Boa')
 except:
     lista_documentos_ignorar = []
+
+try:
+  if(lista_documentos_ignorar_saida):
+    print('Lista Boa')
+except:
+    lista_documentos_ignorar_saida = []
 
 
 origens_unicas = list(set(item["origem"] for item in consulta_movimentos))
@@ -343,10 +355,6 @@ for origem in origens_unicas:
 
 del(origens_unicas)
 del(origem)
-
-total_preco_unitario_saida = 0
-total_quantidade_saida = 0
-total_custo_calc_saida = 0
 
 total_preco_unitario = 0
 total_quantidade = 0
@@ -385,14 +393,18 @@ if isinstance(consulta_movimentos_out, list):
                         if produtoAux["origem"] == tipo_ignorar and produtoAux["docnum"] == num_ignorar:
                             ignorar = True
                             break
-                    
+
+                    del(doc_ignorar)
+
                     if(ignorar == False):
                         custo_medio_total_calculado_entrada += produtoAux['custo_medio_calc']
 
                         if(custo_medio_unitario_calculado_entrada &gt; 0 ):
                             custo_medio_unitario_calculado_entrada = (custo_medio_unitario_calculado_entrada + produtoAux['custo_medio'])/2
                         else:
-                            custo_medio_unitario_calculado_entrada = produtoAux['custo_medio']                          
+                            custo_medio_unitario_calculado_entrada = produtoAux['custo_medio']    
+
+                    del(ignorar)                      
                 else:
                     custo_medio_total_calculado_entrada += produtoAux['custo_medio_calc']
                     
@@ -417,6 +429,38 @@ if isinstance(consulta_movimentos_out, list):
                 total_custo_calc_saida += produtoAux['custo_medio_calc']
                 produtoAux['custo_total_contabil'] = produtoAux['stockprice'] * produtoAux['qtde']
                 produtoAux['preco_unitario'] = produtoAux['stockprice']
+
+
+                #Calcular Custo Médio da Entrada Ignorando documentos Selecionados
+                if(lista_documentos_ignorar_saida != []):
+                    ignorar = False
+
+                    for doc_ignorar in lista_documentos_ignorar_saida:
+                        tipo_ignorar = doc_ignorar["tipo_documento"]
+                        num_ignorar = doc_ignorar["num_documento"]
+                        if produtoAux["origem"] == tipo_ignorar and produtoAux["docnum"] == num_ignorar:
+                            ignorar = True
+                            break
+                            
+                    del(doc_ignorar)
+
+                    if(ignorar == False):
+                        custo_medio_total_calculado_saida += produtoAux['custo_medio_calc']
+
+                        if(custo_medio_unitario_calculado_saida &gt; 0 ):
+                            custo_medio_unitario_calculado_saida = (custo_medio_unitario_calculado_saida + produtoAux['custo_medio'])/2
+                        else:
+                            custo_medio_unitario_calculado_saida = produtoAux['custo_medio']    
+
+                    del(ignorar)
+                else:
+                    custo_medio_total_calculado_saida += produtoAux['custo_medio_calc']
+                    
+                    if(custo_medio_unitario_calculado_saida &gt; 0 ):
+                        custo_medio_unitario_calculado_saida = (custo_medio_unitario_calculado_saida + produtoAux['custo_medio'])/2
+                    else:
+                        custo_medio_unitario_calculado_saida = produtoAux['custo_medio']
+            
             else:
                 produtoAux['custo_medio'] = 000.000
                 produtoAux['estoque_atual'] = 000.000
@@ -456,8 +500,8 @@ del(consulta_movimentos_out)
 del(origens_unicas_list)
 del(documentos)</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser>
-| Produto | Deposito | Em Estoque | Custo Unitário | 
-| ----------- | ----------- | ----------------: | -----------------: |
+| Produto | Deposito | Em Estoque | Custo Unitário | Custo Médio Calc. |Custo Total Calc. |
+| ----------- | ----------- | ----------------: | -----------------: | 
 | **{{produto}}** - {{desc_produto}} | {{deposito}} | {{ '{:,.3f}'.format(on_hand_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_produto_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | 
 
 
@@ -470,9 +514,9 @@ del(documentos)</spiffworkflow:postScript>
 
 ### Saida
 
-| Quantidade Total | Custo Médio | Custo Total |
-| ---------------------: | ----------------: | --------------: |
-| {{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_medio_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.')}} | {{'{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
+| Quantidade Total | Custo Médio | Custo Total | Custo Médio Calc. |Custo Total Calc. |
+| ---------------------: | ----------------: | --------------: | ----------------------: | ---------------------: |
+| {{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_medio_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.')}} | {{'{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |  {{'{:,.3f}'.format(custo_medio_unitario_calculado_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{'{:,.3f}'.format(custo_medio_total_calculado_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
 
 ### Movimentações
 
