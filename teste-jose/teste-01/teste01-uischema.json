@@ -19,7 +19,9 @@
       "filialCamposDeJulio": {}
     }
   ],
-  "ano" :{}
+  "ano" :{
+    
+  },
   "mes": {
     "ui:widget": "select"
   },
