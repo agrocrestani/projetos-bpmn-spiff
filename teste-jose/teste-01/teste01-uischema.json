@@ -22,7 +22,9 @@
   "data": {
     "ui:layout":[
       {
-      "ano":{},
+"ano" :{
+    "ui.widget": "select"
+  },
       "mes":{}
       }
       ]
