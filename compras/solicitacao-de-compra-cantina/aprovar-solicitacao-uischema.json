@@ -1,3 +1,13 @@
 {
-
+  "comments": {
+    "ui:widget": "textarea"
+  },
+  "ui:layout": [
+    {
+        "operacao": {}
+    },
+    {
+        "comments": {}
+    }
+  ]
 }
