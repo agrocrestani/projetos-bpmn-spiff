@@ -133,7 +133,7 @@
         }
       ]
     },
-    "delivery_date": {
+    "headers": {
       "type": "string",
       "format": "date",
       "title": "Preferred Delivery Date",
