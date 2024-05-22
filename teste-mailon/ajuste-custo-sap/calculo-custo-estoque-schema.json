@@ -30,6 +30,10 @@
           "qtde":{
             "type": "number",
             "title": "Quantidade Produto"
+          },
+                    "qtde":{
+            "type": "number",
+            "title": "Quantidade Produto"
           }
         }
       }
