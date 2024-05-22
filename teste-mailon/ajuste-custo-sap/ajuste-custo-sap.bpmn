@@ -380,6 +380,7 @@ if isinstance(consulta_movimentos_out, list):
                 
                 produtoAux['custo_medio'] = custo_medio
                 produtoAux['estoque_atual'] = total_quantidade
+                produtoAux['custo_estoque_atual'] = custo_medio * total_quantidade
                 produtoAux['custo_medio_calc'] = custo_medio * produtoAux['qtde']
                 produtoAux['custo_total_contabil'] = produtoAux['linetotal']
 
@@ -417,6 +418,7 @@ if isinstance(consulta_movimentos_out, list):
                 produtoAux['estoque_atual'] = 000.000
                 produtoAux['custo_medio_calc'] = 000.000
                 produtoAux['custo_total_contabil'] = 000.000
+                produtoAux['custo_estoque_atual'] = 000.000
         
         if produtoAux['tipo'] == "S":
             if produtoAux['canceled'] == 'N':
@@ -426,6 +428,7 @@ if isinstance(consulta_movimentos_out, list):
                 produtoAux['custo_medio_calc'] = custo_medio * produtoAux['qtde']
                 total_quantidade = produtoAux['qtde'] +  total_quantidade
                 produtoAux['estoque_atual'] = total_quantidade
+                produtoAux['custo_estoque_atual'] = custo_medio * total_quantidade
                 total_custo_calc_saida += produtoAux['custo_medio_calc']
                 total_preco_unitario = produtoAux['custo_medio_calc'] + total_preco_unitario 
                 produtoAux['custo_total_contabil'] = produtoAux['stockprice'] * produtoAux['qtde']
@@ -467,6 +470,8 @@ if isinstance(consulta_movimentos_out, list):
                 produtoAux['estoque_atual'] = 000.000
                 produtoAux['custo_medio_calc'] = 000.000
                 produtoAux['custo_total_contabil'] = 000.000
+                produtoAux['custo_estoque_atual'] = 000.000
+
     del(produtoAux)
 
 else:
@@ -523,10 +528,10 @@ del(documentos_saida)</spiffworkflow:postScript>
 
 ### Movimentações
 
-| Num. | Origem | Num. Doc. | Quantidade | Custo Unitário  | Custo Total | Custo Médio Calc. | Custo Calc. | Estoque | Data | Canc. |
-| ------- | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- | --------- | ------- | ----- | ---- |
+| Num. | Origem | Num. Doc. | Quantidade | Custo Unitário  | Custo Total | Custo Médio Calc. | Custo Calc. | Estoque | Custo Atual Estoque | Data | Canc. |
+| ------- | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- | --------- | --------- | -------: | ----- | ---- |
 {% for produto in consulta_movimentos_out %}
-| {{ produto['num_movimentos'] }} | {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_total_contabil']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_medio']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_medio_calc']).replace(',', ' ').replace('.', ',').replace(' ', '.')}} | {{ '{:,.3f}'.format(produto['estoque_atual']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['docduedate']}} | {{produto['canceled']}} |
+| {{ produto['num_movimentos'] }} | {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_total_contabil']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_medio']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_medio_calc']).replace(',', ' ').replace('.', ',').replace(' ', '.')}} | {{ '{:,.3f}'.format(produto['estoque_atual']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_estoque_atual']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['docduedate']}} | {{produto['canceled']}} |
 {% endfor %}
 
 </spiffworkflow:instructionsForEndUser>
