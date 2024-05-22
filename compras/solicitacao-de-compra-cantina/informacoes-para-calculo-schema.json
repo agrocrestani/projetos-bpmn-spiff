@@ -1,17 +1,17 @@
 {
-  "title": "Solicitação de Compras",
-  "description": "Solicitação de compras de items para estoque",
+  "title": "Date",
+  "description": "Create a date field with a date picker (delivery_date).",
   "type": "object",
-    "required": [
-      "BPLId",
-      "Department",
-      "U_RSD_Prioridade",
-      "U_RSD_Aplicacao",
-      "OcrCode",
-      "OcrCode3",
-      "WhsCode",
-      "MainUsage"
-    ],
+  "required": [
+    "BPLId",
+    "Department",
+    "U_RSD_Prioridade",
+    "U_RSD_Aplicacao",
+    "OcrCode",
+    "OcrCode3",
+    "WhsCode",
+    "MainUsage"
+  ],
   "properties": {
     "BPLId": {
       "title": "Filial",
@@ -134,6 +134,12 @@
           "title": "30 - Mensal"
         }
       ]
+    },
+    "delivery_date": {
+      "type": "string",
+      "format": "date",
+      "title": "Preferred Delivery Date",
+      "validationErrorMessage": "Date must be today's date or later"
     }
   }
 }
