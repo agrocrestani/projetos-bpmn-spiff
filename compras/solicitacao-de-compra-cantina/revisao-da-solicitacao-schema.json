@@ -14,7 +14,7 @@
     {
       "if": {
         "properties": {
-          "acao": {
+          "operacao": {
             "const": "Confirma"
           }
         }
