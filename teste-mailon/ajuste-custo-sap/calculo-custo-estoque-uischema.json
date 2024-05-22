@@ -19,7 +19,7 @@
             ]          
         }
     },
-    "documentos_sa": {
+    "documentos_saida": {
         "items":{
             "ui:layout": [
                 {
