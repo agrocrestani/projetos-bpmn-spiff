@@ -23,7 +23,7 @@
     "ui:layout":[]
       }
     ]
-    },
+    }
     }
   "ano" :{
     "ui.widget": "select"
