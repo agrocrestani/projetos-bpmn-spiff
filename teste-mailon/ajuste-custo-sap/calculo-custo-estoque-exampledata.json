@@ -1,8 +1,6 @@
 {
   "recalcular": true,
-  "documentos_entrada": [
-    {}
-  ],
+  "documentos_entrada": [],
   "origens_unicas_list": [
     {
       "value": "apples",
