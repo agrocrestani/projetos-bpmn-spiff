@@ -673,7 +673,7 @@ total_balance = 0
 
 # Itera sobre cada conta e adiciona o saldo ao total
 for conta, dados in agrupados_por_account.items():
-    total_balance += dados["balance"]</spiffworkflow:preScript>
+    total_balance = dados["balance"] + total_balance</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="visao-contabil-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="visao-contabil-uischema.json" />
