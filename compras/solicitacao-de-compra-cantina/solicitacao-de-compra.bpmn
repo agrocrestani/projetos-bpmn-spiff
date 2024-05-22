@@ -159,10 +159,6 @@ obs_correcoes = []</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1hh3d5j</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:scriptTask id="Activity_0856rbm" name="Enviar para o SAP">
-      <bpmn:incoming>Flow_18wrock</bpmn:incoming>
-      <bpmn:outgoing>Flow_1hh3d5j</bpmn:outgoing>
-    </bpmn:scriptTask>
     <bpmn:userTask id="Activity_0z7hg1d" name="Revisão da Solicitação">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># Solicitação de Compras para Cantina
@@ -269,6 +265,106 @@ obs_correcoes.append(comments)
     <bpmn:sequenceFlow id="Flow_0vu7th0" sourceRef="Gateway_1d3lf4s" targetRef="Activity_0qpzdpu">
       <bpmn:conditionExpression>operacao == 'Corrige'</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
+    <bpmn:serviceTask id="Activity_0856rbm" name="Enviar para o SAP">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
+spiff_tarefa = taskInfo = get_current_task_info()['id']
+
+
+items = []
+for s in sol:
+  items.append(
+    {
+        "ItemCode": s["ItemCode"],
+        "Quantity": s["quantidade"],
+        "WarehouseCode": WhsCode,
+        "CostingCode": OcrCode,
+        "CostingCode3": OcrCode3
+    }
+  )
+
+
+payload = {
+    "BPL_IDAssignedToInvoice": BPLId,
+    "RequesterDepartment": Department,
+    "SendNotification": "tNO",
+    "U_RSD_Prioridade": U_RSD_Prioridade,
+    "U_RSD_Aplicacao": U_RSD_Aplicacao,
+    "RequriedDate": RequriedDate,
+    "Comments": f"Solicitante: {solicitante}. Quantidades calculadas para: {qtdeColaboradores} colaboradores, durante {periodo} dias",
+    "U_AC_Spiff_Instancia": spiff_instancia,
+    "U_AC_Spiff_Tarefa": spiff_tarefa,
+    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
+    "DocumentLines": items,
+    "TaxExtension": {
+      "MainUsage": MainUsage
+    }
+}
+
+loginSap = saplogin[0]['SessionId']
+
+url = 'https://172.20.1.9:50000/b1s/v1/Invoices'
+
+headers = {
+  'Cookie': f"B1SESSION={loginSap}",
+  'Content-Type': 'application/json'
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if operacao == 'Confirma':
+    for s in sol:
+        {
+    "Comments": "AUTO POSTO DAS BANDEIRAS NF 28528",
+    "BPL_IDAssignedToInvoice": 3,
+    "RequesterDepartment": 15,
+    "SendNotification": "tNO",
+    "RequriedDate": "2024-06-01",
+    "U_RSD_Prioridade": "3",
+    "U_RSD_Aplicacao": "1",
+    "U_AC_Spiff_Instancia": null,
+    "U_AC_Spiff_Tarefa": null,
+    "U_AC_Spiff_Usuario": null,
+    "DocumentLines": [
+        {
+            "ItemCode": "005800",
+            "Quantity": 22.80,
+            "WarehouseCode": "01.FCOL",
+            "CostingCode": "QUEPRO",
+            "CostingCode2": "SOJA",
+            "CostingCode3": "23/24"
+        }
+    ],
+    "TaxExtension": {
+                "MainUsage": 12
+            }
+}</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_18wrock</bpmn:incoming>
+      <bpmn:outgoing>Flow_1hh3d5j</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -342,10 +438,6 @@ obs_correcoes.append(comments)
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="1592" y="169" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1ozxjmx_di" bpmnElement="Activity_0856rbm">
-        <dc:Bounds x="1400" y="147" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ztm3rt_di" bpmnElement="Activity_0z7hg1d">
         <dc:Bounds x="850" y="147" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -357,6 +449,9 @@ obs_correcoes.append(comments)
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1d3lf4s_di" bpmnElement="Gateway_1d3lf4s" isMarkerVisible="true">
         <dc:Bounds x="1275" y="162" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1fy2zrf_di" bpmnElement="Activity_0856rbm">
+        <dc:Bounds x="1400" y="147" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="216" y="187" />
