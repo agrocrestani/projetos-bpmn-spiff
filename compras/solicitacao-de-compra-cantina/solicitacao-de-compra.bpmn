@@ -130,10 +130,10 @@ obs_correcoes = []</spiffworkflow:preScript>
     <bpmn:userTask id="Activity_0qpzdpu" name="Solicitacao Compras">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## Instruções sobre a solicitação de compras
-
 {%if operacao == 'Corrige' %}
-    {%for o in obs_correcoes%}
-        - [ ] {{ o }}
+### Correções a serem avaliadas
+    {%for i, o in enumerate(obs_correcoes)%}
+        {{i+1}}. {{o}}
     {%endfor%}
 {%endif%}
 </spiffworkflow:instructionsForEndUser>
