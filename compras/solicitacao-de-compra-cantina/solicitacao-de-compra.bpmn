@@ -164,20 +164,16 @@ obs_correcoes = []</spiffworkflow:preScript>
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># Solicitação de Compras para Cantina
 
-| Campo | Conteúdo |
-| ---------: | --------------|
-|Filial: |{{BPLName}}|
-|Departamento: |{{Department}}|
-|Prioridade: |{{U_RSD_Prioridade}}|
-|Tipo Requisição: | {{U_RSD_Aplicacao}} |
-|Centro de Custo: | {{OcrCode}} |
-|Cultura: | {{OcrCode2}} |
-|Safra: | {{OcrCode3}} |
-|Depósito: | {{WhsCode}} |
-|Utilização: | {{MainUsage}} |
-|Observações: | {{Comments}} |
-|**Quantidade de colaboradores:** | {{qtdeColaboradores}} |
-|**Periodo em dias:** | {{periodo}} |
+| Campo | Conteúdo |  Campo | Conteúdo |
+| ---------: | --------------|  ---------: | --------------|
+|Filial: |{{BPLName}}|Departamento: |{{Department}}|
+|**Quantidade de colaboradores:** | {{qtdeColaboradores}} |**Periodo em dias:** | {{periodo}} |
+|Prioridade: |{{U_RSD_Prioridade}}| Tipo Requisição: | {{U_RSD_Aplicacao}} |
+|Centro de Custo: | {{OcrCode}} | Cultura: | {{OcrCode2}} |
+|Safra: | {{OcrCode3}} | Depósito: | {{WhsCode}} |
+|Utilização: | {{MainUsage}} | 
+
+**Observações:** {{Comments}}
 
 
 | Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade |
