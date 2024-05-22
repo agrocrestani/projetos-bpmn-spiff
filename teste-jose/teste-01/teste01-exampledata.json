@@ -61,9 +61,9 @@
         "camposDeJulioDemitidos": {
           "type": "number",
           "title": "Colaboradores Demitidos"
-        }
+        },
       }
-    },
+    }
       }
     }
   }
