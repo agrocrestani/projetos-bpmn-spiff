@@ -16,7 +16,7 @@
       "if": {
         "properties": {
           "operacao": {
-            "const": "Corrige"
+            "const": ""
           }
         }
       }
