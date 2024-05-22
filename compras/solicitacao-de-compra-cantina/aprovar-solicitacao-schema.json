@@ -31,5 +31,24 @@
         ]
       }
     }
+    {
+      "if": {
+        "properties": {
+          "operacao": {
+            "const": "Corrige"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "comments": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "comments"
+        ]
+      }
+    }
   ]
 }
