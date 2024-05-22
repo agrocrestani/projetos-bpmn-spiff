@@ -6,7 +6,7 @@
       "title": "Confirma ou corrige?",
       "type": "string",
       "enum": [
-        "Cat",
+        "Confirma",
         "Fish"
       ]
     }
