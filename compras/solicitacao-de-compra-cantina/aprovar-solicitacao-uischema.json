@@ -11,7 +11,7 @@
       "comments": {}
     }
   ],
-  "Comments": {
+  "comments": {
     "ui:widget": "textarea"
   },
   "solicitacao": {
