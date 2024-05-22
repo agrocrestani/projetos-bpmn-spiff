@@ -5,21 +5,9 @@
     "favoriteFruit": {
       "title": "Confirma ou corrige?",
       "type": "string",
-      "anyOf": [
-        {
-          "type": "string",
-          "enum": [
-            "0"
-          ],
-          "title": "Corrige"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "1"
-          ],
-          "title": "Confirma"
-        }
+      "enum": [
+        "Cat",
+        "Fish"
       ]
     }
   }
