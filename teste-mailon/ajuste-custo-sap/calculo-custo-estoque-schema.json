@@ -29,6 +29,30 @@
           }
         }
       }
+    },
+    "documentos": {
+      "type": "array",
+      "title": "Ignorar Documentos de Entrada",
+      "items": {
+        "type": "object",
+        "required": [
+          "tipo_documento",
+          "num_documento"
+        ],
+        "properties": {
+          "tipo_documento": {
+            "type": "string",
+            "title": "Tipo de Documento",
+            "anyOf": [
+              "options_from_task_data_var:origens_unicas_list"
+            ]
+          },
+          "num_documento": {
+            "type": "string",
+            "title": "Nº do Documento"
+          }
+        }
+      }
     }
   }
 }
