@@ -668,8 +668,12 @@ for account, data in agrupados_por_account.items():
     balance = total_debit - total_credit
     data["balance"] = balance
 
-total_balance = sum(data['balance'] for account, data in agrupados_por_account.items())
-</spiffworkflow:preScript>
+# Inicializa a variável de soma do balanço
+total_balance = 0
+
+# Itera sobre cada conta e adiciona o saldo ao total
+for conta, dados in agrupados_por_account.items():
+    total_balance += dados["balance"]</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="visao-contabil-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="visao-contabil-uischema.json" />
