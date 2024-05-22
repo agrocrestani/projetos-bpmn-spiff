@@ -580,7 +580,8 @@ del(documentos_saida)</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_11bq3ww" sourceRef="VISAO_CONTABIL" targetRef="EndEvent_1" />
     <bpmn:userTask id="VISAO_CONTABIL" name="Visão Contábil">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>
+        <spiffworkflow:preScript>baseSap = get_secret('baseSap')
+
 connection = {
     "address": "172.20.1.4",
     "port": "30015",
