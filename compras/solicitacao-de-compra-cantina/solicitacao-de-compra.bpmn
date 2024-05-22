@@ -133,7 +133,7 @@ obs_correcoes = []</spiffworkflow:preScript>
 {%if operacao == 'Corrige' %}
 ### Correções a serem avaliadas
     {{cont = 0}}
-    {%for i, o in enumerate(obs_correcoes)%}
+    {%for o in obs_correcoes%}
         {{cont +=1 }}
         {{cont}}. {{o}}
     {%endfor%}
