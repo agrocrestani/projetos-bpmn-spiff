@@ -31,7 +31,7 @@
             "type": "number",
             "title": "Quantidade Produto"
           },
-          "custo_":{
+          "custo_unitario":{
             "type": "number",
             "title": "Quantidade Produto"
           }
