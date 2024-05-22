@@ -377,9 +377,16 @@ headers = {
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_18wrock</bpmn:incoming>
       <bpmn:outgoing>Flow_1hh3d5j</bpmn:outgoing>
+      <bpmn:property id="Property_1jgaypl" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1es14ty">
+        <bpmn:sourceRef>DataStoreReference_0bfz43x</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1jgaypl</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
     </bpmn:serviceTask>
+    <bpmn:dataStoreReference id="DataStoreReference_0bfz43x" name="SapLogin" dataStoreRef="saplogin" type="json" />
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
+  <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1tyx2x2">
       <bpmndi:BPMNShape id="Participant_0476j7y_di" bpmnElement="Participant_0476j7y" isHorizontal="true">
@@ -466,6 +473,12 @@ headers = {
       <bpmndi:BPMNShape id="Activity_1fy2zrf_di" bpmnElement="Activity_0856rbm">
         <dc:Bounds x="1400" y="147" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0bfz43x_di" bpmnElement="DataStoreReference_0bfz43x">
+        <dc:Bounds x="1395" y="275" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1397" y="332" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="216" y="187" />
         <di:waypoint x="320" y="187" />
@@ -545,6 +558,10 @@ headers = {
       <bpmndi:BPMNEdge id="DataInputAssociation_0o3vl14_di" bpmnElement="DataInputAssociation_0o3vl14">
         <di:waypoint x="396" y="75" />
         <di:waypoint x="381" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1es14ty_di" bpmnElement="DataInputAssociation_1es14ty">
+        <di:waypoint x="1429" y="275" />
+        <di:waypoint x="1446" y="227" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
