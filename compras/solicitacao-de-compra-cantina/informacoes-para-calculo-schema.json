@@ -10,7 +10,8 @@
     "WhsCode",
     "MainUsage",
     "RequriedDate",
-    ""
+    "qtdeColaboradores",
+    
   ],
   "properties": {
     "BPLId": {
