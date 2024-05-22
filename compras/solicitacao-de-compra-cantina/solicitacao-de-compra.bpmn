@@ -82,7 +82,9 @@ n_utilizacoes = []
 for u in utilizacoes:
     n_utilizacoes.append(u)
 
-obs_correcoes = []</spiffworkflow:preScript>
+obs_correcoes = []
+
+solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="informacoes-para-calculo-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="informacoes-para-calculo-uischema.json" />
