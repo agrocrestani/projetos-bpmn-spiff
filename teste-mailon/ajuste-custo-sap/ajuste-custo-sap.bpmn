@@ -624,9 +624,9 @@ for objtype, docnums in agrupados_por_objtype.items():
 agrupados_por_account = {}
 
 for movimento_contabil in lista_movimento_contabil:
-    account = movimento_contabil["Account"]
-    debit = float(movimento_contabil["Debit"])  # Certificando que os valores são numéricos
-    credit = float(movimento_contabil["Credit"])
+    account = movimento_contabil["account"]
+    debit = float(movimento_contabil["debit"])  # Certificando que os valores são numéricos
+    credit = float(movimento_contabil["credit"])
     
     if account not in agrupados_por_account:
         agrupados_por_account[account] = {
