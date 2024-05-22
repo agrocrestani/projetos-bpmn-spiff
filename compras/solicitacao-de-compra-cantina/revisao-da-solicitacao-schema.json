@@ -19,7 +19,7 @@
           "enum": [
             "1"
           ],
-          "title": "Urgente"
+          "title": "Confirma"
         },
         {
           "type": "string",
