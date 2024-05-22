@@ -25,7 +25,6 @@
       "ano":{}
       "mes":{}
       }
-    ]
       }
   "ano" :{
     "ui.widget": "select"
