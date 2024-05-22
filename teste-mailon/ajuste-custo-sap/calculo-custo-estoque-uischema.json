@@ -17,7 +17,18 @@
                         }
                 },
                 {
-                    
+                     "tipo_documento": 
+                        {
+                            "sm": 2,
+                            "md": 2,
+                            "lg": 5
+                        },
+                    "num_documento": 
+                        {
+                            "sm": 2,
+                            "md": 2,
+                            "lg": 2
+                        }
                 }
             ],
                       
