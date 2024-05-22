@@ -642,7 +642,9 @@ for movimento_contabil in lista_movimento_contabil:
     account = movimento_contabil["account"] + ' - ' + movimento_contabil['acctname']
     debit = float(movimento_contabil["debit"])  # Certificando que os valores são numéricos
     credit = float(movimento_contabil["credit"])
-    
+    transtype = movimento_contabil["transtype"]
+    baseref = movimento_contabil["baseref"]
+
     if account not in agrupados_por_account:
         agrupados_por_account[account] = {
             "total_debit": 0.0,
@@ -654,7 +656,9 @@ for movimento_contabil in lista_movimento_contabil:
     agrupados_por_account[account]["total_credit"] += credit
     agrupados_por_account[account]["transactions"].append({
         "debit": debit,
-        "credit": credit
+        "credit": credit ,
+        "transtype" : transtype
+        "baseref" : baseref
     })
 
 # Calculando a diferença (saldo)
@@ -678,7 +682,14 @@ total_balance = sum(data['balance'] for account, data in agrupados_por_account.i
 - **Total Debit:** {{ '{:,.3f}'.format(data['total_debit']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}
 - **Total Credit:** {{ '{:,.3f}'.format(data['total_credit']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}
 - **Balance:** {{ '{:,.3f}'.format(data['balance']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}
+- 
+##### Transactions:
 
+| Debit | Credit | DocNum | Objeto |
+|-------|--------|-------------| -------------|
+{% for transaction in data['transactions'] %}
+| {{ transaction['debit'] }} | {{ transaction['credit'] }} | transaction['baseref'] | transaction['transtype'] |
+{% endfor %}
 ---
 
 {% endfor %}
