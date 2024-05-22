@@ -49,7 +49,7 @@ query_movimento = f"""
                     t0."ItemCode" = '{produto}' AND
 	                t0."WhsCode" = '{deposito}' AND
                     t0."DocDueDate" &gt;= '{dataInicio}' AND t0."DocDueDate" &lt;= '{dataFinal}'
-                ORDER BY t0."CreateDate", t0."TIPO"
+                ORDER BY t0."DocDueDate", t0."TIPO"
                 """   
                     
 consulta_movimentos = Hana(connection).selectDb(query_movimento)
