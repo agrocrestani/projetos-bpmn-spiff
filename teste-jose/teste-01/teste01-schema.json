@@ -70,7 +70,7 @@
       "anyOf": [
         "options_from_task_data_var:meses"
       ]
-      }
+      },
       "ano": {
         "title": "Selecione o ano de referência",
         "type" : "number"
