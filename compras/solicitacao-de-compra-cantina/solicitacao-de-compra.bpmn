@@ -79,7 +79,7 @@ n_utilizacoes = []
 for u in utilizacoes:
     n_utilizacoes.append(u)
 
-</spiffworkflow:preScript>
+obs_correcoes = []</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="informacoes-para-calculo-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="informacoes-para-calculo-uischema.json" />
@@ -289,7 +289,7 @@ for s in solicitacao:
       <bpmndi:BPMNShape id="DataStoreReference_1wxeqbg_di" bpmnElement="DataStoreReference_1wxeqbg">
         <dc:Bounds x="375" y="25" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="362" y="1" width="76" height="14" />
+          <dc:Bounds x="363" y="83" width="75" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_1ln8zd2_di" bpmnElement="DataStoreReference_1ln8zd2">
