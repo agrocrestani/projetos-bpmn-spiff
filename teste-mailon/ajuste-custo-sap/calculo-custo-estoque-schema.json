@@ -31,7 +31,7 @@
             "type": "number",
             "title": "Quantidade Produto"
           },
-          "qtde":{
+          "custo":{
             "type": "number",
             "title": "Quantidade Produto"
           }
