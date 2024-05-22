@@ -132,10 +132,8 @@ obs_correcoes = []</spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser>## Instruções sobre a solicitação de compras
 {%if operacao == 'Corrige' %}
 ### Correções a serem avaliadas
-    {{cont = 0}}
     {%for o in obs_correcoes%}
-        {{cont +=1 }}
-        {{cont}}. {{o}}
+        {{ loop.index }}. {{o}}
     {%endfor%}
 {%endif%}
 </spiffworkflow:instructionsForEndUser>
