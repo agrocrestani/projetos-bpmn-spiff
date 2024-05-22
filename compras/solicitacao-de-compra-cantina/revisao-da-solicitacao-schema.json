@@ -9,67 +9,6 @@
         "Confirma",
         "Corrige"
       ]
-    },
-    "allOf": [
-    {
-      "if": {
-        "properties": {
-          "operacao": {
-            "const": "Confirma"
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "food": {
-            "type": "string",
-            "enum": [
-              "meat",
-              "grass",
-              "fish"
-            ]
-          }
-        },
-        "required": [
-          "food"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "operacao": {
-            "const": "Corrige"
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "food": {
-            "type": "string",
-            "enum": [
-              "insect",
-              "worms"
-            ]
-          },
-          "water": {
-            "type": "string",
-            "enum": [
-              "lake",
-              "sea"
-            ]
-          }
-        },
-        "required": [
-          "food",
-          "water"
-        ]
-      }
-    },
-    {
-      "required": [
-        "animal"
-      ]
     }
   ]
   }
