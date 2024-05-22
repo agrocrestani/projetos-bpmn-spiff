@@ -657,9 +657,9 @@ for account, data in agrupados_por_account.items():
 {% for account, data in agrupados_por_account.items() %}
 #### Account: {{ account }}
 
-- **Total Debit:** {{ data['total_debit'] }}
-- **Total Credit:** {{ data['total_credit'] }}
-- **Balance:** {{ data['balance'] }}
+- **Total Debit:** {{ '{:,.3f}'.format(data['total_debit']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}
+- **Total Credit:** {{ '{:,.3f}'.format(data['total_credit']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}
+- **Balance:** {{ '{:,.3f}'.format(data['balance']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}
 
 ---
 
