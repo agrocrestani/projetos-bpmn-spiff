@@ -124,7 +124,7 @@ del(baseSap)
 agrupados_por_objtype = {}
 
 # Percorrendo a lista de documentos
-for documento in consulta_movimentos_out:
+for documento in consulta_movimentos:
     objtype = documento["objtype"]
     docnum = documento["docnum"]
     
