@@ -408,6 +408,17 @@ if isinstance(consulta_movimentos_out, list):
                             custo_medio_unitario_calculado_entrada = (custo_medio_unitario_calculado_entrada + produtoAux['custo_medio'])/2
                         else:
                             custo_medio_unitario_calculado_entrada = produtoAux['custo_medio']
+                    else:
+                        produtoAux['qtde'] = doc_ignorar['qtde']
+                        produtoAux['custo_medio_calc'] = doc_ignorar['qtde'] * doc_ignorar['custo_unitario']
+                        produtoAux['custo_medio'] = doc_ignorar['custo_unitario']
+                        
+                        custo_medio_total_calculado_entrada += produtoAux['custo_medio_calc']
+
+                        if(custo_medio_unitario_calculado_entrada &gt; 0 ):
+                            custo_medio_unitario_calculado_entrada = (custo_medio_unitario_calculado_entrada + produtoAux['custo_medio'])/2
+                        else:
+                            custo_medio_unitario_calculado_entrada = produtoAux['custo_medio']
 
 
                     del(doc_ignorar)
