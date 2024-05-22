@@ -234,14 +234,15 @@ for s in sol:
 **Observações:** {{Comments}}
 
 
-| Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade |
-| --------- | --------------| ------------------: | --------------------: | ----------- |
+| Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade | Custo Médio | V. Total |
+| ---------- | ---------------| --------------------: | --------------------: | ------------ | -----------------: | ----------: |
 {% for s in sol%}
-| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} 
+| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio]}} | {{s['PrecoMedio']*s['quantidade']|
+||||||Total | {{total}}
 {%endfor%}
 
 </spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript />
+        <spiffworkflow:preScript></spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="aprovar-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="aprovar-solicitacao-uischema.json" />
@@ -249,7 +250,9 @@ for s in sol:
         <spiffworkflow:postScript>if operacao == 'Corrige':
     solicitacao = solicitacao_bkp
 
-obs_correcoes.append(comments)</spiffworkflow:postScript>
+obs_correcoes.append(comments)
+
+</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1evt79u</bpmn:incoming>
       <bpmn:outgoing>Flow_1y37zi6</bpmn:outgoing>
