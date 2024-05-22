@@ -31,7 +31,7 @@ meses = [
     {"value": "11", "label": "Novembro"},
     {"value": "12", "label": "Dezembro"}
 ]
-ano = []</spiffworkflow:preScript>
+</spiffworkflow:preScript>
         <spiffworkflow:guestConfirmation></spiffworkflow:guestConfirmation>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
