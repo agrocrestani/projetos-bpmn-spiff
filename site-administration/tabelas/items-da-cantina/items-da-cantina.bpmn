@@ -83,6 +83,7 @@ for r in rsp:
     ItemName = str(r['itemname'])
     InvntryUom = str(r['invntryuom'])
     QtdeSugerida = (float(r['u_ac_qtdepessoames'])*(qtdeColaboradores*int(periodo)))/30
+    PrecoMedio = floatr['precomedio']
 
     items_cantina.append(
         {
@@ -91,7 +92,8 @@ for r in rsp:
                 "ItemCode": ItemCode, 
                 "ItemName": ItemName, 
                 "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
-                "QtdeSugerida": QtdeSugerida
+                "QtdeSugerida": QtdeSugerida,
+                "PrecoMedio": PrecoMedio
                 }
             }
         )
