@@ -72,7 +72,7 @@
       ]
       }
       "ano": {
-        "title": "Selecione o ano de referência"
+        "title": "Selecione o ano de referência",
         "type" : "number"
       }
     }
