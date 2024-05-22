@@ -609,6 +609,10 @@ connection = {
 #                         t0."TransType" IN ({lista_objtype}) AND t0."BaseRef" IN (11506,5560)
 #                     ORDER BY t0."ItemCode"
 #                 """</spiffworkflow:preScript>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="visao-contabil-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="visao-contabil-uischema.json" />
+        </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1pd10hb</bpmn:incoming>
       <bpmn:outgoing>Flow_11bq3ww</bpmn:outgoing>
