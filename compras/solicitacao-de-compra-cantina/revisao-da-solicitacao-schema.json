@@ -1,6 +1,6 @@
 {
   "title": "Dropdown list",
-  "description": "Verifique ",
+  "description": "Verifique os itens da solicitação e ",
   "type": "object",
   "properties": {
     "favoriteFruit": {
