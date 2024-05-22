@@ -13,15 +13,7 @@
     }
   },
   "allOf": [
-    {
-      "if": {
-        "properties": {
-          "operacao": {
-            "const": ""
-          }
-        }
-      }
-    },
+
     {
       "if": {
         "properties": {
