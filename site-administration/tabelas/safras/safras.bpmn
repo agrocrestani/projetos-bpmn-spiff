@@ -42,6 +42,7 @@ query = f"""
           FROM {baseSap}.oocr o
           WHERE 
             o."DimCode" = 3
+          order by o."OcrCode"
         """
 
 rsp = Hana(connection).selectDb(query)

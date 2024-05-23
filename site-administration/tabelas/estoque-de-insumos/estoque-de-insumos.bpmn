@@ -190,8 +190,8 @@ query = f"""
     INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
     INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
     WHERE T2."OnHand" &gt; 0  
-      AND  T2."WhsCode" = '03.MATR'
-      OR (T2."WhsCode" = '01.FQUE' AND T0."QryGroup2" = 'Y')
+      AND  (T2."WhsCode" = '03.MATR'
+      OR   T2."WhsCode" = '03.FQUE')
     ORDER BY T0."ItemName", T2."WhsCode" 
           """
 
@@ -205,7 +205,7 @@ for r in rsp:
     ItemName = str(r['itemname'])
     ItmsGrpNam = str(r['itmsgrpnam'])
     InvntryUom = str(r['invntryuom'])
-    OnHand = str(r['onhand'])
+    OnHand = "{:,.2f}".format(float(r['onhand'])).replace(",", "X").replace(".", ",").replace("X", ".")
     WhsCode = str(r['whscode'])
     estoque_de_insumos.append(
         {

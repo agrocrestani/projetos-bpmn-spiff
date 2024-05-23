@@ -1,0 +1,23 @@
+{
+  "datalacto": {
+    "ui:widget": "date",
+    "ui:help": "Escolha a data para os lançamentos contabeis."
+  },
+  "file": {
+    "ui:options": {
+      "accept": ".xlsx"
+    }
+  },
+  "ui:layout": [
+    {
+      "datalacto": {}
+    },
+    {
+      "safra": {},
+      "cultura": {}
+    },
+    {
+      "file": {}
+    }
+  ]
+}

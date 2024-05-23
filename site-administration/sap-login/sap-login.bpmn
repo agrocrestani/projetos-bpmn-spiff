@@ -12,17 +12,17 @@
       <bpmn:extensionElements>
         <spiffworkflow:preScript>url = "https://slayer.agrocrestani.com.br:50000/b1s/v1/Login"
 
-data = {
-    "UserName": "emerson.gregorio",
-    "Password": "A951753@roo",
-    "CompanyDB": "SBO_CRESTANI_QA",
+CompanyDB = get_secret('baseSap')
+
+data = {"UserName": "spiff.workflow",
+    "Password": "Ll|24e3j4#&amp;z",
+    "CompanyDB": f"{CompanyDB}",
     "Language":"29"
-}
+    }
 
 headers = {
   'Content-Type': 'application/json'
-}
-</spiffworkflow:preScript>
+}</spiffworkflow:preScript>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />

@@ -267,46 +267,60 @@
           <text>"PG:comercial:graos"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0zp63e8">
-        <inputEntry id="UnaryTests_0zhi2mn">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_07fxjbr">
-          <text>"Comercial Graos"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1654fja">
-          <text>["all"]</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_024cx1y">
-          <text>"/can-run-privileged-script/*"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0t659p9">
-        <inputEntry id="UnaryTests_1nvfz5x">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_10zkxa0">
-          <text>"Comercial Graos"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1a6pl5u">
-          <text>["start"]</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1mgoqsn">
-          <text>"PG:comercial:graos"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_11wov95">
         <inputEntry id="UnaryTests_1of7ik5">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uvee0n">
-          <text></text>
+          <text>"rh"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_10g2lr0">
-          <text></text>
+          <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nxenh3">
+          <text>"PM:contabilidade/importa-folha"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10uy0hk">
+        <inputEntry id="UnaryTests_1rsinxh">
           <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dx74gs">
+          <text>"rh"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bwnf4q">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gn81hs">
+          <text>"/can-run-privileged-script/*"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0e37x7s">
+        <inputEntry id="UnaryTests_0tgwezk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16sakt9">
+          <text>"contabil"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i2jxbq">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uhr9od">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0lagi9a">
+        <inputEntry id="UnaryTests_1rv615x">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1onsjuu">
+          <text>"contabil"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1krk986">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yj0vc9">
+          <text>"/can-run-privileged-script/*"</text>
         </outputEntry>
       </rule>
     </decisionTable>
