@@ -201,7 +201,7 @@ del(conta)</spiffworkflow:postScript>
       <bpmn:businessRuleTask id="Activity_1bvnfh7" name="Depara CCusto">
         <bpmn:extensionElements>
           <spiffworkflow:preScript>ccusto = str(l['ccusto'])</spiffworkflow:preScript>
-          <spiffworkflow:postScript>novoCcusto = ccusto
+          <spiffworkflow:postScript>CcustoSenior = ccusto
 del(ccusto)</spiffworkflow:postScript>
           <spiffworkflow:calledDecisionId>DeParaCCusto</spiffworkflow:calledDecisionId>
         </bpmn:extensionElements>
@@ -236,9 +236,9 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 ### Informações do Sênior
 | Campo | Valor | 
 | ---------- | ------- | 
-| Empresa | {{c[0]}} |
-| Filial | {{c[1]}} |
-| Centro de Custo | {{c[2:]}} |
+| Empresa | {{BPLName}} |
+| Filial | {{BPLId}} |
+| Centro de Custo | {{CcustoSenior }} |
 
 
 ### Informações que serão inputados no SAP
@@ -496,7 +496,7 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 | ---------- | ------- | 
 | Empresa | {{BPLName}} |
 | Filial | {{BPLId}} |
-| Centro de Custo | {{novoCcusto }} |
+| Centro de Custo | {{CcustoSenior }} |
 
 
 ### Informações que serão inputados no SAP
