@@ -15,6 +15,9 @@
         <bpmn:flowNodeRef>Activity_1gq0mev</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0x3itur</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1nr33uk</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1gs6xis</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0h9a7kr</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1q4mjne</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane">
         <bpmn:flowNodeRef>Activity_00vuw5a</bpmn:flowNodeRef>
@@ -430,6 +433,19 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
         <bpmn:outgoing>Flow_00l9ldx</bpmn:outgoing>
       </bpmn:manualTask>
     </bpmn:subProcess>
+    <bpmn:boundaryEvent id="Event_1gs6xis" attachedToRef="Activity_1gq0mev">
+      <bpmn:outgoing>Flow_1q18jnm</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_109aqog" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1q18jnm" sourceRef="Event_1gs6xis" targetRef="Activity_0h9a7kr" />
+    <bpmn:manualTask id="Activity_0h9a7kr" name="Procesa erro">
+      <bpmn:incoming>Flow_1q18jnm</bpmn:incoming>
+      <bpmn:outgoing>Flow_0mrzmlq</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:endEvent id="Event_1q4mjne">
+      <bpmn:incoming>Flow_0mrzmlq</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0mrzmlq" sourceRef="Activity_0h9a7kr" targetRef="Event_1q4mjne" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1nlwobl">
@@ -480,6 +496,12 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1tzg16p_di" bpmnElement="Activity_1nr33uk">
         <dc:Bounds x="2080" y="230" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1motqc8_di" bpmnElement="Activity_0h9a7kr">
+        <dc:Bounds x="580" y="260" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1q4mjne_di" bpmnElement="Event_1q4mjne">
+        <dc:Bounds x="732" y="282" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="230" y="480" width="910" height="200" />
@@ -580,6 +602,9 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
         <di:waypoint x="1410" y="1050" />
         <di:waypoint x="1410" y="1020" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_12nnxzv_di" bpmnElement="Event_1gs6xis">
+        <dc:Bounds x="492" y="199" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -607,6 +632,15 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
       <bpmndi:BPMNEdge id="Flow_1ejzlor_di" bpmnElement="Flow_1ejzlor">
         <di:waypoint x="2180" y="270" />
         <di:waypoint x="2302" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1q18jnm_di" bpmnElement="Flow_1q18jnm">
+        <di:waypoint x="510" y="235" />
+        <di:waypoint x="510" y="300" />
+        <di:waypoint x="580" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mrzmlq_di" bpmnElement="Flow_0mrzmlq">
+        <di:waypoint x="680" y="300" />
+        <di:waypoint x="732" y="300" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0kaqi1r_di" bpmnElement="DataInputAssociation_0kaqi1r">
         <di:waypoint x="279" y="315" />
