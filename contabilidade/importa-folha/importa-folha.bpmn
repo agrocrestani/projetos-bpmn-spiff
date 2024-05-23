@@ -57,7 +57,7 @@ for f in filiais:
 
 in locals()
 
-if ("lancamentos" in locals()) or ("lancamentos" in globals()):
+if "lancamentos" in locals():
     del(lancamentos)
 n_safras = safras
 n_culturas = culturas</spiffworkflow:preScript>
