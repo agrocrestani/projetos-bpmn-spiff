@@ -1,5 +1,5 @@
 {
-  "description": "Verifique os itens da solicitação e confirme para enviar a solicitação aprovação.",
+  "description": "Confira os items que foram importados ",
   "type": "object",
   "properties": {
     "operacao": {
