@@ -1,0 +1,38 @@
+{
+  "program": {
+    "name": "Programa de Incentivos 2024",
+    "description": "Ganhe pontos ao completar tarefas e troque por recompensas!",
+    "startDate": "2024-06-01",
+    "endDate": "2024-12-31",
+    "tasks": [
+      {
+        "id": "task1",
+        "name": "Completar Treinamento de Vendas",
+        "points": 100,
+        "description": "Conclua o treinamento de vendas para ganhar 100 pontos.",
+        "completionCriteria": "Submit quiz results"
+      },
+      {
+        "id": "task2",
+        "name": "Alcançar Meta de Vendas Mensal",
+        "points": 200,
+        "description": "Alcance a meta de vendas mensal para ganhar 200 pontos.",
+        "completionCriteria": "Meet sales target"
+      }
+    ],
+    "rewards": [
+      {
+        "id": "reward1",
+        "name": "Cartão Presente de $50",
+        "pointsRequired": 500,
+        "description": "Troque 500 pontos por um cartão presente de $50."
+      },
+      {
+        "id": "reward2",
+        "name": "Dia de Folga",
+        "pointsRequired": 1000,
+        "description": "Troque 1000 pontos por um dia de folga."
+      }
+    ]
+  }
+}
