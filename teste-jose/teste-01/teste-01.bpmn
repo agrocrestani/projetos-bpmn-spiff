@@ -90,6 +90,32 @@ ano = [
     <bpmn:sequenceFlow id="Flow_1hc1fji" sourceRef="Activity_1tsk956" targetRef="Gateway_18xcl6s" />
     <bpmn:sequenceFlow id="Flow_00lrhg2" sourceRef="Gateway_18xcl6s" targetRef="Event_1x6rzfv" />
     <bpmn:endEvent id="Event_1x6rzfv">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>### Funcionários Matriz
+| Situação | Quantidade |
+| ---------- | :----------: |
+| Ativos | {{filialEscritorio['escritorioAtivos']}} |
+| Demitidos | {{filialEscritorio['escritorioDemitidos']}} |
+
+### Funcionários Brasnorte
+| Situação | Quantidade |
+| ---------- | :----------: |
+| Ativos | {{filialBrasnorte['brasnorteAtivos']}} |
+| Demitidos | {{filialBrasnorte['brasnorteDemitidos']}} |
+
+### Funcionários Querência
+| Situação | Quantidade |
+| ---------- | :----------: |
+| Ativos | {{filialQuerencia['querenciaAtivos']}} |
+| Demitidos | {{filialQuerencia['querenciaDemitidos']}} |
+
+### Funcionários Campos de Júlio
+| Situação | Quantidade |
+| ---------- | :----------: |
+| Ativos | {{filialCamposDeJulio['camposDeJulioAtivos']}} |
+| Demitidos | {{filialCamposDeJulio['camposDeJulioDemitidos']}} |
+</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_00lrhg2</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1ys9spg" sourceRef="Gateway_18xcl6s" targetRef="Activity_0qpzdpu" />
