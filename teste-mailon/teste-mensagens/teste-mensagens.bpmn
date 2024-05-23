@@ -16,7 +16,7 @@
           <spiffworkflow:property name="formUiSchemaFilename" value="teste-download-arquivo-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript>def teste_lista(flag):
+        <spiffworkflow:preScript>def teste_lista():
 
     flag = False
 
