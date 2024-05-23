@@ -205,7 +205,10 @@ comments = ""
 
 total = 0
 for s in sol:
-    total += s['quantidade']*s['PrecoMedio']</spiffworkflow:preScript>
+    total += s['quantidade']*s['PrecoMedio']
+    s['PrecoMedio'] =  "{:,.2f}".format(s['PrecoMedio']).replace(",", "X").replace(".", ",").replace("X", ".")
+
+total = "{:,.2f}".format(total]).replace(",", "X").replace(".", ",").replace("X", ".")</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0uyps62</bpmn:outgoing>
