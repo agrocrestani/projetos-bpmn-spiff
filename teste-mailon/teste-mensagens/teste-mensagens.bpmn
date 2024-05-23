@@ -49,27 +49,10 @@ teste = teste_lista()</spiffworkflow:preScript>
     <bpmn:scriptTask id="Activity_09tm1h9">
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_0b7j9ee</bpmn:outgoing>
-      <bpmn:script>import json
+      <bpmn:script>import os
 
-# Caminho para o arquivo JSON
-file_path = 'teste-download-arquivo-schema.json'
-
-# Passo 1: Ler o arquivo JSON
-with open(file_path, 'r', encoding='utf-8') as file:
-    data = json.load(file)
-
-# Passo 2: Modificar os dados
-data['title'] = 'Updated User'
-data['properties']['email'] = {
-    'type': 'string',
-    'format': 'email'
-}
-
-# Passo 3: Salvar as modificações no arquivo JSON
-with open(file_path, 'w', encoding='utf-8') as file:
-    json.dump(data, file, indent=4)
-
-print("Arquivo JSON modificado com sucesso.")
+# Obter o diretório de trabalho atual
+current_directory = os.getcwd()
 </bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
