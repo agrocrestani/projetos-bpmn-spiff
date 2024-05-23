@@ -1,9 +1,0 @@
-{
-    "description": "",
-    "display_name": "Upload arquivo local",
-    "exception_notification_addresses": [],
-    "fault_or_suspend_on_exception": "fault",
-    "metadata_extraction_paths": null,
-    "primary_file_name": "upload-arquivo-local.bpmn",
-    "primary_process_id": "Process_upload_arquivo_local_1xjqpfb"
-}

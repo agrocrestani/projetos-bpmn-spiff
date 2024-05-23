@@ -1,9 +1,0 @@
-{
-    "description": "Lan\u00e7a notas de servi\u00e7o no SAP",
-    "display_name": "Lan\u00e7ar NFSe",
-    "exception_notification_addresses": [],
-    "fault_or_suspend_on_exception": "fault",
-    "metadata_extraction_paths": null,
-    "primary_file_name": "lancar-nfes.bpmn",
-    "primary_process_id": "Process_lancar_nfes_ump4m8q"
-}

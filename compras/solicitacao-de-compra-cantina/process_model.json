@@ -1,9 +1,0 @@
-{
-    "description": "Solicita\u00e7\u00e3o de compra de materiais para cantina",
-    "display_name": "Solicita\u00e7\u00e3o de Compra Cantina",
-    "exception_notification_addresses": [],
-    "fault_or_suspend_on_exception": "fault",
-    "metadata_extraction_paths": null,
-    "primary_file_name": "solicitacao-de-compra.bpmn",
-    "primary_process_id": "Process_solicitacao_de_compra_lz3stw2"
-}
