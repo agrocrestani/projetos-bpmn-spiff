@@ -201,7 +201,8 @@ del(conta)</spiffworkflow:postScript>
       <bpmn:businessRuleTask id="Activity_1bvnfh7" name="Depara CCusto">
         <bpmn:extensionElements>
           <spiffworkflow:preScript>ccusto = str(l['ccusto'])</spiffworkflow:preScript>
-          <spiffworkflow:postScript>del(ccusto)</spiffworkflow:postScript>
+          <spiffworkflow:postScript>novoCcusto = ccusto
+del(ccusto)</spiffworkflow:postScript>
           <spiffworkflow:calledDecisionId>DeParaCCusto</spiffworkflow:calledDecisionId>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0gjw4os</bpmn:incoming>
@@ -493,8 +494,8 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 ### Informações do Sênior
 | Campo | Valor | 
 | ---------- | ------- | 
-| Empresa | {{c[0]}} |
-| Filial | {{c[1]}} |
+| Empresa | {{BPLName}} |
+| Filial | {{BPLId}} |
 | Centro de Custo | {{c[2:]}} |
 
 
@@ -507,6 +508,7 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 ||||**Total**: | {{total}}</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-lancamentos-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-lancamentos-uischema.json" />
         </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_06zd818</bpmn:incoming>
