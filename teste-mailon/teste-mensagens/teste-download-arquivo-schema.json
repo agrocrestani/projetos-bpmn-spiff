@@ -1,6 +1,5 @@
 {
   "properties": {
-
     "favoriteFruit": {
       "title": "Select your favorite fruit",
       "type": "string",
