@@ -49,8 +49,8 @@ ano = [
           <spiffworkflow:property name="formJsonSchemaFilename" value="teste02-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="teste02-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript />
-        <spiffworkflow:postScript />
+        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:postScript>correcao = not done</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:guestConfirmation />
       </bpmn:extensionElements>
@@ -64,10 +64,13 @@ ano = [
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_09m7x1o" sourceRef="Activity_1tsk956" targetRef="Gateway_09crqk8" />
     <bpmn:sequenceFlow id="Flow_1h0gn30" sourceRef="Gateway_09crqk8" targetRef="Activity_0qpzdpu" />
-    <bpmn:task id="Activity_10hvpbn">
-      <bpmn:incoming>Flow_10iw7iv</bpmn:incoming>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_10iw7iv" sourceRef="Gateway_09crqk8" targetRef="Activity_10hvpbn" />
+    <bpmn:serviceTask id="Activity_10hvpbn">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_10iw7iv</bpmn:incoming>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_01_e1qomy1">
@@ -84,7 +87,7 @@ ano = [
       <bpmndi:BPMNShape id="Gateway_09crqk8_di" bpmnElement="Gateway_09crqk8" isMarkerVisible="true">
         <dc:Bounds x="595" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_10hvpbn_di" bpmnElement="Activity_10hvpbn">
+      <bpmndi:BPMNShape id="Activity_13hb1dh_di" bpmnElement="Activity_10hvpbn">
         <dc:Bounds x="710" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
