@@ -51,6 +51,8 @@ ano = [
         </spiffworkflow:properties>
         <spiffworkflow:preScript></spiffworkflow:preScript>
         <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:guestConfirmation></spiffworkflow:guestConfirmation>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_038o1e9</bpmn:incoming>
       <bpmn:outgoing>Flow_09m7x1o</bpmn:outgoing>
