@@ -578,9 +578,6 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
           <dc:Bounds x="409" y="372" width="42" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0x3itur_di" bpmnElement="Event_0x3itur">
-        <dc:Bounds x="2222" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="230" y="480" width="910" height="200" />
       </bpmndi:BPMNShape>
@@ -651,6 +648,9 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1tzg16p_di" bpmnElement="Activity_1nr33uk">
         <dc:Bounds x="2030" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0x3itur_di" bpmnElement="Event_0x3itur">
+        <dc:Bounds x="2222" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
