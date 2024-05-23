@@ -435,7 +435,7 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
     </bpmn:subProcess>
     <bpmn:boundaryEvent id="Event_1gs6xis" attachedToRef="Activity_1gq0mev">
       <bpmn:outgoing>Flow_1q18jnm</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_109aqog" />
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_109aqog" errorRef="Error" />
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_1q18jnm" sourceRef="Event_1gs6xis" targetRef="Activity_0h9a7kr" />
     <bpmn:manualTask id="Activity_0h9a7kr" name="Procesa erro">
@@ -447,6 +447,11 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0mrzmlq" sourceRef="Activity_0h9a7kr" targetRef="Event_1q4mjne" />
   </bpmn:process>
+  <bpmn:error id="Error" name="Error">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>ErrorProcessFile</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1nlwobl">
       <bpmndi:BPMNShape id="Participant_0x0t826_di" bpmnElement="Participant_0x0t826" isHorizontal="true">
