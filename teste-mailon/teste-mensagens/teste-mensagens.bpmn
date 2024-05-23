@@ -39,7 +39,8 @@
                 "label":"DD"
                 }]
 
-</spiffworkflow:preScript>
+
+teste = teste_lista()</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_1af12yp</bpmn:outgoing>
