@@ -36,9 +36,8 @@
     <bpmn:userTask id="Activity_0qpzdpu" name="Escolher Arquivo">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># Importar lançamentos contabeis da folha de pagamento
-&lt;br&gt;
 
-##  &lt;font color="red"&gt;&lt;strong&gt;IMPORTANTE &lt;/strong&gt;&lt;/font&gt;
+## &lt;font color="red"&gt;&lt;strong&gt;IMPORTANTE &lt;/strong&gt;&lt;/font&gt;
 
 - Para importar os lançamentos, deve ser gerado um arquivo para cada centro de custo da filial. 
 - Apontar **Cultura** para os centros de custo cuja tenha o apontamento direto. Por exemplo UBA &gt; Algodão.
