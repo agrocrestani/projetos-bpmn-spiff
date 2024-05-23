@@ -13,17 +13,18 @@
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0qpzdpu</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1gq0mev</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_0x3itur</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1nr33uk</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_1gs6xis</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0h9a7kr</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_1q4mjne</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0x3itur</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1x5vkae</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane">
         <bpmn:flowNodeRef>Activity_00vuw5a</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_contabil" name="contabil">
-        <bpmn:flowNodeRef>Activity_1v7cf9d</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0w2moib</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0nynyx4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0gbbrla</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0pk9g8b</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="StartEvent_1">
@@ -91,23 +92,7 @@ controles = []</bpmn:script>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
     <bpmn:sequenceFlow id="Flow_081crpr" sourceRef="Activity_0qpzdpu" targetRef="Activity_1gq0mev" />
     <bpmn:sequenceFlow id="Flow_1tvkyw7" sourceRef="Activity_1gq0mev" targetRef="Activity_00vuw5a" />
-    <bpmn:sequenceFlow id="Flow_0gu16ye" sourceRef="Activity_00vuw5a" targetRef="Activity_1v7cf9d" />
-    <bpmn:sequenceFlow id="Flow_1xkflpo" sourceRef="Activity_1v7cf9d" targetRef="Activity_1nr33uk" />
-    <bpmn:endEvent id="Event_0x3itur">
-      <bpmn:incoming>Flow_1ejzlor</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1ejzlor" sourceRef="Activity_1nr33uk" targetRef="Event_0x3itur" />
-    <bpmn:manualTask id="Activity_1nr33uk" name="Aviso ao Solicitnte">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>## Status da Integração
-
-### Lançamento contabil inserido com sucesso no SAP. 
-
-Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o número: **{{number}}**.</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1xkflpo</bpmn:incoming>
-      <bpmn:outgoing>Flow_1ejzlor</bpmn:outgoing>
-    </bpmn:manualTask>
     <bpmn:subProcess id="Activity_00vuw5a">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>creditoConta = ""
@@ -165,7 +150,7 @@ del(l)
 #   "novaConta2": "2.1.1.01.01.001"</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1tvkyw7</bpmn:incoming>
-      <bpmn:outgoing>Flow_0gu16ye</bpmn:outgoing>
+      <bpmn:outgoing>Flow_06zd818</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
         <bpmn:loopDataInputRef>lancamentos</bpmn:loopDataInputRef>
         <bpmn:loopDataOutputRef>lancamentos</bpmn:loopDataOutputRef>
@@ -227,29 +212,11 @@ del(conta)</spiffworkflow:postScript>
       </bpmn:endEvent>
       <bpmn:sequenceFlow id="Flow_0de8f5g" sourceRef="Activity_1bvnfh7" targetRef="Event_170pr7f" />
     </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_06zd818" sourceRef="Activity_00vuw5a" targetRef="Activity_1x5vkae" />
     <bpmn:dataStoreReference id="DataStoreReference_1175xbr" name="SapLogin" dataStoreRef="saplogin" type="json" />
-    <bpmn:subProcess id="Activity_1v7cf9d">
+    <bpmn:userTask id="Activity_0w2moib" name="Verifica as informações">
       <bpmn:extensionElements>
-        <spiffworkflow:postScript>del(c)</spiffworkflow:postScript>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0gu16ye</bpmn:incoming>
-      <bpmn:outgoing>Flow_1xkflpo</bpmn:outgoing>
-      <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
-        <bpmn:loopDataInputRef>controles</bpmn:loopDataInputRef>
-        <bpmn:loopDataOutputRef>controles</bpmn:loopDataOutputRef>
-        <bpmn:inputDataItem id="c" name="c" />
-      </bpmn:multiInstanceLoopCharacteristics>
-      <bpmn:startEvent id="Event_1p5tyci">
-        <bpmn:outgoing>Flow_1tk8uye</bpmn:outgoing>
-      </bpmn:startEvent>
-      <bpmn:sequenceFlow id="Flow_1tk8uye" sourceRef="Event_1p5tyci" targetRef="Activity_0w2moib" />
-      <bpmn:sequenceFlow id="Flow_0w0pxn1" sourceRef="Activity_0w2moib" targetRef="Activity_0nynyx4" />
-      <bpmn:endEvent id="Event_1kx644d">
-        <bpmn:incoming>Flow_00l9ldx</bpmn:incoming>
-      </bpmn:endEvent>
-      <bpmn:userTask id="Activity_0w2moib" name="Verifica as informações">
-        <bpmn:extensionElements>
-          <spiffworkflow:instructionsForEndUser>## Lançamentos da Folha de Pagamento
+        <spiffworkflow:instructionsForEndUser>## Lançamentos da Folha de Pagamento
 
 {% if lancado and (lancado != 201) %}
     &lt;font color="red"&gt;&lt;strong&gt;Ocorreu um erro na inserção dos dados no SAP. Tente novamente, caso persista, procure o TI. &lt;/strong&gt;&lt;/font&gt;
@@ -280,7 +247,162 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 |{{l['data']}} | {{l['evento']}} | {{l['credito']}} | {{l['debito']}} | {{l['novoValor']}} | {{l['novaFilial']}} | {{l['novoCcusto']}} | 
 {%endfor%}
 ||||**Total**: | {{total}}</spiffworkflow:instructionsForEndUser>
-          <spiffworkflow:preScript>novaTabela = []
+        <spiffworkflow:preScript># novaTabela = []
+# total = 0
+
+# for t in tabela:
+#     centroCusto = str(t['empresa']) + str(t['filial']) + str(t['ccusto'])
+#     if c == centroCusto:
+#         total += float(t['valor'])
+#         t['novoValor'] = "{:,.2f}".format(t['valor']).replace(",", "X").replace(".", ",").replace("X", ".")
+#         novaTabela.append(t)
+# total =  "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X", ".")
+
+# spiff_instancia = get_toplevel_process_info()['process_instance_id']
+# spiff_tarefa = taskInfo = get_current_task_info()['id']
+</spiffworkflow:preScript>
+        <spiffworkflow:postScript># items = []
+# spiff_usuario = get_current_user()['display_name']
+
+# for l in novaTabela:
+#     items.append({
+#                     "AccountCode": l['debito'],
+#                     "Debit": l['valor'],
+#                     "CostingCode": l['novoCcusto'],
+#                     "CostingCode2": cultura,
+#                     "CostingCode3": safra,
+#                     "BPLID": l['novaFilial']
+#                 }
+#             )
+#     items.append({
+#                     "AccountCode": l['credito'],
+#                     "Credit": l['valor'],
+#                     "CostingCode": l['novoCcusto'],
+#                     "CostingCode2": cultura,
+#                     "CostingCode3": safra,
+#                     "BPLID": l['novaFilial']
+#                 }
+#             )
+
+# mes_ano = datalacto[5:7] + "/" + datalacto[0:4]
+
+# lcm = {
+#     "ReferenceDate": datalacto,
+#     "TaxDate": datalacto,
+#     "Memo": f"Folha de Pagamento ref. mês {mes_ano}",
+#     "TransactionCode": "FOL",
+#     "U_AC_Spiff_Instancia": spiff_instancia,
+#     "U_AC_Spiff_Tarefa": spiff_tarefa,
+#     "U_AC_Spiff_Usuario": spiff_usuario,
+#     "JournalEntryLines": items
+# }
+
+
+
+
+
+# # 
+# #     lcm.append(
+# #         {
+# #             "ReferenceDate": datalacto,
+# #             "TaxDate": datalacto,
+# #             "Memo": l['evento'],
+# #             "TransactionCode": "FOL",
+# #             "JournalEntryLines": [
+# #                 {
+# #                     "AccountCode": l['credito'],
+# #                     "Credit": l['valor'],
+# #                     "CostingCode": l['novoCcusto'],
+# #                     "BPLID": l['novaFilial']
+# #                 },
+# #                         {
+# #                     "AccountCode": l['debito'],
+# #                     "Debit": l['valor'],
+# #                     "CostingCode": l['novoCcusto'],
+# #                     "BPLID": l['novaFilial']
+# #                 }
+# #             ]
+# #         }
+# #     )</spiffworkflow:postScript>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-lancamentos-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-lancamentos-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_080x3br</bpmn:incoming>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_080x3br" sourceRef="Activity_1x5vkae" targetRef="Activity_0w2moib" />
+    <bpmn:serviceTask id="Activity_0nynyx4" name="Lança no SAP">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript>lancado = rsp['http_status']
+number = rsp['body']['Number']
+
+# del(lancamentos)
+# del(c)
+# del(f)
+# del(lcm)
+# del(tabela)
+# del(novaTabela)
+# del(t)
+# del(items)
+# del(l)
+# del(rsp)</spiffworkflow:postScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="lcm" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
+
+url = 'https://172.20.1.9:50000/b1s/v1/JournalEntries'
+
+headers = {
+  'Cookie': f"B1SESSION={loginSap}",
+  'Content-Type': 'application/json'
+}
+
+</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:property id="Property_1l4lyj2" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1ww8r6l">
+        <bpmn:sourceRef>DataStoreReference_1175xbr</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1l4lyj2</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_0gbbrla" />
+    <bpmn:manualTask id="Activity_0pk9g8b" name="Confirmação do Lançamento no SAP">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## Status da Integração
+
+### Lançamento contabil inserido com sucesso no SAP. 
+
+Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o número: **{{number}}**.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_0kvuaau</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_0kvuaau" sourceRef="Activity_0pk9g8b" targetRef="Activity_1nr33uk" />
+    <bpmn:manualTask id="Activity_1nr33uk" name="Aviso ao Solicitnte">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## Status da Integração
+
+### Lançamento contabil inserido com sucesso no SAP. 
+
+Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o número: **{{number}}**.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0kvuaau</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ejzlor</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:endEvent id="Event_0x3itur">
+      <bpmn:incoming>Flow_1ejzlor</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="Activity_1x5vkae">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>novaTabela = []
 total = 0
 
 for t in tabela:
@@ -294,7 +416,7 @@ total =  "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X"
 spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
 </spiffworkflow:preScript>
-          <spiffworkflow:postScript>items = []
+        <spiffworkflow:postScript>items = []
 spiff_usuario = get_current_user()['display_name']
 
 for l in novaTabela:
@@ -357,95 +479,41 @@ lcm = {
 #             ]
 #         }
 #     )</spiffworkflow:postScript>
-          <spiffworkflow:properties>
-            <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-lancamentos-schema.json" />
-            <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-lancamentos-uischema.json" />
-          </spiffworkflow:properties>
-        </bpmn:extensionElements>
-        <bpmn:incoming>Flow_1tk8uye</bpmn:incoming>
-        <bpmn:incoming>Flow_0hhyppq</bpmn:incoming>
-        <bpmn:outgoing>Flow_0w0pxn1</bpmn:outgoing>
-      </bpmn:userTask>
-      <bpmn:sequenceFlow id="Flow_1uj6iy3" sourceRef="Activity_0nynyx4" targetRef="Gateway_0gbbrla" />
-      <bpmn:serviceTask id="Activity_0nynyx4" name="Lança no SAP">
-        <bpmn:extensionElements>
-          <spiffworkflow:postScript>lancado = rsp['http_status']
-number = rsp['body']['Number']
+        <spiffworkflow:instructionsForEndUser>## Lançamentos da Folha de Pagamento
 
-# del(lancamentos)
-# del(c)
-# del(f)
-# del(lcm)
-# del(tabela)
-# del(novaTabela)
-# del(t)
-# del(items)
-# del(l)
-# del(rsp)</spiffworkflow:postScript>
-          <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
-            <spiffworkflow:parameters>
-              <spiffworkflow:parameter id="url" type="str" value="url" />
-              <spiffworkflow:parameter id="headers" type="any" value="headers" />
-              <spiffworkflow:parameter id="data" type="any" value="lcm" />
-              <spiffworkflow:parameter id="basic_auth_username" type="str" />
-              <spiffworkflow:parameter id="basic_auth_password" type="str" />
-              <spiffworkflow:parameter id="verify" type="bool" />
-            </spiffworkflow:parameters>
-          </spiffworkflow:serviceTaskOperator>
-          <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
+{% if lancado and (lancado != 201) %}
+    &lt;font color="red"&gt;&lt;strong&gt;Ocorreu um erro na inserção dos dados no SAP. Tente novamente, caso persista, procure o TI. &lt;/strong&gt;&lt;/font&gt;
+{% endif %}
 
-url = 'https://172.20.1.9:50000/b1s/v1/JournalEntries'
 
-headers = {
-  'Cookie': f"B1SESSION={loginSap}",
-  'Content-Type': 'application/json'
-}
+Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Filial e Centro de Custo no SAP**.
 
-</spiffworkflow:preScript>
-        </bpmn:extensionElements>
-        <bpmn:incoming>Flow_0w0pxn1</bpmn:incoming>
-        <bpmn:outgoing>Flow_1uj6iy3</bpmn:outgoing>
-        <bpmn:property id="Property_1l4lyj2" name="__targetRef_placeholder" />
-        <bpmn:dataInputAssociation id="DataInputAssociation_1ww8r6l">
-          <bpmn:sourceRef>DataStoreReference_1175xbr</bpmn:sourceRef>
-          <bpmn:targetRef>Property_1l4lyj2</bpmn:targetRef>
-        </bpmn:dataInputAssociation>
-      </bpmn:serviceTask>
-      <bpmn:exclusiveGateway id="Gateway_0gbbrla" default="Flow_0a1062q">
-        <bpmn:incoming>Flow_1uj6iy3</bpmn:incoming>
-        <bpmn:outgoing>Flow_0a1062q</bpmn:outgoing>
-        <bpmn:outgoing>Flow_0hhyppq</bpmn:outgoing>
-      </bpmn:exclusiveGateway>
-      <bpmn:sequenceFlow id="Flow_0a1062q" sourceRef="Gateway_0gbbrla" targetRef="Activity_0pk9g8b" />
-      <bpmn:sequenceFlow id="Flow_00l9ldx" sourceRef="Activity_0pk9g8b" targetRef="Event_1kx644d" />
-      <bpmn:sequenceFlow id="Flow_0hhyppq" sourceRef="Gateway_0gbbrla" targetRef="Activity_0w2moib">
-        <bpmn:conditionExpression>lancado != 201</bpmn:conditionExpression>
-      </bpmn:sequenceFlow>
-      <bpmn:manualTask id="Activity_0pk9g8b" name="Confirmação do Lançamento no SAP">
-        <bpmn:extensionElements>
-          <spiffworkflow:instructionsForEndUser>## Status da Integração
+### Dados do Processo
+| Campo | Valor | Campo | Valor |
+| ---------- | ------- | ---------- | ------- |
+| Id da instancia | {{spiff_instancia}} | **Safra** | {{ safra }} |
+| Id da tarefa | {{spiff_tarefa}} | **Cultura**| {{ cultura }} |
+| Responsável pela verificação | {{spiff_usuario}} |
 
-### Lançamento contabil inserido com sucesso no SAP. 
+### Informações do Sênior
+| Campo | Valor | 
+| ---------- | ------- | 
+| Empresa | {{c[0]}} |
+| Filial | {{c[1]}} |
+| Centro de Custo | {{c[2:]}} |
 
-Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o número: **{{number}}**.</spiffworkflow:instructionsForEndUser>
-        </bpmn:extensionElements>
-        <bpmn:incoming>Flow_0a1062q</bpmn:incoming>
-        <bpmn:outgoing>Flow_00l9ldx</bpmn:outgoing>
-      </bpmn:manualTask>
-    </bpmn:subProcess>
-    <bpmn:boundaryEvent id="Event_1gs6xis" attachedToRef="Activity_1gq0mev">
-      <bpmn:outgoing>Flow_1q18jnm</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_109aqog" errorRef="ErrorProcess" />
-    </bpmn:boundaryEvent>
-    <bpmn:sequenceFlow id="Flow_1q18jnm" sourceRef="Event_1gs6xis" targetRef="Activity_0h9a7kr" />
-    <bpmn:manualTask id="Activity_0h9a7kr" name="Procesa erro">
-      <bpmn:incoming>Flow_1q18jnm</bpmn:incoming>
-      <bpmn:outgoing>Flow_0mrzmlq</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:endEvent id="Event_1q4mjne">
-      <bpmn:incoming>Flow_0mrzmlq</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_0mrzmlq" sourceRef="Activity_0h9a7kr" targetRef="Event_1q4mjne" />
+
+### Informações que serão inputados no SAP
+| Data | Evento | Credito | Debito | Valor | Filial | Centro de Custo |
+| ------ | --------- | :---------: | :-------: | -------: | :------: | :---------------------- |
+{%for l in novaTabela%}
+|{{l['data']}} | {{l['evento']}} | {{l['credito']}} | {{l['debito']}} | {{l['novoValor']}} | {{l['novaFilial']}} | {{l['novoCcusto']}} | 
+{%endfor%}
+||||**Total**: | {{total}}</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_06zd818</bpmn:incoming>
+      <bpmn:outgoing>Flow_080x3br</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmn:error id="ErrorProcess" name="ErrorProcess">
     <bpmn:extensionElements>
@@ -496,11 +564,34 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
           <dc:Bounds x="409" y="372" width="42" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0x3itur_di" bpmnElement="Event_0x3itur">
-        <dc:Bounds x="2302" y="252" width="36" height="36" />
+      <bpmndi:BPMNShape id="DataStoreReference_1175xbr_di" bpmnElement="DataStoreReference_1175xbr">
+        <dc:Bounds x="1645" y="795" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1646" y="773" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1v3eutn_di" bpmnElement="Activity_0w2moib">
+        <dc:Bounds x="1390" y="900" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1g5hxev_di" bpmnElement="Activity_0nynyx4">
+        <dc:Bounds x="1540" y="900" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0gbbrla_di" bpmnElement="Gateway_0gbbrla" isMarkerVisible="true">
+        <dc:Bounds x="1715" y="915" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0azzpb8_di" bpmnElement="Activity_0pk9g8b">
+        <dc:Bounds x="1820" y="900" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1tzg16p_di" bpmnElement="Activity_1nr33uk">
-        <dc:Bounds x="2080" y="230" width="100" height="80" />
+        <dc:Bounds x="2030" y="230" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0x3itur_di" bpmnElement="Event_0x3itur">
+        <dc:Bounds x="2182" y="252" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1gy6ua9_di" bpmnElement="Activity_1x5vkae">
+        <dc:Bounds x="1190" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="230" y="480" width="910" height="200" />
@@ -546,70 +637,6 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
         <di:waypoint x="940" y="580" />
         <di:waypoint x="1002" y="580" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="DataStoreReference_1175xbr_di" bpmnElement="DataStoreReference_1175xbr">
-        <dc:Bounds x="1375" y="795" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1376" y="773" width="47" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1v7cf9d_di" bpmnElement="Activity_1v7cf9d" isExpanded="true">
-        <dc:Bounds x="1210" y="880" width="800" height="200" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1p5tyci_di" bpmnElement="Event_1p5tyci">
-        <dc:Bounds x="1250" y="962" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1kx644d_di" bpmnElement="Event_1kx644d">
-        <dc:Bounds x="1942" y="962" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1v3eutn_di" bpmnElement="Activity_0w2moib">
-        <dc:Bounds x="1360" y="940" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1g5hxev_di" bpmnElement="Activity_0nynyx4">
-        <dc:Bounds x="1530" y="940" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0gbbrla_di" bpmnElement="Gateway_0gbbrla" isMarkerVisible="true">
-        <dc:Bounds x="1675" y="955" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0azzpb8_di" bpmnElement="Activity_0pk9g8b">
-        <dc:Bounds x="1800" y="940" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_1tk8uye_di" bpmnElement="Flow_1tk8uye">
-        <di:waypoint x="1286" y="980" />
-        <di:waypoint x="1360" y="980" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0w0pxn1_di" bpmnElement="Flow_0w0pxn1">
-        <di:waypoint x="1460" y="980" />
-        <di:waypoint x="1530" y="980" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1uj6iy3_di" bpmnElement="Flow_1uj6iy3">
-        <di:waypoint x="1630" y="980" />
-        <di:waypoint x="1675" y="980" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0a1062q_di" bpmnElement="Flow_0a1062q">
-        <di:waypoint x="1725" y="980" />
-        <di:waypoint x="1800" y="980" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_00l9ldx_di" bpmnElement="Flow_00l9ldx">
-        <di:waypoint x="1900" y="980" />
-        <di:waypoint x="1942" y="980" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0hhyppq_di" bpmnElement="Flow_0hhyppq">
-        <di:waypoint x="1700" y="1005" />
-        <di:waypoint x="1700" y="1050" />
-        <di:waypoint x="1410" y="1050" />
-        <di:waypoint x="1410" y="1020" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Activity_1motqc8_di" bpmnElement="Activity_0h9a7kr">
-        <dc:Bounds x="580" y="260" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1q4mjne_di" bpmnElement="Event_1q4mjne">
-        <dc:Bounds x="732" y="282" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_12nnxzv_di" bpmnElement="Event_1gs6xis">
-        <dc:Bounds x="492" y="199" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -622,30 +649,27 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
         <di:waypoint x="480" y="217" />
         <di:waypoint x="480" y="480" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0gu16ye_di" bpmnElement="Flow_0gu16ye">
-        <di:waypoint x="1140" y="580" />
-        <di:waypoint x="1180" y="580" />
-        <di:waypoint x="1180" y="980" />
-        <di:waypoint x="1210" y="980" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1xkflpo_di" bpmnElement="Flow_1xkflpo">
-        <di:waypoint x="2010" y="980" />
-        <di:waypoint x="2040" y="980" />
-        <di:waypoint x="2040" y="270" />
-        <di:waypoint x="2080" y="270" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1ejzlor_di" bpmnElement="Flow_1ejzlor">
-        <di:waypoint x="2180" y="270" />
-        <di:waypoint x="2302" y="270" />
+        <di:waypoint x="2130" y="270" />
+        <di:waypoint x="2182" y="270" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1q18jnm_di" bpmnElement="Flow_1q18jnm">
-        <di:waypoint x="510" y="235" />
-        <di:waypoint x="510" y="300" />
-        <di:waypoint x="580" y="300" />
+      <bpmndi:BPMNEdge id="Flow_06zd818_di" bpmnElement="Flow_06zd818">
+        <di:waypoint x="1140" y="580" />
+        <di:waypoint x="1160" y="580" />
+        <di:waypoint x="1160" y="177" />
+        <di:waypoint x="1190" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0mrzmlq_di" bpmnElement="Flow_0mrzmlq">
-        <di:waypoint x="680" y="300" />
-        <di:waypoint x="732" y="300" />
+      <bpmndi:BPMNEdge id="Flow_080x3br_di" bpmnElement="Flow_080x3br">
+        <di:waypoint x="1290" y="177" />
+        <di:waypoint x="1340" y="177" />
+        <di:waypoint x="1340" y="940" />
+        <di:waypoint x="1390" y="940" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kvuaau_di" bpmnElement="Flow_0kvuaau">
+        <di:waypoint x="1920" y="940" />
+        <di:waypoint x="1970" y="940" />
+        <di:waypoint x="1970" y="270" />
+        <di:waypoint x="2030" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0kaqi1r_di" bpmnElement="DataInputAssociation_0kaqi1r">
         <di:waypoint x="279" y="315" />
@@ -660,8 +684,8 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
         <di:waypoint x="328" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1ww8r6l_di" bpmnElement="DataInputAssociation_1ww8r6l">
-        <di:waypoint x="1425" y="842" />
-        <di:waypoint x="1536" y="941" />
+        <di:waypoint x="1653" y="845" />
+        <di:waypoint x="1617" y="900" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
