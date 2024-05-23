@@ -505,6 +505,9 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 |{{l['data']}} | {{l['evento']}} | {{l['credito']}} | {{l['debito']}} | {{l['novoValor']}} | {{l['novaFilial']}} | {{l['novoCcusto']}} | 
 {%endfor%}
 ||||**Total**: | {{total}}</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-lancamentos-schema.json" />
+        </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_06zd818</bpmn:incoming>
       <bpmn:outgoing>Flow_080x3br</bpmn:outgoing>
