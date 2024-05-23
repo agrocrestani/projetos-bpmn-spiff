@@ -11,5 +11,19 @@
       "done": false
     }
   ],
-  "done": false
+  "done": false,
+  "fruits": [
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
+  ]
 }
