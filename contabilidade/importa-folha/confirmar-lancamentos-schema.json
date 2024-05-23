@@ -1,5 +1,5 @@
 {
-  "description": "Confira os items que foram importados abaixo e selecion",
+  "description": "Confira os items que foram importados abaixo e selecione ",
   "type": "object",
   "properties": {
     "operacao": {
