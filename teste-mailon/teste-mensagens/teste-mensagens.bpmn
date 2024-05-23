@@ -21,23 +21,23 @@
     flag = False
 
     if flag:    
-        return teste = [{
+        return 'teste = [{
                 "value":"A",
                 "label":"B"
                 },
                 {
                 "value":"AA",
                 "label":"BB"
-                }]
+                }]'
     else:
-        return teste = [{
+        return 'teste = [{
                 "value":"C",
                 "label":"D"
                 },
                 {
                 "value":"CC",
                 "label":"DD"
-                }]
+                }]'
 
 
 teste = teste_lista()</spiffworkflow:preScript>
