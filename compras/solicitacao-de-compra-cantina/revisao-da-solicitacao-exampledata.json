@@ -1,0 +1,17 @@
+{
+  "operacao": "Corrige",
+  "fruits": [
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
+  ]
+}

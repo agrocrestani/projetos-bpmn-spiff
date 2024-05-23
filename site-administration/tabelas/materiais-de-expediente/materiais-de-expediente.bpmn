@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:dataStore id="typeahead" name="TypeaheadDataStore" />
+  <bpmn:process id="material_expediente" name="Material Expediente" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0tn4ed3</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0tn4ed3" sourceRef="StartEvent_1" targetRef="Activity_MatExpediente" />
+    <bpmn:endEvent id="Event_0jxoz7s">
+      <bpmn:incoming>Flow_09p4nvv</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
+    <bpmn:scriptTask id="Activity_MatExpediente" name="Fetch Material Expediente">
+      <bpmn:incoming>Flow_0tn4ed3</bpmn:incoming>
+      <bpmn:outgoing>Flow_09p4nvv</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_06eatkz">
+        <bpmn:targetRef>DataStoreReference_1oronwq</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:script>from connectordb.hana import Hana
+
+baseSap = get_secret('baseSap')
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+            SELECT T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom" 
+            FROM {baseSap}."OITM" T0
+            INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"  
+            WHERE T0."ItmsGrpCod" = 327
+            ORDER BY T0."ItemName"
+          """
+
+rsp = Hana(connection).selectDb(query)
+
+material_expediente = []
+for r in rsp:
+    ItemCode = str(r['itemcode'])
+    ItemName = str(r['itemname'])
+    ItmsGrpNam = str(r['itmsgrpnam'])
+    InvntryUom = str(r['invntryuom'])
+    material_expediente.append(
+        {
+            "search_term": ItemName, 
+            "result": {
+                "ItemCode": ItemCode, 
+                "ItemName": ItemName, 
+                "ItmsGrpNam": ItmsGrpNam,
+                "InvntryUom": InvntryUom if InvntryUom != 'null' else None
+                }
+            }
+        )
+
+
+
+typeahead = {"material_expediente": material_expediente}
+
+del(connection)
+del(rsp)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_09p4nvv" sourceRef="Activity_MatExpediente" targetRef="Event_0jxoz7s" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="material_expediente">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="-58" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0jxoz7s_di" bpmnElement="Event_0jxoz7s">
+        <dc:Bounds x="222" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1oronwq_di" bpmnElement="DataStoreReference_1oronwq">
+        <dc:Bounds x="75" y="275" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="59" y="332" width="83" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1j6pxa8_di" bpmnElement="Activity_MatExpediente">
+        <dc:Bounds x="50" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0tn4ed3_di" bpmnElement="Flow_0tn4ed3">
+        <di:waypoint x="-22" y="177" />
+        <di:waypoint x="50" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_06eatkz_di" bpmnElement="DataOutputAssociation_06eatkz">
+        <di:waypoint x="102" y="217" />
+        <di:waypoint x="104" y="275" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09p4nvv_di" bpmnElement="Flow_09p4nvv">
+        <di:waypoint x="150" y="177" />
+        <di:waypoint x="222" y="177" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

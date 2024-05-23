@@ -1,0 +1,15 @@
+{
+    "data_store_specifications": {
+        "json": {
+            "produtosdesposito": {
+                "description": "",
+                "identifier": "produtosdesposito",
+                "location": "teste-mailon",
+                "name": "ProdutosDesposito",
+                "schema": {}
+            }
+        }
+    },
+    "description": "",
+    "display_name": "Teste Mailon"
+}

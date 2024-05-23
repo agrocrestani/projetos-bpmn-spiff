@@ -1,0 +1,34 @@
+{
+  "title": "Text Field",
+  "description": "A simple text field that is required, has a default value, sets a placeholder, includes a description. (field name will be 'firstname')",
+  "type": "object",
+  "properties": {
+    "unidade": {
+      "title": "Unidade",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:n_filiais"
+      ]
+    },
+    "pn": {
+      "title": "Parceiro de Negócios",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:n_filiais"
+      ]
+    },
+    "nfsePdf": {
+      "type": "string",
+      "format": "data-url",
+      "title": "Selecione o arquivo .pdf"
+    },
+    "nfseXml": {
+      "type": "string",
+      "format": "data-url",
+      "title": "Selecione o arquivo .xml"
+    }
+  },
+  "required": [
+    "pn"
+  ]
+}

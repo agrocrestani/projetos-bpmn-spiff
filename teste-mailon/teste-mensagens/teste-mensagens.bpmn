@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="Process_teste_mensagens_xruailk" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_13g9wyj" />
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:incoming>Flow_1af12yp</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1af12yp" sourceRef="Activity_13g9wyj" targetRef="EndEvent_1" />
+    <bpmn:userTask id="Activity_13g9wyj">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="teste-download-arquivo-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="teste-download-arquivo-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser># Exemplo de Checkbox Interativo
+
+&lt;p&gt;
+  &lt;input type="checkbox" id="toggleText" onclick="toggleVisibility()"&gt;
+  &lt;label for="toggleText"&gt;Mostrar Texto Oculto&lt;/label&gt;
+&lt;/p&gt;
+
+&lt;p id="hiddenText" style="display: none;"&gt;
+  Este é o texto oculto que aparece quando o checkbox é marcado.
+&lt;/p&gt;
+
+&lt;script&gt;
+  function toggleVisibility() {
+    var checkBox = document.getElementById("toggleText");
+    var text = document.getElementById("hiddenText");
+    if (checkBox.checked == true){
+      text.style.display = "block";
+    } else {
+      text.style.display = "none";
+    }
+  }
+&lt;/script&gt;
+</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript>def teste_lista(flag):
+
+    if flag:    
+        return [{
+                "a":"A",
+                "b":"B"
+                },
+                {
+                "a":"AA",
+                "b":"BB"
+                }]
+    else:
+        return [{
+                "a":"C",
+                "b":"D"
+                },
+                {
+                "a":"CC",
+                "b":"DD"
+                }]
+
+flag = False
+
+teste = teste_lista(flag)</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_1af12yp</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_mensagens_xruailk">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="622" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18cmyre_di" bpmnElement="Activity_13g9wyj">
+        <dc:Bounds x="260" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="260" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1af12yp_di" bpmnElement="Flow_1af12yp">
+        <di:waypoint x="360" y="177" />
+        <di:waypoint x="622" y="177" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

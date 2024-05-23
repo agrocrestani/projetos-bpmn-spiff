@@ -44,8 +44,7 @@ query = f"""
             o."AliasName"
           FROM
             {baseSap}.OBPL o
-          INNER JOIN {baseSap}."Entidade" e ON
-            O."TaxIdNum" = e.CNPJ
+          INNER JOIN {baseSap}."Entidade" e ON o."TaxIdNum" = e.CNPJ
         """
 
 rsp = Hana(connection).selectDb(query)

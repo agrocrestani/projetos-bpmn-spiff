@@ -1,0 +1,10 @@
+{
+  "title": "Confirmar dados colaboradores",
+  "properties": {
+    "done": {
+      "type": "boolean",
+      "title": "Confirmo que as informações estão corretas!",
+      "default": false
+    }
+  }
+}

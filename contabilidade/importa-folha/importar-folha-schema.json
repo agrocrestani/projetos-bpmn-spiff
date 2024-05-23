@@ -1,0 +1,35 @@
+{
+  "title": "Contabilização da Folha de Pagamento",
+  "type": "object",
+  "required": [
+          "datalacto",
+          "safra",
+          "file"
+        ],
+  "properties": {
+    "datalacto": {
+      "title": "Data de Lançamento",
+      "type": "string",
+      "format": "date"
+    },
+    "safra": {
+      "title": "Safra",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:n_safras"
+      ]
+    },
+    "cultura": {
+      "title": "Cultura",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:n_culturas"
+      ]
+    },
+    "file": {
+      "type": "string",
+      "format": "data-url",
+      "title": "Selecione o arquivo"
+    }
+  }
+}

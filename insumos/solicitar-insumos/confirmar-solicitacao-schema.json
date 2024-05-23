@@ -1,0 +1,39 @@
+{
+  "title": "Checkbox",
+  "description": "A super simple checkbox",
+  "type": "object",
+  "required": [
+          "solicitacao"
+        ],
+  "properties": {
+    "solicitacao": {
+      "type": "array",
+      "title": "Items",
+      "items": {
+        "type": "object",
+        "required": [
+          "insumo",
+          "quantidade"
+        ],
+        "properties": {
+            "insumo": {
+            "type": "string",
+            "title": "Selecione o Insumo"
+            },
+            "quantidade": {
+            "type": "number",
+            "title": "Quantidade"
+            }
+        }
+      }
+    },
+    "unidade": {
+      "title": "Selecione a unidade",
+      "type": "string",
+      "disabled": "True",
+      "anyOf": [
+        "options_from_task_data_var:n_filiais"
+      ]
+    }
+  }
+}

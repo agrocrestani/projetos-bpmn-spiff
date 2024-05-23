@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="Process_lancar_nfes_ump4m8q" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:incoming>Flow_0n8incj</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_1nnvpd0" />
+    <bpmn:userTask id="Activity_0qpzdpu" name="Example manual task">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
+
+ * **Script Task** - write a short snippet of python code to update some data
+ *  **User Task** - generate a form that collects information from a user
+ * **Service Task** - communicate with an external API to fetch or update some data.
+
+You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="lanca-nfes-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="lanca-nfes-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:preScript>n_filiais = []
+for f in filiais:
+    BPLId = f['BPLId']
+    BPLName = f['BPLName']
+    AliasName = f['AliasName']
+    n_filiais.append(
+        {
+            "value": BPLId,
+            "label": AliasName,
+        }
+    )</spiffworkflow:preScript>
+        <spiffworkflow:postScript>upload_file_link = markdown_file_download_link(nfsePdf)
+
+# fileDown = markdown_file_download_link(uploadFile)
+
+
+</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
+      <bpmn:property id="Property_0j7demb" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1ivq575">
+        <bpmn:sourceRef>DataStoreReference_001pzqe</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0j7demb</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:dataStoreReference id="DataStoreReference_001pzqe" name="Filiais" dataStoreRef="filiais" type="json" />
+    <bpmn:sequenceFlow id="Flow_0n8incj" sourceRef="Activity_1nnvpd0" targetRef="EndEvent_1" />
+    <bpmn:manualTask id="Activity_1nnvpd0" name="Verificar dados">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## NFSe
+
+Para visualizar a uploaded_file_link [clique aqui]({{upload_file_link}})
+
+{{upload_file_link}}
+
+</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0n8incj</bpmn:outgoing>
+    </bpmn:manualTask>
+  </bpmn:process>
+  <bpmn:dataStore id="filiais" name="JSONDataStore" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_lancar_nfes_ump4m8q">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="722" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0sfibrs_di" bpmnElement="Activity_0qpzdpu">
+        <dc:Bounds x="270" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_001pzqe_di" bpmnElement="DataStoreReference_001pzqe">
+        <dc:Bounds x="235" y="305" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="246" y="362" width="28" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zwhey5_di" bpmnElement="Activity_1nnvpd0">
+        <dc:Bounds x="430" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="430" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1ivq575_di" bpmnElement="DataInputAssociation_1ivq575">
+        <di:waypoint x="272" y="305" />
+        <di:waypoint x="315" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0n8incj_di" bpmnElement="Flow_0n8incj">
+        <di:waypoint x="530" y="177" />
+        <di:waypoint x="722" y="177" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

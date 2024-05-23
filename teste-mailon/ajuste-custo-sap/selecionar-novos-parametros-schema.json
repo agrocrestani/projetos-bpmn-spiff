@@ -1,0 +1,10 @@
+{
+  "title": "Realizar nova busca",
+  "properties": {
+    "novaBusca": {
+      "type": "boolean",
+      "title": "Deseja realizar uma nova buscar?",
+      "default": false
+    }
+  }
+}

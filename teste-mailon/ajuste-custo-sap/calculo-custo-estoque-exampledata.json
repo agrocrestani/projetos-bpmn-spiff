@@ -1,0 +1,21 @@
+{
+  "recalcular": true,
+  "documentos_entrada": [
+    {}
+  ],
+  "documentos_saida": [],
+  "origens_unicas_list": [
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+    "description": "",
+    "display_name": "Importar Folha de Pagamento",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "importar-folha.bpmn",
+    "primary_process_id": "Process_r411ms5"
+}

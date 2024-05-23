@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="Process_r411ms5" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_09zzjml</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_09zzjml" sourceRef="StartEvent_1" targetRef="Activity_19fj0ss" />
+    <bpmn:sequenceFlow id="Flow_0nlod8v" sourceRef="Activity_19fj0ss" targetRef="Activity_15xim33" />
+    <bpmn:endEvent id="Event_122av5w">
+      <bpmn:incoming>Flow_08nb3yf</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0na0ifj" sourceRef="Activity_15xim33" targetRef="Activity_0vqrgca" />
+    <bpmn:userTask id="Activity_19fj0ss" name="Escolhe Arquivo">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="importar-folha-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="importar-folha-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:preScript>n_filiais = []
+for f in filiais:
+    BPLId = f['BPLId']
+    BPLName = f['BPLName']
+    n_filiais.append(
+        {
+            "value": BPLId,
+            "label": BPLName
+        }
+    )
+</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_09zzjml</bpmn:incoming>
+      <bpmn:outgoing>Flow_0nlod8v</bpmn:outgoing>
+      <bpmn:property id="Property_1od0qau" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_0laq1fe">
+        <bpmn:sourceRef>DataStoreReference_19ma0pn</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1od0qau</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:scriptTask id="Activity_15xim33" name="Processa arquivo">
+      <bpmn:incoming>Flow_0nlod8v</bpmn:incoming>
+      <bpmn:outgoing>Flow_0na0ifj</bpmn:outgoing>
+      <bpmn:script>from connectordb.importaFolha import preparaArquivo
+lancamentos = preparaArquivo(get_encoded_file_data(file))
+lcm = []</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:dataStoreReference id="DataStoreReference_19ma0pn" name="Filiais" dataStoreRef="filiais" type="json" />
+    <bpmn:subProcess id="Activity_0vqrgca">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript>creditoConta = ""
+creditoValor = 0
+debitoConta = ""
+debitoValor = 0
+
+if l['tipoLancamento'] == "C":
+    creditoConta = novaConta1
+    creditoValor = l['valor']
+    debitoConta = novaConta2
+    debitoValor = l['valor']
+else:    
+    creditoConta = novaConta2 
+    creditoValor = l['valor']
+    debitoConta = novaConta1
+    debitoValor = l['valor']
+
+
+lcm.append(
+    {
+        "ReferenceDate": datalacto,
+        "TaxDate": datalacto,
+        "Memo": l['nomeEvento'],
+        "TransactionCode": "FOL",
+        "JournalEntryLines": [
+            {
+                "AccountCode": creditoConta,
+                "Credit": creditoValor,
+                "CostingCode": novoCcusto,
+                "BPLID": bplid
+            },
+                    {
+                "AccountCode": debitoConta,
+                "Debit": debitoValor,
+                "CostingCode": novoCcusto,
+                "BPLID": bplid
+            }
+        ]
+    }
+)
+
+empresas = []
+if l['empresa'] not in empresas:
+    empresas.append(l['empresa'])
+
+filiais = []
+if l['filial'] not in filiais:
+    filiais.append(l['filial'])
+
+ccustos = []
+if l['ccusto'] not in ccustos:
+    ccustos.append(l['ccusto'])
+
+tabela = []
+tabela.append(
+    {
+        "data": datalacto,
+        "evento": l['nomeEvento'],
+        "credito": creditoConta,
+        "debito": debitoConta,
+        "novaFilial": bplid,
+        "valor": l['valor'],
+        "ccusto": l['ccusto'],
+        "novoCcusto": novoCcusto,
+        "filial": l['filial'],
+        "empresa": l['empresa']
+    }
+)
+
+
+del(l)
+#   "l": {
+#     "conta1": "20101007",
+#     "conta2": "20101001",
+#     "nomeEvento": "INSS S/FOLHA",
+#     "valor": 17540.84,
+#     "tipoLancamento": "C",
+#     "codigoEvento": 15,
+#     "empresa": 1,
+#     "filial": 1,
+#     "ccusto": 11102
+
+#       "bplid": "1",
+#   "novaConta1": "2.1.1.01.01.007",
+#   "novaConta2": "2.1.1.01.01.001"</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0na0ifj</bpmn:incoming>
+      <bpmn:outgoing>Flow_08nb3yf</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
+        <bpmn:loopDataInputRef>lancamentos</bpmn:loopDataInputRef>
+        <bpmn:loopDataOutputRef>lancamentos</bpmn:loopDataOutputRef>
+        <bpmn:inputDataItem id="l" name="l" />
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="Event_1x8i9tu">
+        <bpmn:outgoing>Flow_0uhx84e</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_0uhx84e" sourceRef="Event_1x8i9tu" targetRef="Activity_0huvav9" />
+      <bpmn:endEvent id="Event_13af83c">
+        <bpmn:incoming>Flow_1jic2xl</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:scriptTask id="Activity_0huvav9" name="DePara Filial">
+        <bpmn:incoming>Flow_0uhx84e</bpmn:incoming>
+        <bpmn:outgoing>Flow_1m4tdrd</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+filialSenior = str(l['empresa'])+str(l['filial'])
+
+query = f"""
+        SELECT 
+            "BPLId" 
+        FROM 
+            SBO_CRESTANI_PRD.OBPL o 
+        WHERE 
+            o."U_AC_EmpFilialSenior" = '{filialSenior}'
+        """
+result = Hana(connection).selectDb(query)[0]
+bplid = result['bplid']
+
+del(connection)
+del(query)
+del(filialSenior)
+del(result)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_1m4tdrd" sourceRef="Activity_0huvav9" targetRef="Activity_0evdcmq" />
+      <bpmn:sequenceFlow id="Flow_0on0isj" sourceRef="Activity_0evdcmq" targetRef="Activity_0kmye5t" />
+      <bpmn:scriptTask id="Activity_0evdcmq" name="DePara Conta1">
+        <bpmn:extensionElements>
+          <spiffworkflow:postScript />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1m4tdrd</bpmn:incoming>
+        <bpmn:outgoing>Flow_0on0isj</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+        SELECT 
+			"AcctCode"
+		FROM 
+			SBO_CRESTANI_PRD.OACT o 
+		WHERE 
+			o."U_AC_Conta_Senior" = '{l['conta1']}'
+        """
+result = Hana(connection).selectDb(query)[0]
+
+novaConta1 = result['acctcode']
+
+del(connection)
+del(query)
+del(result)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_15c79h9" sourceRef="Activity_0kmye5t" targetRef="Activity_1afkrdp" />
+      <bpmn:scriptTask id="Activity_0kmye5t" name="DePara Conta2">
+        <bpmn:incoming>Flow_0on0isj</bpmn:incoming>
+        <bpmn:outgoing>Flow_15c79h9</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+        SELECT 
+			"AcctCode"
+		FROM 
+			SBO_CRESTANI_PRD.OACT o 
+		WHERE 
+			o."U_AC_Conta_Senior" = '{l['conta2']}'
+        """
+result = Hana(connection).selectDb(query)[0]
+
+novaConta2 = result['acctcode']
+
+del(connection)
+del(query)
+del(result)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_1jic2xl" sourceRef="Activity_1afkrdp" targetRef="Event_13af83c" />
+      <bpmn:scriptTask id="Activity_1afkrdp" name="DePara Centro de Custo">
+        <bpmn:incoming>Flow_15c79h9</bpmn:incoming>
+        <bpmn:outgoing>Flow_1jic2xl</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+
+ccusto = str(l['ccusto'])
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+            SELECT 
+                a."U_CcustoSAP" 
+            FROM 
+                SBO_CRESTANI_PRD."@AC_CCUSTO_SENIOR" a
+            WHERE 
+                a."U_Filial" = '{bplid}'
+                and a."U_CCusto_Senior" = '{ccusto}'
+        """
+result = Hana(connection).selectDb(query)[0]
+
+novoCcusto = result['u_ccustosap']
+
+del(connection)
+del(query)
+del(result)</bpmn:script>
+      </bpmn:scriptTask>
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_08nb3yf" sourceRef="Activity_0vqrgca" targetRef="Event_122av5w" />
+  </bpmn:process>
+  <bpmn:dataStore id="filiais" name="JSONDataStore" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_r411ms5">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="-428" y="72" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_122av5w_di" bpmnElement="Event_122av5w">
+        <dc:Bounds x="962" y="72" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_083u9n6_di" bpmnElement="Activity_19fj0ss">
+        <dc:Bounds x="-340" y="50" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02aoxti_di" bpmnElement="Activity_15xim33">
+        <dc:Bounds x="-180" y="50" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_19ma0pn_di" bpmnElement="DataStoreReference_19ma0pn">
+        <dc:Bounds x="-335" y="215" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-324" y="272" width="28" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vqrgca_di" bpmnElement="Activity_0vqrgca" isExpanded="true">
+        <dc:Bounds x="-30" y="-10" width="910" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1x8i9tu_di" bpmnElement="Event_1x8i9tu">
+        <dc:Bounds x="10" y="72" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_13af83c_di" bpmnElement="Event_13af83c">
+        <dc:Bounds x="802" y="72" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mvgkoh_di" bpmnElement="Activity_0huvav9">
+        <dc:Bounds x="100" y="50" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1t7d598_di" bpmnElement="Activity_0evdcmq">
+        <dc:Bounds x="260" y="50" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1wi8edp_di" bpmnElement="Activity_0kmye5t">
+        <dc:Bounds x="420" y="50" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1tmfafy_di" bpmnElement="Activity_1afkrdp">
+        <dc:Bounds x="580" y="50" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0uhx84e_di" bpmnElement="Flow_0uhx84e">
+        <di:waypoint x="46" y="90" />
+        <di:waypoint x="100" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1m4tdrd_di" bpmnElement="Flow_1m4tdrd">
+        <di:waypoint x="200" y="90" />
+        <di:waypoint x="260" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0on0isj_di" bpmnElement="Flow_0on0isj">
+        <di:waypoint x="360" y="90" />
+        <di:waypoint x="420" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15c79h9_di" bpmnElement="Flow_15c79h9">
+        <di:waypoint x="520" y="90" />
+        <di:waypoint x="580" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jic2xl_di" bpmnElement="Flow_1jic2xl">
+        <di:waypoint x="680" y="90" />
+        <di:waypoint x="802" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09zzjml_di" bpmnElement="Flow_09zzjml">
+        <di:waypoint x="-392" y="90" />
+        <di:waypoint x="-340" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0nlod8v_di" bpmnElement="Flow_0nlod8v">
+        <di:waypoint x="-240" y="90" />
+        <di:waypoint x="-180" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0na0ifj_di" bpmnElement="Flow_0na0ifj">
+        <di:waypoint x="-80" y="90" />
+        <di:waypoint x="-30" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0laq1fe_di" bpmnElement="DataInputAssociation_0laq1fe">
+        <di:waypoint x="-306" y="215" />
+        <di:waypoint x="-292" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08nb3yf_di" bpmnElement="Flow_08nb3yf">
+        <di:waypoint x="880" y="90" />
+        <di:waypoint x="962" y="90" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

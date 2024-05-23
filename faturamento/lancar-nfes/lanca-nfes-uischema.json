@@ -1,0 +1,12 @@
+{
+  "nfsePdf": {
+    "ui:options": {
+      "accept": ".pdf"
+    }
+  },
+  "nfseXml": {
+    "ui:options": {
+      "accept": ".xml"
+    }
+  }
+}

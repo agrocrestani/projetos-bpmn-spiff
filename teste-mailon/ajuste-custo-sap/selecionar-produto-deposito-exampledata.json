@@ -1,0 +1,17 @@
+{
+  "deposito": "oranges",
+  "depositosList": [
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
+  ]
+}
