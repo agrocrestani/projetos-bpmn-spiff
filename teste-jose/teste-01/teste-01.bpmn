@@ -52,7 +52,7 @@ ano = [
           <spiffworkflow:property name="formUiSchemaFilename" value="teste02-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:preScript></spiffworkflow:preScript>
-        <spiffworkflow:postScript>correcao = not done</spiffworkflow:postScript>
+        <spiffworkflow:postScript />
         <spiffworkflow:instructionsForEndUser>### Funcionários Matriz
 | Situação | Quantidade |
 | ---------- | :----------: |
