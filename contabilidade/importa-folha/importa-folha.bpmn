@@ -397,7 +397,7 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
     <bpmn:endEvent id="Event_0x3itur">
       <bpmn:incoming>Flow_1ejzlor</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:userTask id="Activity_1x5vkae" name="Confere dados">
+    <bpmn:userTask id="Activity_1x5vkae" name="Verifica as informações">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>novaTabela = []
 total = 0
