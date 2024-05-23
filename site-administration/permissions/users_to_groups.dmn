@@ -32,6 +32,17 @@
           <text>"admin"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_01pinc2">
+        <inputEntry id="UnaryTests_0gm0p7n">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hjsvdn">
+          <text>"emerson.gregorio@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05znqqo">
+          <text>"rh"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0a4f7in">
         <inputEntry id="UnaryTests_1ocx2b2">
           <text></text>
