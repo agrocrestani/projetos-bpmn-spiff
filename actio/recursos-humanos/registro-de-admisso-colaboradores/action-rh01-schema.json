@@ -1,13 +1,18 @@
 {
-  "title": "Registro dos Dados de Colaboradores Ativos e  Demitidos no Mês",
-  "description": "Este formulário permite o registro dos dados de demissão e de colaboradores ativos por filial e mês. Certifique-se de adicionar as informações corretas antes de utilizar este componente.",
+  "title": "Text Field",
+  "description": "A simple text field that is required, has a default value, sets a placeholder, includes a description. (field name will be 'firstname')",
   "type": "object",
-  "required": [],
+  "required": [
+    "firstName"
+  ],
   "properties": {
     "filialEscritorio": {
       "title": "Matriz",
       "type": "object",
-      "required": ["escritorioAtivos", "escritorioDemitidos"],
+      "required": [
+        "escritorioAtivos",
+        "escritorioDemitidos"
+      ],
       "properties": {
         "escritorioAtivos": {
           "type": "number",
@@ -22,7 +27,10 @@
     "filialBrasnorte": {
       "title": "Brasnorte",
       "type": "object",
-      "required": ["brasnorteAtivos", "brasnorteDemitidos"],
+      "required": [
+        "brasnorteAtivos",
+        "brasnorteDemitidos"
+      ],
       "properties": {
         "brasnorteAtivos": {
           "type": "number",
@@ -37,7 +45,10 @@
     "filialQuerencia": {
       "title": "Querência",
       "type": "object",
-      "required": ["querenciaAtivos", "querenciaDemitidos"],
+      "required": [
+        "querenciaAtivos",
+        "querenciaDemitidos"
+      ],
       "properties": {
         "querenciaAtivos": {
           "type": "number",
@@ -52,7 +63,10 @@
     "filialCamposDeJulio": {
       "title": "Campos de Júlio",
       "type": "object",
-      "required": ["camposDeJulioAtivos", "camposDeJulioDemitidos"],
+      "required": [
+        "camposDeJulioAtivos",
+        "camposDeJulioDemitidos"
+      ],
       "properties": {
         "camposDeJulioAtivos": {
           "type": "number",
@@ -70,6 +84,11 @@
       "anyOf": [
         "options_from_task_data_var:meses"
       ]
+    },
+    "firstName": {
+      "type": "string",
+      "title": "First name",
+      "default": "Chuck"
     }
   }
 }
