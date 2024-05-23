@@ -49,6 +49,8 @@ ano = [
           <spiffworkflow:property name="formJsonSchemaFilename" value="teste02-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="teste02-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_038o1e9</bpmn:incoming>
       <bpmn:outgoing>Flow_09m7x1o</bpmn:outgoing>
