@@ -13,9 +13,9 @@
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0qpzdpu</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1gq0mev</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1nr33uk</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0x3itur</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1x5vkae</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1nr33uk</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane">
         <bpmn:flowNodeRef>Activity_00vuw5a</bpmn:flowNodeRef>
@@ -330,6 +330,7 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
         </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_080x3br</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jsdid5</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_080x3br" sourceRef="Activity_1x5vkae" targetRef="Activity_0w2moib" />
     <bpmn:serviceTask id="Activity_0nynyx4" name="Lança no SAP">
@@ -368,13 +369,18 @@ headers = {
 
 </spiffworkflow:preScript>
       </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1jsdid5</bpmn:incoming>
+      <bpmn:outgoing>Flow_1gun2i8</bpmn:outgoing>
       <bpmn:property id="Property_1l4lyj2" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_1ww8r6l">
         <bpmn:sourceRef>DataStoreReference_1175xbr</bpmn:sourceRef>
         <bpmn:targetRef>Property_1l4lyj2</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:serviceTask>
-    <bpmn:exclusiveGateway id="Gateway_0gbbrla" />
+    <bpmn:exclusiveGateway id="Gateway_0gbbrla">
+      <bpmn:incoming>Flow_1gun2i8</bpmn:incoming>
+      <bpmn:outgoing>Flow_07c0qfk</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
     <bpmn:manualTask id="Activity_0pk9g8b" name="Confirmação do Lançamento no SAP">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## Status da Integração
@@ -383,24 +389,14 @@ headers = {
 
 Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o número: **{{number}}**.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
+      <bpmn:incoming>Flow_07c0qfk</bpmn:incoming>
       <bpmn:outgoing>Flow_0kvuaau</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_0kvuaau" sourceRef="Activity_0pk9g8b" targetRef="Activity_1nr33uk" />
-    <bpmn:manualTask id="Activity_1nr33uk" name="Aviso ao Solicitnte">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>## Status da Integração
-
-### Lançamento contabil inserido com sucesso no SAP. 
-
-Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o número: **{{number}}**.</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0kvuaau</bpmn:incoming>
-      <bpmn:outgoing>Flow_1ejzlor</bpmn:outgoing>
-    </bpmn:manualTask>
     <bpmn:endEvent id="Event_0x3itur">
       <bpmn:incoming>Flow_1ejzlor</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:userTask id="Activity_1x5vkae">
+    <bpmn:userTask id="Activity_1x5vkae" name="Confere dados">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>novaTabela = []
 total = 0
@@ -514,6 +510,20 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
       <bpmn:incoming>Flow_06zd818</bpmn:incoming>
       <bpmn:outgoing>Flow_080x3br</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1jsdid5" sourceRef="Activity_0w2moib" targetRef="Activity_0nynyx4" />
+    <bpmn:sequenceFlow id="Flow_1gun2i8" sourceRef="Activity_0nynyx4" targetRef="Gateway_0gbbrla" />
+    <bpmn:sequenceFlow id="Flow_07c0qfk" sourceRef="Gateway_0gbbrla" targetRef="Activity_0pk9g8b" />
+    <bpmn:manualTask id="Activity_1nr33uk" name="Aviso ao Solicitnte">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## Status da Integração
+
+### Lançamento contabil inserido com sucesso no SAP. 
+
+Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o número: **{{number}}**.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0kvuaau</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ejzlor</bpmn:outgoing>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:error id="ErrorProcess" name="ErrorProcess">
     <bpmn:extensionElements>
@@ -584,14 +594,15 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
         <dc:Bounds x="1820" y="900" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1tzg16p_di" bpmnElement="Activity_1nr33uk">
-        <dc:Bounds x="2030" y="230" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0x3itur_di" bpmnElement="Event_0x3itur">
         <dc:Bounds x="2182" y="252" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1gy6ua9_di" bpmnElement="Activity_1x5vkae">
         <dc:Bounds x="1190" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1tzg16p_di" bpmnElement="Activity_1nr33uk">
+        <dc:Bounds x="2030" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="230" y="480" width="910" height="200" />
@@ -646,11 +657,14 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
         <di:waypoint x="430" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1tvkyw7_di" bpmnElement="Flow_1tvkyw7">
-        <di:waypoint x="480" y="217" />
-        <di:waypoint x="480" y="480" />
+        <di:waypoint x="530" y="177" />
+        <di:waypoint x="590" y="177" />
+        <di:waypoint x="590" y="480" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1ejzlor_di" bpmnElement="Flow_1ejzlor">
-        <di:waypoint x="2130" y="270" />
+        <di:waypoint x="2130" y="177" />
+        <di:waypoint x="2156" y="177" />
+        <di:waypoint x="2156" y="270" />
         <di:waypoint x="2182" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_06zd818_di" bpmnElement="Flow_06zd818">
@@ -668,8 +682,20 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
       <bpmndi:BPMNEdge id="Flow_0kvuaau_di" bpmnElement="Flow_0kvuaau">
         <di:waypoint x="1920" y="940" />
         <di:waypoint x="1970" y="940" />
-        <di:waypoint x="1970" y="270" />
-        <di:waypoint x="2030" y="270" />
+        <di:waypoint x="1970" y="177" />
+        <di:waypoint x="2030" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jsdid5_di" bpmnElement="Flow_1jsdid5">
+        <di:waypoint x="1490" y="940" />
+        <di:waypoint x="1540" y="940" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gun2i8_di" bpmnElement="Flow_1gun2i8">
+        <di:waypoint x="1640" y="940" />
+        <di:waypoint x="1715" y="940" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07c0qfk_di" bpmnElement="Flow_07c0qfk">
+        <di:waypoint x="1765" y="940" />
+        <di:waypoint x="1820" y="940" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0kaqi1r_di" bpmnElement="DataInputAssociation_0kaqi1r">
         <di:waypoint x="279" y="315" />
