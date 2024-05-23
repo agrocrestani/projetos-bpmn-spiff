@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
-  <bpmn:process id="Process_teste_mensagens_xruailk" isExecutable="true">
+  <bpmn:process id="T1" name="T1" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
@@ -9,7 +9,7 @@
       <bpmn:incoming>Flow_1af12yp</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1af12yp" sourceRef="Activity_13g9wyj" targetRef="EndEvent_1" />
-    <bpmn:userTask id="Activity_13g9wyj">
+    <bpmn:userTask id="Activity_13g9wyj" name="T2">
       <bpmn:extensionElements>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="teste-download-arquivo-schema.json" />
@@ -74,7 +74,7 @@ print("Arquivo JSON modificado com sucesso.")
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_mensagens_xruailk">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="T1">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -83,6 +83,7 @@ print("Arquivo JSON modificado com sucesso.")
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_18cmyre_di" bpmnElement="Activity_13g9wyj">
         <dc:Bounds x="420" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1q4kbnt_di" bpmnElement="Activity_09tm1h9">
         <dc:Bounds x="250" y="137" width="100" height="80" />
