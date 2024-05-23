@@ -435,7 +435,7 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
     </bpmn:subProcess>
     <bpmn:boundaryEvent id="Event_1gs6xis" attachedToRef="Activity_1gq0mev">
       <bpmn:outgoing>Flow_1q18jnm</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_109aqog" errorRef="Error" />
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_109aqog" errorRef="ErrorProcess" />
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_1q18jnm" sourceRef="Event_1gs6xis" targetRef="Activity_0h9a7kr" />
     <bpmn:manualTask id="Activity_0h9a7kr" name="Procesa erro">
@@ -447,7 +447,7 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0mrzmlq" sourceRef="Activity_0h9a7kr" targetRef="Event_1q4mjne" />
   </bpmn:process>
-  <bpmn:error id="Error" name="Error">
+  <bpmn:error id="ErrorProcess" name="ErrorProcess">
     <bpmn:extensionElements>
       <spiffworkflow:variableName>ErrorProcessFile</spiffworkflow:variableName>
     </bpmn:extensionElements>
@@ -501,12 +501,6 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1tzg16p_di" bpmnElement="Activity_1nr33uk">
         <dc:Bounds x="2080" y="230" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1motqc8_di" bpmnElement="Activity_0h9a7kr">
-        <dc:Bounds x="580" y="260" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1q4mjne_di" bpmnElement="Event_1q4mjne">
-        <dc:Bounds x="732" y="282" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="230" y="480" width="910" height="200" />
@@ -607,6 +601,12 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
         <di:waypoint x="1410" y="1050" />
         <di:waypoint x="1410" y="1020" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_1motqc8_di" bpmnElement="Activity_0h9a7kr">
+        <dc:Bounds x="580" y="260" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1q4mjne_di" bpmnElement="Event_1q4mjne">
+        <dc:Bounds x="732" y="282" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_12nnxzv_di" bpmnElement="Event_1gs6xis">
         <dc:Bounds x="492" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
