@@ -15,29 +15,7 @@
           <spiffworkflow:property name="formJsonSchemaFilename" value="teste-download-arquivo-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="teste-download-arquivo-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:instructionsForEndUser># Exemplo de Checkbox Interativo
-
-&lt;p&gt;
-  &lt;input type="checkbox" id="toggleText" onclick="toggleVisibility()"&gt;
-  &lt;label for="toggleText"&gt;Mostrar Texto Oculto&lt;/label&gt;
-&lt;/p&gt;
-
-&lt;p id="hiddenText" style="display: none;"&gt;
-  Este é o texto oculto que aparece quando o checkbox é marcado.
-&lt;/p&gt;
-
-&lt;script&gt;
-  function toggleVisibility() {
-    var checkBox = document.getElementById("toggleText");
-    var text = document.getElementById("hiddenText");
-    if (checkBox.checked == true){
-      text.style.display = "block";
-    } else {
-      text.style.display = "none";
-    }
-  }
-&lt;/script&gt;
-</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>def teste_lista(flag):
 
     flag = False
