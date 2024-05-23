@@ -396,8 +396,8 @@ headers = {
     <bpmn:sequenceFlow id="Flow_1i3zxal" sourceRef="Event_0uwcfkc" targetRef="Activity_1hrnfpg" />
     <bpmn:manualTask id="Activity_1hrnfpg" name="Verifica o erro">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>status_code = err1['status_code']
-command = err1['command_response_body']
+        <spiffworkflow:preScript>status_code = sapError['status_code']
+command = sapError['command_response_body']
 command = json.loads(command)
 errorCode = command['body']['error']['code']
 errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
@@ -413,6 +413,7 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
 
 1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
 2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1i3zxal</bpmn:incoming>
       <bpmn:outgoing>Flow_0rawcp4</bpmn:outgoing>
