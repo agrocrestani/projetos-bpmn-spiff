@@ -95,6 +95,36 @@ ano = [
     <bpmn:sequenceFlow id="Flow_0ghm76k" sourceRef="Activity_012b87y" targetRef="Event_1x6rzfv" />
     <bpmn:sequenceFlow id="Flow_1ys9spg" sourceRef="Gateway_18xcl6s" targetRef="Activity_0qpzdpu" />
     <bpmn:userTask id="Activity_012b87y" name="C2">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript>correcao = not done</spiffworkflow:postScript>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="teste02-schema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser>### Funcionários Matriz
+| Situação | Quantidade |
+| ---------- | :----------: |
+| Ativos | {{filialEscritorio['escritorioAtivos']}} |
+| Demitidos | {{filialEscritorio['escritorioDemitidos']}} |
+
+### Funcionários Brasnorte
+| Situação | Quantidade |
+| ---------- | :----------: |
+| Ativos | {{filialBrasnorte['brasnorteAtivos']}} |
+| Demitidos | {{filialBrasnorte['brasnorteDemitidos']}} |
+
+### Funcionários Querência
+| Situação | Quantidade |
+| ---------- | :----------: |
+| Ativos | {{filialQuerencia['querenciaAtivos']}} |
+| Demitidos | {{filialQuerencia['querenciaDemitidos']}} |
+
+### Funcionários Campos de Júlio
+| Situação | Quantidade |
+| ---------- | :----------: |
+| Ativos | {{filialCamposDeJulio['camposDeJulioAtivos']}} |
+| Demitidos | {{filialCamposDeJulio['camposDeJulioDemitidos']}} |
+</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_00lrhg2</bpmn:incoming>
       <bpmn:outgoing>Flow_0ghm76k</bpmn:outgoing>
     </bpmn:userTask>
