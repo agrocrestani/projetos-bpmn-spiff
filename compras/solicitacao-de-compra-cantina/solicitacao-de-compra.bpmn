@@ -180,7 +180,7 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
 | Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade | Custo Médio | V. Total |
 | ---------- | ---------------| --------------------: | --------------------: | ------------ | -----------------: | ----------: |
 {% for s in sol%}
-| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio']}} | {{s['PrecoMedio']*s['quantidade']}} |
+| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio']}} | {{s['TotalItem']}} |
 {%endfor%}
 ||||||Total | {{total}}
 </spiffworkflow:instructionsForEndUser>
@@ -239,7 +239,7 @@ total = "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X",
 | Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade | Custo Médio | V. Total |
 | ---------- | ---------------| --------------------: | --------------------: | ------------ | -----------------: | ----------: |
 {% for s in sol%}
-| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio']}} | {{s['PrecoMedio']*s['quantidade']}}|
+| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio']}} | {{s['TotalItem']}} |
 {%endfor%}
 ||||||Total | {{total}}
 
