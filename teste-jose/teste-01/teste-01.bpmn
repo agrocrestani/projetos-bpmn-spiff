@@ -82,15 +82,13 @@ ano = [
       <bpmn:incoming>Flow_038o1e9</bpmn:incoming>
       <bpmn:outgoing>Flow_1hc1fji</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:exclusiveGateway id="Gateway_18xcl6s">
+    <bpmn:exclusiveGateway id="Gateway_18xcl6s" default="Flow_00lrhg2">
       <bpmn:incoming>Flow_1hc1fji</bpmn:incoming>
       <bpmn:outgoing>Flow_00lrhg2</bpmn:outgoing>
       <bpmn:outgoing>Flow_1ys9spg</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1hc1fji" sourceRef="Activity_1tsk956" targetRef="Gateway_18xcl6s" />
-    <bpmn:sequenceFlow id="Flow_00lrhg2" sourceRef="Gateway_18xcl6s" targetRef="Event_1x6rzfv">
-      <bpmn:conditionExpression>done == true</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_00lrhg2" sourceRef="Gateway_18xcl6s" targetRef="Event_1x6rzfv" />
     <bpmn:endEvent id="Event_1x6rzfv">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>### Funcionários Matriz
