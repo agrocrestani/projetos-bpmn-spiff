@@ -2,7 +2,8 @@
     "title": "Confirmar dados",
     "properties": {
         "done":{
-            "type": "boolean"
+            "type": "boolean",
+            
 
         }
     }
