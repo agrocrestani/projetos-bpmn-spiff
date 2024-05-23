@@ -55,10 +55,8 @@ for f in filiais:
     )
 
 
-in locals()
-
-if "lancamentos" in locals():
-    del(lancamentos)
+# if "lancamentos" in locals():
+    
 n_safras = safras
 n_culturas = culturas</spiffworkflow:preScript>
         <spiffworkflow:properties>
@@ -274,7 +272,8 @@ lcm = {
     "JournalEntryLines": items
 }
 
-
+if operacao == 'Corrige':
+    del(lancamentos)
 
 
 
