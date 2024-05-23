@@ -257,6 +257,7 @@ obs_correcoes.append(comments)
 </spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1evt79u</bpmn:incoming>
+      <bpmn:incoming>Flow_0rawcp4</bpmn:incoming>
       <bpmn:outgoing>Flow_1y37zi6</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:exclusiveGateway id="Gateway_1d3lf4s" default="Flow_18wrock">
@@ -388,13 +389,47 @@ headers = {
       </bpmn:dataInputAssociation>
     </bpmn:serviceTask>
     <bpmn:dataStoreReference id="DataStoreReference_0bfz43x" name="SapLogin" dataStoreRef="saplogin" type="json" />
+    <bpmn:boundaryEvent id="Event_0uwcfkc" attachedToRef="Activity_0856rbm">
+      <bpmn:outgoing>Flow_1i3zxal</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0zgrctx" errorRef="errorSap" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1i3zxal" sourceRef="Event_0uwcfkc" targetRef="Activity_1hrnfpg" />
+    <bpmn:manualTask id="Activity_1hrnfpg" name="Verifica o erro">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>status_code = err1['status_code']
+command = err1['command_response_body']
+command = json.loads(command)
+errorCode = command['body']['error']['code']
+errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
+        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
+
+### Informações
+
+| Campo | Conteudo |
+| ----------: | -------------- |
+| Código Erro: | {{errorCode}} |
+| Mensagem Erro: | {{errorMessage}}
+| Status  | {{status_code}} |
+
+1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
+2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1i3zxal</bpmn:incoming>
+      <bpmn:outgoing>Flow_0rawcp4</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_0rawcp4" sourceRef="Activity_1hrnfpg" targetRef="Activity_0xafkf4" />
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
+  <bpmn:error id="errorSap" name="errorSap">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>sapError</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1tyx2x2">
       <bpmndi:BPMNShape id="Participant_0476j7y_di" bpmnElement="Participant_0476j7y" isHorizontal="true">
-        <dc:Bounds x="130" y="-50" width="1550" height="400" />
+        <dc:Bounds x="130" y="-50" width="1550" height="460" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="180" y="169" width="36" height="36" />
@@ -483,6 +518,12 @@ headers = {
           <dc:Bounds x="1397" y="332" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03v5412_di" bpmnElement="Activity_1hrnfpg">
+        <dc:Bounds x="1560" y="260" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1g0h8ka_di" bpmnElement="Event_0uwcfkc">
+        <dc:Bounds x="1462" y="209" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="216" y="187" />
         <di:waypoint x="320" y="187" />
@@ -530,6 +571,17 @@ headers = {
         <di:waypoint x="1300" y="90" />
         <di:waypoint x="730" y="90" />
         <di:waypoint x="730" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1i3zxal_di" bpmnElement="Flow_1i3zxal">
+        <di:waypoint x="1480" y="245" />
+        <di:waypoint x="1480" y="300" />
+        <di:waypoint x="1560" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0rawcp4_di" bpmnElement="Flow_0rawcp4">
+        <di:waypoint x="1610" y="340" />
+        <di:waypoint x="1610" y="370" />
+        <di:waypoint x="1170" y="370" />
+        <di:waypoint x="1170" y="227" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0w8lbnm_di" bpmnElement="DataInputAssociation_0w8lbnm">
         <di:waypoint x="223" y="71" />
