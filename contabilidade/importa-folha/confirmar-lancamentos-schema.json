@@ -1,14 +1,14 @@
 {
-  "title": "Verifique as informações acima e confirme caso esteja tudo correto.",
-  "description": "Os lançamentos apresentados foram conferidos e estão corretos?",
-  "required": [
-    "done"
-  ],
+  "description": "Verifique os itens da solicitação e confirme para enviar a solicitação aprovação.",
+  "type": "object",
   "properties": {
-    "done": {
-      "type": "boolean",
-      "title": "Confirma?",
-      "default": false
+    "operacao": {
+      "title": "Confirma ou corrige?",
+      "type": "string",
+      "enum": [
+        "Confirma",
+        "Corrige"
+      ]
     }
   }
 }
