@@ -54,6 +54,8 @@ for f in filiais:
         }
     )
 
+if lancamentos:
+    del(lancamentos)
 n_safras = safras
 n_culturas = culturas</spiffworkflow:preScript>
         <spiffworkflow:properties>
