@@ -26,6 +26,7 @@
         <bpmn:flowNodeRef>Gateway_0gbbrla</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0nynyx4</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0w2moib</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1nqm8kc</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="StartEvent_1">
@@ -64,6 +65,7 @@ del(n_culturas)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:incoming>Flow_0bvco56</bpmn:incoming>
+      <bpmn:incoming>Flow_1q3qvan</bpmn:incoming>
       <bpmn:outgoing>Flow_081crpr</bpmn:outgoing>
       <bpmn:property id="Property_1pop16l" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_0kaqi1r">
@@ -216,7 +218,8 @@ del(ccusto)</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_0kvuaau" sourceRef="Activity_0pk9g8b" targetRef="Activity_1nr33uk" />
     <bpmn:userTask id="Activity_1x5vkae" name="Verifica as informações">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>novaTabela = []
+        <spiffworkflow:preScript>del(operacao)
+novaTabela = []
 total = 0
 
 for t in tabela:
@@ -331,7 +334,6 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
       <bpmn:incoming>Flow_06zd818</bpmn:incoming>
       <bpmn:outgoing>Flow_0plksld</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_1jsdid5" sourceRef="Activity_0w2moib" targetRef="Activity_0nynyx4" />
     <bpmn:sequenceFlow id="Flow_1gun2i8" sourceRef="Activity_0nynyx4" targetRef="Gateway_0gbbrla" />
     <bpmn:sequenceFlow id="Flow_07c0qfk" sourceRef="Gateway_0gbbrla" targetRef="Activity_0pk9g8b" />
     <bpmn:exclusiveGateway id="Gateway_1fdiwv1" default="Flow_1g6680p">
@@ -406,7 +408,7 @@ headers = {
 
 </spiffworkflow:preScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1jsdid5</bpmn:incoming>
+      <bpmn:incoming>Flow_18vwk2i</bpmn:incoming>
       <bpmn:outgoing>Flow_1gun2i8</bpmn:outgoing>
       <bpmn:property id="Property_1l4lyj2" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_1ww8r6l">
@@ -448,7 +450,8 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 |{{l['data']}} | {{l['evento']}} | {{l['credito']}} | {{l['debito']}} | {{l['novoValor']}} | {{l['novaFilial']}} | {{l['novoCcusto']}} | 
 {%endfor%}
 ||||**Total**: | {{total}}</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript># novaTabela = []
+        <spiffworkflow:preScript>del(operacao)
+# novaTabela = []
 # total = 0
 
 # for t in tabela:
@@ -531,7 +534,7 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
         </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1g6680p</bpmn:incoming>
-      <bpmn:outgoing>Flow_1jsdid5</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1yy09pu</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_0bvco56" sourceRef="Gateway_1fdiwv1" targetRef="Activity_0qpzdpu">
       <bpmn:conditionExpression>operacao == 'Corrige'</bpmn:conditionExpression>
@@ -539,6 +542,14 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
     <bpmn:dataStoreReference id="DataStoreReference_044vwcr" name="Culturas" dataStoreRef="culturas" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_14r9weh" name="Safras" dataStoreRef="safras" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_0yj9799" name="Filiais" dataStoreRef="filiais" type="json" />
+    <bpmn:exclusiveGateway id="Gateway_1nqm8kc" default="Flow_18vwk2i">
+      <bpmn:incoming>Flow_1yy09pu</bpmn:incoming>
+      <bpmn:outgoing>Flow_18vwk2i</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1q3qvan</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1yy09pu" sourceRef="Activity_0w2moib" targetRef="Gateway_1nqm8kc" />
+    <bpmn:sequenceFlow id="Flow_18vwk2i" sourceRef="Gateway_1nqm8kc" targetRef="Activity_0nynyx4" />
+    <bpmn:sequenceFlow id="Flow_1q3qvan" sourceRef="Gateway_1nqm8kc" targetRef="Activity_0qpzdpu" />
   </bpmn:process>
   <bpmn:error id="ErrorProcess" name="ErrorProcess">
     <bpmn:extensionElements>
@@ -618,6 +629,9 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
           <dc:Bounds x="286" y="402" width="28" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1nqm8kc_di" bpmnElement="Gateway_1nqm8kc" isMarkerVisible="true">
+        <dc:Bounds x="1665" y="915" width="50" height="50" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="230" y="480" width="910" height="200" />
       </bpmndi:BPMNShape>
@@ -695,10 +709,6 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
         <di:waypoint x="2170" y="177" />
         <di:waypoint x="2200" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1jsdid5_di" bpmnElement="Flow_1jsdid5">
-        <di:waypoint x="1580" y="940" />
-        <di:waypoint x="1820" y="940" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1gun2i8_di" bpmnElement="Flow_1gun2i8">
         <di:waypoint x="1920" y="940" />
         <di:waypoint x="1955" y="940" />
@@ -721,6 +731,20 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
         <di:waypoint x="1370" y="202" />
         <di:waypoint x="1370" y="320" />
         <di:waypoint x="320" y="320" />
+        <di:waypoint x="320" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yy09pu_di" bpmnElement="Flow_1yy09pu">
+        <di:waypoint x="1580" y="940" />
+        <di:waypoint x="1665" y="940" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18vwk2i_di" bpmnElement="Flow_18vwk2i">
+        <di:waypoint x="1715" y="940" />
+        <di:waypoint x="1820" y="940" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1q3qvan_di" bpmnElement="Flow_1q3qvan">
+        <di:waypoint x="1690" y="915" />
+        <di:waypoint x="1690" y="280" />
+        <di:waypoint x="320" y="280" />
         <di:waypoint x="320" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0kaqi1r_di" bpmnElement="DataInputAssociation_0kaqi1r">
