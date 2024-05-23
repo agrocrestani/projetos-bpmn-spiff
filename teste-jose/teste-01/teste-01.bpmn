@@ -5,11 +5,7 @@
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
-    <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
-    <bpmn:userTask id="Activity_0qpzdpu" name="Example manual task">
+    <bpmn:userTask id="Activity_0qpzdpu" name="Inserir dados Colaboradores">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:properties>
@@ -43,27 +39,71 @@ ano = [
         <spiffworkflow:postScript>del(meses)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
+      <bpmn:incoming>Flow_1h0gn30</bpmn:incoming>
+      <bpmn:outgoing>Flow_038o1e9</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_038o1e9" sourceRef="Activity_0qpzdpu" targetRef="Activity_1tsk956" />
+    <bpmn:userTask id="Activity_1tsk956" name="Confirmar">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="teste02-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="teste02-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_038o1e9</bpmn:incoming>
+      <bpmn:outgoing>Flow_09m7x1o</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_09crqk8">
+      <bpmn:incoming>Flow_09m7x1o</bpmn:incoming>
+      <bpmn:outgoing>Flow_1h0gn30</bpmn:outgoing>
+      <bpmn:outgoing>Flow_10iw7iv</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_09m7x1o" sourceRef="Activity_1tsk956" targetRef="Gateway_09crqk8" />
+    <bpmn:sequenceFlow id="Flow_1h0gn30" sourceRef="Gateway_09crqk8" targetRef="Activity_0qpzdpu" />
+    <bpmn:task id="Activity_10hvpbn">
+      <bpmn:incoming>Flow_10iw7iv</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_10iw7iv" sourceRef="Gateway_09crqk8" targetRef="Activity_10hvpbn" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_01_e1qomy1">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="432" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0umi19f_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1wt4i0u_di" bpmnElement="Activity_1tsk956">
+        <dc:Bounds x="430" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_09crqk8_di" bpmnElement="Gateway_09crqk8" isMarkerVisible="true">
+        <dc:Bounds x="595" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10hvpbn_di" bpmnElement="Activity_10hvpbn">
+        <dc:Bounds x="710" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
+      <bpmndi:BPMNEdge id="Flow_038o1e9_di" bpmnElement="Flow_038o1e9">
         <di:waypoint x="370" y="177" />
-        <di:waypoint x="432" y="177" />
+        <di:waypoint x="430" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09m7x1o_di" bpmnElement="Flow_09m7x1o">
+        <di:waypoint x="530" y="177" />
+        <di:waypoint x="595" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1h0gn30_di" bpmnElement="Flow_1h0gn30">
+        <di:waypoint x="620" y="202" />
+        <di:waypoint x="620" y="250" />
+        <di:waypoint x="320" y="250" />
+        <di:waypoint x="320" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10iw7iv_di" bpmnElement="Flow_10iw7iv">
+        <di:waypoint x="645" y="177" />
+        <di:waypoint x="710" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
