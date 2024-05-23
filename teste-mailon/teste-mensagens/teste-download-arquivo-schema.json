@@ -1,26 +1,6 @@
 {
   "properties": {
-    "documentos": {
-      "type": "array",
-      "title": "Ignorar Documentos de Entrada",
-      "items": {
-        "type": "object",
-        "required": [
-          "tipo_documento",
-          "num_documento"
-        ],
-        "properties": {
-          "tipo_documento": {
-            "type": "string",
-            "title": "Tipo de Documento"
-          },
-          "num_documento": {
-            "type": "string",
-            "title": "Número do Documento"
-          }
-        }
-      }
-    },
+
     "favoriteFruit": {
       "title": "Select your favorite fruit",
       "type": "string",
