@@ -52,7 +52,7 @@ ano = [
           <spiffworkflow:property name="formUiSchemaFilename" value="teste02-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:preScript></spiffworkflow:preScript>
-        <spiffworkflow:postScript />
+        <spiffworkflow:postScript>correcao = not done</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser>### Funcionários Matriz
 | Situação | Quantidade |
 | ---------- | :----------: |
@@ -118,7 +118,9 @@ ano = [
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_00lrhg2</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1ys9spg" sourceRef="Gateway_18xcl6s" targetRef="Activity_0qpzdpu" />
+    <bpmn:sequenceFlow id="Flow_1ys9spg" sourceRef="Gateway_18xcl6s" targetRef="Activity_0qpzdpu">
+      <bpmn:conditionExpression>done == false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_01_e1qomy1">
