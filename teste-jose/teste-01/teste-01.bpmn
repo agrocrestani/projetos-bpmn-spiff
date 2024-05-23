@@ -39,7 +39,6 @@ ano = [
         <spiffworkflow:postScript>del(meses)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:incoming>Flow_1h0gn30</bpmn:incoming>
       <bpmn:outgoing>Flow_038o1e9</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_038o1e9" sourceRef="Activity_0qpzdpu" targetRef="Activity_1tsk956" />
@@ -55,14 +54,12 @@ ano = [
         <spiffworkflow:guestConfirmation />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_038o1e9</bpmn:incoming>
-      <bpmn:outgoing>Flow_09m7x1o</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0c2do56</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:exclusiveGateway id="Gateway_09crqk8">
-      <bpmn:incoming>Flow_09m7x1o</bpmn:incoming>
-      <bpmn:outgoing>Flow_1h0gn30</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_09m7x1o" sourceRef="Activity_1tsk956" targetRef="Gateway_09crqk8" />
-    <bpmn:sequenceFlow id="Flow_1h0gn30" sourceRef="Gateway_09crqk8" targetRef="Activity_0qpzdpu" />
+    <bpmn:endEvent id="Event_0knui3w">
+      <bpmn:incoming>Flow_0c2do56</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0c2do56" sourceRef="Activity_1tsk956" targetRef="Event_0knui3w" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_01_e1qomy1">
@@ -76,8 +73,8 @@ ano = [
       <bpmndi:BPMNShape id="Activity_1wt4i0u_di" bpmnElement="Activity_1tsk956">
         <dc:Bounds x="430" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_09crqk8_di" bpmnElement="Gateway_09crqk8" isMarkerVisible="true">
-        <dc:Bounds x="595" y="152" width="50" height="50" />
+      <bpmndi:BPMNShape id="Event_0knui3w_di" bpmnElement="Event_0knui3w">
+        <dc:Bounds x="592" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
@@ -87,15 +84,9 @@ ano = [
         <di:waypoint x="370" y="177" />
         <di:waypoint x="430" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_09m7x1o_di" bpmnElement="Flow_09m7x1o">
+      <bpmndi:BPMNEdge id="Flow_0c2do56_di" bpmnElement="Flow_0c2do56">
         <di:waypoint x="530" y="177" />
-        <di:waypoint x="595" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1h0gn30_di" bpmnElement="Flow_1h0gn30">
-        <di:waypoint x="620" y="202" />
-        <di:waypoint x="620" y="250" />
-        <di:waypoint x="320" y="250" />
-        <di:waypoint x="320" y="217" />
+        <di:waypoint x="592" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
