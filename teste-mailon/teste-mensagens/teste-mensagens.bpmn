@@ -21,7 +21,7 @@
     flag = False
 
     if flag:    
-        return [{
+        return teste = [{
                 "value":"A",
                 "label":"B"
                 },
@@ -30,7 +30,7 @@
                 "label":"BB"
                 }]
     else:
-        return [{
+        return teste = [{
                 "value":"C",
                 "label":"D"
                 },
