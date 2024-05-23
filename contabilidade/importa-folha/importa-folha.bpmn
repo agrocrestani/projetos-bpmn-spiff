@@ -496,7 +496,7 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 | ---------- | ------- | 
 | Empresa | {{BPLName}} |
 | Filial | {{BPLId}} |
-| Centro de Custo | {{c[2:]}} |
+| Centro de Custo | {{novoCcusto }} |
 
 
 ### Informações que serão inputados no SAP
