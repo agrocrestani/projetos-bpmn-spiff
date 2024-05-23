@@ -137,22 +137,8 @@ tabela.append(
     }
 )
 
-
 del(l)
-#   "l": {
-#     "conta1": "20101007",
-#     "conta2": "20101001",
-#     "nomeEvento": "INSS S/FOLHA",
-#     "valor": 17540.84,
-#     "tipoLancamento": "C",
-#     "codigoEvento": 15,
-#     "empresa": 1,
-#     "filial": 1,
-#     "ccusto": 11102
-
-#       "bplid": "1",
-#   "novaConta1": "2.1.1.01.01.007",
-#   "novaConta2": "2.1.1.01.01.001"</spiffworkflow:postScript>
+</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1tvkyw7</bpmn:incoming>
       <bpmn:outgoing>Flow_06zd818</bpmn:outgoing>
@@ -274,6 +260,7 @@ lcm = {
 
 if operacao == 'Corrige':
     del(lancamentos)
+    del(l)
 
 
 
