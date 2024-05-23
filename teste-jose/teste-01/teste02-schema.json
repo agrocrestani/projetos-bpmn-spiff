@@ -3,8 +3,8 @@
     "properties": {
         "done":{
             "type": "boolean",
-            "title": "Confirmo os dados inseridos"
-            "default"
+            "title": "Confirmo os dados inseridos",
+            "default":
         }
     }
 }
