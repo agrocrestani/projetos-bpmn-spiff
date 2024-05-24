@@ -263,6 +263,17 @@
           <text>"Querencia_Gerente"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0oa7b5o">
+        <inputEntry id="UnaryTests_1187mpf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wgxzuq">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14pbbh6">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
