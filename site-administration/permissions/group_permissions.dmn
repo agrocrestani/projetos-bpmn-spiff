@@ -323,6 +323,216 @@
           <text>"/can-run-privileged-script/*"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_02e5ukj">
+        <inputEntry id="UnaryTests_0pn45qk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rel31n">
+          <text>"Querencia_Administrativo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11dqk2b">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gr473q">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01vu57r">
+        <inputEntry id="UnaryTests_1ff7tbv">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ozzexm">
+          <text>"Querencia_Aprovador"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ocbnfb">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1j82qvg">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05er6u5">
+        <inputEntry id="UnaryTests_1vv663x">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1eow0q3">
+          <text>"Querencia_Gerente"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1eqaobe">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02tooul">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1x7fmiq">
+        <inputEntry id="UnaryTests_03u9eie">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dg8yg0">
+          <text>"Querencia_Cantina"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0h3gaax">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06ukaew">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10gjfpq">
+        <inputEntry id="UnaryTests_0p4uc49">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11w3262">
+          <text>"Curupai_Gerente"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qyymaj">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0e8lsf0">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_160sw55">
+        <inputEntry id="UnaryTests_15ee8a9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14e1b1v">
+          <text>"Curupai_Administrativo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rspow2">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1v5zqpj">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0b77ue4">
+        <inputEntry id="UnaryTests_1t1zpwa">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_114znx4">
+          <text>"Curupai_Aprovador"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0akugy2">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a0dj7v">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15dfogi">
+        <inputEntry id="UnaryTests_0drtrj2">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0k7i55z">
+          <text>"Curupai_Cantina"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0agf80l">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zjx817">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19by8ua">
+        <inputEntry id="UnaryTests_0rsgsnc">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xrs8hx">
+          <text>"Colorado_Aprovador"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06cdsu7">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qhx7pc">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pq7nch">
+        <inputEntry id="UnaryTests_0de0dc1">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ts8cf4">
+          <text>"Colorado_Gerente"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1u1hrvb">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0evfo41">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0uty85e">
+        <inputEntry id="UnaryTests_17pv7bm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rbhoxo">
+          <text>"Colorado_Administrativo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fvfsbk">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00zhch6">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1be3g2g">
+        <inputEntry id="UnaryTests_1igw77p">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1csgegn">
+          <text>"SaoCarlos_Administrativo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tc15kp">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05blnpf">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17iscep">
+        <inputEntry id="UnaryTests_00arx8l">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rvdcx9">
+          <text>"SaoCarlos_Aprovador"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0j0ay8g">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1277raa">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_082ahq7">
+        <inputEntry id="UnaryTests_077n9w0">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19l4tld">
+          <text>"SaoCarlos_Gerente"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fqevma">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16w0918">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1x8qm4s">
+        <inputEntry id="UnaryTests_1ogq30x">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0e12kv6">
+          <text>"SaoCarlos_Cantina"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10a4tom">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1usqbqf">
+          <text>["all"]</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
