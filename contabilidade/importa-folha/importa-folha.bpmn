@@ -9,7 +9,7 @@
   </bpmn:collaboration>
   <bpmn:process id="Process_importa_folha_l3vpvse" isExecutable="true">
     <bpmn:laneSet id="LaneSet_12ma9i3">
-      <bpmn:lane id="Lane_rh" name="rh">
+      <bpmn:lane id="Lane_rh" name="Matriz_Rh">
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0qpzdpu</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1gq0mev</bpmn:flowNodeRef>
@@ -21,7 +21,7 @@
       <bpmn:lane id="Lane">
         <bpmn:flowNodeRef>Activity_00vuw5a</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_contabil" name="contabil">
+      <bpmn:lane id="Lane_contabil" name="Matriz_Contabil">
         <bpmn:flowNodeRef>Activity_0pk9g8b</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0nynyx4</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0w2moib</bpmn:flowNodeRef>
