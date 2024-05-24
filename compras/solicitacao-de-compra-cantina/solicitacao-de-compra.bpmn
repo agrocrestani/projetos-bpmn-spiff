@@ -12,6 +12,24 @@
     <bpmn:participant id="Participant_0476j7y" processRef="Process_solicitacao_de_compra_lz3stw2" />
   </bpmn:collaboration>
   <bpmn:process id="Process_solicitacao_de_compra_lz3stw2" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_1sz1hle">
+      <bpmn:lane id="Lane_12uy9io">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_160ldmq</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_13g9nwv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0qpzdpu</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0z7hg1d</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0g0isr7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0xafkf4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1d3lf4s</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0856rbm</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1hrnfpg</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_09i1pq2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0uwcfkc</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_0may6a6" />
+    </bpmn:laneSet>
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
@@ -436,6 +454,12 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1tyx2x2">
       <bpmndi:BPMNShape id="Participant_0476j7y_di" bpmnElement="Participant_0476j7y" isHorizontal="true">
         <dc:Bounds x="130" y="-50" width="1840" height="940" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_12uy9io_di" bpmnElement="Lane_12uy9io" isHorizontal="true">
+        <dc:Bounds x="160" y="-50" width="1810" height="470" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0may6a6_di" bpmnElement="Lane_0may6a6" isHorizontal="true">
+        <dc:Bounds x="160" y="420" width="1810" height="470" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="180" y="169" width="36" height="36" />
