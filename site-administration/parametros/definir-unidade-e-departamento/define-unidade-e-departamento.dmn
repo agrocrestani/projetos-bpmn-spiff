@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_76910d7" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision_DefineUniDep" name="Define Unidade e Departamento">
+    <decisionTable id="decisionTable_1">
+      <input id="input_1">
+        <inputExpression id="inputExpression_1" typeRef="string">
+          <text>usuarioLogado</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" name="unidade" typeRef="string" />
+      <output id="OutputClause_1rhdngy" name="departamento" typeRef="string" />
+      <output id="OutputClause_0ej0snw" name="gestor" typeRef="string" biodi:width="332" />
+      <rule id="DecisionRule_0dd60ji">
+        <inputEntry id="UnaryTests_09z578f">
+          <text>"emerson.gregorio"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0scqcms">
+          <text>"Matriz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1elv8g6">
+          <text>"TI"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jgp78a">
+          <text>"alexandre.meurer@agrocrestani.com.br"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c6mviv">
+        <inputEntry id="UnaryTests_0flfvfq">
+          <text>"mailon.campos"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0b9v3tk">
+          <text>"Matriz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0z5ztm1">
+          <text>"TI"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ftpf0p">
+          <text>"emerson.gregorio@agrocrestani.com.br"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_181g8t8">
+        <inputEntry id="UnaryTests_14wa79w">
+          <text>"marcio.firmino"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10730o1">
+          <text>"Matriz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07pzdeo">
+          <text>"TI"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pfyqo3">
+          <text>"emerson.gregorio@agrocrestani.com.br"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1s8u0u5">
+        <inputEntry id="UnaryTests_0bbh4ez">
+          <text>"jose.alves"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ldvnoj">
+          <text>"Matriz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dbjc1u">
+          <text>"TI"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1arqtpf">
+          <text>"emerson.gregorio@agrocrestani.com.br"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zvomdw">
+        <inputEntry id="UnaryTests_016l9zg">
+          <text>"andressa.araujo"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vqp1wr">
+          <text>"Matriz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ieeri5">
+          <text>"Rh"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ro7mcy">
+          <text>"gislaine.angola@agrocrestani.com.br"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1bpy52g">
+        <inputEntry id="UnaryTests_12tstgt">
+          <text>"emanoeli.souza"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bgnr9k">
+          <text>"Matriz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1sa5zm3">
+          <text>"Rh"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lhbmqv">
+          <text>"gislaine.angola@agrocrestani.com.br"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jylhan">
+        <inputEntry id="UnaryTests_1fjh4au">
+          <text>"salomao.barros"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dvko2b">
+          <text>"Matriz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sltklq">
+          <text>"Comercial"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09kzoul">
+          <text>"douglas.crestani@agrocrestani.com.br"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vdwlwm">
+        <inputEntry id="UnaryTests_1aseu59">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hf2225">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0t9ng5b">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qwndzw">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_1cykosu">
+      <dmndi:DMNShape id="DMNShape_1dhfq2s" dmnElementRef="decision_DefineUniDep">
+        <dc:Bounds height="80" width="180" x="157" y="151" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
