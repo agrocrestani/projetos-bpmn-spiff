@@ -435,7 +435,7 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1tyx2x2">
       <bpmndi:BPMNShape id="Participant_0476j7y_di" bpmnElement="Participant_0476j7y" isHorizontal="true">
-        <dc:Bounds x="130" y="-50" width="1840" height="460" />
+        <dc:Bounds x="130" y="-50" width="1840" height="940" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="180" y="169" width="36" height="36" />
