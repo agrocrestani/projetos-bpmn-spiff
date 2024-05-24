@@ -289,7 +289,6 @@ obs_correcoes.append(comments)
       <bpmn:outgoing>Flow_18wrock</bpmn:outgoing>
       <bpmn:outgoing>Flow_0vu7th0</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:dataStoreReference id="DataStoreReference_0bfz43x" name="SapLogin" dataStoreRef="saplogin" type="json" />
     <bpmn:serviceTask id="Activity_0856rbm" name="Enviar para o SAP">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
@@ -449,6 +448,7 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       <bpmn:outgoing>Flow_1wwcph5</bpmn:outgoing>
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1wwcph5" sourceRef="Activity_05rqdyh" targetRef="EndEvent_1" />
+    <bpmn:dataStoreReference id="DataStoreReference_0bfz43x" name="SapLogin" dataStoreRef="saplogin" type="json" />
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
@@ -543,12 +543,6 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       <bpmndi:BPMNShape id="Gateway_1d3lf4s_di" bpmnElement="Gateway_1d3lf4s" isMarkerVisible="true">
         <dc:Bounds x="1275" y="525" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_0bfz43x_di" bpmnElement="DataStoreReference_0bfz43x">
-        <dc:Bounds x="1195" y="735" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1197" y="792" width="47" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1fy2zrf_di" bpmnElement="Activity_0856rbm">
         <dc:Bounds x="1400" y="510" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -563,6 +557,12 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_05rqdyh_di" bpmnElement="Activity_05rqdyh">
         <dc:Bounds x="1740" y="147" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0bfz43x_di" bpmnElement="DataStoreReference_0bfz43x">
+        <dc:Bounds x="1315" y="615" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1317" y="672" width="47" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1g0h8ka_di" bpmnElement="Event_0uwcfkc">
         <dc:Bounds x="1462" y="572" width="36" height="36" />
@@ -671,8 +671,8 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
         <di:waypoint x="381" y="147" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1es14ty_di" bpmnElement="DataInputAssociation_1es14ty">
-        <di:waypoint x="1245" y="738" />
-        <di:waypoint x="1414" y="590" />
+        <di:waypoint x="1365" y="621" />
+        <di:waypoint x="1408" y="589" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
