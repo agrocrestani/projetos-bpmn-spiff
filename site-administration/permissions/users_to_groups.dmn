@@ -7,7 +7,7 @@
           <text>"*"</text>
         </inputExpression>
       </input>
-      <output id="OutputClause_0vrbi1j" label="users" typeRef="string" biodi:width="317" />
+      <output id="OutputClause_0vrbi1j" label="users" typeRef="string" biodi:width="350" />
       <output id="output_1" name="groups" typeRef="Any" biodi:width="262" />
       <rule id="DecisionRule_1xwvp7b">
         <description>Each line in this table assigns a user identifier (email) to a group. Please ensure that there are quotes around each entry.</description>
@@ -40,7 +40,7 @@
           <text>"emerson.gregorio@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05znqqo">
-          <text>"rh"</text>
+          <text>"Matriz_Rh"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0a4f7in">
@@ -139,7 +139,7 @@
           <text>"marcio.firmino@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_07ql941">
-          <text>"rh"</text>
+          <text>"Matriz_Rh"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1m6pdzw">
@@ -150,7 +150,7 @@
           <text>"salomao.barros@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ftwhn3">
-          <text>"Comercial Graos" </text>
+          <text>"Matriz_ComercialGraos"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1qep9xe">
@@ -172,7 +172,7 @@
           <text>"emerson.leandro@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1xdgu24">
-          <text>"contabil"</text>
+          <text>"Matriz_Contabil"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0vliomv">
@@ -183,7 +183,7 @@
           <text>"stela.souza@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_013wahy">
-          <text>"contabil"</text>
+          <text>"Matriz_Contabil"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_07uvsyi">
@@ -194,7 +194,7 @@
           <text>"andressa.araujo@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0jo1kv7">
-          <text>"rh"</text>
+          <text>"Matriz_Rh"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1xw5nvo">
@@ -205,7 +205,7 @@
           <text>"emanoeli.souza@agrocresani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1c8f9iq">
-          <text>"rh"</text>
+          <text>"Matriz_Rh"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1lic6hd">
@@ -217,6 +217,50 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1d67i6w">
           <text>"admin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0q8g79k">
+        <inputEntry id="UnaryTests_1g7ikyb">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0p9wj9w">
+          <text>"fernando.lourenzoni@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yjduo9">
+          <text>"Querencia_Administrativo"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_081frvg">
+        <inputEntry id="UnaryTests_01yk10p">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gwvb0q">
+          <text>"fernando.lourenzoni@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0f4j61b">
+          <text>"Querencia_Aprovador"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06npkg3">
+        <inputEntry id="UnaryTests_0r8nw17">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_128l73k">
+          <text>"enio.sturmer@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vwpjs5">
+          <text>"Querencia_Aprovador"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hknm2p">
+        <inputEntry id="UnaryTests_06v1end">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xu1kjn">
+          <text>"enio.sturmer@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rcurv8">
+          <text>"Querencia_Gerente"</text>
         </outputEntry>
       </rule>
     </decisionTable>
