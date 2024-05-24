@@ -13,8 +13,7 @@
   </bpmn:collaboration>
   <bpmn:process id="Process_solicitacao_de_compra_lz3stw2" isExecutable="true">
     <bpmn:laneSet id="LaneSet_1sz1hle">
-      <bpmn:lane id="Lane_12uy9io">
-        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+      <bpmn:lane id="Lane_12uy9io" name="Cantina">
         <bpmn:flowNodeRef>Activity_160ldmq</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_13g9nwv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0qpzdpu</bpmn:flowNodeRef>
@@ -22,9 +21,10 @@
         <bpmn:flowNodeRef>Gateway_0g0isr7</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_05rqdyh</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0dgleom</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_0may6a6">
+      <bpmn:lane id="Lane_0may6a6" name="Gerente">
         <bpmn:flowNodeRef>Activity_0xafkf4</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1d3lf4s</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0856rbm</bpmn:flowNodeRef>
@@ -33,9 +33,6 @@
         <bpmn:flowNodeRef>Event_0uwcfkc</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:startEvent id="StartEvent_1">
-      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
-    </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0dgleom" />
     <bpmn:sequenceFlow id="Flow_1hh3d5j" sourceRef="Activity_0856rbm" targetRef="Activity_09i1pq2" />
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_0z7hg1d" />
@@ -451,9 +448,16 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
     <bpmn:dataStoreReference id="DataStoreReference_07gc9qu" name="Safras" dataStoreRef="safras" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_0ess18n" name="Filiais" dataStoreRef="filiais" type="json" />
     <bpmn:sequenceFlow id="Flow_1h3a345" sourceRef="Activity_0dgleom" targetRef="Activity_160ldmq" />
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
     <bpmn:callActivity id="Activity_0dgleom" name="Define unid., dep e gestor" calledElement="Process_definir_unidade_e_departamento_zxer6t3">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>usuarioLogado= get_current_user()['display_name']</spiffworkflow:preScript>
+        <spiffworkflow:postScript>group_identifier = f"{unidade}_{departamento}"
+group_members = get_group_members(group_identifier)
+lane_owners = { f"{group_identifier}: {group_members}"}
+</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_1h3a345</bpmn:outgoing>
@@ -469,16 +473,15 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1tyx2x2">
       <bpmndi:BPMNShape id="Participant_0476j7y_di" bpmnElement="Participant_0476j7y" isHorizontal="true">
-        <dc:Bounds x="130" y="-50" width="2010" height="940" />
+        <dc:Bounds x="130" y="-50" width="2010" height="890" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0may6a6_di" bpmnElement="Lane_0may6a6" isHorizontal="true">
-        <dc:Bounds x="160" y="420" width="1980" height="470" />
+        <dc:Bounds x="160" y="420" width="1980" height="420" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_12uy9io_di" bpmnElement="Lane_12uy9io" isHorizontal="true">
         <dc:Bounds x="160" y="-50" width="1980" height="470" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="180" y="169" width="36" height="36" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_13uzln6_di" bpmnElement="DataStoreReference_13uzln6">
         <dc:Bounds x="445" y="25" width="50" height="50" />
@@ -573,16 +576,19 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
           <dc:Bounds x="357" y="82" width="28" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="212" y="169" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1bfo4yf_di" bpmnElement="Activity_0dgleom">
-        <dc:Bounds x="280" y="147" width="100" height="80" />
+        <dc:Bounds x="320" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1g0h8ka_di" bpmnElement="Event_0uwcfkc">
         <dc:Bounds x="1632" y="572" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
-        <di:waypoint x="216" y="187" />
-        <di:waypoint x="280" y="187" />
+        <di:waypoint x="248" y="187" />
+        <di:waypoint x="320" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1hh3d5j_di" bpmnElement="Flow_1hh3d5j">
         <di:waypoint x="1670" y="550" />
@@ -652,7 +658,7 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
         <di:waypoint x="2062" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1h3a345_di" bpmnElement="Flow_1h3a345">
-        <di:waypoint x="380" y="187" />
+        <di:waypoint x="420" y="187" />
         <di:waypoint x="490" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0w8lbnm_di" bpmnElement="DataInputAssociation_0w8lbnm">
