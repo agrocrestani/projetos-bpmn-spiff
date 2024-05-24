@@ -4,10 +4,99 @@
     <decisionTable id="decisionTable_1">
       <input id="input_1">
         <inputExpression id="inputExpression_1" typeRef="string">
-          <text></text>
+          <text>usuarioLogado</text>
         </inputExpression>
       </input>
-      <output id="output_1" typeRef="string" />
+      <output id="output_1" name="unidade" typeRef="string" />
+      <output id="OutputClause_1rhdngy" name="departamento" typeRef="string" />
+      <rule id="DecisionRule_0dd60ji">
+        <inputEntry id="UnaryTests_09z578f">
+          <text>"emerson.gregorio"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0scqcms">
+          <text>"Matriz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1elv8g6">
+          <text>"TI"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c6mviv">
+        <inputEntry id="UnaryTests_0flfvfq">
+          <text>"mailon.campos"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0b9v3tk">
+          <text>"Matriz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0z5ztm1">
+          <text>"TI"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_181g8t8">
+        <inputEntry id="UnaryTests_14wa79w">
+          <text>"marcio.firmino"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10730o1">
+          <text>"Matriz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07pzdeo">
+          <text>"TI"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1s8u0u5">
+        <inputEntry id="UnaryTests_0bbh4ez">
+          <text>"jose.alves"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ldvnoj">
+          <text>"Matriz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dbjc1u">
+          <text>"TI"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zvomdw">
+        <inputEntry id="UnaryTests_016l9zg">
+          <text>"andressa.araujo"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vqp1wr">
+          <text>"Matriz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ieeri5">
+          <text>"Rh"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1bpy52g">
+        <inputEntry id="UnaryTests_12tstgt">
+          <text>"emanoeli.souza"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bgnr9k">
+          <text>"Matriz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1sa5zm3">
+          <text>"Rh"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jylhan">
+        <inputEntry id="UnaryTests_1fjh4au">
+          <text>"salomao.barros"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dvko2b">
+          <text>"Matriz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sltklq">
+          <text>"Comercial"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vdwlwm">
+        <inputEntry id="UnaryTests_1aseu59">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hf2225">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0t9ng5b">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
