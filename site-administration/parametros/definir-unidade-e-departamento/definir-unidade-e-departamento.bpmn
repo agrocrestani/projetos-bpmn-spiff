@@ -5,11 +5,7 @@
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
-    <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
-    <bpmn:manualTask id="Activity_0qpzdpu" name="Example manual task">
+    <bpmn:businessRuleTask id="Activity_0qpzdpu" name="Define unidade, departamento e gestor.">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
 
@@ -20,26 +16,30 @@
 You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-    </bpmn:manualTask>
+      <bpmn:outgoing>Flow_1xicu40</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:endEvent id="Event_1elxn65">
+      <bpmn:incoming>Flow_1xicu40</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1xicu40" sourceRef="Activity_0qpzdpu" targetRef="Event_1elxn65" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_definir_unidade_e_departamento_zxer6t3">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="432" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
+      <bpmndi:BPMNShape id="Activity_0bylnzh_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1elxn65_di" bpmnElement="Event_1elxn65">
+        <dc:Bounds x="432" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
+      <bpmndi:BPMNEdge id="Flow_1xicu40_di" bpmnElement="Flow_1xicu40">
         <di:waypoint x="370" y="177" />
         <di:waypoint x="432" y="177" />
       </bpmndi:BPMNEdge>
