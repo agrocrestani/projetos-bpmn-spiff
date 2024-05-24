@@ -334,7 +334,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1gr473q">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_01vu57r">
@@ -348,7 +348,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1j82qvg">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_05er6u5">
@@ -362,7 +362,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_02tooul">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1x7fmiq">
@@ -376,7 +376,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_06ukaew">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_10gjfpq">
@@ -390,7 +390,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0e8lsf0">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_160sw55">
@@ -404,7 +404,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1v5zqpj">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0b77ue4">
@@ -418,7 +418,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1a0dj7v">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_15dfogi">
@@ -432,7 +432,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zjx817">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_19by8ua">
@@ -446,7 +446,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0qhx7pc">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0pq7nch">
@@ -460,7 +460,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0evfo41">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0uty85e">
@@ -474,7 +474,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_00zhch6">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1be3g2g">
@@ -488,7 +488,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05blnpf">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_17iscep">
@@ -502,7 +502,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1277raa">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_082ahq7">
@@ -516,7 +516,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16w0918">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1x8qm4s">
@@ -530,7 +530,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1usqbqf">
-          <text>["all"]</text>
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
     </decisionTable>
