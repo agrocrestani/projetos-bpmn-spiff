@@ -62,7 +62,8 @@ n_culturas = culturas</spiffworkflow:preScript>
           <spiffworkflow:property name="formJsonSchemaFilename" value="importar-folha-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="importar-folha-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:postScript>del(n_filiais)
+        <spiffworkflow:postScript>referencia = datalacto['5:7']+"/"+datalacto['0:4']
+del(n_filiais)
 del(n_safras)
 del(n_culturas)</spiffworkflow:postScript>
       </bpmn:extensionElements>
