@@ -202,7 +202,7 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_16irsmv">
-          <text>"emanoeli.souza@agrocresani.com.br"</text>
+          <text>"emanoeli.souza@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1c8f9iq">
           <text>"Matriz_Rh"</text>
@@ -268,10 +268,164 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1wgxzuq">
-          <text></text>
+          <text>"maria.silva@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14pbbh6">
+          <text>"Querencia_Cantina"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1v8oeou">
+        <inputEntry id="UnaryTests_19gnj50">
           <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16464mq">
+          <text>"vilmar.ferreira@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ltnahl">
+          <text>"Curupai_Gerente"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1an97xn">
+        <inputEntry id="UnaryTests_0xk96cf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tmmrt0">
+          <text>"vilmar.ferreira@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_043138m">
+          <text>"Curupai_Aprovador"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rswexv">
+        <inputEntry id="UnaryTests_0fgaem4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f3uc8a">
+          <text>"simone.silva@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19e1q6n">
+          <text>"Curupai_Administrativo"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1b7r8rz">
+        <inputEntry id="UnaryTests_0o2w4qs">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1eutz2h">
+          <text>"simone.silva@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jddc4n">
+          <text>"Curupai_Aprovador"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19a226h">
+        <inputEntry id="UnaryTests_0aomthv">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_006q0s2">
+          <text>"wesley.souza@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a6bgft">
+          <text>"Colorado_Administrativo"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mk7er7">
+        <inputEntry id="UnaryTests_0ccnl72">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tzar2h">
+          <text>"wesley.souza@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kbnq2k">
+          <text>"Colorado_Aprovador"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12mxm9i">
+        <inputEntry id="UnaryTests_0cxviog">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1eb1obc">
+          <text>"adelar.soares@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sdbxwm">
+          <text>"Colorado_Gerente"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1c8rkst">
+        <inputEntry id="UnaryTests_083x3la">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cujsxv">
+          <text>"adelar.soares@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nndbul">
+          <text>"Colorado_Aprovador"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04e1sfh">
+        <inputEntry id="UnaryTests_0n6bd71">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lypj0x">
+          <text>"michele.sousa@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_165zgyh">
+          <text>"SaoCarlos_Administrativo"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sd6fqt">
+        <inputEntry id="UnaryTests_1de4bi8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fymc6r">
+          <text>"michele.sousa@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nekfvq">
+          <text>"SaoCarlos_Aprovador"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1m169vy">
+        <inputEntry id="UnaryTests_0yy7cd9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05jdnb0">
+          <text>"roobson.kennedy@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bsle3f">
+          <text>"SaoCarlos_Aprovador"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cxe4y4">
+        <inputEntry id="UnaryTests_15kpsls">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lb4a8i">
+          <text>"roobson.kennedy@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06gz5xx">
+          <text>"SaoCarlos_Gerente"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ukgobj">
+        <inputEntry id="UnaryTests_09y4v9y">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qbyq9x">
+          <text>"marilene.barros@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0t5shqx">
+          <text>"SaoCarlos_Cantina"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1n3lu8z">
+        <inputEntry id="UnaryTests_1kqmeua">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01u25dy">
+          <text>"maria.mendes@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pep4bi">
+          <text>Curupai_Cantina</text>
         </outputEntry>
       </rule>
     </decisionTable>
