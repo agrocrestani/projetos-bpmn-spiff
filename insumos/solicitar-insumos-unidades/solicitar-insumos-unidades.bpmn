@@ -310,6 +310,34 @@ for i in itens:
 
 
 </spiffworkflow:preScript>
+        <spiffworkflow:instructionsForEndUser># Dados da Nota Fiscal de Saída
+
+| Campo | Valor |
+| ----------: | ------- |
+|Número da NFe:|{{Serial}}|
+|Número Sap:|{{DocNum}}|
+|Data:|{{DocDate}}|
+|Código Cliente Destino:|{{CardCode}}|
+|Nome Cliente Destino: |{{CardName}}|
+|Nome Emitente: |{{BPLName}}|
+|CNPJ Emitente: |{{VATRegNum}}|
+
+**Selecione o link abaixo e cole na barra de tarefas do navegador para ver a NFe:**
+
+
+{{arquivo_nfe}}
+
+{{arquivo_teste}}
+
+
+
+### Itens da Nota
+| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
+| -------- | --------- |  -------------- | ---------------: | ----------: | ----------: | ------------ |
+{%for i in itens%}
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
+{%endfor%}
+| | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_08133cx</bpmn:incoming>
     </bpmn:manualTask>
