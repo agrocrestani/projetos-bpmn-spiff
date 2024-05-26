@@ -197,12 +197,45 @@ headers = {
       </bpmn:dataInputAssociation>
     </bpmn:serviceTask>
     <bpmn:dataStoreReference id="DataStoreReference_1yswc4l" name="SapLogin" dataStoreRef="saplogin" type="json" />
+    <bpmn:boundaryEvent id="Event_14irs56" attachedToRef="Activity_0823umq">
+      <bpmn:outgoing>Flow_1kvfsop</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_09bo2x8" errorRef="Error_1" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1kvfsop" sourceRef="Event_14irs56" targetRef="Activity_041g5go" />
+    <bpmn:manualTask id="Activity_041g5go">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>status_code = err1['status_code']
+command = err1['command_response_body']
+command = json.loads(command)
+errorCode = command['body']['error']['code']
+errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
+        <spiffworkflow:postScript>del(solicitacao)
+solicitacao = solicitacao_bkp</spiffworkflow:postScript>
+        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
+
+### Informações
+
+| Campo | Conteudo |
+| ----------: | -------------- |
+| Código Erro: | {{errorCode}} |
+| Mensagem Erro: | {{errorMessage}}
+| Status  | {{status_code}} |
+
+1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
+2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1kvfsop</bpmn:incoming>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
-  <bpmn:error id="Error_1" name="Error_1" />
+  <bpmn:error id="Error_1" name="Error_1">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>err1</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_solicitar_insumos_unidades_9qfwbwe">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -249,6 +282,12 @@ headers = {
           <dc:Bounds x="1017" y="332" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0kvvbvz_di" bpmnElement="Activity_041g5go">
+        <dc:Bounds x="890" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_122g4zr_di" bpmnElement="Event_14irs56">
+        <dc:Bounds x="922" y="199" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_02ebu0j_di" bpmnElement="Flow_02ebu0j">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -284,6 +323,10 @@ headers = {
       <bpmndi:BPMNEdge id="DataInputAssociation_0d0qs48_di" bpmnElement="DataInputAssociation_0d0qs48">
         <di:waypoint x="1020" y="275" />
         <di:waypoint x="974" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kvfsop_di" bpmnElement="Flow_1kvfsop">
+        <di:waypoint x="940" y="235" />
+        <di:waypoint x="940" y="320" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
