@@ -398,6 +398,30 @@ for i in itens:
       <bpmn:outgoing>Flow_0lg8fqj</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="Activity_09edzfi" name="Carregar Querencia">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Itens para carregamento na Fazenda Querência
+
+| Campo | Valor |
+| ----------: | ------- |
+|Número Sap:|{{DocNum}}|
+|Número da NFe:|{{Serial}}|
+|Data:|{{DocDate}}|
+|**Código Cliente Destino**:|**{{CardCode}}**|
+|Nome Cliente Destino: |{{CardName}}|
+|**Código Remetente**: | **{{BPLId}}** |
+|Nome Remetente: |{{BPLName}}|
+|CNPJ Remetente: |{{VATRegNum}}|
+
+----------
+
+### Itens para carregar neste depósito.
+| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
+| -------- | --------- |  -------------- | ---------------- | ----------: | ---------: | ------------- |
+{%for i in itensQuerencia%}
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
+{%endfor%}
+|||||Total -&gt; | {{TotalQuerencia}} |</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_128yrhw</bpmn:incoming>
       <bpmn:outgoing>Flow_04xcpog</bpmn:outgoing>
     </bpmn:userTask>
