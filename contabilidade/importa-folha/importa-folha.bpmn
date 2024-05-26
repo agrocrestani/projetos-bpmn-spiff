@@ -576,11 +576,11 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
     <bpmn:sequenceFlow id="Flow_10hhtnr" sourceRef="Activity_0ck9cww" targetRef="Activity_0qpzdpu" />
     <bpmn:manualTask id="Activity_1ly0k48" name="Verifica Erro">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>if lancado:
+        <spiffworkflow:preScript>try:
     status_code = lancado
     errorCode = rsp['body']['error']['code']
     errorMessage = rsp['body']['error']['message']['value']
-else:
+except:
     status_code = sapError['status_code']
     command = sapError['command_response_body']
     command = json.loads(command)
