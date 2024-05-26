@@ -186,9 +186,7 @@ for f in filiais:
     
 n_safras = safras
 n_culturas = culturas
-# variaveis = get_task_data_value()
-variaveis2 = get_toplevel_process_info()
-variaveis3 = get_current_task_info()</spiffworkflow:preScript>
+</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="importar-folha-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="importar-folha-uischema.json" />
