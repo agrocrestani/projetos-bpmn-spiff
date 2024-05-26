@@ -27,7 +27,8 @@ carregaQuerencia = 1</spiffworkflow:preScript>
       <bpmn:outgoing>Flow_1rtxn9s</bpmn:outgoing>
     </bpmn:inclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1m51sal" sourceRef="Gateway_1ls5xhn" targetRef="Activity_0mk6h2b">
-      <bpmn:conditionExpression>CarregaMatriz == 1</bpmn:conditionExpression>
+      <bpmn:documentation>c</bpmn:documentation>
+      <bpmn:conditionExpression>carregaMatriz == 1</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1rtxn9s" sourceRef="Gateway_1ls5xhn" targetRef="Activity_0j9vw6e">
       <bpmn:conditionExpression>carregaQuerencia == 1</bpmn:conditionExpression>
