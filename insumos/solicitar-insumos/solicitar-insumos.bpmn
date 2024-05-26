@@ -647,13 +647,14 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_1k0vyfe" sourceRef="Activity_0jw3ade" targetRef="Activity_1y2m02n" />
     <bpmn:sequenceFlow id="Flow_1a5ox3k" sourceRef="Activity_1y2m02n" targetRef="Activity_1rmlu9t" />
-    <bpmn:userTask id="Activity_1y2m02n" name="Teste">
+    <bpmn:userTask id="Activity_1y2m02n" name="Confirma Solicitação">
       <bpmn:extensionElements>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-solicitacao-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:postScript />
+        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1k0vyfe</bpmn:incoming>
       <bpmn:incoming>Flow_0p10cpv</bpmn:incoming>
