@@ -2,7 +2,7 @@
     "description": "Processo para solicitar insumos para unidades: Colorado, Promiss\u00e3o, S\u00e3o Carlos e Curupai",
     "display_name": "Solicitar Insumos Unidades",
     "exception_notification_addresses": [],
-    "fault_or_suspend_on_exception": "fault",
+    "fault_or_suspend_on_exception": "suspend",
     "metadata_extraction_paths": null,
     "primary_file_name": "solicitar-insumos.bpmn",
     "primary_process_id": "Process_solicitacao_de_insumos_rqoml0p"
