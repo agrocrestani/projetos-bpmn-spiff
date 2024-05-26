@@ -666,10 +666,10 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       <bpmn:outgoing>Flow_0idel7o</bpmn:outgoing>
     </bpmn:inclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1iq4njz" sourceRef="Gateway_0qlg9my" targetRef="Activity_1bdps63">
-      <bpmn:conditionExpression>carregaMatriz == true</bpmn:conditionExpression>
+      <bpmn:conditionExpression>carregaMatriz == 1</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0idel7o" sourceRef="Gateway_0qlg9my" targetRef="Activity_026swb9">
-      <bpmn:conditionExpression>carregaQuerencia == true</bpmn:conditionExpression>
+      <bpmn:conditionExpression>carregaQuerencia == 1</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1yuuj4t" sourceRef="Activity_1bdps63" targetRef="Gateway_1payhuw" />
     <bpmn:inclusiveGateway id="Gateway_1payhuw">
