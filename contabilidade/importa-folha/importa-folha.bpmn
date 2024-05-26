@@ -375,8 +375,11 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
     </bpmn:exclusiveGateway>
     <bpmn:serviceTask id="Activity_0nynyx4" name="Lança no SAP">
       <bpmn:extensionElements>
-        <spiffworkflow:postScript>lancado = rsp['http_status']
-# number = rsp['body']['Number']
+        <spiffworkflow:postScript>try:
+    lancado = rsp['http_status']
+    number = rsp['body']['Number']
+except:
+    lancado = False
 
 
 # del(lancamentos)
