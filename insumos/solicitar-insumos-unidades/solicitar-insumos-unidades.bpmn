@@ -358,13 +358,9 @@ for i in itens:
     <bpmn:inclusiveGateway id="Gateway_0m3ynm9">
       <bpmn:incoming>Flow_0lg8fqj</bpmn:incoming>
       <bpmn:incoming>Flow_04xcpog</bpmn:incoming>
-      <bpmn:outgoing>Flow_0hzzbjp</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1kg5usn</bpmn:outgoing>
     </bpmn:inclusiveGateway>
     <bpmn:sequenceFlow id="Flow_04xcpog" sourceRef="Activity_09edzfi" targetRef="Gateway_0m3ynm9" />
-    <bpmn:task id="Activity_14t77j3">
-      <bpmn:incoming>Flow_0hzzbjp</bpmn:incoming>
-    </bpmn:task>
-    <bpmn:sequenceFlow id="Flow_0hzzbjp" sourceRef="Gateway_0m3ynm9" targetRef="Activity_14t77j3" />
     <bpmn:userTask id="Activity_1slp5w4" name="Carregar Tangara">
       <bpmn:extensionElements>
         <spiffworkflow:postScript></spiffworkflow:postScript>
@@ -426,6 +422,10 @@ for i in itens:
       <bpmn:incoming>Flow_128yrhw</bpmn:incoming>
       <bpmn:outgoing>Flow_04xcpog</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:endEvent id="Event_1ko0nrg">
+      <bpmn:incoming>Flow_1kg5usn</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1kg5usn" sourceRef="Gateway_0m3ynm9" targetRef="Event_1ko0nrg" />
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
@@ -500,15 +500,15 @@ for i in itens:
       <bpmndi:BPMNShape id="Gateway_0lz149s_di" bpmnElement="Gateway_0m3ynm9">
         <dc:Bounds x="1675" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_14t77j3_di" bpmnElement="Activity_14t77j3">
-        <dc:Bounds x="1790" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ol09g5_di" bpmnElement="Activity_1slp5w4">
         <dc:Bounds x="1510" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0cyf2tx_di" bpmnElement="Activity_09edzfi">
         <dc:Bounds x="1510" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ko0nrg_di" bpmnElement="Event_1ko0nrg">
+        <dc:Bounds x="1792" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_122g4zr_di" bpmnElement="Event_14irs56">
         <dc:Bounds x="922" y="199" width="36" height="36" />
@@ -588,9 +588,9 @@ for i in itens:
         <di:waypoint x="1700" y="290" />
         <di:waypoint x="1700" y="202" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0hzzbjp_di" bpmnElement="Flow_0hzzbjp">
+      <bpmndi:BPMNEdge id="Flow_1kg5usn_di" bpmnElement="Flow_1kg5usn">
         <di:waypoint x="1725" y="177" />
-        <di:waypoint x="1790" y="177" />
+        <di:waypoint x="1792" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
