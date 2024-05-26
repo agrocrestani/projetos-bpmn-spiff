@@ -29,8 +29,8 @@
         <bpmn:flowNodeRef>Activity_0w2moib</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1nqm8kc</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1cfqyfk</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1ly0k48</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_06i6v6d</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1ly0k48</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="StartEvent_1">
@@ -563,13 +563,29 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
     <bpmn:sequenceFlow id="Flow_1dwzd8i" sourceRef="Gateway_1cfqyfk" targetRef="Activity_1ly0k48">
       <bpmn:conditionExpression>lancado != 201</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
+    <bpmn:task id="Activity_0ck9cww" name="Verifica erro">
+      <bpmn:incoming>Flow_0lkxegk</bpmn:incoming>
+      <bpmn:outgoing>Flow_10hhtnr</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0lkxegk" sourceRef="Event_1luisbh" targetRef="Activity_0ck9cww" />
+    <bpmn:dataStoreReference id="DataStoreReference_1175xbr" name="SapLogin" dataStoreRef="saplogin" type="json" />
+    <bpmn:boundaryEvent id="Event_1luisbh" attachedToRef="Activity_00vuw5a">
+      <bpmn:outgoing>Flow_0lkxegk</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_008y1vx" errorRef="ErrorDePara" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_10hhtnr" sourceRef="Activity_0ck9cww" targetRef="Activity_0qpzdpu" />
     <bpmn:manualTask id="Activity_1ly0k48" name="Verifica Erro">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>status_code = sapError['status_code']
-command = sapError['command_response_body']
-command = json.loads(command)
-errorCode = command['body']['error']['code']
-errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
+        <spiffworkflow:preScript>if lancado:
+    status_code = lancado
+    errorCode = rsp['body']['error']['code']
+    errorMessage = rsp['body']['error']['message']['value']
+else:
+    status_code = sapError['status_code']
+    command = sapError['command_response_body']
+    command = json.loads(command)
+    errorCode = command['body']['error']['code']
+    errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
 
 ### Informações
@@ -587,17 +603,6 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       <bpmn:incoming>Flow_1dwzd8i</bpmn:incoming>
       <bpmn:outgoing>Flow_1ymf5ls</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:task id="Activity_0ck9cww" name="Verifica erro">
-      <bpmn:incoming>Flow_0lkxegk</bpmn:incoming>
-      <bpmn:outgoing>Flow_10hhtnr</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:sequenceFlow id="Flow_0lkxegk" sourceRef="Event_1luisbh" targetRef="Activity_0ck9cww" />
-    <bpmn:dataStoreReference id="DataStoreReference_1175xbr" name="SapLogin" dataStoreRef="saplogin" type="json" />
-    <bpmn:boundaryEvent id="Event_1luisbh" attachedToRef="Activity_00vuw5a">
-      <bpmn:outgoing>Flow_0lkxegk</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_008y1vx" errorRef="ErrorDePara" />
-    </bpmn:boundaryEvent>
-    <bpmn:sequenceFlow id="Flow_10hhtnr" sourceRef="Activity_0ck9cww" targetRef="Activity_0qpzdpu" />
   </bpmn:process>
   <bpmn:error id="ErrorSap" name="ErrorSap">
     <bpmn:extensionElements>
@@ -683,10 +688,6 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       <bpmndi:BPMNShape id="Gateway_1cfqyfk_di" bpmnElement="Gateway_1cfqyfk" isMarkerVisible="true">
         <dc:Bounds x="2005" y="915" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0dnqita_di" bpmnElement="Activity_1ly0k48">
-        <dc:Bounds x="1860" y="1050" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ck9cww_di" bpmnElement="Activity_0ck9cww">
         <dc:Bounds x="1150" y="720" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -696,6 +697,10 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1716" y="993" width="47" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0dnqita_di" bpmnElement="Activity_1ly0k48">
+        <dc:Bounds x="1860" y="1049" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="230" y="480" width="920" height="200" />
@@ -812,11 +817,11 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0x5wk77_di" bpmnElement="Flow_0x5wk77">
         <di:waypoint x="1910" y="998" />
-        <di:waypoint x="1910" y="1050" />
+        <di:waypoint x="1910" y="1049" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1ymf5ls_di" bpmnElement="Flow_1ymf5ls">
-        <di:waypoint x="1860" y="1090" />
-        <di:waypoint x="1540" y="1090" />
+        <di:waypoint x="1860" y="1089" />
+        <di:waypoint x="1540" y="1089" />
         <di:waypoint x="1540" y="980" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_041vp20_di" bpmnElement="Flow_041vp20">
@@ -825,8 +830,8 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1dwzd8i_di" bpmnElement="Flow_1dwzd8i">
         <di:waypoint x="2030" y="965" />
-        <di:waypoint x="2030" y="1090" />
-        <di:waypoint x="1960" y="1090" />
+        <di:waypoint x="2030" y="1089" />
+        <di:waypoint x="1960" y="1089" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0lkxegk_di" bpmnElement="Flow_0lkxegk">
         <di:waypoint x="1080" y="698" />
