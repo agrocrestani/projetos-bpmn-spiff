@@ -421,6 +421,7 @@ for i in itens:
 | {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
 {%endfor%}
 |||||Total -&gt; | {{TotalQuerencia}} |</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript>confirma = False</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_128yrhw</bpmn:incoming>
       <bpmn:outgoing>Flow_04xcpog</bpmn:outgoing>
