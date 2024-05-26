@@ -258,17 +258,17 @@ for i in nfeItens:
 
 itensMatriz = []
 itensQuerencia = []
-carregaMatriz = False
+carregaMatriz = 0
 TotalMatriz = 0
-carregaQuerencia = False
+carregaQuerencia = 0
 TotalQuerencia = 0
 for i in itens:
     if i['WarehouseCode'] == '03.MATR':
-        carregaMatriz = True
+        carregaMatriz = 1
         itensMatriz.append(i)
         TotalMatriz += i['LineTotal']
     elif i['WarehouseCode'] == '03.FQUE':
-        carregaQuerencia = True
+        carregaQuerencia = 1
         itensQuerencia.append(i)
         TotalQuerencia += i['LineTotal']
 
