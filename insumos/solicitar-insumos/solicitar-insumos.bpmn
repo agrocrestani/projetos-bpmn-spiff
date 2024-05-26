@@ -334,6 +334,7 @@ for i in itens:
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-carregamento-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirma-carregamento-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:preScript>confirma = False</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1iq4njz</bpmn:incoming>
       <bpmn:outgoing>Flow_1yuuj4t</bpmn:outgoing>
