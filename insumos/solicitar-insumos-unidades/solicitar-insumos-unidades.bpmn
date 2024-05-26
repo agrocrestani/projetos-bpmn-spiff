@@ -340,7 +340,67 @@ for i in itens:
 | | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_08133cx</bpmn:incoming>
+      <bpmn:outgoing>Flow_12ic23r</bpmn:outgoing>
     </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_12ic23r" sourceRef="Activity_1l8yv4t" targetRef="Gateway_1uxkz29" />
+    <bpmn:inclusiveGateway id="Gateway_1uxkz29">
+      <bpmn:incoming>Flow_12ic23r</bpmn:incoming>
+      <bpmn:outgoing>Flow_1axg9mr</bpmn:outgoing>
+      <bpmn:outgoing>Flow_128yrhw</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1axg9mr" sourceRef="Gateway_1uxkz29" targetRef="Activity_1slp5w4">
+      <bpmn:conditionExpression>carregaMatriz == 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_128yrhw" sourceRef="Gateway_1uxkz29" targetRef="Activity_09edzfi">
+      <bpmn:conditionExpression>carregaQuerencia == 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0lg8fqj" sourceRef="Activity_1slp5w4" targetRef="Gateway_0m3ynm9" />
+    <bpmn:inclusiveGateway id="Gateway_0m3ynm9">
+      <bpmn:incoming>Flow_0lg8fqj</bpmn:incoming>
+      <bpmn:incoming>Flow_04xcpog</bpmn:incoming>
+      <bpmn:outgoing>Flow_0hzzbjp</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_04xcpog" sourceRef="Activity_09edzfi" targetRef="Gateway_0m3ynm9" />
+    <bpmn:task id="Activity_14t77j3">
+      <bpmn:incoming>Flow_0hzzbjp</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0hzzbjp" sourceRef="Gateway_0m3ynm9" targetRef="Activity_14t77j3" />
+    <bpmn:userTask id="Activity_1slp5w4" name="Carregar Tangara">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:instructionsForEndUser># Itens para carregamento
+
+| Campo | Valor |
+| ----------: | ------- |
+|Número Sap:|{{DocNum}}|
+|Número da NFe:|{{Serial}}|
+|Data:|{{DocDate}}|
+|**Código Cliente Destino**:|**{{CardCode}}**|
+|Nome Cliente Destino: |{{CardName}}|
+|**Código Remetente**: | **{{BPLId}}** |
+|Nome Remetente: |{{BPLName}}|
+|CNPJ Remetente: |{{VATRegNum}}|
+
+### Itens para carregar neste depósito
+| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
+| -------- | --------- |  -------------- | ---------------- | ----------: | ----------: | ------------- |
+{%for i in itensMatriz%}
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
+{%endfor%}
+|||||Total-&gt; | {{TotalMatriz}}|</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript>confirma = False</spiffworkflow:preScript>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-carregamento-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="confirma-carregamento-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1axg9mr</bpmn:incoming>
+      <bpmn:outgoing>Flow_0lg8fqj</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_09edzfi" name="Carregar Querencia">
+      <bpmn:incoming>Flow_128yrhw</bpmn:incoming>
+      <bpmn:outgoing>Flow_04xcpog</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
@@ -409,6 +469,22 @@ for i in itens:
         <dc:Bounds x="1230" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1peiyue_di" bpmnElement="Gateway_1uxkz29">
+        <dc:Bounds x="1395" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0lz149s_di" bpmnElement="Gateway_0m3ynm9">
+        <dc:Bounds x="1675" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_14t77j3_di" bpmnElement="Activity_14t77j3">
+        <dc:Bounds x="1790" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ol09g5_di" bpmnElement="Activity_1slp5w4">
+        <dc:Bounds x="1510" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0cyf2tx_di" bpmnElement="Activity_09edzfi">
+        <dc:Bounds x="1510" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_122g4zr_di" bpmnElement="Event_14irs56">
         <dc:Bounds x="922" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -464,6 +540,32 @@ for i in itens:
       <bpmndi:BPMNEdge id="Flow_08133cx_di" bpmnElement="Flow_08133cx">
         <di:waypoint x="1170" y="177" />
         <di:waypoint x="1230" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12ic23r_di" bpmnElement="Flow_12ic23r">
+        <di:waypoint x="1330" y="177" />
+        <di:waypoint x="1395" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1axg9mr_di" bpmnElement="Flow_1axg9mr">
+        <di:waypoint x="1445" y="177" />
+        <di:waypoint x="1510" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_128yrhw_di" bpmnElement="Flow_128yrhw">
+        <di:waypoint x="1420" y="202" />
+        <di:waypoint x="1420" y="290" />
+        <di:waypoint x="1510" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lg8fqj_di" bpmnElement="Flow_0lg8fqj">
+        <di:waypoint x="1610" y="177" />
+        <di:waypoint x="1675" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04xcpog_di" bpmnElement="Flow_04xcpog">
+        <di:waypoint x="1610" y="290" />
+        <di:waypoint x="1700" y="290" />
+        <di:waypoint x="1700" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hzzbjp_di" bpmnElement="Flow_0hzzbjp">
+        <di:waypoint x="1725" y="177" />
+        <di:waypoint x="1790" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
