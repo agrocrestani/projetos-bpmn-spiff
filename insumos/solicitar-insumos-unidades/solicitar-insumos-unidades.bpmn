@@ -190,12 +190,19 @@ headers = {
         </spiffworkflow:serviceTaskOperator>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1blqlf6</bpmn:incoming>
+      <bpmn:property id="Property_0ddsa03" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_0d0qs48">
+        <bpmn:sourceRef>DataStoreReference_1yswc4l</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0ddsa03</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
     </bpmn:serviceTask>
-    <bpmn:dataStoreReference id="DataStoreReference_0przoli" />
+    <bpmn:dataStoreReference id="DataStoreReference_1yswc4l" name="SapLogin" dataStoreRef="saplogin" type="json" />
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
+  <bpmn:dataStore id="saplogin" name="JSONDataStore" />
+  <bpmn:error id="Error_1" name="Error_1" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_solicitar_insumos_unidades_9qfwbwe">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -236,8 +243,11 @@ headers = {
         <dc:Bounds x="910" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_0przoli_di" bpmnElement="DataStoreReference_0przoli">
-        <dc:Bounds x="45" y="165" width="50" height="50" />
+      <bpmndi:BPMNShape id="DataStoreReference_1yswc4l_di" bpmnElement="DataStoreReference_1yswc4l">
+        <dc:Bounds x="1015" y="275" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1017" y="332" width="47" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_02ebu0j_di" bpmnElement="Flow_02ebu0j">
         <di:waypoint x="215" y="177" />
@@ -270,6 +280,10 @@ headers = {
       <bpmndi:BPMNEdge id="Flow_1blqlf6_di" bpmnElement="Flow_1blqlf6">
         <di:waypoint x="850" y="177" />
         <di:waypoint x="910" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0d0qs48_di" bpmnElement="DataInputAssociation_0d0qs48">
+        <di:waypoint x="1020" y="275" />
+        <di:waypoint x="974" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
