@@ -107,9 +107,7 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
     <bpmn:businessRuleTask id="Activity_1rmlu9t" name="Definir cliente NFe">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
-        <spiffworkflow:postScript>
-
-for s in solicitacao:
+        <spiffworkflow:postScript>for s in solicitacao:
     s['insumo'] = json.loads(s['insumo'])
 
 
@@ -125,6 +123,7 @@ OwnerCode = 2
 main_usage = []
 for u in utilizacoes:
     main_usage.append(u)</spiffworkflow:postScript>
+        <spiffworkflow:preScript></spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1a5ox3k</bpmn:incoming>
       <bpmn:outgoing>Flow_11ns8sw</bpmn:outgoing>
@@ -654,7 +653,7 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
           <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-solicitacao-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:postScript />
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1k0vyfe</bpmn:incoming>
       <bpmn:incoming>Flow_0p10cpv</bpmn:incoming>
