@@ -1,4 +1,4 @@
-{}{
+{
   "description": "Confirme se os items da lista acima foram carregados. Pode ser que nota tenha outros items que serão carregados em outro depósito.",
   "required": [
     "confirma"
