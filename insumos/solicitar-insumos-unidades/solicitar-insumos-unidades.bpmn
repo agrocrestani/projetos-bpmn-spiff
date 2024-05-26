@@ -40,6 +40,7 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_02ebu0j</bpmn:incoming>
+      <bpmn:outgoing>Flow_1l2j74f</bpmn:outgoing>
       <bpmn:property id="Property_0m73nn4" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_1toag1e">
         <bpmn:sourceRef>DataStoreReference_1wa62ow</bpmn:sourceRef>
@@ -52,6 +53,16 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
     </bpmn:userTask>
     <bpmn:dataStoreReference id="DataStoreReference_1wa62ow" name="Safras" dataStoreRef="safras" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_15sz4u1" name="Filiais" dataStoreRef="filiais" type="json" />
+    <bpmn:sequenceFlow id="Flow_1l2j74f" sourceRef="Activity_0rzn55m" targetRef="Activity_0wopia0" />
+    <bpmn:userTask id="Activity_0wopia0" name="Confirma Solicitação">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-solicitacao-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="confirma-solicitacao-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1l2j74f</bpmn:incoming>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
@@ -76,6 +87,9 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
           <dc:Bounds x="306" y="332" width="28" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0jhb4xb_di" bpmnElement="Activity_0wopia0">
+        <dc:Bounds x="430" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_02ebu0j_di" bpmnElement="Flow_02ebu0j">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -87,6 +101,10 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
       <bpmndi:BPMNEdge id="DataInputAssociation_1u0frmg_di" bpmnElement="DataInputAssociation_1u0frmg">
         <di:waypoint x="320" y="275" />
         <di:waypoint x="320" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1l2j74f_di" bpmnElement="Flow_1l2j74f">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="430" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
