@@ -62,10 +62,52 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
         </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1l2j74f</bpmn:incoming>
+      <bpmn:outgoing>Flow_06tikhf</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_06tikhf" sourceRef="Activity_0wopia0" targetRef="Activity_09jse4j" />
+    <bpmn:businessRuleTask id="Activity_09jse4j" name="Definir Cliente">
+      <bpmn:extensionElements>
+        <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
+        <spiffworkflow:postScript>for s in solicitacao:
+    s['insumo'] = json.loads(s['insumo'])
+
+
+descricaoFilial = ""
+for f in n_filiais:
+    if f['value'] == unidade:
+      descricaoFilial = f['label']
+
+usuarioEmissorNFe = get_current_user()['display_name']
+
+SlpCode = 8
+OwnerCode = 2
+main_usage = []
+for u in utilizacoes:
+    main_usage.append(u)</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_06tikhf</bpmn:incoming>
+      <bpmn:outgoing>Flow_1btf1uw</bpmn:outgoing>
+      <bpmn:property id="Property_0air3tz" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1scwoig">
+        <bpmn:sourceRef>DataStoreReference_1a90b40</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0air3tz</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:businessRuleTask>
+    <bpmn:dataStoreReference id="DataStoreReference_1a90b40" name="Utilizações" dataStoreRef="utilizacoes" type="json" />
+    <bpmn:sequenceFlow id="Flow_1btf1uw" sourceRef="Activity_09jse4j" targetRef="Activity_0v68ob6" />
+    <bpmn:userTask id="Activity_0v68ob6" name="Confirmar Pedido">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-pedido-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-pedido-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1btf1uw</bpmn:incoming>
     </bpmn:userTask>
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
+  <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_solicitar_insumos_unidades_9qfwbwe">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -90,6 +132,18 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
       <bpmndi:BPMNShape id="Activity_0jhb4xb_di" bpmnElement="Activity_0wopia0">
         <dc:Bounds x="430" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0z414cx_di" bpmnElement="Activity_09jse4j">
+        <dc:Bounds x="590" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1a90b40_di" bpmnElement="DataStoreReference_1a90b40">
+        <dc:Bounds x="595" y="275" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="593" y="332" width="54" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_17wgt8z_di" bpmnElement="Activity_0v68ob6">
+        <dc:Bounds x="750" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_02ebu0j_di" bpmnElement="Flow_02ebu0j">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -105,6 +159,18 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
       <bpmndi:BPMNEdge id="Flow_1l2j74f_di" bpmnElement="Flow_1l2j74f">
         <di:waypoint x="370" y="177" />
         <di:waypoint x="430" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06tikhf_di" bpmnElement="Flow_06tikhf">
+        <di:waypoint x="530" y="177" />
+        <di:waypoint x="590" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1scwoig_di" bpmnElement="DataInputAssociation_1scwoig">
+        <di:waypoint x="625" y="275" />
+        <di:waypoint x="638" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1btf1uw_di" bpmnElement="Flow_1btf1uw">
+        <di:waypoint x="690" y="177" />
+        <di:waypoint x="750" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
