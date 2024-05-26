@@ -349,10 +349,10 @@ for i in itens:
       <bpmn:outgoing>Flow_128yrhw</bpmn:outgoing>
     </bpmn:inclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1axg9mr" sourceRef="Gateway_1uxkz29" targetRef="Activity_1slp5w4">
-      <bpmn:conditionExpression>carregaMatriz == 1</bpmn:conditionExpression>
+      <bpmn:conditionExpression />
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_128yrhw" sourceRef="Gateway_1uxkz29" targetRef="Activity_09edzfi">
-      <bpmn:conditionExpression>carregaQuerencia == 1</bpmn:conditionExpression>
+      <bpmn:conditionExpression />
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0lg8fqj" sourceRef="Activity_1slp5w4" targetRef="Gateway_0m3ynm9" />
     <bpmn:inclusiveGateway id="Gateway_0m3ynm9">
@@ -363,7 +363,7 @@ for i in itens:
     <bpmn:sequenceFlow id="Flow_04xcpog" sourceRef="Activity_09edzfi" targetRef="Gateway_0m3ynm9" />
     <bpmn:userTask id="Activity_1slp5w4" name="Carregar Tangara">
       <bpmn:extensionElements>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:postScript />
         <spiffworkflow:instructionsForEndUser># Itens para carregamento
 
 | Campo | Valor |
