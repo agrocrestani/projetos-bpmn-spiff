@@ -101,6 +101,35 @@ for u in utilizacoes:
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-pedido-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirmar-pedido-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser># &lt;font color="blue"&gt;Prévia da NFe que será emitida.&lt;/font&gt; 
+
+{% if lancado and (lancado != 201) %}
+    &lt;font color="red"&gt;&lt;strong&gt;Ocorreu um erro na inserção dos dados no SAP. Tente novamente, caso persista, procure o TI. &lt;/strong&gt;&lt;/font&gt;
+{% endif %}
+
+
+| Código | Descrição | Quantidade | UN| Deposito |
+| --------- | ------------ | :---------------: | ---- | --------- |
+{%for s in solicitacao %}
+| {{s['insumo']['ItemCode']}} | {{s['insumo']['ItemName']}} | {{s['quantidade']}} | {{s['insumo']['InvntryUom']}} | {{s['insumo']['WhsCode']}} |
+{%endfor%}
+
+## Dados para NFe
+
+| Campo | Valor
+| --------- | ------------ | 
+| Filial Destino: |{{descricaoFilial}}|
+| Códgo Cliente: | {{CardCode}} |
+| Vededor: | {{SlpCode}} |
+| Titular:    | {{OwnerCode}} |
+| Solicitante: | {{solicitante}}
+| Usuario Emissor NFe: | {{usuarioEmissorNFe}}|
+
+
+-----------
+
+
+</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1btf1uw</bpmn:incoming>
     </bpmn:userTask>
