@@ -27,10 +27,10 @@
         <bpmn:flowNodeRef>Activity_0xafkf4</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1d3lf4s</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0856rbm</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_09i1pq2</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1adokts</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0uwcfkc</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1hrnfpg</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_09i1pq2</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_160ldmq" />
@@ -394,7 +394,7 @@ headers = {
         </spiffworkflow:serviceTaskOperator>
         <spiffworkflow:postScript>try:
     lancado = rsp['http_status']
-    # number = rsp['body']['Number']
+    number = rsp['body']['DocNum']
 except:
     lancado = False</spiffworkflow:postScript>
       </bpmn:extensionElements>
@@ -416,10 +416,6 @@ except:
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Activity_09i1pq2">
-      <bpmn:incoming>Flow_1durnv6</bpmn:incoming>
-      <bpmn:outgoing>Flow_1xscovm</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:exclusiveGateway id="Gateway_1adokts" default="Flow_1durnv6">
       <bpmn:incoming>Flow_0mxzzif</bpmn:incoming>
       <bpmn:outgoing>Flow_1durnv6</bpmn:outgoing>
@@ -433,10 +429,6 @@ except:
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1wwcph5</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Activity_05rqdyh">
-      <bpmn:incoming>Flow_1xscovm</bpmn:incoming>
-      <bpmn:outgoing>Flow_1wwcph5</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1qpi3xg" sourceRef="Gateway_1adokts" targetRef="Activity_1hrnfpg" />
     <bpmn:manualTask id="Activity_1hrnfpg" name="Verifica o erro">
       <bpmn:extensionElements>
@@ -476,6 +468,28 @@ except:
       <bpmn:incoming>Flow_1i3zxal</bpmn:incoming>
       <bpmn:incoming>Flow_1qpi3xg</bpmn:incoming>
       <bpmn:outgoing>Flow_0rawcp4</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Activity_09i1pq2" name="Confirmação Gestor">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## Status da Integração
+
+### Solicitação incluída com sucesso no SAP. 
+
+Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número: **{{number}}**.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1durnv6</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xscovm</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Activity_05rqdyh" name="Confirmação Solicitante">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## Status da Integração
+
+### Solicitação incluída com sucesso no SAP. 
+
+Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número: **{{number}}**.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1xscovm</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wwcph5</bpmn:outgoing>
     </bpmn:manualTask>
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
@@ -580,20 +594,22 @@ except:
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="212" y="169" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_09i1pq2_di" bpmnElement="Activity_09i1pq2">
-        <dc:Bounds x="1880" y="510" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1adokts_di" bpmnElement="Gateway_1adokts" isMarkerVisible="true">
         <dc:Bounds x="1745" y="525" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="2242" y="169" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_05rqdyh_di" bpmnElement="Activity_05rqdyh">
-        <dc:Bounds x="2050" y="147" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_03v5412_di" bpmnElement="Activity_1hrnfpg">
         <dc:Bounds x="1720" y="650" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1bvbm2q_di" bpmnElement="Activity_09i1pq2">
+        <dc:Bounds x="1880" y="510" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vpf3kb_di" bpmnElement="Activity_05rqdyh">
+        <dc:Bounds x="2050" y="147" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1g0h8ka_di" bpmnElement="Event_0uwcfkc">
         <dc:Bounds x="1632" y="572" width="36" height="36" />
