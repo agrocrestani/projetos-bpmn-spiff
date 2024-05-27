@@ -345,17 +345,8 @@ for i in itens:
       <bpmn:outgoing>Flow_12ic23r</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_12ic23r" sourceRef="Activity_1l8yv4t" targetRef="Gateway_1uxkz29" />
-    <bpmn:inclusiveGateway id="Gateway_1uxkz29">
-      <bpmn:incoming>Flow_12ic23r</bpmn:incoming>
-      <bpmn:outgoing>Flow_1axg9mr</bpmn:outgoing>
-      <bpmn:outgoing>Flow_128yrhw</bpmn:outgoing>
-    </bpmn:inclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_1axg9mr" sourceRef="Gateway_1uxkz29" targetRef="Activity_1slp5w4">
-      <bpmn:conditionExpression>carregaMatriz == 1</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_128yrhw" sourceRef="Gateway_1uxkz29" targetRef="Activity_09edzfi">
-      <bpmn:conditionExpression>carregaQuerencia == 1</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1axg9mr" sourceRef="Gateway_1uxkz29" targetRef="Activity_1slp5w4" />
+    <bpmn:sequenceFlow id="Flow_128yrhw" sourceRef="Gateway_1uxkz29" targetRef="Activity_09edzfi" />
     <bpmn:sequenceFlow id="Flow_0lg8fqj" sourceRef="Activity_1slp5w4" targetRef="Gateway_0m3ynm9" />
     <bpmn:inclusiveGateway id="Gateway_0m3ynm9">
       <bpmn:incoming>Flow_0lg8fqj</bpmn:incoming>
@@ -428,6 +419,11 @@ for i in itens:
       <bpmn:incoming>Flow_1kg5usn</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1kg5usn" sourceRef="Gateway_0m3ynm9" targetRef="Event_1ko0nrg" />
+    <bpmn:inclusiveGateway id="Gateway_1uxkz29">
+      <bpmn:incoming>Flow_12ic23r</bpmn:incoming>
+      <bpmn:outgoing>Flow_1axg9mr</bpmn:outgoing>
+      <bpmn:outgoing>Flow_128yrhw</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
@@ -496,9 +492,6 @@ for i in itens:
         <dc:Bounds x="1230" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1peiyue_di" bpmnElement="Gateway_1uxkz29">
-        <dc:Bounds x="1395" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0lz149s_di" bpmnElement="Gateway_0m3ynm9">
         <dc:Bounds x="1675" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -511,6 +504,9 @@ for i in itens:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1ko0nrg_di" bpmnElement="Event_1ko0nrg">
         <dc:Bounds x="1792" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1wafx4d_di" bpmnElement="Gateway_1uxkz29">
+        <dc:Bounds x="1395" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_122g4zr_di" bpmnElement="Event_14irs56">
         <dc:Bounds x="922" y="199" width="36" height="36" />
