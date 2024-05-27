@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="Process_teste_gateway_or_jg9awad" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
+    <bpmn:manualTask id="Activity_0qpzdpu" name="Define variaveis">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
+
+ * **Script Task** - write a short snippet of python code to update some data
+ *  **User Task** - generate a form that collects information from a user
+ * **Service Task** - communicate with an external API to fetch or update some data.
+
+You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript>carregaMatriz = 1
+carregaQuerencia = 1</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_0dnvt7r</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_0dnvt7r" sourceRef="Activity_0qpzdpu" targetRef="Gateway_1ls5xhn" />
+    <bpmn:inclusiveGateway id="Gateway_1ls5xhn">
+      <bpmn:incoming>Flow_0dnvt7r</bpmn:incoming>
+      <bpmn:outgoing>Flow_1m51sal</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1rtxn9s</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1m51sal" sourceRef="Gateway_1ls5xhn" targetRef="Activity_0mk6h2b">
+      <bpmn:conditionExpression>carregaMatriz == 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1rtxn9s" sourceRef="Gateway_1ls5xhn" targetRef="Activity_0j9vw6e">
+      <bpmn:conditionExpression>carregaQuerencia == 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0zni5ev" sourceRef="Activity_0mk6h2b" targetRef="Gateway_0abgvr8" />
+    <bpmn:inclusiveGateway id="Gateway_0abgvr8">
+      <bpmn:incoming>Flow_0zni5ev</bpmn:incoming>
+      <bpmn:incoming>Flow_0p9abao</bpmn:incoming>
+      <bpmn:outgoing>Flow_1253ilp</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0p9abao" sourceRef="Activity_0j9vw6e" targetRef="Gateway_0abgvr8" />
+    <bpmn:endEvent id="Event_1s2nulu">
+      <bpmn:incoming>Flow_1253ilp</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1253ilp" sourceRef="Gateway_0abgvr8" targetRef="Event_1s2nulu" />
+    <bpmn:manualTask id="Activity_0mk6h2b" name="Carrega Matriz">
+      <bpmn:incoming>Flow_1m51sal</bpmn:incoming>
+      <bpmn:outgoing>Flow_0zni5ev</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Activity_0j9vw6e" name="Carrega Querencia">
+      <bpmn:incoming>Flow_1rtxn9s</bpmn:incoming>
+      <bpmn:outgoing>Flow_0p9abao</bpmn:outgoing>
+    </bpmn:manualTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_gateway_or_jg9awad">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
+        <dc:Bounds x="270" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_17vz534_di" bpmnElement="Gateway_1ls5xhn">
+        <dc:Bounds x="425" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1yhsh0t_di" bpmnElement="Gateway_0abgvr8">
+        <dc:Bounds x="685" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1s2nulu_di" bpmnElement="Event_1s2nulu">
+        <dc:Bounds x="792" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1tbnka3_di" bpmnElement="Activity_0mk6h2b">
+        <dc:Bounds x="530" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15by168_di" bpmnElement="Activity_0j9vw6e">
+        <dc:Bounds x="530" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dnvt7r_di" bpmnElement="Flow_0dnvt7r">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="425" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1m51sal_di" bpmnElement="Flow_1m51sal">
+        <di:waypoint x="475" y="177" />
+        <di:waypoint x="530" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rtxn9s_di" bpmnElement="Flow_1rtxn9s">
+        <di:waypoint x="450" y="202" />
+        <di:waypoint x="450" y="290" />
+        <di:waypoint x="530" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zni5ev_di" bpmnElement="Flow_0zni5ev">
+        <di:waypoint x="630" y="177" />
+        <di:waypoint x="685" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0p9abao_di" bpmnElement="Flow_0p9abao">
+        <di:waypoint x="630" y="290" />
+        <di:waypoint x="710" y="290" />
+        <di:waypoint x="710" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1253ilp_di" bpmnElement="Flow_1253ilp">
+        <di:waypoint x="735" y="177" />
+        <di:waypoint x="792" y="177" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
