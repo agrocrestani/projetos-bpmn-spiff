@@ -19,21 +19,21 @@
         <bpmn:flowNodeRef>Activity_0qpzdpu</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0z7hg1d</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0g0isr7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_05rqdyh</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_0may6a6">
         <bpmn:flowNodeRef>Activity_0xafkf4</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1d3lf4s</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0856rbm</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1hrnfpg</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_09i1pq2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1adokts</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0uwcfkc</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1hrnfpg</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_160ldmq" />
-    <bpmn:sequenceFlow id="Flow_1hh3d5j" sourceRef="Activity_0856rbm" targetRef="Activity_09i1pq2" />
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_0z7hg1d" />
     <bpmn:sequenceFlow id="Flow_1y37zi6" sourceRef="Activity_0xafkf4" targetRef="Gateway_1d3lf4s" />
     <bpmn:sequenceFlow id="Flow_13fehm8" sourceRef="Activity_160ldmq" targetRef="Activity_13g9nwv" />
@@ -392,22 +392,73 @@ headers = {
             <spiffworkflow:parameter id="verify" type="bool" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:postScript>try:
+    lancado = rsp['http_status']
+    # number = rsp['body']['Number']
+except:
+    lancado = False</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_18wrock</bpmn:incoming>
-      <bpmn:outgoing>Flow_1hh3d5j</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0mxzzif</bpmn:outgoing>
       <bpmn:property id="Property_1jgaypl" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_1es14ty">
         <bpmn:sourceRef>DataStoreReference_0bfz43x</bpmn:sourceRef>
         <bpmn:targetRef>Property_1jgaypl</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:serviceTask>
+    <bpmn:dataStoreReference id="DataStoreReference_0bfz43x" name="SapLogin" dataStoreRef="saplogin" type="json" />
+    <bpmn:boundaryEvent id="Event_0uwcfkc" attachedToRef="Activity_0856rbm">
+      <bpmn:outgoing>Flow_1i3zxal</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0zgrctx" errorRef="errorSap" />
+    </bpmn:boundaryEvent>
+    <bpmn:dataStoreReference id="DataStoreReference_07gc9qu" name="Safras" dataStoreRef="safras" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_0ess18n" name="Filiais" dataStoreRef="filiais" type="json" />
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_09i1pq2">
+      <bpmn:incoming>Flow_1durnv6</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xscovm</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_1adokts" default="Flow_1durnv6">
+      <bpmn:incoming>Flow_0mxzzif</bpmn:incoming>
+      <bpmn:outgoing>Flow_1durnv6</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1qpi3xg</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0mxzzif" sourceRef="Activity_0856rbm" targetRef="Gateway_1adokts" />
+    <bpmn:sequenceFlow id="Flow_1durnv6" sourceRef="Gateway_1adokts" targetRef="Activity_09i1pq2" />
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1wwcph5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="Activity_05rqdyh">
+      <bpmn:incoming>Flow_1xscovm</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wwcph5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1qpi3xg" sourceRef="Gateway_1adokts" targetRef="Activity_1hrnfpg" />
     <bpmn:manualTask id="Activity_1hrnfpg" name="Verifica o erro">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>status_code = sapError['status_code']
-command = sapError['command_response_body']
-command = json.loads(command)
-errorCode = command['body']['error']['code']
-errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
+        <spiffworkflow:preScript>try:
+    status_code = lancado
+    errorCode = rsp['body']['error']['code']
+    errorMessage = rsp['body']['error']['message']['value']
+except:
+    status_code = sapError['status_code']
+    command = sapError['command_response_body']
+    command = json.loads(command)
+    errorCode = command['body']['error']['code']
+    errorMessage = command['body']['error']['message']['value']
+
+
+# status_code = sapError['status_code']
+# command = sapError['command_response_body']
+# command = json.loads(command)
+# errorCode = command['body']['error']['code']
+# errorMessage = command['body']['error']['message']['value']
+
+</spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
 
 ### Informações
@@ -423,32 +474,9 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
         <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1i3zxal</bpmn:incoming>
+      <bpmn:incoming>Flow_1qpi3xg</bpmn:incoming>
       <bpmn:outgoing>Flow_0rawcp4</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:task id="Activity_09i1pq2">
-      <bpmn:incoming>Flow_1hh3d5j</bpmn:incoming>
-      <bpmn:outgoing>Flow_1xscovm</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:endEvent id="EndEvent_1">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1wwcph5</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:task id="Activity_05rqdyh">
-      <bpmn:incoming>Flow_1xscovm</bpmn:incoming>
-      <bpmn:outgoing>Flow_1wwcph5</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:dataStoreReference id="DataStoreReference_0bfz43x" name="SapLogin" dataStoreRef="saplogin" type="json" />
-    <bpmn:boundaryEvent id="Event_0uwcfkc" attachedToRef="Activity_0856rbm">
-      <bpmn:outgoing>Flow_1i3zxal</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_0zgrctx" errorRef="errorSap" />
-    </bpmn:boundaryEvent>
-    <bpmn:dataStoreReference id="DataStoreReference_07gc9qu" name="Safras" dataStoreRef="safras" type="json" />
-    <bpmn:dataStoreReference id="DataStoreReference_0ess18n" name="Filiais" dataStoreRef="filiais" type="json" />
-    <bpmn:startEvent id="StartEvent_1">
-      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
-    </bpmn:startEvent>
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
@@ -460,13 +488,13 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1tyx2x2">
       <bpmndi:BPMNShape id="Participant_0476j7y_di" bpmnElement="Participant_0476j7y" isHorizontal="true">
-        <dc:Bounds x="130" y="-50" width="2010" height="890" />
+        <dc:Bounds x="130" y="-50" width="2260" height="890" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0may6a6_di" bpmnElement="Lane_0may6a6" isHorizontal="true">
-        <dc:Bounds x="160" y="420" width="1980" height="420" />
+        <dc:Bounds x="160" y="420" width="2230" height="420" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_12uy9io_di" bpmnElement="Lane_12uy9io" isHorizontal="true">
-        <dc:Bounds x="160" y="-50" width="1980" height="470" />
+        <dc:Bounds x="160" y="-50" width="2230" height="470" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_13uzln6_di" bpmnElement="DataStoreReference_13uzln6">
         <dc:Bounds x="445" y="25" width="50" height="50" />
@@ -531,18 +559,6 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       <bpmndi:BPMNShape id="Activity_1fy2zrf_di" bpmnElement="Activity_0856rbm">
         <dc:Bounds x="1570" y="510" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_03v5412_di" bpmnElement="Activity_1hrnfpg">
-        <dc:Bounds x="1720" y="610" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_09i1pq2_di" bpmnElement="Activity_09i1pq2">
-        <dc:Bounds x="1740" y="510" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="2062" y="169" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_05rqdyh_di" bpmnElement="Activity_05rqdyh">
-        <dc:Bounds x="1910" y="147" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_0bfz43x_di" bpmnElement="DataStoreReference_0bfz43x">
         <dc:Bounds x="1485" y="615" width="50" height="50" />
         <bpmndi:BPMNLabel>
@@ -564,16 +580,27 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="212" y="169" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09i1pq2_di" bpmnElement="Activity_09i1pq2">
+        <dc:Bounds x="1880" y="510" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1adokts_di" bpmnElement="Gateway_1adokts" isMarkerVisible="true">
+        <dc:Bounds x="1745" y="525" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="2242" y="169" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05rqdyh_di" bpmnElement="Activity_05rqdyh">
+        <dc:Bounds x="2050" y="147" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03v5412_di" bpmnElement="Activity_1hrnfpg">
+        <dc:Bounds x="1720" y="650" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1g0h8ka_di" bpmnElement="Event_0uwcfkc">
         <dc:Bounds x="1632" y="572" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="248" y="187" />
         <di:waypoint x="490" y="187" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1hh3d5j_di" bpmnElement="Flow_1hh3d5j">
-        <di:waypoint x="1670" y="550" />
-        <di:waypoint x="1740" y="550" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="950" y="187" />
@@ -619,24 +646,35 @@ errorMessage = command['body']['error']['message']['value']</spiffworkflow:preSc
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1i3zxal_di" bpmnElement="Flow_1i3zxal">
         <di:waypoint x="1650" y="608" />
-        <di:waypoint x="1650" y="650" />
-        <di:waypoint x="1720" y="650" />
+        <di:waypoint x="1650" y="690" />
+        <di:waypoint x="1720" y="690" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0rawcp4_di" bpmnElement="Flow_0rawcp4">
-        <di:waypoint x="1770" y="690" />
-        <di:waypoint x="1770" y="720" />
-        <di:waypoint x="1340" y="720" />
+        <di:waypoint x="1770" y="730" />
+        <di:waypoint x="1770" y="760" />
+        <di:waypoint x="1340" y="760" />
         <di:waypoint x="1340" y="590" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1xscovm_di" bpmnElement="Flow_1xscovm">
-        <di:waypoint x="1840" y="550" />
-        <di:waypoint x="1870" y="550" />
-        <di:waypoint x="1870" y="187" />
-        <di:waypoint x="1910" y="187" />
+        <di:waypoint x="1930" y="510" />
+        <di:waypoint x="1930" y="187" />
+        <di:waypoint x="2050" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1wwcph5_di" bpmnElement="Flow_1wwcph5">
-        <di:waypoint x="2010" y="187" />
-        <di:waypoint x="2062" y="187" />
+        <di:waypoint x="2150" y="187" />
+        <di:waypoint x="2242" y="187" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mxzzif_di" bpmnElement="Flow_0mxzzif">
+        <di:waypoint x="1670" y="550" />
+        <di:waypoint x="1745" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1durnv6_di" bpmnElement="Flow_1durnv6">
+        <di:waypoint x="1795" y="550" />
+        <di:waypoint x="1880" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1qpi3xg_di" bpmnElement="Flow_1qpi3xg">
+        <di:waypoint x="1770" y="575" />
+        <di:waypoint x="1770" y="650" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0w8lbnm_di" bpmnElement="DataInputAssociation_0w8lbnm">
         <di:waypoint x="395" y="72" />
