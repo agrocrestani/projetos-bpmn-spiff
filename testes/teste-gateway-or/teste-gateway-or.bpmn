@@ -43,10 +43,6 @@ carregaQuerencia = 1</spiffworkflow:preScript>
       <bpmn:incoming>Flow_1253ilp</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1253ilp" sourceRef="Gateway_0abgvr8" targetRef="Event_1s2nulu" />
-    <bpmn:manualTask id="Activity_0j9vw6e" name="Carrega Querencia">
-      <bpmn:incoming>Flow_1rtxn9s</bpmn:incoming>
-      <bpmn:outgoing>Flow_0p9abao</bpmn:outgoing>
-    </bpmn:manualTask>
     <bpmn:userTask id="Activity_0mk6h2b" name="Carrega Matriz">
       <bpmn:extensionElements>
         <spiffworkflow:properties>
@@ -56,6 +52,15 @@ carregaQuerencia = 1</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1m51sal</bpmn:incoming>
       <bpmn:outgoing>Flow_0zni5ev</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0j9vw6e" name="Carrega Querencia">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="carrega-schema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1rtxn9s</bpmn:incoming>
+      <bpmn:outgoing>Flow_0p9abao</bpmn:outgoing>
     </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -76,12 +81,11 @@ carregaQuerencia = 1</spiffworkflow:preScript>
       <bpmndi:BPMNShape id="Event_1s2nulu_di" bpmnElement="Event_1s2nulu">
         <dc:Bounds x="792" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_15by168_di" bpmnElement="Activity_0j9vw6e">
-        <dc:Bounds x="530" y="250" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1gof64r_di" bpmnElement="Activity_0mk6h2b">
         <dc:Bounds x="530" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vv948k_di" bpmnElement="Activity_0j9vw6e">
+        <dc:Bounds x="530" y="250" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
