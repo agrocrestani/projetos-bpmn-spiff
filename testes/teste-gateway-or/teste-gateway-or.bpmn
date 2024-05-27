@@ -7,13 +7,8 @@
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
     <bpmn:manualTask id="Activity_0qpzdpu" name="Define variaveis">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
-
- * **Script Task** - write a short snippet of python code to update some data
- *  **User Task** - generate a form that collects information from a user
- * **Service Task** - communicate with an external API to fetch or update some data.
-
-You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{carregaMatriz }}
+### carregaQuerencia = {{carregaQuerencia }}</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>carregaMatriz = 1
 carregaQuerencia = 1</spiffworkflow:preScript>
       </bpmn:extensionElements>
@@ -49,6 +44,8 @@ carregaQuerencia = 1</spiffworkflow:preScript>
           <spiffworkflow:property name="formJsonSchemaFilename" value="carrega-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="carrega-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{carregaMatriz }}
+### carregaQuerencia = {{carregaQuerencia }}</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1m51sal</bpmn:incoming>
       <bpmn:outgoing>Flow_0zni5ev</bpmn:outgoing>
@@ -58,6 +55,8 @@ carregaQuerencia = 1</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="carrega-schema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{carregaMatriz }}
+### carregaQuerencia = {{carregaQuerencia }}</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1rtxn9s</bpmn:incoming>
       <bpmn:outgoing>Flow_0p9abao</bpmn:outgoing>
