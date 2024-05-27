@@ -1,9 +1,0 @@
-{
-    "description": "",
-    "display_name": "Teste Gateway OR",
-    "exception_notification_addresses": [],
-    "fault_or_suspend_on_exception": "fault",
-    "metadata_extraction_paths": null,
-    "primary_file_name": "teste-gateway-or.bpmn",
-    "primary_process_id": "Process_teste_gateway_or_jg9awad"
-}
