@@ -258,13 +258,10 @@ chaveAcesso = sqlRsp[0]['keynfe']
 cnpj = sqlRsp[0]['cnpj']
 arquivo_nfe = f'file://///srv-rds-02/CaminhosSAP/Anexos/NFe/{cnpj}/danfe/{chaveAcesso}.pdf'
 
+del(connection)
 
-del(connection)</bpmn:script>
-    </bpmn:scriptTask>
-    <bpmn:sequenceFlow id="Flow_08133cx" sourceRef="Activity_1pav2g7" targetRef="Activity_1l8yv4t" />
-    <bpmn:manualTask id="Activity_1l8yv4t" name="Dados da NFe">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>nfe = rsp["body"]
+
+nfe = rsp["body"]
 nfeItens = nfe['DocumentLines']
 
 DocEntry = nfe['DocEntry']
@@ -306,7 +303,12 @@ for i in itens:
     elif i['WarehouseCode'] == '03.FQUE':
         carregaQuerencia = 1
         itensQuerencia.append(i)
-        TotalQuerencia += i['LineTotal']
+        TotalQuerencia += i['LineTotal']</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_08133cx" sourceRef="Activity_1pav2g7" targetRef="Activity_1l8yv4t" />
+    <bpmn:manualTask id="Activity_1l8yv4t" name="Dados da NFe">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>
 
 
 </spiffworkflow:preScript>
