@@ -21,7 +21,9 @@ for f in filiais:
         )
 
 n_safras = safras
-solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
+solicitante = get_current_user()['display_name']
+carregaMatriz = 0
+carregaQuerencia = 0</spiffworkflow:preScript>
         <spiffworkflow:postScript>solicitacao_bkp = solicitacao</spiffworkflow:postScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="solicitar-insumos-unidades-schema.json" />
@@ -294,9 +296,7 @@ for i in nfeItens:
 
 itensMatriz = []
 itensQuerencia = []
-carregaMatriz = 0
 TotalMatriz = 0
-carregaQuerencia = 0
 TotalQuerencia = 0
 for i in itens:
     if i['WarehouseCode'] == '03.MATR':
