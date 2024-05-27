@@ -9,7 +9,7 @@
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{carregaMatriz }}
 ### carregaQuerencia = {{carregaQuerencia }}</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript>carregaMatriz = 0
+        <spiffworkflow:preScript>carregaMatriz = 1
 carregaQuerencia = 1</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
