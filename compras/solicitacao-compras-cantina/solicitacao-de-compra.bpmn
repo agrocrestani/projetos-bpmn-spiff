@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:dataStore id="centros_de_custo" name="JSONDataStore" />
+  <bpmn:dataStore id="culturas" name="JSONDataStore" />
+  <bpmn:dataStore id="departamentos" name="JSONDataStore" />
+  <bpmn:dataStore id="filiais" name="JSONDataStore" />
+  <bpmn:dataStore id="safras" name="JSONDataStore" />
+  <bpmn:dataStore id="tipo_requisicao" name="JSONDataStore" />
+  <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
+  <bpmn:dataStore id="almoxarifados" name="JSONDataStore" />
+  <bpmn:collaboration id="Collaboration_1tyx2x2">
+    <bpmn:participant id="Participant_0476j7y" processRef="Process_solicitacao_de_compra_lz3stw2" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_solicitacao_de_compra_lz3stw2" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_1sz1hle">
+      <bpmn:lane id="Lane_1xw8qvr">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0fy07h0</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_0may6a6" name="Gerencia">
+        <bpmn:flowNodeRef>Activity_0xafkf4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1d3lf4s</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0856rbm</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1adokts</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1hrnfpg</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_09i1pq2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0uwcfkc</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_12uy9io" name="Cantina">
+        <bpmn:flowNodeRef>Activity_160ldmq</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_13g9nwv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0qpzdpu</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0z7hg1d</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0g0isr7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_05rqdyh</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:dataStoreReference id="DataStoreReference_13uzln6" name="Almoxarifados" dataStoreRef="almoxarifados" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_0dm57aw" name="Centros de Custo" dataStoreRef="centros_de_custo" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_1wxeqbg" name="Departamentos" dataStoreRef="departamentos" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_1ln8zd2" name="Culturas" dataStoreRef="culturas" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_0rjpdye" name="Utilizações" dataStoreRef="utilizacoes" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_1o5t6ge" name="Tipo Requisição" dataStoreRef="tipo_requisicao" type="json" />
+    <bpmn:userTask id="Activity_160ldmq" name="Informações para calculo">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Solicitação de compra de materiais para cantina.
+
+### Informe os dados abaixo e clique em continuar.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript>n_filiais = []
+for f in filiais:
+    if f['BPLId'] in ["1", "3", "4", "5"]:
+        BPLId = f['BPLId']
+        BPLName = f['BPLName']
+        n_filiais.append(
+            {
+                "value": BPLId,
+                "label": BPLName
+            }
+        )
+
+n_safras = []
+for s in safras:
+    n_safras.append(s)
+
+n_almoxarifados = []
+for a in almoxarifados:
+    if a['WhsCode'] in ['07.FCUR', '07.FQUE', '07.FPRO', '07.FSCA']:
+        WhsCode = a['WhsCode']
+        WhsName = a['WhsName']
+        n_almoxarifados.append(
+            {
+                "value": WhsCode,
+                "label": WhsCode + " - " + WhsName
+            }
+        )
+
+n_departamentos = []
+for d in departamentos:
+    n_departamentos.append(d)
+
+n_centros_de_custo = []
+for c in centros_de_custo:
+    if c['value'] in ['QUEPRO', 'TGAPRO', 'BRAPRO', 'CJOPRO']:
+        n_centros_de_custo.append(c)
+
+n_culturas = []
+for c in culturas:
+    n_culturas.append(c)
+
+n_tipo_requisicao = []
+for t in tipo_requisicao:
+    n_tipo_requisicao.append(t)
+
+n_utilizacoes = []
+for u in utilizacoes:
+    n_utilizacoes.append(u)
+
+obs_correcoes = []
+
+solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="informacoes-para-calculo-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="informacoes-para-calculo-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:postScript />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0bsuxx8</bpmn:incoming>
+      <bpmn:outgoing>Flow_13fehm8</bpmn:outgoing>
+      <bpmn:property id="Property_0dlyti3" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_0w8lbnm">
+        <bpmn:sourceRef>DataStoreReference_0ess18n</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0dlyti3</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_0ui77xh">
+        <bpmn:sourceRef>DataStoreReference_07gc9qu</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0dlyti3</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_0d589na">
+        <bpmn:sourceRef>DataStoreReference_0dm57aw</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0dlyti3</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_0ri5kgb">
+        <bpmn:sourceRef>DataStoreReference_0rjpdye</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0dlyti3</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_0ebsjnv">
+        <bpmn:sourceRef>DataStoreReference_1ln8zd2</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0dlyti3</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_09dn80q">
+        <bpmn:sourceRef>DataStoreReference_1o5t6ge</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0dlyti3</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_0dt2pn8">
+        <bpmn:sourceRef>DataStoreReference_13uzln6</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0dlyti3</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_0o3vl14">
+        <bpmn:sourceRef>DataStoreReference_1wxeqbg</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0dlyti3</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:callActivity id="Activity_13g9nwv" name="Atualiza Itens" calledElement="itens_cantina">
+      <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
+      <bpmn:outgoing>Flow_1d8mo6p</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:userTask id="Activity_0qpzdpu" name="Solicitacao Compras">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## Instruções sobre a solicitação de compras
+{%if operacao == 'Corrige' %}
+### Correções a serem avaliadas
+    {%for o in obs_correcoes%}
+        {{ loop.index }}. {{o}}
+    {%endfor%}
+{%endif%}
+</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="solicitacao-compra-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="solicitacao-compra-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:preScript />
+        <spiffworkflow:postScript>solicitacao_bkp = solicitacao</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1d8mo6p</bpmn:incoming>
+      <bpmn:incoming>Flow_13sk1mn</bpmn:incoming>
+      <bpmn:incoming>Flow_0vu7th0</bpmn:incoming>
+      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0z7hg1d" name="Revisão da Solicitação">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Solicitação de Compras para Cantina
+
+| Campo | Conteúdo |  Campo | Conteúdo |
+| ---------: | --------------|  ---------: | --------------|
+|Filial: |{{BPLName}}|Departamento: |{{Department}}|
+|**Quantidade de colaboradores:** | {{qtdeColaboradores}} |**Periodo em dias:** | {{periodo}} |
+|Prioridade: |{{U_RSD_Prioridade}}| Tipo Requisição: | {{U_RSD_Aplicacao}} |
+|Centro de Custo: | {{OcrCode}} | Cultura: | {{OcrCode2}} |
+|Safra: | {{OcrCode3}} | Depósito: | {{WhsCode}} |
+|Utilização: | {{MainUsage}} | 
+
+**Observações:** {{Comments}}
+
+
+| Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade | Custo Médio | V. Total |
+| ---------- | ---------------| --------------------: | --------------------: | ------------ | -----------------: | ----------: |
+{% for s in sol%}
+| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio']}} | {{s['TotalItem']}} |
+{%endfor%}
+||||||Total | {{total}}
+</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="revisao-da-solicitacao-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="revisao-da-solicitacao-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:postScript>if operacao == 'Corrige':
+    solicitacao = solicitacao_bkp</spiffworkflow:postScript>
+        <spiffworkflow:preScript>almoxarifado = ""
+for i in n_almoxarifados:
+    if i['value'] == WhsCode:
+        almoxarifado = i['label']
+
+sol = []
+for s in solicitacao:
+    s1 = json.loads(s['item'])
+    s1['quantidade'] = s['quantidade']
+    sol.append(s1)
+
+comments = ""
+
+total = 0
+for s in sol:
+    total += s['quantidade']*s['PrecoMedio']
+    s['TotalItem'] = "{:,.2f}".format(s['quantidade']*s['PrecoMedio']).replace(",", "X").replace(".", ",").replace("X", ".")
+    s['PrecoMedio'] =  "{:,.2f}".format(s['PrecoMedio']).replace(",", "X").replace(".", ",").replace("X", ".")
+
+total = "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X", ".")</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0uyps62</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_0g0isr7" default="Flow_1evt79u">
+      <bpmn:incoming>Flow_0uyps62</bpmn:incoming>
+      <bpmn:outgoing>Flow_1evt79u</bpmn:outgoing>
+      <bpmn:outgoing>Flow_13sk1mn</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="Activity_0xafkf4" name="Aprovação do gestor">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Aprovação da Solicitação de Compras para Cantina
+
+| Campo | Conteúdo |  Campo | Conteúdo |
+| ---------: | --------------|  ---------: | --------------|
+|Filial: |{{BPLName}}|Departamento: |{{Department}}|
+|**Quantidade de colaboradores:** | {{qtdeColaboradores}} |**Periodo em dias:** | {{periodo}} |
+|Prioridade: |{{U_RSD_Prioridade}}| Tipo Requisição: | {{U_RSD_Aplicacao}} |
+|Centro de Custo: | {{OcrCode}} | Cultura: | {{OcrCode2}} |
+|Safra: | {{OcrCode3}} | Depósito: | {{WhsCode}} |
+|Utilização: | {{MainUsage}} | 
+
+**Observações:** {{Comments}}
+
+
+| Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade | Custo Médio | V. Total |
+| ---------- | ---------------| --------------------: | --------------------: | ------------ | -----------------: | ----------: |
+{% for s in sol%}
+| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio']}} | {{s['TotalItem']}} |
+{%endfor%}
+||||||Total | {{total}}
+
+</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript />
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="aprovar-solicitacao-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="aprovar-solicitacao-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:postScript>if operacao == 'Corrige':
+    solicitacao = solicitacao_bkp
+
+obs_correcoes.append(comments)
+
+</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1evt79u</bpmn:incoming>
+      <bpmn:incoming>Flow_0rawcp4</bpmn:incoming>
+      <bpmn:outgoing>Flow_1y37zi6</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_1d3lf4s" default="Flow_18wrock">
+      <bpmn:incoming>Flow_1y37zi6</bpmn:incoming>
+      <bpmn:outgoing>Flow_18wrock</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0vu7th0</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Activity_0856rbm" name="Enviar para o SAP">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
+spiff_tarefa = taskInfo = get_current_task_info()['id']
+usuarioLancamento = get_current_user()['display_name']
+
+
+items = []
+for s in sol:
+  items.append(
+    {
+        "ItemCode": s["ItemCode"],
+        "Quantity": s["quantidade"],
+        "WarehouseCode": WhsCode,
+        "CostingCode": OcrCode,
+        "CostingCode3": OcrCode3
+    }
+  )
+
+
+payload = {
+    "BPL_IDAssignedToInvoice": BPLId,
+    "RequesterDepartment": Department,
+    "SendNotification": "tNO",
+    "U_RSD_Prioridade": U_RSD_Prioridade,
+    "U_RSD_Aplicacao": U_RSD_Aplicacao,
+    "RequriedDate": RequriedDate,
+    "Comments": f"Solicitante: {solicitante}. Quantidades calculadas para: {qtdeColaboradores} colaboradores, durante {periodo} dias",
+    "U_AC_Spiff_Instancia": spiff_instancia,
+    "U_AC_Spiff_Tarefa": spiff_tarefa,
+    "U_AC_Spiff_Usuario": usuarioLancamento,
+    "DocumentLines": items,
+    "TaxExtension": {
+      "MainUsage": MainUsage
+    }
+}
+
+loginSap = saplogin[0]['SessionId']
+
+url = 'https://172.20.1.9:50000/b1s/v1/PurchaseRequests'
+
+headers = {
+  'Cookie': f"B1SESSION={loginSap}",
+  'Content-Type': 'application/json'
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# if operacao == 'Confirma':
+#     for s in sol:
+#         {
+#     "Comments": "AUTO POSTO DAS BANDEIRAS NF 28528",
+#     "BPL_IDAssignedToInvoice": 3,
+#     "RequesterDepartment": 15,
+#     "SendNotification": "tNO",
+#     "RequriedDate": "2024-06-01",
+#     "U_RSD_Prioridade": "3",
+#     "U_RSD_Aplicacao": "1",
+#     "U_AC_Spiff_Instancia": null,
+#     "U_AC_Spiff_Tarefa": null,
+#     "U_AC_Spiff_Usuario": null,
+#     "DocumentLines": [
+#         {
+#             "ItemCode": "005800",
+#             "Quantity": 22.80,
+#             "WarehouseCode": "01.FCOL",
+#             "CostingCode": "QUEPRO",
+#             "CostingCode2": "SOJA",
+#             "CostingCode3": "23/24"
+#         }
+#     ],
+#     "TaxExtension": {
+#                 "MainUsage": 12
+#             }
+# }</spiffworkflow:preScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="payload" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:postScript>try:
+    lancado = rsp['http_status']
+    number = rsp['body']['DocNum']
+except:
+    lancado = 500</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_18wrock</bpmn:incoming>
+      <bpmn:outgoing>Flow_0mxzzif</bpmn:outgoing>
+      <bpmn:property id="Property_1jgaypl" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1es14ty">
+        <bpmn:sourceRef>DataStoreReference_0bfz43x</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1jgaypl</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:serviceTask>
+    <bpmn:dataStoreReference id="DataStoreReference_0bfz43x" name="SapLogin" dataStoreRef="saplogin" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_07gc9qu" name="Safras" dataStoreRef="safras" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_0ess18n" name="Filiais" dataStoreRef="filiais" type="json" />
+    <bpmn:exclusiveGateway id="Gateway_1adokts" default="Flow_1durnv6">
+      <bpmn:incoming>Flow_0mxzzif</bpmn:incoming>
+      <bpmn:outgoing>Flow_1durnv6</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1qpi3xg</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1wwcph5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:manualTask id="Activity_1hrnfpg" name="Verifica o erro">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>try:
+    status_code = lancado
+    errorCode = rsp['body']['error']['code']
+    errorMessage = rsp['body']['error']['message']['value']
+except:
+    status_code = sapError['status_code']
+    command = sapError['command_response_body']
+    command = json.loads(command)
+    errorCode = command['body']['error']['code']
+    errorMessage = command['body']['error']['message']['value']
+
+
+# status_code = sapError['status_code']
+# command = sapError['command_response_body']
+# command = json.loads(command)
+# errorCode = command['body']['error']['code']
+# errorMessage = command['body']['error']['message']['value']
+
+</spiffworkflow:preScript>
+        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
+
+### Informações
+
+| Campo | Conteudo |
+| ----------: | -------------- |
+| Código Erro: | {{errorCode}} |
+| Mensagem Erro: | {{errorMessage}}
+| Status  | {{status_code}} |
+
+1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
+2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:postScript />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1i3zxal</bpmn:incoming>
+      <bpmn:incoming>Flow_1qpi3xg</bpmn:incoming>
+      <bpmn:outgoing>Flow_0rawcp4</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Activity_09i1pq2" name="Confirmação Gestor">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## Status da Integração
+
+### Solicitação incluída com sucesso no SAP. 
+
+Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número: **{{number}}**.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1durnv6</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xscovm</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Activity_05rqdyh" name="Confirmação Solicitante">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## Status da Integração
+
+### Solicitação incluída com sucesso no SAP. 
+
+Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número: **{{number}}**.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1xscovm</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wwcph5</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:boundaryEvent id="Event_0uwcfkc" attachedToRef="Activity_0856rbm">
+      <bpmn:outgoing>Flow_1i3zxal</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0zgrctx" errorRef="errorSap" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_0bsuxx8" sourceRef="Activity_0fy07h0" targetRef="Activity_160ldmq" />
+    <bpmn:sequenceFlow id="Flow_13fehm8" sourceRef="Activity_160ldmq" targetRef="Activity_13g9nwv" />
+    <bpmn:sequenceFlow id="Flow_1d8mo6p" sourceRef="Activity_13g9nwv" targetRef="Activity_0qpzdpu" />
+    <bpmn:sequenceFlow id="Flow_13sk1mn" sourceRef="Gateway_0g0isr7" targetRef="Activity_0qpzdpu">
+      <bpmn:conditionExpression>operacao == 'Corrige'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0vu7th0" sourceRef="Gateway_1d3lf4s" targetRef="Activity_0qpzdpu">
+      <bpmn:conditionExpression>operacao == 'Corrige'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_0z7hg1d" />
+    <bpmn:sequenceFlow id="Flow_0uyps62" sourceRef="Activity_0z7hg1d" targetRef="Gateway_0g0isr7" />
+    <bpmn:sequenceFlow id="Flow_1evt79u" sourceRef="Gateway_0g0isr7" targetRef="Activity_0xafkf4" />
+    <bpmn:sequenceFlow id="Flow_0rawcp4" sourceRef="Activity_1hrnfpg" targetRef="Activity_0xafkf4" />
+    <bpmn:sequenceFlow id="Flow_1y37zi6" sourceRef="Activity_0xafkf4" targetRef="Gateway_1d3lf4s" />
+    <bpmn:sequenceFlow id="Flow_18wrock" sourceRef="Gateway_1d3lf4s" targetRef="Activity_0856rbm" />
+    <bpmn:sequenceFlow id="Flow_0mxzzif" sourceRef="Activity_0856rbm" targetRef="Gateway_1adokts" />
+    <bpmn:sequenceFlow id="Flow_1durnv6" sourceRef="Gateway_1adokts" targetRef="Activity_09i1pq2" />
+    <bpmn:sequenceFlow id="Flow_1qpi3xg" sourceRef="Gateway_1adokts" targetRef="Activity_1hrnfpg">
+      <bpmn:conditionExpression>lancado != 201</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1wwcph5" sourceRef="Activity_05rqdyh" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_1i3zxal" sourceRef="Event_0uwcfkc" targetRef="Activity_1hrnfpg" />
+    <bpmn:sequenceFlow id="Flow_1xscovm" sourceRef="Activity_09i1pq2" targetRef="Activity_05rqdyh" />
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0fy07h0" />
+    <bpmn:callActivity id="Activity_0fy07h0" name="Define unidade e departamento" calledElement="Process_definir_unidade_e_departamento_zxer6t3">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
+        <spiffworkflow:postScript>group_identifier = f"{unidade}_Cantina"
+# group_identifier = f"{unidade}_{departamento}"
+group_members = get_group_members(group_identifier)
+# lane_owners = { "Cantina": group_members }
+lane_owners = {
+    "Cantina": group_members,
+    "Gerencia": [gestor]
+}
+# lane_owners['Gerencia'] = gestor</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bsuxx8</bpmn:outgoing>
+    </bpmn:callActivity>
+  </bpmn:process>
+  <bpmn:dataStore id="typeahead" name="KKVDataStore" />
+  <bpmn:dataStore id="saplogin" name="JSONDataStore" />
+  <bpmn:error id="errorSap" name="errorSap">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>sapError</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1tyx2x2">
+      <bpmndi:BPMNShape id="Participant_0476j7y_di" bpmnElement="Participant_0476j7y" isHorizontal="true">
+        <dc:Bounds x="275" y="-280" width="2260" height="1120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_12uy9io_di" bpmnElement="Lane_12uy9io" isHorizontal="true">
+        <dc:Bounds x="305" y="-50" width="2230" height="470" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0may6a6_di" bpmnElement="Lane_0may6a6" isHorizontal="true">
+        <dc:Bounds x="305" y="420" width="2230" height="420" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1xw8qvr_di" bpmnElement="Lane_1xw8qvr" isHorizontal="true">
+        <dc:Bounds x="305" y="-280" width="2230" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_13uzln6_di" bpmnElement="DataStoreReference_13uzln6">
+        <dc:Bounds x="590" y="25" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="579" y="82" width="72" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0dm57aw_di" bpmnElement="DataStoreReference_0dm57aw">
+        <dc:Bounds x="640" y="25" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="622" y="1" width="86" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1wxeqbg_di" bpmnElement="DataStoreReference_1wxeqbg">
+        <dc:Bounds x="690" y="25" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="678" y="83" width="75" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1ln8zd2_di" bpmnElement="DataStoreReference_1ln8zd2">
+        <dc:Bounds x="740" y="25" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="744" y="1" width="42" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0rjpdye_di" bpmnElement="DataStoreReference_0rjpdye">
+        <dc:Bounds x="790" y="25" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="789" y="76" width="54" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1o5t6ge_di" bpmnElement="DataStoreReference_1o5t6ge">
+        <dc:Bounds x="840" y="25" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="826" y="1" width="78" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0qutju8_di" bpmnElement="Activity_160ldmq">
+        <dc:Bounds x="635" y="147" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1c7gl9e_di" bpmnElement="Activity_13g9nwv">
+        <dc:Bounds x="805" y="147" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xq3fic_di" bpmnElement="Activity_0qpzdpu">
+        <dc:Bounds x="995" y="147" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ztm3rt_di" bpmnElement="Activity_0z7hg1d">
+        <dc:Bounds x="1165" y="147" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0g0isr7_di" bpmnElement="Gateway_0g0isr7" isMarkerVisible="true">
+        <dc:Bounds x="1320" y="162" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0tel8em_di" bpmnElement="Activity_0xafkf4">
+        <dc:Bounds x="1435" y="510" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1d3lf4s_di" bpmnElement="Gateway_1d3lf4s" isMarkerVisible="true">
+        <dc:Bounds x="1590" y="525" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1fy2zrf_di" bpmnElement="Activity_0856rbm">
+        <dc:Bounds x="1715" y="510" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0bfz43x_di" bpmnElement="DataStoreReference_0bfz43x">
+        <dc:Bounds x="1630" y="615" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1632" y="672" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_07gc9qu_di" bpmnElement="DataStoreReference_07gc9qu">
+        <dc:Bounds x="540" y="25" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="547" y="1" width="35" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0ess18n_di" bpmnElement="DataStoreReference_0ess18n">
+        <dc:Bounds x="490" y="25" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="502" y="82" width="28" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1adokts_di" bpmnElement="Gateway_1adokts" isMarkerVisible="true">
+        <dc:Bounds x="1890" y="525" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="2387" y="169" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03v5412_di" bpmnElement="Activity_1hrnfpg">
+        <dc:Bounds x="1865" y="650" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1bvbm2q_di" bpmnElement="Activity_09i1pq2">
+        <dc:Bounds x="2025" y="510" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vpf3kb_di" bpmnElement="Activity_05rqdyh">
+        <dc:Bounds x="2195" y="147" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="377" y="-198" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02mb9xm_di" bpmnElement="Activity_0fy07h0">
+        <dc:Bounds x="445" y="-220" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1g0h8ka_di" bpmnElement="Event_0uwcfkc">
+        <dc:Bounds x="1777" y="572" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0bsuxx8_di" bpmnElement="Flow_0bsuxx8">
+        <di:waypoint x="545" y="-180" />
+        <di:waypoint x="600" y="-180" />
+        <di:waypoint x="600" y="187" />
+        <di:waypoint x="635" y="187" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13fehm8_di" bpmnElement="Flow_13fehm8">
+        <di:waypoint x="735" y="187" />
+        <di:waypoint x="805" y="187" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1d8mo6p_di" bpmnElement="Flow_1d8mo6p">
+        <di:waypoint x="905" y="187" />
+        <di:waypoint x="995" y="187" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13sk1mn_di" bpmnElement="Flow_13sk1mn">
+        <di:waypoint x="1345" y="212" />
+        <di:waypoint x="1345" y="290" />
+        <di:waypoint x="1045" y="290" />
+        <di:waypoint x="1045" y="227" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vu7th0_di" bpmnElement="Flow_0vu7th0">
+        <di:waypoint x="1615" y="525" />
+        <di:waypoint x="1615" y="90" />
+        <di:waypoint x="1045" y="90" />
+        <di:waypoint x="1045" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
+        <di:waypoint x="1095" y="187" />
+        <di:waypoint x="1165" y="187" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0uyps62_di" bpmnElement="Flow_0uyps62">
+        <di:waypoint x="1265" y="187" />
+        <di:waypoint x="1320" y="187" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1evt79u_di" bpmnElement="Flow_1evt79u">
+        <di:waypoint x="1370" y="187" />
+        <di:waypoint x="1395" y="187" />
+        <di:waypoint x="1395" y="550" />
+        <di:waypoint x="1435" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0rawcp4_di" bpmnElement="Flow_0rawcp4">
+        <di:waypoint x="1915" y="730" />
+        <di:waypoint x="1915" y="760" />
+        <di:waypoint x="1485" y="760" />
+        <di:waypoint x="1485" y="590" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1y37zi6_di" bpmnElement="Flow_1y37zi6">
+        <di:waypoint x="1535" y="550" />
+        <di:waypoint x="1590" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18wrock_di" bpmnElement="Flow_18wrock">
+        <di:waypoint x="1640" y="550" />
+        <di:waypoint x="1715" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mxzzif_di" bpmnElement="Flow_0mxzzif">
+        <di:waypoint x="1815" y="550" />
+        <di:waypoint x="1890" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1durnv6_di" bpmnElement="Flow_1durnv6">
+        <di:waypoint x="1940" y="550" />
+        <di:waypoint x="2025" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1qpi3xg_di" bpmnElement="Flow_1qpi3xg">
+        <di:waypoint x="1915" y="575" />
+        <di:waypoint x="1915" y="650" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wwcph5_di" bpmnElement="Flow_1wwcph5">
+        <di:waypoint x="2295" y="187" />
+        <di:waypoint x="2387" y="187" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1i3zxal_di" bpmnElement="Flow_1i3zxal">
+        <di:waypoint x="1795" y="608" />
+        <di:waypoint x="1795" y="690" />
+        <di:waypoint x="1865" y="690" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xscovm_di" bpmnElement="Flow_1xscovm">
+        <di:waypoint x="2075" y="510" />
+        <di:waypoint x="2075" y="187" />
+        <di:waypoint x="2195" y="187" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
+        <di:waypoint x="413" y="-180" />
+        <di:waypoint x="445" y="-180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0w8lbnm_di" bpmnElement="DataInputAssociation_0w8lbnm">
+        <di:waypoint x="540" y="72" />
+        <di:waypoint x="637" y="151" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0ui77xh_di" bpmnElement="DataInputAssociation_0ui77xh">
+        <di:waypoint x="587" y="75" />
+        <di:waypoint x="650" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0d589na_di" bpmnElement="DataInputAssociation_0d589na">
+        <di:waypoint x="670" y="75" />
+        <di:waypoint x="684" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0ri5kgb_di" bpmnElement="DataInputAssociation_0ri5kgb">
+        <di:waypoint x="790" y="74" />
+        <di:waypoint x="718" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0ebsjnv_di" bpmnElement="DataInputAssociation_0ebsjnv">
+        <di:waypoint x="750" y="75" />
+        <di:waypoint x="707" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_09dn80q_di" bpmnElement="DataInputAssociation_09dn80q">
+        <di:waypoint x="840" y="68" />
+        <di:waypoint x="728" y="148" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0dt2pn8_di" bpmnElement="DataInputAssociation_0dt2pn8">
+        <di:waypoint x="628" y="75" />
+        <di:waypoint x="664" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0o3vl14_di" bpmnElement="DataInputAssociation_0o3vl14">
+        <di:waypoint x="711" y="75" />
+        <di:waypoint x="696" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1es14ty_di" bpmnElement="DataInputAssociation_1es14ty">
+        <di:waypoint x="1680" y="621" />
+        <di:waypoint x="1723" y="589" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
