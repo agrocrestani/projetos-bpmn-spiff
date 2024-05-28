@@ -414,7 +414,8 @@ del(nfeItens)</bpmn:script>
 |||||Total -&gt; | {{TotalQuerencia}} |</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>confirma = False</spiffworkflow:preScript>
         <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-carregamento-schema.json" />
+          <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-carregamento-querencia-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="confirma-carregamento-querencia-uischema.json" />
         </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1jtqvig</bpmn:incoming>
