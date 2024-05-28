@@ -295,13 +295,16 @@ itensMatriz = []
 itensQuerencia = []
 TotalMatriz = 0
 TotalQuerencia = 0
+carregaQuerencia = 1
+carregaMatriz = 1
+
 for i in itens:
     if i['WarehouseCode'] == '03.MATR':
-        carregaMatriz = 1
+        # carregaMatriz = 1
         itensMatriz.append(i)
         TotalMatriz += i['LineTotal']
     elif i['WarehouseCode'] == '03.FQUE':
-        carregaQuerencia = 1
+        # carregaQuerencia = 1
         itensQuerencia.append(i)
         TotalQuerencia += i['LineTotal']
 
