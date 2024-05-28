@@ -295,8 +295,7 @@ itensMatriz = []
 itensQuerencia = []
 TotalMatriz = 0
 TotalQuerencia = 0
-carregaQuerencia = 1
-carregaMatriz = 1
+
 
 for i in itens:
     if i['WarehouseCode'] == '03.MATR':
