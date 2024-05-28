@@ -100,8 +100,7 @@ del(l)
 filial = l['filial']</spiffworkflow:preScript>
           <spiffworkflow:postScript>bplid = int(bplid[0])
 del(empresa)
-del(filial)
-del(BPLId)</spiffworkflow:postScript>
+del(filial)</spiffworkflow:postScript>
           <spiffworkflow:calledDecisionId>deparaFilial</spiffworkflow:calledDecisionId>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0vz4nph</bpmn:incoming>
