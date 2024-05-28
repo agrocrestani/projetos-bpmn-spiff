@@ -76,6 +76,28 @@
           <text>"admin"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_04ckw2s">
+        <inputEntry id="UnaryTests_07z7lkf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18jrm6t">
+          <text>"mailon.campos@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uu78o3">
+          <text>"Matriz_Cantina"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1e9j7pi">
+        <inputEntry id="UnaryTests_0iokbcd">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dxolj0">
+          <text>"jose.alves@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_175kyv5">
+          <text>"Matriz_Cantina"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_06ilfe0">
         <inputEntry id="UnaryTests_0u3sx0p">
           <text></text>
