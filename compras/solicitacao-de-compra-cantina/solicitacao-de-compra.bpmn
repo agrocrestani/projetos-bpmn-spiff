@@ -396,7 +396,7 @@ headers = {
     lancado = rsp['http_status']
     number = rsp['body']['DocNum']
 except:
-    lancado = False</spiffworkflow:postScript>
+    lancado = 500</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_18wrock</bpmn:incoming>
       <bpmn:outgoing>Flow_0mxzzif</bpmn:outgoing>
@@ -429,7 +429,9 @@ except:
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1wwcph5</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1qpi3xg" sourceRef="Gateway_1adokts" targetRef="Activity_1hrnfpg" />
+    <bpmn:sequenceFlow id="Flow_1qpi3xg" sourceRef="Gateway_1adokts" targetRef="Activity_1hrnfpg">
+      <bpmn:conditionExpression>lancado != 201</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:manualTask id="Activity_1hrnfpg" name="Verifica o erro">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>try:
