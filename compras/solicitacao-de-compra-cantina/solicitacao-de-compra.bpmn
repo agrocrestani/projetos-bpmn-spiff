@@ -14,8 +14,8 @@
   <bpmn:process id="Process_solicitacao_de_compra_lz3stw2" isExecutable="true">
     <bpmn:laneSet id="LaneSet_1sz1hle">
       <bpmn:lane id="Lane_1xw8qvr">
-        <bpmn:flowNodeRef>Activity_0fy07h0</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0fy07h0</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_0may6a6" name="Gerencia">
         <bpmn:flowNodeRef>Activity_0xafkf4</bpmn:flowNodeRef>
@@ -466,21 +466,6 @@ Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número:
       <bpmn:incoming>Flow_1xscovm</bpmn:incoming>
       <bpmn:outgoing>Flow_1wwcph5</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:callActivity id="Activity_0fy07h0" name="Define unidade e departamento" calledElement="Process_definir_unidade_e_departamento_zxer6t3">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
-        <spiffworkflow:postScript>group_identifier = f"{unidade}_Cantina"
-# group_identifier = f"{unidade}_{departamento}"
-group_members = get_group_members(group_identifier)
-# lane_owners = { "Cantina": group_members }
-lane_owners = {
-    "Cantina": group_members
-}
-lane_owners['Gerencia'] = gestor</spiffworkflow:postScript>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:outgoing>Flow_0bsuxx8</bpmn:outgoing>
-    </bpmn:callActivity>
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
@@ -512,6 +497,22 @@ lane_owners['Gerencia'] = gestor</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_1i3zxal" sourceRef="Event_0uwcfkc" targetRef="Activity_1hrnfpg" />
     <bpmn:sequenceFlow id="Flow_1xscovm" sourceRef="Activity_09i1pq2" targetRef="Activity_05rqdyh" />
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0fy07h0" />
+    <bpmn:callActivity id="Activity_0fy07h0" name="Define unidade e departamento" calledElement="Process_definir_unidade_e_departamento_zxer6t3">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
+        <spiffworkflow:postScript>group_identifier = f"{unidade}_Cantina"
+# group_identifier = f"{unidade}_{departamento}"
+group_members = get_group_members(group_identifier)
+# lane_owners = { "Cantina": group_members }
+lane_owners = {
+    "Cantina": group_members,
+    "Gerencia": [gestor]
+}
+# lane_owners['Gerencia'] = gestor</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bsuxx8</bpmn:outgoing>
+    </bpmn:callActivity>
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
@@ -634,12 +635,12 @@ lane_owners['Gerencia'] = gestor</spiffworkflow:postScript>
         <dc:Bounds x="2195" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="377" y="-198" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_02mb9xm_di" bpmnElement="Activity_0fy07h0">
         <dc:Bounds x="445" y="-220" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="377" y="-198" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1g0h8ka_di" bpmnElement="Event_0uwcfkc">
         <dc:Bounds x="1777" y="572" width="36" height="36" />
