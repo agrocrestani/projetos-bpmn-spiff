@@ -12,40 +12,19 @@
         <spiffworkflow:preScript>carregaMatriz = 1
 carregaQuerencia = 1
 
-teste = {
-    "f": {
+teste = [
+  {"f": {
       "value": "5",
       "label": "FAZENDA CURUPAI"
     },
-    "BPLId": 1,
-    "BPLName": "0109-AGROPECUARIA CRESTANI LTDA",
-    "AliasName": "FAZENDA QUERENCIA",
-    "solicitante": "emerson.gregorio",
-    "carregaMatriz": 0,
-    "carregaQuerencia": 1,
-    "solicitacao": [
-      {
-        "insumo": {
-          "ItemCode": "022607",
-          "ItemName": "CARAVAN",
-          "ItmsGrpNam": "FUNGICIDAS",
-          "InvntryUom": "LITRO",
-          "OnHand": "95,00",
-          "WhsCode": "03.FQUE"
-        },
-        "quantidade": 1
-      }
-    ],
-    "unidade": "3",
-    "safra": "23/24",
-    "solicitacao_bkp": [
-      {
-        "insumo": "{\"ItemCode\":\"022607\",\"ItemName\":\"CARAVAN\",\"ItmsGrpNam\":\"FUNGICIDAS\",\"InvntryUom\":\"LITRO\",\"OnHand\":\"95,00\",\"WhsCode\":\"03.FQUE\"}",
-        "quantidade": 1
-      }
-    ],
-    "CardCode": "C00113",
-    "s": {
+  "BPLId": 1,
+  "BPLName": "0109-AGROPECUARIA CRESTANI LTDA",
+  "AliasName": "FAZENDA QUERENCIA",
+  "solicitante": "emerson.gregorio",
+  "carregaMatriz": 0,
+  "carregaQuerencia": 1,
+  "solicitacao": [
+    {
       "insumo": {
         "ItemCode": "022607",
         "ItemName": "CARAVAN",
@@ -55,83 +34,93 @@ teste = {
         "WhsCode": "03.FQUE"
       },
       "quantidade": 1
+    }
+  ],
+  "unidade": "3",
+  "safra": "23/24",
+  "solicitacao_bkp": [
+    {
+      "insumo": "{\"ItemCode\":\"022607\",\"ItemName\":\"CARAVAN\",\"ItmsGrpNam\":\"FUNGICIDAS\",\"InvntryUom\":\"LITRO\",\"OnHand\":\"95,00\",\"WhsCode\":\"03.FQUE\"}",
+      "quantidade": 1
+    }
+  ],
+  "CardCode": "C00113",
+  "s": {
+    "insumo": {
+      "ItemCode": "022607",
+      "ItemName": "CARAVAN",
+      "ItmsGrpNam": "FUNGICIDAS",
+      "InvntryUom": "LITRO",
+      "OnHand": "95,00",
+      "WhsCode": "03.FQUE"
     },
-    "descricaoFilial": "FAZENDA COLORADO",
-    "usuarioEmissorNFe": "emerson.gregorio",
-    "SlpCode": 8,
-    "OwnerCode": 2,
-    "u": {
-      "value": "134",
-      "label": "134-SOMENTE FISCAL"
-    },
-    "done": true,
-    "mainusage": "95",
-    "spiff_instancia": 2319,
-    "spiff_tarefa": "a6c58cc4-8f12-4205-b8d9-b3a91f319c96",
-    "taskInfo": "a6c58cc4-8f12-4205-b8d9-b3a91f319c96",
-    "items": [
+    "quantidade": 1
+  },
+  "descricaoFilial": "FAZENDA COLORADO",
+  "usuarioEmissorNFe": "emerson.gregorio",
+  "SlpCode": 8,
+  "OwnerCode": 2,
+  "u": {
+    "value": "134",
+    "label": "134-SOMENTE FISCAL"
+  },
+  "done": true,
+  "mainusage": "95",
+  "spiff_instancia": 2319,
+  "spiff_tarefa": "a6c58cc4-8f12-4205-b8d9-b3a91f319c96",
+  "taskInfo": "a6c58cc4-8f12-4205-b8d9-b3a91f319c96",
+  "items": [
+    {
+      "ItemCode": "022607",
+      "Quantity": 1,
+      "WarehouseCode": "03.FQUE"
+    }
+  ],
+  "payload": {
+    "CardCode": "C00113",
+    "BPL_IDAssignedToInvoice": "1",
+    "DocumentsOwner": 2,
+    "SalesPersonCode": 8,
+    "Comments": "Solicitante: emerson.gregorio",
+    "U_AC_Spiff_Instancia": 2319,
+    "U_AC_Spiff_Tarefa": "a6c58cc4-8f12-4205-b8d9-b3a91f319c96",
+    "U_AC_Spiff_Usuario": "emerson.gregorio",
+    "DocumentLines": [
       {
         "ItemCode": "022607",
         "Quantity": 1,
         "WarehouseCode": "03.FQUE"
       }
     ],
-    "payload": {
-      "CardCode": "C00113",
-      "BPL_IDAssignedToInvoice": "1",
-      "DocumentsOwner": 2,
-      "SalesPersonCode": 8,
-      "Comments": "Solicitante: emerson.gregorio",
-      "U_AC_Spiff_Instancia": 2319,
-      "U_AC_Spiff_Tarefa": "a6c58cc4-8f12-4205-b8d9-b3a91f319c96",
-      "U_AC_Spiff_Usuario": "emerson.gregorio",
-      "DocumentLines": [
-        {
-          "ItemCode": "022607",
-          "Quantity": 1,
-          "WarehouseCode": "03.FQUE"
-        }
-      ],
-      "TaxExtension": {
-        "MainUsage": "95",
-        "Incoterms": "0"
-      }
-    },
-    "loginSap": "d4dd8462-1c59-11ef-8000-0200170121d3",
-    "url": "https://172.20.1.9:50000/b1s/v1/Invoices",
-    "headers": {
-      "Cookie": "B1SESSION=d4dd8462-1c59-11ef-8000-0200170121d3",
-      "Content-Type": "application/json"
-    },
-    "DocEntry": 8141,
-    "query": "\n            select \"KeyNfe\", CNPJ from SBO_CRESTANI_PRD.AC_NfeRetorno nf where nf.\"DocEntry\" = 2066 AND nf.\"Tabela\" = 'OINV' \n          ",
-    "sqlRsp": [
-      {
-        "keynfe": "51240103262185000109550010000257321290836637",
-        "cnpj": "03262185000109"
-      }
-    ],
-    "chaveAcesso": "51240103262185000109550010000257321290836637",
-    "cnpj": "03262185000109",
-    "arquivo_nfe": "file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf",
-    "DocNum": 4486,
-    "Serial": 27358,
-    "DocDate": "2024-05-27T00:00:00Z",
-    "CardName": "AGROPECUARIA CRESTANI LTDA",
-    "VATRegNum": "03.262.185/0001-09",
-    "itens": [
-      {
-        "LineNum": 0,
-        "ItemCode": "022607",
-        "ItemDescription": "CARAVAN",
-        "Quantity": 1,
-        "Price": 97.444,
-        "WarehouseCode": "03.FQUE",
-        "LineTotal": 97.44
-      }
-    ],
-    "Total": 97.44,
-    "i": {
+    "TaxExtension": {
+      "MainUsage": "95",
+      "Incoterms": "0"
+    }
+  },
+  "loginSap": "d4dd8462-1c59-11ef-8000-0200170121d3",
+  "url": "https://172.20.1.9:50000/b1s/v1/Invoices",
+  "headers": {
+    "Cookie": "B1SESSION=d4dd8462-1c59-11ef-8000-0200170121d3",
+    "Content-Type": "application/json"
+  },
+  "DocEntry": 8141,
+  "query": "\n            select \"KeyNfe\", CNPJ from SBO_CRESTANI_PRD.AC_NfeRetorno nf where nf.\"DocEntry\" = 2066 AND nf.\"Tabela\" = 'OINV' \n          ",
+  "sqlRsp": [
+    {
+      "keynfe": "51240103262185000109550010000257321290836637",
+      "cnpj": "03262185000109"
+    }
+  ],
+  "chaveAcesso": "51240103262185000109550010000257321290836637",
+  "cnpj": "03262185000109",
+  "arquivo_nfe": "file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf",
+  "DocNum": 4486,
+  "Serial": 27358,
+  "DocDate": "2024-05-27T00:00:00Z",
+  "CardName": "AGROPECUARIA CRESTANI LTDA",
+  "VATRegNum": "03.262.185/0001-09",
+  "itens": [
+    {
       "LineNum": 0,
       "ItemCode": "022607",
       "ItemDescription": "CARAVAN",
@@ -139,22 +128,34 @@ teste = {
       "Price": 97.444,
       "WarehouseCode": "03.FQUE",
       "LineTotal": 97.44
-    },
-    "itensMatriz": [],
-    "itensQuerencia": [
-      {
-        "LineNum": 0,
-        "ItemCode": "022607",
-        "ItemDescription": "CARAVAN",
-        "Quantity": 1,
-        "Price": 97.444,
-        "WarehouseCode": "03.FQUE",
-        "LineTotal": 97.44
-      }
-    ],
-    "TotalMatriz": 0,
-    "TotalQuerencia": 97.44
-  }</spiffworkflow:preScript>
+    }
+  ],
+  "Total": 97.44,
+  "i": {
+    "LineNum": 0,
+    "ItemCode": "022607",
+    "ItemDescription": "CARAVAN",
+    "Quantity": 1,
+    "Price": 97.444,
+    "WarehouseCode": "03.FQUE",
+    "LineTotal": 97.44
+  },
+  "itensMatriz": [],
+  "itensQuerencia": [
+    {
+      "LineNum": 0,
+      "ItemCode": "022607",
+      "ItemDescription": "CARAVAN",
+      "Quantity": 1,
+      "Price": 97.444,
+      "WarehouseCode": "03.FQUE",
+      "LineTotal": 97.44
+    }
+  ],
+  "TotalMatriz": 0,
+  "TotalQuerencia": 97.44
+}
+]</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_0dnvt7r</bpmn:outgoing>
