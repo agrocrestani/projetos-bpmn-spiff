@@ -536,7 +536,7 @@
           <text>"12304"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xsvhri">
-          <text>""</text>
+          <text>"CORPCOM"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1oecnw4">
@@ -547,7 +547,7 @@
           <text>"12304"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_16bqi17">
-          <text></text>
+          <text>"CORPCOM"</text>
         </outputEntry>
       </rule>
     </decisionTable>
