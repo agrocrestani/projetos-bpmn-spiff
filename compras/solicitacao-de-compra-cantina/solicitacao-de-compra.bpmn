@@ -493,13 +493,13 @@ Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número:
       <bpmn:outgoing>Flow_1wwcph5</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_00it3ug" sourceRef="Activity_05hj0m0" targetRef="Activity_160ldmq" />
-    <bpmn:callActivity id="Activity_05hj0m0" name="Definir unidade e departamento" calledElement="Process_definir_unidade_e_departamento_zxer6t3">
+    <bpmn:manualTask id="Activity_05hj0m0" name="Definir unidade e departamento">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_00it3ug</bpmn:outgoing>
-    </bpmn:callActivity>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
@@ -620,9 +620,8 @@ Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número:
         <dc:Bounds x="2050" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0ftqzlw_di" bpmnElement="Activity_05hj0m0">
+      <bpmndi:BPMNShape id="Activity_1j7vftn_di" bpmnElement="Activity_05hj0m0">
         <dc:Bounds x="310" y="147" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1g0h8ka_di" bpmnElement="Event_0uwcfkc">
         <dc:Bounds x="1632" y="572" width="36" height="36" />
