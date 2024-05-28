@@ -65,7 +65,7 @@ carregaQuerencia = 1</spiffworkflow:preScript>
     <bpmn:scriptTask id="Activity_1mmai9k">
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_1vt7q0m</bpmn:outgoing>
-      <bpmn:script>teste = str([
+      <bpmn:script>teste ="""[
   {"f": {
       "value": "5",
       "label": "FAZENDA CURUPAI"
@@ -208,12 +208,14 @@ carregaQuerencia = 1</spiffworkflow:preScript>
   "TotalMatriz": 0,
   "TotalQuerencia": 97.44
 }
-])
-</bpmn:script>
+])"""</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_gateway_or_jg9awad">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="-18" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -232,9 +234,6 @@ carregaQuerencia = 1</spiffworkflow:preScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1vv948k_di" bpmnElement="Activity_0j9vw6e">
         <dc:Bounds x="530" y="250" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="-18" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_19zado5_di" bpmnElement="Activity_1mmai9k">
         <dc:Bounds x="90" y="137" width="100" height="80" />
