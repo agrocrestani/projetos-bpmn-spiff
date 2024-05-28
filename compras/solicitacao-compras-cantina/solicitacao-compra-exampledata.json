@@ -1,0 +1,124 @@
+{
+  "BPLId": "3",
+  "Department": "1",
+  "U_RSD_Prioridade": "1",
+  "U_RSD_Aplicacao": "2",
+  "OcrCode": "QUEARM",
+  "OcrCode2": "SOJA",
+  "OcrCode3": "24/25",
+  "WhsCode": "01.FCOL",
+  "MainUsage": "1",
+  "solicitacao": [],
+  "n_filiais": [
+    {
+      "value": "1",
+      "label": "0109-AGROPECUARIA CRESTANI LTDA"
+    },
+    {
+      "value": "2",
+      "label": "0281-AGROPECUARIA CRESTANI LTDA"
+    },
+    {
+      "value": "3",
+      "label": "0362-AGROPECUARIA CRESTANI LTDA"
+    }
+  ],
+  "n_departamentos": [
+    {
+      "value": "1",
+      "label": "Almoxarifado"
+    },
+    {
+      "value": "2",
+      "label": "Comercial"
+    },
+    {
+      "value": "3",
+      "label": "Comercial Algodão"
+    }
+  ],
+  "n_tipo_requisicao": [
+    {
+      "value": "1",
+      "label": "ADM - Estoque"
+    },
+    {
+      "value": "2",
+      "label": "Fazenda - Estoque"
+    },
+    {
+      "value": "3",
+      "label": "Projeto Próprio"
+    }
+  ],
+  "n_centros_de_custo": [
+    {
+      "value": "QUEARM",
+      "label": "QUEARM - N. QUE ARMAZÉM"
+    },
+    {
+      "value": "QUECORP",
+      "label": "QUECORP - N. QUE CORPORATIVO"
+    },
+    {
+      "value": "QUEMEC",
+      "label": "QUEMEC - N. QUE MECANIZAÇÃO"
+    }
+  ],
+  "n_culturas": [
+    {
+      "value": "SOJA",
+      "label": "SOJA"
+    },
+    {
+      "value": "MILHO",
+      "label": "MILHO"
+    },
+    {
+      "value": "ALGODAO",
+      "label": "ALGODÃO"
+    }
+  ],
+  "n_safras": [
+    {
+      "value": "22/23",
+      "label": "Safra 2022/2023"
+    },
+    {
+      "value": "24/25",
+      "label": "Safra 2024/2025"
+    },
+    {
+      "value": "27/28",
+      "label": "Safra 2027/2028"
+    }
+  ],
+  "n_utilizacoes": [
+    {
+      "value": "1",
+      "label": "001-AMOSTRA GRÁTIS"
+    },
+    {
+      "value": "2",
+      "label": "002-BONIFICAÇÃO"
+    },
+    {
+      "value": "3",
+      "label": "003-C INDUSTRIAL PF"
+    }
+  ],
+  "n_almoxarifados": [
+    {
+      "value": "01.BRAS",
+      "label": "01.BRAS - ALMOXAR UNID. BRASNORTE"
+    },
+    {
+      "value": "01.FCOL",
+      "label": "01.FCOL - ALMOXAR COLORADO"
+    },
+    {
+      "value": "01.FCUR",
+      "label": "01.FCUR - ALMOXAR CURUPAI"
+    }
+  ]
+}
