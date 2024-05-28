@@ -4,16 +4,68 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_1mmai9k" />
     <bpmn:manualTask id="Activity_0qpzdpu" name="Define variaveis">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{carregaMatriz }}
 ### carregaQuerencia = {{carregaQuerencia }}</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>carregaMatriz = 1
-carregaQuerencia = 1
-
-
-teste = str([
+carregaQuerencia = 1</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1vt7q0m</bpmn:incoming>
+      <bpmn:outgoing>Flow_0dnvt7r</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_0dnvt7r" sourceRef="Activity_0qpzdpu" targetRef="Gateway_1ls5xhn" />
+    <bpmn:inclusiveGateway id="Gateway_1ls5xhn">
+      <bpmn:incoming>Flow_0dnvt7r</bpmn:incoming>
+      <bpmn:outgoing>Flow_1m51sal</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1rtxn9s</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1m51sal" sourceRef="Gateway_1ls5xhn" targetRef="Activity_0mk6h2b">
+      <bpmn:conditionExpression>carregaMatriz == 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1rtxn9s" sourceRef="Gateway_1ls5xhn" targetRef="Activity_0j9vw6e">
+      <bpmn:conditionExpression>carregaQuerencia == 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0zni5ev" sourceRef="Activity_0mk6h2b" targetRef="Gateway_0abgvr8" />
+    <bpmn:inclusiveGateway id="Gateway_0abgvr8">
+      <bpmn:incoming>Flow_0zni5ev</bpmn:incoming>
+      <bpmn:incoming>Flow_0p9abao</bpmn:incoming>
+      <bpmn:outgoing>Flow_1253ilp</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0p9abao" sourceRef="Activity_0j9vw6e" targetRef="Gateway_0abgvr8" />
+    <bpmn:endEvent id="Event_1s2nulu">
+      <bpmn:incoming>Flow_1253ilp</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1253ilp" sourceRef="Gateway_0abgvr8" targetRef="Event_1s2nulu" />
+    <bpmn:userTask id="Activity_0mk6h2b" name="Carrega Matriz">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="carrega-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="carrega-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{carregaMatriz }}
+### carregaQuerencia = {{carregaQuerencia }}</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1m51sal</bpmn:incoming>
+      <bpmn:outgoing>Flow_0zni5ev</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0j9vw6e" name="Carrega Querencia">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="carrega-schema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{carregaMatriz }}
+### carregaQuerencia = {{carregaQuerencia }}</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1rtxn9s</bpmn:incoming>
+      <bpmn:outgoing>Flow_0p9abao</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1vt7q0m" sourceRef="Activity_1mmai9k" targetRef="Activity_0qpzdpu" />
+    <bpmn:scriptTask id="Activity_1mmai9k">
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_1vt7q0m</bpmn:outgoing>
+      <bpmn:script>teste = str([
   {"f": {
       "value": "5",
       "label": "FAZENDA CURUPAI"
@@ -157,63 +209,11 @@ teste = str([
   "TotalQuerencia": 97.44
 }
 ])
-</spiffworkflow:preScript>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:outgoing>Flow_0dnvt7r</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:sequenceFlow id="Flow_0dnvt7r" sourceRef="Activity_0qpzdpu" targetRef="Gateway_1ls5xhn" />
-    <bpmn:inclusiveGateway id="Gateway_1ls5xhn">
-      <bpmn:incoming>Flow_0dnvt7r</bpmn:incoming>
-      <bpmn:outgoing>Flow_1m51sal</bpmn:outgoing>
-      <bpmn:outgoing>Flow_1rtxn9s</bpmn:outgoing>
-    </bpmn:inclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_1m51sal" sourceRef="Gateway_1ls5xhn" targetRef="Activity_0mk6h2b">
-      <bpmn:conditionExpression>carregaMatriz == 1</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_1rtxn9s" sourceRef="Gateway_1ls5xhn" targetRef="Activity_0j9vw6e">
-      <bpmn:conditionExpression>carregaQuerencia == 1</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_0zni5ev" sourceRef="Activity_0mk6h2b" targetRef="Gateway_0abgvr8" />
-    <bpmn:inclusiveGateway id="Gateway_0abgvr8">
-      <bpmn:incoming>Flow_0zni5ev</bpmn:incoming>
-      <bpmn:incoming>Flow_0p9abao</bpmn:incoming>
-      <bpmn:outgoing>Flow_1253ilp</bpmn:outgoing>
-    </bpmn:inclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0p9abao" sourceRef="Activity_0j9vw6e" targetRef="Gateway_0abgvr8" />
-    <bpmn:endEvent id="Event_1s2nulu">
-      <bpmn:incoming>Flow_1253ilp</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1253ilp" sourceRef="Gateway_0abgvr8" targetRef="Event_1s2nulu" />
-    <bpmn:userTask id="Activity_0mk6h2b" name="Carrega Matriz">
-      <bpmn:extensionElements>
-        <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="carrega-schema.json" />
-          <spiffworkflow:property name="formUiSchemaFilename" value="carrega-uischema.json" />
-        </spiffworkflow:properties>
-        <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{carregaMatriz }}
-### carregaQuerencia = {{carregaQuerencia }}</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1m51sal</bpmn:incoming>
-      <bpmn:outgoing>Flow_0zni5ev</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:userTask id="Activity_0j9vw6e" name="Carrega Querencia">
-      <bpmn:extensionElements>
-        <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="carrega-schema.json" />
-        </spiffworkflow:properties>
-        <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{carregaMatriz }}
-### carregaQuerencia = {{carregaQuerencia }}</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1rtxn9s</bpmn:incoming>
-      <bpmn:outgoing>Flow_0p9abao</bpmn:outgoing>
-    </bpmn:userTask>
+</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_gateway_or_jg9awad">
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -233,9 +233,15 @@ teste = str([
       <bpmndi:BPMNShape id="Activity_1vv948k_di" bpmnElement="Activity_0j9vw6e">
         <dc:Bounds x="530" y="250" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="-18" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_19zado5_di" bpmnElement="Activity_1mmai9k">
+        <dc:Bounds x="90" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
-        <di:waypoint x="215" y="177" />
-        <di:waypoint x="270" y="177" />
+        <di:waypoint x="18" y="177" />
+        <di:waypoint x="90" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0dnvt7r_di" bpmnElement="Flow_0dnvt7r">
         <di:waypoint x="370" y="177" />
@@ -262,6 +268,10 @@ teste = str([
       <bpmndi:BPMNEdge id="Flow_1253ilp_di" bpmnElement="Flow_1253ilp">
         <di:waypoint x="735" y="177" />
         <di:waypoint x="792" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vt7q0m_di" bpmnElement="Flow_1vt7q0m">
+        <di:waypoint x="190" y="177" />
+        <di:waypoint x="270" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
