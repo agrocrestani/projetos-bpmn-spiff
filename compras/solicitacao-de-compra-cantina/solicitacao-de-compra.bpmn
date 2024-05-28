@@ -497,7 +497,10 @@ Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número:
     <bpmn:callActivity id="Activity_0fy07h0" name="Define unidade e departamento" calledElement="Process_definir_unidade_e_departamento_zxer6t3">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:postScript>group_identifier = f"{branch_id}_{participant_id}"
+group_members = get_group_members(group_identifier)
+lane_owners = { "Cantina": group_members }
+lane_owners['Gerencia'] = gestor</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_0bsuxx8</bpmn:outgoing>
