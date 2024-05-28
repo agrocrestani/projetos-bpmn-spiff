@@ -13,7 +13,7 @@
   </bpmn:collaboration>
   <bpmn:process id="Process_solicitacao_de_compra_lz3stw2" isExecutable="true">
     <bpmn:laneSet id="LaneSet_1sz1hle">
-      <bpmn:lane id="Lane_12uy9io">
+      <bpmn:lane id="Lane_12uy9io" name="Cantina">
         <bpmn:flowNodeRef>Activity_160ldmq</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_13g9nwv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0qpzdpu</bpmn:flowNodeRef>
@@ -24,7 +24,7 @@
         <bpmn:flowNodeRef>Activity_05rqdyh</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0fy07h0</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_0may6a6">
+      <bpmn:lane id="Lane_0may6a6" name="Gerencia">
         <bpmn:flowNodeRef>Activity_0xafkf4</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1d3lf4s</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0856rbm</bpmn:flowNodeRef>
@@ -517,9 +517,11 @@ Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0may6a6_di" bpmnElement="Lane_0may6a6" isHorizontal="true">
         <dc:Bounds x="160" y="420" width="2230" height="420" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_12uy9io_di" bpmnElement="Lane_12uy9io" isHorizontal="true">
         <dc:Bounds x="160" y="-50" width="2230" height="470" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_13uzln6_di" bpmnElement="DataStoreReference_13uzln6">
         <dc:Bounds x="445" y="25" width="50" height="50" />
