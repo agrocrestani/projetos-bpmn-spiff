@@ -472,7 +472,7 @@ Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número:
         <spiffworkflow:postScript>group_identifier = f"{unidade}_Cantina"
 group_identifier = f"{unidade}_{departamento}"
 group_members = get_group_members(group_identifier)
-lane_owners = { "Cantina": group_members }
+# lane_owners = { "Cantina": group_members }
 lane_owners['Cantina'] = usuarioLogado+"@agrocrestani.com.br"
 lane_owners['Gerencia'] = gestor</spiffworkflow:postScript>
       </bpmn:extensionElements>
@@ -523,16 +523,16 @@ lane_owners['Gerencia'] = gestor</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Participant_0476j7y_di" bpmnElement="Participant_0476j7y" isHorizontal="true">
         <dc:Bounds x="275" y="-280" width="2260" height="1120" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1xw8qvr_di" bpmnElement="Lane_1xw8qvr" isHorizontal="true">
-        <dc:Bounds x="305" y="-280" width="2230" height="230" />
+      <bpmndi:BPMNShape id="Lane_12uy9io_di" bpmnElement="Lane_12uy9io" isHorizontal="true">
+        <dc:Bounds x="305" y="-50" width="2230" height="470" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0may6a6_di" bpmnElement="Lane_0may6a6" isHorizontal="true">
         <dc:Bounds x="305" y="420" width="2230" height="420" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_12uy9io_di" bpmnElement="Lane_12uy9io" isHorizontal="true">
-        <dc:Bounds x="305" y="-50" width="2230" height="470" />
-        <bpmndi:BPMNLabel />
+      <bpmndi:BPMNShape id="Lane_1xw8qvr_di" bpmnElement="Lane_1xw8qvr" isHorizontal="true">
+        <dc:Bounds x="305" y="-280" width="2230" height="230" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_13uzln6_di" bpmnElement="DataStoreReference_13uzln6">
         <dc:Bounds x="590" y="25" width="50" height="50" />
@@ -726,30 +726,6 @@ lane_owners['Gerencia'] = gestor</spiffworkflow:postScript>
         <di:waypoint x="413" y="-180" />
         <di:waypoint x="445" y="-180" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0dt2pn8_di" bpmnElement="DataInputAssociation_0dt2pn8">
-        <di:waypoint x="628" y="75" />
-        <di:waypoint x="664" y="147" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0d589na_di" bpmnElement="DataInputAssociation_0d589na">
-        <di:waypoint x="670" y="75" />
-        <di:waypoint x="684" y="147" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0o3vl14_di" bpmnElement="DataInputAssociation_0o3vl14">
-        <di:waypoint x="711" y="75" />
-        <di:waypoint x="696" y="147" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0ebsjnv_di" bpmnElement="DataInputAssociation_0ebsjnv">
-        <di:waypoint x="750" y="75" />
-        <di:waypoint x="707" y="147" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0ri5kgb_di" bpmnElement="DataInputAssociation_0ri5kgb">
-        <di:waypoint x="790" y="74" />
-        <di:waypoint x="718" y="147" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_09dn80q_di" bpmnElement="DataInputAssociation_09dn80q">
-        <di:waypoint x="840" y="68" />
-        <di:waypoint x="728" y="148" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0w8lbnm_di" bpmnElement="DataInputAssociation_0w8lbnm">
         <di:waypoint x="540" y="72" />
         <di:waypoint x="637" y="151" />
@@ -757,6 +733,30 @@ lane_owners['Gerencia'] = gestor</spiffworkflow:postScript>
       <bpmndi:BPMNEdge id="DataInputAssociation_0ui77xh_di" bpmnElement="DataInputAssociation_0ui77xh">
         <di:waypoint x="587" y="75" />
         <di:waypoint x="650" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0d589na_di" bpmnElement="DataInputAssociation_0d589na">
+        <di:waypoint x="670" y="75" />
+        <di:waypoint x="684" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0ri5kgb_di" bpmnElement="DataInputAssociation_0ri5kgb">
+        <di:waypoint x="790" y="74" />
+        <di:waypoint x="718" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0ebsjnv_di" bpmnElement="DataInputAssociation_0ebsjnv">
+        <di:waypoint x="750" y="75" />
+        <di:waypoint x="707" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_09dn80q_di" bpmnElement="DataInputAssociation_09dn80q">
+        <di:waypoint x="840" y="68" />
+        <di:waypoint x="728" y="148" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0dt2pn8_di" bpmnElement="DataInputAssociation_0dt2pn8">
+        <di:waypoint x="628" y="75" />
+        <di:waypoint x="664" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0o3vl14_di" bpmnElement="DataInputAssociation_0o3vl14">
+        <di:waypoint x="711" y="75" />
+        <di:waypoint x="696" y="147" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1es14ty_di" bpmnElement="DataInputAssociation_1es14ty">
         <di:waypoint x="1680" y="621" />
