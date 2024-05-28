@@ -505,6 +505,18 @@
           <text>"FAZDIR"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_19yttj4">
+        <description>Armazem Curupai</description>
+        <inputEntry id="UnaryTests_1hst3rw">
+          <text>5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11e8mfe">
+          <text>"12203"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_08tyxzt">
+          <text>"BRAARM"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0ixy1u2">
         <inputEntry id="UnaryTests_052q9to">
           <text>7</text>
