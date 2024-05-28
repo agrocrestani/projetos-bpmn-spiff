@@ -350,7 +350,7 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 | Campo | Valor | 
 | ---------- | ------- | 
 | Empresa | {{BPLName}} |
-| Filial | {{BPLId}} |
+| Filial | {{bplid}} |
 | Centro de Custo | {{CcustoSenior }} |
 
 
@@ -444,7 +444,7 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 | Campo | Valor | 
 | ---------- | ------- | 
 | Empresa | {{BPLName}} |
-| Filial | {{BPLId}} |
+| Filial | {{bplid}} |
 | Centro de Custo | {{CcustoSenior }} |
 
 
