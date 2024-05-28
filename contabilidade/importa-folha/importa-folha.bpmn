@@ -97,7 +97,7 @@ del(l)
         <bpmn:extensionElements>
           <spiffworkflow:preScript>empresa = l['empresa']
 filial = l['filial']</spiffworkflow:preScript>
-          <spiffworkflow:postScript>bplid = int(bplid[0])
+          <spiffworkflow:postScript>bplid = int(bplid)
 del(empresa)
 del(filial)
 del(BPLId)</spiffworkflow:postScript>
