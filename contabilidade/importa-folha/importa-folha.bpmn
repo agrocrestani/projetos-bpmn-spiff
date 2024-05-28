@@ -156,10 +156,7 @@ del(ccusto)</spiffworkflow:postScript>
 - Para importar os lançamentos, deve ser gerado um arquivo para cada centro de custo da filial. 
 - Apontar **Cultura** para os centros de custo cuja tenha o apontamento direto. Por exemplo UBA &gt; Algodão.
 - Depois que importar todos os arquivos, entregar o resumo da folha para o Departamento Contabil para fazerem a conferência.</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript>
-# if "lancamentos" in locals():
-    
-n_safras = safras
+        <spiffworkflow:preScript>n_safras = safras
 n_culturas = culturas
 </spiffworkflow:preScript>
         <spiffworkflow:properties>
