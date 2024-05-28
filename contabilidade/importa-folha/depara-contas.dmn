@@ -120,6 +120,14 @@
           <text>"2.1.1.01.02.007"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1inq8p2">
+        <inputEntry id="UnaryTests_1flnwsd">
+          <text>"30201001"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ylmqiu">
+          <text>"3.1.3.02.01.001"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0kphj6f">
         <inputEntry id="UnaryTests_1k2za53">
           <text>"30201003"</text>
