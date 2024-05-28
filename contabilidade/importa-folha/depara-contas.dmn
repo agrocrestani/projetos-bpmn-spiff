@@ -112,6 +112,14 @@
           <text>"2.1.1.01.02.006"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1e2e81p">
+        <inputEntry id="UnaryTests_18wfnix">
+          <text>"20102007"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0eivw1k">
+          <text>"2.1.1.01.02.007"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0kphj6f">
         <inputEntry id="UnaryTests_1k2za53">
           <text>"30201003"</text>
