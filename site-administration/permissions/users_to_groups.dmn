@@ -40,7 +40,7 @@
           <text>"emerson.gregorio@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_09mu3ge">
-          <text>"Querencia_Cantina"</text>
+          <text>"Matriz_Cantina"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0mg1xkj">
@@ -51,7 +51,7 @@
           <text>"emerson.gregorio@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_00zalpe">
-          <text>"Querencia_Gerencia"</text>
+          <text>"Matriz_Gerencia"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_01pinc2">
