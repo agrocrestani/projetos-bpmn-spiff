@@ -22,7 +22,6 @@
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_05rqdyh</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_05hj0m0</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_0may6a6">
         <bpmn:flowNodeRef>Activity_0xafkf4</bpmn:flowNodeRef>
@@ -34,7 +33,7 @@
         <bpmn:flowNodeRef>Activity_09i1pq2</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_05hj0m0" />
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_160ldmq" />
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_0z7hg1d" />
     <bpmn:sequenceFlow id="Flow_1y37zi6" sourceRef="Activity_0xafkf4" targetRef="Gateway_1d3lf4s" />
     <bpmn:sequenceFlow id="Flow_13fehm8" sourceRef="Activity_160ldmq" targetRef="Activity_13g9nwv" />
@@ -121,7 +120,7 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
         </spiffworkflow:properties>
         <spiffworkflow:postScript />
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_00it3ug</bpmn:incoming>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_13fehm8</bpmn:outgoing>
       <bpmn:property id="Property_0dlyti3" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_0w8lbnm">
@@ -492,14 +491,6 @@ Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número:
       <bpmn:incoming>Flow_1xscovm</bpmn:incoming>
       <bpmn:outgoing>Flow_1wwcph5</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:sequenceFlow id="Flow_00it3ug" sourceRef="Activity_05hj0m0" targetRef="Activity_160ldmq" />
-    <bpmn:manualTask id="Activity_05hj0m0" name="Definir unidade e departamento">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:outgoing>Flow_00it3ug</bpmn:outgoing>
-    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
@@ -620,15 +611,12 @@ Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número:
         <dc:Bounds x="2050" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1j7vftn_di" bpmnElement="Activity_05hj0m0">
-        <dc:Bounds x="310" y="147" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1g0h8ka_di" bpmnElement="Event_0uwcfkc">
         <dc:Bounds x="1632" y="572" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="248" y="187" />
-        <di:waypoint x="310" y="187" />
+        <di:waypoint x="490" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="950" y="187" />
@@ -703,10 +691,6 @@ Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número:
       <bpmndi:BPMNEdge id="Flow_1qpi3xg_di" bpmnElement="Flow_1qpi3xg">
         <di:waypoint x="1770" y="575" />
         <di:waypoint x="1770" y="650" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_00it3ug_di" bpmnElement="Flow_00it3ug">
-        <di:waypoint x="410" y="187" />
-        <di:waypoint x="490" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0w8lbnm_di" bpmnElement="DataInputAssociation_0w8lbnm">
         <di:waypoint x="395" y="72" />
