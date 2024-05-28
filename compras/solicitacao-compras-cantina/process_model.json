@@ -4,6 +4,6 @@
     "exception_notification_addresses": [],
     "fault_or_suspend_on_exception": "fault",
     "metadata_extraction_paths": null,
-    "primary_file_name": "solicitacao-compras-cantina.bpmn",
-    "primary_process_id": "Process_solicitacao_compras_cantina_8soz3ig"
+    "primary_file_name": "solicitacao-de-compra.bpmn",
+    "primary_process_id": "Process_solicitacao_de_compra_lz3stw2"
 }
