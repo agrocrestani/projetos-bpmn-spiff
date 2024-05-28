@@ -499,7 +499,8 @@ Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número:
         <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
         <spiffworkflow:postScript>group_identifier = f"{unidade}_{departamento}"
 group_members = get_group_members(group_identifier)
-lane_owners = { "Cantina": group_members }
+# lane_owners = { "Cantina": group_members }
+lane_owners['Cantina'] = gestor
 lane_owners['Gerencia'] = gestor</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
