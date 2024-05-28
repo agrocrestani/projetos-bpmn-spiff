@@ -528,6 +528,28 @@
           <text>"QUEARM"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1okaxs0">
+        <inputEntry id="UnaryTests_19c0oaz">
+          <text>7</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_051u0x4">
+          <text>"12304"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xsvhri">
+          <text>""</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1oecnw4">
+        <inputEntry id="UnaryTests_1un0bme">
+          <text>9</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w3lyva">
+          <text>"12304"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16bqi17">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
