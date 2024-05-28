@@ -35,7 +35,7 @@ connection = {
 
 baseSap = get_secret('baseSap')
 
-query = """
+query = f"""
           SELECT 
             o."OcrCode",
             o."OcrName"
