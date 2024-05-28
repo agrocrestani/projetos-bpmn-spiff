@@ -32,6 +32,28 @@
           <text>"admin"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1u7ii0o">
+        <inputEntry id="UnaryTests_0fnfppk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0d9bkx6">
+          <text>"emerson.gregorio@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09mu3ge">
+          <text>"Querencia_Cantina"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mg1xkj">
+        <inputEntry id="UnaryTests_03lhcdr">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0awa8at">
+          <text>"emerson.gregorio@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00zalpe">
+          <text>"Querencia_Gerencia"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_01pinc2">
         <inputEntry id="UnaryTests_0gm0p7n">
           <text></text>
