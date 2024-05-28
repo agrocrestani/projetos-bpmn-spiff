@@ -505,6 +505,18 @@
           <text>"FAZDIR"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_19yttj4">
+        <description>Armazem Curupai</description>
+        <inputEntry id="UnaryTests_1hst3rw">
+          <text>5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11e8mfe">
+          <text>"12203"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_08tyxzt">
+          <text>"BRAARM"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0ixy1u2">
         <inputEntry id="UnaryTests_052q9to">
           <text>7</text>
@@ -514,6 +526,28 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_1se34gr">
           <text>"QUEARM"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1okaxs0">
+        <inputEntry id="UnaryTests_19c0oaz">
+          <text>7</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_051u0x4">
+          <text>"12304"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xsvhri">
+          <text>"CORPCOM"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1oecnw4">
+        <inputEntry id="UnaryTests_1un0bme">
+          <text>9</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w3lyva">
+          <text>"12304"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16bqi17">
+          <text>"CORPCOM"</text>
         </outputEntry>
       </rule>
     </decisionTable>
