@@ -1,33 +1,39 @@
 {
-  "solicitacao": [],
-  "unidade": "apples",
-  "safra": "oranges",
-  "n_safras": [
-    {
-      "value": "apples",
-      "label": "Apples"
+  "title": "Checkbox",
+  "description": "A super simple checkbox",
+  "type": "object",
+  "required": [
+          "solicitacao"
+        ],
+  "properties": {
+    "solicitacao": {
+      "type": "array",
+      "title": "Items",
+      "items": {
+        "type": "object",
+        "required": [
+          "insumo",
+          "quantidade"
+        ],
+        "properties": {
+            "insumo": {
+            "type": "string",
+            "title": "Selecione o Insumo"
+            },
+            "quantidade": {
+            "type": "number",
+            "title": "Quantidade"
+            }
+        }
+      }
     },
-    {
-      "value": "oranges",
-      "label": "Oranges"
-    },
-    {
-      "value": "bananas",
-      "label": "Bananas"
+    "unidade": {
+      "title": "Selecione a unidade",
+      "type": "string",
+      "disabled": "True",
+      "anyOf": [
+        "options_from_task_data_var:n_filiais"
+      ]
     }
-  ],
-  "n_filiais": [
-    {
-      "value": "apples",
-      "label": "Apples"
-    },
-    {
-      "value": "oranges",
-      "label": "Oranges"
-    },
-    {
-      "value": "bananas",
-      "label": "Bananas"
-    }
-  ]
+  }
 }
