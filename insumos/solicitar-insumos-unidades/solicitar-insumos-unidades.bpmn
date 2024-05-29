@@ -386,7 +386,7 @@ Querencia = 1</spiffworkflow:preScript>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_09bo2x8" errorRef="Error_1" />
     </bpmn:boundaryEvent>
     <bpmn:boundaryEvent id="Event_0cpryqj" attachedToRef="Activity_0wopia0" messageRef="[object Object]">
-      <bpmn:messageEventDefinition id="MessageEventDefinition_0vfrcrc" messageRef="Message_1dy1rlf" />
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0vfrcrc" messageRef="Message_1nzvl3p" />
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_02ebu0j" sourceRef="StartEvent_1" targetRef="Activity_0rzn55m" />
     <bpmn:sequenceFlow id="Flow_1l2j74f" sourceRef="Activity_0rzn55m" targetRef="Activity_0wopia0" />
@@ -411,7 +411,7 @@ Querencia = 1</spiffworkflow:preScript>
     <bpmn:sequenceFlow id="Flow_0pakz75" sourceRef="Activity_041g5go" targetRef="Event_0s1k9fo" />
     <bpmn:intermediateThrowEvent id="Event_0s1k9fo" messageRef="[object Object]">
       <bpmn:incoming>Flow_0pakz75</bpmn:incoming>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_1b86gc1" messageRef="Message_1dy1rlf" />
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1b86gc1" messageRef="Message_1nzvl3p" />
     </bpmn:intermediateThrowEvent>
   </bpmn:process>
   <bpmn:message id="Message_1dy1rlf" name="Message_rec">
@@ -423,6 +423,7 @@ Querencia = 1</spiffworkflow:preScript>
   <bpmn:message id="Message_1nzvl3p" name="Message_env">
     <bpmn:extensionElements>
       <spiffworkflow:messagePayload>None</spiffworkflow:messagePayload>
+      <spiffworkflow:messageVariable>teste</spiffworkflow:messageVariable>
     </bpmn:extensionElements>
   </bpmn:message>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
