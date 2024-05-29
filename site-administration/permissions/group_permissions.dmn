@@ -331,7 +331,7 @@
           <text>"Querencia_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1lcdo8k">
-          <text>["all"]</text>
+          <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hw43w7">
           <text>"PM:compras/solicitacao-de-compra-cantina"</text>
@@ -349,6 +349,20 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1gr473q">
           <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_113lrxh">
+        <inputEntry id="UnaryTests_1sg0i8z">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1a5g3it">
+          <text>"Querencia_Administrativo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wymag5">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_013yltg">
+          <text>"/can-run-privileged-script/*"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_01vu57r">
@@ -429,10 +443,24 @@
           <text>"Curupai_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kr1jsu">
-          <text>["all"]</text>
+          <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1qy37pz">
           <text>"PM:compras/solicitacao-de-compra-cantina"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0g04wvp">
+        <inputEntry id="UnaryTests_17givv3">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1oonvxb">
+          <text>"Curupai_Administrativo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11njzfl">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xf1zp2">
+          <text>"/can-run-privileged-script/*"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0b77ue4">
@@ -499,7 +527,7 @@
           <text>"Colorado_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0bkbssi">
-          <text>["all"]</text>
+          <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kbamc5">
           <text>"PM:compras/solicitacao-de-compra-cantina"</text>
@@ -519,6 +547,20 @@
           <text>"BASIC"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1l1eps6">
+        <inputEntry id="UnaryTests_0qg85ys">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1y3r9ol">
+          <text>"Colorado_Administrativo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wjvq8h">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00mimn5">
+          <text>"/can-run-privileged-script/*"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0s1wk0a">
         <inputEntry id="UnaryTests_0g4l9np">
           <text></text>
@@ -527,7 +569,7 @@
           <text>"SaoCarlos_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1sg9twi">
-          <text>["all"]</text>
+          <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_147jylf">
           <text>"PM:compras/solicitacao-de-compra-cantina"</text>
@@ -559,6 +601,20 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1277raa">
           <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02aklfy">
+        <inputEntry id="UnaryTests_1dlkkz8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19wukcc">
+          <text>"SaoCarlos_Administrativo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13srl3c">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bys1f9">
+          <text>"/can-run-privileged-script/*"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_082ahq7">
