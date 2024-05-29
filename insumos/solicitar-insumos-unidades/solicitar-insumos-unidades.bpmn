@@ -378,13 +378,13 @@ Querencia = 1</spiffworkflow:preScript>
     </bpmn:boundaryEvent>
     <bpmn:exclusiveGateway id="Gateway_1wuwgeh">
       <bpmn:incoming>Flow_0fsmio6</bpmn:incoming>
-      <bpmn:incoming>Flow_1nb0dkk</bpmn:incoming>
+      <bpmn:incoming>Flow_0oruj43</bpmn:incoming>
       <bpmn:outgoing>Flow_0xl0zj6</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0fsmio6" sourceRef="Activity_0rzn55m" targetRef="Gateway_1wuwgeh" />
     <bpmn:sequenceFlow id="Flow_0xl0zj6" sourceRef="Gateway_1wuwgeh" targetRef="Activity_0wopia0" />
-    <bpmn:sequenceFlow id="Flow_1nb0dkk" sourceRef="Event_1ufej1r" targetRef="Gateway_1wuwgeh" />
-    <bpmn:sendTask id="Activity_041g5go" name="Verifica o Erro e tenta novamente" messageRef="Message_1nzvl3p">
+    <bpmn:sequenceFlow id="Flow_0oruj43" sourceRef="Activity_041g5go" targetRef="Gateway_1wuwgeh" />
+    <bpmn:manualTask id="Activity_041g5go" name="Verifica o Erro e tenta novamente">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>try:
     status_code = lancado
@@ -410,14 +410,8 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
 2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1kvfsop</bpmn:incoming>
-    </bpmn:sendTask>
-    <bpmn:boundaryEvent id="Event_0q5lgp8" cancelActivity="false" attachedToRef="Activity_0wopia0" messageRef="[object Object]">
-      <bpmn:messageEventDefinition id="MessageEventDefinition_1f3fmcw" messageRef="Message_1nzvl3p" />
-    </bpmn:boundaryEvent>
-    <bpmn:intermediateCatchEvent id="Event_1ufej1r" messageRef="[object Object]">
-      <bpmn:outgoing>Flow_1nb0dkk</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_0h7xkvi" messageRef="Message_1nzvl3p" />
-    </bpmn:intermediateCatchEvent>
+      <bpmn:outgoing>Flow_0oruj43</bpmn:outgoing>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:message id="Message_1dy1rlf" name="Message_rec">
     <bpmn:extensionElements>
@@ -510,17 +504,11 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Gateway_1wuwgeh_di" bpmnElement="Gateway_1wuwgeh" isMarkerVisible="true">
         <dc:Bounds x="425" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0bsixwj_di" bpmnElement="Activity_041g5go">
+      <bpmndi:BPMNShape id="Activity_0n4o7j4_di" bpmnElement="Activity_041g5go">
         <dc:Bounds x="1080" y="320" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1w9quep_di" bpmnElement="Event_1ufej1r">
-        <dc:Bounds x="432" y="252" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_122g4zr_di" bpmnElement="Event_14irs56">
         <dc:Bounds x="1112" y="199" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_18ud1lu_di" bpmnElement="Event_0q5lgp8">
-        <dc:Bounds x="632" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_02ebu0j_di" bpmnElement="Flow_02ebu0j">
         <di:waypoint x="215" y="177" />
@@ -588,8 +576,9 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
         <di:waypoint x="475" y="177" />
         <di:waypoint x="620" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1nb0dkk_di" bpmnElement="Flow_1nb0dkk">
-        <di:waypoint x="450" y="252" />
+      <bpmndi:BPMNEdge id="Flow_0oruj43_di" bpmnElement="Flow_0oruj43">
+        <di:waypoint x="1080" y="360" />
+        <di:waypoint x="450" y="360" />
         <di:waypoint x="450" y="202" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1toag1e_di" bpmnElement="DataInputAssociation_1toag1e">
