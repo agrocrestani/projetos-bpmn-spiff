@@ -274,7 +274,6 @@ headers = {
         </spiffworkflow:serviceTaskOperator>
         <spiffworkflow:postScript>try:
     lancado = rsp['http_status']
-    number = rsp['body']['Number']
 except:
     lancado = 500</spiffworkflow:postScript>
       </bpmn:extensionElements>
@@ -616,11 +615,14 @@ for i in itens:
     <bpmn:sequenceFlow id="Flow_1yy4xl6" sourceRef="Activity_1k5utx1" targetRef="Event_1349eru" />
     <bpmn:manualTask id="Activity_0d9a181" name="Verifica o erro">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>status_code = err1['status_code']
-command = err1['command_response_body']
-command = json.loads(command)
-errorCode = command['body']['error']['code']
-errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
+        <spiffworkflow:preScript>try:
+    status_code = lancado
+    errorCode = rsp['body']['error']['code']
+    errorMessage = rsp['body']['error']['message']['value']
+except:
+    status_code = sapError['status_code']
+    errorCode = sapError['error_code']
+    errorMessage = sapError['message']</spiffworkflow:preScript>
         <spiffworkflow:postScript>del(solicitacao)
 solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       </bpmn:extensionElements>
@@ -665,6 +667,18 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-198" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_17vz534_di" bpmnElement="Gateway_1ls5xhn">
+        <dc:Bounds x="1465" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1yhsh0t_di" bpmnElement="Gateway_0abgvr8">
+        <dc:Bounds x="1725" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1gof64r_di" bpmnElement="Activity_0mk6h2b">
+        <dc:Bounds x="1570" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vv948k_di" bpmnElement="Activity_0j9vw6e">
+        <dc:Bounds x="1570" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0k9gyrq_di" bpmnElement="Activity_1mmai9k">
         <dc:Bounds x="-40" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -702,27 +716,11 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
         <dc:Bounds x="780" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_01jsgb5_di" bpmnElement="Activity_0d9a181">
-        <dc:Bounds x="770" y="350" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0t5qpk8_di" bpmnElement="Gateway_0t5qpk8" isMarkerVisible="true">
-        <dc:Bounds x="135" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1gyvqdr_di" bpmnElement="Event_02edask">
-        <dc:Bounds x="442" y="372" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_17vz534_di" bpmnElement="Gateway_1ls5xhn">
-        <dc:Bounds x="1465" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1yhsh0t_di" bpmnElement="Gateway_0abgvr8">
-        <dc:Bounds x="1725" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1gof64r_di" bpmnElement="Activity_0mk6h2b">
-        <dc:Bounds x="1570" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1vv948k_di" bpmnElement="Activity_0j9vw6e">
-        <dc:Bounds x="1570" y="250" width="100" height="80" />
+      <bpmndi:BPMNShape id="DataStoreReference_0l61g3j_di" bpmnElement="DataStoreReference_0l61g3j">
+        <dc:Bounds x="905" y="255" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="907" y="312" width="47" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_178r38e_di" bpmnElement="Activity_0h4ocru">
         <dc:Bounds x="1120" y="137" width="100" height="80" />
@@ -764,14 +762,18 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Event_1349eru_di" bpmnElement="Event_1349eru">
         <dc:Bounds x="2792" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_01jsgb5_di" bpmnElement="Activity_0d9a181">
+        <dc:Bounds x="770" y="350" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0t5qpk8_di" bpmnElement="Gateway_0t5qpk8" isMarkerVisible="true">
+        <dc:Bounds x="135" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1gyvqdr_di" bpmnElement="Event_02edask">
+        <dc:Bounds x="442" y="372" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0hm7vtk_di" bpmnElement="Gateway_0hm7vtk" isMarkerVisible="true">
         <dc:Bounds x="965" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_0l61g3j_di" bpmnElement="DataStoreReference_0l61g3j">
-        <dc:Bounds x="905" y="255" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="907" y="312" width="47" height="14" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-162" y="177" />
