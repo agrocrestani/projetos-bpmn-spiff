@@ -323,6 +323,20 @@
           <text>"/can-run-privileged-script/*"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1hzphqb">
+        <inputEntry id="UnaryTests_1gej9j4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06ym03l">
+          <text>"Querencia_Administrativo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lcdo8k">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hw43w7">
+          <text>"PM:compras/solicitacao-de-compra"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_02e5ukj">
         <inputEntry id="UnaryTests_0pn45qk">
           <text></text>
