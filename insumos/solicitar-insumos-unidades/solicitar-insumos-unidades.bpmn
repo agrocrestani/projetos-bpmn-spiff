@@ -385,9 +385,6 @@ Querencia = 1</spiffworkflow:preScript>
       <bpmn:outgoing>Flow_1kvfsop</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_09bo2x8" errorRef="Error_1" />
     </bpmn:boundaryEvent>
-    <bpmn:boundaryEvent id="Event_0cpryqj" attachedToRef="Activity_0wopia0" messageRef="[object Object]">
-      <bpmn:messageEventDefinition id="MessageEventDefinition_0vfrcrc" messageRef="Message_1nzvl3p" />
-    </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_02ebu0j" sourceRef="StartEvent_1" targetRef="Activity_0rzn55m" />
     <bpmn:sequenceFlow id="Flow_1l2j74f" sourceRef="Activity_0rzn55m" targetRef="Activity_0wopia0" />
     <bpmn:sequenceFlow id="Flow_06tikhf" sourceRef="Activity_0wopia0" targetRef="Activity_09jse4j" />
@@ -409,9 +406,12 @@ Querencia = 1</spiffworkflow:preScript>
     <bpmn:sequenceFlow id="Flow_0wm04tv" sourceRef="Gateway_17avfyy" targetRef="Event_1a77ga5" />
     <bpmn:dataStoreReference id="DataStoreReference_1yswc4l" name="SapLogin" dataStoreRef="saplogin" type="json" />
     <bpmn:sequenceFlow id="Flow_0pakz75" sourceRef="Activity_041g5go" targetRef="Event_0s1k9fo" />
+    <bpmn:boundaryEvent id="Event_0cpryqj" cancelActivity="false" attachedToRef="Activity_0wopia0" messageRef="[object Object]">
+      <bpmn:messageEventDefinition id="MessageEventDefinition_006fjht" messageRef="Message_1dy1rlf" />
+    </bpmn:boundaryEvent>
     <bpmn:intermediateThrowEvent id="Event_0s1k9fo" messageRef="[object Object]">
       <bpmn:incoming>Flow_0pakz75</bpmn:incoming>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_1b86gc1" messageRef="Message_1nzvl3p" />
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1bd7r9v" messageRef="Message_1dy1rlf" />
     </bpmn:intermediateThrowEvent>
   </bpmn:process>
   <bpmn:message id="Message_1dy1rlf" name="Message_rec">
@@ -506,14 +506,14 @@ Querencia = 1</spiffworkflow:preScript>
           <dc:Bounds x="1017" y="292" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_19k5awx_di" bpmnElement="Event_0s1k9fo">
+      <bpmndi:BPMNShape id="Event_0o4mt9e_di" bpmnElement="Event_0s1k9fo">
         <dc:Bounds x="1042" y="342" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1lzshrf_di" bpmnElement="Event_0cpryqj">
-        <dc:Bounds x="472" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_122g4zr_di" bpmnElement="Event_14irs56">
         <dc:Bounds x="922" y="199" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_12p5r3c_di" bpmnElement="Event_0cpryqj">
+        <dc:Bounds x="472" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_02ebu0j_di" bpmnElement="Flow_02ebu0j">
         <di:waypoint x="215" y="177" />
