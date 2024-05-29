@@ -133,9 +133,10 @@ for documento in consulta_movimentos:
         agrupados_por_objtype[objtype] = []
     
     # Adicionar o docnum à lista correspondente ao objtype
-    agrupados_por_objtype[objtype].append(docnum)</bpmn:script>
+    agrupados_por_objtype[objtype].append(docnum)
+
+visao = 'estoque'</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="VISAO_SAP" targetRef="REPROCESSAR01" />
     <bpmn:subProcess id="Activity_1d1r8sl">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>del(x)</spiffworkflow:postScript>
@@ -199,7 +200,7 @@ del(precoTotalNormalizado)
       <bpmn:sequenceFlow id="Flow_14z5yhx" sourceRef="NormalizandoEstoque" targetRef="Event_1dydh6d" />
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_12354sq" sourceRef="BuscaProdutosPorDepositoSAP" targetRef="Gateway_0mqija0" />
-    <bpmn:sequenceFlow id="Flow_0kxg7eo" sourceRef="Activity_1d1r8sl" targetRef="VISAO_SAP" />
+    <bpmn:sequenceFlow id="Flow_0kxg7eo" sourceRef="Activity_1d1r8sl" targetRef="ESCOLHA_VISAO" />
     <bpmn:sequenceFlow id="Flow_13pu6hq" sourceRef="Activity_00bh8bd" targetRef="BuscaProdutosPorDepositoSAP" />
     <bpmn:userTask id="Activity_00bh8bd" name="Selecionar Produto e Deposito">
       <bpmn:extensionElements>
@@ -322,7 +323,8 @@ del(produtosList)</spiffworkflow:postScript>
       <bpmn:conditionExpression>novaBusca == False</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="REPROCESSAR01" name="Reprocessar" default="Flow_1pd10hb">
-      <bpmn:incoming>Flow_1n8yish</bpmn:incoming>
+      <bpmn:incoming>Flow_0m9nzqu</bpmn:incoming>
+      <bpmn:incoming>Flow_04afnxr</bpmn:incoming>
       <bpmn:outgoing>Flow_1pd10hb</bpmn:outgoing>
       <bpmn:outgoing>Flow_10e4xqh</bpmn:outgoing>
     </bpmn:exclusiveGateway>
@@ -585,8 +587,8 @@ del(documentos_saida)</spiffworkflow:postScript>
 
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0kxg7eo</bpmn:incoming>
-      <bpmn:outgoing>Flow_1n8yish</bpmn:outgoing>
+      <bpmn:incoming>Flow_0gxeqjd</bpmn:incoming>
+      <bpmn:outgoing>Flow_0m9nzqu</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_10e4xqh" sourceRef="REPROCESSAR01" targetRef="BuscaProdutosPorDepositoSAP">
       <bpmn:conditionExpression>recalcular == True</bpmn:conditionExpression>
@@ -703,17 +705,87 @@ total_balance = sum(dados["balance"] for dados in agrupados_por_account.values()
       <bpmn:incoming>Flow_1pd10hb</bpmn:incoming>
       <bpmn:outgoing>Flow_11bq3ww</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0m9nzqu" sourceRef="VISAO_SAP" targetRef="REPROCESSAR01" />
+    <bpmn:userTask id="VISAO_CALCULADA" name="Visão Calculada">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>
+| Produto | Deposito | Em Estoque | Custo Unitário | 
+| ----------- | ----------- | ----------------: | -----------------: | 
+| **{{produto}}** - {{desc_produto}} | {{deposito}} | {{ '{:,.3f}'.format(on_hand_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_produto_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | 
+
+
+### Entrada
+
+| Quantidade Total | Custo Médio | Custo Total | Custo Médio Calc. |Custo Total Calc. |
+| ---------------------: | ----------------: | --------------: | ----------------------: | ---------------------: |
+| {{ '{:,.3f}'.format(total_quantidade_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_medio_unitario_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.')}} | {{'{:,.3f}'.format(total_preco_unitario_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{'{:,.3f}'.format(custo_medio_unitario_calculado_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{'{:,.3f}'.format(custo_medio_total_calculado_entrada).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
+
+
+### Saida
+
+| Quantidade Total | Custo Médio | Custo Total | Custo Médio Calc. |Custo Total Calc. |
+| ---------------------: | ----------------: | --------------: | ----------------------: | ---------------------: |
+| {{ '{:,.3f}'.format(total_quantidade_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_medio_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.')}} | {{'{:,.3f}'.format(total_preco_unitario_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |  {{'{:,.3f}'.format(custo_medio_unitario_calculado_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{'{:,.3f}'.format(custo_medio_total_calculado_saida).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
+
+### Movimentações
+
+| Num. | Origem | Num. Doc. | Quantidade | Custo Unitário  | Custo Total | Custo Médio Calc. | Custo Calc. | Estoque | Custo Atual Estoque | Data | Canc. |
+| ------- | ------- | -------------- | ----------: | ---------------: | ---------------: | ----------- | --------- | --------- | -------: | ----- | ---- |
+{% for produto in consulta_movimentos_out %}
+| {{ produto['num_movimentos'] }} | {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_total_contabil']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_medio']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_medio_calc']).replace(',', ' ').replace('.', ',').replace(' ', '.')}} | {{ '{:,.3f}'.format(produto['estoque_atual']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_estoque_atual']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['docduedate']}} | {{produto['canceled']}} |
+{% endfor %}
+
+</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1wz3wum</bpmn:incoming>
+      <bpmn:outgoing>Flow_04afnxr</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="ESCOLHA_VISAO" name="Escolha Visão" default="Flow_1wz3wum">
+      <bpmn:incoming>Flow_0kxg7eo</bpmn:incoming>
+      <bpmn:outgoing>Flow_0gxeqjd</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1wz3wum</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0gxeqjd" sourceRef="ESCOLHA_VISAO" targetRef="VISAO_SAP">
+      <bpmn:conditionExpression>visao == 'sap'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1wz3wum" sourceRef="ESCOLHA_VISAO" targetRef="VISAO_CALCULADA">
+      <bpmn:conditionExpression>visao == 'estoque'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_04afnxr" sourceRef="VISAO_CALCULADA" targetRef="REPROCESSAR01" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-258" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1252" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="-10" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1342" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18afsbp_di" bpmnElement="VISAO_CONTABIL">
+        <dc:Bounds x="1220" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0p3bhmm_di" bpmnElement="REPROCESSAR01" isMarkerVisible="true">
+        <dc:Bounds x="1135" y="152" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="998" y="170" width="64" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1hiqpmg_di" bpmnElement="ESCOLHA_VISAO" isMarkerVisible="true">
+        <dc:Bounds x="855" y="152" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="845" y="122" width="70" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
+        <dc:Bounds x="830" y="270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zy0efu_di" bpmnElement="VISAO_CALCULADA">
+        <dc:Bounds x="980" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
@@ -761,23 +833,9 @@ total_balance = sum(dados["balance"] for dados in agrupados_por_account.values()
       <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
         <dc:Bounds x="1222" y="372" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0p3bhmm_di" bpmnElement="REPROCESSAR01" isMarkerVisible="true">
-        <dc:Bounds x="975" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
-        <dc:Bounds x="830" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_18afsbp_di" bpmnElement="VISAO_CONTABIL">
-        <dc:Bounds x="1080" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-222" y="177" />
         <di:waypoint x="-150" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1n8yish_di" bpmnElement="Flow_1n8yish">
-        <di:waypoint x="930" y="177" />
-        <di:waypoint x="975" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12354sq_di" bpmnElement="Flow_12354sq">
         <di:waypoint x="90" y="177" />
@@ -785,7 +843,7 @@ total_balance = sum(dados["balance"] for dados in agrupados_por_account.values()
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0kxg7eo_di" bpmnElement="Flow_0kxg7eo">
         <di:waypoint x="770" y="177" />
-        <di:waypoint x="830" y="177" />
+        <di:waypoint x="855" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13pu6hq_di" bpmnElement="Flow_13pu6hq">
         <di:waypoint x="-50" y="177" />
@@ -814,18 +872,35 @@ total_balance = sum(dados["balance"] for dados in agrupados_por_account.values()
         <di:waypoint x="1222" y="390" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1pd10hb_di" bpmnElement="Flow_1pd10hb">
-        <di:waypoint x="1025" y="177" />
-        <di:waypoint x="1080" y="177" />
+        <di:waypoint x="1185" y="177" />
+        <di:waypoint x="1220" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_10e4xqh_di" bpmnElement="Flow_10e4xqh">
-        <di:waypoint x="1000" y="152" />
-        <di:waypoint x="1000" y="20" />
+        <di:waypoint x="1160" y="152" />
+        <di:waypoint x="1160" y="20" />
         <di:waypoint x="40" y="20" />
         <di:waypoint x="40" y="137" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_11bq3ww_di" bpmnElement="Flow_11bq3ww">
-        <di:waypoint x="1180" y="177" />
-        <di:waypoint x="1252" y="177" />
+        <di:waypoint x="1320" y="177" />
+        <di:waypoint x="1342" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0m9nzqu_di" bpmnElement="Flow_0m9nzqu">
+        <di:waypoint x="930" y="300" />
+        <di:waypoint x="1160" y="300" />
+        <di:waypoint x="1160" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gxeqjd_di" bpmnElement="Flow_0gxeqjd">
+        <di:waypoint x="880" y="202" />
+        <di:waypoint x="880" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wz3wum_di" bpmnElement="Flow_1wz3wum">
+        <di:waypoint x="905" y="177" />
+        <di:waypoint x="980" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04afnxr_di" bpmnElement="Flow_04afnxr">
+        <di:waypoint x="1080" y="177" />
+        <di:waypoint x="1135" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
