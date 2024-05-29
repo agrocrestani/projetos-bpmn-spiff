@@ -334,7 +334,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hw43w7">
-          <text>"PM:compras/solicitacao-de-compra"</text>
+          <text>"PM:compras/solicitacao-de-compra-cantina"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_02e5ukj">
@@ -432,7 +432,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1qy37pz">
-          <text>"PM:compras/solicitacao-de-compra"</text>
+          <text>"PM:compras/solicitacao-de-compra-cantina"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0b77ue4">
@@ -502,7 +502,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kbamc5">
-          <text>"PM:compras/solicitacao-de-compra"</text>
+          <text>"PM:compras/solicitacao-de-compra-cantina"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0uty85e">
@@ -530,7 +530,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_147jylf">
-          <text>"PM:compras/solicitacao-de-compra"</text>
+          <text>"PM:compras/solicitacao-de-compra-cantina"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1be3g2g">
