@@ -163,7 +163,7 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
         <spiffworkflow:postScript>solicitacao_bkp = solicitacao
 
 for f in n_filiais:
-    if int(f['value']) == BPLId:
+    if int(f['value']) == int(BPLId):
         BPLName = f['label']</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1d8mo6p</bpmn:incoming>
