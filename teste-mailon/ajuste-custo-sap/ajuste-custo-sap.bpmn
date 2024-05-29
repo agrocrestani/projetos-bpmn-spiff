@@ -713,7 +713,7 @@ custo_medio = 0
 if isinstance(consulta_movimentos_out, list):
     for produtoAux in consulta_movimentos_out:
         if produtoAux['tipo'] == "E" :
-            if produtoAux['canceled'] == 'N':
+            if produtoAux['canceled'] == 'N' or produtoAux['canceled'] == 'Y' or produtoAux['canceled'] == 'C':
                 total_preco_unitario_entrada += produtoAux['linetotal']
                 total_quantidade_entrada += produtoAux['qtde']
                 
@@ -779,7 +779,7 @@ if isinstance(consulta_movimentos_out, list):
                 produtoAux['custo_estoque_atual'] = 000.000
         
         if produtoAux['tipo'] == "S":
-            if produtoAux['canceled'] == 'N':
+            if produtoAux['canceled'] == 'N' or produtoAux['canceled'] == 'Y' or produtoAux['canceled'] == 'C':
                 total_preco_unitario_saida += produtoAux['stockprice'] * produtoAux['qtde']
                 total_quantidade_saida += produtoAux['qtde']
                 produtoAux['custo_medio'] = custo_medio
