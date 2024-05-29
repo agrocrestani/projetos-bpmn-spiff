@@ -722,6 +722,8 @@ if isinstance(consulta_movimentos_out, list):
                 
                 if total_quantidade &gt; 0:
                     custo_medio = total_preco_unitario / total_quantidade
+                elif total_quantidade == 0;
+                    custo_medio = produtoAux['linetotal'] / produtoAux['qtde']
                 else: 
                     custo_medio = (custo_medio + (produtoAux['linetotal'] / produtoAux['qtde'])) / 2
                 
@@ -916,10 +918,6 @@ del(documentos_saida)</spiffworkflow:postScript>
         <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
-        <dc:Bounds x="820" y="270" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
       </bpmndi:BPMNShape>
@@ -970,6 +968,10 @@ del(documentos_saida)</spiffworkflow:postScript>
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1158" y="133" width="64" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
+        <dc:Bounds x="820" y="270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0zy0efu_di" bpmnElement="VISAO_CALCULADA">
         <dc:Bounds x="980" y="137" width="100" height="80" />
