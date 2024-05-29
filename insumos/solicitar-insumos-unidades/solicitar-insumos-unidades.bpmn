@@ -232,7 +232,7 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
 2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1kvfsop</bpmn:incoming>
-      <bpmn:outgoing>Flow_0m5jcm9</bpmn:outgoing>
+      <bpmn:outgoing>Flow_116m8b4</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:scriptTask id="Activity_1pav2g7" name="Busca Chave de acesso">
       <bpmn:incoming>Flow_13gfhi3</bpmn:incoming>
@@ -395,7 +395,6 @@ Querencia = 1</spiffworkflow:preScript>
     <bpmn:sequenceFlow id="Flow_1blqlf6" sourceRef="Activity_0v68ob6" targetRef="Activity_0823umq" />
     <bpmn:sequenceFlow id="Flow_13gfhi3" sourceRef="Activity_0823umq" targetRef="Activity_1pav2g7" />
     <bpmn:sequenceFlow id="Flow_1kvfsop" sourceRef="Event_14irs56" targetRef="Activity_041g5go" />
-    <bpmn:sequenceFlow id="Flow_0m5jcm9" sourceRef="Activity_041g5go" targetRef="Event_1753ttz" />
     <bpmn:sequenceFlow id="Flow_08133cx" sourceRef="Activity_1pav2g7" targetRef="Activity_1l8yv4t" />
     <bpmn:sequenceFlow id="Flow_12ic23r" sourceRef="Activity_1l8yv4t" targetRef="Activity_14oa7ya" />
     <bpmn:sequenceFlow id="Flow_0rbxmoh" sourceRef="Activity_14oa7ya" targetRef="Gateway_04sm3k2" />
@@ -409,10 +408,10 @@ Querencia = 1</spiffworkflow:preScript>
     <bpmn:sequenceFlow id="Flow_0ajrqjl" sourceRef="Activity_10iltbi" targetRef="Gateway_17avfyy" />
     <bpmn:sequenceFlow id="Flow_0wm04tv" sourceRef="Gateway_17avfyy" targetRef="Event_1a77ga5" />
     <bpmn:dataStoreReference id="DataStoreReference_1yswc4l" name="SapLogin" dataStoreRef="saplogin" type="json" />
-    <bpmn:intermediateThrowEvent id="Event_1753ttz" messageRef="[object Object]">
-      <bpmn:incoming>Flow_0m5jcm9</bpmn:incoming>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_10koq11" messageRef="Message_1nzvl3p" />
-    </bpmn:intermediateThrowEvent>
+    <bpmn:sequenceFlow id="Flow_116m8b4" sourceRef="Activity_041g5go" targetRef="Activity_19h4n71" />
+    <bpmn:sendTask id="Activity_19h4n71" messageRef="Message_1nzvl3p">
+      <bpmn:incoming>Flow_116m8b4</bpmn:incoming>
+    </bpmn:sendTask>
   </bpmn:process>
   <bpmn:message id="Message_1dy1rlf" name="Message_rec">
     <bpmn:extensionElements>
@@ -504,8 +503,8 @@ Querencia = 1</spiffworkflow:preScript>
           <dc:Bounds x="1017" y="292" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1y1u8mz_di" bpmnElement="Event_1753ttz">
-        <dc:Bounds x="1072" y="342" width="36" height="36" />
+      <bpmndi:BPMNShape id="Activity_0yzmcys_di" bpmnElement="Activity_19h4n71">
+        <dc:Bounds x="1040" y="320" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1lzshrf_di" bpmnElement="Event_0cpryqj">
         <dc:Bounds x="472" y="199" width="36" height="36" />
@@ -541,10 +540,6 @@ Querencia = 1</spiffworkflow:preScript>
         <di:waypoint x="940" y="235" />
         <di:waypoint x="940" y="320" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0m5jcm9_di" bpmnElement="Flow_0m5jcm9">
-        <di:waypoint x="990" y="360" />
-        <di:waypoint x="1072" y="360" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_08133cx_di" bpmnElement="Flow_08133cx">
         <di:waypoint x="1170" y="177" />
         <di:waypoint x="1230" y="177" />
@@ -578,6 +573,10 @@ Querencia = 1</spiffworkflow:preScript>
       <bpmndi:BPMNEdge id="Flow_0wm04tv_di" bpmnElement="Flow_0wm04tv">
         <di:waypoint x="1965" y="177" />
         <di:waypoint x="2052" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_116m8b4_di" bpmnElement="Flow_116m8b4">
+        <di:waypoint x="990" y="360" />
+        <di:waypoint x="1040" y="360" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1toag1e_di" bpmnElement="DataInputAssociation_1toag1e">
         <di:waypoint x="280" y="275" />
