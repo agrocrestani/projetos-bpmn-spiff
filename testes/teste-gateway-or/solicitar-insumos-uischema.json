@@ -1,1 +1,34 @@
-{}
+{
+  "solicitacao": {
+    "items": {
+      "ui:layout": [
+        {
+          "insumo": {}
+        },
+        {
+          "quantidade": {
+            "sm": 2,
+            "md": 2,
+            "lg": 2
+          }
+        }
+      ],
+      "insumo": {
+        "ui:widget": "typeahead",
+        "ui:options": {
+          "category": "estoque_de_insumos",
+          "itemFormat": "{ItemName} - {WhsCode} (Estoque: {OnHand} {InvntryUom} {ItemCode})"
+        }
+      }
+    }
+  },
+  "ui:layout": [
+    {
+      "unidade": {},
+      "safra": {}
+    },
+    {
+      "solicitacao": {}
+    }  
+  ]
+}
