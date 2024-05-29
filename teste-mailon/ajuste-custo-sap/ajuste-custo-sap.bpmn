@@ -135,7 +135,7 @@ for documento in consulta_movimentos:
     # Adicionar o docnum à lista correspondente ao objtype
     agrupados_por_objtype[objtype].append(docnum)</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="VISAO_ESTOQUE" targetRef="REPROCESSAR01" />
+    <bpmn:sequenceFlow id="Flow_1n8yish" sourceRef="VISAO_SAP" targetRef="REPROCESSAR01" />
     <bpmn:subProcess id="Activity_1d1r8sl">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>del(x)</spiffworkflow:postScript>
@@ -199,7 +199,7 @@ del(precoTotalNormalizado)
       <bpmn:sequenceFlow id="Flow_14z5yhx" sourceRef="NormalizandoEstoque" targetRef="Event_1dydh6d" />
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_12354sq" sourceRef="BuscaProdutosPorDepositoSAP" targetRef="Gateway_0mqija0" />
-    <bpmn:sequenceFlow id="Flow_0kxg7eo" sourceRef="Activity_1d1r8sl" targetRef="VISAO_ESTOQUE" />
+    <bpmn:sequenceFlow id="Flow_0kxg7eo" sourceRef="Activity_1d1r8sl" targetRef="VISAO_SAP" />
     <bpmn:sequenceFlow id="Flow_13pu6hq" sourceRef="Activity_00bh8bd" targetRef="BuscaProdutosPorDepositoSAP" />
     <bpmn:userTask id="Activity_00bh8bd" name="Selecionar Produto e Deposito">
       <bpmn:extensionElements>
@@ -329,7 +329,7 @@ del(produtosList)</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_1pd10hb" sourceRef="REPROCESSAR01" targetRef="VISAO_CONTABIL">
       <bpmn:conditionExpression>recalcular == False</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:userTask id="VISAO_ESTOQUE" name="Visão do Estoque">
+    <bpmn:userTask id="VISAO_SAP" name="Visão do SAP">
       <bpmn:extensionElements>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="calculo-custo-estoque-schema.json" />
@@ -764,7 +764,7 @@ total_balance = sum(dados["balance"] for dados in agrupados_por_account.values()
       <bpmndi:BPMNShape id="Gateway_0p3bhmm_di" bpmnElement="REPROCESSAR01" isMarkerVisible="true">
         <dc:Bounds x="975" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_ESTOQUE">
+      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
         <dc:Bounds x="830" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
