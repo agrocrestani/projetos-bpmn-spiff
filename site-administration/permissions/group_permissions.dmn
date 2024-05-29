@@ -645,6 +645,34 @@
           <text>"BASIC"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0qdgvlp">
+        <inputEntry id="UnaryTests_083bqv1">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1accs65">
+          <text>"TI"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0w77jyr">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i5jvny">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14clwae">
+        <inputEntry id="UnaryTests_1a2o0oy">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0f3tcep">
+          <text>"rh"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01ahni6">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yj94os">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
