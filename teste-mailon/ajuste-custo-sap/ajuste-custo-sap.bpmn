@@ -604,11 +604,14 @@ del(documentos_saida)</spiffworkflow:postScript>
 &lt;table&gt;
     &lt;thead&gt;
         &lt;tr&gt;
+            &lt;th colspan="3" style="text-align:center;"&gt;Documento &lt;/th&gt;
             &lt;th colspan="3" style="text-align:center;"&gt;Entrada&lt;/th&gt;
             &lt;th colspan="3" style="text-align:center;"&gt;Saída&lt;/th&gt;
             &lt;th colspan="3" style="text-align:center;"&gt;Saldo Acumulado&lt;/th&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
+            &lt;th&gt;Tipo&lt;/th&gt;
+            &lt;th&gt;Nº&lt;/th&gt;
             &lt;th&gt;Volume&lt;/th&gt;
             &lt;th&gt;Valor Unitário&lt;/th&gt;
             &lt;th&gt;Valor Total&lt;/th&gt;
@@ -623,6 +626,8 @@ del(documentos_saida)</spiffworkflow:postScript>
     &lt;tbody&gt;
        {% for produto in consulta_movimentos_out %}
         &lt;tr&gt;
+            &lt;td&gt;{{ '{:,.3f}'.format(produto['origem']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
+            &lt;td&gt;{{ '{:,.3f}'.format(produto['docnum']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
             {% if produto['origem'] == '7-Nfe.Entrada' or produto['origem'] == '11-Recebimento de Mercadoria' or produto['origem'] == '2-Ent.Mercadoria' %}
             &lt;td&gt;{{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
             &lt;td&gt;{{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
