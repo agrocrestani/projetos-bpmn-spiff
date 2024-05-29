@@ -359,7 +359,7 @@ del(rsp)
 del(n_filiais)
 del(n_safras)
 del(main_usage)
-del(nfeItens)</bpmn:script>
+</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1yu6ymw" sourceRef="Activity_0httw94" targetRef="Gateway_1ls5xhn" />
     <bpmn:manualTask id="Activity_0httw94" name="Dados da NFe">
