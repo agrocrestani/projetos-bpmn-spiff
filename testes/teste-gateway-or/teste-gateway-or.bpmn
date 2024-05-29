@@ -87,8 +87,8 @@ carregaMatriz = 0
 carregaQuerencia = 0</spiffworkflow:preScript>
         <spiffworkflow:postScript>solicitacao_bkp = solicitacao</spiffworkflow:postScript>
         <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="" />
-          <spiffworkflow:property name="formUiSchemaFilename" value="" />
+          <spiffworkflow:property name="formJsonSchemaFilename" value="solicitar-insumos-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="solicitar-insumos-uischema.json" />
         </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
