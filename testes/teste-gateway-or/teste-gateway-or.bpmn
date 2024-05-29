@@ -38,7 +38,7 @@ carregaQuerencia = 1</spiffworkflow:preScript>
       <bpmn:incoming>Flow_1253ilp</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1253ilp" sourceRef="Gateway_0abgvr8" targetRef="Event_1s2nulu">
-      <bpmn:conditionExpression>CargaCompleta == 1</bpmn:conditionExpression>
+      <bpmn:conditionExpression />
     </bpmn:sequenceFlow>
     <bpmn:userTask id="Activity_0mk6h2b" name="Carrega Matriz">
       <bpmn:extensionElements>
@@ -66,155 +66,44 @@ carregaQuerencia = 1</spiffworkflow:preScript>
       <bpmn:outgoing>Flow_0p9abao</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_1vt7q0m" sourceRef="Activity_1mmai9k" targetRef="Activity_0qpzdpu" />
-    <bpmn:scriptTask id="Activity_1mmai9k">
+    <bpmn:userTask id="Activity_1mmai9k" name="Solicitar Insumos">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>n_filiais = []
+for f in filiais:
+    BPLId = f['BPLId']
+    BPLName = f['BPLName']
+    AliasName = f['AliasName']
+    if BPLId in ['2', '3', '4', '5']: 
+        n_filiais.append(
+            {
+                "value": BPLId,
+                "label": AliasName,
+            }
+        )
+
+n_safras = safras
+solicitante = get_current_user()['display_name']
+carregaMatriz = 0
+carregaQuerencia = 0</spiffworkflow:preScript>
+        <spiffworkflow:postScript>solicitacao_bkp = solicitacao</spiffworkflow:postScript>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_1vt7q0m</bpmn:outgoing>
-      <bpmn:script>teste ="""[
-  {"f": {
-      "value": "5",
-      "label": "FAZENDA CURUPAI"
-    },
-  "BPLId": 1,
-  "BPLName": "0109-AGROPECUARIA CRESTANI LTDA",
-  "AliasName": "FAZENDA QUERENCIA",
-  "solicitante": "emerson.gregorio",
-  "carregaMatriz": 0,
-  "carregaQuerencia": 1,
-  "solicitacao": [
-    {
-      "insumo": {
-        "ItemCode": "022607",
-        "ItemName": "CARAVAN",
-        "ItmsGrpNam": "FUNGICIDAS",
-        "InvntryUom": "LITRO",
-        "OnHand": "95,00",
-        "WhsCode": "03.FQUE"
-      },
-      "quantidade": 1
-    }
-  ],
-  "unidade": "3",
-  "safra": "23/24",
-  "solicitacao_bkp": [
-    {
-      "insumo": "{\"ItemCode\":\"022607\",\"ItemName\":\"CARAVAN\",\"ItmsGrpNam\":\"FUNGICIDAS\",\"InvntryUom\":\"LITRO\",\"OnHand\":\"95,00\",\"WhsCode\":\"03.FQUE\"}",
-      "quantidade": 1
-    }
-  ],
-  "CardCode": "C00113",
-  "s": {
-    "insumo": {
-      "ItemCode": "022607",
-      "ItemName": "CARAVAN",
-      "ItmsGrpNam": "FUNGICIDAS",
-      "InvntryUom": "LITRO",
-      "OnHand": "95,00",
-      "WhsCode": "03.FQUE"
-    },
-    "quantidade": 1
-  },
-  "descricaoFilial": "FAZENDA COLORADO",
-  "usuarioEmissorNFe": "emerson.gregorio",
-  "SlpCode": 8,
-  "OwnerCode": 2,
-  "u": {
-    "value": "134",
-    "label": "134-SOMENTE FISCAL"
-  },
-  "done": true,
-  "mainusage": "95",
-  "spiff_instancia": 2319,
-  "spiff_tarefa": "a6c58cc4-8f12-4205-b8d9-b3a91f319c96",
-  "taskInfo": "a6c58cc4-8f12-4205-b8d9-b3a91f319c96",
-  "items": [
-    {
-      "ItemCode": "022607",
-      "Quantity": 1,
-      "WarehouseCode": "03.FQUE"
-    }
-  ],
-  "payload": {
-    "CardCode": "C00113",
-    "BPL_IDAssignedToInvoice": "1",
-    "DocumentsOwner": 2,
-    "SalesPersonCode": 8,
-    "Comments": "Solicitante: emerson.gregorio",
-    "U_AC_Spiff_Instancia": 2319,
-    "U_AC_Spiff_Tarefa": "a6c58cc4-8f12-4205-b8d9-b3a91f319c96",
-    "U_AC_Spiff_Usuario": "emerson.gregorio",
-    "DocumentLines": [
-      {
-        "ItemCode": "022607",
-        "Quantity": 1,
-        "WarehouseCode": "03.FQUE"
-      }
-    ],
-    "TaxExtension": {
-      "MainUsage": "95",
-      "Incoterms": "0"
-    }
-  },
-  "loginSap": "d4dd8462-1c59-11ef-8000-0200170121d3",
-  "url": "https://172.20.1.9:50000/b1s/v1/Invoices",
-  "headers": {
-    "Cookie": "B1SESSION=d4dd8462-1c59-11ef-8000-0200170121d3",
-    "Content-Type": "application/json"
-  },
-  "DocEntry": 8141,
-  "query": "\n            select \"KeyNfe\", CNPJ from SBO_CRESTANI_PRD.AC_NfeRetorno nf where nf.\"DocEntry\" = 2066 AND nf.\"Tabela\" = 'OINV' \n          ",
-  "sqlRsp": [
-    {
-      "keynfe": "51240103262185000109550010000257321290836637",
-      "cnpj": "03262185000109"
-    }
-  ],
-  "chaveAcesso": "51240103262185000109550010000257321290836637",
-  "cnpj": "03262185000109",
-  "arquivo_nfe": "file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf",
-  "DocNum": 4486,
-  "Serial": 27358,
-  "DocDate": "2024-05-27T00:00:00Z",
-  "CardName": "AGROPECUARIA CRESTANI LTDA",
-  "VATRegNum": "03.262.185/0001-09",
-  "itens": [
-    {
-      "LineNum": 0,
-      "ItemCode": "022607",
-      "ItemDescription": "CARAVAN",
-      "Quantity": 1,
-      "Price": 97.444,
-      "WarehouseCode": "03.FQUE",
-      "LineTotal": 97.44
-    }
-  ],
-  "Total": 97.44,
-  "i": {
-    "LineNum": 0,
-    "ItemCode": "022607",
-    "ItemDescription": "CARAVAN",
-    "Quantity": 1,
-    "Price": 97.444,
-    "WarehouseCode": "03.FQUE",
-    "LineTotal": 97.44
-  },
-  "itensMatriz": [],
-  "itensQuerencia": [
-    {
-      "LineNum": 0,
-      "ItemCode": "022607",
-      "ItemDescription": "CARAVAN",
-      "Quantity": 1,
-      "Price": 97.444,
-      "WarehouseCode": "03.FQUE",
-      "LineTotal": 97.44
-    }
-  ],
-  "TotalMatriz": 0,
-  "TotalQuerencia": 97.44
-}
-])"""</bpmn:script>
-    </bpmn:scriptTask>
+      <bpmn:property id="Property_1jhqerw" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1xsqehp">
+        <bpmn:sourceRef>DataStoreReference_05a6n0k</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1jhqerw</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_0346cku">
+        <bpmn:sourceRef>DataStoreReference_1sqlknc</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1jhqerw</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:dataStoreReference id="DataStoreReference_1sqlknc" name="Safras" dataStoreRef="safras" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_05a6n0k" name="Filiais" dataStoreRef="filiais" type="json" />
   </bpmn:process>
+  <bpmn:dataStore id="safras" name="JSONDataStore" />
+  <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_gateway_or_jg9awad">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -239,8 +128,21 @@ carregaQuerencia = 1</spiffworkflow:preScript>
       <bpmndi:BPMNShape id="Activity_1vv948k_di" bpmnElement="Activity_0j9vw6e">
         <dc:Bounds x="530" y="250" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_19zado5_di" bpmnElement="Activity_1mmai9k">
+      <bpmndi:BPMNShape id="Activity_0k9gyrq_di" bpmnElement="Activity_1mmai9k">
         <dc:Bounds x="90" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1sqlknc_di" bpmnElement="DataStoreReference_1sqlknc">
+        <dc:Bounds x="55" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="63" y="342" width="35" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_05a6n0k_di" bpmnElement="DataStoreReference_05a6n0k">
+        <dc:Bounds x="105" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="116" y="342" width="28" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="18" y="177" />
@@ -275,6 +177,14 @@ carregaQuerencia = 1</spiffworkflow:preScript>
       <bpmndi:BPMNEdge id="Flow_1vt7q0m_di" bpmnElement="Flow_1vt7q0m">
         <di:waypoint x="190" y="177" />
         <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1xsqehp_di" bpmnElement="DataInputAssociation_1xsqehp">
+        <di:waypoint x="132" y="285" />
+        <di:waypoint x="139" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0346cku_di" bpmnElement="DataInputAssociation_0346cku">
+        <di:waypoint x="95" y="285" />
+        <di:waypoint x="134" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
