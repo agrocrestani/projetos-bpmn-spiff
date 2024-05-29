@@ -353,7 +353,7 @@ del(nfeItens)</bpmn:script>
     <bpmn:sequenceFlow id="Flow_12ic23r" sourceRef="Activity_1l8yv4t" targetRef="Gateway_1uxkz29" />
     <bpmn:userTask id="Activity_1slp5w4" name="Carregar Tangara">
       <bpmn:extensionElements>
-        <spiffworkflow:postScript />
+        <spiffworkflow:postScript>CargaCompleta = 1</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser># Itens para carregamento
 
 | Campo | Valor |
@@ -412,6 +412,7 @@ del(nfeItens)</bpmn:script>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-carregamento-querencia-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirma-carregamento-querencia-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:postScript>CargaCompleta = 1</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1jtqvig</bpmn:incoming>
       <bpmn:outgoing>Flow_07x8gbu</bpmn:outgoing>
@@ -431,7 +432,9 @@ del(nfeItens)</bpmn:script>
       <bpmn:outgoing>Flow_1vgzhy5</bpmn:outgoing>
       <bpmn:outgoing>Flow_1jtqvig</bpmn:outgoing>
     </bpmn:inclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0cd6msd" sourceRef="Gateway_1qs09x1" targetRef="Event_1ko0nrg" />
+    <bpmn:sequenceFlow id="Flow_0cd6msd" sourceRef="Gateway_1qs09x1" targetRef="Event_1ko0nrg">
+      <bpmn:conditionExpression>CargaCompleta == 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_07x8gbu" sourceRef="Activity_09edzfi" targetRef="Gateway_1qs09x1" />
     <bpmn:inclusiveGateway id="Gateway_1qs09x1">
       <bpmn:incoming>Flow_1h2vqaa</bpmn:incoming>
