@@ -638,7 +638,7 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
     <bpmn:intermediateThrowEvent id="Event_02edask">
       <bpmn:incoming>Flow_1kvn9lo</bpmn:incoming>
       <bpmn:outgoing>Flow_0per5d6</bpmn:outgoing>
-      <bpmn:signalEventDefinition id="SignalEventDefinition_0rt0l5n" />
+      <bpmn:signalEventDefinition id="SignalEventDefinition_0rt0l5n" signalRef="Signal_0ozsqtj" />
     </bpmn:intermediateThrowEvent>
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
@@ -650,6 +650,7 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       <spiffworkflow:variableName>ErroNFeSaida</spiffworkflow:variableName>
     </bpmn:extensionElements>
   </bpmn:error>
+  <bpmn:signal id="Signal_0ozsqtj" name="Signal_0ozsqtj" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_gateway_or_jg9awad">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
