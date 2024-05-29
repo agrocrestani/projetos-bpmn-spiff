@@ -409,7 +409,7 @@ Querencia = 1</spiffworkflow:preScript>
     <bpmn:sequenceFlow id="Flow_0wm04tv" sourceRef="Gateway_17avfyy" targetRef="Event_1a77ga5" />
     <bpmn:dataStoreReference id="DataStoreReference_1yswc4l" name="SapLogin" dataStoreRef="saplogin" type="json" />
     <bpmn:sequenceFlow id="Flow_116m8b4" sourceRef="Activity_041g5go" targetRef="Activity_19h4n71" />
-    <bpmn:sendTask id="Activity_19h4n71" messageRef="Message_1nzvl3p">
+    <bpmn:sendTask id="Activity_19h4n71" name="Retorna processo" messageRef="Message_1nzvl3p">
       <bpmn:incoming>Flow_116m8b4</bpmn:incoming>
     </bpmn:sendTask>
   </bpmn:process>
@@ -505,6 +505,7 @@ Querencia = 1</spiffworkflow:preScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0yzmcys_di" bpmnElement="Activity_19h4n71">
         <dc:Bounds x="1040" y="320" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1lzshrf_di" bpmnElement="Event_0cpryqj">
         <dc:Bounds x="472" y="199" width="36" height="36" />
