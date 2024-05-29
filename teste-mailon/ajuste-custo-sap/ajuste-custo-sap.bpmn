@@ -740,7 +740,7 @@ total_balance = sum(dados["balance"] for dados in agrupados_por_account.values()
         &lt;tr&gt;
             {% if produto['origem'] == '7-Nfe.Entrada' %}
             &lt;td&gt;{{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
-            &lt;td&gt;{{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }&lt;/td&gt;
+            &lt;td&gt;{{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
             &lt;td&gt;{{ '{:,.3f}'.format(produto['custo_total_contabil']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
             {%else %}
             &lt;td&gt; &lt;/td&gt;
