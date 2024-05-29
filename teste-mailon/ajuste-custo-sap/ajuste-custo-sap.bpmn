@@ -984,6 +984,9 @@ del(consulta_movimentos_out)
 del(origens_unicas_list)
 del(documentos_entrada)
 del(documentos_saida)</spiffworkflow:postScript>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="calculo-custo-estoque-schema.json" />
+        </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1wz3wum</bpmn:incoming>
       <bpmn:outgoing>Flow_04afnxr</bpmn:outgoing>
