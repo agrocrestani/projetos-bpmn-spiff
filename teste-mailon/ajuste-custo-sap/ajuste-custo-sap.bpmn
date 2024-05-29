@@ -742,7 +742,7 @@ total_balance = sum(dados["balance"] for dados in agrupados_por_account.values()
             &lt;td&gt;100&lt;/td&gt;
             &lt;td&gt;5.00&lt;/td&gt;
             &lt;td&gt;500.00&lt;/td&gt;
-            {%end if %}
+            {%endif %}
             &lt;td&gt;50&lt;/td&gt;
             &lt;td&gt;4.00&lt;/td&gt;
             &lt;td&gt;200.00&lt;/td&gt;
@@ -750,6 +750,7 @@ total_balance = sum(dados["balance"] for dados in agrupados_por_account.values()
             &lt;td&gt;5.00&lt;/td&gt;
             &lt;td&gt;250.00&lt;/td&gt;
         &lt;/tr&gt;
+    {% endfor %}
     &lt;/tbody&gt;
 &lt;/table&gt;
 
@@ -981,6 +982,7 @@ del(documentos_entrada)
 del(documentos_saida)</spiffworkflow:postScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="calculo-custo-estoque-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="calculo-custo-estoque-uischema.json" />
         </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1wz3wum</bpmn:incoming>
