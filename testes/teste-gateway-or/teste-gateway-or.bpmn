@@ -610,10 +610,6 @@ for i in itens:
       <bpmn:incoming>Flow_1yy4xl6</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1yy4xl6" sourceRef="Activity_1k5utx1" targetRef="Event_1349eru" />
-    <bpmn:boundaryEvent id="Event_1kvcfe7" attachedToRef="Activity_0y5b4l9">
-      <bpmn:outgoing>Flow_0gy2hvf</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_19a0j9g" />
-    </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_0gy2hvf" sourceRef="Event_1kvcfe7" targetRef="Activity_0d9a181" />
     <bpmn:manualTask id="Activity_0d9a181" name="Verifica o erro">
       <bpmn:extensionElements>
@@ -629,11 +625,20 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       <bpmn:outgoing>Flow_1kvn9lo</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_1kvn9lo" sourceRef="Activity_0d9a181" targetRef="Activity_0qvcr8l" />
+    <bpmn:boundaryEvent id="Event_1kvcfe7" attachedToRef="Activity_0y5b4l9">
+      <bpmn:outgoing>Flow_0gy2hvf</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0h7itl4" errorRef="Error_NFe_Saida" />
+    </bpmn:boundaryEvent>
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
+  <bpmn:error id="Error_NFe_Saida" name="Error_NFe_Saida">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>ErroNFeSaida</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_gateway_or_jg9awad">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -728,17 +733,17 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Event_1349eru_di" bpmnElement="Event_1349eru">
         <dc:Bounds x="2622" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_0l61g3j_di" bpmnElement="DataStoreReference_0l61g3j">
-        <dc:Bounds x="875" y="285" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="877" y="342" width="47" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_01jsgb5_di" bpmnElement="Activity_0d9a181">
         <dc:Bounds x="770" y="330" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1tq42j6_di" bpmnElement="Event_1kvcfe7">
+      <bpmndi:BPMNShape id="DataStoreReference_0l61g3j_di" bpmnElement="DataStoreReference_0l61g3j">
+        <dc:Bounds x="915" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="917" y="342" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_19oeesu_di" bpmnElement="Event_1kvcfe7">
         <dc:Bounds x="802" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
@@ -796,8 +801,8 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
         <di:waypoint x="950" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0t1l8va_di" bpmnElement="DataInputAssociation_0t1l8va">
-        <di:waypoint x="886" y="285" />
-        <di:waypoint x="847" y="217" />
+        <di:waypoint x="918" y="285" />
+        <di:waypoint x="859" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1b9zdsp_di" bpmnElement="Flow_1b9zdsp">
         <di:waypoint x="1050" y="177" />
