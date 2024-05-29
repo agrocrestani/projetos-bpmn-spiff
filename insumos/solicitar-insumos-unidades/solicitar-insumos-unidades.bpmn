@@ -208,11 +208,14 @@ headers = {
     </bpmn:serviceTask>
     <bpmn:manualTask id="Activity_041g5go" name="Verifica o Erro e tenta novamente">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>status_code = err1['status_code']
-command = err1['command_response_body']
-command = json.loads(command)
-errorCode = command['body']['error']['code']
-errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
+        <spiffworkflow:preScript>try:
+    status_code = lancado
+    errorCode = rsp['body']['error']['code']
+    errorMessage = rsp['body']['error']['message']['value']
+except:
+    status_code = sapError['status_code']
+    errorCode = sapError['error_code']
+    errorMessage = sapError['message']</spiffworkflow:preScript>
         <spiffworkflow:postScript>del(solicitacao)
 solicitacao = solicitacao_bkp</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
@@ -495,11 +498,11 @@ Querencia = 1</spiffworkflow:preScript>
       <bpmndi:BPMNShape id="Event_1omah17_di" bpmnElement="Event_1753ttz">
         <dc:Bounds x="1072" y="342" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_122g4zr_di" bpmnElement="Event_14irs56">
-        <dc:Bounds x="922" y="199" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1lzshrf_di" bpmnElement="Event_0cpryqj">
         <dc:Bounds x="472" y="199" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_122g4zr_di" bpmnElement="Event_14irs56">
+        <dc:Bounds x="922" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_02ebu0j_di" bpmnElement="Flow_02ebu0j">
         <di:waypoint x="215" y="177" />
