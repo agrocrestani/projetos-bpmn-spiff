@@ -117,7 +117,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
     <bpmn:dataStoreReference id="DataStoreReference_1sqlknc" name="Safras" dataStoreRef="safras" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_05a6n0k" name="Filiais" dataStoreRef="filiais" type="json" />
     <bpmn:sequenceFlow id="Flow_0acl2wc" sourceRef="Activity_0qvcr8l" targetRef="Activity_0qpzdpu" />
-    <bpmn:userTask id="Activity_0qvcr8l">
+    <bpmn:userTask id="Activity_0qvcr8l" name="Confirma Solicitação">
       <bpmn:extensionElements>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirmar-solicitacao-schema.json" />
@@ -172,6 +172,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ww4plg_di" bpmnElement="Activity_0qvcr8l">
         <dc:Bounds x="270" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="18" y="177" />
