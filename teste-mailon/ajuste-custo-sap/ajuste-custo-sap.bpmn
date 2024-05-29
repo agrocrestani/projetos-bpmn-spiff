@@ -739,10 +739,14 @@ total_balance = sum(dados["balance"] for dados in agrupados_por_account.values()
        {% for produto in consulta_movimentos_out %}
         &lt;tr&gt;
             {% if produto['origem'] == '7-Nfe.Entrada' %}
-            &lt;td&gt;100&lt;/td&gt;
-            &lt;td&gt;5.00&lt;/td&gt;
-            &lt;td&gt;500.00&lt;/td&gt;
-            {%endif %}
+            &lt;td&gt;{{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
+            &lt;td&gt;{{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }&lt;/td&gt;
+            &lt;td&gt;{{ '{:,.3f}'.format(produto['custo_total_contabil']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
+            {%else %}
+            &lt;td&gt; &lt;/td&gt;
+            &lt;td&gt; &lt;/td&gt;
+            &lt;td&gt; &lt;/td&gt;
+            {% endif %}
             &lt;td&gt;50&lt;/td&gt;
             &lt;td&gt;4.00&lt;/td&gt;
             &lt;td&gt;200.00&lt;/td&gt;
@@ -1006,34 +1010,11 @@ del(documentos_saida)</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-258" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
-        <dc:Bounds x="-10" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="1342" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_18afsbp_di" bpmnElement="VISAO_CONTABIL">
-        <dc:Bounds x="1220" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0p3bhmm_di" bpmnElement="REPROCESSAR01" isMarkerVisible="true">
-        <dc:Bounds x="1135" y="152" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1128" y="133" width="64" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1hiqpmg_di" bpmnElement="ESCOLHA_VISAO" isMarkerVisible="true">
-        <dc:Bounds x="855" y="152" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="845" y="122" width="70" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
-        <dc:Bounds x="830" y="270" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zy0efu_di" bpmnElement="VISAO_CALCULADA">
-        <dc:Bounds x="980" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
+        <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
@@ -1080,6 +1061,29 @@ del(documentos_saida)</spiffworkflow:postScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
         <dc:Bounds x="1222" y="372" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0p3bhmm_di" bpmnElement="REPROCESSAR01" isMarkerVisible="true">
+        <dc:Bounds x="1135" y="152" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1128" y="133" width="64" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
+        <dc:Bounds x="830" y="270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18afsbp_di" bpmnElement="VISAO_CONTABIL">
+        <dc:Bounds x="1220" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zy0efu_di" bpmnElement="VISAO_CALCULADA">
+        <dc:Bounds x="980" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1hiqpmg_di" bpmnElement="ESCOLHA_VISAO" isMarkerVisible="true">
+        <dc:Bounds x="855" y="152" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="845" y="122" width="70" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-222" y="177" />
