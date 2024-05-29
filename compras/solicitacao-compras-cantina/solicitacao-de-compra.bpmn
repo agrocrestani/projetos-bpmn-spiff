@@ -160,7 +160,11 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
           <spiffworkflow:property name="formUiSchemaFilename" value="solicitacao-compra-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:preScript />
-        <spiffworkflow:postScript>solicitacao_bkp = solicitacao</spiffworkflow:postScript>
+        <spiffworkflow:postScript>solicitacao_bkp = solicitacao
+
+for f in n_filiais:
+    if int(f['value']) == int(BPLId):
+        BPLName = f['label']</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1d8mo6p</bpmn:incoming>
       <bpmn:incoming>Flow_13sk1mn</bpmn:incoming>
@@ -500,7 +504,7 @@ Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número:
     <bpmn:callActivity id="Activity_0fy07h0" name="Define unidade e departamento" calledElement="Process_definir_unidade_e_departamento_zxer6t3">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
-        <spiffworkflow:postScript>group_identifier = f"{unidade}_Cantina"
+        <spiffworkflow:postScript>group_identifier = f"{unidade}_{departamento}"
 # group_identifier = f"{unidade}_{departamento}"
 group_members = get_group_members(group_identifier)
 # lane_owners = { "Cantina": group_members }
