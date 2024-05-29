@@ -405,9 +405,6 @@ Querencia = 1</spiffworkflow:preScript>
       <bpmn:incoming>Flow_0pakz75</bpmn:incoming>
       <bpmn:messageEventDefinition id="MessageEventDefinition_1bd7r9v" messageRef="Message_1dy1rlf" />
     </bpmn:intermediateThrowEvent>
-    <bpmn:boundaryEvent id="Event_0cpryqj" cancelActivity="false" attachedToRef="Activity_0wopia0" messageRef="[object Object]">
-      <bpmn:messageEventDefinition id="MessageEventDefinition_006fjht" messageRef="Message_1dy1rlf" />
-    </bpmn:boundaryEvent>
     <bpmn:boundaryEvent id="Event_14irs56" attachedToRef="Activity_0823umq">
       <bpmn:outgoing>Flow_1kvfsop</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_09bo2x8" errorRef="Error_1" />
@@ -517,9 +514,6 @@ Querencia = 1</spiffworkflow:preScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_10zpyeo_di" bpmnElement="Event_1ufej1r">
         <dc:Bounds x="452" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_12p5r3c_di" bpmnElement="Event_0cpryqj">
-        <dc:Bounds x="662" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_122g4zr_di" bpmnElement="Event_14irs56">
         <dc:Bounds x="1112" y="199" width="36" height="36" />
