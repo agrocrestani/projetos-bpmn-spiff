@@ -409,10 +409,10 @@ Querencia = 1</spiffworkflow:preScript>
     <bpmn:sequenceFlow id="Flow_0ajrqjl" sourceRef="Activity_10iltbi" targetRef="Gateway_17avfyy" />
     <bpmn:sequenceFlow id="Flow_0wm04tv" sourceRef="Gateway_17avfyy" targetRef="Event_1a77ga5" />
     <bpmn:dataStoreReference id="DataStoreReference_1yswc4l" name="SapLogin" dataStoreRef="saplogin" type="json" />
-    <bpmn:endEvent id="Event_1753ttz" messageRef="[object Object]">
+    <bpmn:intermediateThrowEvent id="Event_1753ttz" messageRef="[object Object]">
       <bpmn:incoming>Flow_0m5jcm9</bpmn:incoming>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_1p07qs2" messageRef="Message_1dy1rlf" />
-    </bpmn:endEvent>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_10koq11" messageRef="Message_1dy1rlf" />
+    </bpmn:intermediateThrowEvent>
   </bpmn:process>
   <bpmn:message id="Message_1dy1rlf" name="Message_error" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -495,7 +495,7 @@ Querencia = 1</spiffworkflow:preScript>
           <dc:Bounds x="1017" y="292" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1omah17_di" bpmnElement="Event_1753ttz">
+      <bpmndi:BPMNShape id="Event_1y1u8mz_di" bpmnElement="Event_1753ttz">
         <dc:Bounds x="1072" y="342" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1lzshrf_di" bpmnElement="Event_0cpryqj">
