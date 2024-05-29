@@ -424,11 +424,11 @@ del(nfeItens)</bpmn:script>
     <bpmn:sequenceFlow id="Flow_1jtqvig" sourceRef="Gateway_1uxkz29" targetRef="Activity_09edzfi" />
     <bpmn:sequenceFlow id="Flow_1h2vqaa" sourceRef="Activity_1slp5w4" targetRef="Event_1ko0nrg" />
     <bpmn:sequenceFlow id="Flow_1inirye" sourceRef="Activity_09edzfi" targetRef="Event_1ko0nrg" />
-    <bpmn:parallelGateway id="Gateway_1uxkz29" name="CarregaIn">
+    <bpmn:complexGateway id="Gateway_1uxkz29" name="CarregaIn">
       <bpmn:incoming>Flow_12ic23r</bpmn:incoming>
       <bpmn:outgoing>Flow_1vgzhy5</bpmn:outgoing>
       <bpmn:outgoing>Flow_1jtqvig</bpmn:outgoing>
-    </bpmn:parallelGateway>
+    </bpmn:complexGateway>
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
@@ -507,7 +507,7 @@ del(nfeItens)</bpmn:script>
       <bpmndi:BPMNShape id="Event_1ko0nrg_di" bpmnElement="Event_1ko0nrg">
         <dc:Bounds x="1792" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1lvcobh_di" bpmnElement="Gateway_1uxkz29">
+      <bpmndi:BPMNShape id="Gateway_125jq7m_di" bpmnElement="Gateway_1uxkz29">
         <dc:Bounds x="1395" y="152" width="50" height="50" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1396" y="122" width="49" height="14" />
