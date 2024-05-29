@@ -627,7 +627,7 @@ del(documentos_saida)</spiffworkflow:postScript>
        {% for produto in consulta_movimentos_out %}
         &lt;tr&gt;
             &lt;td&gt;{{ produto['origem'] }}&lt;/td&gt;
-            &lt;td&gt;{{ 'produto['docnum'] }}&lt;/td&gt;
+            &lt;td&gt;{{ produto['docnum'] }}&lt;/td&gt;
             {% if produto['origem'] == '7-Nfe.Entrada' or produto['origem'] == '11-Recebimento de Mercadoria' or produto['origem'] == '2-Ent.Mercadoria' %}
             &lt;td&gt;{{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
             &lt;td&gt;{{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
