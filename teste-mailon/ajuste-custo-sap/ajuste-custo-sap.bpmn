@@ -771,7 +771,7 @@ total_balance = sum(dados["balance"] for dados in agrupados_por_account.values()
       <bpmndi:BPMNShape id="Gateway_0p3bhmm_di" bpmnElement="REPROCESSAR01" isMarkerVisible="true">
         <dc:Bounds x="1135" y="152" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="998" y="170" width="64" height="14" />
+          <dc:Bounds x="1128" y="133" width="64" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1hiqpmg_di" bpmnElement="ESCOLHA_VISAO" isMarkerVisible="true">
