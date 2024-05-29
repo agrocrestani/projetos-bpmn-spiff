@@ -86,6 +86,10 @@ solicitante = get_current_user()['display_name']
 carregaMatriz = 0
 carregaQuerencia = 0</spiffworkflow:preScript>
         <spiffworkflow:postScript>solicitacao_bkp = solicitacao</spiffworkflow:postScript>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="" />
+        </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_1vt7q0m</bpmn:outgoing>
