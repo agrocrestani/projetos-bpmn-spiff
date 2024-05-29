@@ -414,11 +414,10 @@ del(nfeItens)</bpmn:script>
         </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1jtqvig</bpmn:incoming>
-      <bpmn:outgoing>Flow_1inirye</bpmn:outgoing>
+      <bpmn:outgoing>Flow_07x8gbu</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:endEvent id="Event_1ko0nrg">
-      <bpmn:incoming>Flow_1h2vqaa</bpmn:incoming>
-      <bpmn:incoming>Flow_1inirye</bpmn:incoming>
+      <bpmn:incoming>Flow_0cd6msd</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1vgzhy5" sourceRef="Gateway_1uxkz29" targetRef="Activity_1slp5w4">
       <bpmn:conditionExpression>carregaMatriz == 1</bpmn:conditionExpression>
@@ -426,12 +425,18 @@ del(nfeItens)</bpmn:script>
     <bpmn:sequenceFlow id="Flow_1jtqvig" sourceRef="Gateway_1uxkz29" targetRef="Activity_09edzfi">
       <bpmn:conditionExpression>carregaQuerencia == 1</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_1h2vqaa" sourceRef="Activity_1slp5w4" targetRef="Event_1ko0nrg" />
-    <bpmn:sequenceFlow id="Flow_1inirye" sourceRef="Activity_09edzfi" targetRef="Event_1ko0nrg" />
+    <bpmn:sequenceFlow id="Flow_1h2vqaa" sourceRef="Activity_1slp5w4" targetRef="Gateway_1qs09x1" />
     <bpmn:inclusiveGateway id="Gateway_1uxkz29" name="CarregaIn">
       <bpmn:incoming>Flow_12ic23r</bpmn:incoming>
       <bpmn:outgoing>Flow_1vgzhy5</bpmn:outgoing>
       <bpmn:outgoing>Flow_1jtqvig</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0cd6msd" sourceRef="Gateway_1qs09x1" targetRef="Event_1ko0nrg" />
+    <bpmn:sequenceFlow id="Flow_07x8gbu" sourceRef="Activity_09edzfi" targetRef="Gateway_1qs09x1" />
+    <bpmn:inclusiveGateway id="Gateway_1qs09x1">
+      <bpmn:incoming>Flow_1h2vqaa</bpmn:incoming>
+      <bpmn:incoming>Flow_07x8gbu</bpmn:incoming>
+      <bpmn:outgoing>Flow_0cd6msd</bpmn:outgoing>
     </bpmn:inclusiveGateway>
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
@@ -517,6 +522,9 @@ del(nfeItens)</bpmn:script>
           <dc:Bounds x="1396" y="122" width="49" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1tedn1a_di" bpmnElement="Gateway_1qs09x1">
+        <dc:Bounds x="1675" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_122g4zr_di" bpmnElement="Event_14irs56">
         <dc:Bounds x="922" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -588,13 +596,16 @@ del(nfeItens)</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1h2vqaa_di" bpmnElement="Flow_1h2vqaa">
         <di:waypoint x="1610" y="177" />
+        <di:waypoint x="1675" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cd6msd_di" bpmnElement="Flow_0cd6msd">
+        <di:waypoint x="1725" y="177" />
         <di:waypoint x="1792" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1inirye_di" bpmnElement="Flow_1inirye">
+      <bpmndi:BPMNEdge id="Flow_07x8gbu_di" bpmnElement="Flow_07x8gbu">
         <di:waypoint x="1610" y="290" />
-        <di:waypoint x="1710" y="290" />
-        <di:waypoint x="1710" y="177" />
-        <di:waypoint x="1792" y="177" />
+        <di:waypoint x="1700" y="290" />
+        <di:waypoint x="1700" y="202" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
