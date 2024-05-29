@@ -37,7 +37,9 @@ carregaQuerencia = 1</spiffworkflow:preScript>
     <bpmn:endEvent id="Event_1s2nulu">
       <bpmn:incoming>Flow_1253ilp</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1253ilp" sourceRef="Gateway_0abgvr8" targetRef="Event_1s2nulu" />
+    <bpmn:sequenceFlow id="Flow_1253ilp" sourceRef="Gateway_0abgvr8" targetRef="Event_1s2nulu">
+      <bpmn:conditionExpression>CargaCompleta == 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:userTask id="Activity_0mk6h2b" name="Carrega Matriz">
       <bpmn:extensionElements>
         <spiffworkflow:properties>
@@ -46,6 +48,7 @@ carregaQuerencia = 1</spiffworkflow:preScript>
         </spiffworkflow:properties>
         <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{carregaMatriz }}
 ### carregaQuerencia = {{carregaQuerencia }}</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:postScript>CargaCompleta = 1</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1m51sal</bpmn:incoming>
       <bpmn:outgoing>Flow_0zni5ev</bpmn:outgoing>
@@ -57,6 +60,7 @@ carregaQuerencia = 1</spiffworkflow:preScript>
         </spiffworkflow:properties>
         <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{carregaMatriz }}
 ### carregaQuerencia = {{carregaQuerencia }}</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:postScript>CargaCompleta = 1</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1rtxn9s</bpmn:incoming>
       <bpmn:outgoing>Flow_0p9abao</bpmn:outgoing>
