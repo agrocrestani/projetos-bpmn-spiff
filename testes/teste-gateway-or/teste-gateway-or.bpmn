@@ -131,6 +131,22 @@ carregaQuerencia = 0</spiffworkflow:preScript>
     <bpmn:businessRuleTask id="Activity_1tihesz" name="Define Cliente">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
+        <spiffworkflow:postScript>for s in solicitacao:
+    s['insumo'] = json.loads(s['insumo'])
+
+
+descricaoFilial = ""
+for f in n_filiais:
+    if f['value'] == unidade:
+      descricaoFilial = f['label']
+
+usuarioEmissorNFe = get_current_user()['display_name']
+
+SlpCode = 8
+OwnerCode = 2
+main_usage = []
+for u in utilizacoes:
+    main_usage.append(u)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0acl2wc</bpmn:incoming>
       <bpmn:outgoing>Flow_1ni79v6</bpmn:outgoing>
@@ -140,10 +156,11 @@ carregaQuerencia = 0</spiffworkflow:preScript>
         <bpmn:targetRef>Property_017x2hi</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:businessRuleTask>
-    <bpmn:dataStoreReference id="DataStoreReference_12fjr4t" />
+    <bpmn:dataStoreReference id="DataStoreReference_12fjr4t" name="Utilizações" dataStoreRef="utilizacoes" type="json" />
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
+  <bpmn:dataStore id="utilizacoes" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_gateway_or_jg9awad">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -194,6 +211,9 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_12fjr4t_di" bpmnElement="DataStoreReference_12fjr4t">
         <dc:Bounds x="435" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="433" y="342" width="54" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="18" y="177" />
