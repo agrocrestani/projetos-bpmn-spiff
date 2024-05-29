@@ -1,1 +1,13 @@
-{}
+{
+  "description": "Confirme se os dados da nota estão corretos.",
+  "required": [
+    "confirma"
+  ],
+  "properties": {
+    "confirma": {
+      "type": "boolean",
+      "title": "Confirma que os dados da nota estão corretos?",
+      "default": false
+    }
+  }
+}
