@@ -12,7 +12,7 @@
         <spiffworkflow:preScript>carregaMatriz = 1
 carregaQuerencia = 1</spiffworkflow:preScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0415lcg</bpmn:incoming>
+      <bpmn:incoming>Flow_1b9zdsp</bpmn:incoming>
       <bpmn:outgoing>Flow_0dnvt7r</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_0dnvt7r" sourceRef="Activity_0qpzdpu" targetRef="Gateway_1ls5xhn" />
@@ -197,7 +197,7 @@ for u in utilizacoes:
       <bpmn:incoming>Flow_1ni79v6</bpmn:incoming>
       <bpmn:outgoing>Flow_1dj2xwc</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_0415lcg" sourceRef="Activity_0y5b4l9" targetRef="Activity_0qpzdpu" />
+    <bpmn:sequenceFlow id="Flow_0415lcg" sourceRef="Activity_0y5b4l9" targetRef="Activity_0h4ocru" />
     <bpmn:serviceTask id="Activity_0y5b4l9" name="Emite NFe">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
@@ -261,6 +261,88 @@ headers = {
       </bpmn:dataInputAssociation>
     </bpmn:serviceTask>
     <bpmn:dataStoreReference id="DataStoreReference_0l61g3j" name="SapLogin" dataStoreRef="saplogin" type="json" />
+    <bpmn:sequenceFlow id="Flow_1b9zdsp" sourceRef="Activity_0h4ocru" targetRef="Activity_0qpzdpu" />
+    <bpmn:scriptTask id="Activity_0h4ocru" name="Busca Chave de acesso">
+      <bpmn:incoming>Flow_0415lcg</bpmn:incoming>
+      <bpmn:outgoing>Flow_1b9zdsp</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+DocEntry = 2066
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+            select "KeyNfe", CNPJ from SBO_CRESTANI_PRD.AC_NfeRetorno nf where nf."DocEntry" = {DocEntry} AND nf."Tabela" = 'OINV' 
+          """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+sqlRsp = Hana(connection).selectDb(query)
+
+chaveAcesso = sqlRsp[0]['keynfe']
+cnpj = sqlRsp[0]['cnpj']
+arquivo_nfe = f'file://///srv-rds-02/CaminhosSAP/Anexos/NFe/{cnpj}/danfe/{chaveAcesso}.pdf'
+
+del(connection)
+
+
+nfe = rsp["body"]
+nfeItens = nfe['DocumentLines']
+
+DocEntry = nfe['DocEntry']
+DocNum = nfe['DocNum']
+Serial = nfe['SequenceSerial']
+DocDate = nfe['DocDate']
+CardCode = nfe['CardCode']
+CardName = nfe['CardName']
+BPLId = nfe['BPL_IDAssignedToInvoice']
+BPLName = nfe['BPLName']
+VATRegNum = nfe['VATRegNum']
+
+itens = []
+Total = 0
+for i in nfeItens:
+    itens.append(
+        {
+            "LineNum": i['LineNum'],
+            "ItemCode": i['ItemCode'],
+            "ItemDescription": i['ItemDescription'],
+            "Quantity": i['Quantity'],
+            "Price": i['Price'],
+            "WarehouseCode": i['WarehouseCode'],
+            "LineTotal": i['LineTotal']
+        }
+    )
+    Total += i['LineTotal']
+
+
+itensMatriz = []
+itensQuerencia = []
+TotalMatriz = 0
+TotalQuerencia = 0
+
+
+for i in itens:
+    if i['WarehouseCode'] == '03.MATR':
+        # carregaMatriz = 1
+        itensMatriz.append(i)
+        TotalMatriz += i['LineTotal']
+    elif i['WarehouseCode'] == '03.FQUE':
+        # carregaQuerencia = 1
+        itensQuerencia.append(i)
+        TotalQuerencia += i['LineTotal']
+
+del(rsp)
+del(n_filiais)
+del(n_safras)
+del(main_usage)
+del(nfe)
+del(nfeItens)</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
@@ -270,25 +352,6 @@ headers = {
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_gateway_or_jg9awad">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-18" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
-        <dc:Bounds x="970" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_17vz534_di" bpmnElement="Gateway_1ls5xhn">
-        <dc:Bounds x="1125" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1yhsh0t_di" bpmnElement="Gateway_0abgvr8">
-        <dc:Bounds x="1385" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1s2nulu_di" bpmnElement="Event_1s2nulu">
-        <dc:Bounds x="1492" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1gof64r_di" bpmnElement="Activity_0mk6h2b">
-        <dc:Bounds x="1230" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1vv948k_di" bpmnElement="Activity_0j9vw6e">
-        <dc:Bounds x="1230" y="250" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0k9gyrq_di" bpmnElement="Activity_1mmai9k">
         <dc:Bounds x="90" y="137" width="100" height="80" />
@@ -333,35 +396,57 @@ headers = {
           <dc:Bounds x="837" y="342" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
+        <dc:Bounds x="1550" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_17vz534_di" bpmnElement="Gateway_1ls5xhn">
+        <dc:Bounds x="1705" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1yhsh0t_di" bpmnElement="Gateway_0abgvr8">
+        <dc:Bounds x="1965" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1s2nulu_di" bpmnElement="Event_1s2nulu">
+        <dc:Bounds x="2072" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1gof64r_di" bpmnElement="Activity_0mk6h2b">
+        <dc:Bounds x="1810" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vv948k_di" bpmnElement="Activity_0j9vw6e">
+        <dc:Bounds x="1810" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_178r38e_di" bpmnElement="Activity_0h4ocru">
+        <dc:Bounds x="950" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="18" y="177" />
         <di:waypoint x="90" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0dnvt7r_di" bpmnElement="Flow_0dnvt7r">
-        <di:waypoint x="1070" y="177" />
-        <di:waypoint x="1125" y="177" />
+        <di:waypoint x="1650" y="177" />
+        <di:waypoint x="1705" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1m51sal_di" bpmnElement="Flow_1m51sal">
-        <di:waypoint x="1175" y="177" />
-        <di:waypoint x="1230" y="177" />
+        <di:waypoint x="1755" y="177" />
+        <di:waypoint x="1810" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1rtxn9s_di" bpmnElement="Flow_1rtxn9s">
-        <di:waypoint x="1150" y="202" />
-        <di:waypoint x="1150" y="290" />
-        <di:waypoint x="1230" y="290" />
+        <di:waypoint x="1730" y="202" />
+        <di:waypoint x="1730" y="290" />
+        <di:waypoint x="1810" y="290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0zni5ev_di" bpmnElement="Flow_0zni5ev">
-        <di:waypoint x="1330" y="177" />
-        <di:waypoint x="1385" y="177" />
+        <di:waypoint x="1910" y="177" />
+        <di:waypoint x="1965" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0p9abao_di" bpmnElement="Flow_0p9abao">
-        <di:waypoint x="1330" y="290" />
-        <di:waypoint x="1410" y="290" />
-        <di:waypoint x="1410" y="202" />
+        <di:waypoint x="1910" y="290" />
+        <di:waypoint x="1990" y="290" />
+        <di:waypoint x="1990" y="202" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1253ilp_di" bpmnElement="Flow_1253ilp">
-        <di:waypoint x="1435" y="177" />
-        <di:waypoint x="1492" y="177" />
+        <di:waypoint x="2015" y="177" />
+        <di:waypoint x="2072" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1vt7q0m_di" bpmnElement="Flow_1vt7q0m">
         <di:waypoint x="190" y="177" />
@@ -393,11 +478,15 @@ headers = {
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0415lcg_di" bpmnElement="Flow_0415lcg">
         <di:waypoint x="880" y="177" />
-        <di:waypoint x="970" y="177" />
+        <di:waypoint x="950" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0t1l8va_di" bpmnElement="DataInputAssociation_0t1l8va">
         <di:waypoint x="853" y="285" />
         <di:waypoint x="835" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1b9zdsp_di" bpmnElement="Flow_1b9zdsp">
+        <di:waypoint x="1050" y="177" />
+        <di:waypoint x="1550" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
