@@ -641,13 +641,15 @@ del(documentos_saida)</spiffworkflow:postScript>
             &lt;td&gt; &lt;/td&gt;
             &lt;td&gt; &lt;/td&gt;
             {% endif %}
-            &lt;td&gt;99999&lt;/td&gt;
-            &lt;td&gt;99999&lt;/td&gt;
-            &lt;td&gt;99999&lt;/td&gt;
+            &lt;td&gt;{{ '{:,.3f}'.format(produto['estoque_atual']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
+            &lt;td&gt;{{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
+            &lt;td&gt; {{ '{:,.3f}'.format(produto['custo_estoque_atual']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} &lt;/td&gt;
         &lt;/tr&gt;
     {% endfor %}
     &lt;/tbody&gt;
 &lt;/table&gt;
+
+
 
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript># Inicialize as variáveis para calcular o custo médio unitário
@@ -907,6 +909,10 @@ del(documentos_saida)</spiffworkflow:postScript>
         <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
+        <dc:Bounds x="820" y="270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
       </bpmndi:BPMNShape>
@@ -957,10 +963,6 @@ del(documentos_saida)</spiffworkflow:postScript>
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1158" y="133" width="64" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
-        <dc:Bounds x="830" y="270" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0zy0efu_di" bpmnElement="VISAO_CALCULADA">
         <dc:Bounds x="980" y="137" width="100" height="80" />
@@ -1017,13 +1019,15 @@ del(documentos_saida)</spiffworkflow:postScript>
         <di:waypoint x="40" y="137" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0m9nzqu_di" bpmnElement="Flow_0m9nzqu">
-        <di:waypoint x="930" y="300" />
+        <di:waypoint x="920" y="300" />
         <di:waypoint x="1160" y="300" />
         <di:waypoint x="1160" y="202" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0gxeqjd_di" bpmnElement="Flow_0gxeqjd">
         <di:waypoint x="880" y="202" />
-        <di:waypoint x="880" y="270" />
+        <di:waypoint x="880" y="236" />
+        <di:waypoint x="870" y="236" />
+        <di:waypoint x="870" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1wz3wum_di" bpmnElement="Flow_1wz3wum">
         <di:waypoint x="905" y="177" />
