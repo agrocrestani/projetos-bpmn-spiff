@@ -51,7 +51,7 @@ query_movimento = f"""
 	                t0."WhsCode" = '{deposito}' AND
                     (t0."DocDueDate" &gt;= '{dataInicio}' OR {dataInicio} IS NULL) AND 
                     (t0."DocDueDate" &lt;= '{dataFinal}' OR {dataFinal} IS NULL)
-                ORDER BY t0."TaxDate", t0."TIPO"
+                ORDER BY t0."CreateDate", t0."TIPO"
                 """   
                     
 consulta_movimentos = Hana(connection).selectDb(query_movimento)
