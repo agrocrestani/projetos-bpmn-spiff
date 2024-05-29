@@ -720,9 +720,9 @@ if isinstance(consulta_movimentos_out, list):
                 total_preco_unitario += produtoAux['linetotal']
                 total_quantidade += produtoAux['qtde']
                 
-                if total_quantidade &gt; 0:
+                if (total_quantidade - produtoAux['qtde']) &gt; 0:
                     custo_medio = total_preco_unitario / total_quantidade
-                elif total_quantidade == 0:
+                elif (total_quantidade - produtoAux['qtde']) == 0:
                     custo_medio = produtoAux['linetotal'] / produtoAux['qtde']
                 else: 
                     custo_medio = (custo_medio + (produtoAux['linetotal'] / produtoAux['qtde'])) / 2
