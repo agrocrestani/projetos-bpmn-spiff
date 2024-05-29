@@ -6,7 +6,7 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_00bh8bd" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_11bq3ww</bpmn:incoming>
+      <bpmn:incoming>Flow_053mnsg</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:scriptTask id="BuscaProdutosPorDepositoSAP" name="Busca Produtos por Deposito no SAP">
       <bpmn:extensionElements>
@@ -322,15 +322,12 @@ del(produtosList)</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_0gpghte" sourceRef="Gateway_0zhxafw" targetRef="Event_1n8n9v9">
       <bpmn:conditionExpression>novaBusca == False</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:exclusiveGateway id="REPROCESSAR01" name="Reprocessar" default="Flow_1pd10hb">
+    <bpmn:exclusiveGateway id="REPROCESSAR01" name="Reprocessar" default="Flow_053mnsg">
       <bpmn:incoming>Flow_0m9nzqu</bpmn:incoming>
       <bpmn:incoming>Flow_04afnxr</bpmn:incoming>
-      <bpmn:outgoing>Flow_1pd10hb</bpmn:outgoing>
       <bpmn:outgoing>Flow_10e4xqh</bpmn:outgoing>
+      <bpmn:outgoing>Flow_053mnsg</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_1pd10hb" sourceRef="REPROCESSAR01" targetRef="VISAO_CONTABIL">
-      <bpmn:conditionExpression>recalcular == False</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
     <bpmn:userTask id="VISAO_SAP" name="Visão do SAP">
       <bpmn:extensionElements>
         <spiffworkflow:properties>
@@ -593,118 +590,6 @@ del(documentos_saida)</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_10e4xqh" sourceRef="REPROCESSAR01" targetRef="BuscaProdutosPorDepositoSAP">
       <bpmn:conditionExpression>recalcular == True</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_11bq3ww" sourceRef="VISAO_CONTABIL" targetRef="EndEvent_1" />
-    <bpmn:userTask id="VISAO_CONTABIL" name="Visão Contábil">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>from connectordb.hana import Hana
-
-baseSap = get_secret('baseSap')
-
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
-
-lista_movimento_contabil = []
-
-for objtype, docnums in agrupados_por_objtype.items():
-    docnums_str = ", ".join(f"'{docnum}'" for docnum in docnums)
-    
-    query_movimento_contabil = f"""
-        SELECT 
-            CAST(t0."TransId" AS VARCHAR(50)) AS "TransId", 
-            CAST(t0."TransType" AS VARCHAR(50)) AS "TransType",  
-            CAST(t0."BaseRef" AS VARCHAR(50)) AS "BaseRef", 
-            CAST(t0."Memo" AS VARCHAR(50)) AS "Memo", 
-            CAST(t0."DueDate" AS VARCHAR(50)) AS "DueDate", 
-            CAST(t0."TaxDate" AS VARCHAR(50)) AS "TaxDate", 
-            CAST(t1."Line_ID" AS VARCHAR(50)) AS "Line_ID", 
-            CAST(t1."Account" AS VARCHAR(50)) AS "Account", 
-            CAST(t1."Debit" AS VARCHAR(50)) AS "Debit", 
-            CAST(t1."Credit"AS VARCHAR(50)) AS "Credit" ,
-            t2."AcctName" 
-        FROM {baseSap}.OJDT t0
-        INNER JOIN {baseSap}.JDT1 t1 ON t1."TransId" = t0."TransId"
-        INNER JOIN {baseSap}.OACT t2 ON t2."AcctCode" = t1."Account"
-        WHERE 
-            t0."TransType" = {objtype} AND t0."BaseRef" IN ({docnums_str})
-    """
-    
-    consulta_movimentos_contabil = Hana(connection).selectDb(query_movimento_contabil)
-    
-    lista_movimento_contabil.extend(consulta_movimentos_contabil)  # Use extend to add the results to the list
-
-
-# Agrupamento dos resultados e cálculo das somas
-agrupados_por_account = {}
-
-for movimento_contabil in lista_movimento_contabil:
-    account = movimento_contabil["account"] + ' - ' + movimento_contabil['acctname']
-    debit = float(movimento_contabil["debit"])  # Certificando que os valores são numéricos
-    credit = float(movimento_contabil["credit"])
-    transtype = movimento_contabil["transtype"]
-    baseref = movimento_contabil["baseref"]
-
-    if account not in agrupados_por_account:
-        agrupados_por_account[account] = {
-            "total_debit": 0.0,
-            "total_credit": 0.0,
-            "transactions": []
-        }
-    
-    agrupados_por_account[account]["total_debit"] += debit
-    agrupados_por_account[account]["total_credit"] += credit
-    agrupados_por_account[account]["transactions"].append({
-        "debit": debit,
-        "credit": credit ,
-        "transtype" : transtype,
-        "baseref" : baseref
-    })
-
-# Calculando a diferença (saldo)
-for account, data in agrupados_por_account.items():
-    total_debit = data["total_debit"]
-    total_credit = data["total_credit"]
-    balance = total_debit - total_credit
-    data["balance"] = balance
-
-# Inicializa a variável de soma do balanço
-total_balance = 0
-
-total_balance = sum(dados["balance"] for dados in agrupados_por_account.values())</spiffworkflow:preScript>
-        <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="visao-contabil-schema.json" />
-          <spiffworkflow:property name="formUiSchemaFilename" value="visao-contabil-uischema.json" />
-        </spiffworkflow:properties>
-        <spiffworkflow:instructionsForEndUser>### Movimentos Contábeis por Account
-
-{% for account, data in agrupados_por_account.items() %}
-#### Account: {{ account }}
-
-- **Total Debit:** {{ '{:,.3f}'.format(data['total_debit']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}
-- **Total Credit:** {{ '{:,.3f}'.format(data['total_credit']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}
-- **Balance:** {{ '{:,.3f}'.format(data['balance']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}
-- 
-##### Transactions:
-
-| Debit | Credit | DocNum | Objeto |
-|-------|--------|-------------| -------------|
-{% for transaction in data['transactions'] %}
-| {{ '{:,.3f}'.format(transaction['debit']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(transaction['credit']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{transaction['baseref']}} | {{transaction['transtype']}} |
-{% endfor %}
----
-
-{% endfor %}
-
-### Soma dos Balanços
-
-- **Total Balance:** {{ total_balance }}</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1pd10hb</bpmn:incoming>
-      <bpmn:outgoing>Flow_11bq3ww</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_0m9nzqu" sourceRef="VISAO_SAP" targetRef="REPROCESSAR01" />
     <bpmn:userTask id="VISAO_CALCULADA" name="Visão Calculada">
       <bpmn:extensionElements>
@@ -757,10 +642,6 @@ total_balance = sum(dados["balance"] for dados in agrupados_por_account.values()
     {% endfor %}
     &lt;/tbody&gt;
 &lt;/table&gt;
-
-{% for produto in consulta_movimentos_out %}
-| {{ produto['num_movimentos'] }} | {{ produto['origem'] }} | {{ produto['docnum'] }} | {{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_total_contabil']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_medio']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_medio_calc']).replace(',', ' ').replace('.', ',').replace(' ', '.')}} | {{ '{:,.3f}'.format(produto['estoque_atual']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(produto['custo_estoque_atual']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{produto['docduedate']}} | {{produto['canceled']}} |
-{% endfor %}
 
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript># Inicialize as variáveis para calcular o custo médio unitário
@@ -1004,6 +885,9 @@ del(documentos_saida)</spiffworkflow:postScript>
       <bpmn:conditionExpression>visao == 'estoque'</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_04afnxr" sourceRef="VISAO_CALCULADA" targetRef="REPROCESSAR01" />
+    <bpmn:sequenceFlow id="Flow_053mnsg" sourceRef="REPROCESSAR01" targetRef="EndEvent_1">
+      <bpmn:conditionExpression>recalcular == False</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
@@ -1065,15 +949,12 @@ del(documentos_saida)</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Gateway_0p3bhmm_di" bpmnElement="REPROCESSAR01" isMarkerVisible="true">
         <dc:Bounds x="1135" y="152" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1128" y="133" width="64" height="14" />
+          <dc:Bounds x="1158" y="133" width="64" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
         <dc:Bounds x="830" y="270" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_18afsbp_di" bpmnElement="VISAO_CONTABIL">
-        <dc:Bounds x="1220" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0zy0efu_di" bpmnElement="VISAO_CALCULADA">
         <dc:Bounds x="980" y="137" width="100" height="80" />
@@ -1123,19 +1004,11 @@ del(documentos_saida)</spiffworkflow:postScript>
         <di:waypoint x="65" y="390" />
         <di:waypoint x="1222" y="390" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1pd10hb_di" bpmnElement="Flow_1pd10hb">
-        <di:waypoint x="1185" y="177" />
-        <di:waypoint x="1220" y="177" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_10e4xqh_di" bpmnElement="Flow_10e4xqh">
         <di:waypoint x="1160" y="152" />
         <di:waypoint x="1160" y="20" />
         <di:waypoint x="40" y="20" />
         <di:waypoint x="40" y="137" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_11bq3ww_di" bpmnElement="Flow_11bq3ww">
-        <di:waypoint x="1320" y="177" />
-        <di:waypoint x="1342" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0m9nzqu_di" bpmnElement="Flow_0m9nzqu">
         <di:waypoint x="930" y="300" />
@@ -1153,6 +1026,10 @@ del(documentos_saida)</spiffworkflow:postScript>
       <bpmndi:BPMNEdge id="Flow_04afnxr_di" bpmnElement="Flow_04afnxr">
         <di:waypoint x="1080" y="177" />
         <di:waypoint x="1135" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_053mnsg_di" bpmnElement="Flow_053mnsg">
+        <di:waypoint x="1185" y="177" />
+        <di:waypoint x="1342" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
