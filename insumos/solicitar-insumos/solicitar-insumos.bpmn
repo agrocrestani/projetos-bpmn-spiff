@@ -615,36 +615,6 @@ arquivo_teste = 'file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danf
 
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:boundaryEvent id="Event_17q397d" attachedToRef="Activity_1juz99w">
-      <bpmn:outgoing>Flow_1b012sp</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_0mn40j6" errorRef="Error_1" />
-    </bpmn:boundaryEvent>
-    <bpmn:sequenceFlow id="Flow_1b012sp" sourceRef="Event_17q397d" targetRef="Activity_0z8kz3p" />
-    <bpmn:manualTask id="Activity_0z8kz3p" name="Verifica o Erro e tenta novamente">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
-
-### Informações
-
-| Campo | Conteudo |
-| ----------: | -------------- |
-| Código Erro: | {{errorCode}} |
-| Mensagem Erro: | {{errorMessage}}
-| Status  | {{status_code}} |
-
-1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
-2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript>status_code = err1['status_code']
-command = err1['command_response_body']
-command = json.loads(command)
-errorCode = command['body']['error']['code']
-errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
-        <spiffworkflow:postScript>del(solicitacao)
-solicitacao = solicitacao_bkp</spiffworkflow:postScript>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1b012sp</bpmn:incoming>
-      <bpmn:outgoing>Flow_0p10cpv</bpmn:outgoing>
-    </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_1k0vyfe" sourceRef="Activity_0jw3ade" targetRef="Activity_1y2m02n" />
     <bpmn:sequenceFlow id="Flow_1a5ox3k" sourceRef="Activity_1y2m02n" targetRef="Activity_1rmlu9t" />
     <bpmn:userTask id="Activity_1y2m02n" name="Confirma Solicitação">
@@ -657,10 +627,8 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1k0vyfe</bpmn:incoming>
-      <bpmn:incoming>Flow_0p10cpv</bpmn:incoming>
       <bpmn:outgoing>Flow_1a5ox3k</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_0p10cpv" sourceRef="Activity_0z8kz3p" targetRef="Activity_1y2m02n" />
     <bpmn:sequenceFlow id="Flow_099vh7l" sourceRef="Activity_0nja6u2" targetRef="Gateway_0qlg9my" />
     <bpmn:inclusiveGateway id="Gateway_0qlg9my">
       <bpmn:incoming>Flow_099vh7l</bpmn:incoming>
@@ -776,10 +744,6 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
         <dc:Bounds x="1190" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0dodh1z_di" bpmnElement="Activity_0z8kz3p">
-        <dc:Bounds x="880" y="270" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_14gccm6_di" bpmnElement="Activity_1y2m02n">
         <dc:Bounds x="430" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -789,9 +753,6 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_01mjab5_di" bpmnElement="Gateway_1payhuw">
         <dc:Bounds x="1845" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_10fg20w_di" bpmnElement="Event_17q397d">
-        <dc:Bounds x="912" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
         <di:waypoint x="2700" y="177" />
@@ -857,10 +818,6 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
         <di:waypoint x="1290" y="177" />
         <di:waypoint x="1400" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1b012sp_di" bpmnElement="Flow_1b012sp">
-        <di:waypoint x="930" y="235" />
-        <di:waypoint x="930" y="270" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1k0vyfe_di" bpmnElement="Flow_1k0vyfe">
         <di:waypoint x="370" y="177" />
         <di:waypoint x="430" y="177" />
@@ -868,12 +825,6 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       <bpmndi:BPMNEdge id="Flow_1a5ox3k_di" bpmnElement="Flow_1a5ox3k">
         <di:waypoint x="530" y="177" />
         <di:waypoint x="580" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0p10cpv_di" bpmnElement="Flow_0p10cpv">
-        <di:waypoint x="930" y="350" />
-        <di:waypoint x="930" y="380" />
-        <di:waypoint x="480" y="380" />
-        <di:waypoint x="480" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_099vh7l_di" bpmnElement="Flow_099vh7l">
         <di:waypoint x="1500" y="177" />
