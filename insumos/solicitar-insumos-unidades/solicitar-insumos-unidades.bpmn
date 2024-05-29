@@ -376,7 +376,7 @@ Querencia = 1</spiffworkflow:preScript>
       <bpmn:outgoing>Flow_1kvfsop</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_09bo2x8" errorRef="Error_1" />
     </bpmn:boundaryEvent>
-    <bpmn:exclusiveGateway id="Gateway_1wuwgeh">
+    <bpmn:exclusiveGateway id="Gateway_1wuwgeh" default="Flow_0xl0zj6">
       <bpmn:incoming>Flow_0fsmio6</bpmn:incoming>
       <bpmn:incoming>Flow_0oruj43</bpmn:incoming>
       <bpmn:outgoing>Flow_0xl0zj6</bpmn:outgoing>
