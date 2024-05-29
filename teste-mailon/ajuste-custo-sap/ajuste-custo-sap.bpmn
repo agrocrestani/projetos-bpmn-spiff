@@ -604,7 +604,7 @@ del(documentos_saida)</spiffworkflow:postScript>
 &lt;table&gt;
     &lt;thead&gt;
         &lt;tr&gt;
-            &lt;th colspan="3" style="text-align:center;"&gt;Documento &lt;/th&gt;
+            &lt;th colspan="2" style="text-align:center;"&gt;Documento &lt;/th&gt;
             &lt;th colspan="3" style="text-align:center;"&gt;Entrada&lt;/th&gt;
             &lt;th colspan="3" style="text-align:center;"&gt;Saída&lt;/th&gt;
             &lt;th colspan="3" style="text-align:center;"&gt;Saldo Acumulado&lt;/th&gt;
