@@ -12,7 +12,7 @@
         <spiffworkflow:preScript>carregaMatriz = 1
 carregaQuerencia = 1</spiffworkflow:preScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1b9zdsp</bpmn:incoming>
+      <bpmn:incoming>Flow_1yu6ymw</bpmn:incoming>
       <bpmn:outgoing>Flow_0dnvt7r</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_0dnvt7r" sourceRef="Activity_0qpzdpu" targetRef="Gateway_1ls5xhn" />
@@ -261,7 +261,7 @@ headers = {
       </bpmn:dataInputAssociation>
     </bpmn:serviceTask>
     <bpmn:dataStoreReference id="DataStoreReference_0l61g3j" name="SapLogin" dataStoreRef="saplogin" type="json" />
-    <bpmn:sequenceFlow id="Flow_1b9zdsp" sourceRef="Activity_0h4ocru" targetRef="Activity_0qpzdpu" />
+    <bpmn:sequenceFlow id="Flow_1b9zdsp" sourceRef="Activity_0h4ocru" targetRef="Activity_0httw94" />
     <bpmn:scriptTask id="Activity_0h4ocru" name="Busca Chave de acesso">
       <bpmn:incoming>Flow_0415lcg</bpmn:incoming>
       <bpmn:outgoing>Flow_1b9zdsp</bpmn:outgoing>
@@ -343,6 +343,41 @@ del(main_usage)
 del(nfe)
 del(nfeItens)</bpmn:script>
     </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_1yu6ymw" sourceRef="Activity_0httw94" targetRef="Activity_0qpzdpu" />
+    <bpmn:manualTask id="Activity_0httw94">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Dados da Nota Fiscal de Saída
+
+| Campo | Valor |
+| ----------: | ------- |
+|Número da NFe:|{{Serial}}|
+|Número Sap:|{{DocNum}}|
+|Data:|{{DocDate}}|
+|Código Cliente Destino:|{{CardCode}}|
+|Nome Cliente Destino: |{{CardName}}|
+|Nome Emitente: |{{BPLName}}|
+|CNPJ Emitente: |{{VATRegNum}}|
+
+**Selecione o link abaixo e cole na barra de tarefas do navegador para ver a NFe:**
+
+
+{{arquivo_nfe}}
+
+{{arquivo_teste}}
+
+
+
+### Itens da Nota
+| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
+| -------- | --------- |  -------------- | ---------------: | ----------: | ----------: | ------------ |
+{%for i in itens%}
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
+{%endfor%}
+| | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1b9zdsp</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yu6ymw</bpmn:outgoing>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
@@ -352,6 +387,25 @@ del(nfeItens)</bpmn:script>
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_gateway_or_jg9awad">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-18" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
+        <dc:Bounds x="1550" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_17vz534_di" bpmnElement="Gateway_1ls5xhn">
+        <dc:Bounds x="1705" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1yhsh0t_di" bpmnElement="Gateway_0abgvr8">
+        <dc:Bounds x="1965" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1s2nulu_di" bpmnElement="Event_1s2nulu">
+        <dc:Bounds x="2072" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1gof64r_di" bpmnElement="Activity_0mk6h2b">
+        <dc:Bounds x="1810" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vv948k_di" bpmnElement="Activity_0j9vw6e">
+        <dc:Bounds x="1810" y="250" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0k9gyrq_di" bpmnElement="Activity_1mmai9k">
         <dc:Bounds x="90" y="137" width="100" height="80" />
@@ -396,27 +450,11 @@ del(nfeItens)</bpmn:script>
           <dc:Bounds x="837" y="342" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
-        <dc:Bounds x="1550" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_17vz534_di" bpmnElement="Gateway_1ls5xhn">
-        <dc:Bounds x="1705" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1yhsh0t_di" bpmnElement="Gateway_0abgvr8">
-        <dc:Bounds x="1965" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1s2nulu_di" bpmnElement="Event_1s2nulu">
-        <dc:Bounds x="2072" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1gof64r_di" bpmnElement="Activity_0mk6h2b">
-        <dc:Bounds x="1810" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1vv948k_di" bpmnElement="Activity_0j9vw6e">
-        <dc:Bounds x="1810" y="250" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_178r38e_di" bpmnElement="Activity_0h4ocru">
         <dc:Bounds x="950" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0wl6f0h_di" bpmnElement="Activity_0httw94">
+        <dc:Bounds x="1120" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="18" y="177" />
@@ -486,6 +524,10 @@ del(nfeItens)</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1b9zdsp_di" bpmnElement="Flow_1b9zdsp">
         <di:waypoint x="1050" y="177" />
+        <di:waypoint x="1120" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yu6ymw_di" bpmnElement="Flow_1yu6ymw">
+        <di:waypoint x="1220" y="177" />
         <di:waypoint x="1550" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
