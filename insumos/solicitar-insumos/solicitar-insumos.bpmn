@@ -123,7 +123,7 @@ OwnerCode = 2
 main_usage = []
 for u in utilizacoes:
     main_usage.append(u)</spiffworkflow:postScript>
-        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:preScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1a5ox3k</bpmn:incoming>
       <bpmn:outgoing>Flow_11ns8sw</bpmn:outgoing>
@@ -213,7 +213,7 @@ headers = {
             <spiffworkflow:parameter id="verify" type="bool" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1o5dvob</bpmn:incoming>
       <bpmn:outgoing>Flow_03n0dbr</bpmn:outgoing>
