@@ -353,10 +353,10 @@ del(nfeItens)</bpmn:script>
     <bpmn:sequenceFlow id="Flow_12ic23r" sourceRef="Activity_1l8yv4t" targetRef="Activity_14oa7ya" />
     <bpmn:manualTask id="Activity_14oa7ya">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>carregaMatriz = 1
-carregaQuerencia = 1</spiffworkflow:preScript>
-        <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{carregaMatriz }}
-### carregaQuerencia = {{carregaQuerencia }}</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript>Matriz = 1
+Querencia = 1</spiffworkflow:preScript>
+        <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{Matriz }}
+### carregaQuerencia = {{Querencia }}</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12ic23r</bpmn:incoming>
       <bpmn:outgoing>Flow_0rbxmoh</bpmn:outgoing>
@@ -372,14 +372,14 @@ carregaQuerencia = 1</spiffworkflow:preScript>
       <bpmn:outgoing>Flow_1xxzy5k</bpmn:outgoing>
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_0ly9u30" sourceRef="Gateway_04sm3k2" targetRef="Activity_1w9o4mf">
-      <bpmn:conditionExpression>carregaMatriz == 1</bpmn:conditionExpression>
+      <bpmn:conditionExpression>Matriz == 1</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:task id="Activity_10iltbi">
       <bpmn:incoming>Flow_1kut90s</bpmn:incoming>
       <bpmn:outgoing>Flow_0ajrqjl</bpmn:outgoing>
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1kut90s" sourceRef="Gateway_04sm3k2" targetRef="Activity_10iltbi">
-      <bpmn:conditionExpression>carregaQuerencia == 1</bpmn:conditionExpression>
+      <bpmn:conditionExpression>Querencia == 1</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1xxzy5k" sourceRef="Activity_1w9o4mf" targetRef="Gateway_17avfyy" />
     <bpmn:inclusiveGateway id="Gateway_17avfyy">
