@@ -53,7 +53,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_02ebu0j</bpmn:incoming>
-      <bpmn:outgoing>Flow_1p1le1b</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0fsmio6</bpmn:outgoing>
       <bpmn:property id="Property_0m73nn4" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_1toag1e">
         <bpmn:sourceRef>DataStoreReference_1wa62ow</bpmn:sourceRef>
@@ -92,7 +92,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
           <spiffworkflow:property name="formUiSchemaFilename" value="confirma-solicitacao-uischema.json" />
         </spiffworkflow:properties>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_07pghok</bpmn:incoming>
+      <bpmn:incoming>Flow_0xl0zj6</bpmn:incoming>
       <bpmn:outgoing>Flow_06tikhf</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:businessRuleTask id="Activity_09jse4j" name="Definir Cliente">
@@ -409,13 +409,18 @@ Querencia = 1</spiffworkflow:preScript>
       <bpmn:outgoing>Flow_1kvfsop</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_09bo2x8" errorRef="Error_1" />
     </bpmn:boundaryEvent>
-    <bpmn:sequenceFlow id="Flow_1p1le1b" sourceRef="Activity_0rzn55m" targetRef="Event_1ufej1r" />
-    <bpmn:sequenceFlow id="Flow_07pghok" sourceRef="Event_1ufej1r" targetRef="Activity_0wopia0" />
+    <bpmn:exclusiveGateway id="Gateway_1wuwgeh">
+      <bpmn:incoming>Flow_0fsmio6</bpmn:incoming>
+      <bpmn:incoming>Flow_1nb0dkk</bpmn:incoming>
+      <bpmn:outgoing>Flow_0xl0zj6</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0fsmio6" sourceRef="Activity_0rzn55m" targetRef="Gateway_1wuwgeh" />
+    <bpmn:sequenceFlow id="Flow_0xl0zj6" sourceRef="Gateway_1wuwgeh" targetRef="Activity_0wopia0" />
     <bpmn:intermediateCatchEvent id="Event_1ufej1r" messageRef="[object Object]">
-      <bpmn:incoming>Flow_1p1le1b</bpmn:incoming>
-      <bpmn:outgoing>Flow_07pghok</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1nb0dkk</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_1i8lkhl" messageRef="Message_1dy1rlf" />
     </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_1nb0dkk" sourceRef="Event_1ufej1r" targetRef="Gateway_1wuwgeh" />
   </bpmn:process>
   <bpmn:message id="Message_1dy1rlf" name="Message_rec">
     <bpmn:extensionElements>
@@ -512,8 +517,11 @@ Querencia = 1</spiffworkflow:preScript>
       <bpmndi:BPMNShape id="Event_0o4mt9e_di" bpmnElement="Event_0s1k9fo">
         <dc:Bounds x="1232" y="342" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1wuwgeh_di" bpmnElement="Gateway_1wuwgeh" isMarkerVisible="true">
+        <dc:Bounds x="425" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_10zpyeo_di" bpmnElement="Event_1ufej1r">
-        <dc:Bounds x="452" y="159" width="36" height="36" />
+        <dc:Bounds x="432" y="252" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_122g4zr_di" bpmnElement="Event_14irs56">
         <dc:Bounds x="1112" y="199" width="36" height="36" />
@@ -580,13 +588,17 @@ Querencia = 1</spiffworkflow:preScript>
         <di:waypoint x="1180" y="360" />
         <di:waypoint x="1232" y="360" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1p1le1b_di" bpmnElement="Flow_1p1le1b">
+      <bpmndi:BPMNEdge id="Flow_0fsmio6_di" bpmnElement="Flow_0fsmio6">
         <di:waypoint x="370" y="177" />
-        <di:waypoint x="452" y="177" />
+        <di:waypoint x="425" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_07pghok_di" bpmnElement="Flow_07pghok">
-        <di:waypoint x="488" y="177" />
+      <bpmndi:BPMNEdge id="Flow_0xl0zj6_di" bpmnElement="Flow_0xl0zj6">
+        <di:waypoint x="475" y="177" />
         <di:waypoint x="620" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1nb0dkk_di" bpmnElement="Flow_1nb0dkk">
+        <di:waypoint x="450" y="252" />
+        <di:waypoint x="450" y="202" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1toag1e_di" bpmnElement="DataInputAssociation_1toag1e">
         <di:waypoint x="280" y="275" />
