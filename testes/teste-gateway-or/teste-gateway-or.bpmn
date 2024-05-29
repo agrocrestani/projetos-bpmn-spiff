@@ -48,7 +48,7 @@ carregaQuerencia = 1</spiffworkflow:preScript>
         </spiffworkflow:properties>
         <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{carregaMatriz }}
 ### carregaQuerencia = {{carregaQuerencia }}</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:postScript>CargaCompleta = 1</spiffworkflow:postScript>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1m51sal</bpmn:incoming>
       <bpmn:outgoing>Flow_0zni5ev</bpmn:outgoing>
@@ -60,7 +60,7 @@ carregaQuerencia = 1</spiffworkflow:preScript>
         </spiffworkflow:properties>
         <spiffworkflow:instructionsForEndUser>### carregaMatriz = {{carregaMatriz }}
 ### carregaQuerencia = {{carregaQuerencia }}</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:postScript>CargaCompleta = 1</spiffworkflow:postScript>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1rtxn9s</bpmn:incoming>
       <bpmn:outgoing>Flow_0p9abao</bpmn:outgoing>
