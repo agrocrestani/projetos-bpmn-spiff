@@ -12,7 +12,7 @@
         <spiffworkflow:preScript>carregaMatriz = 1
 carregaQuerencia = 1</spiffworkflow:preScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0acl2wc</bpmn:incoming>
+      <bpmn:incoming>Flow_1ni79v6</bpmn:incoming>
       <bpmn:outgoing>Flow_0dnvt7r</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_0dnvt7r" sourceRef="Activity_0qpzdpu" targetRef="Gateway_1ls5xhn" />
@@ -116,7 +116,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
     </bpmn:userTask>
     <bpmn:dataStoreReference id="DataStoreReference_1sqlknc" name="Safras" dataStoreRef="safras" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_05a6n0k" name="Filiais" dataStoreRef="filiais" type="json" />
-    <bpmn:sequenceFlow id="Flow_0acl2wc" sourceRef="Activity_0qvcr8l" targetRef="Activity_0qpzdpu" />
+    <bpmn:sequenceFlow id="Flow_0acl2wc" sourceRef="Activity_0qvcr8l" targetRef="Activity_1tihesz" />
     <bpmn:userTask id="Activity_0qvcr8l" name="Confirma Solicitação">
       <bpmn:extensionElements>
         <spiffworkflow:properties>
@@ -127,6 +127,20 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       <bpmn:incoming>Flow_1vt7q0m</bpmn:incoming>
       <bpmn:outgoing>Flow_0acl2wc</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1ni79v6" sourceRef="Activity_1tihesz" targetRef="Activity_0qpzdpu" />
+    <bpmn:businessRuleTask id="Activity_1tihesz" name="Define Cliente">
+      <bpmn:extensionElements>
+        <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0acl2wc</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ni79v6</bpmn:outgoing>
+      <bpmn:property id="Property_017x2hi" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_0w4c6xu">
+        <bpmn:sourceRef>DataStoreReference_12fjr4t</bpmn:sourceRef>
+        <bpmn:targetRef>Property_017x2hi</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:businessRuleTask>
+    <bpmn:dataStoreReference id="DataStoreReference_12fjr4t" />
   </bpmn:process>
   <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
@@ -134,22 +148,6 @@ carregaQuerencia = 0</spiffworkflow:preScript>
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_teste_gateway_or_jg9awad">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-18" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0k9gyrq_di" bpmnElement="Activity_1mmai9k">
-        <dc:Bounds x="90" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1sqlknc_di" bpmnElement="DataStoreReference_1sqlknc">
-        <dc:Bounds x="55" y="285" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="63" y="342" width="35" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_05a6n0k_di" bpmnElement="DataStoreReference_05a6n0k">
-        <dc:Bounds x="105" y="285" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="116" y="342" width="28" height="14" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="970" y="137" width="100" height="80" />
@@ -170,9 +168,32 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       <bpmndi:BPMNShape id="Activity_1vv948k_di" bpmnElement="Activity_0j9vw6e">
         <dc:Bounds x="1230" y="250" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0k9gyrq_di" bpmnElement="Activity_1mmai9k">
+        <dc:Bounds x="90" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1sqlknc_di" bpmnElement="DataStoreReference_1sqlknc">
+        <dc:Bounds x="55" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="63" y="342" width="35" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_05a6n0k_di" bpmnElement="DataStoreReference_05a6n0k">
+        <dc:Bounds x="105" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="116" y="342" width="28" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ww4plg_di" bpmnElement="Activity_0qvcr8l">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0354git_di" bpmnElement="Activity_1tihesz">
+        <dc:Bounds x="440" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_12fjr4t_di" bpmnElement="DataStoreReference_12fjr4t">
+        <dc:Bounds x="435" y="285" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="18" y="177" />
@@ -218,7 +239,15 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0acl2wc_di" bpmnElement="Flow_0acl2wc">
         <di:waypoint x="370" y="177" />
+        <di:waypoint x="440" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ni79v6_di" bpmnElement="Flow_1ni79v6">
+        <di:waypoint x="540" y="177" />
         <di:waypoint x="970" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0w4c6xu_di" bpmnElement="DataInputAssociation_0w4c6xu">
+        <di:waypoint x="467" y="285" />
+        <di:waypoint x="487" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
