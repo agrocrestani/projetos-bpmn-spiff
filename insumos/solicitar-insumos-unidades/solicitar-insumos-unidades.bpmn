@@ -33,7 +33,7 @@
         <bpmn:flowNodeRef>Event_0pir7dz</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_14irs56</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_1kl4cis">
+      <bpmn:lane id="Lane_1kl4cis" name="Matriz_TI">
         <bpmn:flowNodeRef>Activity_041g5go</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0z7irlk</bpmn:flowNodeRef>
       </bpmn:lane>
@@ -465,11 +465,12 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
         <dc:Bounds x="129" y="114" width="2170" height="966" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1nq9ktb_di" bpmnElement="Lane_1nq9ktb" isHorizontal="true">
-        <dc:Bounds x="159" y="114" width="2140" height="483" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1kl4cis_di" bpmnElement="Lane_1kl4cis" isHorizontal="true">
         <dc:Bounds x="159" y="597" width="2140" height="483" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1nq9ktb_di" bpmnElement="Lane_1nq9ktb" isHorizontal="true">
+        <dc:Bounds x="159" y="114" width="2140" height="483" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
