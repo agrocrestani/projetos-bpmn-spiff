@@ -341,7 +341,9 @@ Querencia = 1</spiffworkflow:preScript>
       <bpmn:incoming>Flow_0wm04tv</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1t9rdtz" sourceRef="Gateway_0kygj4b" targetRef="Activity_1pav2g7" />
-    <bpmn:sequenceFlow id="Flow_0tid22h" sourceRef="Gateway_0kygj4b" targetRef="Activity_1rkt1l6" />
+    <bpmn:sequenceFlow id="Flow_0tid22h" sourceRef="Gateway_0kygj4b" targetRef="Activity_1rkt1l6">
+      <bpmn:conditionExpression>lancado != 201</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:task id="Activity_1rkt1l6" name="Verifica Erro">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>try:
@@ -440,7 +442,7 @@ except:
       <bpmn:outgoing>Flow_1t9rdtz</bpmn:outgoing>
       <bpmn:outgoing>Flow_0tid22h</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:exclusiveGateway id="Gateway_0ujg2a6" default="Flow_1jxzbuy">
+    <bpmn:exclusiveGateway id="Gateway_0ujg2a6">
       <bpmn:incoming>Flow_13gfhi3</bpmn:incoming>
       <bpmn:incoming>Flow_1kt9w48</bpmn:incoming>
       <bpmn:outgoing>Flow_1jxzbuy</bpmn:outgoing>
