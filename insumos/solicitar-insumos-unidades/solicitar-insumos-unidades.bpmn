@@ -58,7 +58,7 @@ n_safras = safras
 solicitante = get_current_user()['display_name']
 carregaMatriz = 0
 carregaQuerencia = 0</spiffworkflow:preScript>
-        <spiffworkflow:postScript>solicitacao_bkp = solicitacao</spiffworkflow:postScript>
+        <spiffworkflow:postScript />
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="solicitar-insumos-unidades-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="solicitar-insumos-unidades-uischema.json" />
@@ -111,6 +111,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirma-solicitacao-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:postScript>solicitacao_bkp = solicitacao</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0xl0zj6</bpmn:incoming>
       <bpmn:outgoing>Flow_06tikhf</bpmn:outgoing>
