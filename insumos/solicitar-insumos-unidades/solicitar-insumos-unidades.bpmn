@@ -409,20 +409,18 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
 2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1kvfsop</bpmn:incoming>
+      <bpmn:outgoing>Flow_1lcy0fw</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:endEvent id="Event_1mlbc4b">
-      <bpmn:incoming>Flow_0tbpt1p</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_0tbpt1p" sourceRef="Event_03k3g5m" targetRef="Event_1mlbc4b" />
-    <bpmn:boundaryEvent id="Event_03k3g5m" cancelActivity="false" attachedToRef="Activity_041g5go">
-      <bpmn:outgoing>Flow_0tbpt1p</bpmn:outgoing>
-      <bpmn:signalEventDefinition id="SignalEventDefinition_11vdxr9" signalRef="Corrige" />
-    </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_062nurz" sourceRef="Event_0pir7dz" targetRef="Gateway_1wuwgeh" />
-    <bpmn:intermediateThrowEvent id="Event_0pir7dz">
-      <bpmn:outgoing>Flow_062nurz</bpmn:outgoing>
-      <bpmn:signalEventDefinition id="SignalEventDefinition_1wg4yse" signalRef="Corrige" />
+    <bpmn:sequenceFlow id="Flow_1lcy0fw" sourceRef="Activity_041g5go" targetRef="Event_0z7irlk" />
+    <bpmn:intermediateThrowEvent id="Event_0z7irlk">
+      <bpmn:incoming>Flow_1lcy0fw</bpmn:incoming>
+      <bpmn:signalEventDefinition id="SignalEventDefinition_1dyv2nf" signalRef="Corrige" />
     </bpmn:intermediateThrowEvent>
+    <bpmn:intermediateCatchEvent id="Event_0pir7dz">
+      <bpmn:outgoing>Flow_062nurz</bpmn:outgoing>
+      <bpmn:signalEventDefinition id="SignalEventDefinition_1wn25uu" signalRef="Corrige" />
+    </bpmn:intermediateCatchEvent>
   </bpmn:process>
   <bpmn:message id="Message_1dy1rlf" name="Message_rec">
     <bpmn:extensionElements>
@@ -519,17 +517,14 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Activity_0n4o7j4_di" bpmnElement="Activity_041g5go">
         <dc:Bounds x="1080" y="320" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1mlbc4b_di" bpmnElement="Event_1mlbc4b">
-        <dc:Bounds x="1232" y="462" width="36" height="36" />
+      <bpmndi:BPMNShape id="Event_0n7nvw3_di" bpmnElement="Event_0z7irlk">
+        <dc:Bounds x="1232" y="342" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1b80ffo_di" bpmnElement="Event_0pir7dz">
+      <bpmndi:BPMNShape id="Event_1i2863a_di" bpmnElement="Event_0pir7dz">
         <dc:Bounds x="432" y="282" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_122g4zr_di" bpmnElement="Event_14irs56">
         <dc:Bounds x="1112" y="199" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0anufhr_di" bpmnElement="Event_03k3g5m">
-        <dc:Bounds x="1142" y="382" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_02ebu0j_di" bpmnElement="Flow_02ebu0j">
         <di:waypoint x="215" y="177" />
@@ -597,14 +592,13 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
         <di:waypoint x="475" y="177" />
         <di:waypoint x="620" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0tbpt1p_di" bpmnElement="Flow_0tbpt1p">
-        <di:waypoint x="1160" y="418" />
-        <di:waypoint x="1160" y="480" />
-        <di:waypoint x="1232" y="480" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_062nurz_di" bpmnElement="Flow_062nurz">
         <di:waypoint x="450" y="282" />
         <di:waypoint x="450" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1lcy0fw_di" bpmnElement="Flow_1lcy0fw">
+        <di:waypoint x="1180" y="360" />
+        <di:waypoint x="1232" y="360" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1toag1e_di" bpmnElement="DataInputAssociation_1toag1e">
         <di:waypoint x="280" y="275" />
