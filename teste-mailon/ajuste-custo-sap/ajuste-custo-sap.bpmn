@@ -640,7 +640,7 @@ del(documentos_saida)</spiffworkflow:postScript>
             &lt;td&gt;{{ produto['docnum'] }}&lt;/td&gt;
             &lt;td&gt;{{ produto['createdate'] }}&lt;/td&gt;
             &lt;td&gt;{{ produto['taxdate'] }}&lt;/td&gt;
-            {% if produto['origem'] == '7-Nfe.Entrada' or produto['origem'] == '11-Recebimento de Mercadoria' or produto['origem'] == '2-Ent.Mercadoria' %}
+            {% if produto['origem'] == '7-Nfe.Entrada' or produto['origem'] == '11-Recebimento de Mercadoria' or produto['origem'] == '2-Ent.Mercadoria' or produto['origem'] == '1-Saldo Inicial' %}
             &lt;td&gt;{{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
             &lt;td&gt;{{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
             &lt;td&gt;{{ '{:,.3f}'.format(produto['custo_total_contabil']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
@@ -649,7 +649,7 @@ del(documentos_saida)</spiffworkflow:postScript>
             &lt;td&gt; &lt;/td&gt;
             &lt;td&gt; &lt;/td&gt;
             {% endif %}
-            {% if produto['origem'] == '3-Sai.Mercadoria' %}
+            {% if produto['origem'] == '3-Sai.Mercadoria' produto['origem'] == or '4-Nfe.Saida'%}
             &lt;td&gt;{{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
             &lt;td&gt;{{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
             &lt;td&gt;{{ '{:,.3f}'.format(produto['custo_total_contabil']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
@@ -932,10 +932,6 @@ del(documentos_saida)</spiffworkflow:postScript>
         <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
-        <dc:Bounds x="830" y="270" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
       </bpmndi:BPMNShape>
@@ -983,6 +979,10 @@ del(documentos_saida)</spiffworkflow:postScript>
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1168" y="143" width="64" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
+        <dc:Bounds x="830" y="270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0zy0efu_di" bpmnElement="VISAO_CALCULADA">
         <dc:Bounds x="980" y="137" width="100" height="80" />
