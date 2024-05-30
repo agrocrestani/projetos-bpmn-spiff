@@ -621,7 +621,6 @@ del(documentos_saida)</spiffworkflow:postScript>
             &lt;th&gt;Valor Unitário&lt;/th&gt;
             &lt;th&gt;Valor Total&lt;/th&gt;
             &lt;th&gt;Volume&lt;/th&gt;
-            &lt;th&gt;Valor Unitário&lt;/th&gt;
             &lt;th&gt;Custo Médio&lt;/th&gt;
             &lt;th&gt;Valor Total&lt;/th&gt;
         &lt;/tr&gt;
