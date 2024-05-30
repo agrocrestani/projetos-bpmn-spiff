@@ -11,7 +11,6 @@
   </bpmn:error>
   <bpmn:collaboration id="Collaboration_1fn7r1a">
     <bpmn:participant id="Participant_0mevgbm" processRef="Process_solicitar_insumos_unidades_9qfwbwe" />
-    <bpmn:participant id="Participant_0s68xd2" processRef="Process_0dkaob8" />
   </bpmn:collaboration>
   <bpmn:process id="Process_solicitar_insumos_unidades_9qfwbwe" isExecutable="true">
     <bpmn:laneSet id="LaneSet_0bz1mzo">
@@ -472,46 +471,6 @@ except:
     </bpmn:extensionElements>
   </bpmn:message>
   <bpmn:signal id="Corrige" name="Corrige" />
-  <bpmn:process id="Process_0dkaob8">
-    <bpmn:manualTask id="Activity_041g5go" name="Verifica o Erro e tenta novamente">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>try:
-    status_code = lancado
-    errorCode = rsp['body']['error']['code']
-    errorMessage = rsp['body']['error']['message']['value']
-except:
-    status_code = sapError['status_code']
-    errorCode = sapError['error_code']
-    errorMessage = sapError['message']</spiffworkflow:preScript>
-        <spiffworkflow:postScript>del(solicitacao)
-solicitacao = solicitacao_bkp</spiffworkflow:postScript>
-        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
-
-### Informações
-
-| Campo | Conteudo |
-| ----------: | -------------- |
-| Código Erro: | {{errorCode}} |
-| Mensagem Erro: | {{errorMessage}}
-| Status  | {{status_code}} |
-
-1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
-2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0pnga7i</bpmn:incoming>
-      <bpmn:outgoing>Flow_1tup7qo</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:sequenceFlow id="Flow_1tup7qo" sourceRef="Activity_041g5go" targetRef="Event_0z7irlk" />
-    <bpmn:sequenceFlow id="Flow_0pnga7i" sourceRef="Event_025c8qa" targetRef="Activity_041g5go" />
-    <bpmn:startEvent id="Event_025c8qa" messageRef="[object Object]">
-      <bpmn:outgoing>Flow_0pnga7i</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_0gk79yu" messageRef="Message_1nzvl3p" />
-    </bpmn:startEvent>
-    <bpmn:intermediateThrowEvent id="Event_0z7irlk">
-      <bpmn:incoming>Flow_1tup7qo</bpmn:incoming>
-      <bpmn:signalEventDefinition id="SignalEventDefinition_1dyv2nf" signalRef="Corrige" />
-    </bpmn:intermediateThrowEvent>
-  </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1fn7r1a">
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
@@ -693,26 +652,6 @@ solicitacao = solicitacao_bkp</spiffworkflow:postScript>
         <di:waypoint x="1350" y="50" />
         <di:waypoint x="1400" y="50" />
         <di:waypoint x="1400" y="152" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Participant_0s68xd2_di" bpmnElement="Participant_0s68xd2" isHorizontal="true">
-        <dc:Bounds x="830" y="580" width="830" height="250" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0n4o7j4_di" bpmnElement="Activity_041g5go">
-        <dc:Bounds x="1070" y="650" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_17yf0l9_di" bpmnElement="Event_025c8qa">
-        <dc:Bounds x="932" y="672" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0n7nvw3_di" bpmnElement="Event_0z7irlk">
-        <dc:Bounds x="1472" y="672" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_1tup7qo_di" bpmnElement="Flow_1tup7qo">
-        <di:waypoint x="1170" y="690" />
-        <di:waypoint x="1472" y="690" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0pnga7i_di" bpmnElement="Flow_0pnga7i">
-        <di:waypoint x="968" y="690" />
-        <di:waypoint x="1070" y="690" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1toag1e_di" bpmnElement="DataInputAssociation_1toag1e">
         <di:waypoint x="280" y="275" />
