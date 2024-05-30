@@ -50,7 +50,7 @@
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirma-solicitacao-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:postScript>solicitacao_bkp = dict(solicitacao)</spiffworkflow:postScript>
+        <spiffworkflow:postScript>solicitacao_bkp = solicitacao</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1ca0574</bpmn:incoming>
       <bpmn:incoming>Flow_0bnwhbp</bpmn:incoming>
