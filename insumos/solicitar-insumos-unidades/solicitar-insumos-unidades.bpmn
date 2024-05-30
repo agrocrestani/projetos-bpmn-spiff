@@ -254,14 +254,13 @@ itensQuerencia = []
 TotalMatriz = 0
 TotalQuerencia = 0
 
-
 for i in itens:
     if i['WarehouseCode'] == '03.MATR':
-        # carregaMatriz = 1
+        carregaMatriz = 1
         itensMatriz.append(i)
         TotalMatriz += i['LineTotal']
     elif i['WarehouseCode'] == '03.FQUE':
-        # carregaQuerencia = 1
+        carregaQuerencia = 1
         itensQuerencia.append(i)
         TotalQuerencia += i['LineTotal']
 
@@ -432,20 +431,24 @@ except:
       <bpmn:outgoing>Flow_16i3je1</bpmn:outgoing>
       <bpmn:outgoing>Flow_07ddzxh</bpmn:outgoing>
     </bpmn:parallelGateway>
-    <bpmn:exclusiveGateway id="Gateway_02etn56" default="Flow_0q85kr9">
+    <bpmn:exclusiveGateway id="Gateway_02etn56" default="Flow_1ky5ra4">
       <bpmn:incoming>Flow_16i3je1</bpmn:incoming>
       <bpmn:outgoing>Flow_0q85kr9</bpmn:outgoing>
       <bpmn:outgoing>Flow_1ky5ra4</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_16i3je1" sourceRef="Gateway_0iheayv" targetRef="Gateway_02etn56" />
-    <bpmn:exclusiveGateway id="Gateway_19qsdak" default="Flow_17v1i38">
+    <bpmn:exclusiveGateway id="Gateway_19qsdak" default="Flow_0h818xa">
       <bpmn:incoming>Flow_07ddzxh</bpmn:incoming>
       <bpmn:outgoing>Flow_17v1i38</bpmn:outgoing>
       <bpmn:outgoing>Flow_0h818xa</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_07ddzxh" sourceRef="Gateway_0iheayv" targetRef="Gateway_19qsdak" />
-    <bpmn:sequenceFlow id="Flow_0q85kr9" sourceRef="Gateway_02etn56" targetRef="Activity_0zxfq72" />
-    <bpmn:sequenceFlow id="Flow_17v1i38" sourceRef="Gateway_19qsdak" targetRef="Activity_0fzr71x" />
+    <bpmn:sequenceFlow id="Flow_0q85kr9" sourceRef="Gateway_02etn56" targetRef="Activity_0zxfq72">
+      <bpmn:conditionExpression>carregaMatriz == 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_17v1i38" sourceRef="Gateway_19qsdak" targetRef="Activity_0fzr71x">
+      <bpmn:conditionExpression>carregaQuerencia == 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0m9b8u0" sourceRef="Activity_0zxfq72" targetRef="Gateway_0dqilxv" />
     <bpmn:exclusiveGateway id="Gateway_0c34dsj" default="Flow_16b5oif">
       <bpmn:incoming>Flow_1jd6q7y</bpmn:incoming>
