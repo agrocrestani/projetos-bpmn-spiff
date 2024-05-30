@@ -246,7 +246,7 @@ for i in nfeItens:
         }
     )
     if not i['WarehouseCode'] in depositos:
-        depositos = i['WarehouseCode']
+        depositos.append(i['WarehouseCode'])
     Total += i['LineTotal']
 
 qtdeDeposito = len(depositos)
