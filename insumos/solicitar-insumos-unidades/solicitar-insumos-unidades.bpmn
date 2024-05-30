@@ -464,9 +464,12 @@ except:
     <bpmn:parallelGateway id="Gateway_0ntk7ol">
       <bpmn:incoming>Flow_0dr50wv</bpmn:incoming>
       <bpmn:incoming>Flow_16b5oif</bpmn:incoming>
+      <bpmn:outgoing>Flow_06cwlif</bpmn:outgoing>
     </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="Flow_16b5oif" sourceRef="Gateway_0c34dsj" targetRef="Gateway_0ntk7ol" />
-    <bpmn:endEvent id="Event_1a77ga5" />
+    <bpmn:endEvent id="Event_1a77ga5">
+      <bpmn:incoming>Flow_06cwlif</bpmn:incoming>
+    </bpmn:endEvent>
     <bpmn:userTask id="Activity_0zxfq72" name="Carregar em Tangará">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>confirma = False</spiffworkflow:preScript>
@@ -529,6 +532,7 @@ except:
       <bpmn:incoming>Flow_17v1i38</bpmn:incoming>
       <bpmn:outgoing>Flow_1jd6q7y</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_06cwlif" sourceRef="Gateway_0ntk7ol" targetRef="Event_1a77ga5" />
   </bpmn:process>
   <bpmn:message id="Message_1dy1rlf" name="Message_rec">
     <bpmn:extensionElements>
@@ -751,6 +755,10 @@ except:
         <di:waypoint x="2645" y="290" />
         <di:waypoint x="2750" y="290" />
         <di:waypoint x="2750" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06cwlif_di" bpmnElement="Flow_06cwlif">
+        <di:waypoint x="2775" y="177" />
+        <di:waypoint x="2852" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1toag1e_di" bpmnElement="DataInputAssociation_1toag1e">
         <di:waypoint x="280" y="275" />
