@@ -75,7 +75,7 @@ OwnerCode = 2
 main_usage = []
 for u in utilizacoes:
     main_usage.append(u)</spiffworkflow:postScript>
-        <spiffworkflow:preScript>solicitacao_bkp = solicitacao</spiffworkflow:preScript>
+        <spiffworkflow:preScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_06tikhf</bpmn:incoming>
       <bpmn:outgoing>Flow_1btf1uw</bpmn:outgoing>
@@ -503,7 +503,7 @@ n_safras = safras
 solicitante = get_current_user()['display_name']
 carregaMatriz = 0
 carregaQuerencia = 0</spiffworkflow:preScript>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:postScript>solicitacao_bkp = solicitacao</spiffworkflow:postScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="solicitar-insumos-unidades-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="solicitar-insumos-unidades-uischema.json" />
