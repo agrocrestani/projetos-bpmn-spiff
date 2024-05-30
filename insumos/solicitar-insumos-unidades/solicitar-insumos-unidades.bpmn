@@ -354,6 +354,7 @@ except:
     status_code = sapError['status_code']
     errorCode = sapError['error_code']
     errorMessage = sapError['message']</spiffworkflow:preScript>
+        <spiffworkflow:postScript>solicitacao = solicitacao_bkp </spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0tid22h</bpmn:incoming>
       <bpmn:outgoing>Flow_0u4bj8c</bpmn:outgoing>
