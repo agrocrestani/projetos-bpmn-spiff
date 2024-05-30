@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="Process_solicitacao_de_insumos_rqoml0p" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1jn3emy</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1azxpfs</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:dataStoreReference id="DataStoreReference_0rudrot" name="Estoque de Insumos" dataStoreRef="estoque_de_insumos" type="kkv" />
+    <bpmn:sequenceFlow id="Flow_09et6e0" sourceRef="Activity_0y3xwhg" targetRef="Activity_1juz99w" />
+    <bpmn:task id="Activity_1juz99w" name="Gera Pedido no SAP">
+      <bpmn:incoming>Flow_09et6e0</bpmn:incoming>
+      <bpmn:outgoing>Flow_108mqy4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_108mqy4" sourceRef="Activity_1juz99w" targetRef="Activity_1txulrf" />
+    <bpmn:task id="Activity_1txulrf" name="Confirma Faturamento">
+      <bpmn:incoming>Flow_108mqy4</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xt9f2j</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1xt9f2j" sourceRef="Activity_1txulrf" targetRef="Activity_1i9wp10" />
+    <bpmn:task id="Activity_1i9wp10" name="Confirma Entrega">
+      <bpmn:incoming>Flow_1xt9f2j</bpmn:incoming>
+      <bpmn:outgoing>Flow_1azxpfs</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1azxpfs" sourceRef="Activity_1i9wp10" targetRef="EndEvent_1" />
+    <bpmn:userTask id="Activity_0y3xwhg" name="Confirma Solicitação">
+      <bpmn:incoming>Flow_1roexn7</bpmn:incoming>
+      <bpmn:outgoing>Flow_09et6e0</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1jn3emy" sourceRef="StartEvent_1" targetRef="Activity_0jw3ade" />
+    <bpmn:sequenceFlow id="Flow_1roexn7" sourceRef="Activity_0jw3ade" targetRef="Activity_0y3xwhg" />
+    <bpmn:userTask id="Activity_0jw3ade" name="Solicita Insumos">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="solicitar-insumo-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="solicitar-insumo-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1jn3emy</bpmn:incoming>
+      <bpmn:outgoing>Flow_1roexn7</bpmn:outgoing>
+      <bpmn:property id="Property_0j6mqpu" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1cd01c2">
+        <bpmn:sourceRef>DataStoreReference_0rudrot</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0j6mqpu</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmn:dataStore id="estoque_de_insumos" name="KKVDataStore" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_solicitacao_de_insumos_rqoml0p">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1142" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0rudrot_di" bpmnElement="DataStoreReference_0rudrot">
+        <dc:Bounds x="265" y="275" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="264" y="332" width="54" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1juz99w_di" bpmnElement="Activity_1juz99w">
+        <dc:Bounds x="640" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1txulrf_di" bpmnElement="Activity_1txulrf">
+        <dc:Bounds x="800" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1i9wp10_di" bpmnElement="Activity_1i9wp10">
+        <dc:Bounds x="960" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1uc08xr_di" bpmnElement="Activity_0y3xwhg">
+        <dc:Bounds x="470" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1sk3qsl_di" bpmnElement="Activity_0jw3ade">
+        <dc:Bounds x="270" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_09et6e0_di" bpmnElement="Flow_09et6e0">
+        <di:waypoint x="570" y="177" />
+        <di:waypoint x="640" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_108mqy4_di" bpmnElement="Flow_108mqy4">
+        <di:waypoint x="740" y="177" />
+        <di:waypoint x="800" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xt9f2j_di" bpmnElement="Flow_1xt9f2j">
+        <di:waypoint x="900" y="177" />
+        <di:waypoint x="960" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1azxpfs_di" bpmnElement="Flow_1azxpfs">
+        <di:waypoint x="1060" y="177" />
+        <di:waypoint x="1142" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jn3emy_di" bpmnElement="Flow_1jn3emy">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1roexn7_di" bpmnElement="Flow_1roexn7">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="470" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1cd01c2_di" bpmnElement="DataInputAssociation_1cd01c2">
+        <di:waypoint x="298" y="275" />
+        <di:waypoint x="315" y="217" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
