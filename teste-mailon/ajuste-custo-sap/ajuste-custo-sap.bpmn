@@ -7,6 +7,7 @@
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_00bh8bd" />
     <bpmn:endEvent id="EndEvent_1">
       <bpmn:incoming>Flow_053mnsg</bpmn:incoming>
+      <bpmn:incoming>Flow_129ouwj</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:scriptTask id="BuscaProdutosPorDepositoSAP" name="Busca Produtos por Deposito no SAP">
       <bpmn:extensionElements>
@@ -310,7 +311,7 @@ del(produtosList)</spiffworkflow:postScript>
     <bpmn:exclusiveGateway id="Gateway_0zhxafw" default="Flow_0ho3zz6">
       <bpmn:incoming>Flow_0n3n3cb</bpmn:incoming>
       <bpmn:outgoing>Flow_0ho3zz6</bpmn:outgoing>
-      <bpmn:outgoing>Flow_0gpghte</bpmn:outgoing>
+      <bpmn:outgoing>Flow_129ouwj</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0n3n3cb" sourceRef="MovimentoEntradaNaoEncontrado" targetRef="Gateway_0zhxafw" />
     <bpmn:sequenceFlow id="Flow_0ho3zz6" sourceRef="Gateway_0zhxafw" targetRef="Activity_00bh8bd">
@@ -329,12 +330,6 @@ del(produtosList)</spiffworkflow:postScript>
       <bpmn:incoming>Flow_1462x9u</bpmn:incoming>
       <bpmn:outgoing>Flow_0n3n3cb</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:endEvent id="Event_1n8n9v9">
-      <bpmn:incoming>Flow_0gpghte</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_0gpghte" sourceRef="Gateway_0zhxafw" targetRef="Event_1n8n9v9">
-      <bpmn:conditionExpression>novaBusca == False</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="REPROCESSAR01" name="Reprocessar" default="Flow_053mnsg">
       <bpmn:incoming>Flow_0m9nzqu</bpmn:incoming>
       <bpmn:incoming>Flow_04afnxr</bpmn:incoming>
@@ -921,6 +916,9 @@ del(documentos_saida)</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_053mnsg" sourceRef="REPROCESSAR01" targetRef="EndEvent_1">
       <bpmn:conditionExpression>recalcular == False</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_129ouwj" sourceRef="Gateway_0zhxafw" targetRef="EndEvent_1">
+      <bpmn:conditionExpression>novaBusca == False</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
@@ -932,6 +930,10 @@ del(documentos_saida)</spiffworkflow:postScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="-10" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
+        <dc:Bounds x="830" y="270" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
@@ -976,18 +978,11 @@ del(documentos_saida)</spiffworkflow:postScript>
         <dc:Bounds x="-10" y="250" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1n8n9v9_di" bpmnElement="Event_1n8n9v9">
-        <dc:Bounds x="1222" y="372" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0p3bhmm_di" bpmnElement="REPROCESSAR01" isMarkerVisible="true">
         <dc:Bounds x="1135" y="152" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1158" y="133" width="64" height="14" />
+          <dc:Bounds x="1168" y="143" width="64" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
-        <dc:Bounds x="820" y="270" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0zy0efu_di" bpmnElement="VISAO_CALCULADA">
         <dc:Bounds x="980" y="137" width="100" height="80" />
@@ -1033,10 +1028,6 @@ del(documentos_saida)</spiffworkflow:postScript>
         <di:waypoint x="-100" y="390" />
         <di:waypoint x="-100" y="217" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0gpghte_di" bpmnElement="Flow_0gpghte">
-        <di:waypoint x="65" y="390" />
-        <di:waypoint x="1222" y="390" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_10e4xqh_di" bpmnElement="Flow_10e4xqh">
         <di:waypoint x="1160" y="152" />
         <di:waypoint x="1160" y="20" />
@@ -1044,15 +1035,13 @@ del(documentos_saida)</spiffworkflow:postScript>
         <di:waypoint x="40" y="137" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0m9nzqu_di" bpmnElement="Flow_0m9nzqu">
-        <di:waypoint x="920" y="300" />
+        <di:waypoint x="930" y="300" />
         <di:waypoint x="1160" y="300" />
         <di:waypoint x="1160" y="202" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0gxeqjd_di" bpmnElement="Flow_0gxeqjd">
         <di:waypoint x="880" y="202" />
-        <di:waypoint x="880" y="236" />
-        <di:waypoint x="870" y="236" />
-        <di:waypoint x="870" y="270" />
+        <di:waypoint x="880" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1wz3wum_di" bpmnElement="Flow_1wz3wum">
         <di:waypoint x="905" y="177" />
@@ -1065,6 +1054,11 @@ del(documentos_saida)</spiffworkflow:postScript>
       <bpmndi:BPMNEdge id="Flow_053mnsg_di" bpmnElement="Flow_053mnsg">
         <di:waypoint x="1185" y="177" />
         <di:waypoint x="1342" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_129ouwj_di" bpmnElement="Flow_129ouwj">
+        <di:waypoint x="65" y="390" />
+        <di:waypoint x="1360" y="390" />
+        <di:waypoint x="1360" y="195" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
