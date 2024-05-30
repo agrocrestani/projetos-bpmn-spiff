@@ -440,7 +440,7 @@ except:
       <bpmn:outgoing>Flow_1t9rdtz</bpmn:outgoing>
       <bpmn:outgoing>Flow_0tid22h</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:exclusiveGateway id="Gateway_0ujg2a6">
+    <bpmn:exclusiveGateway id="Gateway_0ujg2a6" default="Flow_1jxzbuy">
       <bpmn:incoming>Flow_13gfhi3</bpmn:incoming>
       <bpmn:incoming>Flow_1kt9w48</bpmn:incoming>
       <bpmn:outgoing>Flow_1jxzbuy</bpmn:outgoing>
