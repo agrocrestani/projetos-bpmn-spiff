@@ -721,7 +721,7 @@ if isinstance(consulta_movimentos_out, list):
                 total_quantidade += produtoAux['qtde']
                 
                 if ( total_quantidade) &gt; 0:
-                    print("LOG-MAILON | total_preco_unitario: " + total_preco_unitario)
+                    print("LOG-MAILON | total_preco_unitario: " + str (total_preco_unitario))
                     custo_medio = total_preco_unitario / total_quantidade
                 elif (total_quantidade ) == 0:
                     custo_medio = 0
