@@ -34,6 +34,7 @@ query_movimento = f"""
                     CAST(t0."ItemCode" AS VARCHAR(100)) AS "Produto" ,
                     t0."TIPO" ,
                     CAST(t0."DocDueDate" AS VARCHAR(100)) AS "DocDueDate" ,
+                    CAST(t0."TaxDate" AS VARCHAR(100)) AS "TaxDate" ,
                     CAST(t0."DocNum" AS VARCHAR(100)) AS "DocNum",
                     CAST(t0."QTDE" AS VARCHAR(100)) AS "QTDE",
                     CAST(t0."LineTotal" AS VARCHAR(100)) AS "LineTotal",
