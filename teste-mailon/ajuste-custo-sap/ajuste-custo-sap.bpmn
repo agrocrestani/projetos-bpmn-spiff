@@ -105,6 +105,18 @@ if(consulta_movimentos != []):
 
         movimento['docduedate'] = "{}/{}/{}".format(dia, mes, ano)
 
+        ano = movimento['taxdate'][0:4]
+        mes = movimento['taxdate'][5:7]
+        dia = movimento['taxdate'][8:10]
+
+        movimento['taxdate'] = "{}/{}/{}".format(dia, mes, ano)
+
+        ano = movimento['createdate'][0:4]
+        mes = movimento['createdate'][5:7]
+        dia = movimento['createdate'][8:10]
+
+        movimento['createdate'] = "{}/{}/{}".format(dia, mes, ano)
+
     if(indices_para_remover != []):
         # Remover os elementos da lista
         for indice in sorted(indices_para_remover, reverse=True):
@@ -632,7 +644,7 @@ del(documentos_saida)</spiffworkflow:postScript>
             &lt;td&gt;{{ produto['origem'] }}&lt;/td&gt;
             &lt;td&gt;{{ produto['docnum'] }}&lt;/td&gt;
             &lt;td&gt;{{ produto['createdate'] }}&lt;/td&gt;
-            &lt;td&gt;{{ produto['docduedate'] }}&lt;/td&gt;
+            &lt;td&gt;{{ produto['taxdate'] }}&lt;/td&gt;
             {% if produto['origem'] == '7-Nfe.Entrada' or produto['origem'] == '11-Recebimento de Mercadoria' or produto['origem'] == '2-Ent.Mercadoria' %}
             &lt;td&gt;{{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
             &lt;td&gt;{{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
