@@ -447,7 +447,7 @@ except:
     <bpmn:sequenceFlow id="Flow_0q85kr9" sourceRef="Gateway_02etn56" targetRef="Activity_0zxfq72" />
     <bpmn:sequenceFlow id="Flow_17v1i38" sourceRef="Gateway_19qsdak" targetRef="Activity_0fzr71x" />
     <bpmn:sequenceFlow id="Flow_0m9b8u0" sourceRef="Activity_0zxfq72" targetRef="Gateway_0dqilxv" />
-    <bpmn:exclusiveGateway id="Gateway_0c34dsj">
+    <bpmn:exclusiveGateway id="Gateway_0c34dsj" default="Flow_16b5oif">
       <bpmn:incoming>Flow_1jd6q7y</bpmn:incoming>
       <bpmn:incoming>Flow_0h818xa</bpmn:incoming>
       <bpmn:outgoing>Flow_16b5oif</bpmn:outgoing>
@@ -455,7 +455,7 @@ except:
     <bpmn:sequenceFlow id="Flow_1jd6q7y" sourceRef="Activity_0fzr71x" targetRef="Gateway_0c34dsj" />
     <bpmn:sequenceFlow id="Flow_1ky5ra4" sourceRef="Gateway_02etn56" targetRef="Gateway_0dqilxv" />
     <bpmn:sequenceFlow id="Flow_0h818xa" sourceRef="Gateway_19qsdak" targetRef="Gateway_0c34dsj" />
-    <bpmn:exclusiveGateway id="Gateway_0dqilxv">
+    <bpmn:exclusiveGateway id="Gateway_0dqilxv" default="Flow_0dr50wv">
       <bpmn:incoming>Flow_0m9b8u0</bpmn:incoming>
       <bpmn:incoming>Flow_1ky5ra4</bpmn:incoming>
       <bpmn:outgoing>Flow_0dr50wv</bpmn:outgoing>
