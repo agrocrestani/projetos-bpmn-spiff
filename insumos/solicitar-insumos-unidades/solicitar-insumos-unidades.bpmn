@@ -460,15 +460,15 @@ except:
       <bpmn:incoming>Flow_0do7zdq</bpmn:incoming>
       <bpmn:outgoing>Flow_16mj99w</bpmn:outgoing>
     </bpmn:parallelGateway>
-    <bpmn:task id="Activity_0fzr71x">
+    <bpmn:task id="Activity_0fzr71x" name="1 - 2 depositos">
       <bpmn:incoming>Flow_09k7nql</bpmn:incoming>
       <bpmn:outgoing>Flow_00s403q</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Activity_0f7m9jo">
+    <bpmn:task id="Activity_0f7m9jo" name="2 - 2 depositos">
       <bpmn:incoming>Flow_09njcjg</bpmn:incoming>
       <bpmn:outgoing>Flow_0do7zdq</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Activity_0zxfq72">
+    <bpmn:task id="Activity_0zxfq72" name="1 deposito">
       <bpmn:incoming>Flow_138d7tx</bpmn:incoming>
       <bpmn:outgoing>Flow_1xppzw6</bpmn:outgoing>
     </bpmn:task>
@@ -577,12 +577,15 @@ except:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0fzr71x_di" bpmnElement="Activity_0fzr71x">
         <dc:Bounds x="2340" y="300" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0f7m9jo_di" bpmnElement="Activity_0f7m9jo">
         <dc:Bounds x="2340" y="410" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0zxfq72_di" bpmnElement="Activity_0zxfq72">
         <dc:Bounds x="2340" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0lcauxa_di" bpmnElement="Event_1g2tkj6">
         <dc:Bounds x="1262" y="199" width="36" height="36" />
