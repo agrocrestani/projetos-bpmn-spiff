@@ -340,7 +340,9 @@ Querencia = 1</spiffworkflow:preScript>
     <bpmn:endEvent id="Event_1a77ga5">
       <bpmn:incoming>Flow_0wm04tv</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1t9rdtz" sourceRef="Gateway_0kygj4b" targetRef="Activity_1pav2g7" />
+    <bpmn:sequenceFlow id="Flow_1t9rdtz" sourceRef="Gateway_0kygj4b" targetRef="Activity_1pav2g7">
+      <bpmn:conditionExpression>lancado == 201</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0tid22h" sourceRef="Gateway_0kygj4b" targetRef="Activity_1rkt1l6">
       <bpmn:conditionExpression>lancado != 201</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
