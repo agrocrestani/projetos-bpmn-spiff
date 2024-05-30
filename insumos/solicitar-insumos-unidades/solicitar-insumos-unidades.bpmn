@@ -432,13 +432,13 @@ except:
       <bpmn:outgoing>Flow_16i3je1</bpmn:outgoing>
       <bpmn:outgoing>Flow_07ddzxh</bpmn:outgoing>
     </bpmn:parallelGateway>
-    <bpmn:exclusiveGateway id="Gateway_02etn56">
+    <bpmn:exclusiveGateway id="Gateway_02etn56" default="Flow_0q85kr9">
       <bpmn:incoming>Flow_16i3je1</bpmn:incoming>
       <bpmn:outgoing>Flow_0q85kr9</bpmn:outgoing>
       <bpmn:outgoing>Flow_1ky5ra4</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_16i3je1" sourceRef="Gateway_0iheayv" targetRef="Gateway_02etn56" />
-    <bpmn:exclusiveGateway id="Gateway_19qsdak">
+    <bpmn:exclusiveGateway id="Gateway_19qsdak" default="Flow_17v1i38">
       <bpmn:incoming>Flow_07ddzxh</bpmn:incoming>
       <bpmn:outgoing>Flow_17v1i38</bpmn:outgoing>
       <bpmn:outgoing>Flow_0h818xa</bpmn:outgoing>
