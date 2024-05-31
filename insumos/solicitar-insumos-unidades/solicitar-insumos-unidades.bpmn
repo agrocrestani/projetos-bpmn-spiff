@@ -30,7 +30,6 @@
         <bpmn:flowNodeRef>Activity_09jse4j</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0v68ob6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0823umq</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1pav2g7</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1l8yv4t</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1rkt1l6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_05jo0sq</bpmn:flowNodeRef>
@@ -41,6 +40,7 @@
         <bpmn:flowNodeRef>Gateway_0ntk7ol</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0iheayv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1g2tkj6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1pav2g7</bpmn:flowNodeRef>
         <bpmn:childLaneSet id="LaneSet_18ibth1">
           <bpmn:lane id="Lane_1i1rltx">
             <bpmn:flowNodeRef>Activity_0rzn55m</bpmn:flowNodeRef>
@@ -60,12 +60,12 @@
             <bpmn:flowNodeRef>Activity_09jse4j</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_0v68ob6</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_0823umq</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Activity_1pav2g7</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1l8yv4t</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1rkt1l6</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_05jo0sq</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_0kygj4b</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Event_1g2tkj6</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Activity_1pav2g7</bpmn:flowNodeRef>
           </bpmn:lane>
           <bpmn:lane id="Lane_1mcy60b" name="Matriz_Deposito_Insumos">
             <bpmn:flowNodeRef>Activity_0zxfq72</bpmn:flowNodeRef>
@@ -133,7 +133,9 @@ n_safras = safras
 solicitante = get_current_user()['display_name']
 carregaMatriz = 0
 carregaQuerencia = 0</spiffworkflow:preScript>
-        <spiffworkflow:postScript />
+        <spiffworkflow:postScript>for f in n_filiais:
+    if f['BPLId'] == unidades:
+        Nome_Cli_Destino = f['label']</spiffworkflow:postScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="solicitar-insumos-unidades-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="solicitar-insumos-unidades-uischema.json" />
@@ -207,7 +209,9 @@ carregaQuerencia = 0</spiffworkflow:preScript>
     </bpmn:businessRuleTask>
     <bpmn:userTask id="Activity_082xwxf" name="Validar nota de entrada">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>confirma = False</spiffworkflow:preScript>
+        <spiffworkflow:preScript>confirma = False
+
+</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-entrada-nfe-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirma-entrada-nfe-uischema.json" />
@@ -458,8 +462,8 @@ for u in utilizacoes:
 
 | Campo | Valor
 | --------- | ------------ | 
-| Filial Destino: |{{descricaoFilial}}|
-| Códgo Cliente: | {{CardCode}} |
+| Filial Destino: |{{Nome_Cli_Destino }}|
+| Código Cliente Destino: | {{CardCode}} |
 | Vededor: | {{SlpCode}} |
 | Titular:    | {{OwnerCode}} |
 | Solicitante: | {{solicitante}}
@@ -557,89 +561,6 @@ except:
       <bpmn:errorEventDefinition id="ErrorEventDefinition_1wmx1ww" errorRef="Error_1" />
     </bpmn:boundaryEvent>
     <bpmn:dataStoreReference id="DataStoreReference_1yswc4l" name="SapLogin" dataStoreRef="saplogin" type="json" />
-    <bpmn:scriptTask id="Activity_1pav2g7" name="Busca Chave de acesso">
-      <bpmn:incoming>Flow_1t9rdtz</bpmn:incoming>
-      <bpmn:outgoing>Flow_08133cx</bpmn:outgoing>
-      <bpmn:script>from connectordb.hana import Hana
-
-DocEntry = 2066
-
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
-
-query = f"""
-            select "KeyNfe", CNPJ from SBO_CRESTANI_PRD.AC_NfeRetorno nf where nf."DocEntry" = {DocEntry} AND nf."Tabela" = 'OINV' 
-          """
-
-# rsp = json.loads(Hana(connection).selectDb(query))
-sqlRsp = Hana(connection).selectDb(query)
-
-chaveAcesso = sqlRsp[0]['keynfe']
-cnpj = sqlRsp[0]['cnpj']
-arquivo_nfe = f'file://///srv-rds-02/CaminhosSAP/Anexos/NFe/{cnpj}/danfe/{chaveAcesso}.pdf'
-
-del(connection)
-
-
-nfe = rsp["body"]
-nfeItens = nfe['DocumentLines']
-
-DocEntry = nfe['DocEntry']
-DocNum = nfe['DocNum']
-Serial = nfe['SequenceSerial']
-DocDate = nfe['DocDate']
-CardCode = nfe['CardCode']
-CardName = nfe['CardName']
-BPLId = nfe['BPL_IDAssignedToInvoice']
-BPLName = nfe['BPLName']
-VATRegNum = nfe['VATRegNum']
-
-itens = []
-Total = 0
-depositos = []
-for i in nfeItens:
-    itens.append(
-        {
-            "LineNum": i['LineNum'],
-            "ItemCode": i['ItemCode'],
-            "ItemDescription": i['ItemDescription'],
-            "Quantity": i['Quantity'],
-            "Price": i['Price'],
-            "WarehouseCode": i['WarehouseCode'],
-            "LineTotal": i['LineTotal']
-        }
-    )
-    if not i['WarehouseCode'] in depositos:
-        depositos.append(i['WarehouseCode'])
-    Total += i['LineTotal']
-
-qtdeDeposito = len(depositos)
-itensMatriz = []
-itensQuerencia = []
-TotalMatriz = 0
-TotalQuerencia = 0
-
-for i in itens:
-    if i['WarehouseCode'] == '03.MATR':
-        carregaMatriz = 1
-        itensMatriz.append(i)
-        TotalMatriz += i['LineTotal']
-    elif i['WarehouseCode'] == '03.FQUE':
-        carregaQuerencia = 1
-        itensQuerencia.append(i)
-        TotalQuerencia += i['LineTotal']
-
-del(rsp)
-del(n_filiais)
-del(n_safras)
-del(main_usage)
-# del(nfe)
-# del(nfeItens)</bpmn:script>
-    </bpmn:scriptTask>
     <bpmn:manualTask id="Activity_1l8yv4t" name="Dados da NFe">
       <bpmn:extensionElements>
         <spiffworkflow:preScript />
@@ -720,7 +641,7 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
     <bpmn:userTask id="Activity_0zxfq72" name="Carregar em Tangará">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>confirma = False</spiffworkflow:preScript>
-        <spiffworkflow:instructionsForEndUser># Itens para carregamento em Tangara
+        <spiffworkflow:instructionsForEndUser># Itens para caregar em &lt;font color="blue"&gt;Tangará&lt;/font&gt;. 
 
 | Campo | Valor |
 | ----------: | ------- |
@@ -728,7 +649,7 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
 |Número da NFe:|{{Serial}}|
 |Data:|{{DocDate}}|
 |**Código Cliente Destino**:|**{{CardCode}}**|
-|Nome Cliente Destino: |{{CardName}}|
+|Nome Cliente Destino: |{{Nome_Cli_Destino }}|
 |**Código Remetente**: | **{{BPLId}}** |
 |Nome Remetente: |{{BPLName}}|
 |CNPJ Remetente: |{{VATRegNum}}|
@@ -771,15 +692,14 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:extensionElements>
         <spiffworkflow:preScript>confirma = False
 </spiffworkflow:preScript>
-        <spiffworkflow:instructionsForEndUser># Itens para carregamento na Querencia
-
+        <spiffworkflow:instructionsForEndUser># Itens para carregar na &lt;font color="blue"&gt;Querência&lt;/font&gt;.
 | Campo | Valor |
 | ----------: | ------- |
 |Número Sap:|{{DocNum}}|
 |Número da NFe:|{{Serial}}|
 |Data:|{{DocDate}}|
 |**Código Cliente Destino**:|**{{CardCode}}**|
-|Nome Cliente Destino: |{{CardName}}|
+|Nome Cliente Destino: |{{Nome_Cli_Destino }}|
 |**Código Remetente**: | **{{BPLId}}** |
 |Nome Remetente: |{{BPLName}}|
 |CNPJ Remetente: |{{VATRegNum}}|
@@ -810,6 +730,89 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:incoming>Flow_0h818xa</bpmn:incoming>
       <bpmn:outgoing>Flow_16b5oif</bpmn:outgoing>
     </bpmn:exclusiveGateway>
+    <bpmn:scriptTask id="Activity_1pav2g7" name="Busca Chave de acesso">
+      <bpmn:incoming>Flow_1t9rdtz</bpmn:incoming>
+      <bpmn:outgoing>Flow_08133cx</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+DocEntry = 2066
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+            select "KeyNfe", CNPJ from SBO_CRESTANI_PRD.AC_NfeRetorno nf where nf."DocEntry" = {DocEntry} AND nf."Tabela" = 'OINV' 
+          """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+sqlRsp = Hana(connection).selectDb(query)
+
+chaveAcesso = sqlRsp[0]['keynfe']
+cnpj = sqlRsp[0]['cnpj']
+arquivo_nfe = f'file://///srv-rds-02/CaminhosSAP/Anexos/NFe/{cnpj}/danfe/{chaveAcesso}.pdf'
+
+del(connection)
+
+
+nfe = rsp["body"]
+nfeItens = nfe['DocumentLines']
+
+DocEntry = nfe['DocEntry']
+DocNum = nfe['DocNum']
+Serial = nfe['SequenceSerial']
+DocDate = nfe['DocDate']
+CardCode = nfe['CardCode']
+CardName = nfe['CardName']
+BPLId = nfe['BPL_IDAssignedToInvoice']
+BPLName = nfe['BPLName']
+VATRegNum = nfe['VATRegNum']
+
+itens = []
+Total = 0
+depositos = []
+for i in nfeItens:
+    itens.append(
+        {
+            "LineNum": i['LineNum'],
+            "ItemCode": i['ItemCode'],
+            "ItemDescription": i['ItemDescription'],
+            "Quantity": i['Quantity'],
+            "Price": i['Price'],
+            "WarehouseCode": i['WarehouseCode'],
+            "LineTotal": i['LineTotal']
+        }
+    )
+    if not i['WarehouseCode'] in depositos:
+        depositos.append(i['WarehouseCode'])
+    Total += i['LineTotal']
+
+qtdeDeposito = len(depositos)
+itensMatriz = []
+itensQuerencia = []
+TotalMatriz = 0
+TotalQuerencia = 0
+
+for i in itens:
+    if i['WarehouseCode'] == '03.MATR':
+        carregaMatriz = 1
+        itensMatriz.append(i)
+        TotalMatriz += i['LineTotal']
+    elif i['WarehouseCode'] == '03.FQUE':
+        carregaQuerencia = 1
+        itensQuerencia.append(i)
+        TotalQuerencia += i['LineTotal']
+
+del(rsp)
+# del(n_filiais)
+del(n_safras)
+del(main_usage)
+# del(nfe)
+# del(nfeItens)</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1fn7r1a">
@@ -916,10 +919,6 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
           <dc:Bounds x="1437" y="632" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1hlzn0o_di" bpmnElement="Activity_1pav2g7">
-        <dc:Bounds x="1630" y="450" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0h2kalh_di" bpmnElement="Activity_1l8yv4t">
         <dc:Bounds x="1815" y="450" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -957,6 +956,10 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Gateway_0c34dsj_di" bpmnElement="Gateway_0c34dsj" isMarkerVisible="true">
         <dc:Bounds x="2415" y="1185" width="50" height="50" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1hlzn0o_di" bpmnElement="Activity_1pav2g7">
+        <dc:Bounds x="1640" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0lcauxa_di" bpmnElement="Event_1g2tkj6">
         <dc:Bounds x="1362" y="512" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -987,10 +990,10 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1t9rdtz_di" bpmnElement="Flow_1t9rdtz">
         <di:waypoint x="1585" y="490" />
-        <di:waypoint x="1630" y="490" />
+        <di:waypoint x="1640" y="490" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_08133cx_di" bpmnElement="Flow_08133cx">
-        <di:waypoint x="1730" y="490" />
+        <di:waypoint x="1740" y="490" />
         <di:waypoint x="1815" y="490" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12ic23r_di" bpmnElement="Flow_12ic23r">
