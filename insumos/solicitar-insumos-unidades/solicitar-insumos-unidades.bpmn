@@ -134,7 +134,7 @@ solicitante = get_current_user()['display_name']
 carregaMatriz = 0
 carregaQuerencia = 0</spiffworkflow:preScript>
         <spiffworkflow:postScript>for f in n_filiais:
-    if f['BPLId'] == unidades:
+    if f['value'] == unidades:
         Nome_Cli_Destino = f['label']</spiffworkflow:postScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="solicitar-insumos-unidades-schema.json" />
