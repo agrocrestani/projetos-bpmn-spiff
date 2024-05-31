@@ -35,16 +35,21 @@
         <bpmn:flowNodeRef>Activity_1jg3f8e</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1bsmf9p</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0qzj466</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_082xwxf</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1u6vbok</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1bcdnjg</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_12k31uu</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_02etn56</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0dqilxv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0ntk7ol</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0iheayv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0zxfq72</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_082xwxf</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1u6vbok</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1bcdnjg</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_12k31uu</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1hzty4u</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1g2tkj6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_04bzj7n</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_103xlpo</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0sb557c</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1hp3djr</bpmn:flowNodeRef>
         <bpmn:childLaneSet id="LaneSet_18ibth1">
           <bpmn:lane id="Lane_1i1rltx">
             <bpmn:flowNodeRef>Activity_0rzn55m</bpmn:flowNodeRef>
@@ -57,6 +62,11 @@
             <bpmn:flowNodeRef>Activity_1u6vbok</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1bcdnjg</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Event_12k31uu</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Gateway_1hzty4u</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Gateway_04bzj7n</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Gateway_103xlpo</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Event_0sb557c</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Activity_1hp3djr</bpmn:flowNodeRef>
           </bpmn:lane>
           <bpmn:lane id="Lane_0frwqt8" name="Matriz_Insumos">
             <bpmn:flowNodeRef>Gateway_09sj7do</bpmn:flowNodeRef>
@@ -189,9 +199,9 @@ carregaQuerencia = 0</spiffworkflow:preScript>
     <bpmn:sequenceFlow id="Flow_1rc1ms8" sourceRef="Gateway_0ntk7ol" targetRef="Activity_1jg3f8e" />
     <bpmn:sequenceFlow id="Flow_13sk5ni" sourceRef="Activity_1jg3f8e" targetRef="Activity_1bsmf9p" />
     <bpmn:sequenceFlow id="Flow_0q9zm5t" sourceRef="Activity_1bsmf9p" targetRef="Activity_0qzj466" />
-    <bpmn:sequenceFlow id="Flow_1xx8rfx" sourceRef="Activity_0qzj466" targetRef="Activity_082xwxf" />
+    <bpmn:sequenceFlow id="Flow_1xx8rfx" sourceRef="Activity_0qzj466" targetRef="Gateway_04bzj7n" />
     <bpmn:sequenceFlow id="Flow_0hiwet5" sourceRef="Activity_082xwxf" targetRef="Activity_1u6vbok" />
-    <bpmn:sequenceFlow id="Flow_10l6uoe" sourceRef="Activity_1u6vbok" targetRef="Activity_1bcdnjg" />
+    <bpmn:sequenceFlow id="Flow_10l6uoe" sourceRef="Activity_1u6vbok" targetRef="Gateway_1hzty4u" />
     <bpmn:sequenceFlow id="Flow_11363nf" sourceRef="Activity_1bcdnjg" targetRef="Event_12k31uu" />
     <bpmn:exclusiveGateway id="Gateway_09sj7do">
       <bpmn:incoming>Flow_1ca0574</bpmn:incoming>
@@ -605,217 +615,6 @@ del(main_usage)
       <bpmn:incoming>Flow_0q9zm5t</bpmn:incoming>
       <bpmn:outgoing>Flow_1xx8rfx</bpmn:outgoing>
     </bpmn:businessRuleTask>
-    <bpmn:userTask id="Activity_082xwxf" name="Validar nota de entrada">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>confirma = False
-
-</spiffworkflow:preScript>
-        <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-entrada-nfe-schema.json" />
-          <spiffworkflow:property name="formUiSchemaFilename" value="confirma-entrada-nfe-uischema.json" />
-        </spiffworkflow:properties>
-        <spiffworkflow:instructionsForEndUser># Dados da Nota Fiscal de Entrada
-
-| Campo | Valor |
-| ----------: | ------- |
-|Número da NFe:|{{Serial}}|
-|Data de emissão:|{{DocDate}}|
-|Chave de Acesso:
-|**Código Fornecedor:**|**{{CardCodeFor}}**|
-|Nome Fornecedor: |{{CardName}}|
-|**Codigo Filial Destino:** | **{{unidade}}**
-
-&lt;form action="{{arquivo_nfe}}" method="get" target="_blank"&gt;
-        &lt;button type="submit" style="background-color: #008CBA;
-                                     border: none;
-                                     color: white;
-                                     padding: 10px 20px;
-                                     text-align: center;
-                                     text-decoration: none;
-                                     display: inline-block;
-                                     font-size: 16px;
-                                     border-radius: 5px;
-                                     transition-duration: 0.4s;
-                                     cursor: pointer;
-                                     border-bottom: 4px solid #005f8e;"&gt;Visualizar NF-e&lt;/button&gt;
-    &lt;/form&gt;
-
-
-### Itens da Nota
-| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito | C.Custo | Safra |
-| -------- | --------- |  -------------- | ---------------: | ----------: | ----------: | ------------ | :----------: | :-----: |
-{%for i in itens%}
-| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{WarehouseCode}} | {{ccustoEntrada}} | {{safra}}
-{%endfor%}
-| | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1xx8rfx</bpmn:incoming>
-      <bpmn:outgoing>Flow_0hiwet5</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:serviceTask id="Activity_1u6vbok" name="Efetuar a entrada da NFe no SAP">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
-
-url = 'https://172.20.1.9:50000/b1s/v2/PurchaseInvoices'
-
-headers = {
-  'Cookie': f"B1SESSION={loginSap}",
-  'Content-Type': 'application/json'
-}
-
-spiff_instancia = get_toplevel_process_info()['process_instance_id']
-spiff_tarefa = taskInfo = get_current_task_info()['id']
-usuarioEmissorNFe = get_current_user()['display_name']
-
-items = []
-for s in nfeItens:
-  items.append(
-    {
-      "ItemCode": s["ItemCode"],
-      "Quantity": s["Quantity"],
-      "WarehouseCode": WarehouseCode,
-      "Price": s['Price'],
-      "CostingCode": ccustoEntrada,
-      "CostingCode3": safra
-    }
-  )
-
-payload = {
-    "CardCode": CardCodeFor,
-    "SequenceSerial": nfe["SequenceSerial"],
-    "SeriesString": "1",
-    "SequenceCode": -2,
-    "SequenceModel": "39",
-    "BPL_IDAssignedToInvoice": unidade,
-    "U_ChaveAcesso": "",
-    "TaxDate": DocDate[0:10],
-    "DocumentsOwner": OwnerCode,
-    "SalesPersonCode": SlpCode,
-    "Comments": f"Solicitante: {solicitante}",
-    "U_RSD_Aplicacao": 2,
-    "U_AC_Spiff_Instancia": spiff_instancia,
-    "U_AC_Spiff_Tarefa": spiff_tarefa,
-    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
-    "DocumentLines": items,
-    "TaxExtension": {
-      "MainUsage": mainusage,
-      "Incoterms": "0"
-    }
-}</spiffworkflow:preScript>
-        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
-          <spiffworkflow:parameters>
-            <spiffworkflow:parameter id="url" type="str" value="url" />
-            <spiffworkflow:parameter id="headers" type="any" value="headers" />
-            <spiffworkflow:parameter id="data" type="any" value="payload" />
-            <spiffworkflow:parameter id="basic_auth_username" type="str" />
-            <spiffworkflow:parameter id="basic_auth_password" type="str" />
-            <spiffworkflow:parameter id="verify" type="bool" />
-          </spiffworkflow:parameters>
-        </spiffworkflow:serviceTaskOperator>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0hiwet5</bpmn:incoming>
-      <bpmn:outgoing>Flow_10l6uoe</bpmn:outgoing>
-      <bpmn:property id="Property_1ai8jyf" name="__targetRef_placeholder" />
-      <bpmn:dataInputAssociation id="DataInputAssociation_1stkkjw">
-        <bpmn:sourceRef>DataStoreReference_1lzk398</bpmn:sourceRef>
-        <bpmn:targetRef>Property_1ai8jyf</bpmn:targetRef>
-      </bpmn:dataInputAssociation>
-    </bpmn:serviceTask>
-    <bpmn:manualTask id="Activity_1bcdnjg" name="Consulta os dados da NFe de Entrada no SAP">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser># Dados da Nota Fiscal de Entrada
-
-| Campo | Valor |
-| ----------: | ------- |
-|Número da NFe:|{{Serial}}|
-|Número Sap:|{{DocNum}}|
-|Chave de acesso: | |
-|Data:|{{DocDate}}|
-|**Código Fornecedor**:|{{CardCode}}|
-|Nome Fornecedor: |{{CardName}}|
-|**Nome Unidade Destino:** |{{BPLName}}|
-|Código Unidade Destino: | {{Nome_Cli_Destino }} |
-
-&lt;form action="{{arquivo_nfe}}" method="get" target="_blank"&gt;
-        &lt;button type="submit" style="background-color: #008CBA;
-                                     border: none;
-                                     color: white;
-                                     padding: 10px 20px;
-                                     text-align: center;
-                                     text-decoration: none;
-                                     display: inline-block;
-                                     font-size: 16px;
-                                     border-radius: 5px;
-                                     transition-duration: 0.4s;
-                                     cursor: pointer;
-                                     border-bottom: 4px solid #005f8e;"&gt;Visualizar NF-e&lt;/button&gt;
-    &lt;/form&gt;
-
-
-
-### Itens da Nota
-| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
-| -------- | --------- |  -------------- | ---------------: | ----------: | ----------: | ------------ |
-{%for i in itens%}
-| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
-{%endfor%}
-| | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript>nfe = rsp["body"]
-nfeItens = nfe['DocumentLines']
-
-DocEntry = nfe['DocEntry']
-DocNum = nfe['DocNum']
-Serial = nfe['SequenceSerial']
-DocDate = nfe['DocDate']
-CardCode = nfe['CardCode']
-CardName = nfe['CardName']
-BPLName = nfe['BPLName']
-VATRegNum = nfe['VATRegNum']
-
-itens = []
-Total = 0
-for i in nfeItens:
-    itens.append(
-        {
-            "LineNum": i['LineNum'],
-            "ItemCode": i['ItemCode'],
-            "ItemDescription": i['ItemDescription'],
-            "Quantity": i['Quantity'],
-            "Price": i['Price'],
-            "WarehouseCode": i['WarehouseCode'],
-            "LineTotal": i['LineTotal']
-        }
-    )
-    Total += i['LineTotal']
-
-
-itensMatriz = []
-itensQuerencia = []
-carregaMatriz = False
-TotalMatriz = 0
-carregaQuerencia = False
-TotalQuerencia = 0
-for i in itens:
-    if i['WarehouseCode'] == '03.MATR':
-        carregaMatriz = True
-        itensMatriz.append(i)
-        TotalMatriz += i['LineTotal']
-    elif i['WarehouseCode'] == '03.FQUE':
-        carregaQuerencia = True
-        itensQuerencia.append(i)
-        TotalQuerencia += i['LineTotal']
-
-
-</spiffworkflow:preScript>
-        <spiffworkflow:guestConfirmation />
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_10l6uoe</bpmn:incoming>
-      <bpmn:outgoing>Flow_11363nf</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:endEvent id="Event_12k31uu">
-      <bpmn:incoming>Flow_11363nf</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:dataStoreReference id="DataStoreReference_1lzk398" name="SapLogin" dataStoreRef="saplogin" type="json" />
     <bpmn:exclusiveGateway id="Gateway_02etn56" default="Flow_1ky5ra4">
       <bpmn:incoming>Flow_16i3je1</bpmn:incoming>
       <bpmn:outgoing>Flow_0q85kr9</bpmn:outgoing>
@@ -937,29 +736,303 @@ for i in itens:
       <bpmn:incoming>Flow_0q85kr9</bpmn:incoming>
       <bpmn:outgoing>Flow_0m9b8u0</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_070yv70" sourceRef="Gateway_1hzty4u" targetRef="Activity_1bcdnjg" />
+    <bpmn:userTask id="Activity_082xwxf" name="Validar nota de entrada">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>confirma = False
+
+</spiffworkflow:preScript>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-entrada-nfe-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="confirma-entrada-nfe-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser># Dados da Nota Fiscal de Entrada
+
+| Campo | Valor |
+| ----------: | ------- |
+|Número da NFe:|{{Serial}}|
+|Data de emissão:|{{DocDate}}|
+|Chave de Acesso:
+|**Código Fornecedor:**|**{{CardCodeFor}}**|
+|Nome Fornecedor: |{{CardName}}|
+|**Codigo Filial Destino:** | **{{unidade}}**
+
+&lt;form action="{{arquivo_nfe}}" method="get" target="_blank"&gt;
+        &lt;button type="submit" style="background-color: #008CBA;
+                                     border: none;
+                                     color: white;
+                                     padding: 10px 20px;
+                                     text-align: center;
+                                     text-decoration: none;
+                                     display: inline-block;
+                                     font-size: 16px;
+                                     border-radius: 5px;
+                                     transition-duration: 0.4s;
+                                     cursor: pointer;
+                                     border-bottom: 4px solid #005f8e;"&gt;Visualizar NF-e&lt;/button&gt;
+    &lt;/form&gt;
+
+
+### Itens da Nota
+| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito | C.Custo | Safra |
+| -------- | --------- |  -------------- | ---------------: | ----------: | ----------: | ------------ | :----------: | :-----: |
+{%for i in itens%}
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{WarehouseCode}} | {{ccustoEntrada}} | {{safra}}
+{%endfor%}
+| | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1vruzto</bpmn:incoming>
+      <bpmn:outgoing>Flow_0hiwet5</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_1u6vbok" name="Efetuar a entrada da NFe no SAP">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
+
+url = 'https://172.20.1.9:50000/b1s/v2/PurchaseInvoices'
+
+headers = {
+  'Cookie': f"B1SESSION={loginSap}",
+  'Content-Type': 'application/json'
+}
+
+spiff_instancia = get_toplevel_process_info()['process_instance_id']
+spiff_tarefa = taskInfo = get_current_task_info()['id']
+usuarioEmissorNFe = get_current_user()['display_name']
+
+items = []
+for s in nfeItens:
+  items.append(
+    {
+      "ItemCode": s["ItemCode"],
+      "Quantity": s["Quantity"],
+      "WarehouseCode": WarehouseCode,
+      "Price": s['Price'],
+      "CostingCode": ccustoEntrada,
+      "CostingCode3": safra
+    }
+  )
+
+payload = {
+    "CardCode": CardCodeFor,
+    "SequenceSerial": nfe["SequenceSerial"],
+    "SeriesString": "1",
+    "SequenceCode": -2,
+    "SequenceModel": "39",
+    "BPL_IDAssignedToInvoice": unidade,
+    "U_ChaveAcesso": "",
+    "TaxDate": DocDate[0:10],
+    "DocumentsOwner": OwnerCode,
+    "SalesPersonCode": SlpCode,
+    "Comments": f"Solicitante: {solicitante}",
+    "U_RSD_Aplicacao": 2,
+    "U_AC_Spiff_Instancia": spiff_instancia,
+    "U_AC_Spiff_Tarefa": spiff_tarefa,
+    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
+    "DocumentLines": items,
+    "TaxExtension": {
+      "MainUsage": mainusage,
+      "Incoterms": "0"
+    }
+}</spiffworkflow:preScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="payload" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:postScript>try:
+    lancaNFeEntrada = rsp['http_status']
+except:
+    lancaNFeEntrada = 500</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0hiwet5</bpmn:incoming>
+      <bpmn:outgoing>Flow_10l6uoe</bpmn:outgoing>
+      <bpmn:property id="Property_1ai8jyf" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1stkkjw">
+        <bpmn:sourceRef>DataStoreReference_1lzk398</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1ai8jyf</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:serviceTask>
+    <bpmn:manualTask id="Activity_1bcdnjg" name="Consulta os dados da NFe de Entrada no SAP">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Dados da Nota Fiscal de Entrada
+
+| Campo | Valor |
+| ----------: | ------- |
+|Número da NFe:|{{Serial}}|
+|Número Sap:|{{DocNum}}|
+|Chave de acesso: | |
+|Data:|{{DocDate}}|
+|**Código Fornecedor**:|{{CardCode}}|
+|Nome Fornecedor: |{{CardName}}|
+|**Nome Unidade Destino:** |{{BPLName}}|
+|Código Unidade Destino: | {{Nome_Cli_Destino }} |
+
+&lt;form action="{{arquivo_nfe}}" method="get" target="_blank"&gt;
+        &lt;button type="submit" style="background-color: #008CBA;
+                                     border: none;
+                                     color: white;
+                                     padding: 10px 20px;
+                                     text-align: center;
+                                     text-decoration: none;
+                                     display: inline-block;
+                                     font-size: 16px;
+                                     border-radius: 5px;
+                                     transition-duration: 0.4s;
+                                     cursor: pointer;
+                                     border-bottom: 4px solid #005f8e;"&gt;Visualizar NF-e&lt;/button&gt;
+    &lt;/form&gt;
+
+
+
+### Itens da Nota
+| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
+| -------- | --------- |  -------------- | ---------------: | ----------: | ----------: | ------------ |
+{%for i in itens%}
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
+{%endfor%}
+| | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript>nfe = rsp["body"]
+nfeItens = nfe['DocumentLines']
+
+DocEntry = nfe['DocEntry']
+DocNum = nfe['DocNum']
+Serial = nfe['SequenceSerial']
+DocDate = nfe['DocDate']
+CardCode = nfe['CardCode']
+CardName = nfe['CardName']
+BPLName = nfe['BPLName']
+VATRegNum = nfe['VATRegNum']
+
+itens = []
+Total = 0
+for i in nfeItens:
+    itens.append(
+        {
+            "LineNum": i['LineNum'],
+            "ItemCode": i['ItemCode'],
+            "ItemDescription": i['ItemDescription'],
+            "Quantity": i['Quantity'],
+            "Price": i['Price'],
+            "WarehouseCode": i['WarehouseCode'],
+            "LineTotal": i['LineTotal']
+        }
+    )
+    Total += i['LineTotal']
+
+
+itensMatriz = []
+itensQuerencia = []
+carregaMatriz = False
+TotalMatriz = 0
+carregaQuerencia = False
+TotalQuerencia = 0
+for i in itens:
+    if i['WarehouseCode'] == '03.MATR':
+        carregaMatriz = True
+        itensMatriz.append(i)
+        TotalMatriz += i['LineTotal']
+    elif i['WarehouseCode'] == '03.FQUE':
+        carregaQuerencia = True
+        itensQuerencia.append(i)
+        TotalQuerencia += i['LineTotal']
+
+
+</spiffworkflow:preScript>
+        <spiffworkflow:guestConfirmation />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_070yv70</bpmn:incoming>
+      <bpmn:outgoing>Flow_11363nf</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:endEvent id="Event_12k31uu">
+      <bpmn:incoming>Flow_11363nf</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gateway_1hzty4u" default="Flow_070yv70">
+      <bpmn:incoming>Flow_10l6uoe</bpmn:incoming>
+      <bpmn:outgoing>Flow_070yv70</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0omy3z8</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_04bzj7n">
+      <bpmn:incoming>Flow_1xx8rfx</bpmn:incoming>
+      <bpmn:incoming>Flow_14okvjf</bpmn:incoming>
+      <bpmn:outgoing>Flow_1vruzto</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1vruzto" sourceRef="Gateway_04bzj7n" targetRef="Activity_082xwxf" />
+    <bpmn:dataStoreReference id="DataStoreReference_1lzk398" name="SapLogin" dataStoreRef="saplogin" type="json" />
+    <bpmn:sequenceFlow id="Flow_0omy3z8" sourceRef="Gateway_1hzty4u" targetRef="Gateway_103xlpo" />
+    <bpmn:exclusiveGateway id="Gateway_103xlpo">
+      <bpmn:incoming>Flow_0omy3z8</bpmn:incoming>
+      <bpmn:incoming>Flow_00tzb38</bpmn:incoming>
+      <bpmn:outgoing>Flow_1j3gey3</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:boundaryEvent id="Event_0sb557c" attachedToRef="Activity_1u6vbok">
+      <bpmn:outgoing>Flow_00tzb38</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1khpm7p" errorRef="Error_2" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_00tzb38" sourceRef="Event_0sb557c" targetRef="Gateway_103xlpo" />
+    <bpmn:sequenceFlow id="Flow_1j3gey3" sourceRef="Gateway_103xlpo" targetRef="Activity_1hp3djr" />
+    <bpmn:sequenceFlow id="Flow_14okvjf" sourceRef="Activity_1hp3djr" targetRef="Gateway_04bzj7n" />
+    <bpmn:manualTask id="Activity_1hp3djr" name="Verifica erro da NFe de Entrada">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>try:
+    status_code = lancado
+    errorCode = rsp['body']['error']['code']
+    errorMessage = rsp['body']['error']['message']['value']
+except:
+    command = errorEntrada['command_response_body']
+    command = json.loads(command)
+    status_code = errorEntrada['status_code']
+    errorCode = errorEntrada['error_code']
+    errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
+
+### Informações
+
+| Campo | Conteudo |
+| ----------: | -------------- |
+| Código Erro: | {{errorCode}} |
+| Mensagem Erro: | {{errorMessage}}
+| Status  | {{status_code}} |
+
+1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
+2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1j3gey3</bpmn:incoming>
+      <bpmn:outgoing>Flow_14okvjf</bpmn:outgoing>
+    </bpmn:manualTask>
   </bpmn:process>
+  <bpmn:error id="Error_2" name="Error_2">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>errorEntrada</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1fn7r1a">
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
-        <dc:Bounds x="34" y="-30" width="4176" height="1420" />
+        <dc:Bounds x="34" y="-30" width="4446" height="1420" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_029j3y3_di" bpmnElement="Lane_029j3y3" isHorizontal="true">
-        <dc:Bounds x="64" y="1070" width="4146" height="320" />
+        <dc:Bounds x="64" y="1070" width="4416" height="320" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1nq9ktb_di" bpmnElement="Lane_1nq9ktb" isHorizontal="true">
-        <dc:Bounds x="64" y="-30" width="4146" height="1100" />
+        <dc:Bounds x="64" y="-30" width="4416" height="1100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1mcy60b_di" bpmnElement="Lane_1mcy60b" isHorizontal="true">
-        <dc:Bounds x="94" y="810" width="4116" height="260" />
+        <dc:Bounds x="94" y="810" width="4386" height="260" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0frwqt8_di" bpmnElement="Lane_0frwqt8" isHorizontal="true">
-        <dc:Bounds x="94" y="330" width="4116" height="480" />
+        <dc:Bounds x="94" y="330" width="4386" height="480" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1i1rltx_di" bpmnElement="Lane_1i1rltx" isHorizontal="true">
-        <dc:Bounds x="94" y="-30" width="4116" height="360" />
+        <dc:Bounds x="94" y="-30" width="4386" height="360" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0s9rd1b_di" bpmnElement="Activity_0rzn55m">
         <dc:Bounds x="565" y="87" width="100" height="80" />
@@ -1052,26 +1125,6 @@ for i in itens:
       <bpmndi:BPMNShape id="Activity_0wzuy1s_di" bpmnElement="Activity_0qzj466">
         <dc:Bounds x="3380" y="87" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1ey9irg_di" bpmnElement="Activity_082xwxf">
-        <dc:Bounds x="3570" y="87" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0hidila_di" bpmnElement="Activity_1u6vbok">
-        <dc:Bounds x="3760" y="87" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0n5cgee_di" bpmnElement="Activity_1bcdnjg">
-        <dc:Bounds x="3950" y="87" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_12k31uu_di" bpmnElement="Event_12k31uu">
-        <dc:Bounds x="4142" y="109" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1lzk398_di" bpmnElement="DataStoreReference_1lzk398">
-        <dc:Bounds x="3825" y="205" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="3827" y="262" width="47" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_02etn56_di" bpmnElement="Gateway_02etn56" isMarkerVisible="true">
         <dc:Bounds x="2435" y="935" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -1096,8 +1149,43 @@ for i in itens:
       <bpmndi:BPMNShape id="Activity_00xd1qy_di" bpmnElement="Activity_0zxfq72">
         <dc:Bounds x="2560" y="920" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ey9irg_di" bpmnElement="Activity_082xwxf">
+        <dc:Bounds x="3680" y="87" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0hidila_di" bpmnElement="Activity_1u6vbok">
+        <dc:Bounds x="3870" y="87" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0n5cgee_di" bpmnElement="Activity_1bcdnjg">
+        <dc:Bounds x="4220" y="87" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_12k31uu_di" bpmnElement="Event_12k31uu">
+        <dc:Bounds x="4412" y="109" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1hzty4u_di" bpmnElement="Gateway_1hzty4u" isMarkerVisible="true">
+        <dc:Bounds x="4065" y="102" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_04bzj7n_di" bpmnElement="Gateway_04bzj7n" isMarkerVisible="true">
+        <dc:Bounds x="3555" y="102" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1lzk398_di" bpmnElement="DataStoreReference_1lzk398">
+        <dc:Bounds x="3985" y="185" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3987" y="242" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_103xlpo_di" bpmnElement="Gateway_103xlpo" isMarkerVisible="true">
+        <dc:Bounds x="3875" y="245" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0bsx0nr_di" bpmnElement="Activity_1hp3djr">
+        <dc:Bounds x="3680" y="230" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0lcauxa_di" bpmnElement="Event_1g2tkj6">
         <dc:Bounds x="1362" y="512" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_17bb53r_di" bpmnElement="Event_0sb557c">
+        <dc:Bounds x="3882" y="149" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_02ebu0j_di" bpmnElement="Flow_02ebu0j">
         <di:waypoint x="338" y="127" />
@@ -1229,19 +1317,19 @@ for i in itens:
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1xx8rfx_di" bpmnElement="Flow_1xx8rfx">
         <di:waypoint x="3480" y="127" />
-        <di:waypoint x="3570" y="127" />
+        <di:waypoint x="3555" y="127" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0hiwet5_di" bpmnElement="Flow_0hiwet5">
-        <di:waypoint x="3670" y="127" />
-        <di:waypoint x="3760" y="127" />
+        <di:waypoint x="3780" y="127" />
+        <di:waypoint x="3870" y="127" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_10l6uoe_di" bpmnElement="Flow_10l6uoe">
-        <di:waypoint x="3860" y="127" />
-        <di:waypoint x="3950" y="127" />
+        <di:waypoint x="3970" y="127" />
+        <di:waypoint x="4065" y="127" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_11363nf_di" bpmnElement="Flow_11363nf">
-        <di:waypoint x="4050" y="127" />
-        <di:waypoint x="4142" y="127" />
+        <di:waypoint x="4320" y="127" />
+        <di:waypoint x="4412" y="127" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0a77a64_di" bpmnElement="Flow_0a77a64">
         <di:waypoint x="1808" y="490" />
@@ -1264,6 +1352,32 @@ for i in itens:
         <di:waypoint x="1680" y="640" />
         <di:waypoint x="1680" y="515" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_070yv70_di" bpmnElement="Flow_070yv70">
+        <di:waypoint x="4115" y="127" />
+        <di:waypoint x="4220" y="127" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vruzto_di" bpmnElement="Flow_1vruzto">
+        <di:waypoint x="3605" y="127" />
+        <di:waypoint x="3680" y="127" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0omy3z8_di" bpmnElement="Flow_0omy3z8">
+        <di:waypoint x="4090" y="152" />
+        <di:waypoint x="4090" y="270" />
+        <di:waypoint x="3925" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00tzb38_di" bpmnElement="Flow_00tzb38">
+        <di:waypoint x="3900" y="185" />
+        <di:waypoint x="3900" y="245" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1j3gey3_di" bpmnElement="Flow_1j3gey3">
+        <di:waypoint x="3875" y="270" />
+        <di:waypoint x="3780" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14okvjf_di" bpmnElement="Flow_14okvjf">
+        <di:waypoint x="3680" y="270" />
+        <di:waypoint x="3580" y="270" />
+        <di:waypoint x="3580" y="152" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1toag1e_di" bpmnElement="DataInputAssociation_1toag1e">
         <di:waypoint x="599" y="235" />
         <di:waypoint x="609" y="167" />
@@ -1281,8 +1395,8 @@ for i in itens:
         <di:waypoint x="1416" y="530" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1stkkjw_di" bpmnElement="DataInputAssociation_1stkkjw">
-        <di:waypoint x="3840" y="205" />
-        <di:waypoint x="3826" y="167" />
+        <di:waypoint x="3985" y="187" />
+        <di:waypoint x="3963" y="166" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
