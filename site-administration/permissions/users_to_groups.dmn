@@ -54,6 +54,39 @@
           <text>"Matriz_Gerencia"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1an6c3w">
+        <inputEntry id="UnaryTests_1eqi7um">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tatrfe">
+          <text>"emerson.gregorio@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xgcley">
+          <text>"Matriz_Deposito_Insumos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1q8fs47">
+        <inputEntry id="UnaryTests_1moac5f">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12d42rd">
+          <text>"emerson.gregorio@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tq6geq">
+          <text>"Querencia_Deposito_Insumos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fxyfk5">
+        <inputEntry id="UnaryTests_0v0zd3h">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15c2fyh">
+          <text>"emerson.gregorio@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yakdih">
+          <text>"Matriz_Insumos"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_01pinc2">
         <inputEntry id="UnaryTests_0gm0p7n">
           <text></text>
