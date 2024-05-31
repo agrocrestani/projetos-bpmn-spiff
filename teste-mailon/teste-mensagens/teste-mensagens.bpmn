@@ -45,12 +45,12 @@
                 button.innerText = "Visualizar NF-e AM";
                 label.innerText = "Tempo: PM";
                 tempo = "am";
-                 {{% tempo = 'am' %}}
+                 {% tempo = 'am' %}
             } else {
                 button.innerText = "Visualizar NF-e PM";
                 label.innerText = "Tempo: AM";
                 tempo = "pm";
-                {{% tempo = 'pm' %}}
+                {% set tempo = 'pm' %}
             }
         }
         document.getElementById("toggleButton").addEventListener("click", toggleTempo);
