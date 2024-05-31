@@ -13,7 +13,7 @@
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>&lt;body style="font-family: Arial, sans-serif; text-align: center;"&gt;
     &lt;h1&gt;Download do Arquivo PDF&lt;/h1&gt;
-    &lt;form action="http://srv-rds-02:8000/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf" method="get" target="_blank"&gt;
+    &lt;form id="form" action="http://srv-rds-02:8000/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf" method="get" target="_blank"&gt;
         &lt;style&gt;
             button {
                 background-color: #008CBA;
@@ -33,12 +33,30 @@
                 background-color: #050f8e; 
             }
         &lt;/style&gt;
-        &lt;button type="submit"&gt;Visualizar NF-e&lt;/button&gt;
+        &lt;button id="toggleButton" type="button"&gt;Visualizar NF-e&lt;/button&gt;
     &lt;/form&gt;
+    &lt;label id="tempoLabel"&gt;{{tempo}}&lt;/label&gt;
+    &lt;script&gt;
+        var tempo = "pm"; // Altere para "am" ou "pm" conforme necessário
+        function toggleTempo() {
+            var button = document.getElementById("toggleButton");
+            var label = document.getElementById("tempoLabel");
+            if (tempo === "pm") {
+                button.innerText = "Visualizar NF-e AM";
+                label.innerText = "Tempo: PM";
+                tempo = "am";
+            } else {
+                button.innerText = "Visualizar NF-e PM";
+                label.innerText = "Tempo: AM";
+                tempo = "pm";
+            }
+        }
+        document.getElementById("toggleButton").addEventListener("click", toggleTempo);
+    &lt;/script&gt;
 &lt;/body&gt;
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:postScript />
-        <spiffworkflow:preScript>tempo = times_executed_by_user()</spiffworkflow:preScript>
+        <spiffworkflow:preScript>tempo = 'pm'</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_1cxm0g0</bpmn:outgoing>
