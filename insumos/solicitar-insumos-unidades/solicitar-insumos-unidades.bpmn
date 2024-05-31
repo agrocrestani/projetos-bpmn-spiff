@@ -133,6 +133,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
           <spiffworkflow:property name="formUiSchemaFilename" value="confirma-solicitacao-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:postScript>solicitacao_bkp = solicitacao</spiffworkflow:postScript>
+        <spiffworkflow:preScript>solTeste = solicitacao</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0wktytc</bpmn:incoming>
       <bpmn:outgoing>Flow_06tikhf</bpmn:outgoing>
@@ -776,14 +777,6 @@ except:
         <di:waypoint x="705" y="177" />
         <di:waypoint x="820" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_1scwoig_di" bpmnElement="DataInputAssociation_1scwoig">
-        <di:waypoint x="1015" y="275" />
-        <di:waypoint x="1028" y="217" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0d0qs48_di" bpmnElement="DataInputAssociation_0d0qs48">
-        <di:waypoint x="1545" y="236" />
-        <di:waypoint x="1526" y="217" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1toag1e_di" bpmnElement="DataInputAssociation_1toag1e">
         <di:waypoint x="504" y="285" />
         <di:waypoint x="514" y="217" />
@@ -791,6 +784,14 @@ except:
       <bpmndi:BPMNEdge id="DataInputAssociation_1u0frmg_di" bpmnElement="DataInputAssociation_1u0frmg">
         <di:waypoint x="552" y="285" />
         <di:waypoint x="532" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1scwoig_di" bpmnElement="DataInputAssociation_1scwoig">
+        <di:waypoint x="1015" y="275" />
+        <di:waypoint x="1028" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0d0qs48_di" bpmnElement="DataInputAssociation_0d0qs48">
+        <di:waypoint x="1545" y="236" />
+        <di:waypoint x="1526" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
