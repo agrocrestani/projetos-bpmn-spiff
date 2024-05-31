@@ -34,13 +34,13 @@
         <bpmn:flowNodeRef>Activity_1rkt1l6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_05jo0sq</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0kygj4b</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0zxfq72</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_02etn56</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0dqilxv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0ntk7ol</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0iheayv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1g2tkj6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1pav2g7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0zxfq72</bpmn:flowNodeRef>
         <bpmn:childLaneSet id="LaneSet_18ibth1">
           <bpmn:lane id="Lane_1i1rltx">
             <bpmn:flowNodeRef>Activity_0rzn55m</bpmn:flowNodeRef>
@@ -68,11 +68,11 @@
             <bpmn:flowNodeRef>Activity_1pav2g7</bpmn:flowNodeRef>
           </bpmn:lane>
           <bpmn:lane id="Lane_1mcy60b" name="Matriz_Deposito_Insumos">
-            <bpmn:flowNodeRef>Activity_0zxfq72</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_02etn56</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_0dqilxv</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_0ntk7ol</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_0iheayv</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Activity_0zxfq72</bpmn:flowNodeRef>
           </bpmn:lane>
         </bpmn:childLaneSet>
       </bpmn:lane>
@@ -226,8 +226,6 @@ carregaQuerencia = 0</spiffworkflow:preScript>
 |**Código Fornecedor:**|**{{CardCodeFor}}**|
 |Nome Fornecedor: |{{CardName}}|
 |**Codigo Filial Destino:** | **{{unidade}}**
-|Nome Filial Destino: |{{BPLName}}|
-|CNPJ Destino: |{{VATRegNum}}|
 
 
 **Selecione o link abaixo e cole na barra de tarefas do navegador para ver a NFe:**
@@ -328,8 +326,8 @@ payload = {
 |**Código Fornecedor**:|{{CardCode}}|
 |Nome Fornecedor: |{{CardName}}|
 |**Nome Unidade Destino:** |{{BPLName}}|
-|Código Unidade Destino: | {{BPLId}} |
-|CNPJ Unidade Destino: |{{VATRegNum}}|
+|Código Unidade Destino: | {{Nome_Cli_Destino }} |
+
 
 ### Itens da Nota
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
@@ -385,6 +383,7 @@ for i in itens:
 
 
 </spiffworkflow:preScript>
+        <spiffworkflow:guestConfirmation></spiffworkflow:guestConfirmation>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_10l6uoe</bpmn:incoming>
       <bpmn:outgoing>Flow_11363nf</bpmn:outgoing>
@@ -572,7 +571,7 @@ except:
 |Número Sap:|{{DocNum}}|
 |Data:|{{DocDate}}|
 |Código Cliente Destino:|{{CardCode}}|
-|Nome Cliente Destino: |{{CardName}}|
+|Nome Cliente Destino: |{{Nome_Cli_Destino }}|
 |Nome Emitente: |{{BPLName}}|
 |CNPJ Emitente: |{{VATRegNum}}|
 
@@ -638,36 +637,6 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:outgoing>Flow_1t9rdtz</bpmn:outgoing>
       <bpmn:outgoing>Flow_0tid22h</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="Activity_0zxfq72" name="Carregar em Tangará">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>confirma = False</spiffworkflow:preScript>
-        <spiffworkflow:instructionsForEndUser># Itens para caregar em &lt;font color="blue"&gt;Tangará&lt;/font&gt;. 
-
-| Campo | Valor |
-| ----------: | ------- |
-|Número Sap:|{{DocNum}}|
-|Número da NFe:|{{Serial}}|
-|Data:|{{DocDate}}|
-|**Código Cliente Destino**:|**{{CardCode}}**|
-|Nome Cliente Destino: |{{Nome_Cli_Destino }}|
-|**Código Remetente**: | **{{BPLId}}** |
-|Nome Remetente: |{{BPLName}}|
-|CNPJ Remetente: |{{VATRegNum}}|
-
-### Itens para carregar neste depósito
-| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
-| -------- | --------- |  -------------- | ---------------- | ----------: | ----------: | ------------- |
-{%for i in itensMatriz%}
-| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
-{%endfor%}
-|||||Total-&gt; | {{TotalMatriz}}|</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-carregamento-schema.json" />
-        </spiffworkflow:properties>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0q85kr9</bpmn:incoming>
-      <bpmn:outgoing>Flow_0m9b8u0</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:exclusiveGateway id="Gateway_02etn56" default="Flow_1ky5ra4">
       <bpmn:incoming>Flow_16i3je1</bpmn:incoming>
       <bpmn:outgoing>Flow_0q85kr9</bpmn:outgoing>
@@ -813,6 +782,36 @@ del(main_usage)
 # del(nfe)
 # del(nfeItens)</bpmn:script>
     </bpmn:scriptTask>
+    <bpmn:userTask id="Activity_0zxfq72" name="Carregar em Tangará">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>confirma = False</spiffworkflow:preScript>
+        <spiffworkflow:instructionsForEndUser># Itens para caregar em &lt;font color="blue"&gt;Tangará&lt;/font&gt;. 
+
+| Campo | Valor |
+| ----------: | ------- |
+|Número Sap:|{{DocNum}}|
+|Número da NFe:|{{Serial}}|
+|Data:|{{DocDate}}|
+|**Código Cliente Destino**:|**{{CardCode}}**|
+|Nome Cliente Destino: |{{Nome_Cli_Destino }}|
+|**Código Remetente**: | **{{BPLId}}** |
+|Nome Remetente: |{{BPLName}}|
+|CNPJ Remetente: |{{VATRegNum}}|
+
+### Itens para carregar neste depósito
+| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
+| -------- | --------- |  -------------- | ---------------- | ----------: | ----------: | ------------- |
+{%for i in itensMatriz%}
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
+{%endfor%}
+|||||Total-&gt; | {{TotalMatriz}}|</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-carregamento-schema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0q85kr9</bpmn:incoming>
+      <bpmn:outgoing>Flow_0m9b8u0</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1fn7r1a">
@@ -932,9 +931,6 @@ del(main_usage)
       <bpmndi:BPMNShape id="Gateway_0kygj4b_di" bpmnElement="Gateway_0kygj4b" isMarkerVisible="true">
         <dc:Bounds x="1535" y="465" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_00xd1qy_di" bpmnElement="Activity_0zxfq72">
-        <dc:Bounds x="2230" y="920" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_02etn56_di" bpmnElement="Gateway_02etn56" isMarkerVisible="true">
         <dc:Bounds x="2115" y="935" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -959,6 +955,9 @@ del(main_usage)
       <bpmndi:BPMNShape id="Activity_1hlzn0o_di" bpmnElement="Activity_1pav2g7">
         <dc:Bounds x="1640" y="450" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_00xd1qy_di" bpmnElement="Activity_0zxfq72">
+        <dc:Bounds x="2240" y="920" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0lcauxa_di" bpmnElement="Event_1g2tkj6">
         <dc:Bounds x="1362" y="512" width="36" height="36" />
@@ -1023,7 +1022,7 @@ del(main_usage)
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0q85kr9_di" bpmnElement="Flow_0q85kr9">
         <di:waypoint x="2165" y="960" />
-        <di:waypoint x="2230" y="960" />
+        <di:waypoint x="2240" y="960" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1ky5ra4_di" bpmnElement="Flow_1ky5ra4">
         <di:waypoint x="2140" y="935" />
@@ -1053,7 +1052,7 @@ del(main_usage)
         <di:waypoint x="2560" y="1055" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0m9b8u0_di" bpmnElement="Flow_0m9b8u0">
-        <di:waypoint x="2330" y="960" />
+        <di:waypoint x="2340" y="960" />
         <di:waypoint x="2415" y="960" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0dr50wv_di" bpmnElement="Flow_0dr50wv">
