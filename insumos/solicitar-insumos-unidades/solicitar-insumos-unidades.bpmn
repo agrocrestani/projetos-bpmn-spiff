@@ -578,9 +578,20 @@ except:
 |Nome Emitente: |{{BPLName}}|
 |CNPJ Emitente: |{{VATRegNum}}|
 
-**Selecione o link abaixo e cole na barra de tarefas do navegador para ver a NFe:**
-
-&lt;link href='{{arquivo_nfe}}' target='_blank' style='white-space: nowrap;'&gt;Clique aqui
+&lt;form action="{{arquivo_nfe}}" method="get" target="_blank"&gt;
+        &lt;button type="submit" style="background-color: #008CBA;
+                                     border: none;
+                                     color: white;
+                                     padding: 10px 20px;
+                                     text-align: center;
+                                     text-decoration: none;
+                                     display: inline-block;
+                                     font-size: 16px;
+                                     border-radius: 5px;
+                                     transition-duration: 0.4s;
+                                     cursor: pointer;
+                                     border-bottom: 4px solid #005f8e;"&gt;Visualizar NF-e&lt;/button&gt;
+    &lt;/form&gt;
 
 ### Itens da Nota
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
@@ -670,7 +681,21 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
 |**Código Remetente**: | **{{BPLId}}** |
 |Nome Remetente: |{{BPLName}}|
 
-----------
+&lt;form action="{{arquivo_nfe}}" method="get" target="_blank"&gt;
+        &lt;button type="submit" style="background-color: #008CBA;
+                                     border: none;
+                                     color: white;
+                                     padding: 10px 20px;
+                                     text-align: center;
+                                     text-decoration: none;
+                                     display: inline-block;
+                                     font-size: 16px;
+                                     border-radius: 5px;
+                                     transition-duration: 0.4s;
+                                     cursor: pointer;
+                                     border-bottom: 4px solid #005f8e;"&gt;Visualizar NF-e&lt;/button&gt;
+    &lt;/form&gt;
+
 
 ### Itens para carregar neste depósito.
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
@@ -794,10 +819,21 @@ del(main_usage)
 |**Código Remetente**: | **{{BPLId}}** |
 |Nome Remetente: |{{BPLName}}|
 
+&lt;form action="{{arquivo_nfe}}" method="get" target="_blank"&gt;
+        &lt;button type="submit" style="background-color: #008CBA;
+                                     border: none;
+                                     color: white;
+                                     padding: 10px 20px;
+                                     text-align: center;
+                                     text-decoration: none;
+                                     display: inline-block;
+                                     font-size: 16px;
+                                     border-radius: 5px;
+                                     transition-duration: 0.4s;
+                                     cursor: pointer;
+                                     border-bottom: 4px solid #005f8e;"&gt;Visualizar NF-e&lt;/button&gt;
+    &lt;/form&gt;
 
-**Selecione o link abaixo e cole na barra de tarefas do navegador para ver a NFe:**
-
-&lt;p style='white-space: nowrap;'&gt;{{arquivo_nfe}}&lt;/p&gt;
 
 
 ### Itens para carregar neste depósito
