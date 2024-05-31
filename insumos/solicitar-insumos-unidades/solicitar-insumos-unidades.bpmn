@@ -707,7 +707,7 @@ del(main_usage)
 | ----------: | ------- |
 |Número da NFe:|{{Serial}}|
 |Data de emissão:|{{DocDate}}|
-|Chave de Acesso:
+|Chave de acesso: |{{chaveAcesso}}|
 |**Código Fornecedor:**|**{{CardCodeFor}}**|
 |Nome Fornecedor: |{{CardName}}|
 |**Codigo Filial Destino:** | **{{unidade}}**
