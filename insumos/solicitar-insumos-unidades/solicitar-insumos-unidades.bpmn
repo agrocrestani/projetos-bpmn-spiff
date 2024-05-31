@@ -529,7 +529,7 @@ except:
     status_code = sapError['status_code']
     errorCode = sapError['error_code']
     errorMessage = sapError['message']</spiffworkflow:preScript>
-        <spiffworkflow:postScript>solicitacao = json.dumps(solicitacao_bkp)</spiffworkflow:postScript>
+        <spiffworkflow:postScript>solicitacao = solTeste</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0p9ysdq</bpmn:incoming>
       <bpmn:outgoing>Flow_0bnwhbp</bpmn:outgoing>
