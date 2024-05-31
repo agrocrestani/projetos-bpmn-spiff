@@ -35,9 +35,9 @@
         <bpmn:flowNodeRef>Activity_0zxfq72</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0fzr71x</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_05jo0sq</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1rkt1l6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_09sj7do</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1g2tkj6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1rkt1l6</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:userTask id="Activity_0rzn55m" name="Solicitar Insumos">
@@ -485,24 +485,6 @@ except:
       <bpmn:incoming>Flow_0tid22h</bpmn:incoming>
       <bpmn:outgoing>Flow_0p9ysdq</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Activity_1rkt1l6" name="Verifica Erro">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>try:
-    status_code = lancado
-    errorCode = rsp['body']['error']['code']
-    errorMessage = rsp['body']['error']['message']['value']
-except:
-    status_code = sapError['status_code']
-    errorCode = sapError['error_code']
-    errorMessage = sapError['message']</spiffworkflow:preScript>
-        <spiffworkflow:postScript>for b in bkp:
-    b['insumo'] = json.dumps(b['insumo'])
-
-solicitacao = bkp.copy()</spiffworkflow:postScript>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0p9ysdq</bpmn:incoming>
-      <bpmn:outgoing>Flow_0bnwhbp</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:exclusiveGateway id="Gateway_09sj7do">
       <bpmn:incoming>Flow_1ca0574</bpmn:incoming>
       <bpmn:incoming>Flow_0bnwhbp</bpmn:incoming>
@@ -546,6 +528,36 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_1qmmxw0" sourceRef="Event_1g2tkj6" targetRef="Gateway_05jo0sq" />
     <bpmn:sequenceFlow id="Flow_0p9ysdq" sourceRef="Gateway_05jo0sq" targetRef="Activity_1rkt1l6" />
     <bpmn:sequenceFlow id="Flow_0bnwhbp" sourceRef="Activity_1rkt1l6" targetRef="Gateway_09sj7do" />
+    <bpmn:manualTask id="Activity_1rkt1l6" name="Verifica Erro">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>try:
+    status_code = lancado
+    errorCode = rsp['body']['error']['code']
+    errorMessage = rsp['body']['error']['message']['value']
+except:
+    status_code = sapError['status_code']
+    errorCode = sapError['error_code']
+    errorMessage = sapError['message']</spiffworkflow:preScript>
+        <spiffworkflow:postScript>for b in bkp:
+    b['insumo'] = json.dumps(b['insumo'])
+
+solicitacao = bkp.copy()</spiffworkflow:postScript>
+        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
+
+### Informações
+
+| Campo | Conteudo |
+| ----------: | -------------- |
+| Código Erro: | {{errorCode}} |
+| Mensagem Erro: | {{errorMessage}}
+| Status  | {{status_code}} |
+
+1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
+2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0p9ysdq</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bnwhbp</bpmn:outgoing>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:message id="Message_1dy1rlf" name="Message_rec">
     <bpmn:extensionElements>
@@ -657,12 +669,11 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Gateway_05jo0sq_di" bpmnElement="Gateway_05jo0sq" isMarkerVisible="true">
         <dc:Bounds x="1360" y="345" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1rkt1l6_di" bpmnElement="Activity_1rkt1l6">
-        <dc:Bounds x="1045" y="330" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_09sj7do_di" bpmnElement="Gateway_09sj7do" isMarkerVisible="true">
         <dc:Bounds x="560" y="102" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_01z645e_di" bpmnElement="Activity_1rkt1l6">
+        <dc:Bounds x="1045" y="330" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0lcauxa_di" bpmnElement="Event_1g2tkj6">
         <dc:Bounds x="1367" y="149" width="36" height="36" />
