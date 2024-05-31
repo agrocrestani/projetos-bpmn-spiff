@@ -820,7 +820,7 @@ except:
 | ----------: | ------- |
 |Número da NFe:|{{Serial}}|
 |Número Sap:|{{DocNum}}|
-|Chave de acesso: | |
+|Chave de acesso: |{{chaveAcesso}}|
 |Data:|{{DocDate}}|
 |**Código Fornecedor**:|{{CardCode}}|
 |Nome Fornecedor: |{{CardName}}|
