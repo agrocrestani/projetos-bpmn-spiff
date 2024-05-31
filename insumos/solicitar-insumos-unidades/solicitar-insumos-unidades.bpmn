@@ -110,9 +110,10 @@ for s in solicitacao:
     <bpmn:businessRuleTask id="Activity_09jse4j" name="Definir Cliente">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
-        <spiffworkflow:postScript>for s in solicitacao:
+        <spiffworkflow:postScript>previaNFe = []
+for s in solicitacao:
     s['insumo'] = json.loads(s['insumo'])
-
+    previaNFe.append(s)
 
 descricaoFilial = ""
 for f in n_filiais:
