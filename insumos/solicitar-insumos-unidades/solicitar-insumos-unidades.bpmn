@@ -169,6 +169,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
     <bpmn:callActivity id="Activity_10va8n7" name="Define unidade, dep. e gestor" calledElement="Process_definir_unidade_e_departamento_zxer6t3">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_02ebu0j</bpmn:incoming>
       <bpmn:outgoing>Flow_07x0sp4</bpmn:outgoing>
@@ -719,7 +720,12 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
     </bpmn:exclusiveGateway>
     <bpmn:userTask id="Activity_0zxfq72" name="Carregar em Tangará">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>confirma = False</spiffworkflow:preScript>
+        <spiffworkflow:preScript>confirma = False
+group_members = get_group_members("Matriz_Deposito_Insumos")
+lane_owners = {
+    "Deposito": group_members
+}
+</spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser># Itens para carregamento em Tangara
 
 | Campo | Valor |
@@ -759,7 +765,11 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
     </bpmn:exclusiveGateway>
     <bpmn:userTask id="Activity_0fzr71x" name="Carregar na Querencia">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>confirma = False</spiffworkflow:preScript>
+        <spiffworkflow:preScript>confirma = False
+group_members = get_group_members("Querencia_Deposito_Insumos")
+lane_owners = {
+    "Deposito": group_members
+}</spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser># Itens para carregamento na Querencia
 
 | Campo | Valor |
