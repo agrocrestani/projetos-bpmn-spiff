@@ -670,7 +670,6 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
 |Nome Cliente Destino: |{{Nome_Cli_Destino }}|
 |**Código Remetente**: | **{{BPLId}}** |
 |Nome Remetente: |{{BPLName}}|
-|CNPJ Remetente: |{{VATRegNum}}|
 
 ----------
 
@@ -795,7 +794,12 @@ del(main_usage)
 |Nome Cliente Destino: |{{Nome_Cli_Destino }}|
 |**Código Remetente**: | **{{BPLId}}** |
 |Nome Remetente: |{{BPLName}}|
-|CNPJ Remetente: |{{VATRegNum}}|
+
+
+**Selecione o link abaixo e cole na barra de tarefas do navegador para ver a NFe:**
+
+&lt;p style='white-space: nowrap;'&gt;{{arquivo_nfe}}&lt;/p&gt;
+
 
 ### Itens para carregar neste depósito
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
