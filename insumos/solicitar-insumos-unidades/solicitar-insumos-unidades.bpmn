@@ -580,8 +580,7 @@ except:
 
 **Selecione o link abaixo e cole na barra de tarefas do navegador para ver a NFe:**
 
-{{arquivo_nfe}}
-
+&lt;link href='{{arquivo_nfe}}' target='_blank' style='white-space: nowrap;'&gt;Clique aqui
 
 ### Itens da Nota
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
