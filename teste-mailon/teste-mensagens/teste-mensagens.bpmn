@@ -11,12 +11,7 @@
     <bpmn:sequenceFlow id="Flow_1cxm0g0" sourceRef="Activity_0l5spyw" targetRef="EndEvent_1" />
     <bpmn:manualTask id="Activity_0l5spyw">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Download de Arquivo PDF&lt;/title&gt;
-&lt;/head&gt;
-&lt;body style="font-family: Arial, sans-serif; text-align: center;"&gt;
+        <spiffworkflow:instructionsForEndUser>&lt;body style="font-family: Arial, sans-serif; text-align: center;"&gt;
     &lt;h1&gt;Download do Arquivo PDF&lt;/h1&gt;
     &lt;form action="http://srv-rds-02:8000/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf" method="get" target="_blank"&gt;
         &lt;button type="submit" style="background-color: #008CBA;
@@ -30,15 +25,16 @@
                                      border-radius: 5px;
                                      transition-duration: 0.4s;
                                      cursor: pointer;
-                                     border-bottom: 4px solid #005f8e;"&gt;Visualizar NF-e&lt;/button&gt;
+                                     border-bottom: 4px solid #005f8e;
+
+                                     transition: background-color 0.3s ease;
+                                     }
+                                     button:hover {
+                                         background-color: #ff0000; 
+                                     }
+                                     "&gt;Visualizar NF-e&lt;/button&gt;
     &lt;/form&gt;
-    &lt;style&gt;
-        button:hover {
-            background-color: #005f8e;
-        }
-    &lt;/style&gt;
 &lt;/body&gt;
-&lt;/html&gt;
 </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
