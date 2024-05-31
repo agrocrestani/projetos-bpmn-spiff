@@ -36,8 +36,6 @@
         <bpmn:flowNodeRef>Activity_0qzj466</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_02etn56</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0dqilxv</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_0ntk7ol</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_0iheayv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0zxfq72</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_082xwxf</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1u6vbok</bpmn:flowNodeRef>
@@ -51,6 +49,8 @@
         <bpmn:flowNodeRef>Event_1g2tkj6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0sb557c</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0j9q13v</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0ntk7ol</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0iheayv</bpmn:flowNodeRef>
         <bpmn:childLaneSet id="LaneSet_18ibth1">
           <bpmn:lane id="Lane_1i1rltx">
             <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
@@ -90,16 +90,16 @@
           <bpmn:lane id="Lane_1mcy60b" name="Matriz_Deposito_Insumos">
             <bpmn:flowNodeRef>Gateway_02etn56</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_0dqilxv</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Activity_0zxfq72</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_0ntk7ol</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_0iheayv</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Activity_0zxfq72</bpmn:flowNodeRef>
           </bpmn:lane>
         </bpmn:childLaneSet>
       </bpmn:lane>
       <bpmn:lane id="Lane_029j3y3" name="Querencia_Deposito_Insumos">
-        <bpmn:flowNodeRef>Activity_0fzr71x</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_19qsdak</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0c34dsj</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0fzr71x</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:sequenceFlow id="Flow_02ebu0j" sourceRef="StartEvent_1" targetRef="Activity_10va8n7" />
@@ -581,61 +581,6 @@ del(main_usage)
       <bpmn:incoming>Flow_1ky5ra4</bpmn:incoming>
       <bpmn:outgoing>Flow_0dr50wv</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:parallelGateway id="Gateway_0ntk7ol">
-      <bpmn:incoming>Flow_0dr50wv</bpmn:incoming>
-      <bpmn:incoming>Flow_16b5oif</bpmn:incoming>
-      <bpmn:outgoing>Flow_1rc1ms8</bpmn:outgoing>
-    </bpmn:parallelGateway>
-    <bpmn:parallelGateway id="Gateway_0iheayv">
-      <bpmn:incoming>Flow_12ic23r</bpmn:incoming>
-      <bpmn:outgoing>Flow_16i3je1</bpmn:outgoing>
-      <bpmn:outgoing>Flow_07ddzxh</bpmn:outgoing>
-    </bpmn:parallelGateway>
-    <bpmn:userTask id="Activity_0fzr71x" name="Carregar na Querencia">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>confirma = False
-</spiffworkflow:preScript>
-        <spiffworkflow:instructionsForEndUser># Itens para carregar na &lt;font color="blue"&gt;Querência&lt;/font&gt;.
-| Campo | Valor |
-| ----------: | ------- |
-|Número Sap:|{{DocNum}}|
-|Número da NFe:|{{Serial}}|
-|Data:|{{DocDate}}|
-|**Código Cliente Destino**:|**{{CardCode}}**|
-|Nome Cliente Destino: |{{Nome_Cli_Destino }}|
-|**Código Remetente**: | **{{BPLId}}** |
-|Nome Remetente: |{{BPLName}}|
-
-&lt;form action="{{arquivo_nfe}}" method="get" target="_blank"&gt;
-        &lt;button type="submit" style="background-color: #008CBA;
-                                     border: none;
-                                     color: white;
-                                     padding: 10px 20px;
-                                     text-align: center;
-                                     text-decoration: none;
-                                     display: inline-block;
-                                     font-size: 16px;
-                                     border-radius: 5px;
-                                     transition-duration: 0.4s;
-                                     cursor: pointer;
-                                     border-bottom: 4px solid #005f8e;"&gt;Visualizar NF-e&lt;/button&gt;
-    &lt;/form&gt;
-
-
-### Itens para carregar neste depósito.
-| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
-| -------- | --------- |  -------------- | ---------------- | ----------: | ---------: | ------------- |
-{%for i in itensQuerencia%}
-| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
-{%endfor%}
-|||||Total -&gt; | {{TotalQuerencia}} |</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-carregamento-querencia-schema.json" />
-        </spiffworkflow:properties>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_17v1i38</bpmn:incoming>
-      <bpmn:outgoing>Flow_1jd6q7y</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:exclusiveGateway id="Gateway_19qsdak" default="Flow_0h818xa">
       <bpmn:incoming>Flow_07ddzxh</bpmn:incoming>
       <bpmn:outgoing>Flow_17v1i38</bpmn:outgoing>
@@ -1014,6 +959,61 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       <bpmn:incoming>Flow_07x0sp4</bpmn:incoming>
       <bpmn:outgoing>Flow_00r1s3x</bpmn:outgoing>
     </bpmn:callActivity>
+    <bpmn:parallelGateway id="Gateway_0ntk7ol">
+      <bpmn:incoming>Flow_0dr50wv</bpmn:incoming>
+      <bpmn:incoming>Flow_16b5oif</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rc1ms8</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="Gateway_0iheayv">
+      <bpmn:incoming>Flow_12ic23r</bpmn:incoming>
+      <bpmn:outgoing>Flow_16i3je1</bpmn:outgoing>
+      <bpmn:outgoing>Flow_07ddzxh</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="Activity_0fzr71x" name="Carregar na Querencia">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>confirma = False
+</spiffworkflow:preScript>
+        <spiffworkflow:instructionsForEndUser># Itens para carregar na &lt;font color="blue"&gt;Querência&lt;/font&gt;.
+| Campo | Valor |
+| ----------: | ------- |
+|Número Sap:|{{DocNum}}|
+|Número da NFe:|{{Serial}}|
+|Data:|{{DocDate}}|
+|**Código Cliente Destino**:|**{{CardCode}}**|
+|Nome Cliente Destino: |{{Nome_Cli_Destino }}|
+|**Código Remetente**: | **{{BPLId}}** |
+|Nome Remetente: |{{BPLName}}|
+
+&lt;form action="{{arquivo_nfe}}" method="get" target="_blank"&gt;
+        &lt;button type="submit" style="background-color: #008CBA;
+                                     border: none;
+                                     color: white;
+                                     padding: 10px 20px;
+                                     text-align: center;
+                                     text-decoration: none;
+                                     display: inline-block;
+                                     font-size: 16px;
+                                     border-radius: 5px;
+                                     transition-duration: 0.4s;
+                                     cursor: pointer;
+                                     border-bottom: 4px solid #005f8e;"&gt;Visualizar NF-e&lt;/button&gt;
+    &lt;/form&gt;
+
+
+### Itens para carregar neste depósito.
+| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
+| -------- | --------- |  -------------- | ---------------- | ----------: | ---------: | ------------- |
+{%for i in itensQuerencia%}
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
+{%endfor%}
+|||||Total -&gt; | {{TotalQuerencia}} |</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-carregamento-querencia-schema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17v1i38</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jd6q7y</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmn:error id="Error_2" name="Error_2">
     <bpmn:extensionElements>
@@ -1136,15 +1136,6 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       <bpmndi:BPMNShape id="Gateway_0dqilxv_di" bpmnElement="Gateway_0dqilxv" isMarkerVisible="true">
         <dc:Bounds x="2805" y="935" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1p57cjl_di" bpmnElement="Gateway_0ntk7ol">
-        <dc:Bounds x="2925" y="1005" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0ekrfbb_di" bpmnElement="Gateway_0iheayv">
-        <dc:Bounds x="2380" y="1005" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_18gvjft_di" bpmnElement="Activity_0fzr71x">
-        <dc:Bounds x="2620" y="1090" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_19qsdak_di" bpmnElement="Gateway_19qsdak" isMarkerVisible="true">
         <dc:Bounds x="2495" y="1185" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -1194,6 +1185,15 @@ carregaQuerencia = 0</spiffworkflow:preScript>
         <dc:Bounds x="490" y="87" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1p57cjl_di" bpmnElement="Gateway_0ntk7ol">
+        <dc:Bounds x="2925" y="935" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0ekrfbb_di" bpmnElement="Gateway_0iheayv">
+        <dc:Bounds x="2380" y="935" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18gvjft_di" bpmnElement="Activity_0fzr71x">
+        <dc:Bounds x="2620" y="1170" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_17bb53r_di" bpmnElement="Event_0sb557c">
         <dc:Bounds x="3952" y="149" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -1236,7 +1236,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       <bpmndi:BPMNEdge id="Flow_12ic23r_di" bpmnElement="Flow_12ic23r">
         <di:waypoint x="2355" y="490" />
         <di:waypoint x="2405" y="490" />
-        <di:waypoint x="2405" y="1005" />
+        <di:waypoint x="2405" y="935" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13t1cjk_di" bpmnElement="Flow_13t1cjk">
         <di:waypoint x="1520" y="490" />
@@ -1248,12 +1248,11 @@ carregaQuerencia = 0</spiffworkflow:preScript>
         <di:waypoint x="1475" y="720" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_16i3je1_di" bpmnElement="Flow_16i3je1">
-        <di:waypoint x="2405" y="1005" />
-        <di:waypoint x="2405" y="960" />
+        <di:waypoint x="2430" y="960" />
         <di:waypoint x="2505" y="960" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_07ddzxh_di" bpmnElement="Flow_07ddzxh">
-        <di:waypoint x="2405" y="1055" />
+        <di:waypoint x="2405" y="985" />
         <di:waypoint x="2405" y="1210" />
         <di:waypoint x="2495" y="1210" />
       </bpmndi:BPMNEdge>
@@ -1268,9 +1267,8 @@ carregaQuerencia = 0</spiffworkflow:preScript>
         <di:waypoint x="2830" y="935" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17v1i38_di" bpmnElement="Flow_17v1i38">
-        <di:waypoint x="2520" y="1185" />
-        <di:waypoint x="2520" y="1130" />
-        <di:waypoint x="2620" y="1130" />
+        <di:waypoint x="2545" y="1210" />
+        <di:waypoint x="2620" y="1210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0h818xa_di" bpmnElement="Flow_0h818xa">
         <di:waypoint x="2520" y="1235" />
@@ -1279,14 +1277,13 @@ carregaQuerencia = 0</spiffworkflow:preScript>
         <di:waypoint x="2830" y="1235" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1jd6q7y_di" bpmnElement="Flow_1jd6q7y">
-        <di:waypoint x="2720" y="1130" />
-        <di:waypoint x="2830" y="1130" />
-        <di:waypoint x="2830" y="1185" />
+        <di:waypoint x="2720" y="1210" />
+        <di:waypoint x="2805" y="1210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_16b5oif_di" bpmnElement="Flow_16b5oif">
         <di:waypoint x="2855" y="1210" />
         <di:waypoint x="2950" y="1210" />
-        <di:waypoint x="2950" y="1055" />
+        <di:waypoint x="2950" y="985" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0m9b8u0_di" bpmnElement="Flow_0m9b8u0">
         <di:waypoint x="2730" y="960" />
@@ -1294,8 +1291,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0dr50wv_di" bpmnElement="Flow_0dr50wv">
         <di:waypoint x="2855" y="960" />
-        <di:waypoint x="2950" y="960" />
-        <di:waypoint x="2950" y="1005" />
+        <di:waypoint x="2925" y="960" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1qmmxw0_di" bpmnElement="Flow_1qmmxw0">
         <di:waypoint x="1450" y="548" />
@@ -1315,8 +1311,8 @@ carregaQuerencia = 0</spiffworkflow:preScript>
         <di:waypoint x="490" y="127" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1rc1ms8_di" bpmnElement="Flow_1rc1ms8">
-        <di:waypoint x="2975" y="1030" />
-        <di:waypoint x="3010" y="1030" />
+        <di:waypoint x="2975" y="960" />
+        <di:waypoint x="3010" y="960" />
         <di:waypoint x="3010" y="127" />
         <di:waypoint x="3070" y="127" />
       </bpmndi:BPMNEdge>
