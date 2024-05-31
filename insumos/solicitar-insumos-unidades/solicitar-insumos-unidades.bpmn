@@ -810,19 +810,6 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:outgoing>Flow_07ddzxh</bpmn:outgoing>
     </bpmn:parallelGateway>
   </bpmn:process>
-  <bpmn:message id="Message_1dy1rlf" name="Message_rec">
-    <bpmn:extensionElements>
-      <spiffworkflow:messageVariable>None</spiffworkflow:messageVariable>
-      <spiffworkflow:messagePayload>None</spiffworkflow:messagePayload>
-    </bpmn:extensionElements>
-  </bpmn:message>
-  <bpmn:message id="Message_1nzvl3p" name="Message_env">
-    <bpmn:extensionElements>
-      <spiffworkflow:messagePayload>None</spiffworkflow:messagePayload>
-      <spiffworkflow:messageVariable>teste</spiffworkflow:messageVariable>
-    </bpmn:extensionElements>
-  </bpmn:message>
-  <bpmn:signal id="Corrige" name="Corrige" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1fn7r1a">
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
