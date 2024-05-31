@@ -4,57 +4,19 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_09tm1h9" />
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0l5spyw" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_1af12yp</bpmn:incoming>
+      <bpmn:incoming>Flow_1cxm0g0</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1af12yp" sourceRef="Activity_13g9wyj" targetRef="EndEvent_1" />
-    <bpmn:userTask id="Activity_13g9wyj" name="T2">
+    <bpmn:sequenceFlow id="Flow_1cxm0g0" sourceRef="Activity_0l5spyw" targetRef="EndEvent_1" />
+    <bpmn:manualTask id="Activity_0l5spyw">
       <bpmn:extensionElements>
-        <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="teste-download-arquivo-schema.json" />
-          <spiffworkflow:property name="formUiSchemaFilename" value="teste-download-arquivo-uischema.json" />
-        </spiffworkflow:properties>
-        <spiffworkflow:instructionsForEndUser />
-        <spiffworkflow:preScript>def teste_lista():
-
-    flag = False
-
-    if flag:    
-        return 'teste = [{
-                "value":"A",
-                "label":"B"
-                },
-                {
-                "value":"AA",
-                "label":"BB"
-                }]'
-    else:
-        return 'teste = [{
-                "value":"C",
-                "label":"D"
-                },
-                {
-                "value":"CC",
-                "label":"DD"
-                }]'
-
-
-teste = teste_lista()</spiffworkflow:preScript>
+        <spiffworkflow:instructionsForEndUser>&lt;h1&gt;Exemplo de Link para Arquivo PDF na Rede&lt;/h1&gt;
+    &lt;p&gt;&lt;a href="http://srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf"&gt;Abrir PDF&lt;/a&gt;&lt;/p&gt;</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0b7j9ee</bpmn:incoming>
-      <bpmn:outgoing>Flow_1af12yp</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_0b7j9ee" sourceRef="Activity_09tm1h9" targetRef="Activity_13g9wyj" />
-    <bpmn:scriptTask id="Activity_09tm1h9">
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:outgoing>Flow_0b7j9ee</bpmn:outgoing>
-      <bpmn:script>import os
-
-# Obter o diretório de trabalho atual
-current_directory = os.getcwd()
-</bpmn:script>
-    </bpmn:scriptTask>
+      <bpmn:outgoing>Flow_1cxm0g0</bpmn:outgoing>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="T1">
@@ -64,24 +26,16 @@ current_directory = os.getcwd()
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="622" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_18cmyre_di" bpmnElement="Activity_13g9wyj">
-        <dc:Bounds x="420" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1q4kbnt_di" bpmnElement="Activity_09tm1h9">
-        <dc:Bounds x="250" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_0aisfum_di" bpmnElement="Activity_0l5spyw">
+        <dc:Bounds x="350" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
-        <di:waypoint x="250" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1af12yp_di" bpmnElement="Flow_1af12yp">
-        <di:waypoint x="520" y="177" />
-        <di:waypoint x="622" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0b7j9ee_di" bpmnElement="Flow_0b7j9ee">
         <di:waypoint x="350" y="177" />
-        <di:waypoint x="420" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1cxm0g0_di" bpmnElement="Flow_1cxm0g0">
+        <di:waypoint x="450" y="177" />
+        <di:waypoint x="622" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
