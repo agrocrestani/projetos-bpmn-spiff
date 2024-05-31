@@ -99,7 +99,9 @@ carregaQuerencia = 0</spiffworkflow:preScript>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirma-solicitacao-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:postScript>bkp = solicitacao.copy()</spiffworkflow:postScript>
+        <spiffworkflow:postScript>bkp = []
+for s in solicitacao:
+    bkp.append(s)</spiffworkflow:postScript>
         <spiffworkflow:preScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0wktytc</bpmn:incoming>
@@ -496,7 +498,9 @@ except:
     status_code = sapError['status_code']
     errorCode = sapError['error_code']
     errorMessage = sapError['message']</spiffworkflow:preScript>
-        <spiffworkflow:postScript>solicitacao = bkp.copy()</spiffworkflow:postScript>
+        <spiffworkflow:postScript>solicitacao = []
+for b in bkp:
+    solicitacao.append(s)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0p9ysdq</bpmn:incoming>
       <bpmn:outgoing>Flow_0bnwhbp</bpmn:outgoing>
