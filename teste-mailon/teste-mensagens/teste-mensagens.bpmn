@@ -11,17 +11,21 @@
     <bpmn:sequenceFlow id="Flow_1cxm0g0" sourceRef="Activity_0l5spyw" targetRef="EndEvent_1" />
     <bpmn:manualTask id="Activity_0l5spyw">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Download de Arquivo PDF&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Exemplo de Download de PDF&lt;/h1&gt;
-    &lt;p&gt;&lt;a href="http://localhost:8000/51240103262185000109550010000257321290836637.pdf" download="http://localhost:8000/51240103262185000109550010000257321290836637.pdf"&gt;Baixar PDF&lt;/a&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser>&lt;body&gt;
+    &lt;h1&gt;Clique abaixo para baixar o arquivo PDF&lt;/h1&gt;
+    &lt;form action="http://localhost:8000/51240103262185000109550010000257321290836637.pdf" method="get" target="_blank"&gt;
+        &lt;button type="submit" style="background-color: #4CAF50; /* Green */
+                                    border: none;
+                                    color: white;
+                                    padding: 15px 32px;
+                                    text-align: center;
+                                    text-decoration: none;
+                                    display: inline-block;
+                                    font-size: 16px;
+                                    margin: 4px 2px;
+                                    cursor: pointer;"&gt;Baixar PDF&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_1cxm0g0</bpmn:outgoing>
