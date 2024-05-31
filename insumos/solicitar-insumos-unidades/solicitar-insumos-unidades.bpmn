@@ -496,7 +496,9 @@ except:
     errorCode = sapError['error_code']
     errorMessage = sapError['message']</spiffworkflow:preScript>
         <spiffworkflow:postScript>for b in bkp:
-    b['insumo'] = json.dumps(b['insumo'])</spiffworkflow:postScript>
+    b['insumo'] = json.dumps(b['insumo'])
+
+solicitacao = bkp.copy()</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0p9ysdq</bpmn:incoming>
       <bpmn:outgoing>Flow_0bnwhbp</bpmn:outgoing>
