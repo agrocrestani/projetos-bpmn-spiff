@@ -45,7 +45,7 @@
                 button.innerText = "Visualizar NF-e AM";
                 label.innerText = "Tempo: PM";
                 tempo = "am";
-                 {% tempo = 'am' %}
+                 {% set tempo = 'am' %}
             } else {
                 button.innerText = "Visualizar NF-e PM";
                 label.innerText = "Tempo: AM";
