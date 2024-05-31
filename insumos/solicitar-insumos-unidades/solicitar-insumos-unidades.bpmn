@@ -771,7 +771,7 @@ sqlRsp = Hana(connection).selectDb(query)
 
 chaveAcesso = sqlRsp[0]['keynfe']
 cnpj = sqlRsp[0]['cnpj']
-arquivo_nfe = f'http://srv-rds-02:8000/{cnpj}/danfe/{chavAecesso}.pdf'
+arquivo_nfe = f'http://srv-rds-02:8000/{cnpj}/danfe/{chaveAcesso}.pdf'
 
 del(connection)
 
