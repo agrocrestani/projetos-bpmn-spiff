@@ -666,9 +666,58 @@ del(documentos_saida)</spiffworkflow:postScript>
     &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;input type="checkbox" id="1" name="teste" value="teste" &gt;
+&lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
 
-</spiffworkflow:instructionsForEndUser>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 12px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            border-bottom: 2px solid #dddddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        tbody tr:hover {
+            background-color: #ddd;
+        }
+    &lt;/style&gt;</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript># Inicialize as variáveis para calcular o custo médio unitário
 total_preco_unitario_entrada = 0
 total_quantidade_entrada = 0
