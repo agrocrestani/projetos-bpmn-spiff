@@ -666,7 +666,7 @@ del(documentos_saida)</spiffworkflow:postScript>
     &lt;/tbody&gt;
 &lt;/table&gt;
 
-
+&lt;input type="checkbox" id="1" name="teste" value="teste" &gt;
 
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript># Inicialize as variáveis para calcular o custo médio unitário
@@ -1030,8 +1030,8 @@ del(documentos_saida)</spiffworkflow:postScript>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_10e4xqh_di" bpmnElement="Flow_10e4xqh">
         <di:waypoint x="1160" y="152" />
-        <di:waypoint x="1160" y="20" />
-        <di:waypoint x="40" y="20" />
+        <di:waypoint x="1160" y="0" />
+        <di:waypoint x="40" y="0" />
         <di:waypoint x="40" y="137" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0m9nzqu_di" bpmnElement="Flow_0m9nzqu">
