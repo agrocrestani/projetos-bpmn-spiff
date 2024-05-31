@@ -719,12 +719,7 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
     </bpmn:exclusiveGateway>
     <bpmn:userTask id="Activity_0zxfq72" name="Carregar em Tangará">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>confirma = False
-group_members = get_group_members("Matriz_Deposito_Insumos")
-lane_owners = {
-    "Deposito": group_members
-}
-</spiffworkflow:preScript>
+        <spiffworkflow:preScript>confirma = False</spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser># Itens para carregamento em Tangara
 
 | Campo | Valor |
@@ -775,10 +770,7 @@ lane_owners = {
     <bpmn:userTask id="Activity_0fzr71x" name="Carregar na Querencia">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>confirma = False
-group_members = get_group_members("Querencia_Deposito_Insumos")
-lane_owners = {
-    "Deposito": group_members
-}</spiffworkflow:preScript>
+</spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser># Itens para carregamento na Querencia
 
 | Campo | Valor |
@@ -824,6 +816,10 @@ lane_owners = {
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
         <dc:Bounds x="34" y="-30" width="3856" height="1420" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_029j3y3_di" bpmnElement="Lane_029j3y3" isHorizontal="true">
+        <dc:Bounds x="64" y="1070" width="3826" height="320" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1nq9ktb_di" bpmnElement="Lane_1nq9ktb" isHorizontal="true">
         <dc:Bounds x="64" y="-30" width="3826" height="1100" />
       </bpmndi:BPMNShape>
@@ -837,10 +833,6 @@ lane_owners = {
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1i1rltx_di" bpmnElement="Lane_1i1rltx" isHorizontal="true">
         <dc:Bounds x="94" y="-30" width="3796" height="390" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_029j3y3_di" bpmnElement="Lane_029j3y3" isHorizontal="true">
-        <dc:Bounds x="64" y="1070" width="3826" height="320" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0s9rd1b_di" bpmnElement="Activity_0rzn55m">
         <dc:Bounds x="565" y="87" width="100" height="80" />
