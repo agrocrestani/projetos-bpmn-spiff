@@ -38,9 +38,6 @@
         <bpmn:flowNodeRef>Activity_0zxfq72</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_02etn56</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0dqilxv</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0fzr71x</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_19qsdak</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_0c34dsj</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0ntk7ol</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0iheayv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1g2tkj6</bpmn:flowNodeRef>
@@ -70,17 +67,19 @@
             <bpmn:flowNodeRef>Gateway_0kygj4b</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Event_1g2tkj6</bpmn:flowNodeRef>
           </bpmn:lane>
-          <bpmn:lane id="Lane_1mcy60b" name="Depositos">
+          <bpmn:lane id="Lane_1mcy60b" name="Matriz_Deposito_Insumos">
             <bpmn:flowNodeRef>Activity_0zxfq72</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_02etn56</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_0dqilxv</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Activity_0fzr71x</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Gateway_19qsdak</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Gateway_0c34dsj</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_0ntk7ol</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_0iheayv</bpmn:flowNodeRef>
           </bpmn:lane>
         </bpmn:childLaneSet>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_029j3y3" name="Querencia_Deposito_Insumos">
+        <bpmn:flowNodeRef>Activity_0fzr71x</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_19qsdak</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0c34dsj</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:sequenceFlow id="Flow_02ebu0j" sourceRef="StartEvent_1" targetRef="Activity_10va8n7" />
@@ -169,7 +168,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
     <bpmn:callActivity id="Activity_10va8n7" name="Define unidade, dep. e gestor" calledElement="Process_definir_unidade_e_departamento_zxer6t3">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_02ebu0j</bpmn:incoming>
       <bpmn:outgoing>Flow_07x0sp4</bpmn:outgoing>
@@ -763,6 +762,16 @@ lane_owners = {
       <bpmn:incoming>Flow_1ky5ra4</bpmn:incoming>
       <bpmn:outgoing>Flow_0dr50wv</bpmn:outgoing>
     </bpmn:exclusiveGateway>
+    <bpmn:parallelGateway id="Gateway_0ntk7ol">
+      <bpmn:incoming>Flow_0dr50wv</bpmn:incoming>
+      <bpmn:incoming>Flow_16b5oif</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rc1ms8</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="Gateway_0iheayv">
+      <bpmn:incoming>Flow_12ic23r</bpmn:incoming>
+      <bpmn:outgoing>Flow_16i3je1</bpmn:outgoing>
+      <bpmn:outgoing>Flow_07ddzxh</bpmn:outgoing>
+    </bpmn:parallelGateway>
     <bpmn:userTask id="Activity_0fzr71x" name="Carregar na Querencia">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>confirma = False
@@ -809,34 +818,28 @@ lane_owners = {
       <bpmn:incoming>Flow_0h818xa</bpmn:incoming>
       <bpmn:outgoing>Flow_16b5oif</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:parallelGateway id="Gateway_0ntk7ol">
-      <bpmn:incoming>Flow_0dr50wv</bpmn:incoming>
-      <bpmn:incoming>Flow_16b5oif</bpmn:incoming>
-      <bpmn:outgoing>Flow_1rc1ms8</bpmn:outgoing>
-    </bpmn:parallelGateway>
-    <bpmn:parallelGateway id="Gateway_0iheayv">
-      <bpmn:incoming>Flow_12ic23r</bpmn:incoming>
-      <bpmn:outgoing>Flow_16i3je1</bpmn:outgoing>
-      <bpmn:outgoing>Flow_07ddzxh</bpmn:outgoing>
-    </bpmn:parallelGateway>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1fn7r1a">
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
-        <dc:Bounds x="34" y="-30" width="3856" height="1300" />
+        <dc:Bounds x="34" y="-30" width="3856" height="1420" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1nq9ktb_di" bpmnElement="Lane_1nq9ktb" isHorizontal="true">
-        <dc:Bounds x="64" y="-30" width="3826" height="1300" />
+        <dc:Bounds x="64" y="-30" width="3826" height="1100" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1i1rltx_di" bpmnElement="Lane_1i1rltx" isHorizontal="true">
-        <dc:Bounds x="94" y="-30" width="3796" height="390" />
+      <bpmndi:BPMNShape id="Lane_1mcy60b_di" bpmnElement="Lane_1mcy60b" isHorizontal="true">
+        <dc:Bounds x="94" y="810" width="3796" height="260" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0frwqt8_di" bpmnElement="Lane_0frwqt8" isHorizontal="true">
         <dc:Bounds x="94" y="360" width="3796" height="450" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1mcy60b_di" bpmnElement="Lane_1mcy60b" isHorizontal="true">
-        <dc:Bounds x="94" y="810" width="3796" height="460" />
+      <bpmndi:BPMNShape id="Lane_1i1rltx_di" bpmnElement="Lane_1i1rltx" isHorizontal="true">
+        <dc:Bounds x="94" y="-30" width="3796" height="390" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_029j3y3_di" bpmnElement="Lane_029j3y3" isHorizontal="true">
+        <dc:Bounds x="64" y="1070" width="3826" height="320" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0s9rd1b_di" bpmnElement="Activity_0rzn55m">
@@ -947,20 +950,20 @@ lane_owners = {
       <bpmndi:BPMNShape id="Gateway_0dqilxv_di" bpmnElement="Gateway_0dqilxv" isMarkerVisible="true">
         <dc:Bounds x="2415" y="935" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_18gvjft_di" bpmnElement="Activity_0fzr71x">
-        <dc:Bounds x="2230" y="1070" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_19qsdak_di" bpmnElement="Gateway_19qsdak" isMarkerVisible="true">
-        <dc:Bounds x="2105" y="1085" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0c34dsj_di" bpmnElement="Gateway_0c34dsj" isMarkerVisible="true">
-        <dc:Bounds x="2420" y="1085" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1p57cjl_di" bpmnElement="Gateway_0ntk7ol">
         <dc:Bounds x="2535" y="1005" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0ekrfbb_di" bpmnElement="Gateway_0iheayv">
         <dc:Bounds x="1990" y="1005" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18gvjft_di" bpmnElement="Activity_0fzr71x">
+        <dc:Bounds x="2230" y="1090" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_19qsdak_di" bpmnElement="Gateway_19qsdak" isMarkerVisible="true">
+        <dc:Bounds x="2105" y="1185" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0c34dsj_di" bpmnElement="Gateway_0c34dsj" isMarkerVisible="true">
+        <dc:Bounds x="2415" y="1185" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0lcauxa_di" bpmnElement="Event_1g2tkj6">
         <dc:Bounds x="1362" y="512" width="36" height="36" />
@@ -1020,8 +1023,8 @@ lane_owners = {
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_07ddzxh_di" bpmnElement="Flow_07ddzxh">
         <di:waypoint x="2015" y="1055" />
-        <di:waypoint x="2015" y="1110" />
-        <di:waypoint x="2105" y="1110" />
+        <di:waypoint x="2015" y="1210" />
+        <di:waypoint x="2105" y="1210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0q85kr9_di" bpmnElement="Flow_0q85kr9">
         <di:waypoint x="2165" y="960" />
@@ -1034,22 +1037,24 @@ lane_owners = {
         <di:waypoint x="2440" y="935" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17v1i38_di" bpmnElement="Flow_17v1i38">
-        <di:waypoint x="2155" y="1110" />
-        <di:waypoint x="2230" y="1110" />
+        <di:waypoint x="2130" y="1185" />
+        <di:waypoint x="2130" y="1130" />
+        <di:waypoint x="2230" y="1130" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0h818xa_di" bpmnElement="Flow_0h818xa">
-        <di:waypoint x="2130" y="1135" />
-        <di:waypoint x="2130" y="1190" />
-        <di:waypoint x="2445" y="1190" />
-        <di:waypoint x="2445" y="1135" />
+        <di:waypoint x="2130" y="1235" />
+        <di:waypoint x="2130" y="1300" />
+        <di:waypoint x="2440" y="1300" />
+        <di:waypoint x="2440" y="1235" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1jd6q7y_di" bpmnElement="Flow_1jd6q7y">
-        <di:waypoint x="2330" y="1110" />
-        <di:waypoint x="2420" y="1110" />
+        <di:waypoint x="2330" y="1130" />
+        <di:waypoint x="2440" y="1130" />
+        <di:waypoint x="2440" y="1185" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_16b5oif_di" bpmnElement="Flow_16b5oif">
-        <di:waypoint x="2470" y="1110" />
-        <di:waypoint x="2560" y="1110" />
+        <di:waypoint x="2465" y="1210" />
+        <di:waypoint x="2560" y="1210" />
         <di:waypoint x="2560" y="1055" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0m9b8u0_di" bpmnElement="Flow_0m9b8u0">
@@ -1116,6 +1121,10 @@ lane_owners = {
         <di:waypoint x="647" y="235" />
         <di:waypoint x="627" y="167" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1stkkjw_di" bpmnElement="DataInputAssociation_1stkkjw">
+        <di:waypoint x="3520" y="205" />
+        <di:waypoint x="3506" y="167" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1scwoig_di" bpmnElement="DataInputAssociation_1scwoig">
         <di:waypoint x="1029" y="605" />
         <di:waypoint x="1060" y="530" />
@@ -1123,10 +1132,6 @@ lane_owners = {
       <bpmndi:BPMNEdge id="DataInputAssociation_0d0qs48_di" bpmnElement="DataInputAssociation_0d0qs48">
         <di:waypoint x="1444" y="575" />
         <di:waypoint x="1416" y="530" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_1stkkjw_di" bpmnElement="DataInputAssociation_1stkkjw">
-        <di:waypoint x="3520" y="205" />
-        <di:waypoint x="3506" y="167" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
