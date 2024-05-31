@@ -752,7 +752,7 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:outgoing>Flow_08133cx</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
-# DocEntry = 2066
+DocEntry = 2066
 
 connection = {
     "address": "172.20.1.4",
