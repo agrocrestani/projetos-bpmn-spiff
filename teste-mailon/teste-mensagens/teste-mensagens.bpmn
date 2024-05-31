@@ -37,7 +37,7 @@
     &lt;/form&gt;
 &lt;/body&gt;
 </spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:postScript>treste = markdown_file_download_link()  </spiffworkflow:postScript>
+        <spiffworkflow:postScript />
         <spiffworkflow:preScript>tempo = times_executed_by_user()</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
