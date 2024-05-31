@@ -909,13 +909,13 @@ for i in itens:
       <bpmn:outgoing>Flow_070yv70</bpmn:outgoing>
       <bpmn:outgoing>Flow_0omy3z8</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:exclusiveGateway id="Gateway_04bzj7n">
+    <bpmn:exclusiveGateway id="Gateway_04bzj7n" default="Flow_1vruzto">
       <bpmn:incoming>Flow_1xx8rfx</bpmn:incoming>
       <bpmn:incoming>Flow_14okvjf</bpmn:incoming>
       <bpmn:outgoing>Flow_1vruzto</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:dataStoreReference id="DataStoreReference_1lzk398" name="SapLogin" dataStoreRef="saplogin" type="json" />
-    <bpmn:exclusiveGateway id="Gateway_103xlpo">
+    <bpmn:exclusiveGateway id="Gateway_103xlpo" default="Flow_1j3gey3">
       <bpmn:incoming>Flow_0omy3z8</bpmn:incoming>
       <bpmn:incoming>Flow_00tzb38</bpmn:incoming>
       <bpmn:outgoing>Flow_1j3gey3</bpmn:outgoing>
