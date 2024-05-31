@@ -9,7 +9,7 @@
       <spiffworkflow:variableName>sapError</spiffworkflow:variableName>
     </bpmn:extensionElements>
   </bpmn:error>
-  <bpmn:collaboration id="Collaboration_1fn7r1a">
+  <bpmn:collaboration id="Solicitar_Insumos_Unidade">
     <bpmn:participant id="Participant_0mevgbm" processRef="Process_solicitar_insumos_unidades_9qfwbwe" />
   </bpmn:collaboration>
   <bpmn:process id="Process_solicitar_insumos_unidades_9qfwbwe" isExecutable="true">
@@ -1019,7 +1019,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
     </bpmn:extensionElements>
   </bpmn:error>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1fn7r1a">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Solicitar_Insumos_Unidade">
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
         <dc:Bounds x="34" y="-30" width="4516" height="1420" />
       </bpmndi:BPMNShape>
