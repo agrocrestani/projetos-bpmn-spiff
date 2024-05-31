@@ -33,7 +33,7 @@
                 background-color: #050f8e; 
             }
         &lt;/style&gt;
-        &lt;button id="toggleButton" type="button"&gt;{{tempo}}&lt;/button&gt;
+        &lt;button id="toggleButton" type="button"&gt;&lt;/button&gt;
     &lt;/form&gt;
     &lt;label id="tempoLabel"&gt;{{tempo}}&lt;/label&gt;
     &lt;script&gt;
@@ -42,12 +42,12 @@
             var button = document.getElementById("toggleButton");
             var label = document.getElementById("tempoLabel");
             if (tempo === "pm") {
-                button.innerText = "Visualizar NF-e AM";
+                button.innerText = " AM";
                 label.innerText = "Tempo: PM";
                 tempo = "am";
                  {% set tempo = 'am' %}
             } else {
-                button.innerText = "Visualizar NF-e PM";
+                button.innerText = " PM";
                 label.innerText = "Tempo: AM";
                 tempo = "pm";
                 {% set tempo = 'pm' %}
