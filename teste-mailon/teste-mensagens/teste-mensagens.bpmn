@@ -18,7 +18,7 @@
 &lt;/head&gt;
 &lt;body&gt;
     &lt;h1&gt;Exemplo de Download de PDF&lt;/h1&gt;
-    &lt;p&gt;&lt;a href="file://///srv-rds-02/CaminhosSAP/Anexos/NFe/03262185000109/danfe/51240103262185000109550010000257321290836637.pdf" download="51240103262185000109550010000257321290836637.pdf"&gt;Baixar PDF&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href="http://localhost:8000/51240103262185000109550010000257321290836637.pdf" download="http://localhost:8000/51240103262185000109550010000257321290836637.pdf"&gt;Baixar PDF&lt;/a&gt;&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </spiffworkflow:instructionsForEndUser>
