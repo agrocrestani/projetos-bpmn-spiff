@@ -109,6 +109,17 @@
           <text>"admin"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1hajxe3">
+        <inputEntry id="UnaryTests_0he24di">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dakvtu">
+          <text>"mailon.campos@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ez8q2u">
+          <text>"Matriz_Insumos"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_04ckw2s">
         <inputEntry id="UnaryTests_07z7lkf">
           <text></text>
