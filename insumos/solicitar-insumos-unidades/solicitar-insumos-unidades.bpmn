@@ -99,9 +99,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirma-solicitacao-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:postScript>bkp = []
-for s in solicitacao:
-    bkp.append(s)</spiffworkflow:postScript>
+        <spiffworkflow:postScript>bkp = solicitacao.copy()</spiffworkflow:postScript>
         <spiffworkflow:preScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0wktytc</bpmn:incoming>
@@ -110,10 +108,8 @@ for s in solicitacao:
     <bpmn:businessRuleTask id="Activity_09jse4j" name="Definir Cliente">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
-        <spiffworkflow:postScript>previaNFe = []
-for s in solicitacao:
+        <spiffworkflow:postScript>for s in solicitacao:
     s['insumo'] = json.loads(s['insumo'])
-    previaNFe.append(s)
 
 descricaoFilial = ""
 for f in n_filiais:
@@ -499,9 +495,8 @@ except:
     status_code = sapError['status_code']
     errorCode = sapError['error_code']
     errorMessage = sapError['message']</spiffworkflow:preScript>
-        <spiffworkflow:postScript>solicitacao = []
-for b in bkp:
-    solicitacao.append(s)</spiffworkflow:postScript>
+        <spiffworkflow:postScript>for b in bkp:
+    b['insumo'] = json.dumps(b['insumo'])</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0p9ysdq</bpmn:incoming>
       <bpmn:outgoing>Flow_0bnwhbp</bpmn:outgoing>
