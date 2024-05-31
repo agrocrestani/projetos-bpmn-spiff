@@ -37,6 +37,7 @@
     &lt;/form&gt;
 &lt;/body&gt;
 </spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:postScript>treste = markdown_file_download_link      </spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_1cxm0g0</bpmn:outgoing>
