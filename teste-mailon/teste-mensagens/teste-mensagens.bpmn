@@ -33,7 +33,7 @@
                 background-color: #050f8e; 
             }
         &lt;/style&gt;
-        &lt;button id="toggleButton" type="button"&gt;Visualizar NF-e&lt;/button&gt;
+        &lt;button id="toggleButton" type="button"&gt;{{tempo}}&lt;/button&gt;
     &lt;/form&gt;
     &lt;label id="tempoLabel"&gt;{{tempo}}&lt;/label&gt;
     &lt;script&gt;
@@ -45,10 +45,12 @@
                 button.innerText = "Visualizar NF-e AM";
                 label.innerText = "Tempo: PM";
                 tempo = "am";
+                {{tempo = 'am'}}
             } else {
                 button.innerText = "Visualizar NF-e PM";
                 label.innerText = "Tempo: AM";
                 tempo = "pm";
+                {{tempo = 'pm'}}
             }
         }
         document.getElementById("toggleButton").addEventListener("click", toggleTempo);
