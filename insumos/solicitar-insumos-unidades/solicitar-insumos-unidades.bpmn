@@ -227,10 +227,20 @@ carregaQuerencia = 0</spiffworkflow:preScript>
 |Nome Fornecedor: |{{CardName}}|
 |**Codigo Filial Destino:** | **{{unidade}}**
 
-
-**Selecione o link abaixo e cole na barra de tarefas do navegador para ver a NFe:**
-
-&lt;{{linkNfe}}&gt;
+&lt;form action="{{arquivo_nfe}}" method="get" target="_blank"&gt;
+        &lt;button type="submit" style="background-color: #008CBA;
+                                     border: none;
+                                     color: white;
+                                     padding: 10px 20px;
+                                     text-align: center;
+                                     text-decoration: none;
+                                     display: inline-block;
+                                     font-size: 16px;
+                                     border-radius: 5px;
+                                     transition-duration: 0.4s;
+                                     cursor: pointer;
+                                     border-bottom: 4px solid #005f8e;"&gt;Visualizar NF-e&lt;/button&gt;
+    &lt;/form&gt;
 
 
 ### Itens da Nota
@@ -327,6 +337,22 @@ payload = {
 |Nome Fornecedor: |{{CardName}}|
 |**Nome Unidade Destino:** |{{BPLName}}|
 |Código Unidade Destino: | {{Nome_Cli_Destino }} |
+
+&lt;form action="{{arquivo_nfe}}" method="get" target="_blank"&gt;
+        &lt;button type="submit" style="background-color: #008CBA;
+                                     border: none;
+                                     color: white;
+                                     padding: 10px 20px;
+                                     text-align: center;
+                                     text-decoration: none;
+                                     display: inline-block;
+                                     font-size: 16px;
+                                     border-radius: 5px;
+                                     transition-duration: 0.4s;
+                                     cursor: pointer;
+                                     border-bottom: 4px solid #005f8e;"&gt;Visualizar NF-e&lt;/button&gt;
+    &lt;/form&gt;
+
 
 
 ### Itens da Nota
