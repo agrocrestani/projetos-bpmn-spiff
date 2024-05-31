@@ -151,7 +151,9 @@
     <bpmn:sequenceFlow id="Flow_0moezgg" sourceRef="Activity_0f2ed01" targetRef="Gateway_1uogvkl" />
     <bpmn:sequenceFlow id="Flow_070yv70" sourceRef="Gateway_1hzty4u" targetRef="Activity_1bcdnjg" />
     <bpmn:sequenceFlow id="Flow_1vruzto" sourceRef="Gateway_04bzj7n" targetRef="Activity_082xwxf" />
-    <bpmn:sequenceFlow id="Flow_0omy3z8" sourceRef="Gateway_1hzty4u" targetRef="Gateway_103xlpo" />
+    <bpmn:sequenceFlow id="Flow_0omy3z8" sourceRef="Gateway_1hzty4u" targetRef="Gateway_103xlpo">
+      <bpmn:conditionExpression>lancaNFeEntrada != 201</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_00tzb38" sourceRef="Event_0sb557c" targetRef="Gateway_103xlpo" />
     <bpmn:sequenceFlow id="Flow_1j3gey3" sourceRef="Gateway_103xlpo" targetRef="Activity_1hp3djr" />
     <bpmn:sequenceFlow id="Flow_14okvjf" sourceRef="Activity_1hp3djr" targetRef="Gateway_04bzj7n" />
@@ -923,7 +925,7 @@ for i in itens:
     <bpmn:manualTask id="Activity_1hp3djr" name="Verifica erro da NFe de Entrada">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>try:
-    status_code = lancado
+    status_code = lancaNFeEntrada 
     errorCode = rsp['body']['error']['code']
     errorMessage = rsp['body']['error']['message']['value']
 except:
