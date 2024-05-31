@@ -168,7 +168,7 @@
     </bpmn:callActivity>
     <bpmn:dataStoreReference id="DataStoreReference_15sz4u1" name="Filiais" dataStoreRef="filiais" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_1wa62ow" name="Safras" dataStoreRef="safras" type="json" />
-    <bpmn:exclusiveGateway id="Gateway_09sj7do">
+    <bpmn:exclusiveGateway id="Gateway_09sj7do" default="Flow_0wktytc">
       <bpmn:incoming>Flow_1ca0574</bpmn:incoming>
       <bpmn:incoming>Flow_0bnwhbp</bpmn:incoming>
       <bpmn:outgoing>Flow_0wktytc</bpmn:outgoing>
@@ -367,7 +367,7 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:incoming>Flow_0p9ysdq</bpmn:incoming>
       <bpmn:outgoing>Flow_0bnwhbp</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:exclusiveGateway id="Gateway_05jo0sq">
+    <bpmn:exclusiveGateway id="Gateway_05jo0sq" default="Flow_0p9ysdq">
       <bpmn:incoming>Flow_1qmmxw0</bpmn:incoming>
       <bpmn:incoming>Flow_0tid22h</bpmn:incoming>
       <bpmn:outgoing>Flow_0p9ysdq</bpmn:outgoing>
