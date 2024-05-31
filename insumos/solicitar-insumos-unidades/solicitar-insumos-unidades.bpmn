@@ -99,7 +99,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-solicitacao-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirma-solicitacao-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:postScript>solicitacao_bkp = solicitacao.copy()</spiffworkflow:postScript>
+        <spiffworkflow:postScript>bkp = solicitacao.copy()</spiffworkflow:postScript>
         <spiffworkflow:preScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0wktytc</bpmn:incoming>
