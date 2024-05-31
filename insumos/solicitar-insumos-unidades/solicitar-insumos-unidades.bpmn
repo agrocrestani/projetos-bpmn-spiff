@@ -637,8 +637,8 @@ del(rsp)
 del(n_filiais)
 del(n_safras)
 del(main_usage)
-del(nfe)
-del(nfeItens)</bpmn:script>
+# del(nfe)
+# del(nfeItens)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:manualTask id="Activity_1l8yv4t" name="Dados da NFe">
       <bpmn:extensionElements>
