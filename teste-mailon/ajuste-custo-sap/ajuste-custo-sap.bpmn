@@ -601,21 +601,108 @@ del(documentos_saida)</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_0m9nzqu" sourceRef="VISAO_SAP" targetRef="REPROCESSAR01" />
     <bpmn:userTask id="VISAO_CALCULADA" name="Visão Calculada">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>
-| Produto | Deposito | Em Estoque | Custo Unitário | 
-| ----------- | ----------- | ----------------: | -----------------: | 
-| **{{produto}}** - {{desc_produto}} | {{deposito}} | {{ '{:,.3f}'.format(on_hand_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.3f}'.format(custo_produto_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | 
+        <spiffworkflow:instructionsForEndUser>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Ficha de Estoque&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
 
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
 
-### Ficha de Estoque
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 12px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            border-bottom: 2px solid #dddddd;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        tbody tr:hover {
+            background-color: #ddd;
+        }
+
+        .product-info {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .product-info th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h2 style="text-align:center;"&gt;Ficha de Estoque&lt;/h2&gt;
 
 &lt;table&gt;
     &lt;thead&gt;
         &lt;tr&gt;
-            &lt;th colspan="4" style="text-align:center;"&gt;Documento &lt;/th&gt;
-            &lt;th colspan="3" style="text-align:center;"&gt;Entrada&lt;/th&gt;
-            &lt;th colspan="3" style="text-align:center;"&gt;Saída&lt;/th&gt;
-            &lt;th colspan="3" style="text-align:center;"&gt;Saldo Acumulado&lt;/th&gt;
+            &lt;th colspan="4"&gt;Produto&lt;/th&gt;
+            &lt;th&gt;Deposito&lt;/th&gt;
+            &lt;th&gt;Em Estoque&lt;/th&gt;
+            &lt;th&gt;Custo Unitário&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        {% for produto in consulta_movimentos_out %}
+        &lt;tr&gt;
+            &lt;td colspan="4" class="product-info"&gt;{{produto}} - {{desc_produto}}&lt;/td&gt;
+            &lt;td&gt;{{deposito}}&lt;/td&gt;
+            &lt;td&gt;{{ '{:,.3f}'.format(on_hand_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
+            &lt;td&gt;{{ '{:,.3f}'.format(custo_produto_deposito).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
+        &lt;/tr&gt;
+        {% endfor %}
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th colspan="4"&gt;Documento &lt;/th&gt;
+            &lt;th colspan="3"&gt;Entrada&lt;/th&gt;
+            &lt;th colspan="3"&gt;Saída&lt;/th&gt;
+            &lt;th colspan="3"&gt;Saldo Acumulado&lt;/th&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
             &lt;th&gt;Tipo&lt;/th&gt;
@@ -666,58 +753,9 @@ del(documentos_saida)</spiffworkflow:postScript>
     &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;style&gt;
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 12px;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-            font-weight: bold;
-            border-bottom: 2px solid #dddddd;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        tr:hover {
-            background-color: #ddd;
-        }
-
-        tbody tr:nth-child(odd) {
-            background-color: #ffffff;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #f7f7f7;
-        }
-
-        tbody tr:hover {
-            background-color: #ddd;
-        }
-    &lt;/style&gt;</spiffworkflow:instructionsForEndUser>
+&lt;/body&gt;
+&lt;/html&gt;
+</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript># Inicialize as variáveis para calcular o custo médio unitário
 total_preco_unitario_entrada = 0
 total_quantidade_entrada = 0
