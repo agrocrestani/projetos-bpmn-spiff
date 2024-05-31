@@ -649,7 +649,7 @@ del(documentos_saida)</spiffworkflow:postScript>
             &lt;td&gt; &lt;/td&gt;
             &lt;td&gt; &lt;/td&gt;
             {% endif %}
-            {% if produto['origem'] == '3-Sai.Mercadoria' produto['origem'] == or '4-Nfe.Saida'%}
+            {% if produto['origem'] == '3-Sai.Mercadoria' or produto['origem'] == '4-Nfe.Saida'%}
             &lt;td&gt;{{ '{:,.3f}'.format(produto['qtde']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
             &lt;td&gt;{{ '{:,.3f}'.format(produto['preco_unitario']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
             &lt;td&gt;{{ '{:,.3f}'.format(produto['custo_total_contabil']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}&lt;/td&gt;
