@@ -1,6 +1,8 @@
 {
   "solicitacao": [
-    {}
+    {
+      "insumo": "{\"ItemCode\":\"022592\",\"ItemName\":\"ABACUS HC\",\"ItmsGrpNam\":\"FUNGICIDAS\",\"InvntryUom\":\"LITRO\",\"OnHand\":\"1.743,00\",\"WhsCode\":\"03.MATR\"}"
+    }
   ],
   "unidade": "apples",
   "safra": "oranges",
