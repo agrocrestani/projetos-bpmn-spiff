@@ -383,7 +383,7 @@ for i in itens:
 
 
 </spiffworkflow:preScript>
-        <spiffworkflow:guestConfirmation></spiffworkflow:guestConfirmation>
+        <spiffworkflow:guestConfirmation />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_10l6uoe</bpmn:incoming>
       <bpmn:outgoing>Flow_11363nf</bpmn:outgoing>
@@ -405,6 +405,9 @@ for i in itens:
         </spiffworkflow:properties>
         <spiffworkflow:postScript>bkp = solicitacao.copy()</spiffworkflow:postScript>
         <spiffworkflow:preScript />
+        <spiffworkflow:instructionsForEndUser># Confirmar a Solicitação
+
+### Verifique os itens abaixo e confirme para emissão da nota fiscal.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0wktytc</bpmn:incoming>
       <bpmn:outgoing>Flow_06tikhf</bpmn:outgoing>
@@ -577,11 +580,7 @@ except:
 
 **Selecione o link abaixo e cole na barra de tarefas do navegador para ver a NFe:**
 
-
 {{arquivo_nfe}}
-
-{{arquivo_teste}}
-
 
 
 ### Itens da Nota
