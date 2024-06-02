@@ -55,21 +55,10 @@
       </rule>
     </decisionTable>
   </decision>
-  <decision id="Decision_0n3baop" name="Define Centro de custo">
-    <decisionTable id="DecisionTable_0f96kw0">
-      <input id="InputClause_0wqorct">
-        <inputExpression id="LiteralExpression_0b635vd" typeRef="string" />
-      </input>
-      <output id="OutputClause_0t16ask" typeRef="string" />
-    </decisionTable>
-  </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_1cykosu">
       <dmndi:DMNShape id="DMNShape_1dhfq2s" dmnElementRef="decision_CardCode">
         <dc:Bounds height="80" width="180" x="157" y="151" />
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="DMNShape_131ipco" dmnElementRef="Decision_0n3baop">
-        <dc:Bounds height="80" width="180" x="150" y="-30" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
