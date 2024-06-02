@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
-  <bpmn:process id="Process_invoices_post_xf8j10r" isExecutable="true">
+  <bpmn:process id="Process_invoices_post_xf8j10r" name="Invoices Post" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_1enkyef</bpmn:outgoing>
     </bpmn:startEvent>
@@ -163,7 +163,7 @@ del(main_usage)
       <bpmn:incoming>Flow_1o36j2p</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1o36j2p" sourceRef="Gateway_1rq0zkg" targetRef="Event_1i4rvuz" />
-    <bpmn:sequenceFlow id="Flow_1dd3rlu" sourceRef="Gateway_1rq0zkg" targetRef="Activity_1d81loa">
+    <bpmn:sequenceFlow id="Flow_1dd3rlu" sourceRef="Gateway_1rq0zkg" targetRef="Gateway_0osfbsk">
       <bpmn:conditionExpression>statusId != 4</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1pbq4ko" sourceRef="Activity_1d81loa" targetRef="Gateway_0069475" />
@@ -185,15 +185,109 @@ del(main_usage)
 |Numero do Status:|{{statusId}}|
 |Mensagem de erro:|{{hist}}|</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1dd3rlu</bpmn:incoming>
+      <bpmn:incoming>Flow_1x9gvlk</bpmn:incoming>
       <bpmn:outgoing>Flow_1pbq4ko</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:boundaryEvent id="Event_153wc1q" attachedToRef="Activity_1d81loa">
       <bpmn:extensionElements>
         <spiffworkflow:signalButtonLabel>Inutiliza NFe</spiffworkflow:signalButtonLabel>
       </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_09t17f7</bpmn:outgoing>
       <bpmn:signalEventDefinition id="SignalEventDefinition_14iw6o4" signalRef="inutiliza" />
     </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_09t17f7" sourceRef="Event_153wc1q" targetRef="Activity_1206m73" />
+    <bpmn:serviceTask id="Activity_1206m73" name="Justivicativa para Inutilizar">
+      <bpmn:extensionElements>
+        <spiffworkflow:serviceTaskOperator id="http/PatchRequestV2" resultVariable="rsp">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="payload" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
+spiff_tarefa = taskInfo = get_current_task_info()['id']
+
+
+loginSap = saplogin[0]['SessionId']
+
+url = 'https://172.20.1.9:50000/b1s/v1/Invoices({DocEntry})'
+
+headers = {
+  'Cookie': f"B1SESSION={loginSap}",
+  'Content-Type': 'application/json'
+}
+
+payload = {
+    "U_TX_Just": "Emissao Indevida"
+  }
+</spiffworkflow:preScript>
+        <spiffworkflow:postScript>try:
+    lancado = rsp['http_status']
+except:
+    lancado = 500</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_09t17f7</bpmn:incoming>
+      <bpmn:outgoing>Flow_0wz143b</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_1tmpqad">
+      <bpmn:incoming>Flow_0wz143b</bpmn:incoming>
+      <bpmn:outgoing>Flow_06qx27n</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0wl0noj</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0wz143b" sourceRef="Activity_1206m73" targetRef="Gateway_1tmpqad" />
+    <bpmn:sequenceFlow id="Flow_06qx27n" sourceRef="Gateway_1tmpqad" targetRef="Activity_0734j8v" />
+    <bpmn:serviceTask id="Activity_0734j8v" name="Inutiliza NFe">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
+spiff_tarefa = taskInfo = get_current_task_info()['id']
+
+
+loginSap = saplogin[0]['SessionId']
+
+url = 'https://172.20.1.9:50000/b1s/v1/Invoices({DocEntry})/CreateCancellationDocument'
+
+headers = {
+  'Cookie': f"B1SESSION={loginSap}",
+  'Content-Type': 'application/json'
+}
+
+payload = {}</spiffworkflow:preScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="inutiliza">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="payload" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_06qx27n</bpmn:incoming>
+      <bpmn:outgoing>Flow_06n6940</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_1t0tyev">
+      <bpmn:incoming>Flow_06n6940</bpmn:incoming>
+      <bpmn:outgoing>Flow_0tqwjv6</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_06n6940" sourceRef="Activity_0734j8v" targetRef="Gateway_1t0tyev" />
+    <bpmn:endEvent id="Event_17668b0">
+      <bpmn:incoming>Flow_0tqwjv6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0tqwjv6" sourceRef="Gateway_1t0tyev" targetRef="Event_17668b0" />
+    <bpmn:exclusiveGateway id="Gateway_0osfbsk">
+      <bpmn:incoming>Flow_1dd3rlu</bpmn:incoming>
+      <bpmn:incoming>Flow_0wl0noj</bpmn:incoming>
+      <bpmn:outgoing>Flow_1x9gvlk</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1x9gvlk" sourceRef="Gateway_0osfbsk" targetRef="Activity_1d81loa" />
+    <bpmn:sequenceFlow id="Flow_0wl0noj" sourceRef="Gateway_1tmpqad" targetRef="Gateway_0osfbsk">
+      <bpmn:conditionExpression>lancado != 204</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
   </bpmn:process>
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmn:signal id="inutiliza" name="inutiliza" />
@@ -234,6 +328,26 @@ del(main_usage)
       <bpmndi:BPMNShape id="Activity_1aihu5n_di" bpmnElement="Activity_1d81loa">
         <dc:Bounds x="790" y="290" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0q9rl2x_di" bpmnElement="Activity_1206m73">
+        <dc:Bounds x="930" y="410" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1tmpqad_di" bpmnElement="Gateway_1tmpqad" isMarkerVisible="true">
+        <dc:Bounds x="1085" y="425" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mazn7z_di" bpmnElement="Activity_0734j8v">
+        <dc:Bounds x="1190" y="410" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1t0tyev_di" bpmnElement="Gateway_1t0tyev" isMarkerVisible="true">
+        <dc:Bounds x="1345" y="425" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_17668b0_di" bpmnElement="Event_17668b0">
+        <dc:Bounds x="1452" y="432" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0osfbsk_di" bpmnElement="Gateway_0osfbsk" isMarkerVisible="true">
+        <dc:Bounds x="995" y="305" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1n66gzz_di" bpmnElement="Event_04w731w">
         <dc:Bounds x="362" y="199" width="36" height="36" />
@@ -276,13 +390,43 @@ del(main_usage)
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1dd3rlu_di" bpmnElement="Flow_1dd3rlu">
         <di:waypoint x="1020" y="202" />
-        <di:waypoint x="1020" y="330" />
-        <di:waypoint x="890" y="330" />
+        <di:waypoint x="1020" y="305" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1pbq4ko_di" bpmnElement="Flow_1pbq4ko">
         <di:waypoint x="790" y="330" />
         <di:waypoint x="530" y="330" />
         <di:waypoint x="530" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09t17f7_di" bpmnElement="Flow_09t17f7">
+        <di:waypoint x="860" y="388" />
+        <di:waypoint x="860" y="450" />
+        <di:waypoint x="930" y="450" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wz143b_di" bpmnElement="Flow_0wz143b">
+        <di:waypoint x="1030" y="450" />
+        <di:waypoint x="1085" y="450" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06qx27n_di" bpmnElement="Flow_06qx27n">
+        <di:waypoint x="1135" y="450" />
+        <di:waypoint x="1190" y="450" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06n6940_di" bpmnElement="Flow_06n6940">
+        <di:waypoint x="1290" y="450" />
+        <di:waypoint x="1345" y="450" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tqwjv6_di" bpmnElement="Flow_0tqwjv6">
+        <di:waypoint x="1395" y="450" />
+        <di:waypoint x="1452" y="450" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1x9gvlk_di" bpmnElement="Flow_1x9gvlk">
+        <di:waypoint x="995" y="330" />
+        <di:waypoint x="890" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wl0noj_di" bpmnElement="Flow_0wl0noj">
+        <di:waypoint x="1110" y="425" />
+        <di:waypoint x="1110" y="390" />
+        <di:waypoint x="1020" y="390" />
+        <di:waypoint x="1020" y="355" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
