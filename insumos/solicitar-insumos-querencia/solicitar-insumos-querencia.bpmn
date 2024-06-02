@@ -986,7 +986,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       <bpmn:incoming>Flow_17v1i38</bpmn:incoming>
       <bpmn:outgoing>Flow_1jd6q7y</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:callActivity id="Activity_09jse4j" name="Definir Cliente">
+    <bpmn:callActivity id="Activity_09jse4j" name="Definir Cliente" calledElement="Process_definir_cliente_nfe">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
         <spiffworkflow:postScript>for s in solicitacao:
@@ -1391,10 +1391,6 @@ for u in utilizacoes:
         <di:waypoint x="590" y="127" />
         <di:waypoint x="700" y="127" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_1scwoig_di" bpmnElement="DataInputAssociation_1scwoig">
-        <di:waypoint x="1099" y="605" />
-        <di:waypoint x="1130" y="530" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0d0qs48_di" bpmnElement="DataInputAssociation_0d0qs48">
         <di:waypoint x="1514" y="575" />
         <di:waypoint x="1486" y="530" />
@@ -1410,6 +1406,10 @@ for u in utilizacoes:
       <bpmndi:BPMNEdge id="DataInputAssociation_1u0frmg_di" bpmnElement="DataInputAssociation_1u0frmg">
         <di:waypoint x="729" y="235" />
         <di:waypoint x="742" y="167" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1scwoig_di" bpmnElement="DataInputAssociation_1scwoig">
+        <di:waypoint x="1099" y="605" />
+        <di:waypoint x="1130" y="530" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
