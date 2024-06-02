@@ -37,20 +37,252 @@ except:
         </spiffworkflow:serviceTaskOperator>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1enkyef</bpmn:incoming>
+      <bpmn:outgoing>Flow_0htr4uy</bpmn:outgoing>
+      <bpmn:property id="Property_050kue0" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1se6ii5">
+        <bpmn:sourceRef>DataStoreReference_1w94a7o</bpmn:sourceRef>
+        <bpmn:targetRef>Property_050kue0</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
     </bpmn:serviceTask>
+    <bpmn:dataStoreReference id="DataStoreReference_1w94a7o" name="SapLogin" dataStoreRef="saplogin" type="json" />
+    <bpmn:boundaryEvent id="Event_04w731w" attachedToRef="Activity_0slsnk1">
+      <bpmn:outgoing>Flow_0gwuwif</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0rv8vei" />
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="Event_1ogvoak">
+      <bpmn:incoming>Flow_0gwuwif</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0gwuwif" sourceRef="Event_04w731w" targetRef="Event_1ogvoak" />
+    <bpmn:exclusiveGateway id="Gateway_0069475">
+      <bpmn:incoming>Flow_0htr4uy</bpmn:incoming>
+      <bpmn:incoming>Flow_1pbq4ko</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bpq1s0</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0htr4uy" sourceRef="Activity_0slsnk1" targetRef="Gateway_0069475" />
+    <bpmn:sequenceFlow id="Flow_0bpq1s0" sourceRef="Gateway_0069475" targetRef="Event_07f7330" />
+    <bpmn:intermediateCatchEvent id="Event_07f7330">
+      <bpmn:incoming>Flow_0bpq1s0</bpmn:incoming>
+      <bpmn:outgoing>Flow_0r122ep</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_14dvl65" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_0r122ep" sourceRef="Event_07f7330" targetRef="Activity_1oobqq4" />
+    <bpmn:scriptTask id="Activity_1oobqq4" name="Busca Chave de acesso">
+      <bpmn:incoming>Flow_0r122ep</bpmn:incoming>
+      <bpmn:outgoing>Flow_0vn1oa8</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+if get_secret('ambiente') == 'dev':
+    DocEntry = 2066 #status 4
+    # DocEntry = 14 #status 10
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+            select "KeyNfe", CNPJ, "StatusId", "Hist" from SBO_CRESTANI_PRD.AC_NfeRetorno nf where nf."DocEntry" = {DocEntry} AND nf."Tabela" = 'OINV' 
+          """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+sqlRsp = Hana(connection).selectDb(query)
+
+chaveAcesso = sqlRsp[0]['keynfe']
+cnpj = sqlRsp[0]['cnpj']
+statusId = sqlRsp[0]['statusid']
+hist = sqlRsp[0]['hist']
+arquivo_nfe = f'http://srv-rds-02:8000/{cnpj}/danfe/{chaveAcesso}.pdf'
+
+del(connection)
+
+
+nfe = rsp["body"]
+nfeItens = nfe['DocumentLines']
+
+DocEntry = nfe['DocEntry']
+DocNum = nfe['DocNum']
+Serial = nfe['SequenceSerial']
+DocDate = nfe['DocDate']
+CardCode = nfe['CardCode']
+CardName = nfe['CardName']
+BPLId = nfe['BPL_IDAssignedToInvoice']
+BPLName = nfe['BPLName']
+VATRegNum = nfe['VATRegNum']
+
+itens = []
+Total = 0
+depositos = []
+for i in nfeItens:
+    itens.append(
+        {
+            "LineNum": i['LineNum'],
+            "ItemCode": i['ItemCode'],
+            "ItemDescription": i['ItemDescription'],
+            "Quantity": i['Quantity'],
+            "Price": i['Price'],
+            "WarehouseCode": i['WarehouseCode'],
+            "LineTotal": i['LineTotal']
+        }
+    )
+    if not i['WarehouseCode'] in depositos:
+        depositos.append(i['WarehouseCode'])
+    Total += i['LineTotal']
+
+qtdeDeposito = len(depositos)
+itensMatriz = []
+itensQuerencia = []
+TotalMatriz = 0
+TotalQuerencia = 0
+
+for i in itens:
+    if i['WarehouseCode'] == '03.MATR':
+        carregaMatriz = 1
+        itensMatriz.append(i)
+        TotalMatriz += i['LineTotal']
+    elif i['WarehouseCode'] == '03.FQUE':
+        carregaQuerencia = 1
+        itensQuerencia.append(i)
+        TotalQuerencia += i['LineTotal']
+
+del(rsp)
+# del(n_filiais)
+del(n_safras)
+del(main_usage)
+# del(nfe)
+# del(nfeItens)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:exclusiveGateway id="Gateway_1rq0zkg" default="Flow_1o36j2p">
+      <bpmn:incoming>Flow_0vn1oa8</bpmn:incoming>
+      <bpmn:outgoing>Flow_1o36j2p</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1dd3rlu</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0vn1oa8" sourceRef="Activity_1oobqq4" targetRef="Gateway_1rq0zkg" />
+    <bpmn:endEvent id="Event_1i4rvuz">
+      <bpmn:incoming>Flow_1o36j2p</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1o36j2p" sourceRef="Gateway_1rq0zkg" targetRef="Event_1i4rvuz" />
+    <bpmn:sequenceFlow id="Flow_1dd3rlu" sourceRef="Gateway_1rq0zkg" targetRef="Activity_1d81loa">
+      <bpmn:conditionExpression>statusId != 4</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1pbq4ko" sourceRef="Activity_1d81loa" targetRef="Gateway_0069475" />
+    <bpmn:manualTask id="Activity_1d81loa" name="Visualiza Status">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Erro na transmissão/retorno na SEFAZ
+
+| Campo | Valor |
+| ----------: | ------- |
+|Número da NFe:|{{Serial}}|
+|Chave de acesso: |{{chaveAcesso}}|
+|Número Sap:|{{DocNum}}|
+|Data:|{{DocDate}}|
+|Código Cliente Destino:|{{CardCode}}|
+|Nome Cliente Destino: |{{Nome_Cli_Destino }}|
+|Nome Emitente: |{{BPLName}}|
+|CNPJ Emitente: |{{VATRegNum}}|
+|||
+|Numero do Status:|{{statusId}}|
+|Mensagem de erro:|{{hist}}|</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1dd3rlu</bpmn:incoming>
+      <bpmn:outgoing>Flow_1pbq4ko</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:boundaryEvent id="Event_153wc1q" attachedToRef="Activity_1d81loa">
+      <bpmn:extensionElements>
+        <spiffworkflow:signalButtonLabel>Inutiliza NFe</spiffworkflow:signalButtonLabel>
+      </bpmn:extensionElements>
+      <bpmn:signalEventDefinition id="SignalEventDefinition_14iw6o4" signalRef="inutiliza" />
+    </bpmn:boundaryEvent>
   </bpmn:process>
+  <bpmn:dataStore id="saplogin" name="JSONDataStore" />
+  <bpmn:signal id="inutiliza" name="inutiliza" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_invoices_post_xf8j10r">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_15mqiq1_di" bpmnElement="Activity_0slsnk1">
-        <dc:Bounds x="270" y="137" width="100" height="80" />
+        <dc:Bounds x="310" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1w94a7o_di" bpmnElement="DataStoreReference_1w94a7o">
+        <dc:Bounds x="235" y="255" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="237" y="312" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ogvoak_di" bpmnElement="Event_1ogvoak">
+        <dc:Bounds x="452" y="282" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0069475_di" bpmnElement="Gateway_0069475" isMarkerVisible="true">
+        <dc:Bounds x="505" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1w5t3go_di" bpmnElement="Event_07f7330">
+        <dc:Bounds x="652" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1fvvdiz_di" bpmnElement="Activity_1oobqq4">
+        <dc:Bounds x="790" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1rq0zkg_di" bpmnElement="Gateway_1rq0zkg" isMarkerVisible="true">
+        <dc:Bounds x="995" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1i4rvuz_di" bpmnElement="Event_1i4rvuz">
+        <dc:Bounds x="1152" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1aihu5n_di" bpmnElement="Activity_1d81loa">
+        <dc:Bounds x="790" y="290" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1n66gzz_di" bpmnElement="Event_04w731w">
+        <dc:Bounds x="362" y="199" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_08akdo1_di" bpmnElement="Event_153wc1q">
+        <dc:Bounds x="842" y="352" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1enkyef_di" bpmnElement="Flow_1enkyef">
         <di:waypoint x="215" y="177" />
-        <di:waypoint x="270" y="177" />
+        <di:waypoint x="310" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1se6ii5_di" bpmnElement="DataInputAssociation_1se6ii5">
+        <di:waypoint x="285" y="260" />
+        <di:waypoint x="339" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gwuwif_di" bpmnElement="Flow_0gwuwif">
+        <di:waypoint x="380" y="235" />
+        <di:waypoint x="380" y="300" />
+        <di:waypoint x="452" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0htr4uy_di" bpmnElement="Flow_0htr4uy">
+        <di:waypoint x="410" y="177" />
+        <di:waypoint x="505" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bpq1s0_di" bpmnElement="Flow_0bpq1s0">
+        <di:waypoint x="555" y="177" />
+        <di:waypoint x="652" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0r122ep_di" bpmnElement="Flow_0r122ep">
+        <di:waypoint x="688" y="177" />
+        <di:waypoint x="790" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vn1oa8_di" bpmnElement="Flow_0vn1oa8">
+        <di:waypoint x="890" y="177" />
+        <di:waypoint x="995" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1o36j2p_di" bpmnElement="Flow_1o36j2p">
+        <di:waypoint x="1045" y="177" />
+        <di:waypoint x="1152" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dd3rlu_di" bpmnElement="Flow_1dd3rlu">
+        <di:waypoint x="1020" y="202" />
+        <di:waypoint x="1020" y="330" />
+        <di:waypoint x="890" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pbq4ko_di" bpmnElement="Flow_1pbq4ko">
+        <di:waypoint x="790" y="330" />
+        <di:waypoint x="530" y="330" />
+        <di:waypoint x="530" y="202" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
