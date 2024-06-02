@@ -55,7 +55,7 @@
       </rule>
     </decisionTable>
   </decision>
-  <decision id="Decision_0n3baop">
+  <decision id="Decision_0n3baop" name="Define Centro de custo">
     <decisionTable id="DecisionTable_0f96kw0">
       <input id="InputClause_0wqorct">
         <inputExpression id="LiteralExpression_0b635vd" typeRef="string" />
