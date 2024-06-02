@@ -9,7 +9,7 @@
       <bpmn:incoming>Flow_1lmqksr</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1lmqksr" sourceRef="Activity_1xlxtgy" targetRef="Event_0vl7r7q" />
-    <bpmn:businessRuleTask id="Activity_1xlxtgy" name="Definir Cliente">
+    <bpmn:businessRuleTask id="Activity_1xlxtgy" name="Definir Cliente NFe">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
       </bpmn:extensionElements>
