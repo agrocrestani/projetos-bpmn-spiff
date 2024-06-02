@@ -5,5 +5,5 @@
     "fault_or_suspend_on_exception": "fault",
     "metadata_extraction_paths": null,
     "primary_file_name": "definir-centro-de-custo.bpmn",
-    "primary_process_id": "Process_definir_centro_de_custo_gl7dig0"
+    "primary_process_id": "Process_definir_centro_de_custo"
 }
