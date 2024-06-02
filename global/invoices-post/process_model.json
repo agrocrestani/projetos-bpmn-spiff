@@ -1,5 +1,5 @@
 {
-    "description": "",
+    "description": "Emite NFe de Sa\u00edda no SAP",
     "display_name": "Invoices post",
     "exception_notification_addresses": [],
     "fault_or_suspend_on_exception": "fault",
