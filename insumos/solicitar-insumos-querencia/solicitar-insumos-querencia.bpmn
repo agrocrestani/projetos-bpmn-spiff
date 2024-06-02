@@ -19,7 +19,6 @@
         <bpmn:flowNodeRef>Activity_10va8n7</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_09sj7do</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0wopia0</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_09jse4j</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0v68ob6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0823umq</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1rkt1l6</bpmn:flowNodeRef>
@@ -51,6 +50,7 @@
         <bpmn:flowNodeRef>Activity_0j9q13v</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0ntk7ol</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0iheayv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_09jse4j</bpmn:flowNodeRef>
         <bpmn:childLaneSet id="LaneSet_18ibth1">
           <bpmn:lane id="Lane_1i1rltx">
             <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
@@ -73,7 +73,6 @@
           <bpmn:lane id="Lane_0frwqt8" name="Matriz_Insumos">
             <bpmn:flowNodeRef>Gateway_09sj7do</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_0wopia0</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Activity_09jse4j</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_0v68ob6</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_0823umq</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1rkt1l6</bpmn:flowNodeRef>
@@ -86,6 +85,7 @@
             <bpmn:flowNodeRef>Activity_0f2ed01</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1l8yv4t</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Event_1g2tkj6</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Activity_09jse4j</bpmn:flowNodeRef>
           </bpmn:lane>
           <bpmn:lane id="Lane_1mcy60b" name="Matriz_Deposito_Insumos">
             <bpmn:flowNodeRef>Gateway_02etn56</bpmn:flowNodeRef>
@@ -190,34 +190,6 @@
       <bpmn:incoming>Flow_0wktytc</bpmn:incoming>
       <bpmn:outgoing>Flow_06tikhf</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:businessRuleTask id="Activity_09jse4j" name="Definir Cliente">
-      <bpmn:extensionElements>
-        <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
-        <spiffworkflow:postScript>for s in solicitacao:
-    s['insumo'] = json.loads(s['insumo'])
-
-descricaoFilial = ""
-for f in n_filiais:
-    if f['value'] == unidade:
-      descricaoFilial = f['label']
-
-usuarioEmissorNFe = get_current_user()['display_name']
-
-SlpCode = 8
-OwnerCode = 2
-main_usage = []
-for u in utilizacoes:
-    main_usage.append(u)</spiffworkflow:postScript>
-        <spiffworkflow:preScript />
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_06tikhf</bpmn:incoming>
-      <bpmn:outgoing>Flow_1btf1uw</bpmn:outgoing>
-      <bpmn:property id="Property_0air3tz" name="__targetRef_placeholder" />
-      <bpmn:dataInputAssociation id="DataInputAssociation_1scwoig">
-        <bpmn:sourceRef>DataStoreReference_1a90b40</bpmn:sourceRef>
-        <bpmn:targetRef>Property_0air3tz</bpmn:targetRef>
-      </bpmn:dataInputAssociation>
-    </bpmn:businessRuleTask>
     <bpmn:dataStoreReference id="DataStoreReference_1a90b40" name="Utilizações" dataStoreRef="utilizacoes" type="json" />
     <bpmn:userTask id="Activity_0v68ob6" name="Confirmar Pedido">
       <bpmn:extensionElements>
@@ -1014,6 +986,34 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       <bpmn:incoming>Flow_17v1i38</bpmn:incoming>
       <bpmn:outgoing>Flow_1jd6q7y</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:callActivity id="Activity_09jse4j" name="Definir Cliente">
+      <bpmn:extensionElements>
+        <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
+        <spiffworkflow:postScript>for s in solicitacao:
+    s['insumo'] = json.loads(s['insumo'])
+
+descricaoFilial = ""
+for f in n_filiais:
+    if f['value'] == unidade:
+      descricaoFilial = f['label']
+
+usuarioEmissorNFe = get_current_user()['display_name']
+
+SlpCode = 8
+OwnerCode = 2
+main_usage = []
+for u in utilizacoes:
+    main_usage.append(u)</spiffworkflow:postScript>
+        <spiffworkflow:preScript />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_06tikhf</bpmn:incoming>
+      <bpmn:outgoing>Flow_1btf1uw</bpmn:outgoing>
+      <bpmn:property id="Property_0taajkd" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1scwoig">
+        <bpmn:sourceRef>DataStoreReference_1a90b40</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0taajkd</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:callActivity>
   </bpmn:process>
   <bpmn:error id="Error_2" name="Error_2">
     <bpmn:extensionElements>
@@ -1021,7 +1021,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
     </bpmn:extensionElements>
   </bpmn:error>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Solicitar_Insumos_Unidade">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Solicitar_Insumos_Querencia">
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
         <dc:Bounds x="34" y="-30" width="4516" height="1420" />
       </bpmndi:BPMNShape>
@@ -1068,9 +1068,6 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       <bpmndi:BPMNShape id="Activity_0jhb4xb_di" bpmnElement="Activity_0wopia0">
         <dc:Bounds x="935" y="450" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0z414cx_di" bpmnElement="Activity_09jse4j">
-        <dc:Bounds x="1090" y="450" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_1a90b40_di" bpmnElement="DataStoreReference_1a90b40">
         <dc:Bounds x="1065" y="605" width="50" height="50" />
@@ -1193,6 +1190,9 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_18gvjft_di" bpmnElement="Activity_0fzr71x">
         <dc:Bounds x="2620" y="1170" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1xslffe_di" bpmnElement="Activity_09jse4j">
+        <dc:Bounds x="1090" y="450" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_17bb53r_di" bpmnElement="Event_0sb557c">
         <dc:Bounds x="3952" y="149" width="36" height="36" />
