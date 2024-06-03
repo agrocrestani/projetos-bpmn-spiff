@@ -2,7 +2,7 @@
   "produto": {
     "ui:widget": "typeahead",
     "ui:options": {
-      "category": "estoque_de",
+      "category": "estoque_de_insumos",
       "itemFormat": "{ItemName} - {ItemCode}"
     }
   }
