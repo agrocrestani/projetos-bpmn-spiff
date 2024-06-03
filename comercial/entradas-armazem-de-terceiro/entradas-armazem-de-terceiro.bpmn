@@ -131,6 +131,7 @@ payload = {
             "Quantity": i['Quantity'],
             "Currency": i['Currency'],
             "Price": i['Price'],
+            "Linetotal": i['LineTotal'],
             "WarehouseCode": WarehouseCode,
             "CostingCode": costingCode,
             "CostingCode3": i['CostingCode3']
