@@ -49,7 +49,7 @@ query_movimento = f"""
                     CAST(t0."ObjType" AS VARCHAR(3)) AS "ObjType"
                 FROM {baseSap}.AC_MOVIMENTOS t0
                 WHERE 
-                    t0."ItemCode" = '{produto}' AND
+                    t0."ItemCode" = '{produto['ItemCode']}' AND
 	                t0."WhsCode" = '{deposito}' AND
                     (t0."DocDueDate" &gt;= '{dataInicio}' OR {dataInicio} IS NULL) AND 
                     (t0."DocDueDate" &lt;= '{dataFinal}' OR {dataFinal} IS NULL)
@@ -232,9 +232,6 @@ connection = {
     "user": "SYSTEM",
     "password": "9Ab63^Op33"
 }
-produto_json = json.loads(produto)
-
-cod_prod = produto_json['ItemCode']
 
 query_depositos = f"""
                     SELECT DISTINCT 
@@ -243,10 +240,9 @@ query_depositos = f"""
                     FROM 
                         {baseSap}.OITW t0
                         LEFT JOIN {baseSap}.OWHS t1 ON t1."WhsCode" = t0."WhsCode"
-                    WHERE t0."AvgPrice" &gt; 0 AND t0."ItemCode" LIKE '{cod_prod}'
+                    WHERE t0."AvgPrice" &gt; 0 AND t0."ItemCode" LIKE 'produto['ItemCode']'
                 """
 
-del(cod_prod)
 
 consulta_depositos = Hana(connection).selectDb(query_depositos)
 
@@ -940,11 +936,13 @@ del(documentos_saida)</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_0syy6uu" sourceRef="SELECIONAR_PRODUTO" targetRef="Activity_00bh8bd" />
     <bpmn:userTask id="SELECIONAR_PRODUTO" name="Selecionar Produto">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript />
+        <spiffworkflow:preScript></spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="selecionar-produto-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-produto-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:postScript>produto = json.loads(produto)
+</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_0syy6uu</bpmn:outgoing>
