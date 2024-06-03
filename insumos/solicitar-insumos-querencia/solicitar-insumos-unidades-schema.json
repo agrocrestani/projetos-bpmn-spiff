@@ -2,7 +2,6 @@
   "type": "object",
   "required": [
         "solicitacao",
-
         "safra"
       ],
   "properties": {
