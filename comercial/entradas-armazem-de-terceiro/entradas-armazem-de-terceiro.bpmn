@@ -228,8 +228,10 @@ connection = {
     "password": "9Ab63^Op33"
 }
 
+baseSap = get_secret('baseSap')
+
 query = f"""
-            SELECT count(*) FROM SBO_CRESTANI_PRD.OIGN o WHERE o."U_RSD_IDUnisystem" = '{nfe['U_RSD_IDUnisystem']}'
+            SELECT count(*) qtde_reg FROM {baseSap}.OIGN o WHERE o."U_RSD_IDUnisystem" = '{nfe['U_RSD_IDUnisystem']}'
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
