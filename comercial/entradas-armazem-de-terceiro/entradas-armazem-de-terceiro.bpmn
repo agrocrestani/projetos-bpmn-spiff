@@ -276,11 +276,11 @@ sqlRsp = Hana(connection).selectDb(query)</bpmn:script>
         <dc:Bounds x="1230" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_060ya1v_di" bpmnElement="Gateway_060ya1v" isMarkerVisible="true">
-        <dc:Bounds x="765" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0sk05m6_di" bpmnElement="Activity_1v56l15">
         <dc:Bounds x="580" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_060ya1v_di" bpmnElement="Gateway_060ya1v" isMarkerVisible="true">
+        <dc:Bounds x="765" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
