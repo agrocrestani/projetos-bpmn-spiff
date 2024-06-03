@@ -234,16 +234,20 @@ payload = {
     </bpmn:userTask>
     <bpmn:manualTask id="Activity_1rkt1l6" name="Verifica Erro">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>try:
+        <spiffworkflow:preScript>if lancado == 204:
     status_code = lancado
-    errorCode = rsp['body']['error']['code']
-    errorMessage = rsp['body']['error']['message']['value']
-except:
-    command = sapError['command_response_body']
-    command = json.loads(command)
-    status_code = sapError['status_code']
-    errorCode = sapError['error_code']
-    errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
+    errorMessage = 'Nota Inutilizada no SAP. Para corrigir os itens e emitir uma nova nota, clique em [Continuar]. Para finalizar o processo clique em [Finalizar].'
+else:
+    try:
+        status_code = lancado
+        errorCode = rsp['body']['error']['code']
+        errorMessage = rsp['body']['error']['message']['value']
+    except:
+        command = sapError['command_response_body']
+        command = json.loads(command)
+        status_code = sapError['status_code']
+        errorCode = sapError['error_code']
+        errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
         <spiffworkflow:postScript>for b in bkp:
     b['insumo'] = json.dumps(b['insumo'])
 
