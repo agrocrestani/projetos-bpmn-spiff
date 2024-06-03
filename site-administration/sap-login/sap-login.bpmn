@@ -10,7 +10,7 @@
     <bpmn:sequenceFlow id="Flow_0sjbpag" sourceRef="StartEvent_1" targetRef="Activity_12rivqi" />
     <bpmn:serviceTask id="Activity_12rivqi" name="Loga no SAP">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>url = "https://slayer.agrocrestani.com.br:50000/b1s/v1/Login"
+        <spiffworkflow:preScript>url = "https://172.20.1.9:50000/b1s/v1/Login"
 
 CompanyDB = get_secret('baseSap')
 
