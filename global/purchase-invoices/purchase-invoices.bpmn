@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:process id="Process_purchase_invoices_krrf890" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_0ijwrib</bpmn:outgoing>
@@ -18,7 +18,21 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_13gua63" sourceRef="Activity_1bq66l5" targetRef="Gateway_00db667" />
     <bpmn:dataStoreReference id="DataStoreReference_13qzzrl" name="SapLogin" dataStoreRef="saplogin" type="json" />
-    <bpmn:serviceTask id="Activity_1bq66l5">
+    <bpmn:serviceTask id="Activity_1bq66l5" name="Lança NFe no ERP">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
+
+url = 'https://172.20.1.9:50000/b1s/v2/PurchaseInvoices'
+
+headers = {
+  'Cookie': f"B1SESSION={loginSap}",
+  'Content-Type': 'application/json'
+}</spiffworkflow:preScript>
+        <spiffworkflow:postScript>try:
+    lancaNFeEntrada = rsp['http_status']
+except:
+    lancaNFeEntrada = 500</spiffworkflow:postScript>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1r07qrf</bpmn:incoming>
       <bpmn:outgoing>Flow_13gua63</bpmn:outgoing>
       <bpmn:property id="Property_0p2tnyj" name="__targetRef_placeholder" />
@@ -37,17 +51,43 @@
       <bpmn:outgoing>Flow_1i8h7i6</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0e61uq9" sourceRef="Event_1f4ivqm" targetRef="Gateway_0n0ry39" />
-    <bpmn:task id="Activity_02tcc90">
-      <bpmn:incoming>Flow_1i8h7i6</bpmn:incoming>
-      <bpmn:outgoing>Flow_02ido8m</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1i8h7i6" sourceRef="Gateway_0n0ry39" targetRef="Activity_02tcc90" />
-    <bpmn:sequenceFlow id="Flow_1m5c67s" sourceRef="Gateway_00db667" targetRef="Gateway_0n0ry39" />
+    <bpmn:sequenceFlow id="Flow_1m5c67s" sourceRef="Gateway_00db667" targetRef="Gateway_0n0ry39">
+      <bpmn:conditionExpression>lancaNFeEntrada != 201</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:endEvent id="Event_1kdf3gn">
       <bpmn:incoming>Flow_1wb42r0</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1wb42r0" sourceRef="Gateway_00db667" targetRef="Event_1kdf3gn" />
     <bpmn:sequenceFlow id="Flow_02ido8m" sourceRef="Activity_02tcc90" targetRef="Gateway_01ugme4" />
+    <bpmn:manualTask id="Activity_02tcc90" name="Verifica Erro na NFe">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>try:
+    status_code = lancaNFeEntrada 
+    errorCode = rsp['body']['error']['code']
+    errorMessage = rsp['body']['error']['message']['value']
+except:
+    command = errorEntrada['command_response_body']
+    command = json.loads(command)
+    status_code = errorEntrada['status_code']
+    errorCode = errorEntrada['error_code']
+    errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
+        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
+
+### Informações
+
+| Campo | Conteudo |
+| ----------: | -------------- |
+| Código Erro: | {{errorCode}} |
+| Mensagem Erro: | {{errorMessage}}
+| Status  | {{status_code}} |
+
+1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
+2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1i8h7i6</bpmn:incoming>
+      <bpmn:outgoing>Flow_02ido8m</bpmn:outgoing>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -63,6 +103,7 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1e3omg0_di" bpmnElement="Activity_1bq66l5">
         <dc:Bounds x="450" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_13qzzrl_di" bpmnElement="DataStoreReference_13qzzrl">
         <dc:Bounds x="555" y="35" width="50" height="50" />
@@ -76,7 +117,7 @@
       <bpmndi:BPMNShape id="Event_1kdf3gn_di" bpmnElement="Event_1kdf3gn">
         <dc:Bounds x="692" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_02tcc90_di" bpmnElement="Activity_02tcc90">
+      <bpmndi:BPMNShape id="Activity_0otkwr3_di" bpmnElement="Activity_02tcc90">
         <dc:Bounds x="330" y="270" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_13ffjix_di" bpmnElement="Event_1f4ivqm">
