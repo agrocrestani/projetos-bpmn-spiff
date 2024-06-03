@@ -181,7 +181,18 @@ payload = {
     </bpmn:callActivity>
     <bpmn:manualTask id="Activity_0mwute7" name="Vizualiza Dados da Entrada">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>{{rsp}}</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser># Dados da NFe
+|Campo|Valor|
+| ------ | ------ |
+|Número NFe: | {{serial}} |
+|Data: | {{nfe['DocDate']}} |
+|Codigo Cliente: | {{nfe['CardCode']}} |
+|Nome Cliente: | {{nfe['CardName']}} |
+
+## Itens:
+|Código|Descricao|Quantidade|Deposito|
+| ------ | ------ | ------- | ------ |
+|{{i['ItemCode']}} |{{i['ItemDescription']}} |{{i['Quantity']}} |{{i['WarehouseCode']}} |</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0z6egw5</bpmn:incoming>
       <bpmn:outgoing>Flow_008nqur</bpmn:outgoing>
