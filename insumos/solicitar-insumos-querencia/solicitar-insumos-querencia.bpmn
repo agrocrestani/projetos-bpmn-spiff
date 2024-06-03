@@ -14,7 +14,6 @@
   </bpmn:collaboration>
   <bpmn:process id="Process_solicitar_insumos_querencia" isExecutable="true">
     <bpmn:laneSet id="LaneSet_0bz1mzo">
-      <bpmn:lane id="Lane_029j3y3" name="Querencia_Deposito_Insumos" />
       <bpmn:lane id="Lane_1nq9ktb">
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_10va8n7</bpmn:flowNodeRef>
@@ -748,7 +747,7 @@ except:
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Solicitar_Insumos_Querencia">
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
-        <dc:Bounds x="-363" y="-170" width="3526" height="1420" />
+        <dc:Bounds x="-363" y="-170" width="3526" height="1100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1nq9ktb_di" bpmnElement="Lane_1nq9ktb" isHorizontal="true">
         <dc:Bounds x="-333" y="-170" width="3496" height="1100" />
@@ -762,10 +761,6 @@ except:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1mcy60b_di" bpmnElement="Lane_1mcy60b" isHorizontal="true">
         <dc:Bounds x="-303" y="690" width="3466" height="240" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_029j3y3_di" bpmnElement="Lane_029j3y3" isHorizontal="true">
-        <dc:Bounds x="-333" y="930" width="3496" height="320" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
