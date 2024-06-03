@@ -235,7 +235,7 @@ connection = {
 
 query_depositos = f"""
                     SELECT DISTINCT 
-                        t0."WhsCode" ,
+                        CAST(t0."WhsCode" AS VARCHAR(50) AS "whscode",
                         COALESCE(CAST(t1."WhsName" AS VARCHAR(50)), '') AS "whsname"
                     FROM 
                         {baseSap}.OITW t0
@@ -983,18 +983,15 @@ del(consulta_produtos)</spiffworkflow:preScript>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="-368" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="1342" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="-368" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_192nt41_di" bpmnElement="SELECIONAR_PRODUTO">
-        <dc:Bounds x="-290" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
@@ -1057,6 +1054,9 @@ del(consulta_produtos)</spiffworkflow:preScript>
         <bpmndi:BPMNLabel>
           <dc:Bounds x="845" y="122" width="70" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_192nt41_di" bpmnElement="SELECIONAR_PRODUTO">
+        <dc:Bounds x="-290" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-332" y="177" />
