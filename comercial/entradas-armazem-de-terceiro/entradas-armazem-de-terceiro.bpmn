@@ -218,35 +218,35 @@ del(nfe)</spiffworkflow:postScript>
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_07sa023_di" bpmnElement="Event_07sa023">
-        <dc:Bounds x="1072" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1spguxs_di" bpmnElement="Activity_1l55fhm">
-        <dc:Bounds x="430" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_0z5s8h4_di" bpmnElement="DataStoreReference_0z5s8h4">
         <dc:Bounds x="215" y="275" width="50" height="50" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="226" y="332" width="28" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_07bqj3s_di" bpmnElement="DataStoreReference_07bqj3s">
-        <dc:Bounds x="495" y="15" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="497" y="72" width="47" height="14" />
-        </bpmndi:BPMNLabel>
+      <bpmndi:BPMNShape id="Event_07sa023_di" bpmnElement="Event_07sa023">
+        <dc:Bounds x="1232" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_10a1a8a_di" bpmnElement="Activity_0gd8zrx">
+      <bpmndi:BPMNShape id="Activity_1spguxs_di" bpmnElement="Activity_1l55fhm">
         <dc:Bounds x="590" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0hvoi5d_di" bpmnElement="Activity_1hsyhqb">
+      <bpmndi:BPMNShape id="DataStoreReference_07bqj3s_di" bpmnElement="DataStoreReference_07bqj3s">
+        <dc:Bounds x="655" y="15" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="657" y="72" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10a1a8a_di" bpmnElement="Activity_0gd8zrx">
         <dc:Bounds x="750" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1ovsk88_di" bpmnElement="Activity_0mwute7">
+      <bpmndi:BPMNShape id="Activity_0hvoi5d_di" bpmnElement="Activity_1hsyhqb">
         <dc:Bounds x="910" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ovsk88_di" bpmnElement="Activity_0mwute7">
+        <dc:Bounds x="1070" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
@@ -259,27 +259,27 @@ del(nfe)</spiffworkflow:postScript>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0zmzdv8_di" bpmnElement="Flow_0zmzdv8">
         <di:waypoint x="370" y="177" />
-        <di:waypoint x="430" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0iw2fvx_di" bpmnElement="Flow_0iw2fvx">
-        <di:waypoint x="530" y="177" />
         <di:waypoint x="590" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_16mwt8w_di" bpmnElement="Flow_16mwt8w">
+      <bpmndi:BPMNEdge id="Flow_0iw2fvx_di" bpmnElement="Flow_0iw2fvx">
         <di:waypoint x="690" y="177" />
         <di:waypoint x="750" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0z6egw5_di" bpmnElement="Flow_0z6egw5">
+      <bpmndi:BPMNEdge id="Flow_16mwt8w_di" bpmnElement="Flow_16mwt8w">
         <di:waypoint x="850" y="177" />
         <di:waypoint x="910" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_008nqur_di" bpmnElement="Flow_008nqur">
+      <bpmndi:BPMNEdge id="Flow_0z6egw5_di" bpmnElement="Flow_0z6egw5">
         <di:waypoint x="1010" y="177" />
-        <di:waypoint x="1072" y="177" />
+        <di:waypoint x="1070" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_008nqur_di" bpmnElement="Flow_008nqur">
+        <di:waypoint x="1170" y="177" />
+        <di:waypoint x="1232" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1p0ulwn_di" bpmnElement="DataInputAssociation_1p0ulwn">
-        <di:waypoint x="513" y="65" />
-        <di:waypoint x="492" y="137" />
+        <di:waypoint x="673" y="65" />
+        <di:waypoint x="652" y="137" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
