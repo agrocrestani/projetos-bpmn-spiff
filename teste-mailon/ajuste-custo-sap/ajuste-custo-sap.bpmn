@@ -238,7 +238,7 @@ cod_prod = produto_json['ItemCode']
 
 query_depositos = f"""
                     SELECT DISTINCT 
-                        CAST(t0."WhsCode" AS VARCHAR(50) AS "whscode",
+                        CAST(t0."WhsCode" AS VARCHAR(50)) AS "whscode",
                         COALESCE(CAST(t1."WhsName" AS VARCHAR(50)), '') AS "whsname"
                     FROM 
                         {baseSap}.OITW t0
