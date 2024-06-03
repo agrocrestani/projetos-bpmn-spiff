@@ -87,9 +87,9 @@ i = nfe['DocumentLines'][0]</spiffworkflow:postScript>
 |Nome Cliente: | {{nfe['CardName']}} |
 
 ## Itens:
-|Código|Descricao|Quantidade|Deposito|
-| ------ | ------ | ------- | ------ |
-|{{i['ItemCode']}} |{{i['ItemDescription']}} |{{i['Quantity']}} |{{i['WarehouseCode']}} |</spiffworkflow:instructionsForEndUser>
+|Código|Descricao|Quantidade|Deposito| Valor | Total do Item
+| ------ | ------ | -------: | ------ | ----:| -----: |
+|{{i['ItemCode']}} |{{i['ItemDescription']}} |{{i['Quantity']}} |{{i['WarehouseCode']}} | {{i['Price']}} | {{i['LineTotal']}} </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:postScript>if nfe['BPL_IDAssignedToInvoice'] == 1:
     costingCode = 'QUEPRO'
     fazenda = ''
@@ -199,9 +199,9 @@ del(nfe)</spiffworkflow:postScript>
 |Observação: | {{e['Comments']}} |
 
 ## Itens:
-|Código|Descricao|Quantidade|Deposito| Valor |
-| ------ | ------ | ------- | ------ | ----: |
-|{{i['ItemCode']}} |{{i['ItemDescription']}} |{{i['Quantity']}} |{{i['WarehouseCode']}} | {{i['Price']}}</spiffworkflow:instructionsForEndUser>
+|Código|Descricao|Quantidade|Deposito| Valor | Total do Item |
+| ------ | ------ | ------- | ------: | ----: | ----: |
+|{{i['ItemCode']}} |{{i['ItemDescription']}} |{{i['Quantity']}} |{{i['WarehouseCode']}} | {{i['Price']}} | {{i['LineTotal']}} </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0z6egw5</bpmn:incoming>
       <bpmn:outgoing>Flow_008nqur</bpmn:outgoing>
