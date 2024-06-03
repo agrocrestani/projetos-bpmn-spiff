@@ -941,7 +941,12 @@ del(documentos_saida)</spiffworkflow:postScript>
 
 baseSap = get_secret('baseSap')
 
-connection = get_secret('hana')
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
 
 query_produtos = f"""
                     SELECT DISTINCT 
