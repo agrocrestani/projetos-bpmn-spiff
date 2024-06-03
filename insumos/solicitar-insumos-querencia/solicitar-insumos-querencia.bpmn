@@ -89,7 +89,7 @@ for f in filiais:
     BPLId = f['BPLId']
     BPLName = f['BPLName']
     AliasName = f['AliasName']
-    if BPLId in ['2', '3', '4', '5']: 
+    if BPLId in ['1']: 
         n_filiais.append(
             {
                 "value": BPLId,
