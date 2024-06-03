@@ -36,15 +36,15 @@ connection = {
 }
 
 query = f"""
-                    SELECT DISTINCT 
-                        t0."ItemCode" ,
-                        t1."ItemName" 
-                    FROM 
-                        {baseSap}.OITW t0
-                        INNER JOIN {baseSap}.OITM t1 ON t1."ItemCode" = t0."ItemCode"
-                    WHERE t0."AvgPrice" &amp;gt; 0
-                    ORDER BY t0."ItemCode"
-                """
+            SELECT DISTINCT 
+                CAST(t0."ItemCode" AS VARCHAR(20)) AS "itemcode" ,
+                CAST(t1."ItemName" AS VARCHAR(200)) AS "itemname"
+            FROM 
+                {baseSap}.OITW t0
+                INNER JOIN {baseSap}.OITM t1 ON t1."ItemCode" = t0."ItemCode"
+            WHERE t0."AvgPrice" &amp;gt; 0
+            ORDER BY t0."ItemCode"
+        """
 
 rsp = Hana(connection).selectDb(query)
 
