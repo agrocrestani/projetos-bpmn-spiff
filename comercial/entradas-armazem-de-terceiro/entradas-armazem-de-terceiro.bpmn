@@ -130,6 +130,7 @@ payload = {
             "ItemCode": i['ItemCode'],
             "Quantity": i['Quantity'],
             "Currency": i['Currency'],
+            "Price": i['Price'],
             "WarehouseCode": WarehouseCode,
             "CostingCode": costingCode,
             "CostingCode3": i['CostingCode3']
@@ -179,7 +180,7 @@ payload = {
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:postScript>e = entrada['body']
-i = e['DocumentLines']
+i = e['DocumentLines'][0]
 
 del(entrada)
 del(rsp)
@@ -198,9 +199,9 @@ del(nfe)</spiffworkflow:postScript>
 |Observação: | {{e['Comments']}} |
 
 ## Itens:
-|Código|Descricao|Quantidade|Deposito|
-| ------ | ------ | ------- | ------ |
-|{{i['ItemCode']}} |{{i['ItemDescription']}} |{{i['Quantity']}} |{{i['WarehouseCode']}} |</spiffworkflow:instructionsForEndUser>
+|Código|Descricao|Quantidade|Deposito| Valor |
+| ------ | ------ | ------- | ------ | ----: |
+|{{i['ItemCode']}} |{{i['ItemDescription']}} |{{i['Quantity']}} |{{i['WarehouseCode']}} | {{i['Price']}}</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0z6egw5</bpmn:incoming>
       <bpmn:outgoing>Flow_008nqur</bpmn:outgoing>
