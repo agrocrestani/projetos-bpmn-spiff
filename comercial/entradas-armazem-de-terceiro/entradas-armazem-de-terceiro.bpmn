@@ -97,9 +97,9 @@ i = nfe['DocumentLines']</spiffworkflow:postScript>
 |Campo|Valor|
 | ------ | ------ |
 |Número NFe: | {{serial}} |
-|Data: | {{}} |
-|Codigo Cliente: | {{}} |
-|Nome Cliente: | {{}} |
+|Data: | {{nfe['DocDate']}} |
+|Codigo Cliente: | {{nfe['CardCode']}} |
+|Nome Cliente: | {{nfe['CardName']}} |
 
 ## Itens:
 |Código|Descricao|Quantidade|Deposito|
