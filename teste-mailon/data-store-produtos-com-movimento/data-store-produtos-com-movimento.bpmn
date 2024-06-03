@@ -1,47 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:process id="Process_data_store_produtos_com_movimento_nthrnm5" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="BUSCAR_PRODUTO" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:incoming>Flow_11dbrnn</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
-    <bpmn:manualTask id="Activity_0qpzdpu" name="Example manual task">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
-
- * **Script Task** - write a short snippet of python code to update some data
- *  **User Task** - generate a form that collects information from a user
- * **Service Task** - communicate with an external API to fetch or update some data.
-
-You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
+    <bpmn:sequenceFlow id="Flow_06y0iod" sourceRef="BUSCAR_PRODUTO" targetRef="Activity_1m5rpqe" />
+    <bpmn:sequenceFlow id="Flow_11dbrnn" sourceRef="Activity_1m5rpqe" targetRef="EndEvent_1" />
+    <bpmn:scriptTask id="BUSCAR_PRODUTO" name="Buscar Produtos">
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-    </bpmn:manualTask>
+      <bpmn:outgoing>Flow_06y0iod</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query_produtos = f"""
+                    SELECT DISTINCT 
+                        t0."ItemCode" ,
+                        t1."ItemName" 
+                    FROM 
+                        {baseSap}.OITW t0
+                        INNER JOIN {baseSap}.OITM t1 ON t1."ItemCode" = t0."ItemCode"
+                    WHERE t0."AvgPrice" &gt; 0
+                    ORDER BY t0."ItemCode"
+                """
+
+rsp = Hana(connection).selectDb(query_produtos)
+
+produto_com_movimento = []
+
+for r in rsp:
+    ItemCode = str(r['itemcode'])
+    ItemName = str(r['itemname'])
+    produto_com_movimento.append(
+        {
+            "search_term": ItemName, 
+            "result": {
+                "ItemCode": ItemCode, 
+                "ItemName": ItemName
+                }
+            }
+        )
+
+
+
+
+del(connection)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="Activity_1m5rpqe">
+      <bpmn:incoming>Flow_06y0iod</bpmn:incoming>
+      <bpmn:outgoing>Flow_11dbrnn</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="D">
+        <bpmn:targetRef>DataStoreReference_0egoqnt</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:script>typeahead = {"produto_com_movimento": produto_com_movimento}</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:dataStoreReference id="DataStoreReference_0egoqnt" name="Produtos com Movimento" dataStoreRef="produtos_com_movimento" type="kkv" />
   </bpmn:process>
+  <bpmn:dataStore id="produtos_com_movimento" name="KKVDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_data_store_produtos_com_movimento_nthrnm5">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="432" y="159" width="36" height="36" />
+        <dc:Bounds x="582" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
-        <dc:Bounds x="270" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_0alph6w_di" bpmnElement="BUSCAR_PRODUTO">
+        <dc:Bounds x="250" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1umr5b4_di" bpmnElement="Activity_1m5rpqe">
+        <dc:Bounds x="430" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0egoqnt_di" bpmnElement="DataStoreReference_0egoqnt">
+        <dc:Bounds x="455" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="446" y="342" width="68" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
-        <di:waypoint x="270" y="177" />
+        <di:waypoint x="250" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
-        <di:waypoint x="370" y="177" />
-        <di:waypoint x="432" y="177" />
+      <bpmndi:BPMNEdge id="Flow_06y0iod_di" bpmnElement="Flow_06y0iod">
+        <di:waypoint x="350" y="177" />
+        <di:waypoint x="430" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11dbrnn_di" bpmnElement="Flow_11dbrnn">
+        <di:waypoint x="530" y="177" />
+        <di:waypoint x="582" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_00aqn83_di" bpmnElement="D">
+        <di:waypoint x="480" y="217" />
+        <di:waypoint x="480" y="285" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
