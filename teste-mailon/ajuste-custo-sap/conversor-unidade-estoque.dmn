@@ -57,6 +57,17 @@
           <text>1</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0fw5734">
+        <inputEntry id="UnaryTests_1swp4kg">
+          <text>"LITRO"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10ueox2">
+          <text>"LITRO"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06tkho6">
+          <text>1</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
