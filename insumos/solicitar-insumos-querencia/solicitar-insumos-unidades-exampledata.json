@@ -16,18 +16,10 @@
       "label": "Bananas"
     }
   ],
-  "n_filiais": [
+    "n_filiais": [
     {
-      "value": "apples",
-      "label": "Apples"
-    },
-    {
-      "value": "oranges",
-      "label": "Oranges"
-    },
-    {
-      "value": "bananas",
-      "label": "Bananas"
+      "value": "3",
+      "label": "FAZENDA COLORADO"
     }
   ]
 }
