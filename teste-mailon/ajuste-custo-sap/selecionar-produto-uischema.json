@@ -3,7 +3,7 @@
     "ui:widget": "typeahead",
     "ui:options": {
       "category": "estoque_de_insumos",
-      "itemFormat": "{ItemName} - {WhsCode} "
+      "itemFormat": "{ItemName} - {WhsCode}"
     }
   }
 }
