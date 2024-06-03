@@ -208,7 +208,8 @@ spiff_tarefa = taskInfo = get_current_task_info()['id']
 
 loginSap = saplogin[0]['SessionId']
 
-url = 'https://172.20.1.9:50000/b1s/v1/Invoices({DocEntry})'
+# url = 'https://172.20.1.9:50000/b1s/v1/Invoices()'
+url = 'https://172.20.1.9:50000/b1s/v2/Invoices({DocEntry})'
 
 headers = {
   'Cookie': f"B1SESSION={loginSap}",
@@ -381,6 +382,10 @@ except:
         <di:waypoint x="990" y="388" />
         <di:waypoint x="990" y="460" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0n9rl9q_di" bpmnElement="DataInputAssociation_0n9rl9q">
+        <di:waypoint x="925" y="588" />
+        <di:waypoint x="979" y="540" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0wz143b_di" bpmnElement="Flow_0wz143b">
         <di:waypoint x="1040" y="500" />
         <di:waypoint x="1145" y="500" />
@@ -410,10 +415,6 @@ except:
         <di:waypoint x="530" y="202" />
         <di:waypoint x="530" y="330" />
         <di:waypoint x="602" y="330" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0n9rl9q_di" bpmnElement="DataInputAssociation_0n9rl9q">
-        <di:waypoint x="925" y="588" />
-        <di:waypoint x="979" y="540" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
