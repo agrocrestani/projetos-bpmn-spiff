@@ -2,7 +2,7 @@
   "title": "Selecionar o Deposito",
   "type": "object",
   "required": [
-    "deposito",
+    "produto",
     "dataInicio",
     "dataFinal"
   ],
