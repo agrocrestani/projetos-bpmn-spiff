@@ -132,7 +132,24 @@ payload = {
     "U_RSD_Classificacao": "1",
     "U_RSD_Origem": "1",
     "U_RSD_Fazenda": fazenda,
-    "Comments": "Entrada em Depósito de Terceiro: " + nfe['CardName']
+    "Comments": "Entrada em Depósito de Terceiro: " + nfe['CardName'],
+    "DocumentLines": [
+        {
+            "ItemCode": i['ItemCode'],
+            "Quantity": i['Quantity'],
+            "Currency": i['Currency'],
+            "WarehouseCode": WarehouseCode,
+            "CostingCode": costingCode,
+            "CostingCode3": i['CostingCode3']
+        }
+        ],
+        "DocumentReferences": [
+            {
+                "RefDocEntr": nfe['DocEntry'],
+                "RefObjType": "rot_SalesInvoice"
+            }
+        ]
+    }
 }
 
 # payload = {
