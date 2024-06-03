@@ -9,7 +9,7 @@
       "type": "string",
       "title": "Produto",
       "anyOf": [
-        "options_from_task_data_var:produto"
+        "options_from_task_data_var:produtoList"
       ]
     }
   }
