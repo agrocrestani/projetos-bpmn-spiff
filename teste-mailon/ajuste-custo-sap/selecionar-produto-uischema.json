@@ -3,7 +3,7 @@
     "ui:widget": "typeahead",
     "ui:options": {
       "category": "produto_com_movimento",
-      "itemFormat": "{ItemName} - {I}"
+      "itemFormat": "{ItemName} - {ItemCOde}"
     }
   }
 }
