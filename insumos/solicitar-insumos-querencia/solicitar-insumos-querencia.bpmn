@@ -171,11 +171,18 @@ carregaQuerencia = 0</spiffworkflow:preScript>
         <spiffworkflow:preScript />
         <spiffworkflow:instructionsForEndUser># Confirmar a Solicitação
 
-### Verifique os itens abaixo e confirme para emissão da nota fiscal.
+### Verifique os itens abaixo e confirme realizar as operações abaixo:
+
+1. NFe de Saída da Querência para Colorado
+2. Entrada da NFe na Colorado
+3. NFe de Saída da Colorado par Querência
+
 
 |       Campo | Conteúdo      |
 | -------------: | ---------------- |
-| Solicitante: | {{solicitante}} |</spiffworkflow:instructionsForEndUser>
+| Solicitante: | {{solicitante}} |
+
+### Itens solicitados:</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0wktytc</bpmn:incoming>
       <bpmn:outgoing>Flow_06tikhf</bpmn:outgoing>
