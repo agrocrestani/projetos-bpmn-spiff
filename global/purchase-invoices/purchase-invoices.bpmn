@@ -92,7 +92,7 @@ except:
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmn:error id="Error_NFe_Entrada" name="Error_NFe_Entrada">
     <bpmn:extensionElements>
-      <spiffworkflow:variableName>ErrorNFeEntrada</spiffworkflow:variableName>
+      <spiffworkflow:variableName>errorEntrada</spiffworkflow:variableName>
     </bpmn:extensionElements>
   </bpmn:error>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
