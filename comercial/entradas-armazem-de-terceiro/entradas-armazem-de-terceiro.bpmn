@@ -238,7 +238,7 @@ query = f"""
 # rsp = json.loads(Hana(connection).selectDb(query))
 sqlRsp = Hana(connection).selectDb(query)
 
-total_reg = sqlRsp['qtde_reg']</bpmn:script>
+total_reg = sqlRsp[0]['qtde_reg']</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_0tk4sxs" sourceRef="Gateway_060ya1v" targetRef="Activity_1op42we">
       <bpmn:documentation>d</bpmn:documentation>
