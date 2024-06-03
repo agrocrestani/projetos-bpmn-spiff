@@ -1,1 +1,28 @@
-{}
+{
+  "title": "Selecionar o Deposito",
+  "type": "object",
+  "required": [
+    "deposito",
+    "dataInicio",
+    "dataFinal"
+  ],
+  "properties": {
+    "deposito": {
+      "type": "string",
+      "title": "Deposito",
+      "anyOf": [
+        "options_from_task_data_var:depositosList"
+      ]
+    },
+    "dataInicio": {
+      "type": "string",
+      "format": "date",
+      "title": "Data de Início"
+    },
+    "dataFinal": {
+      "type": "string",
+      "format": "date",
+      "title": "Data Final"
+    }
+  }
+}
