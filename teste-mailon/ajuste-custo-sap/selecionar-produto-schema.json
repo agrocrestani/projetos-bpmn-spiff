@@ -9,7 +9,7 @@
   "properties": {
     "produto": {
       "type": "string",
-      "title": "Deposito",
+      "title": "Prodi",
       "anyOf": [
         "options_from_task_data_var:depositosList"
       ]
