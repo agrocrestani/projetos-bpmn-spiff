@@ -177,7 +177,7 @@ payload = {
     </bpmn:manualTask>
     <bpmn:callActivity id="Activity_1hsyhqb" name="Lanca entrada no ERP" calledElement="Process_inventorygenentries_yisighq">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:postScript>e = entrada['body']
 i = e['DocumentLines']
 
@@ -195,8 +195,7 @@ del(nfe)</spiffworkflow:postScript>
 | ------ | ------ |
 |Número NFe: | {{e['DocNum']}} |
 |Data: | {{e['DocDate']}} |
-|Codigo Cliente: | {{e['CardCode']}} |
-|Nome Cliente: | {{e['CardName']}} |
+|Observação: | {{e['Comments']}} |
 
 ## Itens:
 |Código|Descricao|Quantidade|Deposito|
