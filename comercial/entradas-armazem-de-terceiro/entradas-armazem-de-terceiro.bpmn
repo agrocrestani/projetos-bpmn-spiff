@@ -219,7 +219,9 @@ del(nfe)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0iw2fvx</bpmn:incoming>
       <bpmn:outgoing>Flow_14cd3ht</bpmn:outgoing>
-      <bpmn:script>connection = {
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
     "address": "172.20.1.4",
     "port": "30015",
     "user": "SYSTEM",
