@@ -91,7 +91,7 @@ i = nfe['DocumentLines']</spiffworkflow:postScript>
     </bpmn:serviceTask>
     <bpmn:dataStoreReference id="DataStoreReference_0z5s8h4" name="Filiais" dataStoreRef="filiais" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_07bqj3s" name="SapLogin" dataStoreRef="saplogin" type="json" />
-    <bpmn:manualTask id="Activity_0gd8zrx">
+    <bpmn:manualTask id="Activity_0gd8zrx" name="Visualiza dados da NFe">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># Dados da NFe
 |Campo|Valor|
@@ -148,6 +148,7 @@ i = nfe['DocumentLines']</spiffworkflow:postScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_10a1a8a_di" bpmnElement="Activity_0gd8zrx">
         <dc:Bounds x="590" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
