@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:process id="Process_invoices_post_xf8j10r" name="Invoices Post" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_1enkyef</bpmn:outgoing>
@@ -59,7 +59,9 @@ except:
     <bpmn:intermediateCatchEvent id="Event_07f7330">
       <bpmn:incoming>Flow_0bpq1s0</bpmn:incoming>
       <bpmn:outgoing>Flow_0r122ep</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_14dvl65" />
+      <bpmn:timerEventDefinition id="TimerEventDefinition_14dvl65">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT20S"</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
     <bpmn:sequenceFlow id="Flow_0r122ep" sourceRef="Event_07f7330" targetRef="Activity_1oobqq4" />
     <bpmn:scriptTask id="Activity_1oobqq4" name="Busca Chave de acesso">
