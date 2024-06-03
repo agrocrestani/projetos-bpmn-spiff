@@ -59,7 +59,7 @@ for f in filiais:
       <bpmn:incoming>Flow_008nqur</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_008nqur" sourceRef="Activity_0mwute7" targetRef="Event_07sa023" />
-    <bpmn:serviceTask id="Activity_1l55fhm">
+    <bpmn:serviceTask id="Activity_1l55fhm" name="Consulta NFe">
       <bpmn:extensionElements>
         <spiffworkflow:serviceTaskOperator id="http/GetRequestV2" resultVariable="rsp">
           <spiffworkflow:parameters>
@@ -74,7 +74,9 @@ for f in filiais:
         </spiffworkflow:serviceTaskOperator>
         <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
 
-url = f'https://172.20.1.9:50000/b1s/v2/Invoices?$filter=SequenceSerial eq {} and BPL_IDAssignedToInvoice eq {}'
+url = f"""https://172.20.1.9:50000/b1s/v2/Invoices?$
+          select=DocNum, CardCode, CardName, DocDate, SequenceSerial, DocumentLines&amp;$
+          filter=SequenceSerial eq {serial} and BPL_IDAssignedToInvoice eq {unidade}"""
 
 headers = {
   'Cookie': f"B1SESSION={loginSap}",
@@ -110,6 +112,7 @@ headers = {
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1spguxs_di" bpmnElement="Activity_1l55fhm">
         <dc:Bounds x="430" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_0z5s8h4_di" bpmnElement="DataStoreReference_0z5s8h4">
         <dc:Bounds x="215" y="275" width="50" height="50" />
