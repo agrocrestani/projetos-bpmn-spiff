@@ -463,6 +463,7 @@ for u in utilizacoes:
       <bpmn:extensionElements>
         <spiffworkflow:preScript>confirma = False
 
+
 </spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-entrada-nfe-schema.json" />
@@ -502,22 +503,7 @@ for u in utilizacoes:
 | {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{WarehouseCode}} | {{ccustoEntrada}} | {{safra}}
 {%endfor%}
 | | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1vruzto</bpmn:incoming>
-      <bpmn:outgoing>Flow_0hiwet5</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:serviceTask id="Activity_1u6vbok" name="Efetuar a entrada da NFe no SAP">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
-
-url = 'https://172.20.1.9:50000/b1s/v2/PurchaseInvoices'
-
-headers = {
-  'Cookie': f"B1SESSION={loginSap}",
-  'Content-Type': 'application/json'
-}
-
-spiff_instancia = get_toplevel_process_info()['process_instance_id']
+        <spiffworkflow:postScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
 usuarioEmissorNFe = get_current_user()['display_name']
 
@@ -555,7 +541,14 @@ payload = {
       "MainUsage": mainusage,
       "Incoterms": "0"
     }
-}</spiffworkflow:preScript>
+}</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1vruzto</bpmn:incoming>
+      <bpmn:outgoing>Flow_0hiwet5</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_1u6vbok" name="Efetuar a entrada da NFe no SAP">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript></spiffworkflow:preScript>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
@@ -566,10 +559,7 @@ payload = {
             <spiffworkflow:parameter id="verify" type="bool" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
-        <spiffworkflow:postScript>try:
-    lancaNFeEntrada = rsp['http_status']
-except:
-    lancaNFeEntrada = 500</spiffworkflow:postScript>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0hiwet5</bpmn:incoming>
       <bpmn:outgoing>Flow_10l6uoe</bpmn:outgoing>
