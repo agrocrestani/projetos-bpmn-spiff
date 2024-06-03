@@ -229,7 +229,7 @@ connection = {
 }
 
 query = f"""
-            SELECT count(*) FROM SBO_CRESTANI_PRD.OIGN o WHERE oign."U_RSD_IDUnisystem" = '{nfe['U_RSD_IDUnisystem']'}
+            SELECT count(*) FROM SBO_CRESTANI_PRD.OIGN o WHERE oign."U_RSD_IDUnisystem" = '{nfe['U_RSD_IDUnisystem']}'
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
