@@ -240,7 +240,9 @@ sqlRsp = Hana(connection).selectDb(query)
 
 total_reg = sqlRsp['qtde_reg']</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:sequenceFlow id="Flow_0tk4sxs" sourceRef="Gateway_060ya1v" targetRef="Activity_1op42we" />
+    <bpmn:sequenceFlow id="Flow_0tk4sxs" sourceRef="Gateway_060ya1v" targetRef="Activity_1op42we">
+      <bpmn:conditionExpression>total_reg &gt;= 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:manualTask id="Activity_1op42we" name="Mensagem já existe">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># Entrada de Mercadoria já existe.
