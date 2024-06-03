@@ -43,7 +43,7 @@ except:
     </bpmn:serviceTask>
     <bpmn:boundaryEvent id="Event_1f4ivqm" attachedToRef="Activity_1bq66l5">
       <bpmn:outgoing>Flow_0e61uq9</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_1isot3x" />
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1isot3x" errorRef="Error_NFe_Entrada" />
     </bpmn:boundaryEvent>
     <bpmn:exclusiveGateway id="Gateway_0n0ry39">
       <bpmn:incoming>Flow_0e61uq9</bpmn:incoming>
@@ -90,6 +90,11 @@ except:
     </bpmn:manualTask>
   </bpmn:process>
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
+  <bpmn:error id="Error_NFe_Entrada" name="Error_NFe_Entrada">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>ErrorNFeEntrada</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_purchase_invoices_krrf890">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
