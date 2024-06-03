@@ -132,7 +132,7 @@ payload = {
     "U_RSD_Classificacao": "1",
     "U_RSD_Origem": "1",
     "U_RSD_Fazenda": fazenda,
-    "Comments": "Entrada em Depósito de Terceiro: " &amp; nfe['CardName']
+    "Comments": "Entrada em Depósito de Terceiro: " + nfe['CardName']
 }
 
 # payload = {
