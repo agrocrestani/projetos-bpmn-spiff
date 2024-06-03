@@ -1,0 +1,9 @@
+{
+    "description": "Lan\u00e7a NFe entrada no SAP.",
+    "display_name": "Purchase Invoices",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "purchase-invoices.bpmn",
+    "primary_process_id": "Process_purchase_invoices_krrf890"
+}
