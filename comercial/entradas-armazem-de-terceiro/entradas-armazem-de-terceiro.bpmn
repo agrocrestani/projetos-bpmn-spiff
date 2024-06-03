@@ -78,11 +78,11 @@ i = nfe['DocumentLines'][0]</spiffworkflow:postScript>
     <bpmn:dataStoreReference id="DataStoreReference_07bqj3s" name="SapLogin" dataStoreRef="saplogin" type="json" />
     <bpmn:manualTask id="Activity_0gd8zrx" name="Visualiza dados da NFe">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser># Dados da Entrada de Mercadoria
+        <spiffworkflow:instructionsForEndUser># Dados da NFe de Remessa
 
 |Campo|Valor|
 | ------: | ------ |
-|Número Documento: | {{serial}} |
+|Número da NFe: | {{serial}} |
 |Data: | {{nfe['DocDate']}} |
 |Codigo Cliente: | {{nfe['CardCode']}} |
 |Nome Cliente: | {{nfe['CardName']}} |
@@ -193,16 +193,17 @@ del(nfe)</spiffworkflow:postScript>
     </bpmn:callActivity>
     <bpmn:manualTask id="Activity_0mwute7" name="Vizualiza Dados da Entrada">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser># Dados da NFe
+        <spiffworkflow:instructionsForEndUser># Dados da Entrada de Mercadoria
+
 |Campo|Valor|
-| ------ | ------ |
-|Número NFe: | {{e['DocNum']}} |
+| ------: | ------ |
+|Número do Documento: | {{e['DocNum']}} |
 |Data: | {{e['DocDate']}} |
 |Observação: | {{e['Comments']}} |
 
 ## Itens:
 |Código|Descricao|Quantidade|Deposito| Valor | Total do Item |
-| ------ | ------ | ------- | ------: | ----: | ----: |
+| ------- | ----------- | ------------: | :--------: | ------: | ---------------: |
 |{{i['ItemCode']}} |{{i['ItemDescription']}} |{{i['Quantity']}} |{{i['WarehouseCode']}} | {{i['Price']}} | {{i['LineTotal']}} </spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0z6egw5</bpmn:incoming>
