@@ -171,7 +171,11 @@ carregaQuerencia = 0</spiffworkflow:preScript>
         <spiffworkflow:preScript />
         <spiffworkflow:instructionsForEndUser># Confirmar a Solicitação
 
-### Verifique os itens abaixo e confirme para emissão da nota fiscal.</spiffworkflow:instructionsForEndUser>
+### Verifique os itens abaixo e confirme para emissão da nota fiscal.
+
+|       Campo | Conteúdo      |
+| -------------: | ---------------- |
+| Solicitante: | {{solicitante}} |</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0wktytc</bpmn:incoming>
       <bpmn:outgoing>Flow_06tikhf</bpmn:outgoing>
