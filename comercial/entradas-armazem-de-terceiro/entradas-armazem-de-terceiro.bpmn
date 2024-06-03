@@ -130,28 +130,28 @@ elif nfe['DocumentLines'][0]['WarehouseCode'] == '49.FCOL':
 
 
 payload = f"""{
-    "U_RSD_Romaneio": {{nfe['U_RSD_Romaneio']}},
-    "BPL_IDAssignedToInvoice": {{nfe['BPL_IDAssignedToInvoice']}},
-    "U_RSD_IDUnisystem": {{nfe['U_RSD_Romaneio']}},
-    "TaxDate": {{nfe['DocDate']}},
+    "U_RSD_Romaneio": {nfe['U_RSD_Romaneio']},
+    "BPL_IDAssignedToInvoice": {nfe['BPL_IDAssignedToInvoice']},
+    "U_RSD_IDUnisystem": {nfe['U_RSD_Romaneio']},
+    "TaxDate": {nfe['DocDate']},
     "PaymentGroupCode": -1,
     "U_RSD_Classificacao": "1",
     "U_RSD_Origem": "1",
-    "U_RSD_Fazenda": {{fazenda}},
-    "Comments": "Entrada em Depósito de Terceiro: "&amp;{{nfe['CardName']}},
+    "U_RSD_Fazenda": {fazenda},
+    "Comments": "Entrada em Depósito de Terceiro: "&amp;{{nfe['CardName']},
     "DocumentLines": [
         {
-            "ItemCode": {{nfe['DocumentLines'][0]['ItemCode']}},
-            "Quantity": {{nfe['DocumentLines'][0]['Quantity']}},
-            "Currency": {{nfe['DocumentLines'][0]['Currency']}},,
-            "WarehouseCode": {{WarehouseCode}},
-            "CostingCode": {{costingCode}},
-            "CostingCode3": {{nfe['DocumentLines'][0]['CostingCode3']}}
+            "ItemCode": {nfe['DocumentLines'][0]['ItemCode']},
+            "Quantity": {nfe['DocumentLines'][0]['Quantity']},
+            "Currency": {nfe['DocumentLines'][0]['Currency']},,
+            "WarehouseCode": {WarehouseCode},
+            "CostingCode": {costingCode},
+            "CostingCode3": {nfe['DocumentLines'][0]['CostingCode3']}
       }
   ],
     "DocumentReferences": [
                 {
-                    "RefDocEntr": {{nfe['DocEntry']}},
+                    "RefDocEntr": {nfe['DocEntry']},
                     "RefObjType": "rot_SalesInvoice"
                 }
             ]
