@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
-  <bpmn:process id="Process_inventorygenentries_yisighq" isExecutable="true">
+  <bpmn:process id="Process_inventorygenentries_yisighq" name="InventoryGenEntries" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_1dvrh4l</bpmn:outgoing>
     </bpmn:startEvent>
@@ -145,6 +145,10 @@ except:
         <di:waypoint x="705" y="177" />
         <di:waypoint x="762" y="177" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0dj7l5c_di" bpmnElement="DataInputAssociation_0dj7l5c">
+        <di:waypoint x="635" y="80" />
+        <di:waypoint x="566" y="137" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1pcaj1n_di" bpmnElement="Flow_1pcaj1n">
         <di:waypoint x="570" y="235" />
         <di:waypoint x="570" y="295" />
@@ -162,10 +166,6 @@ except:
         <di:waypoint x="680" y="202" />
         <di:waypoint x="680" y="320" />
         <di:waypoint x="595" y="320" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0dj7l5c_di" bpmnElement="DataInputAssociation_0dj7l5c">
-        <di:waypoint x="635" y="80" />
-        <di:waypoint x="566" y="137" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
