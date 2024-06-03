@@ -194,9 +194,9 @@ del(main_usage)
       <bpmn:extensionElements>
         <spiffworkflow:serviceTaskOperator id="http/PatchRequestV2" resultVariable="rsp">
           <spiffworkflow:parameters>
-            <spiffworkflow:parameter id="url" type="str" value="url" />
-            <spiffworkflow:parameter id="headers" type="any" value="headers" />
-            <spiffworkflow:parameter id="data" type="any" value="payload" />
+            <spiffworkflow:parameter id="url" type="str" value="url2" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers2" />
+            <spiffworkflow:parameter id="data" type="any" value="payload2" />
             <spiffworkflow:parameter id="basic_auth_username" type="str" />
             <spiffworkflow:parameter id="basic_auth_password" type="str" />
             <spiffworkflow:parameter id="verify" type="bool" />
@@ -209,14 +209,14 @@ spiff_tarefa = taskInfo = get_current_task_info()['id']
 loginSap = saplogin[0]['SessionId']
 
 # url = 'https://172.20.1.9:50000/b1s/v1/Invoices()'
-url = 'https://172.20.1.9:50000/b1s/v2/Invoices({DocEntry})'
+url2 = 'https://172.20.1.9:50000/b1s/v2/Invoices({DocEntry})'
 
-headers = {
+headers2 = {
   'Cookie': f"B1SESSION={loginSap}",
   'Content-Type': 'application/json'
 }
 
-payload = {
+payload2 = {
     "U_TX_Just": "Emissao Indevida"
   }
 </spiffworkflow:preScript>
