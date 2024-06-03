@@ -1,6 +1,6 @@
 {
   "solicitacao": [],
-  "unidade": "apples",
+  "unidade": "1",
   "safra": "oranges",
   "n_safras": [
     {
@@ -16,7 +16,7 @@
       "label": "Bananas"
     }
   ],
-    "n_filiais": [
+  "n_filiais": [
     {
       "value": "1",
       "label": "FAZENDA QUERENCIA"
