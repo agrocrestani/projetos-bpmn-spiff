@@ -199,7 +199,10 @@
 
 
 </spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:postScript>items = []
+        <spiffworkflow:postScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
+spiff_tarefa = taskInfo = get_current_task_info()['id']
+
+items = []
 for s in solicitacao:
   items.append(
     {
@@ -351,7 +354,7 @@ for u in utilizacoes:
     </bpmn:callActivity>
     <bpmn:callActivity id="Activity_0823umq" name="Emite NFe" calledElement="Process_invoices_post_xf8j10r">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:preScript />
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
@@ -362,8 +365,8 @@ for u in utilizacoes:
             <spiffworkflow:parameter id="verify" type="bool" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:postScript />
+        <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_14qu8ic</bpmn:incoming>
       <bpmn:outgoing>Flow_13t1cjk</bpmn:outgoing>
@@ -1131,10 +1134,6 @@ except:
         <di:waypoint x="1655" y="490" />
         <di:waypoint x="1745" y="490" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_1stkkjw_di" bpmnElement="DataInputAssociation_1stkkjw">
-        <di:waypoint x="3545" y="187" />
-        <di:waypoint x="3523" y="166" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1toag1e_di" bpmnElement="DataInputAssociation_1toag1e">
         <di:waypoint x="681" y="235" />
         <di:waypoint x="724" y="167" />
@@ -1146,6 +1145,10 @@ except:
       <bpmndi:BPMNEdge id="DataInputAssociation_1scwoig_di" bpmnElement="DataInputAssociation_1scwoig">
         <di:waypoint x="1099" y="605" />
         <di:waypoint x="1130" y="530" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1stkkjw_di" bpmnElement="DataInputAssociation_1stkkjw">
+        <di:waypoint x="3545" y="187" />
+        <di:waypoint x="3523" y="166" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
