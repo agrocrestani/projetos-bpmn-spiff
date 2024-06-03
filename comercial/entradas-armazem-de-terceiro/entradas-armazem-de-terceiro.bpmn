@@ -5,11 +5,7 @@
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
-    <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
-    <bpmn:manualTask id="Activity_0qpzdpu" name="Example manual task">
+    <bpmn:userTask id="Activity_0qpzdpu" name="Numero da NFe">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
 
@@ -18,30 +14,128 @@
  * **Service Task** - communicate with an external API to fetch or update some data.
 
 You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="dados-iniciais-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="dados-iniciais-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:preScript>n_filiais = []
+for f in filiais:
+    BPLId = f['BPLId']
+    BPLName = f['BPLName']
+    AliasName = f['AliasName']
+    if BPLId in ['2', '3', '4', '5']: 
+        n_filiais.append(
+            {
+                "value": BPLId,
+                "label": AliasName,
+            }
+        )</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-    </bpmn:manualTask>
+      <bpmn:outgoing>Flow_0zmzdv8</bpmn:outgoing>
+      <bpmn:property id="Property_1bor783" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_0zsn0nr">
+        <bpmn:sourceRef>DataStoreReference_0z5s8h4</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1bor783</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0zmzdv8" sourceRef="Activity_0qpzdpu" targetRef="Activity_1l55fhm" />
+    <bpmn:task id="Activity_0gd8zrx">
+      <bpmn:incoming>Flow_0iw2fvx</bpmn:incoming>
+      <bpmn:outgoing>Flow_16mwt8w</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0iw2fvx" sourceRef="Activity_1l55fhm" targetRef="Activity_0gd8zrx" />
+    <bpmn:task id="Activity_1hsyhqb">
+      <bpmn:incoming>Flow_16mwt8w</bpmn:incoming>
+      <bpmn:outgoing>Flow_0z6egw5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_16mwt8w" sourceRef="Activity_0gd8zrx" targetRef="Activity_1hsyhqb" />
+    <bpmn:task id="Activity_0mwute7">
+      <bpmn:incoming>Flow_0z6egw5</bpmn:incoming>
+      <bpmn:outgoing>Flow_008nqur</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0z6egw5" sourceRef="Activity_1hsyhqb" targetRef="Activity_0mwute7" />
+    <bpmn:endEvent id="Event_07sa023">
+      <bpmn:incoming>Flow_008nqur</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_008nqur" sourceRef="Activity_0mwute7" targetRef="Event_07sa023" />
+    <bpmn:serviceTask id="Activity_1l55fhm">
+      <bpmn:extensionElements>
+        <spiffworkflow:serviceTaskOperator id="http/GetRequestV2" resultVariable="rsp">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="params" type="any" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+            <spiffworkflow:parameter id="attempts" type="int" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0zmzdv8</bpmn:incoming>
+      <bpmn:outgoing>Flow_0iw2fvx</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:dataStoreReference id="DataStoreReference_0z5s8h4" name="Filiais" dataStoreRef="filiais" type="json" />
   </bpmn:process>
+  <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_entradas_armazem_de_terceiro_a0aeour">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="432" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
+      <bpmndi:BPMNShape id="Activity_16bliok_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0gd8zrx_di" bpmnElement="Activity_0gd8zrx">
+        <dc:Bounds x="590" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1hsyhqb_di" bpmnElement="Activity_1hsyhqb">
+        <dc:Bounds x="750" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mwute7_di" bpmnElement="Activity_0mwute7">
+        <dc:Bounds x="910" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_07sa023_di" bpmnElement="Event_07sa023">
+        <dc:Bounds x="1072" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1spguxs_di" bpmnElement="Activity_1l55fhm">
+        <dc:Bounds x="430" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0z5s8h4_di" bpmnElement="DataStoreReference_0z5s8h4">
+        <dc:Bounds x="215" y="275" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="226" y="332" width="28" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
+      <bpmndi:BPMNEdge id="Flow_0zmzdv8_di" bpmnElement="Flow_0zmzdv8">
         <di:waypoint x="370" y="177" />
-        <di:waypoint x="432" y="177" />
+        <di:waypoint x="430" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0iw2fvx_di" bpmnElement="Flow_0iw2fvx">
+        <di:waypoint x="530" y="177" />
+        <di:waypoint x="590" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16mwt8w_di" bpmnElement="Flow_16mwt8w">
+        <di:waypoint x="690" y="177" />
+        <di:waypoint x="750" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0z6egw5_di" bpmnElement="Flow_0z6egw5">
+        <di:waypoint x="850" y="177" />
+        <di:waypoint x="910" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_008nqur_di" bpmnElement="Flow_008nqur">
+        <di:waypoint x="1010" y="177" />
+        <di:waypoint x="1072" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0zsn0nr_di" bpmnElement="DataInputAssociation_0zsn0nr">
+        <di:waypoint x="262" y="275" />
+        <di:waypoint x="311" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
