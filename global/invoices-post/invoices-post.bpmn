@@ -267,7 +267,7 @@ except:
     <bpmn:sequenceFlow id="Flow_0v9pdgb" sourceRef="Gateway_1ent8h0" targetRef="Event_1j6jhp3">
       <bpmn:conditionExpression>lancado != 201</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:dataStoreReference id="DataStoreReference_1ql4o3n" />
+    <bpmn:dataStoreReference id="DataStoreReference_1ql4o3n" name="SapLogin" dataStoreRef="saplogin" type="json" />
   </bpmn:process>
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmn:signal id="inutiliza" name="inutiliza" />
@@ -330,6 +330,9 @@ except:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_1ql4o3n_di" bpmnElement="DataStoreReference_1ql4o3n">
         <dc:Bounds x="945" y="615" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="947" y="672" width="47" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_08akdo1_di" bpmnElement="Event_153wc1q">
         <dc:Bounds x="972" y="352" width="36" height="36" />
