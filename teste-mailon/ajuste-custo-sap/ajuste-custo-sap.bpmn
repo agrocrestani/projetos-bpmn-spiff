@@ -937,7 +937,7 @@ del(documentos_saida)</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_0syy6uu" sourceRef="SELECIONAR_PRODUTO" targetRef="Activity_00bh8bd" />
     <bpmn:userTask id="SELECIONAR_PRODUTO" name="Selecionar Produto">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:preScript />
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="selecionar-produto-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-produto-uischema.json" />
