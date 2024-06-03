@@ -2,7 +2,7 @@
   "produto": {
     "ui:widget": "typeahead",
     "ui:options": {
-      "category": "prod_com_movimento",
+      "category": "prod_com_mov",
       "itemFormat": "{ItemName} - {ItemCode}"
     }
   }
