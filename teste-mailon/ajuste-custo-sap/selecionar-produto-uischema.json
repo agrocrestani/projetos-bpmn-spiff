@@ -1,7 +1,7 @@
 {
   "produto": {
     "ui:widget": "select",
-    "ui:placeholder": "Selecione um depósito...",
+    "ui:placeholder": "Selecione um produto...",
     "ui:options": {
       "enum_titles": ["Selecione..."],
       "enum_source": "options_from_task_data_var:produtosList"
