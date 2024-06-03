@@ -22,7 +22,6 @@
         <bpmn:flowNodeRef>Activity_0v68ob6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0823umq</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1rkt1l6</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_05jo0sq</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0kygj4b</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1ule9u1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1pav2g7</bpmn:flowNodeRef>
@@ -42,7 +41,6 @@
         <bpmn:flowNodeRef>Gateway_103xlpo</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1hp3djr</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0rzn55m</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_1g2tkj6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0sb557c</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0j9q13v</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0ntk7ol</bpmn:flowNodeRef>
@@ -76,7 +74,6 @@
             <bpmn:flowNodeRef>Activity_0v68ob6</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_0823umq</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1rkt1l6</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Gateway_05jo0sq</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_0kygj4b</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Event_1ule9u1</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1pav2g7</bpmn:flowNodeRef>
@@ -84,7 +81,6 @@
             <bpmn:flowNodeRef>Gateway_1uogvkl</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_0f2ed01</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1l8yv4t</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Event_1g2tkj6</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_09jse4j</bpmn:flowNodeRef>
           </bpmn:lane>
           <bpmn:lane id="Lane_1mcy60b" name="Matriz_Deposito_Insumos">
@@ -114,7 +110,7 @@
     <bpmn:sequenceFlow id="Flow_08133cx" sourceRef="Activity_1pav2g7" targetRef="Gateway_1ttlala" />
     <bpmn:sequenceFlow id="Flow_12ic23r" sourceRef="Activity_1l8yv4t" targetRef="Gateway_0iheayv" />
     <bpmn:sequenceFlow id="Flow_13t1cjk" sourceRef="Activity_0823umq" targetRef="Gateway_0kygj4b" />
-    <bpmn:sequenceFlow id="Flow_0tid22h" sourceRef="Gateway_0kygj4b" targetRef="Gateway_05jo0sq">
+    <bpmn:sequenceFlow id="Flow_0tid22h" sourceRef="Gateway_0kygj4b" targetRef="Activity_1rkt1l6">
       <bpmn:conditionExpression>lancado != 201</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_16i3je1" sourceRef="Gateway_0iheayv" targetRef="Gateway_02etn56" />
@@ -131,8 +127,6 @@
     <bpmn:sequenceFlow id="Flow_16b5oif" sourceRef="Gateway_0c34dsj" targetRef="Gateway_0ntk7ol" />
     <bpmn:sequenceFlow id="Flow_0m9b8u0" sourceRef="Activity_0zxfq72" targetRef="Gateway_0dqilxv" />
     <bpmn:sequenceFlow id="Flow_0dr50wv" sourceRef="Gateway_0dqilxv" targetRef="Gateway_0ntk7ol" />
-    <bpmn:sequenceFlow id="Flow_1qmmxw0" sourceRef="Event_1g2tkj6" targetRef="Gateway_05jo0sq" />
-    <bpmn:sequenceFlow id="Flow_0p9ysdq" sourceRef="Gateway_05jo0sq" targetRef="Activity_1rkt1l6" />
     <bpmn:sequenceFlow id="Flow_0bnwhbp" sourceRef="Activity_1rkt1l6" targetRef="Gateway_09sj7do" />
     <bpmn:sequenceFlow id="Flow_07x0sp4" sourceRef="Activity_10va8n7" targetRef="Activity_0j9q13v" />
     <bpmn:sequenceFlow id="Flow_1rc1ms8" sourceRef="Gateway_0ntk7ol" targetRef="Activity_1jg3f8e" />
@@ -258,20 +252,7 @@ payload = {
     </bpmn:userTask>
     <bpmn:serviceTask id="Activity_0823umq" name="Emite NFe">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
-spiff_tarefa = taskInfo = get_current_task_info()['id']
-
-
-loginSap = saplogin[0]['SessionId']
-
-url = 'https://172.20.1.9:50000/b1s/v1/Invoices'
-
-headers = {
-  'Cookie': f"B1SESSION={loginSap}",
-  'Content-Type': 'application/json'
-}
-
-</spiffworkflow:preScript>
+        <spiffworkflow:preScript></spiffworkflow:preScript>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
@@ -301,13 +282,7 @@ except:
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_14qu8ic</bpmn:incoming>
       <bpmn:outgoing>Flow_13t1cjk</bpmn:outgoing>
-      <bpmn:property id="Property_0ddsa03" name="__targetRef_placeholder" />
-      <bpmn:dataInputAssociation id="DataInputAssociation_0d0qs48">
-        <bpmn:sourceRef>DataStoreReference_1yswc4l</bpmn:sourceRef>
-        <bpmn:targetRef>Property_0ddsa03</bpmn:targetRef>
-      </bpmn:dataInputAssociation>
     </bpmn:serviceTask>
-    <bpmn:dataStoreReference id="DataStoreReference_1yswc4l" name="SapLogin" dataStoreRef="saplogin" type="json" />
     <bpmn:manualTask id="Activity_1rkt1l6" name="Verifica Erro">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>try:
@@ -337,14 +312,9 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
 1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
 2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0p9ysdq</bpmn:incoming>
+      <bpmn:incoming>Flow_0tid22h</bpmn:incoming>
       <bpmn:outgoing>Flow_0bnwhbp</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:exclusiveGateway id="Gateway_05jo0sq" default="Flow_0p9ysdq">
-      <bpmn:incoming>Flow_1qmmxw0</bpmn:incoming>
-      <bpmn:incoming>Flow_0tid22h</bpmn:incoming>
-      <bpmn:outgoing>Flow_0p9ysdq</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
     <bpmn:exclusiveGateway id="Gateway_0kygj4b" default="Flow_1t9rdtz">
       <bpmn:incoming>Flow_13t1cjk</bpmn:incoming>
       <bpmn:outgoing>Flow_1t9rdtz</bpmn:outgoing>
@@ -895,10 +865,6 @@ carregaQuerencia = 0</spiffworkflow:preScript>
         <bpmn:targetRef>Property_0m73nn4</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
-    <bpmn:boundaryEvent id="Event_1g2tkj6" attachedToRef="Activity_0823umq">
-      <bpmn:outgoing>Flow_1qmmxw0</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_1wmx1ww" errorRef="Error_1" />
-    </bpmn:boundaryEvent>
     <bpmn:boundaryEvent id="Event_0sb557c" attachedToRef="Activity_1u6vbok">
       <bpmn:outgoing>Flow_00tzb38</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_1khpm7p" errorRef="Error_2" />
@@ -1081,17 +1047,8 @@ for u in utilizacoes:
         <dc:Bounds x="1420" y="450" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1yswc4l_di" bpmnElement="DataStoreReference_1yswc4l">
-        <dc:Bounds x="1505" y="575" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1507" y="632" width="47" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_01z645e_di" bpmnElement="Activity_1rkt1l6">
         <dc:Bounds x="1250" y="680" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_05jo0sq_di" bpmnElement="Gateway_05jo0sq" isMarkerVisible="true">
-        <dc:Bounds x="1425" y="695" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0kygj4b_di" bpmnElement="Gateway_0kygj4b" isMarkerVisible="true">
         <dc:Bounds x="1605" y="465" width="50" height="50" />
@@ -1195,9 +1152,6 @@ for u in utilizacoes:
       <bpmndi:BPMNShape id="Event_17bb53r_di" bpmnElement="Event_0sb557c">
         <dc:Bounds x="3952" y="149" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0lcauxa_di" bpmnElement="Event_1g2tkj6">
-        <dc:Bounds x="1432" y="512" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_02ebu0j_di" bpmnElement="Flow_02ebu0j">
         <di:waypoint x="238" y="127" />
         <di:waypoint x="310" y="127" />
@@ -1243,7 +1197,7 @@ for u in utilizacoes:
       <bpmndi:BPMNEdge id="Flow_0tid22h_di" bpmnElement="Flow_0tid22h">
         <di:waypoint x="1630" y="515" />
         <di:waypoint x="1630" y="720" />
-        <di:waypoint x="1475" y="720" />
+        <di:waypoint x="1350" y="720" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_16i3je1_di" bpmnElement="Flow_16i3je1">
         <di:waypoint x="2430" y="960" />
@@ -1290,14 +1244,6 @@ for u in utilizacoes:
       <bpmndi:BPMNEdge id="Flow_0dr50wv_di" bpmnElement="Flow_0dr50wv">
         <di:waypoint x="2855" y="960" />
         <di:waypoint x="2925" y="960" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1qmmxw0_di" bpmnElement="Flow_1qmmxw0">
-        <di:waypoint x="1450" y="548" />
-        <di:waypoint x="1450" y="695" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0p9ysdq_di" bpmnElement="Flow_0p9ysdq">
-        <di:waypoint x="1425" y="720" />
-        <di:waypoint x="1350" y="720" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0bnwhbp_di" bpmnElement="Flow_0bnwhbp">
         <di:waypoint x="1250" y="720" />
@@ -1388,10 +1334,6 @@ for u in utilizacoes:
       <bpmndi:BPMNEdge id="Flow_00r1s3x_di" bpmnElement="Flow_00r1s3x">
         <di:waypoint x="590" y="127" />
         <di:waypoint x="700" y="127" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0d0qs48_di" bpmnElement="DataInputAssociation_0d0qs48">
-        <di:waypoint x="1514" y="575" />
-        <di:waypoint x="1486" y="530" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1stkkjw_di" bpmnElement="DataInputAssociation_1stkkjw">
         <di:waypoint x="4055" y="187" />
