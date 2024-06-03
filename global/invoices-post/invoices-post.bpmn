@@ -56,7 +56,7 @@ except:
       <bpmn:incoming>Flow_0bpq1s0</bpmn:incoming>
       <bpmn:outgoing>Flow_0r122ep</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_14dvl65">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT20S"</bpmn:timeDuration>
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT15S"</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
     <bpmn:sequenceFlow id="Flow_0r122ep" sourceRef="Event_07f7330" targetRef="Activity_1oobqq4" />
