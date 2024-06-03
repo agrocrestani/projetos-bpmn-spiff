@@ -123,35 +123,35 @@ elif nfe['DocumentLines'][0]['WarehouseCode'] == '49.FCOL':
     WarehouseCode = '51.FCOL'
 
 
-payload = f"""
+payload = 
     {
-        "U_RSD_Romaneio": {nfe['U_RSD_Romaneio']},
-        "BPL_IDAssignedToInvoice": {nfe['BPL_IDAssignedToInvoice']},
-        "U_RSD_IDUnisystem": {nfe['U_RSD_Romaneio']},
-        "TaxDate": {nfe['DocDate']},
+        "U_RSD_Romaneio": nfe['U_RSD_Romaneio'],
+        "BPL_IDAssignedToInvoice": nfe['BPL_IDAssignedToInvoice'],
+        "U_RSD_IDUnisystem": nfe['U_RSD_Romaneio'],
+        "TaxDate": nfe['DocDate'],
         "PaymentGroupCode": -1,
         "U_RSD_Classificacao": "1",
         "U_RSD_Origem": "1",
-        "U_RSD_Fazenda": {fazenda},
-        "Comments": "Entrada em Depósito de Terceiro: "&amp;{{nfe['CardName']},
+        "U_RSD_Fazenda": fazenda,
+        "Comments": "Entrada em Depósito de Terceiro: " &amp; nfe['CardName'],
         "DocumentLines": [
             {
-                "ItemCode": {i['ItemCode']},
-                "Quantity": {i['Quantity']},
-                "Currency": {i['Currency']},
-                "WarehouseCode": {WarehouseCode},
-                "CostingCode": {costingCode},
-                "CostingCode3": {i['CostingCode3']}
+                "ItemCode": i['ItemCode'],
+                "Quantity": i['Quantity'],
+                "Currency": i['Currency'],
+                "WarehouseCode": WarehouseCode,
+                "CostingCode": costingCode,
+                "CostingCode3": i['CostingCode3']
             }
         ],
         "DocumentReferences": [
             {
-                "RefDocEntr": {nfe['DocEntry']},
+                "RefDocEntr": nfe['DocEntry'],
                 "RefObjType": "rot_SalesInvoice"
             }
         ]
     }
-"""</spiffworkflow:postScript>
+</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0iw2fvx</bpmn:incoming>
       <bpmn:outgoing>Flow_16mwt8w</bpmn:outgoing>
