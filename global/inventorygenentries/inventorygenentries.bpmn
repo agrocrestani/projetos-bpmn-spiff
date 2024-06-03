@@ -32,10 +32,10 @@ headers = {
   'Content-Type': 'application/json'
 }</spiffworkflow:preScript>
         <spiffworkflow:postScript>try:
-    lancaEntrada = rsp['http_status']
+    lancaEntrada = entrada['http_status']
 except:
     lancaEntrada = 500</spiffworkflow:postScript>
-        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="entrada">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
             <spiffworkflow:parameter id="headers" type="any" value="headers" />
@@ -85,8 +85,8 @@ except:
 2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>try:
     status_code = lancaEntrada 
-    errorCode = rsp['body']['error']['code']
-    errorMessage = rsp['body']['error']['message']['value']
+    errorCode = entrada['body']['error']['code']
+    errorMessage = entrada['body']['error']['message']['value']
 except:
     command = errorEntrada['command_response_body']
     command = json.loads(command)
