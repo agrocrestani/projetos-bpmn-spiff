@@ -12,7 +12,7 @@
         "options_from_task_data_var:n_filiais"
       ]
     },
-    "seri": {
+    "serial": {
       "title": "Digite o número da NFe de Saída",
       "type": "string"
     }
