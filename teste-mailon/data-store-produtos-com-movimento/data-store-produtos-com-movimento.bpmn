@@ -42,7 +42,7 @@ query = f"""
             FROM 
                 {baseSap}.OITW t0
                 INNER JOIN {baseSap}.OITM t1 ON t1."ItemCode" = t0."ItemCode"
-            WHERE t0."AvgPrice" &amp;gt; 0
+            WHERE t0."AvgPrice" &gt; 0
             ORDER BY t0."ItemCode"
         """
 
