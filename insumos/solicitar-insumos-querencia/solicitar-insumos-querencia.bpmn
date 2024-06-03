@@ -226,17 +226,7 @@
 
 
 </spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1btf1uw</bpmn:incoming>
-      <bpmn:outgoing>Flow_14qu8ic</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:serviceTask id="Activity_0823umq" name="Emite NFe">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
-spiff_tarefa = taskInfo = get_current_task_info()['id']
-
-
-items = []
+        <spiffworkflow:postScript>items = []
 for s in solicitacao:
   items.append(
     {
@@ -261,7 +251,16 @@ payload = {
       "MainUsage": mainusage,
       "Incoterms": "0"
     }
-}
+}</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1btf1uw</bpmn:incoming>
+      <bpmn:outgoing>Flow_14qu8ic</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_0823umq" name="Emite NFe">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
+spiff_tarefa = taskInfo = get_current_task_info()['id']
+
 
 loginSap = saplogin[0]['SessionId']
 
