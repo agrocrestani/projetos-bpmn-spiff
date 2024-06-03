@@ -235,7 +235,9 @@ query = f"""
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
-sqlRsp = Hana(connection).selectDb(query)</bpmn:script>
+sqlRsp = Hana(connection).selectDb(query)
+
+total_reg = sqlRsp['qtde_reg']</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
