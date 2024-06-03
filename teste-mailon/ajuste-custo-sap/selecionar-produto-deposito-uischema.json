@@ -1,8 +1,5 @@
 {
-  "produto": {
-    "ui:widget": "text",
-    "ui:placeholder": "Selecione um produto..."
-  },
+
   "deposito": {
     "ui:widget": "select",
     "ui:placeholder": "Selecione um depósito...",
