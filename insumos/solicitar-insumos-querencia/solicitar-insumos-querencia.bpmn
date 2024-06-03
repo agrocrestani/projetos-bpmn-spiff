@@ -177,7 +177,6 @@ carregaQuerencia = 0</spiffworkflow:preScript>
 2. Entrada da NFe na Colorado
 3. NFe de Saída da Colorado par Querência
 
-
 |       Campo | Conteúdo      |
 | -------------: | ---------------- |
 | Solicitante: | {{solicitante}} |
@@ -236,6 +235,7 @@ for s in solicitacao:
     }
   )
 
+CardCode = "C00113"
 
 payload = {
     "CardCode": CardCode,
@@ -252,9 +252,29 @@ payload = {
       "Incoterms": "0"
     }
 }</spiffworkflow:postScript>
+        <spiffworkflow:preScript>for s in solicitacao:
+    s['insumo'] = json.loads(s['insumo'])
+
+descricaoFilial = ""
+for f in n_filiais:
+    if f['value'] == unidade:
+      descricaoFilial = f['label']
+
+usuarioEmissorNFe = get_current_user()['display_name']
+
+SlpCode = 8
+OwnerCode = 2
+main_usage = []
+for u in utilizacoes:
+    main_usage.append(u)</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1btf1uw</bpmn:incoming>
       <bpmn:outgoing>Flow_14qu8ic</bpmn:outgoing>
+      <bpmn:property id="Property_04iyqgg" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1scwoig">
+        <bpmn:sourceRef>DataStoreReference_1a90b40</bpmn:sourceRef>
+        <bpmn:targetRef>Property_04iyqgg</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
     </bpmn:userTask>
     <bpmn:manualTask id="Activity_1rkt1l6" name="Verifica Erro">
       <bpmn:extensionElements>
@@ -300,30 +320,11 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
     <bpmn:callActivity id="Activity_09jse4j" name="Definir Cliente" calledElement="Process_definir_cliente_nfe">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
-        <spiffworkflow:postScript>for s in solicitacao:
-    s['insumo'] = json.loads(s['insumo'])
-
-descricaoFilial = ""
-for f in n_filiais:
-    if f['value'] == unidade:
-      descricaoFilial = f['label']
-
-usuarioEmissorNFe = get_current_user()['display_name']
-
-SlpCode = 8
-OwnerCode = 2
-main_usage = []
-for u in utilizacoes:
-    main_usage.append(u)</spiffworkflow:postScript>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
         <spiffworkflow:preScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_06tikhf</bpmn:incoming>
       <bpmn:outgoing>Flow_1btf1uw</bpmn:outgoing>
-      <bpmn:property id="Property_0taajkd" name="__targetRef_placeholder" />
-      <bpmn:dataInputAssociation id="DataInputAssociation_1scwoig">
-        <bpmn:sourceRef>DataStoreReference_1a90b40</bpmn:sourceRef>
-        <bpmn:targetRef>Property_0taajkd</bpmn:targetRef>
-      </bpmn:dataInputAssociation>
     </bpmn:callActivity>
     <bpmn:callActivity id="Activity_0823umq" name="Emite NFe" calledElement="Process_invoices_post_xf8j10r">
       <bpmn:extensionElements>
@@ -873,8 +874,8 @@ for i in itens:
         <di:waypoint x="345" y="27" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1scwoig_di" bpmnElement="DataInputAssociation_1scwoig">
-        <di:waypoint x="712" y="465" />
-        <di:waypoint x="743" y="390" />
+        <di:waypoint x="728" y="474" />
+        <di:waypoint x="867" y="388" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
