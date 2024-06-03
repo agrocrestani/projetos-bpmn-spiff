@@ -571,7 +571,39 @@ del(documentos_saida)</spiffworkflow:postScript>
       <bpmn:conditionExpression>recalcular == True</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0m9nzqu" sourceRef="VISAO_SAP" targetRef="REPROCESSAR01" />
-    <bpmn:userTask id="VISAO_CALCULADA" name="Visão Calculada">
+    <bpmn:exclusiveGateway id="ESCOLHA_VISAO" name="Escolha Visão" default="Flow_1wz3wum">
+      <bpmn:incoming>Flow_0kxg7eo</bpmn:incoming>
+      <bpmn:outgoing>Flow_0gxeqjd</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1wz3wum</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0gxeqjd" sourceRef="ESCOLHA_VISAO" targetRef="VISAO_SAP">
+      <bpmn:conditionExpression>visao == 'sap'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1wz3wum" sourceRef="ESCOLHA_VISAO" targetRef="VISAO_CALCULADA">
+      <bpmn:conditionExpression>visao == 'estoque'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_04afnxr" sourceRef="VISAO_CALCULADA" targetRef="REPROCESSAR01" />
+    <bpmn:sequenceFlow id="Flow_053mnsg" sourceRef="REPROCESSAR01" targetRef="EndEvent_1">
+      <bpmn:conditionExpression>recalcular == False</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_129ouwj" sourceRef="Gateway_0zhxafw" targetRef="EndEvent_1">
+      <bpmn:conditionExpression>novaBusca == False</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0syy6uu" sourceRef="SELECIONAR_PRODUTO" targetRef="Activity_00bh8bd" />
+    <bpmn:userTask id="SELECIONAR_PRODUTO" name="Selecionar Produto">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="selecionar-produto-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-produto-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:postScript>produto = json.loads(produto)
+</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_0syy6uu</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:manualTask id="VISAO_CALCULADA" name="Visão Calculada">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>| Produto | Deposito | Em Estoque | Custo Unitário | 
 | ----------- | ----------- | ----------------: | -----------------: | 
@@ -895,66 +927,21 @@ del(consulta_movimentos)</spiffworkflow:preScript>
         <spiffworkflow:postScript>lista_documentos_ignorar = documentos_entrada
 lista_documentos_ignorar_saida = documentos_saida
 
-# # Dicionário para agrupar os docnum por objtype
-# agrupados_por_objtype = {}
-
-# # Percorrendo a lista de documentos
-# for documento in consulta_movimentos_out:
-#     objtype = documento["objtype"]
-#     docnum = documento["docnum"]
-    
-#     # Se o objtype ainda não está no dicionário, adicionar uma nova lista
-#     if objtype not in agrupados_por_objtype:
-#         agrupados_por_objtype[objtype] = []
-    
-#     # Adicionar o docnum à lista correspondente ao objtype
-#     agrupados_por_objtype[objtype].append(docnum)
-
 del(documento)
 del(consulta_movimentos_out)
 del(origens_unicas_list)
 del(documentos_entrada)
-del(documentos_saida)</spiffworkflow:postScript>
+del(documentos_saida)
+
+recalcular == False</spiffworkflow:postScript>
         <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="calculo-custo-estoque-schema.json" />
+          <spiffworkflow:property name="formJsonSchemaFilename" value="" />
           <spiffworkflow:property name="formUiSchemaFilename" value="calculo-custo-estoque-uischema.json" />
         </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1wz3wum</bpmn:incoming>
       <bpmn:outgoing>Flow_04afnxr</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:exclusiveGateway id="ESCOLHA_VISAO" name="Escolha Visão" default="Flow_1wz3wum">
-      <bpmn:incoming>Flow_0kxg7eo</bpmn:incoming>
-      <bpmn:outgoing>Flow_0gxeqjd</bpmn:outgoing>
-      <bpmn:outgoing>Flow_1wz3wum</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0gxeqjd" sourceRef="ESCOLHA_VISAO" targetRef="VISAO_SAP">
-      <bpmn:conditionExpression>visao == 'sap'</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_1wz3wum" sourceRef="ESCOLHA_VISAO" targetRef="VISAO_CALCULADA">
-      <bpmn:conditionExpression>visao == 'estoque'</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_04afnxr" sourceRef="VISAO_CALCULADA" targetRef="REPROCESSAR01" />
-    <bpmn:sequenceFlow id="Flow_053mnsg" sourceRef="REPROCESSAR01" targetRef="EndEvent_1">
-      <bpmn:conditionExpression>recalcular == False</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_129ouwj" sourceRef="Gateway_0zhxafw" targetRef="EndEvent_1">
-      <bpmn:conditionExpression>novaBusca == False</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_0syy6uu" sourceRef="SELECIONAR_PRODUTO" targetRef="Activity_00bh8bd" />
-    <bpmn:userTask id="SELECIONAR_PRODUTO" name="Selecionar Produto">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript></spiffworkflow:preScript>
-        <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="selecionar-produto-schema.json" />
-          <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-produto-uischema.json" />
-        </spiffworkflow:properties>
-        <spiffworkflow:postScript>produto = json.loads(produto)
-</spiffworkflow:postScript>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:outgoing>Flow_0syy6uu</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_ajuste_custo_sap_5dnpvbm">
@@ -967,6 +954,9 @@ del(documentos_saida)</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Activity_0m8n14o_di" bpmnElement="BuscaProdutosPorDepositoSAP">
         <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1m04ayc_di" bpmnElement="VISAO_CALCULADA">
+        <dc:Bounds x="980" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
@@ -1018,10 +1008,6 @@ del(documentos_saida)</spiffworkflow:postScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0eguz8h_di" bpmnElement="VISAO_SAP">
         <dc:Bounds x="830" y="270" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zy0efu_di" bpmnElement="VISAO_CALCULADA">
-        <dc:Bounds x="980" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1hiqpmg_di" bpmnElement="ESCOLHA_VISAO" isMarkerVisible="true">
