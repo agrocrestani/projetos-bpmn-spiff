@@ -16,10 +16,7 @@
       <bpmn:dataOutputAssociation id="DataOutputAssociation_0tjuw5b">
         <bpmn:targetRef>DataStoreReference_1oronwq</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
-      <bpmn:script>
-# typeahead = []
-
-typeahead = {"oitm": oitm}</bpmn:script>
+      <bpmn:script>typeahead = {"prod_com_mov": produto_com_movimento}</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_09mu4sd" targetRef="Activity_0o51srq" />
     <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
@@ -39,11 +36,15 @@ connection = {
 }
 
 query = f"""
-            SELECT T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom" 
-            FROM {baseSap}."OITM" T0
-            INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"  
-            ORDER BY T0."ItemName"
-          """
+            SELECT DISTINCT 
+                t0."ItemCode" ,
+                t1."ItemName" 
+            FROM 
+                {baseSap}.OITW t0
+                INNER JOIN {baseSap}.OITM t1 ON t1."ItemCode" = t0."ItemCode"
+            WHERE t0."AvgPrice" &amp;gt; 0
+            ORDER BY t0."ItemCode"
+        """
 
 rsp = Hana(connection).selectDb(query)
 
@@ -98,21 +99,17 @@ del(rsp)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_15602ew</bpmn:incoming>
       <bpmn:outgoing>Flow_0w7oyed</bpmn:outgoing>
-      <bpmn:script>oitm = []
+      <bpmn:script>produto_com_movimento = []
 
 for r in rsp:
     ItemCode = str(r['itemcode'])
     ItemName = str(r['itemname'])
-    ItmsGrpNam = str(r['itmsgrpnam'])
-    InvntryUom = str(r['invntryuom'])
-    oitm.append(
+    produto_com_movimento.append(
         {
             "search_term": ItemName, 
             "result": {
                 "ItemCode": ItemCode, 
-                "ItemName": ItemName, 
-                "ItmsGrpNam": ItmsGrpNam,
-                "InvntryUom": InvntryUom if InvntryUom != 'null' else None
+                "ItemName": ItemName
                 }
             }
         )
