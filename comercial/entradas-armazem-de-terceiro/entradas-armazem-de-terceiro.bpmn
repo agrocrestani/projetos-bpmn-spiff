@@ -71,7 +71,6 @@ for f in filiais:
         <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
 
 url = f"""https://172.20.1.9:50000/b1s/v2/Invoices?$
-          select=DocNum, CardCode, CardName, DocDate, SequenceSerial, DocumentLines&amp;$
           filter=SequenceSerial eq {serial} and BPL_IDAssignedToInvoice eq {unidade}"""
 
 headers = {
