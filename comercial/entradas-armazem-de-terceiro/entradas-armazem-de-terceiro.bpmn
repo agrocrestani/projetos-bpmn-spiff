@@ -138,7 +138,7 @@ payload = f"""
             {
                 "ItemCode": {i['ItemCode']},
                 "Quantity": {i['Quantity']},
-                "Currency": {i['Currency']},,
+                "Currency": {i['Currency']},
                 "WarehouseCode": {WarehouseCode},
                 "CostingCode": {costingCode},
                 "CostingCode3": {i['CostingCode3']}
