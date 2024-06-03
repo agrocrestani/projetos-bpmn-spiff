@@ -649,9 +649,11 @@ del(documentos_saida)</spiffworkflow:postScript>
             width: 100% !important;
             border-collapse: collapse !important;
             margin-top: 20px !important;
-            border-radius: 8px !important;
             overflow: hidden !important;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        table {
+            display: inline !important;
         }
 
         .data-cell {
