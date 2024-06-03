@@ -263,22 +263,7 @@ payload = {
             <spiffworkflow:parameter id="verify" type="bool" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
-        <spiffworkflow:postScript>try:
-    lancado = rsp['http_status']
-except:
-    lancado = 500
-
-
-# del(lancamentos)
-# del(c)
-# del(f)
-# del(lcm)
-# del(tabela)
-# del(novaTabela)
-# del(t)
-# del(items)
-# del(l)
-# del(rsp)</spiffworkflow:postScript>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_14qu8ic</bpmn:incoming>
       <bpmn:outgoing>Flow_13t1cjk</bpmn:outgoing>
