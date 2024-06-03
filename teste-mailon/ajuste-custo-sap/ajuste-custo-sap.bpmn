@@ -938,45 +938,7 @@ del(documentos_saida)</spiffworkflow:postScript>
     <bpmn:userTask id="SELECIONAR_PRODUTO" name="Selecionar Produto">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>from connectordb.hana import Hana
-
-baseSap = get_secret('baseSap')
-
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
-
-query_produtos = f"""
-                    SELECT DISTINCT 
-                        t0."ItemCode" ,
-                        t1."ItemName" 
-                    FROM 
-                        {baseSap}.OITW t0
-                        INNER JOIN {baseSap}.OITM t1 ON t1."ItemCode" = t0."ItemCode"
-                    WHERE t0."AvgPrice" &gt; 0
-                    ORDER BY t0."ItemCode"
-                """
-
-consulta_produtos = Hana(connection).selectDb(query_produtos)
-
-del(query_produtos)
-del(baseSap)
-del(connection)
-
-
-produtosList = []
-for produto in consulta_produtos:
-    produtosList.append(
-        {
-            "value" : produto['itemcode'] ,
-            "label" : produto['itemcode'] + ' - ' + produto['itemname']
-        }
-    )
-
-del(produto)
-del(consulta_produtos)</spiffworkflow:preScript>
+</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="selecionar-produto-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-produto-uischema.json" />
