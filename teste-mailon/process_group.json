@@ -8,6 +8,15 @@
                 "name": "ProdutosDesposito",
                 "schema": {}
             }
+        },
+        "kkv": {
+            "produtos_com_movimento": {
+                "description": "",
+                "identifier": "produtos_com_movimento",
+                "location": "teste-mailon",
+                "name": "Produtos com Movimento",
+                "schema": {}
+            }
         }
     },
     "description": "",
