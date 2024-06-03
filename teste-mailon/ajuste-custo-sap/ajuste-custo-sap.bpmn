@@ -232,6 +232,7 @@ connection = {
     "user": "SYSTEM",
     "password": "9Ab63^Op33"
 }
+cod_prod = produto['ItemCode']
 
 query_depositos = f"""
                     SELECT DISTINCT 
@@ -240,10 +241,10 @@ query_depositos = f"""
                     FROM 
                         {baseSap}.OITW t0
                         LEFT JOIN {baseSap}.OWHS t1 ON t1."WhsCode" = t0."WhsCode"
-                    WHERE t0."AvgPrice" &gt; 0
-                    ORDER BY t0."WhsCode"
+                    WHERE t0."AvgPrice" &gt; 0 AND t0."ItemCode" = {cod_prod}
                 """
 
+del(cod_prod)
 
 consulta_depositos = Hana(connection).selectDb(query_depositos)
 
