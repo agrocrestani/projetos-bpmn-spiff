@@ -78,6 +78,7 @@ headers = {
   'Cookie': f"B1SESSION={loginSap}",
   'Content-Type': 'application/json'
 }</spiffworkflow:preScript>
+        <spiffworkflow:postScript>nfe = rsp['body']['value'][0]</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0zmzdv8</bpmn:incoming>
       <bpmn:outgoing>Flow_0iw2fvx</bpmn:outgoing>
