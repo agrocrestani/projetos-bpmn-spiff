@@ -1,5 +1,5 @@
 {
-  "deposito": {
+  "pr": {
     "ui:widget": "select",
     "ui:placeholder": "Selecione um depósito...",
     "ui:options": {
