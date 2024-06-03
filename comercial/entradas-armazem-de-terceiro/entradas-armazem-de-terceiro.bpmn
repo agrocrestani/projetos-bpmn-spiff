@@ -207,9 +207,10 @@ del(nfe)</spiffworkflow:postScript>
       <bpmn:outgoing>Flow_008nqur</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_14cd3ht" sourceRef="Activity_1v56l15" targetRef="Gateway_060ya1v" />
-    <bpmn:exclusiveGateway id="Gateway_060ya1v">
+    <bpmn:exclusiveGateway id="Gateway_060ya1v" default="Flow_0uti9ly">
       <bpmn:incoming>Flow_14cd3ht</bpmn:incoming>
       <bpmn:outgoing>Flow_0uti9ly</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0tk4sxs</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0uti9ly" sourceRef="Gateway_060ya1v" targetRef="Activity_0gd8zrx" />
     <bpmn:scriptTask id="Activity_1v56l15" name="Verifica se existe">
@@ -239,6 +240,20 @@ sqlRsp = Hana(connection).selectDb(query)
 
 total_reg = sqlRsp['qtde_reg']</bpmn:script>
     </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_0tk4sxs" sourceRef="Gateway_060ya1v" targetRef="Activity_1op42we" />
+    <bpmn:manualTask id="Activity_1op42we" name="Mensagem já existe">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Entrada de Mercadoria já existe.
+
+Já existe uma entrada de mercadoria para referente ao SeqPlanilha {{nfe['U_RSD_IDUnisystem']}} da NFe: {{serial}}. Por favor verifique se a nota e a unidade estão corretas e inicie um novo processo.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0tk4sxs</bpmn:incoming>
+      <bpmn:outgoing>Flow_1pz8jy1</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:endEvent id="Event_1h9btqc">
+      <bpmn:incoming>Flow_1pz8jy1</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1pz8jy1" sourceRef="Activity_1op42we" targetRef="Event_1h9btqc" />
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
@@ -288,6 +303,13 @@ total_reg = sqlRsp['qtde_reg']</bpmn:script>
       <bpmndi:BPMNShape id="Activity_0sk05m6_di" bpmnElement="Activity_1v56l15">
         <dc:Bounds x="580" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06js0aa_di" bpmnElement="Activity_1op42we">
+        <dc:Bounds x="910" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1h9btqc_di" bpmnElement="Event_1h9btqc">
+        <dc:Bounds x="1112" y="272" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -327,6 +349,15 @@ total_reg = sqlRsp['qtde_reg']</bpmn:script>
       <bpmndi:BPMNEdge id="Flow_0uti9ly_di" bpmnElement="Flow_0uti9ly">
         <di:waypoint x="815" y="177" />
         <di:waypoint x="910" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tk4sxs_di" bpmnElement="Flow_0tk4sxs">
+        <di:waypoint x="790" y="202" />
+        <di:waypoint x="790" y="290" />
+        <di:waypoint x="910" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pz8jy1_di" bpmnElement="Flow_1pz8jy1">
+        <di:waypoint x="1010" y="290" />
+        <di:waypoint x="1112" y="290" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
