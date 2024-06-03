@@ -828,7 +828,10 @@ except:
     <bpmn:sequenceFlow id="Flow_1rc1ms8" sourceRef="Gateway_0ntk7ol" targetRef="Activity_1jg3f8e" />
     <bpmn:sequenceFlow id="Flow_13sk5ni" sourceRef="Activity_1jg3f8e" targetRef="Activity_1bsmf9p" />
     <bpmn:sequenceFlow id="Flow_0q9zm5t" sourceRef="Activity_1bsmf9p" targetRef="Activity_0qzj466" />
-    <bpmn:boundaryEvent id="Event_0nylixx" name="Finalizar processo" attachedToRef="Activity_1rkt1l6">
+    <bpmn:boundaryEvent id="Event_0nylixx" attachedToRef="Activity_1rkt1l6">
+      <bpmn:extensionElements>
+        <spiffworkflow:signalButtonLabel>"Finalizar processo"</spiffworkflow:signalButtonLabel>
+      </bpmn:extensionElements>
       <bpmn:outgoing>Flow_1oytvmj</bpmn:outgoing>
       <bpmn:signalEventDefinition id="SignalEventDefinition_1rd7i0y" signalRef="Finalizar_Processo" />
     </bpmn:boundaryEvent>
