@@ -122,7 +122,7 @@ payload = {
     "TaxDate": nfe['DocDate'],
     "PaymentGroupCode": -1,
     "U_RSD_Classificacao": "1",
-    "U_RSD_Origem": "1",
+    "U_RSD_Origem": "15",
     "U_RSD_Fazenda": fazenda,
     "Comments": "Entrada em Depósito de Terceiro: " + nfe['CardName'],
     "DocumentLines": [
