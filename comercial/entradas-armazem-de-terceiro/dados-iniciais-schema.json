@@ -6,7 +6,6 @@
         "safra"
       ],
   "properties": {
-
     "unidade": {
       "title": "Selecione a unidade",
       "type": "string",
