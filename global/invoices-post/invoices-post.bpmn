@@ -190,7 +190,7 @@ del(main_usage)
       <bpmn:signalEventDefinition id="SignalEventDefinition_14iw6o4" signalRef="inutiliza" />
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_09t17f7" sourceRef="Event_153wc1q" targetRef="Activity_1206m73" />
-    <bpmn:serviceTask id="Activity_1206m73" name="Justivicativa para Inutilizar">
+    <bpmn:serviceTask id="Activity_1206m73" name="Justificativa para Inutilizar">
       <bpmn:extensionElements>
         <spiffworkflow:serviceTaskOperator id="http/PatchRequestV2" resultVariable="rsp">
           <spiffworkflow:parameters>
@@ -350,14 +350,14 @@ except:
           <dc:Bounds x="827" y="612" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0rwxwr3_di" bpmnElement="Event_1aqlqgv">
+        <dc:Bounds x="972" y="522" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_08akdo1_di" bpmnElement="Event_153wc1q">
         <dc:Bounds x="972" y="352" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1n66gzz_di" bpmnElement="Event_04w731w">
         <dc:Bounds x="362" y="199" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0rwxwr3_di" bpmnElement="Event_1aqlqgv">
-        <dc:Bounds x="972" y="522" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1enkyef_di" bpmnElement="Flow_1enkyef">
         <di:waypoint x="215" y="177" />
