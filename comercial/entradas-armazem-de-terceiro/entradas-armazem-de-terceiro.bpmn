@@ -72,6 +72,14 @@ for f in filiais:
             <spiffworkflow:parameter id="attempts" type="int" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
+
+url = f'https://172.20.1.9:50000/b1s/v2/Invoices?$filter=SequenceSerial eq {} and BPL_IDAssignedToInvoice eq {}'
+
+headers = {
+  'Cookie': f"B1SESSION={loginSap}",
+  'Content-Type': 'application/json'
+}</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0zmzdv8</bpmn:incoming>
       <bpmn:outgoing>Flow_0iw2fvx</bpmn:outgoing>
