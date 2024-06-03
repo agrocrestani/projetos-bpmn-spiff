@@ -14,8 +14,7 @@
     },
     "safra": {
       "title": "Selecione a safra",
-      "type": "string",
-
+      "type": "string"
     }
   }
 }
