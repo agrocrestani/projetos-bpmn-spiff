@@ -78,17 +78,18 @@ i = nfe['DocumentLines'][0]</spiffworkflow:postScript>
     <bpmn:dataStoreReference id="DataStoreReference_07bqj3s" name="SapLogin" dataStoreRef="saplogin" type="json" />
     <bpmn:manualTask id="Activity_0gd8zrx" name="Visualiza dados da NFe">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser># Dados da NFe
+        <spiffworkflow:instructionsForEndUser># Dados da Entrada de Mercadoria
+
 |Campo|Valor|
-| ------ | ------ |
-|Número NFe: | {{serial}} |
+| ------: | ------ |
+|Número Documento: | {{serial}} |
 |Data: | {{nfe['DocDate']}} |
 |Codigo Cliente: | {{nfe['CardCode']}} |
 |Nome Cliente: | {{nfe['CardName']}} |
 
 ## Itens:
-|Código|Descricao|Quantidade|Deposito| Valor | Total do Item
-| ------ | ------ | -------: | ------ | ----:| -----: |
+|Código|Descricao|Quantidade|Deposito| Valor | Total do Item |
+| ------- | ----------- | ------------: | :--------: | -------:| ---------------: |
 |{{i['ItemCode']}} |{{i['ItemDescription']}} |{{i['Quantity']}} |{{i['WarehouseCode']}} | {{i['Price']}} | {{i['LineTotal']}} </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:postScript>if nfe['BPL_IDAssignedToInvoice'] == 1:
     costingCode = 'QUEPRO'
