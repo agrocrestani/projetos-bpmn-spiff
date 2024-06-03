@@ -79,7 +79,7 @@ headers = {
   'Content-Type': 'application/json'
 }</spiffworkflow:preScript>
         <spiffworkflow:postScript>nfe = rsp['body']['value'][0]
-i = nfe['DocumentLines']</spiffworkflow:postScript>
+i = nfe['DocumentLines'][0]</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0zmzdv8</bpmn:incoming>
       <bpmn:outgoing>Flow_0iw2fvx</bpmn:outgoing>
@@ -105,6 +105,7 @@ i = nfe['DocumentLines']</spiffworkflow:postScript>
 |Código|Descricao|Quantidade|Deposito|
 | ------ | ------ | ------- | ------ |
 |{{i['ItemCode']}} |{{i['ItemDescription']}} |{{i['Quantity']}} |{{i['WarehouseCode']}} |</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0iw2fvx</bpmn:incoming>
       <bpmn:outgoing>Flow_16mwt8w</bpmn:outgoing>
