@@ -970,8 +970,8 @@ produtosList = []
 for produto in consulta_produtos:
     produtosList.append(
         {
-            "value" : produto['whscode'] ,
-            "label" : produto['whscode'] + ' - ' + produto['whsname']
+            "value" : produto['itemcode'] ,
+            "label" : produto['itemcode'] + ' - ' + produto['itemname']
         }
     )
 
