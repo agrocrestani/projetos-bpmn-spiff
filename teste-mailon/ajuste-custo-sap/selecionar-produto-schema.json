@@ -7,7 +7,7 @@
     "dataFinal"
   ],
   "properties": {
-    "deposito": {
+    "produto": {
       "type": "string",
       "title": "Deposito",
       "anyOf": [
