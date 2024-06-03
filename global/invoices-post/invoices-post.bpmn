@@ -43,7 +43,7 @@ except:
     <bpmn:dataStoreReference id="DataStoreReference_1w94a7o" name="SapLogin" dataStoreRef="saplogin" type="json" />
     <bpmn:boundaryEvent id="Event_04w731w" attachedToRef="Activity_0slsnk1">
       <bpmn:outgoing>Flow_1h3lyqx</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_0rv8vei" />
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0rv8vei" errorRef="ErrorEmiteNFe" />
     </bpmn:boundaryEvent>
     <bpmn:exclusiveGateway id="Gateway_0069475" default="Flow_0bpq1s0">
       <bpmn:incoming>Flow_1pbq4ko</bpmn:incoming>
@@ -272,12 +272,22 @@ except:
     <bpmn:dataStoreReference id="DataStoreReference_1ql4o3n" name="SapLogin" dataStoreRef="saplogin" type="json" />
     <bpmn:boundaryEvent id="Event_1aqlqgv" attachedToRef="Activity_1206m73">
       <bpmn:outgoing>Flow_1noa3xy</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_05s076g" />
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_05s076g" errorRef="ErrorInutilizarNFe" />
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_1noa3xy" sourceRef="Event_1aqlqgv" targetRef="Gateway_1tmpqad" />
   </bpmn:process>
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmn:signal id="inutiliza" name="inutiliza" />
+  <bpmn:error id="ErrorEmiteNFe" name="ErrorEmiteNFe">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>ErrorNFe</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
+  <bpmn:error id="ErrorInutilizarNFe" name="ErrorInutilizarNFe">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>ErrorInutiliza</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_invoices_post_xf8j10r">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
