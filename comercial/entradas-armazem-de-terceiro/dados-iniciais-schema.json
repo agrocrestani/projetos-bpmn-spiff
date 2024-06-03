@@ -13,7 +13,7 @@
       ]
     },
     "safra": {
-      "title": "Selecione a safra",
+      "title": "Digi",
       "type": "string"
     }
   }
