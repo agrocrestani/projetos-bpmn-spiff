@@ -135,12 +135,12 @@ del(rsp)</bpmn:script>
           <dc:Bounds x="413" y="362" width="55" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0w58e99_di" bpmnElement="Activity_09mu4sd">
+        <dc:Bounds x="220" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1j6pxa8_di" bpmnElement="Activity_0dyhbdy">
         <dc:Bounds x="50" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0w58e99_di" bpmnElement="Activity_09mu4sd">
-        <dc:Bounds x="220" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0tn4ed3_di" bpmnElement="Flow_0tn4ed3">
         <di:waypoint x="-22" y="177" />
