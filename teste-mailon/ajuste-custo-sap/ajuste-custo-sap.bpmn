@@ -967,7 +967,7 @@ del(connection)
 
 
 produtosList = []
-for produto in consulta_depositos:
+for produto in consulta_produtos:
     produtosList.append(
         {
             "value" : produto['whscode'] ,
