@@ -13,7 +13,7 @@
       ]
     },
     "safra": {
-      "title": "Digi",
+      "title": "Digite o número da N",
       "type": "string"
     }
   }
