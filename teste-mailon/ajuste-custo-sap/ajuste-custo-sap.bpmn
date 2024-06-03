@@ -232,7 +232,9 @@ connection = {
     "user": "SYSTEM",
     "password": "9Ab63^Op33"
 }
-cod_prod = produto['ItemCode']
+produto_json = json.loads(produto)
+
+cod_prod = produto_json['ItemCode']
 
 query_depositos = f"""
                     SELECT DISTINCT 
