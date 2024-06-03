@@ -64,7 +64,7 @@ if(consulta_movimentos != []):
                         t0."InvntryUom",
                         t0."ItemName"
                     FROM {baseSap}.OITM t0
-                    WHERE t0."ItemCode" = '{produto}';
+                    WHERE t0."ItemCode" = '{produto['ItemCode']}';
                     """
 
     um_produto_estoque = Hana(connection).selectDb(query_um_produto_estoque)
@@ -75,7 +75,7 @@ if(consulta_movimentos != []):
                         CAST(t0."AvgPrice" AS VARCHAR(50)) AS "AvgPrice",
                         CAST(t0."OnHand" AS VARCHAR(50)) AS "OnHand"
                     FROM {baseSap}.OITW t0
-                    WHERE t0."ItemCode" = '{produto}' AND t0."WhsCode" = '{deposito}';
+                    WHERE t0."ItemCode" = '{produto['ItemCode']}' AND t0."WhsCode" = '{deposito}';
                     """
     
     deposito_estoque = Hana(connection).selectDb(query_deposito)
