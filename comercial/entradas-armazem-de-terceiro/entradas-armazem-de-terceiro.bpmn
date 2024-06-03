@@ -130,7 +130,6 @@ payload = {
             "ItemCode": i['ItemCode'],
             "Quantity": i['Quantity'],
             "Currency": i['Currency'],
-            "Price": i['Price'],
             "Linetotal": i['LineTotal'],
             "WarehouseCode": WarehouseCode,
             "CostingCode": costingCode,
