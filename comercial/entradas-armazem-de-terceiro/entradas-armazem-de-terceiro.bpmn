@@ -104,7 +104,58 @@ i = nfe['DocumentLines'][0]</spiffworkflow:postScript>
 |Código|Descricao|Quantidade|Deposito|
 | ------ | ------ | ------- | ------ |
 |{{i['ItemCode']}} |{{i['ItemDescription']}} |{{i['Quantity']}} |{{i['WarehouseCode']}} |</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:postScript>if nfe['BPL_IDAssignedToInvoice'] == 1:
+    costingCode = 'QUEPRO'
+    fazenda = ''
+elif nfe['BPL_IDAssignedToInvoice'] == 2:
+    costingCode = 'TGAPRO'
+    fazenda = '11'
+elif nfe['BPL_IDAssignedToInvoice'] == 3:
+    costingCode = 'TGAPRO'
+    fazenda = '8'
+elif nfe['BPL_IDAssignedToInvoice'] == 4:
+    costingCode = 'CJOPRO'
+    fazenda = '5'
+elif nfe['BPL_IDAssignedToInvoice'] == 5:
+    costingCode = 'BRAPRO'
+    fazenda = ''
+else:
+    costingCode = ''
+    fazenda = ''
+
+if nfe['DocumentLines'][0]['WarehouseCode'] == '49.FPRO':
+    WarehouseCode = '51.FPRO'
+elif nfe['DocumentLines'][0]['WarehouseCode'] == '49.FCOL':
+    WarehouseCode = '51.FCOL'
+
+
+payload = f"""{
+    "U_RSD_Romaneio": {{nfe['U_RSD_Romaneio']}},
+    "BPL_IDAssignedToInvoice": {{nfe['BPL_IDAssignedToInvoice']}},
+    "U_RSD_IDUnisystem": {{nfe['U_RSD_Romaneio']}},
+    "TaxDate": {{nfe['DocDate']}},
+    "PaymentGroupCode": -1,
+    "U_RSD_Classificacao": "1",
+    "U_RSD_Origem": "1",
+    "U_RSD_Fazenda": m.FAZENDA,
+    "Comments": "Entrada em Depósito de Terceiro: "&amp;{{nfe['CardName']}},
+    "DocumentLines": [
+        {
+            "ItemCode": {{nfe['DocumentLines'][0]['ItemCode']}},
+            "Quantity": {{nfe['DocumentLines'][0]['Quantity']}},
+            "Currency": {{nfe['DocumentLines'][0]['Currency']}},,
+            "WarehouseCode": {{WarehouseCode}},
+            "CostingCode": {{costingCode}},
+            "CostingCode3": {{nfe['DocumentLines'][0]['CostingCode3']}}
+      }
+  ],
+    "DocumentReferences": [
+                {
+                    "RefDocEntr": {{nfe['DocEntry']}},
+                    "RefObjType": "rot_SalesInvoice"
+                }
+            ]
+}"""</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0iw2fvx</bpmn:incoming>
       <bpmn:outgoing>Flow_16mwt8w</bpmn:outgoing>
