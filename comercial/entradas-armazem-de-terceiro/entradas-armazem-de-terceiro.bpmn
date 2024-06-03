@@ -193,10 +193,10 @@ del(nfe)</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser># Dados da NFe
 |Campo|Valor|
 | ------ | ------ |
-|Número NFe: | {{serial}} |
-|Data: | {{nfe['DocDate']}} |
-|Codigo Cliente: | {{nfe['CardCode']}} |
-|Nome Cliente: | {{nfe['CardName']}} |
+|Número NFe: | {{e['DocNum']}} |
+|Data: | {{e['DocDate']}} |
+|Codigo Cliente: | {{e['CardCode']}} |
+|Nome Cliente: | {{e['CardName']}} |
 
 ## Itens:
 |Código|Descricao|Quantidade|Deposito|
