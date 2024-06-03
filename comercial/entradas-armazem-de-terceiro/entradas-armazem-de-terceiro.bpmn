@@ -142,14 +142,7 @@ payload = {
             "CostingCode": costingCode,
             "CostingCode3": i['CostingCode3']
         }
-        ],
-        "DocumentReferences": [
-            {
-                "RefDocEntr": nfe['DocEntry'],
-                "RefObjType": "rot_SalesInvoice"
-            }
-        ]
-    }
+    ]
 }
 
 # payload = {
