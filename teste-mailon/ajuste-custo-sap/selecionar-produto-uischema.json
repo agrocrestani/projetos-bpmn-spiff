@@ -2,7 +2,7 @@
   "produto": {
     "ui:widget": "typeahead",
     "ui:options": {
-      "category": "estoque_de_insumos",
+      "category": "produto_com_movimento",
       "itemFormat": "{ItemName} - {WhsCode}"
     }
   }
