@@ -240,7 +240,7 @@ query_depositos = f"""
                     FROM 
                         {baseSap}.OITW t0
                         LEFT JOIN {baseSap}.OWHS t1 ON t1."WhsCode" = t0."WhsCode"
-                    WHERE (t0."AvgPrice" &gt; OR t0."OnHand" &gt; 0) AND t0."ItemCode" LIKE '{produto['ItemCode']}'
+                    WHERE (t0."AvgPrice" &gt; 0 OR t0."OnHand" &gt; 0) AND t0."ItemCode" LIKE '{produto['ItemCode']}'
                 """
 
 
