@@ -6,28 +6,7 @@
         "safra"
       ],
   "properties": {
-    "solicitacao": {
-      "type": "array",
-      "title": "Items",
-      "description": "Selecione os items clicando em 'Adicionar Novo'.",
-      "items": {
-        "type": "object",
-        "required": [
-          "insumo",
-          "quantidade"
-        ],
-        "properties": {
-          "insumo": {
-            "type": "string",
-            "title": "Selecione o Insumo"
-          },
-          "quantidade": {
-            "type": "number",
-            "title": "Quantidade"
-          }
-        }
-      }
-    },
+
     "unidade": {
       "title": "Selecione a unidade",
       "type": "string",
