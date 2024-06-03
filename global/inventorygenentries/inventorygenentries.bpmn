@@ -32,9 +32,9 @@ headers = {
   'Content-Type': 'application/json'
 }</spiffworkflow:preScript>
         <spiffworkflow:postScript>try:
-    lancaNFeEntrada = rsp['http_status']
+    lancaEntrada = rsp['http_status']
 except:
-    lancaNFeEntrada = 500</spiffworkflow:postScript>
+    lancaEntrada = 500</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0nkpbr3</bpmn:incoming>
       <bpmn:outgoing>Flow_0d8qofn</bpmn:outgoing>
@@ -56,7 +56,9 @@ except:
     <bpmn:sequenceFlow id="Flow_1pcaj1n" sourceRef="Event_10bbba7" targetRef="Gateway_02ut7dc" />
     <bpmn:sequenceFlow id="Flow_0emmyet" sourceRef="Gateway_02ut7dc" targetRef="Activity_1duk8v7" />
     <bpmn:sequenceFlow id="Flow_146cdox" sourceRef="Activity_1duk8v7" targetRef="Gateway_0r1m0pj" />
-    <bpmn:sequenceFlow id="Flow_1fdqexx" sourceRef="Gateway_000q1yr" targetRef="Gateway_02ut7dc" />
+    <bpmn:sequenceFlow id="Flow_1fdqexx" sourceRef="Gateway_000q1yr" targetRef="Gateway_02ut7dc">
+      <bpmn:conditionExpression>lancaEntrada != 201</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:manualTask id="Activity_1duk8v7" name="Verifica Erro na Entrada">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
