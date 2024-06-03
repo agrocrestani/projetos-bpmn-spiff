@@ -235,6 +235,7 @@ except:
     </bpmn:serviceTask>
     <bpmn:exclusiveGateway id="Gateway_1tmpqad" default="Flow_06qx27n">
       <bpmn:incoming>Flow_0wz143b</bpmn:incoming>
+      <bpmn:incoming>Flow_1noa3xy</bpmn:incoming>
       <bpmn:outgoing>Flow_06qx27n</bpmn:outgoing>
       <bpmn:outgoing>Flow_0wl0noj</bpmn:outgoing>
     </bpmn:exclusiveGateway>
@@ -269,6 +270,11 @@ except:
       <bpmn:conditionExpression>lancado != 201</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:dataStoreReference id="DataStoreReference_1ql4o3n" name="SapLogin" dataStoreRef="saplogin" type="json" />
+    <bpmn:boundaryEvent id="Event_1aqlqgv" attachedToRef="Activity_1206m73">
+      <bpmn:outgoing>Flow_1noa3xy</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_05s076g" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1noa3xy" sourceRef="Event_1aqlqgv" targetRef="Gateway_1tmpqad" />
   </bpmn:process>
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmn:signal id="inutiliza" name="inutiliza" />
@@ -340,6 +346,9 @@ except:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1n66gzz_di" bpmnElement="Event_04w731w">
         <dc:Bounds x="362" y="199" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0rwxwr3_di" bpmnElement="Event_1aqlqgv">
+        <dc:Bounds x="972" y="522" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1enkyef_di" bpmnElement="Flow_1enkyef">
         <di:waypoint x="215" y="177" />
@@ -415,6 +424,12 @@ except:
         <di:waypoint x="530" y="202" />
         <di:waypoint x="530" y="330" />
         <di:waypoint x="602" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1noa3xy_di" bpmnElement="Flow_1noa3xy">
+        <di:waypoint x="990" y="558" />
+        <di:waypoint x="990" y="610" />
+        <di:waypoint x="1170" y="610" />
+        <di:waypoint x="1170" y="525" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
