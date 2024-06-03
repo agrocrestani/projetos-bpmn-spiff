@@ -176,6 +176,15 @@ payload = {
       <bpmn:outgoing>Flow_16mwt8w</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:callActivity id="Activity_1hsyhqb" name="Lanca entrada no ERP" calledElement="Process_inventorygenentries_yisighq">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:postScript>e = entrada['body']
+i = e['DocumentLines']
+
+del(entrada)
+del(rsp)
+del(nfe)</spiffworkflow:postScript>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_16mwt8w</bpmn:incoming>
       <bpmn:outgoing>Flow_0z6egw5</bpmn:outgoing>
     </bpmn:callActivity>
