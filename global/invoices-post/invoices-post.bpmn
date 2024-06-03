@@ -66,8 +66,8 @@ except:
       <bpmn:script>from connectordb.hana import Hana
 
 if get_secret('ambiente') == 'dev':
-    # DocEntry = 2066 #status 4
-    DocEntry = 14 #status 10
+    DocEntry = 2066 #status 4
+    # DocEntry = 14 #status 10
 
 connection = {
     "address": "172.20.1.4",
