@@ -248,7 +248,7 @@ total_reg = sqlRsp[0]['qtde_reg']</bpmn:script>
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># Entrada de Mercadoria já existe.
 
-Já existe uma entrada de mercadoria para referente ao SeqPlanilha {{nfe['U_RSD_IDUnisystem']}} da NFe: {{serial}}. Por favor verifique se a nota e a unidade estão corretas e inicie um novo processo.</spiffworkflow:instructionsForEndUser>
+Já existe uma entrada de mercadoria para referente ao SeqPlanilha **{{nfe['U_RSD_IDUnisystem']}}** da NFe: **{{serial}}**. Por favor verifique se a nota e a unidade estão corretas e inicie um novo processo.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0tk4sxs</bpmn:incoming>
       <bpmn:outgoing>Flow_1pz8jy1</bpmn:outgoing>
