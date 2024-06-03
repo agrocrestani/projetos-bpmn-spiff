@@ -30,5 +30,8 @@
     {
       "solicitacao": {}
     }  
-  ]
+  ],
+    "unidade": {
+    "ui:disabled": []
+  }
 }
