@@ -7,7 +7,6 @@
     "dataFinal"
   ],
   "properties": {
-
     "deposito": {
       "type": "string",
       "title": "Deposito",
