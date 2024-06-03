@@ -44,6 +44,7 @@
         <bpmn:flowNodeRef>Activity_1bsmf9p</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0qzj466</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0sb557c</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0nylixx</bpmn:flowNodeRef>
         <bpmn:childLaneSet id="LaneSet_18ibth1">
           <bpmn:lane id="Lane_1i1rltx">
             <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
@@ -72,6 +73,7 @@
             <bpmn:flowNodeRef>Activity_09jse4j</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_0823umq</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1l8yv4t</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Event_0nylixx</bpmn:flowNodeRef>
           </bpmn:lane>
           <bpmn:lane id="Lane_1mcy60b" name="Matriz_Deposito_Insumos">
             <bpmn:flowNodeRef>Gateway_02etn56</bpmn:flowNodeRef>
@@ -824,12 +826,14 @@ except:
       <bpmn:outgoing>Flow_00tzb38</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_1khpm7p" errorRef="Error_2" />
     </bpmn:boundaryEvent>
+    <bpmn:boundaryEvent id="Event_0nylixx" attachedToRef="Activity_1rkt1l6" />
   </bpmn:process>
   <bpmn:error id="Error_2" name="Error_2">
     <bpmn:extensionElements>
       <spiffworkflow:variableName>errorEntrada</spiffworkflow:variableName>
     </bpmn:extensionElements>
   </bpmn:error>
+  <bpmn:signal id="Finalizar_Processo" name="Finalizar_Processo" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Solicitar_Insumos_Querencia">
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
@@ -979,6 +983,9 @@ except:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_17bb53r_di" bpmnElement="Event_0sb557c">
         <dc:Bounds x="3442" y="149" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0b8fayh_di" bpmnElement="Event_0nylixx">
+        <dc:Bounds x="1302" y="742" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_02ebu0j_di" bpmnElement="Flow_02ebu0j">
         <di:waypoint x="238" y="127" />
