@@ -83,10 +83,10 @@ headers = {
       <bpmn:outgoing>Flow_0iw2fvx</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:dataStoreReference id="DataStoreReference_0z5s8h4" name="Filiais" dataStoreRef="filiais" type="json" />
-    <bpmn:manualTask id="Activity_0gd8zrx">
+    <bpmn:task id="Activity_0gd8zrx">
       <bpmn:incoming>Flow_0iw2fvx</bpmn:incoming>
       <bpmn:outgoing>Flow_16mwt8w</bpmn:outgoing>
-    </bpmn:manualTask>
+    </bpmn:task>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -117,7 +117,7 @@ headers = {
           <dc:Bounds x="226" y="332" width="28" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1heh8z1_di" bpmnElement="Activity_0gd8zrx">
+      <bpmndi:BPMNShape id="Activity_0t0stc2_di" bpmnElement="Activity_0gd8zrx">
         <dc:Bounds x="590" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
