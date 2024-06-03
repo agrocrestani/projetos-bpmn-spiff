@@ -22,11 +22,6 @@
         <bpmn:flowNodeRef>Activity_0v68ob6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1rkt1l6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0kygj4b</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_1ule9u1</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1pav2g7</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_1ttlala</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_1uogvkl</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0f2ed01</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1l8yv4t</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_02etn56</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0dqilxv</bpmn:flowNodeRef>
@@ -74,11 +69,6 @@
             <bpmn:flowNodeRef>Activity_0v68ob6</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1rkt1l6</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_0kygj4b</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Event_1ule9u1</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Activity_1pav2g7</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Gateway_1ttlala</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Gateway_1uogvkl</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Activity_0f2ed01</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1l8yv4t</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_09jse4j</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_0823umq</bpmn:flowNodeRef>
@@ -104,10 +94,6 @@
     <bpmn:sequenceFlow id="Flow_06tikhf" sourceRef="Activity_0wopia0" targetRef="Activity_09jse4j" />
     <bpmn:sequenceFlow id="Flow_1btf1uw" sourceRef="Activity_09jse4j" targetRef="Activity_0v68ob6" />
     <bpmn:sequenceFlow id="Flow_14qu8ic" sourceRef="Activity_0v68ob6" targetRef="Activity_0823umq" />
-    <bpmn:sequenceFlow id="Flow_1t9rdtz" sourceRef="Gateway_0kygj4b" targetRef="Gateway_1uogvkl">
-      <bpmn:conditionExpression>lancado == 201</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_08133cx" sourceRef="Activity_1pav2g7" targetRef="Gateway_1ttlala" />
     <bpmn:sequenceFlow id="Flow_12ic23r" sourceRef="Activity_1l8yv4t" targetRef="Gateway_0iheayv" />
     <bpmn:sequenceFlow id="Flow_13t1cjk" sourceRef="Activity_0823umq" targetRef="Gateway_0kygj4b" />
     <bpmn:sequenceFlow id="Flow_0tid22h" sourceRef="Gateway_0kygj4b" targetRef="Activity_1rkt1l6">
@@ -136,13 +122,6 @@
     <bpmn:sequenceFlow id="Flow_0hiwet5" sourceRef="Activity_082xwxf" targetRef="Activity_1u6vbok" />
     <bpmn:sequenceFlow id="Flow_10l6uoe" sourceRef="Activity_1u6vbok" targetRef="Gateway_1hzty4u" />
     <bpmn:sequenceFlow id="Flow_11363nf" sourceRef="Activity_1bcdnjg" targetRef="Event_12k31uu" />
-    <bpmn:sequenceFlow id="Flow_0a77a64" sourceRef="Event_1ule9u1" targetRef="Activity_1pav2g7" />
-    <bpmn:sequenceFlow id="Flow_0fskkv6" sourceRef="Gateway_1ttlala" targetRef="Activity_1l8yv4t" />
-    <bpmn:sequenceFlow id="Flow_1psut5o" sourceRef="Gateway_1ttlala" targetRef="Activity_0f2ed01">
-      <bpmn:conditionExpression>statusId != 4</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_0ct14vj" sourceRef="Gateway_1uogvkl" targetRef="Event_1ule9u1" />
-    <bpmn:sequenceFlow id="Flow_0moezgg" sourceRef="Activity_0f2ed01" targetRef="Gateway_1uogvkl" />
     <bpmn:sequenceFlow id="Flow_070yv70" sourceRef="Gateway_1hzty4u" targetRef="Activity_1bcdnjg" />
     <bpmn:sequenceFlow id="Flow_1vruzto" sourceRef="Gateway_04bzj7n" targetRef="Activity_082xwxf" />
     <bpmn:sequenceFlow id="Flow_0omy3z8" sourceRef="Gateway_1hzty4u" targetRef="Gateway_103xlpo">
@@ -282,139 +261,11 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:incoming>Flow_0tid22h</bpmn:incoming>
       <bpmn:outgoing>Flow_0bnwhbp</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:exclusiveGateway id="Gateway_0kygj4b" default="Flow_1t9rdtz">
+    <bpmn:exclusiveGateway id="Gateway_0kygj4b" default="Flow_1frh7mk">
       <bpmn:incoming>Flow_13t1cjk</bpmn:incoming>
-      <bpmn:outgoing>Flow_1t9rdtz</bpmn:outgoing>
       <bpmn:outgoing>Flow_0tid22h</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1frh7mk</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:intermediateCatchEvent id="Event_1ule9u1">
-      <bpmn:incoming>Flow_0ct14vj</bpmn:incoming>
-      <bpmn:outgoing>Flow_0a77a64</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_0juamh1">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT20S"</bpmn:timeDuration>
-      </bpmn:timerEventDefinition>
-    </bpmn:intermediateCatchEvent>
-    <bpmn:scriptTask id="Activity_1pav2g7" name="Busca Chave de acesso">
-      <bpmn:incoming>Flow_0a77a64</bpmn:incoming>
-      <bpmn:outgoing>Flow_08133cx</bpmn:outgoing>
-      <bpmn:script>from connectordb.hana import Hana
-
-if get_secret('ambiente') == 'dev':
-    DocEntry = 2066 #status 4
-    # DocEntry = 14 #status 10
-
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
-
-query = f"""
-            select "KeyNfe", CNPJ, "StatusId", "Hist" from SBO_CRESTANI_PRD.AC_NfeRetorno nf where nf."DocEntry" = {DocEntry} AND nf."Tabela" = 'OINV' 
-          """
-
-# rsp = json.loads(Hana(connection).selectDb(query))
-sqlRsp = Hana(connection).selectDb(query)
-
-chaveAcesso = sqlRsp[0]['keynfe']
-cnpj = sqlRsp[0]['cnpj']
-statusId = sqlRsp[0]['statusid']
-hist = sqlRsp[0]['hist']
-arquivo_nfe = f'http://srv-rds-02:8000/{cnpj}/danfe/{chaveAcesso}.pdf'
-
-del(connection)
-
-
-nfe = rsp["body"]
-nfeItens = nfe['DocumentLines']
-
-DocEntry = nfe['DocEntry']
-DocNum = nfe['DocNum']
-Serial = nfe['SequenceSerial']
-DocDate = nfe['DocDate']
-CardCode = nfe['CardCode']
-CardName = nfe['CardName']
-BPLId = nfe['BPL_IDAssignedToInvoice']
-BPLName = nfe['BPLName']
-VATRegNum = nfe['VATRegNum']
-
-itens = []
-Total = 0
-depositos = []
-for i in nfeItens:
-    itens.append(
-        {
-            "LineNum": i['LineNum'],
-            "ItemCode": i['ItemCode'],
-            "ItemDescription": i['ItemDescription'],
-            "Quantity": i['Quantity'],
-            "Price": i['Price'],
-            "WarehouseCode": i['WarehouseCode'],
-            "LineTotal": i['LineTotal']
-        }
-    )
-    if not i['WarehouseCode'] in depositos:
-        depositos.append(i['WarehouseCode'])
-    Total += i['LineTotal']
-
-qtdeDeposito = len(depositos)
-itensMatriz = []
-itensQuerencia = []
-TotalMatriz = 0
-TotalQuerencia = 0
-
-for i in itens:
-    if i['WarehouseCode'] == '03.MATR':
-        carregaMatriz = 1
-        itensMatriz.append(i)
-        TotalMatriz += i['LineTotal']
-    elif i['WarehouseCode'] == '03.FQUE':
-        carregaQuerencia = 1
-        itensQuerencia.append(i)
-        TotalQuerencia += i['LineTotal']
-
-del(rsp)
-# del(n_filiais)
-del(n_safras)
-del(main_usage)
-# del(nfe)
-# del(nfeItens)</bpmn:script>
-    </bpmn:scriptTask>
-    <bpmn:exclusiveGateway id="Gateway_1ttlala" default="Flow_0fskkv6">
-      <bpmn:incoming>Flow_08133cx</bpmn:incoming>
-      <bpmn:outgoing>Flow_0fskkv6</bpmn:outgoing>
-      <bpmn:outgoing>Flow_1psut5o</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:exclusiveGateway id="Gateway_1uogvkl">
-      <bpmn:incoming>Flow_1t9rdtz</bpmn:incoming>
-      <bpmn:incoming>Flow_0moezgg</bpmn:incoming>
-      <bpmn:outgoing>Flow_0ct14vj</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:manualTask id="Activity_0f2ed01" name="Visualiza o erro">
-      <bpmn:extensionElements>
-        <spiffworkflow:postScript />
-        <spiffworkflow:instructionsForEndUser># Erro na transmissão/retorno na SEFAZ
-
-| Campo | Valor |
-| ----------: | ------- |
-|Número da NFe:|{{Serial}}|
-|Chave de acesso: |{{chaveAcesso}}|
-|Número Sap:|{{DocNum}}|
-|Data:|{{DocDate}}|
-|Código Cliente Destino:|{{CardCode}}|
-|Nome Cliente Destino: |{{Nome_Cli_Destino }}|
-|Nome Emitente: |{{BPLName}}|
-|CNPJ Emitente: |{{VATRegNum}}|
-|||
-|Numero do Status:|{{statusId}}|
-|Mensagem de erro:|{{hist}}|
-
-</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1psut5o</bpmn:incoming>
-      <bpmn:outgoing>Flow_0moezgg</bpmn:outgoing>
-    </bpmn:manualTask>
     <bpmn:manualTask id="Activity_1l8yv4t" name="Dados da NFe">
       <bpmn:extensionElements>
         <spiffworkflow:preScript />
@@ -454,7 +305,7 @@ del(main_usage)
 {%endfor%}
 | | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0fskkv6</bpmn:incoming>
+      <bpmn:incoming>Flow_1frh7mk</bpmn:incoming>
       <bpmn:outgoing>Flow_12ic23r</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:exclusiveGateway id="Gateway_02etn56" default="Flow_1ky5ra4">
@@ -965,6 +816,7 @@ for u in utilizacoes:
       <bpmn:incoming>Flow_14qu8ic</bpmn:incoming>
       <bpmn:outgoing>Flow_13t1cjk</bpmn:outgoing>
     </bpmn:callActivity>
+    <bpmn:sequenceFlow id="Flow_1frh7mk" sourceRef="Gateway_0kygj4b" targetRef="Activity_1l8yv4t" />
   </bpmn:process>
   <bpmn:error id="Error_2" name="Error_2">
     <bpmn:extensionElements>
@@ -1034,22 +886,6 @@ for u in utilizacoes:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0kygj4b_di" bpmnElement="Gateway_0kygj4b" isMarkerVisible="true">
         <dc:Bounds x="1605" y="465" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_03yar2h_di" bpmnElement="Event_1ule9u1">
-        <dc:Bounds x="1842" y="472" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1hlzn0o_di" bpmnElement="Activity_1pav2g7">
-        <dc:Bounds x="1950" y="450" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1ttlala_di" bpmnElement="Gateway_1ttlala" isMarkerVisible="true">
-        <dc:Bounds x="2125" y="465" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1uogvkl_di" bpmnElement="Gateway_1uogvkl" isMarkerVisible="true">
-        <dc:Bounds x="1725" y="465" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_05ap6yu_di" bpmnElement="Activity_0f2ed01">
-        <dc:Bounds x="2100" y="600" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0h2kalh_di" bpmnElement="Activity_1l8yv4t">
         <dc:Bounds x="2255" y="450" width="100" height="80" />
@@ -1162,14 +998,6 @@ for u in utilizacoes:
         <di:waypoint x="1350" y="490" />
         <di:waypoint x="1420" y="490" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1t9rdtz_di" bpmnElement="Flow_1t9rdtz">
-        <di:waypoint x="1655" y="490" />
-        <di:waypoint x="1725" y="490" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_08133cx_di" bpmnElement="Flow_08133cx">
-        <di:waypoint x="2050" y="490" />
-        <di:waypoint x="2125" y="490" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12ic23r_di" bpmnElement="Flow_12ic23r">
         <di:waypoint x="2355" y="490" />
         <di:waypoint x="2405" y="490" />
@@ -1269,27 +1097,6 @@ for u in utilizacoes:
         <di:waypoint x="4390" y="127" />
         <di:waypoint x="4482" y="127" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0a77a64_di" bpmnElement="Flow_0a77a64">
-        <di:waypoint x="1878" y="490" />
-        <di:waypoint x="1950" y="490" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0fskkv6_di" bpmnElement="Flow_0fskkv6">
-        <di:waypoint x="2175" y="490" />
-        <di:waypoint x="2255" y="490" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1psut5o_di" bpmnElement="Flow_1psut5o">
-        <di:waypoint x="2150" y="515" />
-        <di:waypoint x="2150" y="600" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0ct14vj_di" bpmnElement="Flow_0ct14vj">
-        <di:waypoint x="1775" y="490" />
-        <di:waypoint x="1842" y="490" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0moezgg_di" bpmnElement="Flow_0moezgg">
-        <di:waypoint x="2100" y="640" />
-        <di:waypoint x="1750" y="640" />
-        <di:waypoint x="1750" y="515" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_070yv70_di" bpmnElement="Flow_070yv70">
         <di:waypoint x="4185" y="127" />
         <di:waypoint x="4290" y="127" />
@@ -1319,6 +1126,10 @@ for u in utilizacoes:
       <bpmndi:BPMNEdge id="Flow_00r1s3x_di" bpmnElement="Flow_00r1s3x">
         <di:waypoint x="590" y="127" />
         <di:waypoint x="700" y="127" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1frh7mk_di" bpmnElement="Flow_1frh7mk">
+        <di:waypoint x="1655" y="490" />
+        <di:waypoint x="2255" y="490" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1stkkjw_di" bpmnElement="DataInputAssociation_1stkkjw">
         <di:waypoint x="4055" y="187" />
