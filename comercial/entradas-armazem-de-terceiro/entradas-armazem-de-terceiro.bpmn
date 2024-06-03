@@ -7,13 +7,7 @@
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
     <bpmn:userTask id="Activity_0qpzdpu" name="Numero da NFe">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
-
- * **Script Task** - write a short snippet of python code to update some data
- *  **User Task** - generate a form that collects information from a user
- * **Service Task** - communicate with an external API to fetch or update some data.
-
-You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser># Lança entrada de mercadoria no SAP referente as NFe de remessa para armazenagem.</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="dados-iniciais-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="dados-iniciais-uischema.json" />
@@ -129,33 +123,35 @@ elif nfe['DocumentLines'][0]['WarehouseCode'] == '49.FCOL':
     WarehouseCode = '51.FCOL'
 
 
-payload = f"""{
-    "U_RSD_Romaneio": {nfe['U_RSD_Romaneio']},
-    "BPL_IDAssignedToInvoice": {nfe['BPL_IDAssignedToInvoice']},
-    "U_RSD_IDUnisystem": {nfe['U_RSD_Romaneio']},
-    "TaxDate": {nfe['DocDate']},
-    "PaymentGroupCode": -1,
-    "U_RSD_Classificacao": "1",
-    "U_RSD_Origem": "1",
-    "U_RSD_Fazenda": {fazenda},
-    "Comments": "Entrada em Depósito de Terceiro: "&amp;{{nfe['CardName']},
-    "DocumentLines": [
-        {
-            "ItemCode": {nfe['DocumentLines'][0]['ItemCode']},
-            "Quantity": {nfe['DocumentLines'][0]['Quantity']},
-            "Currency": {nfe['DocumentLines'][0]['Currency']},,
-            "WarehouseCode": {WarehouseCode},
-            "CostingCode": {costingCode},
-            "CostingCode3": {nfe['DocumentLines'][0]['CostingCode3']}
-      }
-  ],
-    "DocumentReferences": [
-                {
-                    "RefDocEntr": {nfe['DocEntry']},
-                    "RefObjType": "rot_SalesInvoice"
-                }
-            ]
-}"""</spiffworkflow:postScript>
+payload = f"""
+    {
+        "U_RSD_Romaneio": {nfe['U_RSD_Romaneio']},
+        "BPL_IDAssignedToInvoice": {nfe['BPL_IDAssignedToInvoice']},
+        "U_RSD_IDUnisystem": {nfe['U_RSD_Romaneio']},
+        "TaxDate": {nfe['DocDate']},
+        "PaymentGroupCode": -1,
+        "U_RSD_Classificacao": "1",
+        "U_RSD_Origem": "1",
+        "U_RSD_Fazenda": {fazenda},
+        "Comments": "Entrada em Depósito de Terceiro: "&amp;{{nfe['CardName']},
+        "DocumentLines": [
+            {
+                "ItemCode": {i['ItemCode']},
+                "Quantity": {i['Quantity']},
+                "Currency": {i['Currency']},,
+                "WarehouseCode": {WarehouseCode},
+                "CostingCode": {costingCode},
+                "CostingCode3": {i['CostingCode3']}
+            }
+        ],
+        "DocumentReferences": [
+            {
+                "RefDocEntr": {nfe['DocEntry']},
+                "RefObjType": "rot_SalesInvoice"
+            }
+        ]
+    }
+"""</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0iw2fvx</bpmn:incoming>
       <bpmn:outgoing>Flow_16mwt8w</bpmn:outgoing>
