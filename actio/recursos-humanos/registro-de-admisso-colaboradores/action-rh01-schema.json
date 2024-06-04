@@ -84,12 +84,12 @@
       ],
       "properties": {
         "mes": {
-      "title": "Selecione um mês de referência",
-      "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:meses"
-      ]
-    },
+            "title": "Selecione um mês de referência",
+            "type": "string",
+            "anyOf": [
+              "options_from_task_data_var:meses"
+            ]
+          },
         "camposDeJulioDemitidos": {
           "type": "number",
           "title": "Colaboradores Demitidos"
