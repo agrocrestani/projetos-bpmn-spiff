@@ -711,7 +711,7 @@ payload = {
                 "RefObjType": "rot_SalesInvoice"
         }
     ]
-</spiffworkflow:preScript>
+}</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1anb9z3</bpmn:incoming>
       <bpmn:outgoing>Flow_0by2q56</bpmn:outgoing>
