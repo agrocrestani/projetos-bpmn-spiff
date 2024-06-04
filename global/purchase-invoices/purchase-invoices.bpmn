@@ -153,11 +153,11 @@ except:
       <bpmndi:BPMNShape id="Event_1lgsabl_di" bpmnElement="Event_1lgsabl">
         <dc:Bounds x="472" y="412" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_13ffjix_di" bpmnElement="Event_1f4ivqm">
-        <dc:Bounds x="502" y="199" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0tu3t42_di" bpmnElement="Event_02ztzva">
         <dc:Bounds x="382" y="332" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_13ffjix_di" bpmnElement="Event_1f4ivqm">
+        <dc:Bounds x="502" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0ijwrib_di" bpmnElement="Flow_0ijwrib">
         <di:waypoint x="215" y="177" />
