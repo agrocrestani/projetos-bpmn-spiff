@@ -2,9 +2,8 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:process id="Process_registro_de_admisso_colaboradores_5reiwhf" isExecutable="true">
     <bpmn:startEvent id="IPACTIORH01">
-      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1bb8s6f</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="IPACTIORH01" targetRef="Gateway_11jcps2" />
     <bpmn:endEvent id="EndEvent_1">
       <bpmn:incoming>Flow_0q548we</bpmn:incoming>
     </bpmn:endEvent>
@@ -70,10 +69,17 @@ headers = {
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
         <spiffworkflow:postScript>body = response['body']
-accessToken = body['accessToken']</spiffworkflow:postScript>
+accessToken = body['accessToken']
+
+param = "year=" + ano
+
+headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + accessToken
+}</spiffworkflow:postScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1n916yb</bpmn:incoming>
-      <bpmn:outgoing>Flow_1vrh4c5</bpmn:outgoing>
+      <bpmn:incoming>Flow_1dqg7jg</bpmn:incoming>
+      <bpmn:outgoing>Flow_0jf2rzh</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_0q548we" sourceRef="RegistrarParametros" targetRef="EndEvent_1" />
     <bpmn:serviceTask id="RegistrarParametros" name="Registrar Parametros">
@@ -219,7 +225,7 @@ data = [
     <bpmn:sequenceFlow id="Flow_0zyhysy" sourceRef="Gateway_1bf21pw" targetRef="ACTIORH01">
       <bpmn:conditionExpression>done == False</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_1dqg7jg" sourceRef="SELECIONAR_PERIODO" targetRef="Gateway_00n44tl" />
+    <bpmn:sequenceFlow id="Flow_1dqg7jg" sourceRef="SELECIONAR_PERIODO" targetRef="LoginActio" />
     <bpmn:userTask id="SELECIONAR_PERIODO" name="Selecionar Período">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>meses = [
@@ -249,40 +255,34 @@ anos = [
           <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-periodo-uischema.json" />
         </spiffworkflow:properties>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1sqbarj</bpmn:incoming>
+      <bpmn:incoming>Flow_1bb8s6f</bpmn:incoming>
       <bpmn:outgoing>Flow_1dqg7jg</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_1sqbarj" sourceRef="Gateway_11jcps2" targetRef="SELECIONAR_PERIODO" />
-    <bpmn:parallelGateway id="Gateway_11jcps2">
-      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:outgoing>Flow_1sqbarj</bpmn:outgoing>
-      <bpmn:outgoing>Flow_1n916yb</bpmn:outgoing>
-    </bpmn:parallelGateway>
-    <bpmn:sequenceFlow id="Flow_1n916yb" sourceRef="Gateway_11jcps2" targetRef="LoginActio" />
-    <bpmn:sequenceFlow id="Flow_0qknaqp" sourceRef="Gateway_00n44tl" targetRef="BUSCAR_PARAMETROS" />
-    <bpmn:sequenceFlow id="Flow_1vrh4c5" sourceRef="LoginActio" targetRef="Gateway_00n44tl" />
-    <bpmn:inclusiveGateway id="Gateway_00n44tl">
-      <bpmn:incoming>Flow_1dqg7jg</bpmn:incoming>
-      <bpmn:incoming>Flow_1vrh4c5</bpmn:incoming>
-      <bpmn:outgoing>Flow_0qknaqp</bpmn:outgoing>
-    </bpmn:inclusiveGateway>
     <bpmn:sequenceFlow id="Flow_00nnl2s" sourceRef="BUSCAR_PARAMETROS" targetRef="ACTIORH01" />
     <bpmn:serviceTask id="BUSCAR_PARAMETROS" name="Buscar Parâmetros">
-      <bpmn:incoming>Flow_0qknaqp</bpmn:incoming>
+      <bpmn:extensionElements>
+        <spiffworkflow:serviceTaskOperator id="http/GetRequestV2" resultVariable="response">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="params" type="any" value="param" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+            <spiffworkflow:parameter id="attempts" type="int" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0jf2rzh</bpmn:incoming>
       <bpmn:outgoing>Flow_00nnl2s</bpmn:outgoing>
     </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0jf2rzh" sourceRef="LoginActio" targetRef="BUSCAR_PARAMETROS" />
+    <bpmn:sequenceFlow id="Flow_1bb8s6f" sourceRef="IPACTIORH01" targetRef="SELECIONAR_PERIODO" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_registro_de_admisso_colaboradores_5reiwhf">
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1112" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1fjxmla_di" bpmnElement="ACTIORH01">
         <dc:Bounds x="320" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_032f4vz_di" bpmnElement="RegistrarParametros">
-        <dc:Bounds x="930" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1fdc04x_di" bpmnElement="Activity_0tow411">
@@ -292,28 +292,25 @@ anos = [
         <dc:Bounds x="635" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="IPACTIORH01">
-        <dc:Bounds x="-198" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_06d5jsl_di" bpmnElement="Gateway_11jcps2">
-        <dc:Bounds x="-115" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1yoq94z_di" bpmnElement="LoginActio">
-        <dc:Bounds x="-30" y="250" width="100" height="80" />
-        <bpmndi:BPMNLabel />
+        <dc:Bounds x="-288" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1ujnjlg_di" bpmnElement="SELECIONAR_PERIODO">
-        <dc:Bounds x="-30" y="137" width="100" height="80" />
+        <dc:Bounds x="-210" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1p5rz1l_di" bpmnElement="Gateway_00n44tl">
-        <dc:Bounds x="105" y="152" width="50" height="50" />
+      <bpmndi:BPMNShape id="Activity_1yoq94z_di" bpmnElement="LoginActio">
+        <dc:Bounds x="-40" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1447j65_di" bpmnElement="BUSCAR_PARAMETROS">
-        <dc:Bounds x="180" y="137" width="100" height="80" />
+        <dc:Bounds x="130" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
-        <di:waypoint x="-162" y="177" />
-        <di:waypoint x="-115" y="177" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_032f4vz_di" bpmnElement="RegistrarParametros">
+        <dc:Bounds x="770" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="982" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="420" y="177" />
         <di:waypoint x="480" y="177" />
@@ -323,12 +320,12 @@ anos = [
         <di:waypoint x="635" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0q548we_di" bpmnElement="Flow_0q548we">
-        <di:waypoint x="1030" y="177" />
-        <di:waypoint x="1112" y="177" />
+        <di:waypoint x="870" y="177" />
+        <di:waypoint x="982" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1k2os5v_di" bpmnElement="Flow_1k2os5v">
         <di:waypoint x="685" y="177" />
-        <di:waypoint x="930" y="177" />
+        <di:waypoint x="770" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0zyhysy_di" bpmnElement="Flow_0zyhysy">
         <di:waypoint x="660" y="202" />
@@ -337,30 +334,20 @@ anos = [
         <di:waypoint x="370" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1dqg7jg_di" bpmnElement="Flow_1dqg7jg">
-        <di:waypoint x="70" y="177" />
-        <di:waypoint x="105" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1sqbarj_di" bpmnElement="Flow_1sqbarj">
-        <di:waypoint x="-65" y="177" />
-        <di:waypoint x="-30" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1n916yb_di" bpmnElement="Flow_1n916yb">
-        <di:waypoint x="-90" y="202" />
-        <di:waypoint x="-90" y="290" />
-        <di:waypoint x="-30" y="290" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0qknaqp_di" bpmnElement="Flow_0qknaqp">
-        <di:waypoint x="155" y="177" />
-        <di:waypoint x="180" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1vrh4c5_di" bpmnElement="Flow_1vrh4c5">
-        <di:waypoint x="70" y="290" />
-        <di:waypoint x="130" y="290" />
-        <di:waypoint x="130" y="202" />
+        <di:waypoint x="-110" y="177" />
+        <di:waypoint x="-40" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_00nnl2s_di" bpmnElement="Flow_00nnl2s">
-        <di:waypoint x="280" y="177" />
+        <di:waypoint x="230" y="177" />
         <di:waypoint x="320" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jf2rzh_di" bpmnElement="Flow_0jf2rzh">
+        <di:waypoint x="60" y="177" />
+        <di:waypoint x="130" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bb8s6f_di" bpmnElement="Flow_1bb8s6f">
+        <di:waypoint x="-252" y="177" />
+        <di:waypoint x="-210" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
