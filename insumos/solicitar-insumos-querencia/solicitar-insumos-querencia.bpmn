@@ -422,7 +422,7 @@ payload = {
 
 ambiente = get_secret('ambiente')
 
-if ambiente == "QA":
+if ambiente == "dev":
   chaveAcesso = ""
 
 WarehouseCode = '03.FCOL'
