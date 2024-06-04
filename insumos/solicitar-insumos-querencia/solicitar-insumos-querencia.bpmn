@@ -333,7 +333,7 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
     <bpmn:callActivity id="Activity_09jse4j" name="Definir Cliente" calledElement="Process_definir_cliente_nfe">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_CardCode</spiffworkflow:calledDecisionId>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:postScript />
         <spiffworkflow:preScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_06tikhf</bpmn:incoming>
@@ -396,6 +396,7 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
 | {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
 {%endfor%}
 | | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1frh7mk</bpmn:incoming>
       <bpmn:outgoing>Flow_12ic23r</bpmn:outgoing>
@@ -420,6 +421,46 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_07qotfg" sourceRef="Gateway_1w4cn02" targetRef="Activity_082xwxf" />
     <bpmn:sequenceFlow id="Flow_196uzfm" sourceRef="Gateway_1vvwi40" targetRef="Activity_1bcdnjg" />
     <bpmn:callActivity id="Activity_1uhmn2l" name="Lanca NFe na Colorado" calledElement="Process_purchase_invoices_krrf890">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>items = []
+for s in nfeItens:
+  items.append(
+    {
+      "ItemCode": s["ItemCode"],
+      "Quantity": s["Quantity"],
+      "WarehouseCode": WarehouseCode,
+      "Price": s['Price'],
+      "CostingCode": ccustoEntrada,
+      "CostingCode3": safra
+    }
+  )
+
+#Código de Fornecedor da Querencia
+CardCodeFor = "F00213"
+
+payload = {
+    "CardCode": CardCodeFor,
+    "SequenceSerial": nfe["SequenceSerial"],
+    "SeriesString": "1",
+    "SequenceCode": -2,
+    "SequenceModel": "39",
+    "BPL_IDAssignedToInvoice": 3,
+    "U_ChaveAcesso": "",
+    "TaxDate": DocDate[0:10],
+    "DocumentsOwner": OwnerCode,
+    "SalesPersonCode": SlpCode,
+    "Comments": f"Solicitante: {solicitante}",
+    "U_RSD_Aplicacao": 2,
+    "U_AC_Spiff_Instancia": spiff_instancia,
+    "U_AC_Spiff_Tarefa": spiff_tarefa,
+    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
+    "DocumentLines": items,
+    "TaxExtension": {
+      "MainUsage": mainusage,
+      "Incoterms": "0"
+    }
+}</spiffworkflow:preScript>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_12ic23r</bpmn:incoming>
       <bpmn:outgoing>Flow_160peiq</bpmn:outgoing>
     </bpmn:callActivity>
