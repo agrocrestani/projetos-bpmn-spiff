@@ -19,7 +19,7 @@
   "datasReferencia": {
     "ui:layout": [
       {
-        "escritorioAtivos": {},
+        "mes": {},
         "escritorioDemitidos": {}
       }
     ],
