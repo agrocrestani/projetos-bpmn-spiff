@@ -518,7 +518,7 @@ payload = {
         },
         {
                 "RefDocEntr": EntraCol,
-                "RefObjType": "rot_PurchasesInvoice"
+                "RefObjType": "rot_PurchaseInvoice"
         }
     ]
 }</spiffworkflow:preScript>
