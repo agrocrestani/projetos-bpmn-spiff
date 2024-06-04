@@ -29,7 +29,7 @@
     },
     "ano": {
       "ui:widget": "select",
-      "ui:disable": {}
+      "ui:disable": 
     }
   },
   "filialEscritorio": {
