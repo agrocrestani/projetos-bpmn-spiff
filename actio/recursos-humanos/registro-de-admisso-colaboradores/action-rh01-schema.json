@@ -80,7 +80,7 @@
       "type": "object",
       "required": [
         "mes",
-        "camposDeJulioDemitidos"
+        "ano"
       ],
       "properties": {
         "camposDeJulioAtivos": {
