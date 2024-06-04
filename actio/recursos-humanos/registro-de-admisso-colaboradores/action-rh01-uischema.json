@@ -23,6 +23,9 @@
         "ano": {}
       }
     ],
+    "mes": {
+    "ui:widget": "select"
+  },
   },
   
   "filialEscritorio": {
