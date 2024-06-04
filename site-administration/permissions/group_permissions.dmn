@@ -295,6 +295,48 @@
           <text>"/can-run-privileged-script/*"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0pj5obs">
+        <inputEntry id="UnaryTests_0631iyr">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1arorf0">
+          <text>"Matriz_Rh_Coord"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ulmwo9">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fwyfbq">
+          <text>"/can-run-privileged-script/*"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0k08j9q">
+        <inputEntry id="UnaryTests_0qc63vm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19zq81o">
+          <text>"Matriz_Rh_Coord"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02dl1mp">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1s311ph">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0yq8et3">
+        <inputEntry id="UnaryTests_1as2d2c">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0v11cxy">
+          <text>"Matriz_Rh_Coord"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kl3bhl">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dq9blu">
+          <text>"PG:actio:recursos-humanos"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0e37x7s">
         <inputEntry id="UnaryTests_0tgwezk">
           <text></text>
