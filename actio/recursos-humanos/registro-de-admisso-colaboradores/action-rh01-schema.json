@@ -1,6 +1,6 @@
 {
   "title": "Turnover Agro Crestani",
-  "description": "Apontamentos ",
+  "description": "Apontamentos de informações do ",
   "type": "object",
   "required": [
     "firstName"
