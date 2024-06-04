@@ -79,7 +79,7 @@
       "title": "Selecione o mês e ano de referência",
       "type": "object",
       "required": [
-        "camposDeJulioAtivos",
+        "mes",
         "camposDeJulioDemitidos"
       ],
       "properties": {
