@@ -39,8 +39,6 @@
         <bpmn:flowNodeRef>Activity_1x3dg9k</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1bcdnjg</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_12k31uu</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_1w4cn02</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_1vvwi40</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0nylixx</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1n5dya6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1049z97</bpmn:flowNodeRef>
@@ -77,8 +75,6 @@
             <bpmn:flowNodeRef>Activity_1x3dg9k</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1bcdnjg</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Event_12k31uu</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Gateway_1w4cn02</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Gateway_1vvwi40</bpmn:flowNodeRef>
           </bpmn:lane>
         </bpmn:childLaneSet>
       </bpmn:lane>
@@ -407,14 +403,12 @@ payload = {
       <bpmn:signalEventDefinition id="SignalEventDefinition_1rd7i0y" signalRef="Finalizar_Processo" />
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_1anb9z3" sourceRef="Activity_082xwxf" targetRef="Activity_1x3dg9k" />
-    <bpmn:sequenceFlow id="Flow_0by2q56" sourceRef="Activity_1x3dg9k" targetRef="Gateway_1vvwi40" />
-    <bpmn:sequenceFlow id="Flow_12bt55u" sourceRef="Activity_0qzj466" targetRef="Gateway_1w4cn02" />
+    <bpmn:sequenceFlow id="Flow_0by2q56" sourceRef="Activity_1x3dg9k" targetRef="Activity_1bcdnjg" />
+    <bpmn:sequenceFlow id="Flow_12bt55u" sourceRef="Activity_0qzj466" targetRef="Activity_082xwxf" />
     <bpmn:dataStoreReference id="DataStoreReference_1a90b40" name="Utilizações" dataStoreRef="utilizacoes" type="json" />
     <bpmn:sequenceFlow id="Flow_160peiq" sourceRef="Activity_1uhmn2l" targetRef="Gateway_19ut00j" />
     <bpmn:sequenceFlow id="Flow_00exh31" sourceRef="Activity_16t5nxk" targetRef="Gateway_1n5dya6" />
     <bpmn:sequenceFlow id="Flow_0r0e8yw" sourceRef="Gateway_19ut00j" targetRef="Activity_16t5nxk" />
-    <bpmn:sequenceFlow id="Flow_07qotfg" sourceRef="Gateway_1w4cn02" targetRef="Activity_082xwxf" />
-    <bpmn:sequenceFlow id="Flow_196uzfm" sourceRef="Gateway_1vvwi40" targetRef="Activity_1bcdnjg" />
     <bpmn:callActivity id="Activity_1uhmn2l" name="Lanca NFe na Colorado" calledElement="Process_purchase_invoices_krrf890">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>items = []
@@ -646,7 +640,7 @@ payload = {
 | | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:postScript />
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_07qotfg</bpmn:incoming>
+      <bpmn:incoming>Flow_12bt55u</bpmn:incoming>
       <bpmn:outgoing>Flow_1anb9z3</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:callActivity id="Activity_1x3dg9k" name="Lança NFe Entrada no SAP" calledElement="Process_purchase_invoices_krrf890">
@@ -804,20 +798,12 @@ for i in itens:
 </spiffworkflow:preScript>
         <spiffworkflow:guestConfirmation />
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_196uzfm</bpmn:incoming>
+      <bpmn:incoming>Flow_0by2q56</bpmn:incoming>
       <bpmn:outgoing>Flow_11363nf</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:endEvent id="Event_12k31uu">
       <bpmn:incoming>Flow_11363nf</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:exclusiveGateway id="Gateway_1w4cn02">
-      <bpmn:incoming>Flow_12bt55u</bpmn:incoming>
-      <bpmn:outgoing>Flow_07qotfg</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:exclusiveGateway id="Gateway_1vvwi40">
-      <bpmn:incoming>Flow_0by2q56</bpmn:incoming>
-      <bpmn:outgoing>Flow_196uzfm</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
     <bpmn:exclusiveGateway id="Gateway_1n5dya6" default="Flow_0a1sn56">
       <bpmn:incoming>Flow_00exh31</bpmn:incoming>
       <bpmn:outgoing>Flow_0a1sn56</bpmn:outgoing>
@@ -990,12 +976,6 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Event_12k31uu_di" bpmnElement="Event_12k31uu">
         <dc:Bounds x="3805" y="-31" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1w4cn02_di" bpmnElement="Gateway_1w4cn02" isMarkerVisible="true">
-        <dc:Bounds x="3015" y="-38" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1vvwi40_di" bpmnElement="Gateway_1vvwi40" isMarkerVisible="true">
-        <dc:Bounds x="3485" y="-38" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1n5dya6_di" bpmnElement="Gateway_1n5dya6" isMarkerVisible="true">
         <dc:Bounds x="2035" y="325" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -1092,11 +1072,11 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0by2q56_di" bpmnElement="Flow_0by2q56">
         <di:waypoint x="3410" y="-13" />
-        <di:waypoint x="3485" y="-13" />
+        <di:waypoint x="3613" y="-13" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12bt55u_di" bpmnElement="Flow_12bt55u">
         <di:waypoint x="2963" y="-13" />
-        <di:waypoint x="3015" y="-13" />
+        <di:waypoint x="3123" y="-13" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_160peiq_di" bpmnElement="Flow_160peiq">
         <di:waypoint x="1640" y="350" />
@@ -1109,14 +1089,6 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmndi:BPMNEdge id="Flow_0r0e8yw_di" bpmnElement="Flow_0r0e8yw">
         <di:waypoint x="1755" y="350" />
         <di:waypoint x="1830" y="350" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_07qotfg_di" bpmnElement="Flow_07qotfg">
-        <di:waypoint x="3065" y="-13" />
-        <di:waypoint x="3123" y="-13" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_196uzfm_di" bpmnElement="Flow_196uzfm">
-        <di:waypoint x="3535" y="-13" />
-        <di:waypoint x="3613" y="-13" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0a1sn56_di" bpmnElement="Flow_0a1sn56">
         <di:waypoint x="2085" y="350" />
