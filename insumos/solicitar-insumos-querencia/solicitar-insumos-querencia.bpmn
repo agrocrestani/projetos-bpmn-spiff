@@ -658,6 +658,8 @@ usuarioEmissorNFe = get_current_user()['display_name']
 if ambiente == "dev":
   chaveAcesso = ""
 
+WarehouseCode = "03.FQUE"
+
 items = []
 for s in nfeItens:
   items.append(
