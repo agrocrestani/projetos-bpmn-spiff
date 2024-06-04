@@ -281,19 +281,19 @@ del(anos)</spiffworkflow:postScript>
 for parametros in parametro_encontrados:
     if(parametros['itemCode'] == 'RH.PAR.001'):
         try:
-            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+            filialBrasnorte['brasnorteAtivos'] = parametros['executedValue']
         except:
             print("Não tem valor gravado")
             
     if(parametros['itemCode'] == 'RH.PAR.002'):
         try:
-            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+            filialCamposDeJulio['camposDeJulioAtivos'] = parametros['executedValue']
         except:
             print("Não tem valor gravado")
 
     if(parametros['itemCode'] == 'RH.PAR.003'):
         try:
-            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+            filialQuerencia['querenciaAtivos'] = parametros['executedValue']
         except:
             print("Não tem valor gravado")
             
@@ -305,25 +305,25 @@ for parametros in parametro_encontrados:
 
     if(parametros['itemCode'] == 'RH.PAR.005'):
         try:
-            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+            filialBrasnorte['brasnorteDemitidos'] = parametros['executedValue']
         except:
             print("Não tem valor gravado")
 
     if(parametros['itemCode'] == 'RH.PAR.006'):
         try:
-            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+            filialCamposDeJulio['camposDeJulioDemitidos'] = parametros['executedValue']
         except:
             print("Não tem valor gravado")
 
     if(parametros['itemCode'] == 'RH.PAR.007'):
         try:
-            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+            filialQuerencia['querenciaDemitidos'] = parametros['executedValue']
         except:
             print("Não tem valor gravado")
             
     if(parametros['itemCode'] == 'RH.PAR.008'):
         try:
-            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+            filialEscritorio['escritorioDemitidos'] = parametros['executedValue']
         except:
             print("Não tem valor gravado")</spiffworkflow:postScript>
       </bpmn:extensionElements>
