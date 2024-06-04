@@ -83,10 +83,13 @@
         "ano"
       ],
       "properties": {
-        "camposDeJulioAtivos": {
-          "type": "number",
-          "title": "Colaboradores Ativos"
-        },
+        "mes": {
+      "title": "Selecione um mês de referência",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:meses"
+      ]
+    },
         "camposDeJulioDemitidos": {
           "type": "number",
           "title": "Colaboradores Demitidos"
