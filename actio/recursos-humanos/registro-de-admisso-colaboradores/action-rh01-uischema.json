@@ -4,10 +4,6 @@
       "datasReferencia": {}
     },
     {
-      "mes": {},
-      "ano": {}
-    },
-    {
       "filialEscritorio": {}
     },
     {
@@ -21,7 +17,7 @@
     }
   ],
   "datasReferencia": {
-    
+
   },
   "mes": {
     "ui:widget": "select"
