@@ -71,9 +71,6 @@ headers = {
     'Authorization': 'Bearer ' + accessToken
 }
 
-ano = datasReferencia['ano']
-mes = datasReferencia['mes']
-
 # Obtendo os valores dos funcionários das filiais
 funcAtivosMatriz = filialEscritorio['escritorioAtivos']
 funcDemitidosMatriz = filialEscritorio['escritorioDemitidos']
@@ -236,7 +233,8 @@ anos = [
           <spiffworkflow:property name="formJsonSchemaFilename" value="selecionar-periodo-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-periodo-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:postScript />
+        <spiffworkflow:postScript>ano = datasReferencia['ano']
+mes = datasReferencia['mes']</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1bb8s6f</bpmn:incoming>
       <bpmn:outgoing>Flow_1dqg7jg</bpmn:outgoing>
@@ -260,53 +258,54 @@ anos = [
 
 
 for parametros in parametro_encontrados:
-    if(parametros['itemCode'] == 'RH.PAR.001'):
-        try:
-            filialBrasnorte['brasnorteAtivos'] = parametros['executedValue']
-        except:
-            print("Não tem valor gravado")
-            
-    if(parametros['itemCode'] == 'RH.PAR.002'):
-        try:
-            filialCamposDeJulio['camposDeJulioAtivos'] = parametros['executedValue']
-        except:
-            print("Não tem valor gravado")
+    if(ano = parametros['year'] and mes = parametros['period'])
+        if(parametros['itemCode'] == 'RH.PAR.001'):
+            try:
+                filialBrasnorte['brasnorteAtivos'] = parametros['executedValue']
+            except:
+                print("Não tem valor gravado")
+                
+        if(parametros['itemCode'] == 'RH.PAR.002'):
+            try:
+                filialCamposDeJulio['camposDeJulioAtivos'] = parametros['executedValue']
+            except:
+                print("Não tem valor gravado")
 
-    if(parametros['itemCode'] == 'RH.PAR.003'):
-        try:
-            filialQuerencia['querenciaAtivos'] = parametros['executedValue']
-        except:
-            print("Não tem valor gravado")
-            
-    if(parametros['itemCode'] == 'RH.PAR.004'):
-        try:
-            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
-        except:
-            print("Não tem valor gravado")
+        if(parametros['itemCode'] == 'RH.PAR.003'):
+            try:
+                filialQuerencia['querenciaAtivos'] = parametros['executedValue']
+            except:
+                print("Não tem valor gravado")
+                
+        if(parametros['itemCode'] == 'RH.PAR.004'):
+            try:
+                filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+            except:
+                print("Não tem valor gravado")
 
-    if(parametros['itemCode'] == 'RH.PAR.005'):
-        try:
-            filialBrasnorte['brasnorteDemitidos'] = parametros['executedValue']
-        except:
-            print("Não tem valor gravado")
+        if(parametros['itemCode'] == 'RH.PAR.005'):
+            try:
+                filialBrasnorte['brasnorteDemitidos'] = parametros['executedValue']
+            except:
+                print("Não tem valor gravado")
 
-    if(parametros['itemCode'] == 'RH.PAR.006'):
-        try:
-            filialCamposDeJulio['camposDeJulioDemitidos'] = parametros['executedValue']
-        except:
-            print("Não tem valor gravado")
+        if(parametros['itemCode'] == 'RH.PAR.006'):
+            try:
+                filialCamposDeJulio['camposDeJulioDemitidos'] = parametros['executedValue']
+            except:
+                print("Não tem valor gravado")
 
-    if(parametros['itemCode'] == 'RH.PAR.007'):
-        try:
-            filialQuerencia['querenciaDemitidos'] = parametros['executedValue']
-        except:
-            print("Não tem valor gravado")
-            
-    if(parametros['itemCode'] == 'RH.PAR.008'):
-        try:
-            filialEscritorio['escritorioDemitidos'] = parametros['executedValue']
-        except:
-            print("Não tem valor gravado")</spiffworkflow:postScript>
+        if(parametros['itemCode'] == 'RH.PAR.007'):
+            try:
+                filialQuerencia['querenciaDemitidos'] = parametros['executedValue']
+            except:
+                print("Não tem valor gravado")
+                
+        if(parametros['itemCode'] == 'RH.PAR.008'):
+            try:
+                filialEscritorio['escritorioDemitidos'] = parametros['executedValue']
+            except:
+                print("Não tem valor gravado")</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0jf2rzh</bpmn:incoming>
       <bpmn:outgoing>Flow_00nnl2s</bpmn:outgoing>
