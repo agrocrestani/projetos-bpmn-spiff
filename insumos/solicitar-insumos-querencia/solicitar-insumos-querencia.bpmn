@@ -103,7 +103,7 @@ for f in filiais:
     BPLId = f['BPLId']
     BPLName = f['BPLName']
     AliasName = f['AliasName']
-    if BPLId in ['1']: 
+    if BPLId == "1": 
         n_filiais.append(
             {
                 "value": BPLId,
@@ -235,7 +235,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
 
 
 </spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:postScript />
         <spiffworkflow:preScript>for s in solicitacao:
     s['insumo'] = json.loads(s['insumo'])
 
@@ -397,7 +397,7 @@ payload = {
 | {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
 {%endfor%}
 | | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1frh7mk</bpmn:incoming>
       <bpmn:outgoing>Flow_12ic23r</bpmn:outgoing>
@@ -642,7 +642,7 @@ payload = {
 | {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{WarehouseCode}} | {{ccustoEntrada}} | {{safra}}
 {%endfor%}
 | | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_07qotfg</bpmn:incoming>
       <bpmn:outgoing>Flow_1anb9z3</bpmn:outgoing>
