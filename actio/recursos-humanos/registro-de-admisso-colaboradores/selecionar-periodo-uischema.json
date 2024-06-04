@@ -2,18 +2,6 @@
   "ui:layout": [
     {
       "datasReferencia": {}
-    },
-    {
-      "filialEscritorio": {}
-    },
-    {
-      "filialBrasnorte": {}
-    },
-    {
-      "filialQuerencia": {}
-    },
-    {
-      "filialCamposDeJulio": {}
     }
   ],
   "datasReferencia": {
