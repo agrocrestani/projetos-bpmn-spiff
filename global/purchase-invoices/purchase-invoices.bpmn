@@ -101,6 +101,17 @@ except:
       <bpmn:incoming>Flow_1i8h7i6</bpmn:incoming>
       <bpmn:outgoing>Flow_02ido8m</bpmn:outgoing>
     </bpmn:manualTask>
+    <bpmn:boundaryEvent id="Event_02ztzva" attachedToRef="Activity_02tcc90">
+      <bpmn:extensionElements>
+        <spiffworkflow:signalButtonLabel>Encerrar</spiffworkflow:signalButtonLabel>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_05o5om0</bpmn:outgoing>
+      <bpmn:signalEventDefinition id="SignalEventDefinition_1jxvfn3" signalRef="Encerrar_Processo" />
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="Event_1lgsabl">
+      <bpmn:incoming>Flow_05o5om0</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_05o5om0" sourceRef="Event_02ztzva" targetRef="Event_1lgsabl" />
   </bpmn:process>
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmn:error id="Error_NFe_Entrada" name="Error_NFe_Entrada">
@@ -108,6 +119,7 @@ except:
       <spiffworkflow:variableName>errorEntrada</spiffworkflow:variableName>
     </bpmn:extensionElements>
   </bpmn:error>
+  <bpmn:signal id="Encerrar_Processo" name="Encerrar_Processo" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_purchase_invoices_krrf890">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -138,8 +150,14 @@ except:
       <bpmndi:BPMNShape id="Activity_0otkwr3_di" bpmnElement="Activity_02tcc90">
         <dc:Bounds x="330" y="270" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1lgsabl_di" bpmnElement="Event_1lgsabl">
+        <dc:Bounds x="472" y="412" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_13ffjix_di" bpmnElement="Event_1f4ivqm">
         <dc:Bounds x="502" y="199" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0tu3t42_di" bpmnElement="Event_02ztzva">
+        <dc:Bounds x="382" y="332" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0ijwrib_di" bpmnElement="Flow_0ijwrib">
         <di:waypoint x="215" y="177" />
@@ -178,6 +196,11 @@ except:
         <di:waypoint x="330" y="310" />
         <di:waypoint x="290" y="310" />
         <di:waypoint x="290" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05o5om0_di" bpmnElement="Flow_05o5om0">
+        <di:waypoint x="400" y="368" />
+        <di:waypoint x="400" y="430" />
+        <di:waypoint x="472" y="430" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
