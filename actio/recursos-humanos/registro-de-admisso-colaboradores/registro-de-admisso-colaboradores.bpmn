@@ -50,7 +50,7 @@ headers = {
         <spiffworkflow:postScript>body = response['body']
 accessToken = body['accessToken']
 
-param = "?page=0&amp;pageSize=50"
+param = "?page=0&amp;pageSize=1000"
 
 headers = {
     'Content-Type': 'application/json',
