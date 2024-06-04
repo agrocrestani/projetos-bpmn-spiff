@@ -17,7 +17,7 @@
     }
   ],
   "datasReferencia": {
-    ui:layout": [
+    "ui:layout": [
       {
         "escritorioAtivos": {},
         "escritorioDemitidos": {}
