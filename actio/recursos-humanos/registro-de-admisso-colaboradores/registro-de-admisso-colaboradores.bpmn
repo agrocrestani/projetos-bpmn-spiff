@@ -258,7 +258,7 @@ mes = datasReferencia['mes']</spiffworkflow:postScript>
 
 
 for parametros in parametro_encontrados:
-    if(ano = parametros['year'] and mes = parametros['period'])
+    if(ano == parametros['year'] and mes == parametros['period']):
         if(parametros['itemCode'] == 'RH.PAR.001'):
             try:
                 filialBrasnorte['brasnorteAtivos'] = parametros['executedValue']
