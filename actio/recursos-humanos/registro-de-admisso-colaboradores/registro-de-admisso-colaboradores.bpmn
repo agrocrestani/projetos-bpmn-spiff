@@ -50,7 +50,7 @@ headers = {
         <spiffworkflow:postScript>body = response['body']
 accessToken = body['accessToken']
 
-param = "year=" + datasReferencia['ano']
+param = "?page=0&amp;pageSize=50"
 
 headers = {
     'Content-Type': 'application/json',
@@ -305,7 +305,13 @@ for parametros in parametro_encontrados:
             try:
                 filialEscritorio['escritorioDemitidos'] = parametros['executedValue']
             except:
-                print("Não tem valor gravado")</spiffworkflow:postScript>
+                print("Não tem valor gravado")
+
+del(body)
+del(response)
+del(param)
+
+</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0jf2rzh</bpmn:incoming>
       <bpmn:outgoing>Flow_00nnl2s</bpmn:outgoing>
