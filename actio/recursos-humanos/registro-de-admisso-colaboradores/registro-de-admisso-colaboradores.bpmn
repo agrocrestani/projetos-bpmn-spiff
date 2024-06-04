@@ -31,8 +31,8 @@
         <spiffworkflow:preScript>url = "https://crestani-webapi.actiosoftware.com/api/auth"
 
 data = {
-    "email":"mailon.campos@agrocrestani.com.br",
-    "password":"AndressaWin2@"
+    "email":"ti@agrocrestani.com.br",
+    "password":"Actio@123"
 }
 
 headers = {
