@@ -100,12 +100,6 @@
     "bio": {
       "type": "string",
       "title": "Bio"
-    },
-    "delivery_date": {
-      "type": "string",
-      "format": "date",
-      "title": "Preferred Delivery Date",
-      "validationErrorMessage": "Date must be today's date or later"
     }
   }
 }
