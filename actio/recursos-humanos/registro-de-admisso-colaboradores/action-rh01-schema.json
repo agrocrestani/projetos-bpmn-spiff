@@ -91,12 +91,7 @@
       "anyOf": [
         "options_from_task_data_var:ano"
       ]
-    },
-    "firstName": {
-      "type": "string",
-      "title": "First name",
-      "default": "Chuck"
-    },
+    }
     "bio": {
       "type": "string",
       "title": "Bio"
