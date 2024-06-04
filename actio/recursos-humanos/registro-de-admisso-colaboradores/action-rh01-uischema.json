@@ -26,7 +26,7 @@
     "mes": {
       "ui:widget": "select"
     },
-    "mes": {
+    "m": {
       "ui:widget": "select"
     }
   },
