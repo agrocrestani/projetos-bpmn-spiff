@@ -75,7 +75,7 @@
         }
       }
     },
-    "filialCamposDeJulio": {
+    "datas": {
       "title": "Campos de Júlio",
       "type": "object",
       "required": [
