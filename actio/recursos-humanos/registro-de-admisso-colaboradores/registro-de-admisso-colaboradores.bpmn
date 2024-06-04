@@ -275,6 +275,12 @@ del(anos)</spiffworkflow:postScript>
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
         <spiffworkflow:preScript>url = "https://crestani-webapi.actiosoftware.com/api/values/alltypes-values"</spiffworkflow:preScript>
+        <spiffworkflow:postScript>parametro_encontrados = response['body']
+
+
+for parametros in parametro_encontrados:
+    if(parametros['itemCode'] == 'RH.PAR.004')
+        filialEscritorio['escritorioAtivos'] = parametros['executedValue']</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0jf2rzh</bpmn:incoming>
       <bpmn:outgoing>Flow_00nnl2s</bpmn:outgoing>
