@@ -1,6 +1,6 @@
 {
   "title": "Turnover Agro Crestani",
-  "description": "Create a date field with a date picker (delivery_date).",
+  "description": "Informe ",
   "type": "object",
   "required": [
     "firstName"
