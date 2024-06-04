@@ -20,7 +20,7 @@
       "filialCamposDeJulio": {}
     }
   ],
-  ""
+  "datasReferencia": 
   "mes": {
     "ui:widget": "select"
   },
