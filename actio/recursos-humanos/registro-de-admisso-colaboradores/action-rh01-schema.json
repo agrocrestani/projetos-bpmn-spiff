@@ -76,7 +76,7 @@
       }
     },
     "datasReferencia": {
-      "title": "Selecione o m",
+      "title": "Selecione o mês e ano de ref",
       "type": "object",
       "required": [
         "camposDeJulioAtivos",
