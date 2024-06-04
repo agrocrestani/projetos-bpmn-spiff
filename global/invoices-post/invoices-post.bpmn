@@ -142,7 +142,7 @@ for i in itens:
 
 del(rsp)
 # del(n_filiais)
-del(n_safras)
+# del(n_safras)
 del(main_usage)
 # del(nfe)
 # del(nfeItens)</bpmn:script>
