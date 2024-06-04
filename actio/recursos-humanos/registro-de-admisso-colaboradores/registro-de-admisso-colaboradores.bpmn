@@ -276,7 +276,7 @@ filialEscritorio = {
     'escritorioDemitidos': None
 }
 
- print("LOG - Entrou no Periodo")
+print("LOG - Entrou no Periodo")
 
 for parametros in parametro_encontrados:
     print("LOG - Entrou no FOR")
