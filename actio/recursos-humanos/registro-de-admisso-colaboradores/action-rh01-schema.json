@@ -84,7 +84,7 @@
       ],
       "properties": {
         "mes": {
-          "title": "Selecione um mês de referência",
+          "title": "Mês de referência",
           "type": "string",
           "anyOf": [
             "options_from_task_data_var:meses"
