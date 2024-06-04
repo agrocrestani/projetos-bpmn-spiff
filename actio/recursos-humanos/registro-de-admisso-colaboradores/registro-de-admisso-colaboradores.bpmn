@@ -254,6 +254,8 @@ anos = [
           <spiffworkflow:property name="formJsonSchemaFilename" value="selecionar-periodo-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-periodo-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:postScript>del(meses)
+del(anos)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1bb8s6f</bpmn:incoming>
       <bpmn:outgoing>Flow_1dqg7jg</bpmn:outgoing>
@@ -272,7 +274,7 @@ anos = [
             <spiffworkflow:parameter id="attempts" type="int" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
-        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:preScript>url = "https://crestani-webapi.actiosoftware.com/api/values/alltypes-values"</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0jf2rzh</bpmn:incoming>
       <bpmn:outgoing>Flow_00nnl2s</bpmn:outgoing>
