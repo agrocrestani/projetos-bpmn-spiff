@@ -420,6 +420,11 @@ payload = {
         <spiffworkflow:preScript>items = []
 #Código deposito de entrada na Colorado
 
+ambiente = get_secret('ambiente')
+
+if ambiente == "QA":
+  chaveAcesso = ""
+
 WarehouseCode = '03.FCOL'
 for s in nfeItens:
   items.append(
