@@ -279,7 +279,49 @@ del(anos)</spiffworkflow:postScript>
 
 
 for parametros in parametro_encontrados:
+    if(parametros['itemCode'] == 'RH.PAR.001'):
+        try:
+            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+        except:
+            print("Não tem valor gravado")
+            
+    if(parametros['itemCode'] == 'RH.PAR.002'):
+        try:
+            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+        except:
+            print("Não tem valor gravado")
+
+    if(parametros['itemCode'] == 'RH.PAR.003'):
+        try:
+            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+        except:
+            print("Não tem valor gravado")
+            
     if(parametros['itemCode'] == 'RH.PAR.004'):
+        try:
+            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+        except:
+            print("Não tem valor gravado")
+
+    if(parametros['itemCode'] == 'RH.PAR.005'):
+        try:
+            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+        except:
+            print("Não tem valor gravado")
+
+    if(parametros['itemCode'] == 'RH.PAR.006'):
+        try:
+            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+        except:
+            print("Não tem valor gravado")
+
+    if(parametros['itemCode'] == 'RH.PAR.007'):
+        try:
+            filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+        except:
+            print("Não tem valor gravado")
+            
+    if(parametros['itemCode'] == 'RH.PAR.008'):
         try:
             filialEscritorio['escritorioAtivos'] = parametros['executedValue']
         except:
