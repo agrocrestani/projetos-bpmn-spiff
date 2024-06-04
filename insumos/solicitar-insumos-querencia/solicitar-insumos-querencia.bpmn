@@ -98,18 +98,12 @@
     <bpmn:dataStoreReference id="DataStoreReference_1wa62ow" name="Safras" dataStoreRef="safras" type="json" />
     <bpmn:userTask id="Activity_0rzn55m" name="Solicitar Insumos">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>n_filiais = []
-for f in filiais:
-    BPLId = f['BPLId']
-    BPLName = f['BPLName']
-    AliasName = f['AliasName']
-    if BPLId == "1": 
-        n_filiais.append(
-            {
-                "value": BPLId,
-                "label": AliasName,
-            }
-        )
+        <spiffworkflow:preScript>n_filiais = [
+    {
+        "value": "1",
+        "label": "FAZENDA QUERENCIA",
+    }
+]
 
 n_safras = safras
 solicitante = get_current_user()['display_name']
