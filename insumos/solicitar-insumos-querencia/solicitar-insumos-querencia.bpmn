@@ -522,8 +522,7 @@ payload = {
         }
     ]
 }</spiffworkflow:preScript>
-        <spiffworkflow:postScript>Saida_Col_Que = DocEntry
-lancado = ErrorNFe['status_code']</spiffworkflow:postScript>
+        <spiffworkflow:postScript>Saida_Col_Que = DocEntry</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0r0e8yw</bpmn:incoming>
       <bpmn:outgoing>Flow_00exh31</bpmn:outgoing>
