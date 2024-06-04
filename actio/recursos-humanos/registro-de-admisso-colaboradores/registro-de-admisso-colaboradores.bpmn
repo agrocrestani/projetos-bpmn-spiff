@@ -17,7 +17,8 @@
           <spiffworkflow:property name="formJsonSchemaFilename" value="action-rh01-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="action-rh01-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:preScript>meses = []
+anos = []</spiffworkflow:preScript>
         <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0zyhysy</bpmn:incoming>
