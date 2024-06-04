@@ -92,9 +92,5 @@
         "options_from_task_data_var:ano"
       ]
     }
-    "bio": {
-      "type": "string",
-      "title": "Bio"
-    }
   }
 }
