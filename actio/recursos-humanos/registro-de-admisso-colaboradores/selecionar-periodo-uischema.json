@@ -1,1 +1,113 @@
-{}
+{
+  "ui:layout": [
+    {
+      "datasReferencia": {}
+    },
+    {
+      "filialEscritorio": {}
+    },
+    {
+      "filialBrasnorte": {}
+    },
+    {
+      "filialQuerencia": {}
+    },
+    {
+      "filialCamposDeJulio": {}
+    }
+  ],
+  "datasReferencia": {
+    "ui:layout": [
+      {
+        "mes": {},
+        "ano": {}
+      }
+    ],
+    "mes": {
+      "ui:widget": "select"
+    },
+    "ano": {
+      "ui:widget": "select"
+    }
+  },
+  "filialEscritorio": {
+    "ui:layout": [
+      {
+        "escritorioAtivos": {},
+        "escritorioDemitidos": {}
+      }
+    ],
+    "escritorioAtivos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores ativos",
+      "ui:autocomplete": "family-name"
+    },
+    "escritorioDemitidos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores demitidos",
+      "ui:autocomplete": "family-name"
+    }
+  },
+  "filialBrasnorte": {
+    "ui:layout": [
+      {
+        "brasnorteAtivos": {},
+        "brasnorteDemitidos": {}
+      }
+    ],
+    "brasnorteAtivos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores ativos",
+      "ui:autocomplete": "family-name"
+    },
+    "brasnorteDemitidos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores demitidos",
+      "ui:autocomplete": "family-name"
+    }
+  },
+  "filialQuerencia": {
+    "ui:layout": [
+      {
+        "querenciaAtivos": {},
+        "querenciaDemitidos": {}
+      }
+    ],
+    "querenciaAtivos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores ativos",
+      "ui:autocomplete": "family-name"
+    },
+    "querenciaDemitidos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores demitidos",
+      "ui:autocomplete": "family-name"
+    }
+  },
+  "filialCamposDeJulio": {
+    "ui:layout": [
+      {
+        "camposDeJulioAtivos": {},
+        "camposDeJulioDemitidos": {}
+      }
+    ],
+    "camposDeJulioAtivos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores ativos",
+      "ui:autocomplete": "family-name"
+    },
+    "camposDeJulioDemitidos": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "Digite o número de colaboradores demitidos",
+      "ui:autocomplete": "family-name"
+    }
+  }
+}
