@@ -1,6 +1,6 @@
 {
   "title": "Turnover Agro Crestani",
-  "description": "Apontamentos de informações estratégicas dos Recursos Humanos da Agropecuaria Crestani relacionados a rotatividade dos colaboradores",
+  "description": "O processo de apontamento de dados de turnover (rotatividade) dos colaboradores na Agropecuária Crestani visa coletar, analisar e interpretar informações estratégicas que permitam uma gestão eficaz dos recursos humanos.",
   "type": "object",
   "required": [
     "firstName"
