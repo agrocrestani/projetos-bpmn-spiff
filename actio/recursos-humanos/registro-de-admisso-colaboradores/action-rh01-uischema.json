@@ -26,6 +26,9 @@
     "mes": {
       "ui:widget": "select"
     },
+    "mes": {
+      "ui:widget": "select"
+    },
   },
   
   "filialEscritorio": {
