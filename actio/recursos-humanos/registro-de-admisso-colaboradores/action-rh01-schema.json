@@ -75,6 +75,24 @@
         }
       }
     },
+    "filialCamposDeJulio": {
+      "title": "Campos de Júlio",
+      "type": "object",
+      "required": [
+        "camposDeJulioAtivos",
+        "camposDeJulioDemitidos"
+      ],
+      "properties": {
+        "camposDeJulioAtivos": {
+          "type": "number",
+          "title": "Colaboradores Ativos"
+        },
+        "camposDeJulioDemitidos": {
+          "type": "number",
+          "title": "Colaboradores Demitidos"
+        }
+      }
+    },
     "mes": {
       "title": "Selecione um mês de referência",
       "type": "string",
