@@ -90,10 +90,13 @@
             "options_from_task_data_var:meses"
           ]
         },
-        "camposDeJulioDemitidos": {
-          "type": "number",
-          "title": "Colaboradores Demitidos"
-        }
+        "ano": {
+      "title": "Selecione o ano de referência",
+      "type" : "string",
+      "anyOf": [
+        "options_from_task_data_var:anos"
+      ]
+    }
       }
     },
     
