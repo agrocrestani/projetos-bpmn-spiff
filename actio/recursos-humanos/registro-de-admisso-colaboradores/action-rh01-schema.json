@@ -91,7 +91,7 @@
           ]
         },
         "ano": {
-          "title": "Selecione o ano de referência",
+          "title": "Ano de referência",
           "type" : "string",
           "anyOf": [
             "options_from_task_data_var:anos"
