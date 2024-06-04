@@ -259,13 +259,13 @@ anos = [
       <bpmn:outgoing>Flow_1n916yb</bpmn:outgoing>
     </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="Flow_1n916yb" sourceRef="Gateway_11jcps2" targetRef="LoginActio" />
-    <bpmn:exclusiveGateway id="Gateway_00n44tl">
+    <bpmn:sequenceFlow id="Flow_0qknaqp" sourceRef="Gateway_00n44tl" targetRef="ACTIORH01" />
+    <bpmn:sequenceFlow id="Flow_1vrh4c5" sourceRef="LoginActio" targetRef="Gateway_00n44tl" />
+    <bpmn:inclusiveGateway id="Gateway_00n44tl">
       <bpmn:incoming>Flow_1dqg7jg</bpmn:incoming>
       <bpmn:incoming>Flow_1vrh4c5</bpmn:incoming>
       <bpmn:outgoing>Flow_0qknaqp</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0qknaqp" sourceRef="Gateway_00n44tl" targetRef="ACTIORH01" />
-    <bpmn:sequenceFlow id="Flow_1vrh4c5" sourceRef="LoginActio" targetRef="Gateway_00n44tl" />
+    </bpmn:inclusiveGateway>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_registro_de_admisso_colaboradores_5reiwhf">
@@ -299,7 +299,7 @@ anos = [
       <bpmndi:BPMNShape id="Gateway_06d5jsl_di" bpmnElement="Gateway_11jcps2">
         <dc:Bounds x="-65" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_00n44tl_di" bpmnElement="Gateway_00n44tl" isMarkerVisible="true">
+      <bpmndi:BPMNShape id="Gateway_1p5rz1l_di" bpmnElement="Gateway_00n44tl">
         <dc:Bounds x="185" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
