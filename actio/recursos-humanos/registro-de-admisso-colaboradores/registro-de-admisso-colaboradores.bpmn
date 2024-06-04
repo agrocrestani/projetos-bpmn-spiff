@@ -278,6 +278,7 @@ filialEscritorio = {
 
 for parametros in parametro_encontrados:
     if(ano == parametros['year'] and mes == parametros['period']):
+        print("LOG - Entrou no Periodo")
         if(parametros['itemCode'] == 'RH.PAR.001'):
             try:
                 filialBrasnorte['brasnorteAtivos'] = parametros['executedValue']
