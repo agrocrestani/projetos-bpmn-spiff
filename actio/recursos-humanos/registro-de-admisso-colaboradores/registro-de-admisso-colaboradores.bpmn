@@ -283,7 +283,7 @@ for parametros in parametro_encontrados:
         try:
             filialEscritorio['escritorioAtivos'] = parametros['executedValue']
         except:
-            filialEscritorio['escritorioAtivos'] = 0</spiffworkflow:postScript>
+</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0jf2rzh</bpmn:incoming>
       <bpmn:outgoing>Flow_00nnl2s</bpmn:outgoing>
