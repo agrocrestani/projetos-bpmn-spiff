@@ -17,8 +17,7 @@
           <spiffworkflow:property name="formJsonSchemaFilename" value="action-rh01-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="action-rh01-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript>meses = []
-anos = []</spiffworkflow:preScript>
+        <spiffworkflow:preScript />
         <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0zyhysy</bpmn:incoming>
@@ -234,8 +233,7 @@ anos = [
           <spiffworkflow:property name="formJsonSchemaFilename" value="selecionar-periodo-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-periodo-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:postScript>del(meses)
-del(anos)</spiffworkflow:postScript>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1bb8s6f</bpmn:incoming>
       <bpmn:outgoing>Flow_1dqg7jg</bpmn:outgoing>
