@@ -262,48 +262,56 @@ for parametros in parametro_encontrados:
         if(parametros['itemCode'] == 'RH.PAR.001'):
             try:
                 filialBrasnorte['brasnorteAtivos'] = parametros['executedValue']
+                print('Tem valor aqui RH.PAR.001')
             except:
                 print("Não tem valor gravado")
                 
         if(parametros['itemCode'] == 'RH.PAR.002'):
             try:
                 filialCamposDeJulio['camposDeJulioAtivos'] = parametros['executedValue']
+                print('Tem valor aqui RH.PAR.002')
             except:
                 print("Não tem valor gravado")
 
         if(parametros['itemCode'] == 'RH.PAR.003'):
             try:
                 filialQuerencia['querenciaAtivos'] = parametros['executedValue']
+                print('Tem valor aqui RH.PAR.003')
             except:
                 print("Não tem valor gravado")
                 
         if(parametros['itemCode'] == 'RH.PAR.004'):
             try:
                 filialEscritorio['escritorioAtivos'] = parametros['executedValue']
+                print('Tem valor aqui RH.PAR.004')
             except:
                 print("Não tem valor gravado")
 
         if(parametros['itemCode'] == 'RH.PAR.005'):
             try:
                 filialBrasnorte['brasnorteDemitidos'] = parametros['executedValue']
+                print('Tem valor aqui RH.PAR.005')
             except:
                 print("Não tem valor gravado")
 
         if(parametros['itemCode'] == 'RH.PAR.006'):
             try:
                 filialCamposDeJulio['camposDeJulioDemitidos'] = parametros['executedValue']
+                print('Tem valor aqui RH.PAR.006')
             except:
                 print("Não tem valor gravado")
 
         if(parametros['itemCode'] == 'RH.PAR.007'):
             try:
                 filialQuerencia['querenciaDemitidos'] = parametros['executedValue']
+                print('Tem valor aqui RH.PAR.007')
             except:
                 print("Não tem valor gravado")
                 
         if(parametros['itemCode'] == 'RH.PAR.008'):
             try:
                 filialEscritorio['escritorioDemitidos'] = parametros['executedValue']
+                print('Tem valor aqui RH.PAR.008')
             except:
                 print("Não tem valor gravado")
 
