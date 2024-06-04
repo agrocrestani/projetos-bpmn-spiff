@@ -25,7 +25,7 @@
     ],
     "mes": {
       "ui:widget": "select",
-      "ui:disable": 
+      "ui:disable": {}
     },
     "ano": {
       "ui:widget": "select"
