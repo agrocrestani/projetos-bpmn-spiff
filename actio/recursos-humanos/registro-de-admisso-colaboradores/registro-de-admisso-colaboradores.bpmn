@@ -279,39 +279,26 @@ filialEscritorio = {
 print("LOG - Entrou no Periodo")
 
 for parametros in parametro_encontrados:
-    print("LOG - Entrou no FOR")
     if(ano == str(parametros['year']) and mes == str(parametros['period'])):
-        print("LOG - Entrou no Periodo")
-        if(parametros['itemCode'] == 'RH.PAR.001'):
-            print("LOG - Entrou no RH.PAR.001")
-            
+        if(parametros['itemCode'] == 'RH.PAR.001'):            
             try:
                 filialBrasnorte['brasnorteAtivos'] = parametros['executedValue']
-                print('Tem valor aqui RH.PAR.001')
             except:
                 print("Não tem valor gravado")
                 
-        if(parametros['itemCode'] == 'RH.PAR.002'):
-            print("LOG - Entrou no RH.PAR.002")
-            
+        if(parametros['itemCode'] == 'RH.PAR.002'):            
             try:
                 filialCamposDeJulio['camposDeJulioAtivos'] = parametros['executedValue']
-                print('Tem valor aqui RH.PAR.002')
             except:
                 print("Não tem valor gravado")
 
         if(parametros['itemCode'] == 'RH.PAR.003'):
-            print("LOG - Entrou no RH.PAR.003")
-            
             try:
                 filialQuerencia['querenciaAtivos'] = parametros['executedValue']
-                print('Tem valor aqui RH.PAR.003')
             except:
                 print("Não tem valor gravado")
                 
-        if(parametros['itemCode'] == 'RH.PAR.004'):
-            print("LOG - Entrou no RH.PAR.004")
-            
+        if(parametros['itemCode'] == 'RH.PAR.004'):            
             try:
                 filialEscritorio['escritorioAtivos'] = parametros['executedValue']
                 print('Tem valor aqui RH.PAR.004')
