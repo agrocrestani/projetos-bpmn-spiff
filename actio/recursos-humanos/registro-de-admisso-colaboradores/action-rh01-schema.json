@@ -96,7 +96,6 @@
         }
       }
     },
-    ,
     "ano": {
       "title": "Selecione o ano de referência",
       "type" : "string",
