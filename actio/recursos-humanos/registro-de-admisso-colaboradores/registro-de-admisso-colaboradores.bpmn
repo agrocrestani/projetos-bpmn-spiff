@@ -256,6 +256,25 @@ mes = datasReferencia['mes']</spiffworkflow:postScript>
         <spiffworkflow:preScript>url = "https://crestani-webapi.actiosoftware.com/api/values/alltypes-values"</spiffworkflow:preScript>
         <spiffworkflow:postScript>parametro_encontrados = response['body']
 
+filialBrasnorte = {
+    'brasnorteAtivos': None,
+    'brasnorteDemitidos': None
+}
+
+filialCamposDeJulio = {
+    'camposDeJulioAtivos': None,
+    'camposDeJulioDemitidos': None
+}
+
+filialQuerencia = {
+    'querenciaAtivos': None,
+    'querenciaDemitidos': None
+}
+
+filialEscritorio = {
+    'escritorioAtivos': None,
+    'escritorioDemitidos': None
+}
 
 for parametros in parametro_encontrados:
     if(ano == parametros['year'] and mes == parametros['period']):
