@@ -32,7 +32,7 @@ headers = {
     lancaNFeEntrada = rsp['http_status']
 except:
     lancaNFeEntrada = 500</spiffworkflow:postScript>
-        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rspEntrada">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
             <spiffworkflow:parameter id="headers" type="any" value="headers" />
@@ -74,8 +74,8 @@ except:
       <bpmn:extensionElements>
         <spiffworkflow:preScript>try:
     status_code = lancaNFeEntrada 
-    errorCode = rsp['body']['error']['code']
-    errorMessage = rsp['body']['error']['message']['value']
+    errorCode = rspEntrada['body']['error']['code']
+    errorMessage = rspEntrada['body']['error']['message']['value']
 except:
     command = errorEntrada['command_response_body']
     command = json.loads(command)
@@ -116,15 +116,15 @@ except:
       <bpmndi:BPMNShape id="Gateway_00db667_di" bpmnElement="Gateway_00db667" isMarkerVisible="true">
         <dc:Bounds x="595" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1e3omg0_di" bpmnElement="Activity_1bq66l5">
-        <dc:Bounds x="450" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_13qzzrl_di" bpmnElement="DataStoreReference_13qzzrl">
         <dc:Bounds x="555" y="35" width="50" height="50" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="557" y="92" width="47" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1e3omg0_di" bpmnElement="Activity_1bq66l5">
+        <dc:Bounds x="450" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0n0ry39_di" bpmnElement="Gateway_0n0ry39" isMarkerVisible="true">
         <dc:Bounds x="495" y="285" width="50" height="50" />
