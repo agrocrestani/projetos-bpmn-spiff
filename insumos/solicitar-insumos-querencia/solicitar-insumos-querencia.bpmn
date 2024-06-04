@@ -755,7 +755,7 @@ payload = {
 | {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
 {%endfor%}
 | | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript>nfe = rsp["body"]
+        <spiffworkflow:preScript>nfe = rspEntrada["body"]
 nfeItens = nfe['DocumentLines']
 
 DocEntry = nfe['DocEntry']
