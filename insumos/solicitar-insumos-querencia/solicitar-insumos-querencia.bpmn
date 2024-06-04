@@ -353,7 +353,7 @@ payload = {
             <spiffworkflow:parameter id="verify" type="bool" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
-        <spiffworkflow:postScript />
+        <spiffworkflow:postScript>Saida_Que_Col = DocEntry</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_14qu8ic</bpmn:incoming>
@@ -459,10 +459,18 @@ payload = {
     "TaxExtension": {
       "MainUsage": mainusage,
       "Incoterms": "0"
-    }
+    },
+    "DocumentReferences": [
+        {
+                "RefDocEntr": Saida_Que_Col,
+                "RefObjType": "rot_SalesInvoice"
+        }
+    ]
 }</spiffworkflow:preScript>
         <spiffworkflow:postScript>nfeEntrada = rspEntrada['body']
 nfeEntradaItens = nfeEntrada['DocumentLines']
+
+EntraCol = nfeEntrada['DocEntry']
 
 del(rspEntrada)</spiffworkflow:postScript>
       </bpmn:extensionElements>
@@ -500,8 +508,19 @@ payload = {
     "TaxExtension": {
       "MainUsage": mainusage,
       "Incoterms": "0"
-    }
+    },
+    "DocumentReferences": [
+        {
+                "RefDocEntr": Saida_Que_Col ,
+                "RefObjType": "rot_SalesInvoice"
+        },
+        {
+                "RefDocEntr": EntraCol,
+                "RefObjType": "rot_PurchasesInvoice"
+        }
+    ]
 }</spiffworkflow:preScript>
+        <spiffworkflow:postScript>Saida_Col_Que = DocEntry</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0r0e8yw</bpmn:incoming>
       <bpmn:outgoing>Flow_00exh31</bpmn:outgoing>
@@ -666,15 +685,15 @@ payload = {
     },
     "DocumentReferences": [
         {
-                "RefDocEntr": nfe['DocEntry'],
+                "RefDocEntr": Saida_Que_Col ,
                 "RefObjType": "rot_SalesInvoice"
         },
         {
-                "RefDocEntr": nfe['DocEntry'],
-                "RefObjType": "rot_SalesInvoice"
+                "RefDocEntr": EntraCol,
+                "RefObjType": "rot_PurchasesInvoice"
         },
         {
-                "RefDocEntr": nfe['DocEntry'],
+                "RefDocEntr": Saida_Col_Que,
                 "RefObjType": "rot_SalesInvoice"
         }
     ]
