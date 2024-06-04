@@ -235,36 +235,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
 
 
 </spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:postScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
-spiff_tarefa = taskInfo = get_current_task_info()['id']
-
-items = []
-for s in solicitacao:
-  items.append(
-    {
-      "ItemCode": s["insumo"]["ItemCode"],
-      "Quantity": s["quantidade"],
-      "WarehouseCode": s["insumo"]["WhsCode"]
-    }
-  )
-
-CardCode = "C00113"
-
-payload = {
-    "CardCode": CardCode,
-    "BPL_IDAssignedToInvoice": "1",
-    "DocumentsOwner": OwnerCode,
-    "SalesPersonCode": SlpCode,
-    "Comments": f"Solicitante: {solicitante}",
-    "U_AC_Spiff_Instancia": spiff_instancia,
-    "U_AC_Spiff_Tarefa": spiff_tarefa,
-    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
-    "DocumentLines": items,
-    "TaxExtension": {
-      "MainUsage": mainusage,
-      "Incoterms": "0"
-    }
-}</spiffworkflow:postScript>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
         <spiffworkflow:preScript>for s in solicitacao:
     s['insumo'] = json.loads(s['insumo'])
 
@@ -341,7 +312,37 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
     </bpmn:callActivity>
     <bpmn:callActivity id="Activity_0823umq" name="Emite NFe da Querencia para Colorado" calledElement="Process_invoices_post_xf8j10r">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript />
+        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
+spiff_tarefa = taskInfo = get_current_task_info()['id']
+
+items = []
+for s in solicitacao:
+  items.append(
+    {
+      "ItemCode": s["insumo"]["ItemCode"],
+      "Quantity": s["quantidade"],
+      "WarehouseCode": s["insumo"]["WhsCode"]
+    }
+  )
+
+#Código de cliente Colorado
+CardCode = "C00113"
+
+payload = {
+    "CardCode": CardCode,
+    "BPL_IDAssignedToInvoice": "1",
+    "DocumentsOwner": OwnerCode,
+    "SalesPersonCode": SlpCode,
+    "Comments": f"Solicitante: {solicitante}",
+    "U_AC_Spiff_Instancia": spiff_instancia,
+    "U_AC_Spiff_Tarefa": spiff_tarefa,
+    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
+    "DocumentLines": items,
+    "TaxExtension": {
+      "MainUsage": mainusage,
+      "Incoterms": "0"
+    }
+}</spiffworkflow:preScript>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
@@ -460,11 +461,48 @@ payload = {
       "Incoterms": "0"
     }
 }</spiffworkflow:preScript>
+        <spiffworkflow:postScript>nfeEntrada = rspEntrada['body']
+nfeEntradaItens = nfeEntrada['DocumentLines']
+
+del(rspEntrada)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12ic23r</bpmn:incoming>
       <bpmn:outgoing>Flow_160peiq</bpmn:outgoing>
     </bpmn:callActivity>
     <bpmn:callActivity id="Activity_16t5nxk" name="Emite NFe da Colorado para Querencia" calledElement="Process_invoices_post_xf8j10r">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
+spiff_tarefa = taskInfo = get_current_task_info()['id']
+
+items = []
+for s in solicitacao:
+  items.append(
+    {
+      "ItemCode": s["insumo"]["ItemCode"],
+      "Quantity": s["quantidade"],
+      "WarehouseCode": s["insumo"]["WhsCode"]
+    }
+  )
+
+#Código de cliente Querencia
+CardCode = "C00116"
+
+payload = {
+    "CardCode": CardCode,
+    "BPL_IDAssignedToInvoice": "3", #Código filial Colorado
+    "DocumentsOwner": OwnerCode,
+    "SalesPersonCode": SlpCode,
+    "Comments": f"Solicitante: {solicitante}",
+    "U_AC_Spiff_Instancia": spiff_instancia,
+    "U_AC_Spiff_Tarefa": spiff_tarefa,
+    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
+    "DocumentLines": items,
+    "TaxExtension": {
+      "MainUsage": mainusage,
+      "Incoterms": "0"
+    }
+}</spiffworkflow:preScript>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0r0e8yw</bpmn:incoming>
       <bpmn:outgoing>Flow_00exh31</bpmn:outgoing>
     </bpmn:callActivity>
