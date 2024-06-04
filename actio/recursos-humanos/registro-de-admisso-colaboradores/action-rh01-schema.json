@@ -76,7 +76,7 @@
       }
     },
     "datasReferencia": {
-      "title": "Selecione o mês e ano de referência",
+      "title": " mês e ano de referência",
       "type": "object",
       "required": [
         "mes",
