@@ -110,9 +110,5 @@
   },
   "bio": {
     "ui:widget": "textarea"
-  },
-  "delivery_date": {
-    "ui:widget": "date",
-    "ui:help": ""
   }
 }
