@@ -3,78 +3,7 @@
   "description": "O processo de apontamento de dados de turnover (rotatividade) dos colaboradores na Agropecuária Crestani visa coletar, analisar e interpretar informações estratégicas que permitam uma gestão eficaz dos recursos humanos.",
   "type": "object",
   "properties": {
-    "filialEscritorio": {
-      "title": "Matriz",
-      "type": "object",
-      "required": [
-        "escritorioAtivos",
-        "escritorioDemitidos"
-      ],
-      "properties": {
-        "escritorioAtivos": {
-          "type": "number",
-          "title": "Colaboradores Ativos"
-        },
-        "escritorioDemitidos": {
-          "type": "number",
-          "title": "Colaboradores Demitidos"
-        }
-      }
-    },
-    "filialBrasnorte": {
-      "title": "Brasnorte",
-      "type": "object",
-      "required": [
-        "brasnorteAtivos",
-        "brasnorteDemitidos"
-      ],
-      "properties": {
-        "brasnorteAtivos": {
-          "type": "number",
-          "title": "Colaboradores Ativos"
-        },
-        "brasnorteDemitidos": {
-          "type": "number",
-          "title": "Colaboradores Demitidos"
-        }
-      }
-    },
-    "filialQuerencia": {
-      "title": "Querência",
-      "type": "object",
-      "required": [
-        "querenciaAtivos",
-        "querenciaDemitidos"
-      ],
-      "properties": {
-        "querenciaAtivos": {
-          "type": "number",
-          "title": "Colaboradores Ativos"
-        },
-        "querenciaDemitidos": {
-          "type": "number",
-          "title": "Colaboradores Demitidos"
-        }
-      }
-    },
-    "filialCamposDeJulio": {
-      "title": "Campos de Júlio",
-      "type": "object",
-      "required": [
-        "camposDeJulioAtivos",
-        "camposDeJulioDemitidos"
-      ],
-      "properties": {
-        "camposDeJulioAtivos": {
-          "type": "number",
-          "title": "Colaboradores Ativos"
-        },
-        "camposDeJulioDemitidos": {
-          "type": "number",
-          "title": "Colaboradores Demitidos"
-        }
-      }
-    },
+
     "datasReferencia": {
       "title": "Selecione o mês e ano de referência",
       "type": "object",
