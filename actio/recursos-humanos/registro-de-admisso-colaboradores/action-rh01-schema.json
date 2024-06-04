@@ -1,6 +1,6 @@
 {
   "title": "Turnover Agro Crestani",
-  "description": "Apontamentos de informações estratégicas dos Recursos Humanos da Agropecuaria Crestani relacionados a",
+  "description": "Apontamentos de informações estratégicas dos Recursos Humanos da Agropecuaria Crestani relacionados ao ",
   "type": "object",
   "required": [
     "firstName"
