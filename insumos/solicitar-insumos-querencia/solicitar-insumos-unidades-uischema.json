@@ -31,7 +31,7 @@
       "solicitacao": {}
     }  
   ],
-    "unidade": {
-    "ui:disabled": []
-  }
+  //   "unidade": {
+  //   "ui:disabled": []
+  // }
 }
