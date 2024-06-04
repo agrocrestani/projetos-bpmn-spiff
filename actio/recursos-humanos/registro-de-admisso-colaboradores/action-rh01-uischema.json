@@ -1,5 +1,8 @@
 {
-  "ui:layout": 
+  "ui:layout": [
+    {
+      datasReferencia
+    }
     {
       "mes": {},
       "ano": {}
