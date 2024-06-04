@@ -431,7 +431,7 @@ for s in nfeItens:
       "Quantity": s["Quantity"],
       "WarehouseCode": WarehouseCode,
       "Price": s['Price'],
-      "CostingCode": ccustoEntrada,
+      "CostingCode": "TGAPRO",
       "CostingCode3": safra
     }
   )
@@ -446,7 +446,7 @@ payload = {
     "SequenceCode": -2,
     "SequenceModel": "39",
     "BPL_IDAssignedToInvoice": 3,
-    "U_ChaveAcesso": "",
+    "U_ChaveAcesso": chaveAcesso,
     "TaxDate": DocDate[0:10],
     "DocumentsOwner": OwnerCode,
     "SalesPersonCode": SlpCode,
@@ -642,7 +642,14 @@ payload = {
 | {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{WarehouseCode}} | {{ccustoEntrada}} | {{safra}}
 {%endfor%}
 | | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:postScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
+        <spiffworkflow:postScript></spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_07qotfg</bpmn:incoming>
+      <bpmn:outgoing>Flow_1anb9z3</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:callActivity id="Activity_1x3dg9k" name="Lança NFe Entrada no SAP" calledElement="Process_purchase_invoices_krrf890">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
 usuarioEmissorNFe = get_current_user()['display_name']
 
@@ -654,7 +661,7 @@ for s in nfeItens:
       "Quantity": s["Quantity"],
       "WarehouseCode": WarehouseCode,
       "Price": s['Price'],
-      "CostingCode": ccustoEntrada,
+      "CostingCode": "QUEPRO",
       "CostingCode3": safra
     }
   )
@@ -669,7 +676,7 @@ payload = {
     "SequenceCode": -2,
     "SequenceModel": "39",
     "BPL_IDAssignedToInvoice": unidade,
-    "U_ChaveAcesso": "",
+    "U_ChaveAcesso": chaveAcesso",
     "TaxDate": DocDate[0:10],
     "DocumentsOwner": OwnerCode,
     "SalesPersonCode": SlpCode,
@@ -697,12 +704,8 @@ payload = {
                 "RefObjType": "rot_SalesInvoice"
         }
     ]
-</spiffworkflow:postScript>
+</spiffworkflow:preScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_07qotfg</bpmn:incoming>
-      <bpmn:outgoing>Flow_1anb9z3</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:callActivity id="Activity_1x3dg9k" name="Lança NFe Entrada no SAP" calledElement="Process_purchase_invoices_krrf890">
       <bpmn:incoming>Flow_1anb9z3</bpmn:incoming>
       <bpmn:outgoing>Flow_0by2q56</bpmn:outgoing>
     </bpmn:callActivity>
