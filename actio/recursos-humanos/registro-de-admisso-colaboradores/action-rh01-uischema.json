@@ -24,9 +24,7 @@
       }
     ],
   },
-  "mes": {
-    "ui:widget": "select"
-  },
+  
   "filialEscritorio": {
     "ui:layout": [
       {
