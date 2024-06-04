@@ -276,7 +276,10 @@ filialEscritorio = {
     'escritorioDemitidos': None
 }
 
+ print("LOG - Entrou no Periodo")
+
 for parametros in parametro_encontrados:
+    print("LOG - Entrou no FOR")
     if(ano == parametros['year'] and mes == parametros['period']):
         print("LOG - Entrou no Periodo")
         if(parametros['itemCode'] == 'RH.PAR.001'):
