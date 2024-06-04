@@ -76,7 +76,7 @@
       }
     },
     "datasReferencia": {
-      "title": "Mês e ",
+      "title": "",
       "type": "object",
       "required": [
         "camposDeJulioAtivos",
