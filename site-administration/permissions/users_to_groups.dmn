@@ -296,17 +296,6 @@
           <text>"Matriz_Rh"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1lic6hd">
-        <inputEntry id="UnaryTests_0kmfh0t">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1iqnwbv">
-          <text>"jose.alves@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1d67i6w">
-          <text>"admin"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0q8g79k">
         <inputEntry id="UnaryTests_1g7ikyb">
           <text></text>
