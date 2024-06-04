@@ -279,7 +279,7 @@ del(anos)</spiffworkflow:postScript>
 
 
 for parametros in parametro_encontrados:
-    if(parametros['itemCode'] == 'RH.PAR.004')
+    if(parametros['itemCode'] == 'RH.PAR.004'):
         filialEscritorio['escritorioAtivos'] = parametros['executedValue']</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0jf2rzh</bpmn:incoming>
