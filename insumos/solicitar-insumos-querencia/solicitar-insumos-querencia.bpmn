@@ -418,6 +418,9 @@ payload = {
     <bpmn:callActivity id="Activity_1uhmn2l" name="Lanca NFe na Colorado" calledElement="Process_purchase_invoices_krrf890">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>items = []
+#Código deposito de entrada na Colorado
+
+WarehouseCode = '03.FCOL'
 for s in nfeItens:
   items.append(
     {
