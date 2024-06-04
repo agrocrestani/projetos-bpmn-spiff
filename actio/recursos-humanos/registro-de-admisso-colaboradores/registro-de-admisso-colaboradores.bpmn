@@ -283,7 +283,7 @@ for parametros in parametro_encontrados:
         try:
             filialEscritorio['escritorioAtivos'] = parametros['executedValue']
         except:
-</spiffworkflow:postScript>
+            print("Não tem valor gravado")</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0jf2rzh</bpmn:incoming>
       <bpmn:outgoing>Flow_00nnl2s</bpmn:outgoing>
