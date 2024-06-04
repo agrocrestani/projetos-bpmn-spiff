@@ -480,7 +480,7 @@ del(rspEntrada)</spiffworkflow:postScript>
 spiff_tarefa = taskInfo = get_current_task_info()['id']
 
 items = []
-for s in rspEntradaItens:
+for s in nfeEntradaItens:
   items.append(
     {
       "ItemCode": s["ItemCode"],
