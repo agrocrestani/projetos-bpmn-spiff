@@ -14,8 +14,7 @@
           <spiffworkflow:property name="formJsonSchemaFilename" value="teste01-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="teste01-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript>meses = []
-meses = [
+        <spiffworkflow:preScript>meses = [
     {"value": "1", "label": "Janeiro"},
     {"value": "2", "label": "Fevereiro"},
     {"value": "3", "label": "Março"},
@@ -29,7 +28,7 @@ meses = [
     {"value": "11", "label": "Novembro"},
     {"value": "12", "label": "Dezembro"}
 ]
-ano = []
+
 ano = [
     {"value": "1", "label": "2024"},
     {"value": "2", "label": "2025"},
@@ -51,7 +50,7 @@ ano = [
           <spiffworkflow:property name="formJsonSchemaFilename" value="teste02-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="teste02-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:preScript />
         <spiffworkflow:postScript>correcao = not done</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser>### Funcionários Matriz
 | Situação | Quantidade |
