@@ -3,7 +3,6 @@
   "description": "O processo de apontamento de dados de turnover (rotatividade) dos colaboradores na Agropecuária Crestani visa coletar, analisar e interpretar informações estratégicas que permitam uma gestão eficaz dos recursos humanos.",
   "type": "object",
   "properties": {
-
     "datasReferencia": {
       "title": "Selecione o mês e ano de referência",
       "type": "object",
