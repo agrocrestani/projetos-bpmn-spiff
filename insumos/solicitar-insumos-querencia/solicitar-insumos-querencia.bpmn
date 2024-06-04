@@ -655,6 +655,9 @@ payload = {
 spiff_tarefa = taskInfo = get_current_task_info()['id']
 usuarioEmissorNFe = get_current_user()['display_name']
 
+if ambiente == "dev":
+  chaveAcesso = ""
+
 items = []
 for s in nfeItens:
   items.append(
@@ -699,7 +702,7 @@ payload = {
         },
         {
                 "RefDocEntr": EntraCol,
-                "RefObjType": "rot_PurchasesInvoice"
+                "RefObjType": "rot_PurchaseInvoice"
         },
         {
                 "RefDocEntr": Saida_Col_Que,
