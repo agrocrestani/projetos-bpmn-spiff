@@ -475,12 +475,12 @@ del(rspEntrada)</spiffworkflow:postScript>
 spiff_tarefa = taskInfo = get_current_task_info()['id']
 
 items = []
-for s in solicitacao:
+for s in rspEntradaItens:
   items.append(
     {
-      "ItemCode": s["insumo"]["ItemCode"],
-      "Quantity": s["quantidade"],
-      "WarehouseCode": s["insumo"]["WhsCode"]
+      "ItemCode": s["ItemCode"],
+      "Quantity": s["Quantity"],
+      "WarehouseCode": "03.FCOL" #Código deposito de insumos da Colorado
     }
   )
 
@@ -640,6 +640,9 @@ for s in nfeItens:
     }
   )
 
+#Código Fornecedor Colorado
+CardCodeFor = "F02261"
+
 payload = {
     "CardCode": CardCodeFor,
     "SequenceSerial": nfe["SequenceSerial"],
@@ -660,8 +663,22 @@ payload = {
     "TaxExtension": {
       "MainUsage": mainusage,
       "Incoterms": "0"
-    }
-}</spiffworkflow:postScript>
+    },
+    "DocumentReferences": [
+        {
+                "RefDocEntr": nfe['DocEntry'],
+                "RefObjType": "rot_SalesInvoice"
+        },
+        {
+                "RefDocEntr": nfe['DocEntry'],
+                "RefObjType": "rot_SalesInvoice"
+        },
+        {
+                "RefDocEntr": nfe['DocEntry'],
+                "RefObjType": "rot_SalesInvoice"
+        }
+    ]
+</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_07qotfg</bpmn:incoming>
       <bpmn:outgoing>Flow_1anb9z3</bpmn:outgoing>
