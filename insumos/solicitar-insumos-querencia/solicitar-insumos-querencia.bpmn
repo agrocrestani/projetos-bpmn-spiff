@@ -567,7 +567,7 @@ payload = {
 ### Itens para carregar neste depósito
 | Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Depósito |
 | -------- | --------- |  -------------- | ---------------- | ----------: | ----------: | ------------- |
-{%for i in itensMatriz%}
+{%for i in itens%}
 | {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
 {%endfor%}
 |||||Total-&gt; | {{TotalMatriz}}|</spiffworkflow:instructionsForEndUser>
