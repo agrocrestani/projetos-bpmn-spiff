@@ -28,7 +28,8 @@
       "ui:disable": {}
     },
     "ano": {
-      "ui:widget": "select"
+      "ui:widget": "select",
+      "ui:disable": {}
     }
   },
   "filialEscritorio": {
