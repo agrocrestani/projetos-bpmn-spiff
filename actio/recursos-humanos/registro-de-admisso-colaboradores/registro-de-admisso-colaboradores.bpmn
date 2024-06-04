@@ -71,7 +71,7 @@ headers = {
         <spiffworkflow:postScript>body = response['body']
 accessToken = body['accessToken']
 
-param = "year=" + ano
+param = "year=" + datasReferencia['ano']
 
 headers = {
     'Content-Type': 'application/json',
@@ -272,6 +272,7 @@ anos = [
             <spiffworkflow:parameter id="attempts" type="int" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:preScript></spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0jf2rzh</bpmn:incoming>
       <bpmn:outgoing>Flow_00nnl2s</bpmn:outgoing>
