@@ -280,6 +280,8 @@ for parametros in parametro_encontrados:
     if(ano == parametros['year'] and mes == parametros['period']):
         print("LOG - Entrou no Periodo")
         if(parametros['itemCode'] == 'RH.PAR.001'):
+            print("LOG - Entrou no RH.PAR.001")
+            
             try:
                 filialBrasnorte['brasnorteAtivos'] = parametros['executedValue']
                 print('Tem valor aqui RH.PAR.001')
@@ -287,6 +289,8 @@ for parametros in parametro_encontrados:
                 print("Não tem valor gravado")
                 
         if(parametros['itemCode'] == 'RH.PAR.002'):
+            print("LOG - Entrou no RH.PAR.002")
+            
             try:
                 filialCamposDeJulio['camposDeJulioAtivos'] = parametros['executedValue']
                 print('Tem valor aqui RH.PAR.002')
@@ -294,6 +298,8 @@ for parametros in parametro_encontrados:
                 print("Não tem valor gravado")
 
         if(parametros['itemCode'] == 'RH.PAR.003'):
+            print("LOG - Entrou no RH.PAR.003")
+            
             try:
                 filialQuerencia['querenciaAtivos'] = parametros['executedValue']
                 print('Tem valor aqui RH.PAR.003')
@@ -301,6 +307,8 @@ for parametros in parametro_encontrados:
                 print("Não tem valor gravado")
                 
         if(parametros['itemCode'] == 'RH.PAR.004'):
+            print("LOG - Entrou no RH.PAR.004")
+            
             try:
                 filialEscritorio['escritorioAtivos'] = parametros['executedValue']
                 print('Tem valor aqui RH.PAR.004')
@@ -308,6 +316,8 @@ for parametros in parametro_encontrados:
                 print("Não tem valor gravado")
 
         if(parametros['itemCode'] == 'RH.PAR.005'):
+            print("LOG - Entrou no RH.PAR.005")
+            
             try:
                 filialBrasnorte['brasnorteDemitidos'] = parametros['executedValue']
                 print('Tem valor aqui RH.PAR.005')
@@ -315,6 +325,8 @@ for parametros in parametro_encontrados:
                 print("Não tem valor gravado")
 
         if(parametros['itemCode'] == 'RH.PAR.006'):
+            print("LOG - Entrou no RH.PAR.006")
+            
             try:
                 filialCamposDeJulio['camposDeJulioDemitidos'] = parametros['executedValue']
                 print('Tem valor aqui RH.PAR.006')
@@ -322,6 +334,8 @@ for parametros in parametro_encontrados:
                 print("Não tem valor gravado")
 
         if(parametros['itemCode'] == 'RH.PAR.007'):
+            print("LOG - Entrou no RH.PAR.007")
+            
             try:
                 filialQuerencia['querenciaDemitidos'] = parametros['executedValue']
                 print('Tem valor aqui RH.PAR.007')
@@ -329,6 +343,8 @@ for parametros in parametro_encontrados:
                 print("Não tem valor gravado")
                 
         if(parametros['itemCode'] == 'RH.PAR.008'):
+            print("LOG - Entrou no RH.PAR.008")
+            
             try:
                 filialEscritorio['escritorioDemitidos'] = parametros['executedValue']
                 print('Tem valor aqui RH.PAR.008')
