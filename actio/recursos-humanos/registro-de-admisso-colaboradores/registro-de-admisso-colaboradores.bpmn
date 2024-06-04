@@ -65,11 +65,14 @@ headers = {
       <bpmn:extensionElements>
         <spiffworkflow:preScript># Definindo as variáveis
 url = "https://crestani-webapi.actiosoftware.com/api/values/executedValues"
-ano = 2024
+
 headers = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + accessToken
 }
+
+ano = datasReferencia['ano']
+mes = datasReferencia['mes']
 
 # Obtendo os valores dos funcionários das filiais
 funcAtivosMatriz = filialEscritorio['escritorioAtivos']
