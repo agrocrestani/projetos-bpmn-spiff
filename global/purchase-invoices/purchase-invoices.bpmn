@@ -29,7 +29,7 @@ headers = {
   'Content-Type': 'application/json'
 }</spiffworkflow:preScript>
         <spiffworkflow:postScript>try:
-    lancaNFeEntrada = rsp['http_status']
+    lancaNFeEntrada = rspEntrada['http_status']
 except:
     lancaNFeEntrada = 500</spiffworkflow:postScript>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rspEntrada">
