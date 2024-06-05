@@ -21,7 +21,7 @@
     },
     "observacaoNfe": {
       "type": "string",
-      "title": "Observação para N"
+      "title": "Observação para NFe"
     }
   }
 }
