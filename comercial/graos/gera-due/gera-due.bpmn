@@ -77,22 +77,22 @@ del(rsp)</spiffworkflow:postScript>
         <spiffworkflow:preScript>try:
     del(formDue)
     formDue = {
-        "paisDestino": null,
-        "entidade": null,
-        "numero_due": null,
-        "data_embarque": null,
-        "data_averbacao": null,
+        "paisDestino": None,
+        "entidade": None,
+        "numero_due": None,
+        "data_embarque": None,
+        "data_averbacao": None,
         "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
         "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
         "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
    }
 except:
     formDue = {
-        "paisDestino": null,
-        "entidade": null,
-        "numero_due": null,
-        "data_embarque": null,
-        "data_averbacao": null,
+        "paisDestino": None,
+        "entidade": None,
+        "numero_due": None,
+        "data_embarque": None,
+        "data_averbacao": None,
         "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
         "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
         "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
