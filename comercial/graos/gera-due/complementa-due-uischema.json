@@ -1,6 +1,8 @@
 {
     "due": {
-            "ui:layout": []
+            "ui:layout": [
+                {}
+            ]
                 "numero_due"
             }
         }
