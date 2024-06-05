@@ -72,6 +72,9 @@ del(rsp)</spiffworkflow:postScript>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:subProcess id="Activity_0rp2yix">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript>del(due)</spiffworkflow:postScript>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_19e22i2</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics isSequential="true">
