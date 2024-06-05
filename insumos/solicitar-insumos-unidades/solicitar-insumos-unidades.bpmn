@@ -314,6 +314,7 @@ headers = {
         </spiffworkflow:serviceTaskOperator>
         <spiffworkflow:postScript>try:
     lancado = rsp['http_status']
+    unidadeEmissor = rsp['body']["BPL_IDAssignedToInvoice"]
 except:
     lancado = 500
 
