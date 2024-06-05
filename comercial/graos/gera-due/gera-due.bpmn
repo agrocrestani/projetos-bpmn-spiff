@@ -74,29 +74,7 @@ del(rsp)</spiffworkflow:postScript>
     <bpmn:subProcess id="Activity_0rp2yix">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>del(due)</spiffworkflow:postScript>
-        <spiffworkflow:preScript>try:
-    del(formDue)
-    formDue = {
-        "paisDestino": None,
-        "entidade": None,
-        "numero_due": due['numero_due'],
-        "data_embarque": due['data_embarque'][0:10],
-        "data_averbacao": due['data_averbacao'][0:10],
-        "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
-        "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
-        "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
-   }
-except:
-    formDue = {
-        "paisDestino": None,
-        "entidade": None,
-        "numero_due": due['numero_due'],
-        "data_embarque": due['data_embarque'][0:10],
-        "data_averbacao": due['data_averbacao'][0:10],
-        "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
-        "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
-        "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
-   }</spiffworkflow:preScript>
+        <spiffworkflow:preScript></spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_19e22i2</bpmn:outgoing>
@@ -121,6 +99,29 @@ except:
             <spiffworkflow:property name="formUiSchemaFilename" value="complementa-due-uischema.json" />
           </spiffworkflow:properties>
           <spiffworkflow:postScript />
+          <spiffworkflow:preScript>try:
+    del(formDue)
+    formDue = {
+        "paisDestino": None,
+        "entidade": None,
+        "numero_due": due['numero_due'],
+        "data_embarque": due['data_embarque'][0:10],
+        "data_averbacao": due['data_averbacao'][0:10],
+        "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
+        "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
+        "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
+   }
+except:
+    formDue = {
+        "paisDestino": None,
+        "entidade": None,
+        "numero_due": due['numero_due'],
+        "data_embarque": due['data_embarque'][0:10],
+        "data_averbacao": due['data_averbacao'][0:10],
+        "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
+        "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
+        "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
+   }</spiffworkflow:preScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1d28xqv</bpmn:incoming>
         <bpmn:outgoing>Flow_0mvhmve</bpmn:outgoing>
@@ -209,7 +210,7 @@ Hana(connection).executeDb(query)</bpmn:script>
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0kb8eyo_di" bpmnElement="Activity_153jm8a">
-        <dc:Bounds x="750" y="140" width="100" height="80" />
+        <dc:Bounds x="750" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1d28xqv_di" bpmnElement="Flow_1d28xqv">
@@ -218,14 +219,10 @@ Hana(connection).executeDb(query)</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0mvhmve_di" bpmnElement="Flow_0mvhmve">
         <di:waypoint x="680" y="177" />
-        <di:waypoint x="715" y="177" />
-        <di:waypoint x="715" y="180" />
-        <di:waypoint x="750" y="180" />
+        <di:waypoint x="750" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0bqcq4s_di" bpmnElement="Flow_0bqcq4s">
-        <di:waypoint x="850" y="180" />
-        <di:waypoint x="876" y="180" />
-        <di:waypoint x="876" y="177" />
+        <di:waypoint x="850" y="177" />
         <di:waypoint x="902" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
