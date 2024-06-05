@@ -15,7 +15,7 @@
       "className": "btn btn-info"
     }
   },
-  "bio": {
+  "observacaoNfe": {
     "ui:widget": "textarea"
   }
 }
