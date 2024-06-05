@@ -25,9 +25,7 @@
         "entidade": {
           "type": "string",
           "title": "Entidade",
-          "anyOf": [
-        "options_from_task_data_var:fruits"
-      ]
+          "anyOf": 
 
         },
         "naturezaDeclaracao": {
