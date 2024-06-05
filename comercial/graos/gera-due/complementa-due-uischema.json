@@ -49,7 +49,7 @@
         "paisDestino": {
             "ui:widget": "typeahead",
             "ui:options": {
-            "category": "tipo_declaracao",
+            "category": "pais",
             "itemFormat": "{nome_fantasia}"
             }
         }
