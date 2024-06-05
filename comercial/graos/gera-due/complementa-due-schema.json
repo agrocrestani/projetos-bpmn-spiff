@@ -40,7 +40,7 @@
         },
         "paisDestino": {
           "type": "string",
-          "title": "Tipo Declaração"
+          "title": "Pai"
         }
       }
     }
