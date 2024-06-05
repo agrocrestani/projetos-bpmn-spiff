@@ -155,18 +155,18 @@ query = f"""
             "TipoConhecimentoId", 
             "TipoDocumentoId")
             VALUES(
-            {f['EntidadeId']}, 
+            {f['EntidadeId']['id]}, 
             '{f['numero_due']}', 
-            '{f['NumeroRegistro']}', 
-            '{f['NumeroConhecimento']}', 
+            '{f['numero_due']}', 
+            '{f['numero_due']}', 
             '{f['paisDestino']}', 
             '{f['']}', 
             '{f['']}', 
             '{f['']}', 
             '{f['data_averbacao']}', 
-            {f['naturezaDeclaracao']}, 
-            {f['tipoConhecimento']}, 
-            {f['tipoDeclaracao']});
+            {f['naturezaDeclaracao']['id]}, 
+            {f['tipoConhecimento']['id]}, 
+            {f['tipoDeclaracao']['id]});
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
