@@ -8,7 +8,7 @@
             }
         },
         "entidade": {
-            "ui:widget": "typeahead",
+
             "ui:options": {
             "category": "entidades",
             "itemFormat": "{nome_fantasia} ({cnpj})"
