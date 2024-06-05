@@ -41,7 +41,7 @@
         "paisDestino": {
           "type": "string",
           "title": "País de destino",
-          "default"
+          "default": {\"id\":\"DE\",\"nome\":\"Alemanha\"}
         }
       }
     }
