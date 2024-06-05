@@ -2,7 +2,7 @@
     "due": {
         "ui:layout": [
             {
-                "entidade": {"sm": 2, "md": 2, "lg": 4},
+                "entidade": {"sm": 2, "md": 2, "lg": },
                 "numero_due": {"sm": 2, "md": 2, "lg": 4}
             },
             {
