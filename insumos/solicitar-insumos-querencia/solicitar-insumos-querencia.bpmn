@@ -501,6 +501,7 @@ payload = {
     "U_AC_Spiff_Instancia": spiff_instancia,
     "U_AC_Spiff_Tarefa": spiff_tarefa,
     "U_AC_Spiff_Usuario": usuarioEmissorNFe,
+    "ClosingRemarks": observacaoNfe,
     "DocumentLines": items,
     "TaxExtension": {
       "MainUsage": mainusage,
