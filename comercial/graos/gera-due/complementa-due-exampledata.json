@@ -2,7 +2,7 @@
   "due": {
     "entidade": null,
     "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
-    "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
+    "tipoConhecimento": null,
     "tipoDeclaracao": null,
     "paisDestino": null
   },
