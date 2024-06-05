@@ -1,6 +1,6 @@
 {
-  "title": "Complemente os dados da DUE",
-  "description": "Você deve acessar o portal: www.siscomex.com.br e preenchar o formulario com os dados encontrados.",
+  "title": "Dropdown list",
+  "description": "A dropdown list with options pulled form existing Task Data. IMPORTANT - Add 'fruits' to Task Data before using this component!!!",
   "type": "object",
   "properties": {
     "due": {
@@ -40,6 +40,13 @@
           "title": "Tipo Declaração"
         }
       }
+    },
+    "favoriteFruit": {
+      "title": "Select your favorite fruit",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:fruits"
+      ]
     }
   }
 }
