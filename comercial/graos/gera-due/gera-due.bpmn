@@ -135,6 +135,7 @@ del(rsp)</spiffworkflow:postScript>
 #         "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
 #         "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
 #    }</spiffworkflow:preScript>
+          <spiffworkflow:instructionsForEndUser>### Registro {{contador}} de {{totalRegistros}}</spiffworkflow:instructionsForEndUser>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1d28xqv</bpmn:incoming>
         <bpmn:outgoing>Flow_0mvhmve</bpmn:outgoing>
