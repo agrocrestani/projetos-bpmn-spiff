@@ -79,9 +79,9 @@ del(rsp)</spiffworkflow:postScript>
     formDue = {
         "paisDestino": None,
         "entidade": None,
-        "numero_due": None,
-        "data_embarque": None,
-        "data_averbacao": None,
+        "numero_due": due['numero_due'],
+        "data_embarque": due['data_embarque'],
+        "data_averbacao": due['data_averbacao'],
         "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
         "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
         "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
@@ -90,9 +90,9 @@ except:
     formDue = {
         "paisDestino": None,
         "entidade": None,
-        "numero_due": None,
-        "data_embarque": None,
-        "data_averbacao": None,
+        "numero_due": due['numero_due'],
+        "data_embarque": due['data_embarque'],
+        "data_averbacao": due['data_averbacao'],
         "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
         "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
         "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
@@ -155,7 +155,7 @@ query = f"""
             "TipoConhecimentoId", 
             "TipoDocumentoId")
             VALUES(
-            {f['EntidadeId']['id]}, 
+            {f['EntidadeId']['id']}, 
             '{f['numero_due']}', 
             '{f['numero_due']}', 
             '{f['numero_due']}', 
@@ -164,9 +164,9 @@ query = f"""
             '{f['']}', 
             '{f['']}', 
             '{f['data_averbacao']}', 
-            {f['naturezaDeclaracao']['id]}, 
-            {f['tipoConhecimento']['id]}, 
-            {f['tipoDeclaracao']['id]});
+            {f['naturezaDeclaracao']['id']}, 
+            {f['tipoConhecimento']['id']}, 
+            {f['tipoDeclaracao']['id']});
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
