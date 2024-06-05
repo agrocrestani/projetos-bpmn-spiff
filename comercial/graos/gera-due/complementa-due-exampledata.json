@@ -1,5 +1,7 @@
 {
-  "formDue": {},
+  "formDue": {
+    "entidade": "{\"id\":2,\"nome_fantasia\":\"FAZENDA QUERENCIA\",\"cnpj\":\"03.262.185/0001-09\"}"
+  },
   "fruits": [
     {
       "value": "apples",
