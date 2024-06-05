@@ -97,12 +97,12 @@ del(rsp)</spiffworkflow:postScript>
             <spiffworkflow:property name="formJsonSchemaFilename" value="complementa-due-schema.json" />
             <spiffworkflow:property name="formUiSchemaFilename" value="complementa-due-uischema.json" />
           </spiffworkflow:properties>
-          <spiffworkflow:postScript></spiffworkflow:postScript>
+          <spiffworkflow:postScript />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1d28xqv</bpmn:incoming>
         <bpmn:outgoing>Flow_0mvhmve</bpmn:outgoing>
       </bpmn:userTask>
-      <bpmn:scriptTask id="Activity_153jm8a">
+      <bpmn:scriptTask id="Activity_153jm8a" name="Insere no SAP">
         <bpmn:incoming>Flow_0mvhmve</bpmn:incoming>
         <bpmn:outgoing>Flow_0bqcq4s</bpmn:outgoing>
         <bpmn:script>from connectordb.hana import Hana
@@ -115,6 +115,19 @@ connection = {
 }
 
 baseSap = get_secret('baseSap')
+f = formDue 
+
+  "formDue": {
+    "paisDestino": null,
+    "entidade": null,
+    "numero_due": "12345678910",
+    "data_embarque": "2024-06-05",
+    "data_averbacao": "2024-06-05",
+    "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
+    "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
+    "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
+  }
+
 
 query = f"""
             INSERT INTO {baseSap}."DeclaracaoExportacao"
@@ -123,7 +136,6 @@ query = f"""
             "NumeroRegistro", 
             "NumeroConhecimento", 
             "PaisDestino", 
-            "UFDesctino", 
             "DataDeclaracao", 
             "DataRegistro", 
             "DataConhecimento", 
@@ -132,19 +144,18 @@ query = f"""
             "TipoConhecimentoId", 
             "TipoDocumentoId")
             VALUES(
-            0, 
-            '', 
-            '', 
-            '', 
-            '', 
-            '', 
-            '', 
-            '', 
-            '', 
-            '', 
-            0, 
-            0, 
-            0);
+            {f['EntidadeId']}, 
+            '{f['numero_due']}', 
+            '{f['NumeroRegistro']}', 
+            '{f['NumeroConhecimento']}', 
+            '{f['paisDestino']}', 
+            '{f['']}', 
+            '{f['']}', 
+            '{f['']}', 
+            '{f['data_averbacao']}', 
+            {f['naturezaDeclaracao']}, 
+            {f['tipoConhecimento']}, 
+            {f['tipoDeclaracao']});
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
@@ -180,6 +191,7 @@ rsp = Hana(connection).selectDb(query)</bpmn:script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0kb8eyo_di" bpmnElement="Activity_153jm8a">
         <dc:Bounds x="740" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1d28xqv_di" bpmnElement="Flow_1d28xqv">
         <di:waypoint x="526" y="177" />
