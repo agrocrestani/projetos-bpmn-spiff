@@ -178,7 +178,7 @@ query = f"""
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
-rsp = Hana(connection).insertDb(query)</bpmn:script>
+rsp = Hana(connection).executeDb(query)</bpmn:script>
       </bpmn:scriptTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_19e22i2" sourceRef="Activity_0rp2yix" targetRef="EndEvent_1" />
