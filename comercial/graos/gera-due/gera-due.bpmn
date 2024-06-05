@@ -91,10 +91,6 @@ del(rsp)</spiffworkflow:postScript>
       </bpmn:startEvent>
       <bpmn:sequenceFlow id="Flow_1d28xqv" sourceRef="Event_0cxxyf3" targetRef="Activity_0rsc96w" />
       <bpmn:sequenceFlow id="Flow_0mvhmve" sourceRef="Activity_0rsc96w" targetRef="Activity_153jm8a" />
-      <bpmn:endEvent id="Event_19qpy0q">
-        <bpmn:incoming>Flow_0bqcq4s</bpmn:incoming>
-      </bpmn:endEvent>
-      <bpmn:sequenceFlow id="Flow_0bqcq4s" sourceRef="Activity_153jm8a" targetRef="Event_19qpy0q" />
       <bpmn:userTask id="Activity_0rsc96w" name="Complementa dados da DUE">
         <bpmn:extensionElements>
           <spiffworkflow:properties>
@@ -142,7 +138,7 @@ del(rsp)</spiffworkflow:postScript>
       </bpmn:userTask>
       <bpmn:scriptTask id="Activity_153jm8a" name="Insere no SAP">
         <bpmn:incoming>Flow_0mvhmve</bpmn:incoming>
-        <bpmn:outgoing>Flow_0bqcq4s</bpmn:outgoing>
+        <bpmn:outgoing>Flow_06r7tkv</bpmn:outgoing>
         <bpmn:script>from connectordb.hana import Hana
 
 paisDestino = json.loads(formDue['paisDestino'])
@@ -196,6 +192,20 @@ query = f"""
 Hana(connection).executeDb(query)
 del(formDue)</bpmn:script>
       </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_06r7tkv" sourceRef="Activity_153jm8a" targetRef="Activity_1wqfogd" />
+      <bpmn:endEvent id="Event_1jr3erk">
+        <bpmn:incoming>Flow_0foxnyx</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0foxnyx" sourceRef="Activity_1wqfogd" targetRef="Event_1jr3erk" />
+      <bpmn:manualTask id="Activity_1wqfogd" name="Mensagem">
+        <bpmn:extensionElements>
+          <spiffworkflow:instructionsForEndUser># Confirmação
+
+### Due número: {due['numero_due']} inserida com sucesso no SAP.</spiffworkflow:instructionsForEndUser>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_06r7tkv</bpmn:incoming>
+        <bpmn:outgoing>Flow_0foxnyx</bpmn:outgoing>
+      </bpmn:manualTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_19e22i2" sourceRef="Activity_0rp2yix" targetRef="EndEvent_1" />
   </bpmn:process>
@@ -204,41 +214,49 @@ del(formDue)</bpmn:script>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1062" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0kgs1zt_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="300" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1262" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0rp2yix_di" bpmnElement="Activity_0rp2yix" isExpanded="true">
-        <dc:Bounds x="450" y="77" width="540" height="200" />
+        <dc:Bounds x="430" y="77" width="780" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0cxxyf3_di" bpmnElement="Event_0cxxyf3">
-        <dc:Bounds x="490" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_19qpy0q_di" bpmnElement="Event_19qpy0q">
-        <dc:Bounds x="902" y="159" width="36" height="36" />
+        <dc:Bounds x="470" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1i31z27_di" bpmnElement="Activity_0rsc96w">
-        <dc:Bounds x="580" y="137" width="100" height="80" />
+        <dc:Bounds x="560" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0kb8eyo_di" bpmnElement="Activity_153jm8a">
-        <dc:Bounds x="750" y="137" width="100" height="80" />
+        <dc:Bounds x="730" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1jr3erk_di" bpmnElement="Event_1jr3erk">
+        <dc:Bounds x="1072" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0t5tb6s_di" bpmnElement="Activity_1wqfogd">
+        <dc:Bounds x="900" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1d28xqv_di" bpmnElement="Flow_1d28xqv">
-        <di:waypoint x="526" y="177" />
-        <di:waypoint x="580" y="177" />
+        <di:waypoint x="506" y="177" />
+        <di:waypoint x="560" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0mvhmve_di" bpmnElement="Flow_0mvhmve">
-        <di:waypoint x="680" y="177" />
-        <di:waypoint x="750" y="177" />
+        <di:waypoint x="660" y="177" />
+        <di:waypoint x="730" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0bqcq4s_di" bpmnElement="Flow_0bqcq4s">
-        <di:waypoint x="850" y="177" />
-        <di:waypoint x="902" y="177" />
+      <bpmndi:BPMNEdge id="Flow_06r7tkv_di" bpmnElement="Flow_06r7tkv">
+        <di:waypoint x="830" y="177" />
+        <di:waypoint x="900" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0foxnyx_di" bpmnElement="Flow_0foxnyx">
+        <di:waypoint x="1000" y="177" />
+        <di:waypoint x="1072" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
@@ -246,11 +264,11 @@ del(formDue)</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="400" y="177" />
-        <di:waypoint x="450" y="177" />
+        <di:waypoint x="430" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_19e22i2_di" bpmnElement="Flow_19e22i2">
-        <di:waypoint x="990" y="177" />
-        <di:waypoint x="1062" y="177" />
+        <di:waypoint x="1210" y="177" />
+        <di:waypoint x="1262" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
