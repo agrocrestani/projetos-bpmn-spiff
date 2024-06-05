@@ -1,8 +1,8 @@
 {
   "due": {
     "entidade": null,
-    "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
-    "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
+    "naturezaDeclaracao": null,
+    "tipoConhecimento": null,
     "tipoDeclaracao": null
   },
   "fruits": [
