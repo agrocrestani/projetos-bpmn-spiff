@@ -2,7 +2,8 @@
   "formDue": {
     "entidade": "{\"id\":2,\"nome_fantasia\":\"FAZENDA QUERENCIA\",\"cnpj\":\"03.262.185/0001-09\"}",
     "numero_due": "12345678910",
-    "data_embarque": "2024-06-05"
+    "data_embarque": "2024-06-05",
+    "data_averbacao": "2024-06-05"
   },
   "fruits": [
     {
