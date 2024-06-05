@@ -222,13 +222,9 @@ del(formDue)</bpmn:script>
         <bpmn:extensionElements>
           <spiffworkflow:signalButtonLabel>Pula DUE</spiffworkflow:signalButtonLabel>
         </bpmn:extensionElements>
-        <bpmn:outgoing>Flow_1axx1wi</bpmn:outgoing>
+        <bpmn:outgoing>Flow_16gw67i</bpmn:outgoing>
         <bpmn:signalEventDefinition id="SignalEventDefinition_0wfjc9h" signalRef="Signal_1" />
       </bpmn:boundaryEvent>
-      <bpmn:endEvent id="Event_0kf2f78">
-        <bpmn:incoming>Flow_1axx1wi</bpmn:incoming>
-      </bpmn:endEvent>
-      <bpmn:sequenceFlow id="Flow_1axx1wi" sourceRef="Event_0dday6u" targetRef="Event_0kf2f78" />
       <bpmn:exclusiveGateway id="Gateway_0sb4w4b">
         <bpmn:incoming>Flow_1d28xqv</bpmn:incoming>
         <bpmn:incoming>Flow_1n1v30t</bpmn:incoming>
@@ -236,6 +232,10 @@ del(formDue)</bpmn:script>
       </bpmn:exclusiveGateway>
       <bpmn:sequenceFlow id="Flow_1rv724w" sourceRef="Gateway_0sb4w4b" targetRef="Activity_0rsc96w" />
       <bpmn:sequenceFlow id="Flow_1n1v30t" sourceRef="Activity_00g026e" targetRef="Gateway_0sb4w4b" />
+      <bpmn:endEvent id="Event_1a8e1yi">
+        <bpmn:incoming>Flow_16gw67i</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_16gw67i" sourceRef="Event_0dday6u" targetRef="Event_1a8e1yi" />
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_19e22i2" sourceRef="Activity_0rp2yix" targetRef="EndEvent_1" />
   </bpmn:process>
@@ -262,7 +262,7 @@ del(formDue)</bpmn:script>
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0rp2yix_di" bpmnElement="Activity_0rp2yix" isExpanded="true">
-        <dc:Bounds x="430" y="77" width="850" height="343" />
+        <dc:Bounds x="430" y="77" width="850" height="430" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0cxxyf3_di" bpmnElement="Event_0cxxyf3">
         <dc:Bounds x="470" y="159" width="36" height="36" />
@@ -285,11 +285,11 @@ del(formDue)</bpmn:script>
       <bpmndi:BPMNShape id="Activity_0vm4d99_di" bpmnElement="Activity_00g026e">
         <dc:Bounds x="720" y="260" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0kf2f78_di" bpmnElement="Event_0kf2f78">
-        <dc:Bounds x="852" y="352" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0sb4w4b_di" bpmnElement="Gateway_0sb4w4b" isMarkerVisible="true">
         <dc:Bounds x="535" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1a8e1yi_di" bpmnElement="Event_1a8e1yi">
+        <dc:Bounds x="862" y="402" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1i1p2je_di" bpmnElement="Event_0dday6u">
         <dc:Bounds x="772" y="322" width="36" height="36" />
@@ -318,11 +318,6 @@ del(formDue)</bpmn:script>
         <di:waypoint x="870" y="300" />
         <di:waypoint x="820" y="300" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1axx1wi_di" bpmnElement="Flow_1axx1wi">
-        <di:waypoint x="790" y="358" />
-        <di:waypoint x="790" y="370" />
-        <di:waypoint x="852" y="370" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1rv724w_di" bpmnElement="Flow_1rv724w">
         <di:waypoint x="585" y="177" />
         <di:waypoint x="630" y="177" />
@@ -331,6 +326,11 @@ del(formDue)</bpmn:script>
         <di:waypoint x="720" y="300" />
         <di:waypoint x="560" y="300" />
         <di:waypoint x="560" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16gw67i_di" bpmnElement="Flow_16gw67i">
+        <di:waypoint x="790" y="358" />
+        <di:waypoint x="790" y="420" />
+        <di:waypoint x="862" y="420" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
