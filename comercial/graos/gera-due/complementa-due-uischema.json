@@ -46,6 +46,13 @@
             "category": "tipo_declaracao",
             "itemFormat": "{nome_fantasia}"
             }
+        },
+        "tipoDeclaracao": {
+            "ui:widget": "typeahead",
+            "ui:options": {
+            "category": "tipo_declaracao",
+            "itemFormat": "{nome_fantasia}"
+            }
         }
     }
 }
