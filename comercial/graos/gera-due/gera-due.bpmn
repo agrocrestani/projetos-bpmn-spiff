@@ -131,6 +131,8 @@ except:
         <bpmn:script>from connectordb.hana import Hana
 from flask import jsonify
 
+f = jsonify(formDue)
+
 connection = {
     "address": "172.20.1.4",
     "port": "30015",
@@ -139,7 +141,6 @@ connection = {
 }
 
 baseSap = get_secret('baseSap')
-f = jsonify(formDue)
 
 query = f"""
             INSERT INTO {baseSap}."DeclaracaoExportacao"
