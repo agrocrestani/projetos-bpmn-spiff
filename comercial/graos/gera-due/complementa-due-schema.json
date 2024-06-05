@@ -25,8 +25,8 @@
         "entidade": {
           "type": "string",
           "title": "Entidade",
-          "default": "FAZENDA QUERENCIA"
-          
+          "default": "FAZENDA QUERENCIA",
+
         },
         "naturezaDeclaracao": {
           "type": "string",
