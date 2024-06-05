@@ -37,6 +37,10 @@
         "tipoDeclaracao": {
           "type": "string",
           "title": "Tipo Declaração"
+        },
+        "tipoDeclaracao": {
+          "type": "string",
+          "title": "Tipo Declaração"
         }
       }
     }
