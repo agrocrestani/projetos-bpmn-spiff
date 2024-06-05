@@ -1,0 +1,26 @@
+{
+  "title": "Text Field",
+  "description": "A simple text field that is required, has a default value, sets a placeholder, includes a description. (field name will be 'firstname')",
+  "type": "object",
+  "properties": {
+    "data_registro": {
+      "type": "string",
+      "format": "date",
+      "title": "Data do Registro",
+      "validationErrorMessage": "Date must be today's date or later"
+    },
+    "ruc": {
+      "type": "string",
+      "title": "Número do RUC"
+    },
+    "pais_importador": {
+      "type": "string",
+      "title": "País Importador"
+    }
+  },
+  "required": [
+    "firstName",
+    "ruc",
+    "pais_importador"
+  ]
+}
