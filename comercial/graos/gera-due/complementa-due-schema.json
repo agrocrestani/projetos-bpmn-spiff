@@ -24,8 +24,7 @@
         },
         "entidade": {
           "type": "string",
-          "title": "Entidade",
-          "anyOf": 
+          "title": "Entidade"
         },
         "naturezaDeclaracao": {
           "type": "string",
