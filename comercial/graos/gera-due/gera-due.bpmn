@@ -155,7 +155,7 @@ query = f"""
             "TipoConhecimentoId", 
             "TipoDocumentoId")
             VALUES(
-            {f['EntidadeId']['id']}, 
+            {f['entidade']['id']}, 
             '{f['numero_due']}', 
             '{f['numero_due']}', 
             '{f['numero_due']}', 
