@@ -100,8 +100,8 @@ del(rsp)</spiffworkflow:postScript>
           </spiffworkflow:properties>
           <spiffworkflow:postScript />
           <spiffworkflow:preScript>formDue = {
-    "paisDestino": None,
-    "entidade": None,
+    "paisDestino": "",
+    "entidade": "",
     "numero_due": due['numero_due'],
     "data_embarque": due['data_embarque'][0:10],
     "data_averbacao": due['data_averbacao'][0:10],
