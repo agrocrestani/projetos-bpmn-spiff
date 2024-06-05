@@ -25,7 +25,6 @@
         "entidade": {
           "type": "string",
           "title": "Entidade",
-          "default": "FAZENDA QUERENCIA",
           "anyOf": [
         "options_from_task_data_var:fruits"
       ]
