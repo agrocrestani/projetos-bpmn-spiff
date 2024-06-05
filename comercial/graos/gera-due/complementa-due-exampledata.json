@@ -4,7 +4,7 @@
     "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
     "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
     "tipoDeclaracao": null,
-    "paisDestino": "{\"id\":\"DZ\",\"nome\":\"Algéria\"}"
+    "paisDestino": null
   },
   "fruits": [
     {
