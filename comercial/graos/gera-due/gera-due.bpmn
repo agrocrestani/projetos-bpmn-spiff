@@ -201,7 +201,7 @@ del(formDue)</bpmn:script>
         <bpmn:extensionElements>
           <spiffworkflow:instructionsForEndUser># Confirmação
 
-### Due número: {due['numero_due']} inserida com sucesso no SAP.</spiffworkflow:instructionsForEndUser>
+### Due número: {{due['numero_due']}} inserida com sucesso no SAP.</spiffworkflow:instructionsForEndUser>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_06r7tkv</bpmn:incoming>
         <bpmn:outgoing>Flow_0foxnyx</bpmn:outgoing>
@@ -254,12 +254,12 @@ del(formDue)</bpmn:script>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1332" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0kgs1zt_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="300" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1332" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0rp2yix_di" bpmnElement="Activity_0rp2yix" isExpanded="true">
         <dc:Bounds x="430" y="77" width="850" height="343" />
@@ -291,11 +291,11 @@ del(formDue)</bpmn:script>
       <bpmndi:BPMNShape id="Gateway_0sb4w4b_di" bpmnElement="Gateway_0sb4w4b" isMarkerVisible="true">
         <dc:Bounds x="535" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14tx1k3_di" bpmnElement="Event_1pv0zjg">
-        <dc:Bounds x="852" y="199" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1i1p2je_di" bpmnElement="Event_0dday6u">
         <dc:Bounds x="772" y="322" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14tx1k3_di" bpmnElement="Event_1pv0zjg">
+        <dc:Bounds x="852" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1d28xqv_di" bpmnElement="Flow_1d28xqv">
         <di:waypoint x="506" y="177" />
