@@ -47,6 +47,9 @@
         "tipoDeclaracao": {
           "type": "string",
           "title": "Tipo Declaração",
+          "anyOf": [
+        "options_from_task_data_var:fruits"
+      ]
         }
       }
     },
