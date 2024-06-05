@@ -102,10 +102,54 @@ del(rsp)</spiffworkflow:postScript>
         <bpmn:incoming>Flow_1d28xqv</bpmn:incoming>
         <bpmn:outgoing>Flow_0mvhmve</bpmn:outgoing>
       </bpmn:userTask>
-      <bpmn:task id="Activity_153jm8a">
+      <bpmn:scriptTask id="Activity_153jm8a">
         <bpmn:incoming>Flow_0mvhmve</bpmn:incoming>
         <bpmn:outgoing>Flow_0bqcq4s</bpmn:outgoing>
-      </bpmn:task>
+        <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+            INSERT INTO {baseSap}."DeclaracaoExportacao"
+            ("EntidadeId", 
+            "NumeroDeclaracao", 
+            "NumeroRegistro", 
+            "NumeroConhecimento", 
+            "PaisDestino", 
+            "UFDesctino", 
+            "DataDeclaracao", 
+            "DataRegistro", 
+            "DataConhecimento", 
+            "DataAverbacao", 
+            "NaturezaId", 
+            "TipoConhecimentoId", 
+            "TipoDocumentoId")
+            VALUES(
+            0, 
+            '', 
+            '', 
+            '', 
+            '', 
+            '', 
+            '', 
+            '', 
+            '', 
+            '', 
+            0, 
+            0, 
+            0);
+          """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+rsp = Hana(connection).selectDb(query)</bpmn:script>
+      </bpmn:scriptTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_19e22i2" sourceRef="Activity_0rp2yix" targetRef="EndEvent_1" />
   </bpmn:process>
@@ -134,7 +178,7 @@ del(rsp)</spiffworkflow:postScript>
         <dc:Bounds x="580" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_11z2kxa_di" bpmnElement="Activity_153jm8a">
+      <bpmndi:BPMNShape id="Activity_0kb8eyo_di" bpmnElement="Activity_153jm8a">
         <dc:Bounds x="740" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1d28xqv_di" bpmnElement="Flow_1d28xqv">
