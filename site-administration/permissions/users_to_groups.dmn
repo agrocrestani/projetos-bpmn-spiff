@@ -560,6 +560,17 @@
           <text>"Querencia_Deposito_Insumos"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1mguim3">
+        <inputEntry id="UnaryTests_1r2k92g">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04h0y6j">
+          <text>"francisco.junior@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pm1v6s">
+          <text>"Matriz_Insumos"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
