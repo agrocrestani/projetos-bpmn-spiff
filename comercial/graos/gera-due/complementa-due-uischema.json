@@ -50,7 +50,7 @@
             "ui:widget": "typeahead",
             "ui:options": {
             "category": "pais_destino",
-            "itemFormat": "{nome_fantasia}"
+            "itemFormat": "{nome}"
             }
         }
     }
