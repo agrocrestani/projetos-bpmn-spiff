@@ -130,7 +130,7 @@ del(rsp)</spiffworkflow:postScript>
         <dc:Bounds x="580" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1vzoc86_di" bpmnElement="Activity_153jm8a">
+      <bpmndi:BPMNShape id="Activity_11z2kxa_di" bpmnElement="Activity_153jm8a">
         <dc:Bounds x="740" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1d28xqv_di" bpmnElement="Flow_1d28xqv">
