@@ -74,7 +74,7 @@ del(rsp)</spiffworkflow:postScript>
     <bpmn:subProcess id="Activity_0rp2yix">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>del(due)</spiffworkflow:postScript>
-        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:preScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_19e22i2</bpmn:outgoing>
@@ -99,29 +99,39 @@ del(rsp)</spiffworkflow:postScript>
             <spiffworkflow:property name="formUiSchemaFilename" value="complementa-due-uischema.json" />
           </spiffworkflow:properties>
           <spiffworkflow:postScript />
-          <spiffworkflow:preScript>try:
-    del(formDue)
-    formDue = {
-        "paisDestino": None,
-        "entidade": None,
-        "numero_due": due['numero_due'],
-        "data_embarque": due['data_embarque'][0:10],
-        "data_averbacao": due['data_averbacao'][0:10],
-        "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
-        "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
-        "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
-   }
-except:
-    formDue = {
-        "paisDestino": None,
-        "entidade": None,
-        "numero_due": due['numero_due'],
-        "data_embarque": due['data_embarque'][0:10],
-        "data_averbacao": due['data_averbacao'][0:10],
-        "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
-        "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
-        "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
-   }</spiffworkflow:preScript>
+          <spiffworkflow:preScript>formDue = {
+    "paisDestino": None,
+    "entidade": None,
+    "numero_due": due['numero_due'],
+    "data_embarque": due['data_embarque'][0:10],
+    "data_averbacao": due['data_averbacao'][0:10],
+    "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
+    "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
+    "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
+
+# try:
+#     del(formDue)
+#     formDue = {
+#         "paisDestino": None,
+#         "entidade": None,
+#         "numero_due": due['numero_due'],
+#         "data_embarque": due['data_embarque'][0:10],
+#         "data_averbacao": due['data_averbacao'][0:10],
+#         "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
+#         "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
+#         "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
+#    }
+# except:
+#     formDue = {
+#         "paisDestino": None,
+#         "entidade": None,
+#         "numero_due": due['numero_due'],
+#         "data_embarque": due['data_embarque'][0:10],
+#         "data_averbacao": due['data_averbacao'][0:10],
+#         "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
+#         "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
+#         "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
+#    }</spiffworkflow:preScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1d28xqv</bpmn:incoming>
         <bpmn:outgoing>Flow_0mvhmve</bpmn:outgoing>
@@ -179,7 +189,8 @@ query = f"""
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
-Hana(connection).executeDb(query)</bpmn:script>
+Hana(connection).executeDb(query)
+del(formDue)</bpmn:script>
       </bpmn:scriptTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_19e22i2" sourceRef="Activity_0rp2yix" targetRef="EndEvent_1" />
