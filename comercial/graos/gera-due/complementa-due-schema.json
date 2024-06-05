@@ -39,10 +39,7 @@
         },
         "tipoConhecimento": {
           "type": "string",
-          "title": "Tipo do Conhecimento",
-          "anyOf": [
-        "options_from_task_data_var:fruits"
-      ]
+          "title": "Tipo do Conhecimento"
         },
         "tipoDeclaracao": {
           "type": "string",
