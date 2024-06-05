@@ -129,9 +129,15 @@ except:
         <bpmn:incoming>Flow_0mvhmve</bpmn:incoming>
         <bpmn:outgoing>Flow_0bqcq4s</bpmn:outgoing>
         <bpmn:script>from connectordb.hana import Hana
-from flask import jsonify
 
-f = jsonify(formDue)
+paisDestino = json.loads(formDue['paisDestino'])
+entidade = json.loads(formDue['entidade'])
+numero_due = formDue['numero_due']
+data_embarque = formDue['data_embarque']
+data_averbacao = formDue['data_averbacao']
+naturezaDeclaracao = json.loads(formDue['naturezaDeclaracao'])
+tipoConhecimento =  json.loads(formDue['tipoConhecimento'])
+tipoDeclaracao = json.loads(formDue['tipoDeclaracao'])
 
 connection = {
     "address": "172.20.1.4",
@@ -157,18 +163,18 @@ query = f"""
             "TipoConhecimentoId", 
             "TipoDocumentoId")
             VALUES(
-            {f['entidade']['id']}, 
-            '{f['numero_due']}', 
-            '{f['numero_due']}', 
-            '{f['numero_due']}', 
-            '{f['paisDestino']}', 
-            '{f['']}', 
-            '{f['']}', 
-            '{f['']}', 
-            '{f['data_averbacao']}', 
-            {f['naturezaDeclaracao']['id']}, 
-            {f['tipoConhecimento']['id']}, 
-            {f['tipoDeclaracao']['id']});
+            {'entidade['id']}, 
+            '{numero_due}', 
+            '{numero_due}',  
+            '{numero_due}',  
+            '{paisDestino['id']}', 
+            '{data_averbacao}',  
+            '{data_averbacao}', 
+            '{data_averbacao}', 
+            '{data_averbacao}', 
+            {naturezaDeclaracao['id']}, 
+            {tipoConhecimento['id']}, 
+            {tipoDeclaracao['id']});
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
