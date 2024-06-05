@@ -43,6 +43,7 @@ You can also change the text you are reading here by updating the *Instructions*
     """,
   "fetch_results": True
 }
+
 </spiffworkflow:preScript>
         <spiffworkflow:serviceTaskOperator id="postgres_v2/DoSQL" resultVariable="rsp">
           <spiffworkflow:parameters>
@@ -66,6 +67,8 @@ You can also change the text you are reading here by updating the *Instructions*
     } for r in rsp['body']
 ]
 
+totalRegistros = len(dues)
+contador = 0
 del(rsp)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
