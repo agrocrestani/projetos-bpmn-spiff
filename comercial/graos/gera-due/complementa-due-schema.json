@@ -38,7 +38,7 @@
           "type": "string",
           "title": "Tipo Declaração"
         },
-        "tipoDeclaracao": {
+        "paisDestino": {
           "type": "string",
           "title": "Tipo Declaração"
         }
