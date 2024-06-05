@@ -39,7 +39,7 @@ You can also change the text you are reading here by updating the *Instructions*
           sap.due_eventos
       where
           itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' not in (select numero_due from sap.due_dados)
-          and itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' in ('24BR0000782570', '24BR0001110100','24BR0003384436')
+          --and itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' in ('24BR0000782570', '24BR0001110100','24BR0003384436')
     """,
   "fetch_results": True
 }
