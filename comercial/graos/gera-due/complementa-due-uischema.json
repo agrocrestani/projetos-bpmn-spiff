@@ -19,6 +19,33 @@
                 }
             }
         ],
-        
+        "naturezaDeclaracao": {
+            "ui:widget": "typeahead",
+            "ui:options": {
+            "category": "natureza_declaracao",
+            "itemFormat": "{nome_fantasia}"
+            }
+        },
+        "entidade": {
+            "ui:widget": "typeahead",
+            "ui:options": {
+            "category": "entidades",
+            "itemFormat": "{nome_fantasia} ({cnpj})"
+            }
+        },
+        "tipoConhecimento": {
+            "ui:widget": "typeahead",
+            "ui:options": {
+            "category": "tipo_conhecimento",
+            "itemFormat": "{nome_fantasia}"
+            }
+        },
+        "tipoDeclaracao": {
+            "ui:widget": "typeahead",
+            "ui:options": {
+            "category": "tipo_declaracao",
+            "itemFormat": "{nome_fantasia}"
+            }
+        }
     }
 }
