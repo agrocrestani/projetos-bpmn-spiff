@@ -108,7 +108,7 @@ del(rsp)</spiffworkflow:postScript>
     "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
     "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
     "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
-
+}
 # try:
 #     del(formDue)
 #     formDue = {
