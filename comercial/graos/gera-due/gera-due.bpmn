@@ -129,6 +129,7 @@ except:
         <bpmn:incoming>Flow_0mvhmve</bpmn:incoming>
         <bpmn:outgoing>Flow_0bqcq4s</bpmn:outgoing>
         <bpmn:script>from connectordb.hana import Hana
+from flask import jsonify
 
 connection = {
     "address": "172.20.1.4",
