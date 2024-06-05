@@ -561,7 +561,7 @@ del(main_usage)
     <bpmn:businessRuleTask id="Activity_1bsmf9p" name="Definir Fornecedor NFe">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_DefineFornec</spiffworkflow:calledDecisionId>
-        <spiffworkflow:preScript>BPLId = nfe['BPL_IDAssignedToInvoice']</spiffworkflow:preScript>
+        <spiffworkflow:preScript>BPLIdEmissor = str(nfe['BPL_IDAssignedToInvoice'])</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_13sk5ni</bpmn:incoming>
       <bpmn:outgoing>Flow_0q9zm5t</bpmn:outgoing>
