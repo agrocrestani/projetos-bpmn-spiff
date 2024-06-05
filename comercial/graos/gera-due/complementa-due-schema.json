@@ -40,7 +40,8 @@
         },
         "paisDestino": {
           "type": "string",
-          "title": "País de destino"
+          "title": "País de destino",
+          
         }
       }
     }
