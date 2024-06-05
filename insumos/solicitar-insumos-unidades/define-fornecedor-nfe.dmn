@@ -4,7 +4,7 @@
     <decisionTable id="decisionTable_1">
       <input id="input_1">
         <inputExpression id="inputExpression_1" typeRef="string">
-          <text>unidade</text>
+          <text>BPLIdEmissor</text>
         </inputExpression>
       </input>
       <output id="output_1" name="CardCodeFor" typeRef="string" />
