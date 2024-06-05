@@ -97,6 +97,7 @@ del(rsp)</spiffworkflow:postScript>
             <spiffworkflow:property name="formJsonSchemaFilename" value="complementa-due-schema.json" />
             <spiffworkflow:property name="formUiSchemaFilename" value="complementa-due-uischema.json" />
           </spiffworkflow:properties>
+          <spiffworkflow:postScript></spiffworkflow:postScript>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1d28xqv</bpmn:incoming>
         <bpmn:outgoing>Flow_0mvhmve</bpmn:outgoing>
