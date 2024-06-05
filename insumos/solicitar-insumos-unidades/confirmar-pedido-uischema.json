@@ -18,7 +18,7 @@
       "className": "btn btn-info"
     }
   },
-  "observa": {
+  "obsN": {
     "ui:widget": "textarea"
   }
 }
