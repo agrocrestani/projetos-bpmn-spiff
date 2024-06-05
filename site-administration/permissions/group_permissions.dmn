@@ -9,7 +9,7 @@
       </input>
       <output id="OutputClause_14rq1xp" name="permission_groups" typeRef="string" biodi:width="277" />
       <output id="output_1" name="permissions" typeRef="string" biodi:width="279" />
-      <output id="OutputClause_1d0f70s" name="permission_uris" typeRef="string" biodi:width="335" />
+      <output id="OutputClause_1d0f70s" name="permission_uris" typeRef="string" biodi:width="406" />
       <rule id="DecisionRule_13uhk78">
         <description>admin group has access to everything. The permissions create, read, update, and delete are the full set that is available, and "all" is a shortcut to include all permissions.</description>
         <inputEntry id="UnaryTests_1yb5tu4">
@@ -365,6 +365,62 @@
           <text>"/can-run-privileged-script/*"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0xj8yee">
+        <inputEntry id="UnaryTests_1urepgl">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rp6g2b">
+          <text>"Matriz_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0e3bxpq">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nmz70t">
+          <text>"PG:insumos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1o2g08f">
+        <inputEntry id="UnaryTests_0j75ygf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00eooan">
+          <text>"Matriz_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13rb6b7">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hdaev9">
+          <text>"/can-run-privileged-script/*"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07slx1v">
+        <inputEntry id="UnaryTests_19zn6fh">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12pb8l7">
+          <text>"Matriz_Deposito_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fdfahn">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kqo6qi">
+          <text>"/can-run-privileged-script/*"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_070kpns">
+        <inputEntry id="UnaryTests_0mr4d19">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ejybw8">
+          <text>"Matriz_Deposito_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0v99u4k">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1t7uja1">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1hzphqb">
         <inputEntry id="UnaryTests_1gej9j4">
           <text></text>
@@ -405,6 +461,34 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_013yltg">
           <text>"/can-run-privileged-script/*"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11r62t6">
+        <inputEntry id="UnaryTests_1ov0qo2">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wiaa67">
+          <text>"Querencia_Deposito_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14pe4f2">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1r6m5dt">
+          <text>"/can-run-privileged-script/*"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ws5a7u">
+        <inputEntry id="UnaryTests_0iytj7g">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17c8g81">
+          <text>"Querencia_Deposito_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04vsrs5">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04dlxzl">
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_01vu57r">
@@ -685,6 +769,20 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1usqbqf">
           <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qhcgyc">
+        <inputEntry id="UnaryTests_12krfg9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0myqjzl">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nf8vzb">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1m48lzw">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
