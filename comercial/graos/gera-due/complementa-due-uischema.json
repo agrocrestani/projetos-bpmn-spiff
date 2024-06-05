@@ -1,3 +1,5 @@
 {
-    "ui:layout": []
+    "ui:layout": [
+        {}
+    ]
 }
