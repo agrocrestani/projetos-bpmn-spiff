@@ -21,7 +21,7 @@
     },
     "observacaoNfe": {
       "type": "string",
-      "title": "Bio"
+      "title": "Observa"
     }
   }
 }
