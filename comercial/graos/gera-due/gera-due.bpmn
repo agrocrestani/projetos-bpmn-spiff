@@ -38,8 +38,8 @@ You can also change the text you are reading here by updating the *Instructions*
       FROM 
           sap.due_eventos
       where
-          itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' not in (select numero_due from sap.due_dados)
-          --and itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' in ('24BR0000782570', '24BR0001110100','24BR0003384436')
+          itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' not in (select d."NumeroDeclaracao" from sap.due_dados d)
+          and itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' in ('24BR0004628584', '24BR0002157037','24BR0002157525')
     """,
   "fetch_results": True
 }
