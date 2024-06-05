@@ -19,7 +19,7 @@
         "options_from_task_data_var:main_usage"
       ]
     },
-    "bio": {
+    "o": {
       "type": "string",
       "title": "Bio"
     }
