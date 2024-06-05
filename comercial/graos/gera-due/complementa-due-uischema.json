@@ -3,7 +3,7 @@
             "ui:layout": [
                 {
                     "entidade": {},
-                    "numero_due"
+                    "numero_due": {}
                 }
             ]
         }
