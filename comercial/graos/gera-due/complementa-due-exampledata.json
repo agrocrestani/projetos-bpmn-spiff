@@ -5,7 +5,7 @@
     "numero_due": "12345678910",
     "data_embarque": "2024-06-05",
     "data_averbacao": "2024-06-05",
-    "naturezaDeclaracao": null,
+    "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
     "tipoConhecimento": null,
     "tipoDeclaracao": null
   },
