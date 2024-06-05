@@ -527,6 +527,39 @@
           <text>"Matriz_Gerencia"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1eyx097">
+        <inputEntry id="UnaryTests_18e9fuq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01hldxn">
+          <text>"cristian.knorst@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gnb3pq">
+          <text>"Matriz_Deposito_Insumos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zv0dn5">
+        <inputEntry id="UnaryTests_1i3zqh0">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10sqqe1">
+          <text>"cristian.knorst@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13p0jqz">
+          <text>"Matriz_Insumos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06fubzz">
+        <inputEntry id="UnaryTests_07vzwqj">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0o5tckk">
+          <text>"cristian.knorst@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1krqgsd">
+          <text>"Querencia_Deposito_Insumos"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
