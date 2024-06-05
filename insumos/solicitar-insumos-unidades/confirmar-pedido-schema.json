@@ -23,5 +23,7 @@
       "type": "string",
       "title": "Bio"
     }
-  }
+  },
+  "title": "Text Area",
+  "description": "A larger resizable area to enter longer text. (field name will be 'bio')"
 }
