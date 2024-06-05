@@ -6,7 +6,7 @@
     "data_averbacao": "2024-06-05",
     "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
     "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
-    "tipoDeclaracao": "{\"id\":0,\"nome_fantasia\":\"Declaração de Exportação\"}"
+    "tipoDeclaracao": null
   },
   "fruits": [
     {
