@@ -47,7 +47,7 @@
             "itemFormat": "{nome_fantasia}"
             }
         },
-        "paisDes": {
+        "paisDestino": {
             "ui:widget": "typeahead",
             "ui:options": {
             "category": "tipo_declaracao",
