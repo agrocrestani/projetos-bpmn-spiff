@@ -2,10 +2,9 @@
     "due": {
             "ui:layout": [
                 {
-                    
+
                 }
             ]
-                "numero_due"
             }
         }
 }
