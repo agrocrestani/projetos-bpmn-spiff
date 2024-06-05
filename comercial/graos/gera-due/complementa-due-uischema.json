@@ -1,8 +1,7 @@
 {
     "due": {
         "ui:layout": [
-            
-            {
+                        {
                 "entidade": {},
                 "numero_due": {}
             },
