@@ -74,7 +74,7 @@ del(rsp)</spiffworkflow:postScript>
     <bpmn:subProcess id="Activity_0rp2yix">
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_19e22i2</bpmn:outgoing>
-      <bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true">
         <bpmn:loopDataInputRef>dues</bpmn:loopDataInputRef>
         <bpmn:loopDataOutputRef>dues</bpmn:loopDataOutputRef>
         <bpmn:inputDataItem id="due" name="due" />
