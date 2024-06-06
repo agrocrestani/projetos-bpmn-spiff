@@ -335,7 +335,17 @@ query = f"""
                 AND d."NumeroDeclaracao" = '{numero_due}'
         """
 
-duesSap = Hana(connection).selectDb(query)</bpmn:script>
+duesSap = Hana(connection).selectDb(query)
+
+#Verifica se está lançado no SAP
+newDues = []
+for z in dues:
+    for y in duesSap:
+        if (z['numero_due'] == y['numerodeclaracao'] and z['entidade'] == y['entidadeid']):
+            newDues.append(z)
+
+del(dues)
+dues = newDues</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:error id="Error_1" name="Error_1">
