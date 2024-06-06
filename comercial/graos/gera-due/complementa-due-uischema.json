@@ -52,6 +52,6 @@
             "category": "pais_destino",
             "itemFormat": "{nome} - {id}"
             }
-        }
+        },
     }
 }
