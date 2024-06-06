@@ -138,7 +138,7 @@ del(rsp)</spiffworkflow:postScript>
 paisDestino = json.loads(formDue['paisDestino'])
 entidade = json.loads(formDue['entidade'])
 numero_due = formDue['numero_due']
-data_embarque = formDue['data_embarque']
+data_registro = formDue['data_registro']
 data_averbacao = formDue['data_averbacao']
 naturezaDeclaracao = json.loads(formDue['naturezaDeclaracao'])
 tipoConhecimento =  json.loads(formDue['tipoConhecimento'])
@@ -173,9 +173,9 @@ query = f"""
             '{numero_due}',  
             '{numero_due}',  
             '{paisDestino['id']}', 
-            '{data_averbacao}',  
-            '{data_averbacao}', 
-            '{data_averbacao}', 
+            '{data_registro}',  
+            '{data_registro}', 
+            '{data_registro}', 
             '{data_averbacao}', 
             {naturezaDeclaracao['id']}, 
             {tipoConhecimento['id']}, 
