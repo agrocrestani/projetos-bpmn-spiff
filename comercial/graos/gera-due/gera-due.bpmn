@@ -297,7 +297,7 @@ if rsp[qtde] &gt; 0:
         <bpmn:incoming>Flow_1eg5zky</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:sequenceFlow id="Flow_1eg5zky" sourceRef="Activity_0ulfn62" targetRef="Event_0jfob9y" />
-      <bpmn:manualTask id="Activity_0ulfn62">
+      <bpmn:manualTask id="Activity_0ulfn62" name="Mensagem já existe">
         <bpmn:extensionElements>
           <spiffworkflow:instructionsForEndUser># Já existe.
 
@@ -373,6 +373,7 @@ if rsp[qtde] &gt; 0:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1h9unnt_di" bpmnElement="Activity_0ulfn62">
         <dc:Bounds x="1190" y="20" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1i1p2je_di" bpmnElement="Event_0dday6u">
         <dc:Bounds x="822" y="322" width="36" height="36" />
