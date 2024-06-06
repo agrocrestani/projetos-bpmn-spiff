@@ -23,7 +23,7 @@
           itens_averbados -&gt; 0 -&gt;&gt; 'data_averbacao' data_averbacao,
           itens_averbados -&gt; 0 -&gt;&gt; 'motivo_alteracao' motivo_alteracao,
           '1' as natureza,
-          null as entidade,
+          entidadeid,
           null as nro_declaracao,
           null as tipo_documento,
           null as tipo_conhecimento,
