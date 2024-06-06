@@ -125,7 +125,9 @@ del(rsp)</spiffworkflow:postScript>
 #         "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
 #         "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
 #    }</spiffworkflow:preScript>
-          <spiffworkflow:instructionsForEndUser>### Registro {{contador}} de {{totalRegistros}}</spiffworkflow:instructionsForEndUser>
+          <spiffworkflow:instructionsForEndUser># Complementa os dados da DUE
+### Registro {{contador}} de {{totalRegistros}}
+Essa DUE será inserida no Add-on TaxPlux NFe do SAP.</spiffworkflow:instructionsForEndUser>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1rv724w</bpmn:incoming>
         <bpmn:outgoing>Flow_0mvhmve</bpmn:outgoing>
