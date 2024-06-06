@@ -1,13 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="Definitions_76910d7" name="Observacao NFe" namespace="http://camunda.org/schema/1.0/dmn">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_76910d7" name="Observacao NFe" namespace="http://camunda.org/schema/1.0/dmn">
   <decision id="observacao_nfe" name="Observação NFe">
     <decisionTable id="decisionTable_1">
       <input id="input_1">
         <inputExpression id="inputExpression_1" typeRef="string">
-          <text></text>
+          <text>unidade</text>
         </inputExpression>
       </input>
-      <output id="output_1" typeRef="string" />
+      <output id="output_1" name="observacaoNfe" typeRef="string" biodi:width="715" />
+      <rule id="DecisionRule_1ppaq4w">
+        <inputEntry id="UnaryTests_1ny2sdo">
+          <text>"1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_058tclc">
+          <text>"ENDERECO PARA DEVOLUCAO DE EMBALAGENS VAZIAS CEARPA ROD MT 358 km 8 mais 2 5 Km A DIREITA ZONA RURAL TANGARA DA SERRA MT DECLARAMOS QUE OS PRODUTOS SE ENCONTRAM ADEQUADAMENTE EMBALADOS OU ACONDICIONADOS PARA SUPORTAR OS RISCOS NORMAIS DE CARREGAMENTOS DESCARREGAMENTO TRANSBORDO E TRANSPORTE CONFORME REGULAMENTO EM VIGOR"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04ajk20">
+        <inputEntry id="UnaryTests_1v4u73a">
+          <text>"2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uuat7k">
+          <text>"ENDERECO PARA DEVOLUCAO DE EMBALAGENS VAZIAS CEARPA ROD MT 358 km 8 mais 2 5 Km A DIREITA ZONA RURAL TANGARA DA SERRA MT DECLARAMOS QUE OS PRODUTOS SE ENCONTRAM ADEQUADAMENTE EMBALADOS OU ACONDICIONADOS PARA SUPORTAR OS RISCOS NORMAIS DE CARREGAMENTOS DESCARREGAMENTO TRANSBORDO E TRANSPORTE CONFORME REGULAMENTO EM VIGOR"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c9b7dq">
+        <inputEntry id="UnaryTests_153tooz">
+          <text>"3"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1itrtju">
+          <text>"ENDERECO PARA DEVOLUCAO DE EMBALAGENS VAZIAS CEARPA ROD MT 358 km 8 mais 2 5 Km A DIREITA ZONA RURAL TANGARA DA SERRA MT DECLARAMOS QUE OS PRODUTOS SE ENCONTRAM ADEQUADAMENTE EMBALADOS OU ACONDICIONADOS PARA SUPORTAR OS RISCOS NORMAIS DE CARREGAMENTOS DESCARREGAMENTO TRANSBORDO E TRANSPORTE CONFORME REGULAMENTO EM VIGOR"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vy1qjf">
+        <inputEntry id="UnaryTests_0523fw1">
+          <text>"4"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0i4xjns">
+          <text>"ENDERECO PARA DEVOLUCAO DE EMBALAGENS VAZIAS CEARPA Estrada vicinal Alto Juruena km 01 Campos de Julio MT CEP 78319-000 DECLARAMOS QUE OS PRODUTOS SE ENCONTRAM ADEQUADAMENTE EMBALADOS OU ACONDICIONADOS PARA SUPORTAR OS RISCOS NORMAIS DE CARREGAMENTOS DESCARREGAMENTO TRANSBORDO E TRANSPORTE CONFORME REGULAMENTO EM VIGOR"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_119663j">
+        <inputEntry id="UnaryTests_1s52o11">
+          <text>"5"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1k5bv0e">
+          <text>""</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
