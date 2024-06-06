@@ -27,7 +27,7 @@
         },
         "entidade": {
             "ui:widget": "typeahead",
-            
+            "ui:disabled": {},
             "ui:options": {
             "category": "entidades",
             "itemFormat": "{nome_fantasia} ({cnpj})"
