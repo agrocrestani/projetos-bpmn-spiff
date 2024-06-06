@@ -57,7 +57,7 @@
             "ui:disabled": {}
         },
         "numero_due": {
-            
+            "ui:disabled": {}
         }
     }
 }
