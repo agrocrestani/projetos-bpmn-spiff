@@ -14,7 +14,7 @@
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_0rp2yix" />
     <bpmn:serviceTask id="Activity_0qpzdpu" name="Busca novas DUEs">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:preScript>schema = {
   "sql": """
       SELECT distinct 
