@@ -12,7 +12,7 @@
           "type": "string",
           "title": "Numero DUE"
         },
-        "data_embarque": {
+        "data_registro": {
           "type": "string",
           "format": "date",
           "title": "Data Embarque"
