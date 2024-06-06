@@ -52,7 +52,7 @@
         "data_averbacao": r[2],
         "motivo_alteracao": r[3],
         "natureza": "",
-        "entidade":"",
+        "entidade": r[5],
         "nro_declaracao":"",
         "tipo_documento":"",
         "tipo_conhecimento":"",
