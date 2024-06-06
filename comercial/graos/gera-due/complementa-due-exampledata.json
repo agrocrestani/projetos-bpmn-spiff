@@ -1,7 +1,7 @@
 {
   "formDue": {
     "paisDestino": null,
-    "entidade": null,
+    "entidade": "{\"id\":3,\"nome_fantasia\":\"FAZENDA COLORADO\",\"cnpj\":\"03.262.185/0003-62\"}",
     "numero_due": "12345678910",
     "data_embarque": "2024-06-05",
     "data_averbacao": "2024-06-05",
