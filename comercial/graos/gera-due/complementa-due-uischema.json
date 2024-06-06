@@ -53,7 +53,7 @@
             "itemFormat": "{nome} - {id}"
             }
         },
-        "data_registro": {
+        "data_averbacao": {
             "ui:disabled": {}
         },
         "numero_due": {
