@@ -282,7 +282,7 @@ connection = {
 baseSap = get_secret('baseSap')
 
 query = f"""
-            SELECT count(*) qtde FROM "DeclaracaoExportacao" d WHERE d."EntidadeId" = {entidade} AND d."NumeroDeclaracao" = '{numero_due}'
+            SELECT count(*) qtde FROM "DeclaracaoExportacao" d WHERE d."EntidadeId" = {entidade['id']} AND d."NumeroDeclaracao" = '{numero_due}'
         """
 
 rsp = Hana(connection).selectDb(query)
@@ -326,12 +326,12 @@ if rsp[qtde] &gt; 0:
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1722" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0kgs1zt_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="300" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1722" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0rp2yix_di" bpmnElement="Activity_0rp2yix" isExpanded="true">
         <dc:Bounds x="430" y="-90" width="1240" height="597" />
@@ -339,15 +339,9 @@ if rsp[qtde] &gt; 0:
       <bpmndi:BPMNShape id="Event_0cxxyf3_di" bpmnElement="Event_0cxxyf3">
         <dc:Bounds x="470" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0sb4w4b_di" bpmnElement="Gateway_0sb4w4b" isMarkerVisible="true">
-        <dc:Bounds x="565" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1i31z27_di" bpmnElement="Activity_0rsc96w">
         <dc:Bounds x="680" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0vm4d99_di" bpmnElement="Activity_00g026e">
-        <dc:Bounds x="770" y="260" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0kb8eyo_di" bpmnElement="Activity_153jm8a">
         <dc:Bounds x="1190" y="137" width="100" height="80" />
@@ -359,6 +353,12 @@ if rsp[qtde] &gt; 0:
       <bpmndi:BPMNShape id="Activity_0t5tb6s_di" bpmnElement="Activity_1wqfogd">
         <dc:Bounds x="1360" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vm4d99_di" bpmnElement="Activity_00g026e">
+        <dc:Bounds x="770" y="260" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0sb4w4b_di" bpmnElement="Gateway_0sb4w4b" isMarkerVisible="true">
+        <dc:Bounds x="565" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1a8e1yi_di" bpmnElement="Event_1a8e1yi">
         <dc:Bounds x="1252" y="402" width="36" height="36" />
