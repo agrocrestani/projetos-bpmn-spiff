@@ -58,9 +58,6 @@
         },
         "numero_due": {
             "ui:disabled": {}
-        },
-        "entidade": {
-            
         }
     }
 }
