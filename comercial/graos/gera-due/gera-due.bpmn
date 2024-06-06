@@ -91,10 +91,10 @@ del(rsp)</spiffworkflow:postScript>
             <spiffworkflow:property name="formJsonSchemaFilename" value="complementa-due-schema.json" />
             <spiffworkflow:property name="formUiSchemaFilename" value="complementa-due-uischema.json" />
           </spiffworkflow:properties>
-          <spiffworkflow:postScript />
+          <spiffworkflow:postScript></spiffworkflow:postScript>
           <spiffworkflow:preScript>formDue = {
     # "paisDestino": "",
-    "entidade": due['entidadeid'],
+    "entidade": due['entidade'],
     "numero_due": due['numero_due'],
     "data_embarque": due['data_embarque'][0:10],
     "data_averbacao": due['data_averbacao'][0:10],
