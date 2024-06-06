@@ -33,7 +33,7 @@
           sap.due_eventos
       where
           itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' not in (select d."NumeroDeclaracao" from sap.due_dados d)
-          and itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' in ('24BR0004628584', '24BR0002157037','24BR0002157525')
+          --and itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' in ('24BR0004628584', '24BR0002157037','24BR0002157525')
     """,
   "fetch_results": True
 }
@@ -186,6 +186,7 @@ query = f"""
 
 # rsp = json.loads(Hana(connection).selectDb(query))
 Hana(connection).executeDb(query)
+Hana(connection).executeDb('commit')
 del(formDue)</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:sequenceFlow id="Flow_06r7tkv" sourceRef="Activity_153jm8a" targetRef="Activity_1wqfogd" />
