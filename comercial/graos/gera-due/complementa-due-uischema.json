@@ -58,6 +58,9 @@
         },
         "numero_due": {
             "ui:disabled": {}
+        },
+        "numero_due": {
+            "ui:disabled": {}
         }
     }
 }
