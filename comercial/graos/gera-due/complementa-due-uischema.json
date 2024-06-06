@@ -6,7 +6,7 @@
                 "numero_due": {"sm": 2, "md": 2, "lg": 3}
             },
             {
-                "data_embarque": {"sm": 2, "md": 2, "lg": 4},
+                "data_registro": {"sm": 2, "md": 2, "lg": 4},
                 "data_averbacao": {"sm": 2, "md": 2, "lg": 4}
             },
             {
