@@ -292,7 +292,9 @@ existe = 0
 if rsp[qtde] &gt; 0:
     existe = rsp[qtde]</bpmn:script>
       </bpmn:scriptTask>
-      <bpmn:sequenceFlow id="Flow_0f4cahx" sourceRef="Gateway_0dyggs7" targetRef="Activity_0ulfn62" />
+      <bpmn:sequenceFlow id="Flow_0f4cahx" sourceRef="Gateway_0dyggs7" targetRef="Activity_0ulfn62">
+        <bpmn:conditionExpression>existe &gt;= 1</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
       <bpmn:endEvent id="Event_0jfob9y">
         <bpmn:incoming>Flow_1eg5zky</bpmn:incoming>
       </bpmn:endEvent>
