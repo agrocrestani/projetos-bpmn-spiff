@@ -59,7 +59,7 @@
         "numero_due": {
             "ui:disabled": {}
         },
-        "numero_due": {
+        "entidade": {
             "ui:disabled": {}
         }
     }
