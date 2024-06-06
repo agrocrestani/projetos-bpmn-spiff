@@ -92,27 +92,27 @@ del(rsp)</spiffworkflow:postScript>
             <spiffworkflow:property name="formUiSchemaFilename" value="complementa-due-uischema.json" />
           </spiffworkflow:properties>
           <spiffworkflow:postScript />
-          <spiffworkflow:preScript>if due['entidade'] == "1"
+          <spiffworkflow:preScript>if due['entidade'] == "1":
     entidade = "{\"id\":1,\"nome_fantasia\":\"FAZENDA QUERENCIA\",\"cnpj\":\"09.262.185/0002-81\"}"
-elif due['entidade'] == "2"
+elif due['entidade'] == "2":
     entidade = "{\"id\":2,\"nome_fantasia\":\"FAZENDA PROMISSAO\",\"cnpj\":\"09.262.185/0001-09\"}"
-elif due['entidade'] == "3"
+elif due['entidade'] == "3":
     entidade = "{\"id\":3,\"nome_fantasia\":\"FAZENDA COLORADO\",\"cnpj\":\"09.262.185/0003-62\"}"
-elif due['entidade'] == "4"
+elif due['entidade'] == "4":
     entidade = "{\"id\":4,\"nome_fantasia\":\"FAZENDA SAO CARLOS\",\"cnpj\":\"09.262.185/0004-43\"}"
-elif due['entidade'] == "5"
+elif due['entidade'] == "5":
     entidade = "{\"id\":5,\"nome_fantasia\":\"FAZENDA CURUPAI\",\"cnpj\":\"09.262.185/0005-24\"}"
-elif due['entidade'] == "6"
+elif due['entidade'] == "6":
     entidade = "{\"id\":6,\"nome_fantasia\":\"AGROPECUARIA GERMINARE LTDA\",\"cnpj\":\"08.944.169/0001-01\"}"
-elif due['entidade'] == "7"
+elif due['entidade'] == "7":
     entidade = "{\"id\":7,\"nome_fantasia\":\"FAZENDA QUERENCIA EMPREENDIMENTOS AGROPECUARIOS S/A\",\"cnpj\":\"26.250.360/0001-35\"}"
-elif due['entidade'] == "8"
+elif due['entidade'] == "8":
     entidade = "{\"id\":8,\"nome_fantasia\":\"FAZENDA QUERENCIA EMPREENDIMENTOS AGROPECUARIOS S/A\",\"cnpj\":\"26.250.360/0002-16\"}"
-elif due['entidade'] == "9"
+elif due['entidade'] == "9":
     entidade = "{\"id\":9,\"nome_fantasia\":\"AGROPECUARIA CRESTANI LTDA\",\"cnpj\":\"03.262.185/0005-24\"}"
-elif due['entidade'] == "10"
+elif due['entidade'] == "10":
     entidade = "{\"id\":10,\"nome_fantasia\":\"AGROPECUARIA GERMINARE LTDA\",\"cnpj\":\"08.944.169/0002-92\"}"
-elif due['entidade'] == "11"
+elif due['entidade'] == "11":
     entidade = "{\"id\":11,\"nome_fantasia\":\"AGROPECUARIA GERMINARE LTDA\",\"cnpj\":\"08.944.169/0004-54\"}"
 
 formDue = {
