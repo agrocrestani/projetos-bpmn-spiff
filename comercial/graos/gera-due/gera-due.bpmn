@@ -282,7 +282,7 @@ connection = {
 baseSap = get_secret('baseSap')
 
 query = f"""
-            SELECT count(*) qtde FROM "DeclaracaoExportacao" d WHERE d."EntidadeId" = {entidade['id']} AND d."NumeroDeclaracao" = '{numero_due}'
+            SELECT count(*) qtde FROM {baseSap}."DeclaracaoExportacao" d WHERE d."EntidadeId" = {entidade['id']} AND d."NumeroDeclaracao" = '{numero_due}'
         """
 
 rsp = Hana(connection).selectDb(query)
