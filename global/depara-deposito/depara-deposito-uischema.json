@@ -22,7 +22,7 @@
     "ui:emptyValue": "",
     "ui:description": "Informe o ID do depósito no Farmbox"
   },
-  "NovoidFarmbox": {
+  "novoIidFarmbox": {
     "ui:autofocus": true,
     "ui:emptyValue": "",
     "ui:description": "Informe o ID do depósito no Solinftec"
