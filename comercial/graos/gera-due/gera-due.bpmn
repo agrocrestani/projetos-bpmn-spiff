@@ -334,7 +334,7 @@ duesSap = Hana(connection).selectDb(query)
 
 listaSAP = []
 for d in duesSap:
-    listaSAP(d['numerodeclaracao']+'-'+str(d['entidadeid']))
+    listaSAP.append(d['numerodeclaracao']+'-'+str(d['entidadeid']))
 
 
 #Verifica se está lançado no SAP
