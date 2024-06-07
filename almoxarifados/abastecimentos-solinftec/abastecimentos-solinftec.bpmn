@@ -16,6 +16,21 @@
           <spiffworkflow:property name="formJsonSchemaFilename" value="dados-iniciais-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="dados-iniciais-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:preScript>n_filiais = []
+for f in filiais:
+    BPLId = f['BPLId']
+    BPLName = f['BPLName']
+    AliasName = f['AliasName']
+    if BPLId in ['2', '3', '4', '5']: 
+        n_filiais.append(
+            {
+                "value": BPLId,
+                "label": AliasName,
+            }
+        )
+
+n_safras = safras
+</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
