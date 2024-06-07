@@ -6,9 +6,9 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:incoming>Flow_0opz8sn</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_1jhupb9" />
     <bpmn:userTask id="Activity_0qpzdpu" name="Dados Iniciais">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser />
@@ -46,6 +46,11 @@ n_safras = safras
     </bpmn:userTask>
     <bpmn:dataStoreReference id="DataStoreReference_1e33cja" name="Filiais" dataStoreRef="filiais" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_1m8vc61" name="Safras" dataStoreRef="safras" type="json" />
+    <bpmn:sequenceFlow id="Flow_0opz8sn" sourceRef="Activity_1jhupb9" targetRef="EndEvent_1" />
+    <bpmn:serviceTask id="Activity_1jhupb9">
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0opz8sn</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmn:dataStore id="safras" name="JSONDataStore" />
@@ -53,9 +58,6 @@ n_safras = safras
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_abastecimentos_solinftec_e7nh966">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="432" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0lqwhar_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
@@ -73,13 +75,19 @@ n_safras = safras
           <dc:Bounds x="283" y="342" width="35" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1082" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0rb21t9_di" bpmnElement="Activity_1jhupb9">
+        <dc:Bounds x="430" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="370" y="177" />
-        <di:waypoint x="432" y="177" />
+        <di:waypoint x="430" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1ezl467_di" bpmnElement="DataInputAssociation_1ezl467">
         <di:waypoint x="258" y="285" />
@@ -88,6 +96,10 @@ n_safras = safras
       <bpmndi:BPMNEdge id="DataInputAssociation_1h1x7md_di" bpmnElement="DataInputAssociation_1h1x7md">
         <di:waypoint x="305" y="285" />
         <di:waypoint x="318" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0opz8sn_di" bpmnElement="Flow_0opz8sn">
+        <di:waypoint x="530" y="177" />
+        <di:waypoint x="1082" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
