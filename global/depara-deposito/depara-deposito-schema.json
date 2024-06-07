@@ -28,6 +28,10 @@
     "idSolinftec": {
       "type": "string",
       "title": "Id Solinftec"
+    },
+    "idSolinftec": {
+      "type": "string",
+      "title": "Id Solinftec"
     }
   }
 }
