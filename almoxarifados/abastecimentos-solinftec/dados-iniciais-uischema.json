@@ -3,7 +3,8 @@
     {
       "unidade": {},
       "safra": {}
-    }
+    },
+    
   ],
   "dataAbastecimentos": {
     "ui:widget": "date",
