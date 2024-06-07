@@ -6,7 +6,7 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_0opz8sn</bpmn:incoming>
+      <bpmn:incoming>Flow_0l9gevw</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_1jhupb9" />
     <bpmn:userTask id="Activity_0qpzdpu" name="Dados Iniciais">
@@ -46,7 +46,7 @@ n_safras = safras
     </bpmn:userTask>
     <bpmn:dataStoreReference id="DataStoreReference_1e33cja" name="Filiais" dataStoreRef="filiais" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_1m8vc61" name="Safras" dataStoreRef="safras" type="json" />
-    <bpmn:sequenceFlow id="Flow_0opz8sn" sourceRef="Activity_1jhupb9" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_0opz8sn" sourceRef="Activity_1jhupb9" targetRef="Activity_1v23cmq" />
     <bpmn:serviceTask id="Activity_1jhupb9" name="login Solinftec">
       <bpmn:extensionElements>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
@@ -73,6 +73,28 @@ headers = {
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0opz8sn</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0l9gevw" sourceRef="Activity_1v23cmq" targetRef="EndEvent_1" />
+    <bpmn:serviceTask id="Activity_1v23cmq" name="Busca Abastecimentos">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>url = "https://scdi.saas-solinftec.com/pull"
+
+payload = {
+  'identifier': '50',
+  'filters': {
+    # 'page': '1',
+    "size": 2000,
+    "data": dataAbastecimentos[8:10]+"/"+dataAbastecimentos[5:7]+"/"+dataAbastecimentos[0:4]
+  }
+})
+
+headers = {
+  'Content-Type': 'application/json',
+  'X-Auth-Token': token
+}</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0opz8sn</bpmn:incoming>
+      <bpmn:outgoing>Flow_0l9gevw</bpmn:outgoing>
     </bpmn:serviceTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
@@ -105,6 +127,10 @@ headers = {
         <dc:Bounds x="430" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_17wvqiz_di" bpmnElement="Activity_1v23cmq">
+        <dc:Bounds x="600" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -123,6 +149,10 @@ headers = {
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0opz8sn_di" bpmnElement="Flow_0opz8sn">
         <di:waypoint x="530" y="177" />
+        <di:waypoint x="600" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0l9gevw_di" bpmnElement="Flow_0l9gevw">
+        <di:waypoint x="700" y="177" />
         <di:waypoint x="1082" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
