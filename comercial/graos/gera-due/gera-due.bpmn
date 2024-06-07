@@ -334,10 +334,13 @@ duesSap = Hana(connection).selectDb(query)
 
 #Verifica se está lançado no SAP
 newDues = []
+controle = []
 for z in dues:
     for y in duesSap:
         if not (z['numero_due'] == y['numerodeclaracao'] and int(z['entidade']) == y['entidadeid']):
-            newDues.append(z)
+            if z['numero_due'] not in controle:
+                controle.append(z['numero_due'])
+                newDues.append(z)
 
 del(dues)
 </bpmn:script>
