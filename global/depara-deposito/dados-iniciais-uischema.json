@@ -45,26 +45,5 @@
         "sm": 2,
         "md": 2,
         "lg": 4
-      },
-      "MainUsage": {
-        "sm": 2,
-        "md": 2,
-        "lg": 4
       }
-    },
-    {
-      "Comments": {}
-    },
-    {
-      "qtdeColaboradores": {},
-      "periodo": {}
-    }
-  ],
-  "Comments": {
-    "ui:widget": "textarea"
-  },
-  "delivery_date": {
-    "ui:widget": "date",
-    "ui:help": "Specify the preferred delivery date for this service/product"
-  }
 }
