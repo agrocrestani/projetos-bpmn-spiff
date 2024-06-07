@@ -20,7 +20,7 @@
         "options_from_task_data_var:n_safras"
       ]
     },
-    "data": {
+    "dataAbastecimentos": {
       "type": "string",
       "format": "date",
       "title": "Preferred Delivery Date",
