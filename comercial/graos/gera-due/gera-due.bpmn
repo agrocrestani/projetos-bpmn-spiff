@@ -346,6 +346,9 @@ for z in dues:
     else:
         newDues.append(z)
 
+totalRegistros = len(newDues)
+contador = 0
+
 del(dues)
 del(duesSap)
 </bpmn:script>
