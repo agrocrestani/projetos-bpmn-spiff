@@ -25,7 +25,7 @@
     },
     "idSolinftec": {
       "type": "string",
-      "title": "I"
+      "title": "Id"
     }
   }
 }
