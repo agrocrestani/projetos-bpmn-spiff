@@ -9,20 +9,31 @@
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
-    <bpmn:manualTask id="Activity_0qpzdpu" name="Example manual task">
+    <bpmn:userTask id="Activity_0qpzdpu" name="Dados Iniciais">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
-
- * **Script Task** - write a short snippet of python code to update some data
- *  **User Task** - generate a form that collects information from a user
- * **Service Task** - communicate with an external API to fetch or update some data.
-
-You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="dados-iniciais-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="dados-iniciais-uischema.json" />
+        </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-    </bpmn:manualTask>
+      <bpmn:property id="Property_0gvmwni" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1ezl467">
+        <bpmn:sourceRef>DataStoreReference_1e33cja</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0gvmwni</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_1h1x7md">
+        <bpmn:sourceRef>DataStoreReference_1m8vc61</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0gvmwni</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:dataStoreReference id="DataStoreReference_1e33cja" name="Filiais" dataStoreRef="filiais" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_1m8vc61" name="Safras" dataStoreRef="safras" type="json" />
   </bpmn:process>
+  <bpmn:dataStore id="filiais" name="JSONDataStore" />
+  <bpmn:dataStore id="safras" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_abastecimentos_solinftec_e7nh966">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -31,9 +42,21 @@ You can also change the text you are reading here by updating the *Instructions*
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="432" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
+      <bpmndi:BPMNShape id="Activity_0lqwhar_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1e33cja_di" bpmnElement="DataStoreReference_1e33cja">
+        <dc:Bounds x="215" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="226" y="342" width="28" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1m8vc61_di" bpmnElement="DataStoreReference_1m8vc61">
+        <dc:Bounds x="265" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="273" y="342" width="35" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
@@ -42,6 +65,14 @@ You can also change the text you are reading here by updating the *Instructions*
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="370" y="177" />
         <di:waypoint x="432" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1ezl467_di" bpmnElement="DataInputAssociation_1ezl467">
+        <di:waypoint x="258" y="285" />
+        <di:waypoint x="308" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1h1x7md_di" bpmnElement="DataInputAssociation_1h1x7md">
+        <di:waypoint x="297" y="285" />
+        <di:waypoint x="317" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
