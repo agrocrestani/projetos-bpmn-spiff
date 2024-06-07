@@ -20,7 +20,7 @@
   "idFarmbox": {
     "ui:autofocus": true,
     "ui:emptyValue": "",
-    "ui:description": "Valor atual "
+    "ui:description": "Valor atual no SAP"
   },
   "novoIdFarmbox": {
     "ui:autofocus": true,
