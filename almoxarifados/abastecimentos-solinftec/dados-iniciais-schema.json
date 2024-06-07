@@ -3,7 +3,7 @@
   "required": [
     "unidade",
     "safra",
-    ""
+    "dataAbastecime"
   ],
   "properties": {
     "unidade": {
