@@ -27,55 +27,6 @@
       "anyOf": [
         "options_from_task_data_var:n_almoxarifados"
       ]
-    },
-    "MainUsage": {
-      "title": "Utilizacao",
-      "type": "string",
-      "default": "12",
-      "anyOf": [
-        "options_from_task_data_var:n_utilizacoes"
-      ]
-    },
-    "Comments": {
-      "type": "string",
-      "title": "Observações"
-    },
-    "qtdeColaboradores": {
-      "title": "Quantidade de pessoas",
-      "type": "number"
-    },
-    "periodo": {
-      "title": "Periodo",
-      "type": "string",
-      "anyOf": [
-        {
-          "type": "string",
-          "enum": [
-            "7"
-          ],
-          "title": "07 - Semanal"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "15"
-          ],
-          "title": "15 - Quinzenal"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "30"
-          ],
-          "title": "30 - Mensal"
-        }
-      ]
-    },
-    "RequriedDate": {
-      "type": "string",
-      "format": "date",
-      "title": "Data Necessária",
-      "validationErrorMessage": "Date must be today's date or later"
     }
   }
 }
