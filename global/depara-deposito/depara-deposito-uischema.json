@@ -37,7 +37,7 @@
   "novoIdSolinftec": {
     "ui:autofocus": true,
     "ui:emptyValue": "",
-    "ui:description": "Informe o ID do depósito no Solinftec"
+    "ui:description": "Informe o novo ID do depósito no Solinftec"
   },
   "BPLId": {
     "ui:disabled": {}
