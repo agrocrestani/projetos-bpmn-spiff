@@ -28,7 +28,7 @@
     "ui:autocomplete": "family-name",
     "ui:enableMarkdownInDescription": true,
     "ui:description": "Informe o ID do depósito no Farmbox"
-  }
+  },
   "BPLId": {
     "ui:disabled": {}
   },
