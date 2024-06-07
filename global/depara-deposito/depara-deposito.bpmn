@@ -45,7 +45,8 @@ query = f"""
             SELECT
                 o."WhsCode",
                 o."WhsName",
-                o."U_AC_IdFarmBox"
+                o."U_AC_IdFarmBox",
+                o."U_AC_Id_Solinftec"
             FROM
                 owhs o
             WHERE
