@@ -18,6 +18,7 @@
     }
   ],
   "idFarmbox": {
+    "ui:disabled": {},
     "ui:autofocus": true,
     "ui:emptyValue": "",
     "ui:description": "Valor atual no SAP"
