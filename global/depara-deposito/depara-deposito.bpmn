@@ -37,8 +37,8 @@ for f in filiais:
 
 n_depositos = []
 for d in depositos:
-    WhsCode = a['WhsCode']
-    WhsName = a['WhsName']
+    WhsCode = d['WhsCode']
+    WhsName = d['WhsName']
     n_depositos.append(
         {
             "value": WhsCode,
