@@ -83,7 +83,7 @@ query = f"""
                 o."U_AC_IdFarmBox",
                 o."U_AC_Id_Solinftec"
             FROM
-                owhs o
+                {baseSap}.owhs o
             WHERE
                 o."BPLid" = {BPLId}
                 AND o."WhsCode" = '{WhsCode}'
