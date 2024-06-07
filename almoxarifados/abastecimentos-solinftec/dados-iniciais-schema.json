@@ -3,6 +3,7 @@
   "required": [
     "unidade",
     "safra",
+    ""
   ],
   "properties": {
     "unidade": {
