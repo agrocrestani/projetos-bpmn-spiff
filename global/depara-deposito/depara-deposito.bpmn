@@ -27,7 +27,7 @@ You can also change the text you are reading here by updating the *Instructions*
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_0j09d7n" sourceRef="Activity_1o8n0c1" targetRef="EndEvent_1" />
-    <bpmn:scriptTask id="Activity_1o8n0c1">
+    <bpmn:scriptTask id="Activity_1o8n0c1" name="Busca o deposito no SAP">
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0j09d7n</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
@@ -72,6 +72,7 @@ rsp = Hana(connection).selectDb(query)</bpmn:script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1xfwtkl_di" bpmnElement="Activity_1o8n0c1">
         <dc:Bounds x="450" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
