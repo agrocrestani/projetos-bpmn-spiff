@@ -338,8 +338,9 @@ controle = []
 for z in dues:
     for y in duesSap:
         if not (z['numero_due'] == y['numerodeclaracao'] and int(z['entidade']) == y['entidadeid']):
-            if z['numero_due'] not in controle:
-                controle.append(z['numero_due'])
+            control = z['numero_due'] + '-' + z['entidade']
+            if control not in controle:
+                controle.append(control)
                 newDues.append(z)
 
 del(dues)
