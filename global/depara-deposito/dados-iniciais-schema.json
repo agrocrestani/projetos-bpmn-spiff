@@ -2,7 +2,7 @@
   "type": "object",
   "required": [
     "BPLId",
-    "WhsCode",
+    "WhsCode"
   ],
   "properties": {
     "BPLId": {
