@@ -10,6 +10,6 @@
   ],
   "dataAbastecimentos": {
     "ui:widget": "date",
-    "ui:help": "Selecione a data que deseja"
+    "ui:help": "Selecione a data para fazer integração"
   }
 }
