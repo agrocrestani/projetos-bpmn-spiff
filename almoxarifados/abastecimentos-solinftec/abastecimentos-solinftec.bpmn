@@ -11,7 +11,7 @@
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
     <bpmn:userTask id="Activity_0qpzdpu" name="Dados Iniciais">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="dados-iniciais-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="dados-iniciais-uischema.json" />
