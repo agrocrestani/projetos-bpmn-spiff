@@ -61,10 +61,10 @@ n_safras = safras
         </spiffworkflow:serviceTaskOperator>
         <spiffworkflow:preScript>url = "https://scdi.saas-solinftec.com/auth/token"
 
-payload = json.dumps({
-  "cliente": "agro_crestani",
-  "password": "0xqp623b874jjztm56aw"
-})
+payload = {
+  'cliente': 'agro_crestani',
+  'password': '0xqp623b874jjztm56aw'
+}
 
 headers = {
   'Content-Type': 'application/json'
