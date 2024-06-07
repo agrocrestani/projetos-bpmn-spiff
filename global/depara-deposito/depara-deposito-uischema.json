@@ -23,5 +23,8 @@
   },
   "BPLId": {
     "ui:disabled": {}
+  },
+  "BPLId": {
+    "ui:disabled": {}
   }
 }
