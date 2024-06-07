@@ -25,8 +25,7 @@
     },
     "idSolinftec": {
       "type": "string",
-      "title": "First name",
-      "default": "Chuck"
+      "title": "First name"
     }
   },
   "title": "Text Field",
