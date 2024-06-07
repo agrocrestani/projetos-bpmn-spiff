@@ -341,8 +341,10 @@ for d in duesSap:
 newDues = []
 for z in dues:
     dueEnt = z['numero_due']+'-'+z['entidade']
-    if dueEnt not in listaSAP:
-       newDues.append(z)
+    if dueEnt in listaSAP:
+        continue
+    else:
+        newDues.append(z)
 
 del(dues)
 del(duesSap)
