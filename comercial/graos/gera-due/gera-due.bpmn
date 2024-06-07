@@ -336,7 +336,7 @@ duesSap = Hana(connection).selectDb(query)
 newDues = []
 for z in dues:
     for y in duesSap:
-        if (z['numero_due'] == y['numerodeclaracao'] and z['entidade'] == y['entidadeid']):
+        if (z['numero_due'] == y['numerodeclaracao'] and int(z['entidade']) == y['entidadeid']):
             newDues.append(z)
 
 del(dues)
