@@ -68,9 +68,9 @@ n_safras = safras
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_1m8vc61_di" bpmnElement="DataStoreReference_1m8vc61">
-        <dc:Bounds x="265" y="285" width="50" height="50" />
+        <dc:Bounds x="275" y="285" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="273" y="342" width="35" height="14" />
+          <dc:Bounds x="283" y="342" width="35" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
@@ -86,8 +86,8 @@ n_safras = safras
         <di:waypoint x="308" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1h1x7md_di" bpmnElement="DataInputAssociation_1h1x7md">
-        <di:waypoint x="297" y="285" />
-        <di:waypoint x="317" y="217" />
+        <di:waypoint x="305" y="285" />
+        <di:waypoint x="318" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
