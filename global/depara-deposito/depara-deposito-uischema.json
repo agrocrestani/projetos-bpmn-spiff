@@ -20,7 +20,7 @@
   "idFarmbox": {
     "ui:autofocus": true,
     "ui:emptyValue": "",
-    "ui:description": "Informe o ID do depósito no Farmbox"
+    "ui:description": ""
   },
   "novoIdFarmbox": {
     "ui:autofocus": true,
