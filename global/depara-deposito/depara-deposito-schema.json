@@ -1,7 +1,7 @@
 {
   "type": "object",
   "required": [
-    "BPLId",
+    "firstName",
     "WhsCode"
   ],
   "properties": {
@@ -18,6 +18,13 @@
       "anyOf": [
         "options_from_task_data_var:n_depositos"
       ]
+    },
+    "firstName": {
+      "type": "string",
+      "title": "First name",
+      "default": "Chuck"
     }
-  }
+  },
+  "title": "Text Field",
+  "description": "A simple text field that is required, has a default value, sets a placeholder, includes a description. (field name will be 'firstname')"
 }
