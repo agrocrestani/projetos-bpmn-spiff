@@ -20,7 +20,7 @@
   "idFarmbox": {
     "ui:autofocus": true,
     "ui:emptyValue": "",
-    "ui:description": ""
+    "ui:description": "Va"
   },
   "novoIdFarmbox": {
     "ui:autofocus": true,
