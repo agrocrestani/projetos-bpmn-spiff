@@ -31,8 +31,8 @@
           null as pais_destino
       FROM 
           sap.due_eventos
-      where
-          itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' not in (select d."NumeroDeclaracao" from sap.due_dados d)
+      --where
+          --itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' not in (select d."NumeroDeclaracao" from sap.due_dados d)
           --and itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' in ('24BR0004628584', '24BR0002157037','24BR0002157525')
     """,
   "fetch_results": True
