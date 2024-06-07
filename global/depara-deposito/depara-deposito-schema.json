@@ -21,7 +21,7 @@
     },
     "idFarmbox": {
       "type": "string",
-      "title": "First name",
+      "title": "ID",
       "default": "Chuck"
     }
   },
