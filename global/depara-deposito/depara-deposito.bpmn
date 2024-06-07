@@ -90,7 +90,12 @@ query = f"""
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
-rsp = Hana(connection).selectDb(query)</bpmn:script>
+rsp = Hana(connection).selectDb(query)
+
+idFarmbox = rsp[0][u_ac_idfarmbox]
+idSolinftec = rsp[0][u_ac_id_solinftec]
+
+del(rsp)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_1na4bge" name="Depositos" dataStoreRef="depositos" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_1tm7fbb" name="Filiais" dataStoreRef="filiais" type="json" />
