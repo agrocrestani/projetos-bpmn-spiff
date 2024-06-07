@@ -5,7 +5,7 @@
       "safra": {}
     }
   ],
-  "delivery_date": {
+  "dataAbastecimentos": {
     "ui:widget": "date",
     "ui:help": "Specify the preferred delivery date for this service/product"
   }
