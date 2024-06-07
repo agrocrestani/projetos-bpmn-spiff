@@ -3,10 +3,6 @@
   "required": [
     "BPLId",
     "WhsCode",
-    "MainUsage",
-    "RequriedDate",
-    "qtdeColaboradores",
-    "periodo"
   ],
   "properties": {
     "BPLId": {
