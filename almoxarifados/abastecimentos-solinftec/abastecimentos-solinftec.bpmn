@@ -69,6 +69,7 @@ payload = {
 headers = {
   'Content-Type': 'application/json'
 }</spiffworkflow:preScript>
+        <spiffworkflow:postScript>token =   rsp["body"]["token"]</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0opz8sn</bpmn:outgoing>
