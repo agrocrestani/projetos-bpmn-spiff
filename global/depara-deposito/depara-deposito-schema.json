@@ -21,7 +21,7 @@
       "type": "string",
       "title": "Id Farmbox"
     },
-    "novoIidFarmbox": {
+    "novoIdFarmbox": {
       "type": "string",
       "title": "Id Farmbox"
     },
