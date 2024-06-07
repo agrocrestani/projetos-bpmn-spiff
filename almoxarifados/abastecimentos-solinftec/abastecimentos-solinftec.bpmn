@@ -92,6 +92,16 @@ headers = {
   'Content-Type': 'application/json',
   'X-Auth-Token': token
 }</spiffworkflow:preScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rspAbast">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="payload" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0opz8sn</bpmn:incoming>
       <bpmn:outgoing>Flow_0l9gevw</bpmn:outgoing>
