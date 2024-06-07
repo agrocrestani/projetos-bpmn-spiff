@@ -21,6 +21,14 @@
     "ui:enableMarkdownInDescription": true,
     "ui:description": "Informe o ID do depósito no Farmbox"
   },
+  "idFarmbox": {
+    "ui:autofocus": true,
+    "ui:emptyValue": "",
+    "ui:placeholder": "ui:emptyValue causes this field to always be valid despite being required",
+    "ui:autocomplete": "family-name",
+    "ui:enableMarkdownInDescription": true,
+    "ui:description": "Informe o ID do depósito no Farmbox"
+  }
   "BPLId": {
     "ui:disabled": {}
   },
