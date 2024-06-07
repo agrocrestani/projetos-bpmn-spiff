@@ -21,8 +21,7 @@
     },
     "idFarmbox": {
       "type": "string",
-      "title": "Id Farmbox",
-      "default": "Chuck"
+      "title": "Id Farmbox"
     }
   },
   "title": "Text Field",
