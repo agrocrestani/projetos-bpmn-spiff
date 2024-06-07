@@ -19,7 +19,7 @@
         "options_from_task_data_var:n_depositos"
       ]
     },
-    "firstName": {
+    "Id": {
       "type": "string",
       "title": "First name",
       "default": "Chuck"
