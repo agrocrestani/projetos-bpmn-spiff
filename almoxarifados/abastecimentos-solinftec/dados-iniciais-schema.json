@@ -23,7 +23,7 @@
     "dataAbastecimentos": {
       "type": "string",
       "format": "date",
-      "title": "Preferred Delivery Date",
+      "title": "Data do Abast",
       "validationErrorMessage": "Date must be today's date or later"
     }
   }
