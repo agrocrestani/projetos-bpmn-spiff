@@ -24,6 +24,7 @@
     "novoIdFarmbox": {
       "type": "string",
       "title": "Id Farmbox"
+      
     },
     "idSolinftec": {
       "type": "string",
