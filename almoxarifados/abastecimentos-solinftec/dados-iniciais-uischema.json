@@ -10,6 +10,6 @@
   ],
   "dataAbastecimentos": {
     "ui:widget": "date",
-    "ui:help": "Selecione u"
+    "ui:help": "Selecione a data que "
   }
 }
