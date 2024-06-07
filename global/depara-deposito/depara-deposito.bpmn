@@ -35,8 +35,19 @@ for f in filiais:
             }
         )
 
-n_safras = safras
-</spiffworkflow:preScript>
+n_depositos = []
+for d in depositos:
+    WhsCode = a['WhsCode']
+    WhsName = a['WhsName']
+    n_almoxarifados.append(
+        {
+            "value": WhsCode,
+            "label": WhsCode + " - " + WhsName
+        }
+    )
+
+del(filiais)
+del(depositos)</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
@@ -109,9 +120,9 @@ rsp = Hana(connection).selectDb(query)</bpmn:script>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_1tm7fbb_di" bpmnElement="DataStoreReference_1tm7fbb">
-        <dc:Bounds x="305" y="285" width="50" height="50" />
+        <dc:Bounds x="335" y="285" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="316" y="342" width="28" height="14" />
+          <dc:Bounds x="346" y="342" width="28" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
@@ -127,8 +138,8 @@ rsp = Hana(connection).selectDb(query)</bpmn:script>
         <di:waypoint x="317" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1evf0l4_di" bpmnElement="DataInputAssociation_1evf0l4">
-        <di:waypoint x="328" y="285" />
-        <di:waypoint x="321" y="217" />
+        <di:waypoint x="353" y="285" />
+        <di:waypoint x="330" y="217" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0j09d7n_di" bpmnElement="Flow_0j09d7n">
         <di:waypoint x="550" y="177" />
