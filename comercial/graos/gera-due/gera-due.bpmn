@@ -332,18 +332,20 @@ query = f"""
 
 duesSap = Hana(connection).selectDb(query)
 
+listaSAP = []
+for d in duesSap:
+    listaSAP(d['numerodeclaracao']+'-'+str(d['entidadeid']))
+
+
 #Verifica se está lançado no SAP
 newDues = []
-controle = []
 for z in dues:
-    for y in duesSap:
-        if not (z['numero_due'] == y['numerodeclaracao'] and int(z['entidade']) == y['entidadeid']):
-            control = z['numero_due'] + '-' + z['entidade']
-            if control not in controle:
-                controle.append(control)
-                newDues.append(z)
+    dueEnt = z['numero_due']+'-'+z['entidade']
+    if dueEnt not in listaSAP:
+       newDues.append(z)
 
 del(dues)
+del(duesSap)
 </bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
