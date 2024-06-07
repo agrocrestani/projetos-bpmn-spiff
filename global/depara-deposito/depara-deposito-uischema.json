@@ -19,7 +19,7 @@
   ],
   "idFarmbox": {
     "ui:disabled": {},
-    "ui:classNames": 'task-title foo-bar'
+    "ui:classNames": "task-title foo-bar'
     "ui:autofocus": true,
     "ui:emptyValue": "",
     "ui:description": "Valor atual no SAP"
