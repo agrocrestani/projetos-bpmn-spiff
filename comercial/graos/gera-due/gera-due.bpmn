@@ -76,8 +76,8 @@ del(rsp)</spiffworkflow:postScript>
       <bpmn:incoming>Flow_0bzjyx3</bpmn:incoming>
       <bpmn:outgoing>Flow_19e22i2</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
-        <bpmn:loopDataInputRef>dues</bpmn:loopDataInputRef>
-        <bpmn:loopDataOutputRef>dues</bpmn:loopDataOutputRef>
+        <bpmn:loopDataInputRef>newDues</bpmn:loopDataInputRef>
+        <bpmn:loopDataOutputRef>newDues</bpmn:loopDataOutputRef>
         <bpmn:inputDataItem id="due" name="due" />
       </bpmn:multiInstanceLoopCharacteristics>
       <bpmn:startEvent id="Event_0cxxyf3">
@@ -340,7 +340,7 @@ for z in dues:
             newDues.append(z)
 
 del(dues)
-dues = newDues</bpmn:script>
+</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:error id="Error_1" name="Error_1">
