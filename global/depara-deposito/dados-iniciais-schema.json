@@ -2,7 +2,6 @@
   "type": "object",
   "required": [
     "BPLId",
-
     "WhsCode",
     "MainUsage",
     "RequriedDate",
