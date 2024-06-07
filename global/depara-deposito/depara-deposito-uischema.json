@@ -30,7 +30,7 @@
   "idSolinftec": {
     "ui:autofocus": true,
     "ui:emptyValue": "",
-    "ui:description": "Informe o ID do depósito no Farmbox"
+    "ui:description": "Valor atual no SAP"
   },
   "novoIdSolinftec": {
     "ui:autofocus": true,
