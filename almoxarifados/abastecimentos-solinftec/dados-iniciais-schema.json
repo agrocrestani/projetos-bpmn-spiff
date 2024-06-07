@@ -23,7 +23,7 @@
     "dataAbastecimentos": {
       "type": "string",
       "format": "date",
-      "title": "Data do Abastecimento",
+      "title": "Data dos Abastecimento",
       "validationErrorMessage": "Date must be today's date or later"
     }
   }
