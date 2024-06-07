@@ -25,6 +25,7 @@
     "ui:description": "Valor atual no SAP"
   },
   "novoIdFarmbox": {
+    'ui:style': { color: 'red' },
     "ui:autofocus": true,
     "ui:emptyValue": "",
     "ui:default": "{{idFarmbox}}",
