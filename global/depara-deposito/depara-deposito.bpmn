@@ -39,7 +39,7 @@ n_depositos = []
 for d in depositos:
     WhsCode = a['WhsCode']
     WhsName = a['WhsName']
-    n_almoxarifados.append(
+    n_depositos.append(
         {
             "value": WhsCode,
             "label": WhsCode + " - " + WhsName
