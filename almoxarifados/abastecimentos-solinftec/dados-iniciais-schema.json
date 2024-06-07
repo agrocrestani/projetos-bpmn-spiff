@@ -24,7 +24,7 @@
       "type": "string",
       "format": "date",
       "title": "Data dos Abastecimentos para Integração",
-      "validationErrorMessage": "Date must be today's date or later"
+      "validationErrorMessage": "Selecione uma data "
     }
   }
 }
