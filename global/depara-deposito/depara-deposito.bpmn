@@ -22,9 +22,33 @@ You can also change the text you are reading here by updating the *Instructions*
           <spiffworkflow:property name="formJsonSchemaFilename" value="dados-iniciais-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="dados-iniciais-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:preScript>n_filiais = []
+for f in filiais:
+    BPLId = f['BPLId']
+    BPLName = f['BPLName']
+    AliasName = f['AliasName']
+    if BPLId in ['2', '3', '4', '5']: 
+        n_filiais.append(
+            {
+                "value": BPLId,
+                "label": AliasName,
+            }
+        )
+
+n_safras = safras
+</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
+      <bpmn:property id="Property_1sorkz2" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_14ly1o9">
+        <bpmn:sourceRef>DataStoreReference_1na4bge</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1sorkz2</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_1evf0l4">
+        <bpmn:sourceRef>DataStoreReference_1tm7fbb</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1sorkz2</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_0j09d7n" sourceRef="Activity_1o8n0c1" targetRef="EndEvent_1" />
     <bpmn:scriptTask id="Activity_1o8n0c1" name="Busca o deposito no SAP">
@@ -57,6 +81,8 @@ query = f"""
 # rsp = json.loads(Hana(connection).selectDb(query))
 rsp = Hana(connection).selectDb(query)</bpmn:script>
     </bpmn:scriptTask>
+    <bpmn:dataStoreReference id="DataStoreReference_1na4bge" />
+    <bpmn:dataStoreReference id="DataStoreReference_1tm7fbb" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_depara_deposito_j5xqmlj">
@@ -74,6 +100,12 @@ rsp = Hana(connection).selectDb(query)</bpmn:script>
         <dc:Bounds x="450" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1na4bge_di" bpmnElement="DataStoreReference_1na4bge">
+        <dc:Bounds x="255" y="285" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1tm7fbb_di" bpmnElement="DataStoreReference_1tm7fbb">
+        <dc:Bounds x="305" y="285" width="50" height="50" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -85,6 +117,14 @@ rsp = Hana(connection).selectDb(query)</bpmn:script>
       <bpmndi:BPMNEdge id="Flow_0j09d7n_di" bpmnElement="Flow_0j09d7n">
         <di:waypoint x="550" y="177" />
         <di:waypoint x="1012" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_14ly1o9_di" bpmnElement="DataInputAssociation_14ly1o9">
+        <di:waypoint x="290" y="285" />
+        <di:waypoint x="317" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1evf0l4_di" bpmnElement="DataInputAssociation_1evf0l4">
+        <di:waypoint x="328" y="285" />
+        <di:waypoint x="321" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
