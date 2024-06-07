@@ -21,6 +21,10 @@
       "type": "string",
       "title": "Id Farmbox"
     },
+    "idFarmbox": {
+      "type": "string",
+      "title": "Id Farmbox"
+    },
     "idSolinftec": {
       "type": "string",
       "title": "Id Solinftec"
