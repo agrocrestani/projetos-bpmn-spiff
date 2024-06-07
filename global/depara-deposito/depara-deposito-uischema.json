@@ -28,6 +28,7 @@
     "ui:description": "Informe o ID do depósito no Solinftec"
   },
   "idSolinftec": {
+    
     "ui:autofocus": true,
     "ui:emptyValue": "",
     "ui:description": "Valor atual no SAP"
