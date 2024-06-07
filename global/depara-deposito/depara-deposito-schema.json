@@ -23,7 +23,7 @@
       "type": "string",
       "title": "Id Farmbox"
     },
-    "firstName": {
+    "if": {
       "type": "string",
       "title": "First name",
       "default": "Chuck"
