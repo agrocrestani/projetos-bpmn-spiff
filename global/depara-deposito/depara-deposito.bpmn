@@ -6,7 +6,7 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_0j09d7n</bpmn:incoming>
+      <bpmn:incoming>Flow_03nhtj6</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_1o8n0c1" />
     <bpmn:userTask id="Activity_0qpzdpu" name="Dados iniciais">
@@ -61,7 +61,7 @@ del(depositos)</spiffworkflow:preScript>
         <bpmn:targetRef>Property_1sorkz2</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_0j09d7n" sourceRef="Activity_1o8n0c1" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_0j09d7n" sourceRef="Activity_1o8n0c1" targetRef="Activity_0rox92v" />
     <bpmn:scriptTask id="Activity_1o8n0c1" name="Busca o deposito no SAP">
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_0j09d7n</bpmn:outgoing>
@@ -94,6 +94,17 @@ rsp = Hana(connection).selectDb(query)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_1na4bge" name="Depositos" dataStoreRef="depositos" type="json" />
     <bpmn:dataStoreReference id="DataStoreReference_1tm7fbb" name="Filiais" dataStoreRef="filiais" type="json" />
+    <bpmn:sequenceFlow id="Flow_03nhtj6" sourceRef="Activity_0rox92v" targetRef="EndEvent_1" />
+    <bpmn:userTask id="Activity_0rox92v" name="DePara Deposito">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="depara-deposito-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="depara-deposito-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0j09d7n</bpmn:incoming>
+      <bpmn:outgoing>Flow_03nhtj6</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmn:dataStore id="depositos" name="JSONDataStore" />
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
@@ -125,6 +136,10 @@ rsp = Hana(connection).selectDb(query)</bpmn:script>
           <dc:Bounds x="346" y="342" width="28" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1l0nwd5_di" bpmnElement="Activity_0rox92v">
+        <dc:Bounds x="620" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -143,6 +158,10 @@ rsp = Hana(connection).selectDb(query)</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0j09d7n_di" bpmnElement="Flow_0j09d7n">
         <di:waypoint x="550" y="177" />
+        <di:waypoint x="620" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_03nhtj6_di" bpmnElement="Flow_03nhtj6">
+        <di:waypoint x="720" y="177" />
         <di:waypoint x="1012" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
