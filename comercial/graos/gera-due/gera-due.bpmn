@@ -289,8 +289,8 @@ rsp = Hana(connection).selectDb(query)
 
 existe = 0
 
-if rsp[qtde] &gt; 0:
-    existe = rsp[qtde]</bpmn:script>
+if rsp[0]['qtde'] &gt; 0:
+    existe = rsp[0]["qtde"]</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:sequenceFlow id="Flow_0f4cahx" sourceRef="Gateway_0dyggs7" targetRef="Activity_0ulfn62">
         <bpmn:conditionExpression>existe &gt;= 1</bpmn:conditionExpression>
@@ -358,15 +358,11 @@ dues = newDues</bpmn:script>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0kgs1zt_di" bpmnElement="Activity_0qpzdpu">
-        <dc:Bounds x="280" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="1912" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_017gpzy_di" bpmnElement="Activity_1l7qgqo">
-        <dc:Bounds x="450" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_0kgs1zt_di" bpmnElement="Activity_0qpzdpu">
+        <dc:Bounds x="280" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0rp2yix_di" bpmnElement="Activity_0rp2yix" isExpanded="true">
@@ -413,11 +409,11 @@ dues = newDues</bpmn:script>
         <dc:Bounds x="1380" y="20" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14tx1k3_di" bpmnElement="Event_1pv0zjg">
-        <dc:Bounds x="1432" y="199" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1i1p2je_di" bpmnElement="Event_0dday6u">
         <dc:Bounds x="1012" y="322" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14tx1k3_di" bpmnElement="Event_1pv0zjg">
+        <dc:Bounds x="1432" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1d28xqv_di" bpmnElement="Flow_1d28xqv">
         <di:waypoint x="696" y="177" />
@@ -471,6 +467,10 @@ dues = newDues</bpmn:script>
         <di:waypoint x="1480" y="60" />
         <di:waypoint x="1612" y="60" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_017gpzy_di" bpmnElement="Activity_1l7qgqo">
+        <dc:Bounds x="450" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="280" y="177" />
