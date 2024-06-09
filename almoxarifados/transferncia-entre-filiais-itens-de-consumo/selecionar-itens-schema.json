@@ -1,18 +1,18 @@
 {
+  "title": "Solicitação de Compras",
+  "description": "Solicitação de compras de items para estoque",
   "type": "object",
-  "required": [
-    "BPLId",
-    "Department",
-    "U_RSD_Prioridade",
-    "U_RSD_Aplicacao",
-    "OcrCode",
-    "OcrCode3",
-    "WhsCode",
-    "MainUsage",
-    "RequriedDate",
-    "qtdeColaboradores",
-    "periodo"
-  ],
+    "required": [
+      "BPLId",
+      "Department",
+      "U_RSD_Prioridade",
+      "U_RSD_Aplicacao",
+      "OcrCode",
+      "OcrCode3",
+      "WhsCode",
+      "MainUsage",
+      "solicitacao"
+    ],
   "properties": {
     "BPLId": {
       "title": "Filial",
@@ -24,7 +24,6 @@
     "Department": {
       "title": "Departamento",
       "type": "string",
-      "default": "16",
       "anyOf": [
         "options_from_task_data_var:n_departamentos"
       ]
@@ -32,7 +31,6 @@
     "U_RSD_Prioridade": {
       "title": "Prioridade",
       "type": "string",
-      "default": "1",
       "anyOf": [
         {
           "type": "string",
@@ -60,7 +58,6 @@
     "U_RSD_Aplicacao": {
       "title": "Tipo Requisicao",
       "type": "string",
-      "default": "2",
       "anyOf": [
         "options_from_task_data_var:n_tipo_requisicao"
       ]
@@ -96,7 +93,6 @@
     "MainUsage": {
       "title": "Utilizacao",
       "type": "string",
-      "default": "12",
       "anyOf": [
         "options_from_task_data_var:n_utilizacoes"
       ]
@@ -105,42 +101,26 @@
       "type": "string",
       "title": "Observações"
     },
-    "qtdeColaboradores": {
-      "title": "Quantidade de pessoas",
-      "type": "number"
-    },
-    "periodo": {
-      "title": "Periodo",
-      "type": "string",
-      "anyOf": [
-        {
-          "type": "string",
-          "enum": [
-            "7"
-          ],
-          "title": "07 - Semanal"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "15"
-          ],
-          "title": "15 - Quinzenal"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "30"
-          ],
-          "title": "30 - Mensal"
+    "solicitacao": {
+      "type": "array",
+      "title": "Items Solicitados ",
+      "items": {
+        "type": "object",
+        "required": [
+          "item",
+          "quantidade"
+        ],
+        "properties": {
+          "item": {
+            "type": "string",
+            "title": "Selecione o Item"
+          },
+          "quantidade": {
+            "type": "number",
+            "title": "Quantidade"
+          }
         }
-      ]
-    },
-    "RequriedDate": {
-      "type": "string",
-      "format": "date",
-      "title": "Data Necessária",
-      "validationErrorMessage": "Date must be today's date or later"
+      }
     }
   }
 }
