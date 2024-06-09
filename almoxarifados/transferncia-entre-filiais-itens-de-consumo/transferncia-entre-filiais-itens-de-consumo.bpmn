@@ -2,46 +2,66 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:process id="Process_transferncia_entre_filiais_itens_de_consumo_ownqysx" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
-      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1kmvn07</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
-    <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
-    <bpmn:manualTask id="Activity_0qpzdpu" name="Example manual task">
+    <bpmn:sequenceFlow id="Flow_1kmvn07" sourceRef="StartEvent_1" targetRef="Activity_1n6i288" />
+    <bpmn:callActivity id="Activity_1n6i288" name="Define unidade, dep. e gestor" calledElement="Process_definir_unidade_e_departamento_zxer6t3">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
-
- * **Script Task** - write a short snippet of python code to update some data
- *  **User Task** - generate a form that collects information from a user
- * **Service Task** - communicate with an external API to fetch or update some data.
-
-You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-    </bpmn:manualTask>
+      <bpmn:incoming>Flow_1kmvn07</bpmn:incoming>
+      <bpmn:outgoing>Flow_1osnzbx</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:sequenceFlow id="Flow_1osnzbx" sourceRef="Activity_1n6i288" targetRef="Activity_039cy43" />
+    <bpmn:callActivity id="Activity_039cy43" name="Atualiza estoque">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>query = f"""
+            SELECT 
+                T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", T2."WhsCode", to_alphanum(T2."OnHand") "OnHand"
+            FROM {baseSap}."OITM" T0
+                INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
+                INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
+            WHERE T2."OnHand" &gt; 0  
+                AND  (T2."WhsCode" = '03.MATR'
+                OR   T2."WhsCode" = '03.FQUE')
+                ORDER BY T0."ItemName", T2."WhsCode" 
+        """</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1osnzbx</bpmn:incoming>
+      <bpmn:outgoing>Flow_1u2wok0</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:endEvent id="Event_0d0krr9">
+      <bpmn:incoming>Flow_1u2wok0</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1u2wok0" sourceRef="Activity_039cy43" targetRef="Event_0d0krr9" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_transferncia_entre_filiais_itens_de_consumo_ownqysx">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="432" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
+      <bpmndi:BPMNShape id="Activity_1syr4jp_di" bpmnElement="Activity_1n6i288">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
+      <bpmndi:BPMNShape id="Activity_1cjqwyr_di" bpmnElement="Activity_039cy43">
+        <dc:Bounds x="430" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0d0krr9_di" bpmnElement="Event_0d0krr9">
+        <dc:Bounds x="592" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1kmvn07_di" bpmnElement="Flow_1kmvn07">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
+      <bpmndi:BPMNEdge id="Flow_1osnzbx_di" bpmnElement="Flow_1osnzbx">
         <di:waypoint x="370" y="177" />
-        <di:waypoint x="432" y="177" />
+        <di:waypoint x="430" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1u2wok0_di" bpmnElement="Flow_1u2wok0">
+        <di:waypoint x="530" y="177" />
+        <di:waypoint x="592" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
