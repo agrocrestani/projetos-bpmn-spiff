@@ -2,16 +2,7 @@
   "type": "object",
   "required": [
     "BPLId",
-    "Department",
-    "U_RSD_Prioridade",
-    "U_RSD_Aplicacao",
-    "OcrCode",
-    "OcrCode3",
-    "WhsCode",
-    "MainUsage",
-    "RequriedDate",
-    "qtdeColaboradores",
-    "periodo"
+    
   ],
   "properties": {
     "BPLId": {
