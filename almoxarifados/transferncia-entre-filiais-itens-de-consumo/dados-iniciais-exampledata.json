@@ -1,30 +1,5 @@
 {
-  "BPLId": "3",
-  "Department": "1",
-  "U_RSD_Prioridade": "1",
-  "U_RSD_Aplicacao": "2",
-  "OcrCode": "QUEARM",
-  "OcrCode2": "SOJA",
-  "OcrCode3": "24/25",
-  "WhsCode": "01.FCOL",
-  "MainUsage": "1",
-  "periodo": [
-    {
-      "value": "0",
-      "label": "0 - Semanal"
-    },
-    {
-      "value": "1",
-      "label": "1 - Quinzenal"
-    },
-    {
-      "value": "2",
-      "label": "2 - Mensal"
-    }
-  ],
-  "solicitacao": [
-    {}
-  ],
+  "BPLId": "3"
   "n_filiais": [
     {
       "value": "1",
