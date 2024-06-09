@@ -8,23 +8,7 @@
   "OcrCode3": "24/25",
   "WhsCode": "01.FCOL",
   "MainUsage": "1",
-  "solicitacao": [
-    {}
-  ],
-  "periodo": [
-    {
-      "value": "0",
-      "label": "0 - Semanal"
-    },
-    {
-      "value": "1",
-      "label": "1 - Quinzenal"
-    },
-    {
-      "value": "2",
-      "label": "2 - Mensal"
-    }
-  ],
+  "solicitacao": [],
   "n_filiais": [
     {
       "value": "1",
