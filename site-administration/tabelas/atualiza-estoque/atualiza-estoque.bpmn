@@ -79,7 +79,7 @@ baseSap = get_secret('baseSap')
 # rsp = json.loads(Hana(connection).selectDb(query))
 rsp = Hana(connection).selectDb(query)
 
-estoque_de_insumos = []
+estoque = []
 
 for r in rsp:
     ItemCode = str(r['itemcode'])
@@ -88,7 +88,7 @@ for r in rsp:
     InvntryUom = str(r['invntryuom'])
     OnHand = "{:,.2f}".format(float(r['onhand'])).replace(",", "X").replace(".", ",").replace("X", ".")
     WhsCode = str(r['whscode'])
-    estoque_de_insumos.append(
+    estoque.append(
         {
             "search_term": ItemName, 
             "result": {
@@ -113,10 +113,6 @@ del(connection)</bpmn:script>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_04tia02_di" bpmnElement="Activity_09mu4sd">
-        <dc:Bounds x="250" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0jxoz7s_di" bpmnElement="Event_0jxoz7s">
         <dc:Bounds x="402" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -125,6 +121,10 @@ del(connection)</bpmn:script>
         <bpmndi:BPMNLabel>
           <dc:Bounds x="289" y="362" width="83" height="40" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_04tia02_di" bpmnElement="Activity_09mu4sd">
+        <dc:Bounds x="250" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0tn4ed3_di" bpmnElement="Flow_0tn4ed3">
         <di:waypoint x="215" y="177" />
