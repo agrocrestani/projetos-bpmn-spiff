@@ -120,5 +120,19 @@
       "value": "01.FCUR",
       "label": "01.FCUR - ALMOXAR CURUPAI"
     }
+  ],
+  "fruits": [
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
   ]
 }
