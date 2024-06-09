@@ -10,13 +10,13 @@
       <bpmn:incoming>Flow_0lz96a1</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0lz96a1" sourceRef="Activity_0o51srq" targetRef="Event_0jxoz7s" />
-    <bpmn:scriptTask id="Activity_0o51srq" name="Parse cities response">
+    <bpmn:scriptTask id="Activity_0o51srq" name="Parse estoque response">
       <bpmn:incoming>Flow_0w7oyed</bpmn:incoming>
       <bpmn:outgoing>Flow_0lz96a1</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_0tjuw5b">
         <bpmn:targetRef>DataStoreReference_1oronwq</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
-      <bpmn:script>typeahead = {"estoque": estoque}</bpmn:script>
+      <bpmn:script></bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_09mu4sd" targetRef="Activity_0o51srq" />
     <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
@@ -109,7 +109,7 @@ for r in rsp:
         )
 
 
-
+typeahead = {"estoque": estoque}
 
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
