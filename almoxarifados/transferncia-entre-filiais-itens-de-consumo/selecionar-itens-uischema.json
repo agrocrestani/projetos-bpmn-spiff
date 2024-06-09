@@ -53,18 +53,20 @@
   },
   "solicitacao": {
     "items": {
-      "ui:layout": [{
-        "item":{
-          "sm": 2,
-          "md": 2,
-          "lg": 6
-        },
-        "quantidade":{
-          "sm": 2,
-          "md": 2,
-          "lg": 2
+      "ui:layout": [
+        {
+          "item": {
+            "sm": 2,
+            "md": 2,
+            "lg": 6
+          },
+          "quantidade": {
+            "sm": 2,
+            "md": 2,
+            "lg": 2
+          }
         }
-      }],
+      ],
       "item": {
         "ui:widget": "typeahead",
         "ui:options": {
@@ -72,6 +74,13 @@
           "itemFormat": "{ItemName} - Sug.: {QtdeSugerida} ({InvntryUom} - {ItemCode})"
         }
       }
+    }
+  },
+  "city": {
+    "ui:widget": "typeahead",
+    "ui:options": {
+      "category": "cities",
+      "itemFormat": "{name} ({state}, {country})"
     }
   }
 }
