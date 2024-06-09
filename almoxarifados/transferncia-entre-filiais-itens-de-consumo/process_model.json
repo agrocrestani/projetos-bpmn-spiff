@@ -1,0 +1,9 @@
+{
+    "description": "Transfere entre filiais itens de consumos - pe\u00e7as, combustiveis, etc.",
+    "display_name": "Transfer\u00eancia entre filiais itens de consumo",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "transferncia-entre-filiais-itens-de-consumo.bpmn",
+    "primary_process_id": "Process_transferncia_entre_filiais_itens_de_consumo_ownqysx"
+}
