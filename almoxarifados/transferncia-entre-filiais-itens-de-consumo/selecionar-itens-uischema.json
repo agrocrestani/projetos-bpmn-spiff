@@ -1,8 +1,7 @@
 {
   "ui:layout": [
     {
-      "BPLId": {},
-      "RequriedDate": {}
+      "BPLId": {}
     },
     {
       "Department": {
@@ -56,15 +55,33 @@
       "Comments": {}
     },
     {
-      "qtdeColaboradores": {},
-      "periodo": {}
+      "solicitacao": {}
     }
   ],
   "Comments": {
     "ui:widget": "textarea"
   },
-  "delivery_date": {
-    "ui:widget": "date",
-    "ui:help": "Specify the preferred delivery date for this service/product"
+  "solicitacao": {
+    "items": {
+      "ui:layout": [{
+        "item":{
+          "sm": 2,
+          "md": 2,
+          "lg": 6
+        },
+        "quantidade":{
+          "sm": 2,
+          "md": 2,
+          "lg": 2
+        }
+      }],
+      "item": {
+        "ui:widget": "typeahead",
+        "ui:options": {
+          "category": "items_cantina",
+          "itemFormat": "{ItemName} - Sug.: {QtdeSugerida} ({InvntryUom} - {ItemCode})"
+        }
+      }
+    }
   }
 }
