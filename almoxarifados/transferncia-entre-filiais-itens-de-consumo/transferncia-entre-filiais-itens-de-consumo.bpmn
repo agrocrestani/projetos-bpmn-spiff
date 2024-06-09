@@ -15,7 +15,9 @@
     <bpmn:sequenceFlow id="Flow_1osnzbx" sourceRef="Activity_1n6i288" targetRef="Activity_039cy43" />
     <bpmn:callActivity id="Activity_039cy43" name="Atualiza estoque" calledElement="Atualiza_Estoque">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>query = f"""
+        <spiffworkflow:preScript>baseSap = get_secret('baseSap')
+
+query = f"""
             SELECT 
                 T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", T2."WhsCode", to_alphanum(T2."OnHand") "OnHand"
             FROM {baseSap}."OITM" T0
