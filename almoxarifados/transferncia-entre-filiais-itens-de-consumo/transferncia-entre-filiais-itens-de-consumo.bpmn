@@ -45,7 +45,7 @@ query = f"""
         </spiffworkflow:properties>
         <spiffworkflow:preScript>n_filiais = []
 for f in filiais:
-    if f['BPLId'] in ["1", "3", "4", "5"]:
+    if f['BPLId'] in ["1", "2", "3", "4", "5"]:
         BPLId = f['BPLId']
         BPLName = f['AliasName']
         n_filiais.append(
@@ -69,6 +69,9 @@ for f in filiais:
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_transferncia_entre_filiais_itens_de_consumo_ownqysx">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="2" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1syr4jp_di" bpmnElement="Activity_1n6i288">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -79,9 +82,6 @@ for f in filiais:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0d0krr9_di" bpmnElement="Event_0d0krr9">
         <dc:Bounds x="592" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="2" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0s6ltr7_di" bpmnElement="Activity_0uw163e">
         <dc:Bounds x="110" y="137" width="100" height="80" />
