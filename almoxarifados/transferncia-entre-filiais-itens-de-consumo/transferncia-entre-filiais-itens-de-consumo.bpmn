@@ -4,12 +4,12 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_1kmvn07</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_1kmvn07" sourceRef="StartEvent_1" targetRef="Activity_1n6i288" />
+    <bpmn:sequenceFlow id="Flow_1kmvn07" sourceRef="StartEvent_1" targetRef="Activity_0uw163e" />
     <bpmn:callActivity id="Activity_1n6i288" name="Define unidade, dep. e gestor" calledElement="Process_definir_unidade_e_departamento_zxer6t3">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1kmvn07</bpmn:incoming>
+      <bpmn:incoming>Flow_0f008d6</bpmn:incoming>
       <bpmn:outgoing>Flow_1osnzbx</bpmn:outgoing>
     </bpmn:callActivity>
     <bpmn:sequenceFlow id="Flow_1osnzbx" sourceRef="Activity_1n6i288" targetRef="Activity_039cy43" />
@@ -36,12 +36,39 @@ query = f"""
       <bpmn:incoming>Flow_1u2wok0</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1u2wok0" sourceRef="Activity_039cy43" targetRef="Event_0d0krr9" />
+    <bpmn:sequenceFlow id="Flow_0f008d6" sourceRef="Activity_0uw163e" targetRef="Activity_1n6i288" />
+    <bpmn:userTask id="Activity_0uw163e" name="Dados iniciais">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="dados-iniciais-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="dados-iniciais-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:preScript>n_filiais = []
+for f in filiais:
+    if f['BPLId'] in ["1", "3", "4", "5"]:
+        BPLId = f['BPLId']
+        BPLName = f['BPLName']
+        n_filiais.append(
+            {
+                "value": BPLId,
+                "label": BPLName
+            }
+        )
+</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1kmvn07</bpmn:incoming>
+      <bpmn:outgoing>Flow_0f008d6</bpmn:outgoing>
+      <bpmn:property id="Property_0lwbuo4" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1gyspaw">
+        <bpmn:sourceRef>DataStoreReference_0xuab3g</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0lwbuo4</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:dataStoreReference id="DataStoreReference_0xuab3g" name="Filiais" dataStoreRef="filiais" type="json" />
   </bpmn:process>
+  <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_transferncia_entre_filiais_itens_de_consumo_ownqysx">
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1syr4jp_di" bpmnElement="Activity_1n6i288">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -53,9 +80,22 @@ query = f"""
       <bpmndi:BPMNShape id="Event_0d0krr9_di" bpmnElement="Event_0d0krr9">
         <dc:Bounds x="592" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="2" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0s6ltr7_di" bpmnElement="Activity_0uw163e">
+        <dc:Bounds x="110" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0xuab3g_di" bpmnElement="DataStoreReference_0xuab3g">
+        <dc:Bounds x="95" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="106" y="342" width="28" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1kmvn07_di" bpmnElement="Flow_1kmvn07">
-        <di:waypoint x="215" y="177" />
-        <di:waypoint x="270" y="177" />
+        <di:waypoint x="38" y="177" />
+        <di:waypoint x="110" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1osnzbx_di" bpmnElement="Flow_1osnzbx">
         <di:waypoint x="370" y="177" />
@@ -64,6 +104,14 @@ query = f"""
       <bpmndi:BPMNEdge id="Flow_1u2wok0_di" bpmnElement="Flow_1u2wok0">
         <di:waypoint x="530" y="177" />
         <di:waypoint x="592" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0f008d6_di" bpmnElement="Flow_0f008d6">
+        <di:waypoint x="210" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1gyspaw_di" bpmnElement="DataInputAssociation_1gyspaw">
+        <di:waypoint x="130" y="285" />
+        <di:waypoint x="157" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
