@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:dataStore id="typeahead" name="TypeaheadDataStore" />
-  <bpmn:process id="/a" name="Atualiza Estoque" isExecutable="true">
+  <bpmn:process id="Estoque_de_Insumos" name="Estoque de Insumos" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_0tn4ed3</bpmn:outgoing>
     </bpmn:startEvent>
@@ -11,12 +11,125 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0lz96a1" sourceRef="Activity_0o51srq" targetRef="Event_0jxoz7s" />
     <bpmn:scriptTask id="Activity_0o51srq" name="Parse cities response">
+      <bpmn:extensionElements>
+        <spiffworkflow:unitTests>
+          <spiffworkflow:unitTest id="test_top3">
+            <spiffworkflow:inputJson>{
+  "typeahead": {},
+  "estoque_de_insumos": [
+    {
+      "search_term": "EXTRAVON",
+      "result": {
+        "name": "EXTRAVON",
+        "code": "022833",
+        "onhand": "1135.00"
+      }
+    },
+    {
+      "search_term": "KELLUS COPPER RN",
+      "result": {
+        "name": "KELLUS COPPER RN",
+        "code": "022542",
+        "onhand": "300.00"
+      }
+    },
+    {
+      "search_term": "NEUTER WASTE",
+      "result": {
+        "name": "NEUTER WASTE",
+        "code": "024741",
+        "onhand": "45.00"
+      }
+    },
+    {
+      "search_term": "IHAROL GOLD",
+      "result": {
+        "name": "IHAROL GOLD",
+        "code": "022839",
+        "onhand": "4100.00"
+      }
+    },
+    {
+      "search_term": "RUMBA",
+      "result": {
+        "name": "RUMBA",
+        "code": "022856",
+        "onhand": "9580.00"
+      }
+    },
+    {
+      "search_term": "DIMILIN 80 WG 10X0,5 KG",
+      "result": {
+        "name": "DIMILIN 80 WG 10X0,5 KG",
+        "code": "022752",
+        "onhand": "355.00"
+      }
+    }
+  ]
+}</spiffworkflow:inputJson>
+            <spiffworkflow:expectedOutputJson>{
+    "tapeahead": {
+        "estoque_de_insumos": [
+            {
+            "search_term": "EXTRAVON",
+            "result": {
+                "name": "EXTRAVON",
+                "code": "022833",
+                "onhand": "1135.00"
+            }
+            },
+            {
+            "search_term": "KELLUS COPPER RN",
+            "result": {
+                "name": "KELLUS COPPER RN",
+                "code": "022542",
+                "onhand": "300.00"
+            }
+            },
+            {
+            "search_term": "NEUTER WASTE",
+            "result": {
+                "name": "NEUTER WASTE",
+                "code": "024741",
+                "onhand": "45.00"
+            }
+            },
+            {
+            "search_term": "IHAROL GOLD",
+            "result": {
+                "name": "IHAROL GOLD",
+                "code": "022839",
+                "onhand": "4100.00"
+            }
+            },
+            {
+            "search_term": "RUMBA",
+            "result": {
+                "name": "RUMBA",
+                "code": "022856",
+                "onhand": "9580.00"
+            }
+            },
+            {
+            "search_term": "DIMILIN 80 WG 10X0,5 KG",
+            "result": {
+                "name": "DIMILIN 80 WG 10X0,5 KG",
+                "code": "022752",
+                "onhand": "355.00"
+            }
+            }
+        ]
+    }
+}</spiffworkflow:expectedOutputJson>
+          </spiffworkflow:unitTest>
+        </spiffworkflow:unitTests>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0w7oyed</bpmn:incoming>
       <bpmn:outgoing>Flow_0lz96a1</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_0tjuw5b">
         <bpmn:targetRef>DataStoreReference_1oronwq</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
-      <bpmn:script>typeahead = {"estoque": estoque}</bpmn:script>
+      <bpmn:script>typeahead = {"estoque_de_insumos": estoque_de_insumos}</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_09mu4sd" targetRef="Activity_0o51srq" />
     <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
@@ -70,17 +183,17 @@ connection = {
 
 baseSap = get_secret('baseSap')
 
-# query = f"""
-#     SELECT 
-#       T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", T2."WhsCode", to_alphanum(T2."OnHand") "OnHand"
-#     FROM {baseSap}."OITM" T0
-#     INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
-#     INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
-#     WHERE T2."OnHand" &gt; 0  
-#       AND  (T2."WhsCode" = '03.MATR'
-#       OR   T2."WhsCode" = '03.FQUE')
-#     ORDER BY T0."ItemName", T2."WhsCode" 
-#           """
+query = f"""
+    SELECT 
+      T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", T2."WhsCode", to_alphanum(T2."OnHand") "OnHand"
+    FROM {baseSap}."OITM" T0
+    INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
+    INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
+    WHERE T2."OnHand" &gt; 0  
+      AND  (T2."WhsCode" = '03.MATR'
+      OR   T2."WhsCode" = '03.FQUE')
+    ORDER BY T0."ItemName", T2."WhsCode" 
+          """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
 rsp = Hana(connection).selectDb(query)
@@ -115,7 +228,7 @@ del(connection)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="/a">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Estoque_de_Insumos">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
