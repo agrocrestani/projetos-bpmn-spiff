@@ -129,11 +129,11 @@
       <bpmn:dataOutputAssociation id="DataOutputAssociation_0tjuw5b">
         <bpmn:targetRef>DataStoreReference_1oronwq</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
-      <bpmn:script>typeahead = {"estoque_de_insumos": estoque_de_insumos}</bpmn:script>
+      <bpmn:script>typeahead = {"estoque": estoque}</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_09mu4sd" targetRef="Activity_0o51srq" />
     <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
-    <bpmn:scriptTask id="Activity_09mu4sd" name="Fetch insumos">
+    <bpmn:scriptTask id="Activity_09mu4sd" name="Fetch Estoque">
       <bpmn:extensionElements>
         <spiffworkflow:serviceTaskOperator id="postgres_v2/SelectValuesV2" resultVariable="rsp">
           <spiffworkflow:parameters>
@@ -183,17 +183,17 @@ connection = {
 
 baseSap = get_secret('baseSap')
 
-query = f"""
-    SELECT 
-      T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", T2."WhsCode", to_alphanum(T2."OnHand") "OnHand"
-    FROM {baseSap}."OITM" T0
-    INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
-    INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
-    WHERE T2."OnHand" &gt; 0  
-      AND  (T2."WhsCode" = '03.MATR'
-      OR   T2."WhsCode" = '03.FQUE')
-    ORDER BY T0."ItemName", T2."WhsCode" 
-          """
+# query = f"""
+#     SELECT 
+#       T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", T2."WhsCode", to_alphanum(T2."OnHand") "OnHand"
+#     FROM {baseSap}."OITM" T0
+#     INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
+#     INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
+#     WHERE T2."OnHand" &gt; 0  
+#       AND  (T2."WhsCode" = '03.MATR'
+#       OR   T2."WhsCode" = '03.FQUE')
+#     ORDER BY T0."ItemName", T2."WhsCode" 
+#           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
 rsp = Hana(connection).selectDb(query)
@@ -247,6 +247,7 @@ del(connection)</bpmn:script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_04tia02_di" bpmnElement="Activity_09mu4sd">
         <dc:Bounds x="250" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0tn4ed3_di" bpmnElement="Flow_0tn4ed3">
         <di:waypoint x="215" y="177" />
