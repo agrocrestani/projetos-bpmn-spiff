@@ -68,7 +68,7 @@
       "item": {
         "ui:widget": "typeahead",
         "ui:options": {
-          "category": "items_cantina",
+          "category": "estq",
           "itemFormat": "{ItemName} - Sug.: {QtdeSugerida} ({InvntryUom} - {ItemCode})"
         }
       }
