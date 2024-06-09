@@ -42,13 +42,6 @@
         "options_from_task_data_var:n_centros_de_custo"
       ]
     },
-    "OcrCode2": {
-      "title": "Cultura",
-      "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:n_culturas"
-      ]
-    },
     "OcrCode3": {
       "title": "Safra",
       "type": "string",
