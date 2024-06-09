@@ -3,61 +3,6 @@
     {
       "BPLId": {},
       "RequriedDate": {}
-    },
-    {
-      "Department": {
-        "sm": 2,
-        "md": 2,
-        "lg": 4
-      },
-      "U_RSD_Prioridade": {
-        "sm": 2,
-        "md": 2,
-        "lg": 4
-      }
-    },
-    {
-      "U_RSD_Aplicacao": {
-        "sm": 2,
-        "md": 2,
-        "lg": 4
-      },
-      "OcrCode": {
-        "sm": 2,
-        "md": 2,
-        "lg": 4
-      }
-    },
-    {
-      "OcrCode2": {
-        "sm": 2,
-        "md": 2,
-        "lg": 4
-      },
-      "OcrCode3": {
-        "sm": 2,
-        "md": 2,
-        "lg": 4
-      }
-    },
-    {
-      "WhsCode": {
-        "sm": 2,
-        "md": 2,
-        "lg": 4
-      },
-      "MainUsage": {
-        "sm": 2,
-        "md": 2,
-        "lg": 4
-      }
-    },
-    {
-      "Comments": {}
-    },
-    {
-      "qtdeColaboradores": {},
-      "periodo": {}
     }
   ],
   "Comments": {
