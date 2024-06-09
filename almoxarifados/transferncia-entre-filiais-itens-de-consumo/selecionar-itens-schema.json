@@ -1,6 +1,6 @@
 {
-  "title": "Dropdown list",
-  "description": "A dropdown list with options pulled form existing Task Data. IMPORTANT - Add 'fruits' to Task Data before using this component!!!",
+  "title": "Multiple Choice List",
+  "description": "Build a multiple choice list with a predefined list of options",
   "type": "object",
   "required": [
     "BPLId",
@@ -99,6 +99,20 @@
       "anyOf": [
         "options_from_task_data_var:fruits"
       ]
+    },
+    "multipleChoicesList": {
+      "type": "array",
+      "title": "A multiple choices list",
+      "items": {
+        "type": "string",
+        "enum": [
+          "foo",
+          "bar",
+          "fuzz",
+          "qux"
+        ]
+      },
+      "uniqueItems": true
     }
   }
 }

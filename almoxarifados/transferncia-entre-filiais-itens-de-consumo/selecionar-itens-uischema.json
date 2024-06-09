@@ -82,5 +82,8 @@
       "category": "cities",
       "itemFormat": "{name} ({state}, {country})"
     }
+  },
+  "multipleChoicesList": {
+    "ui:widget": "checkboxes"
   }
 }
