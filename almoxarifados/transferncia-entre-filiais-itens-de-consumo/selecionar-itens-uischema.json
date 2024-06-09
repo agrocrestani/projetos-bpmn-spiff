@@ -46,7 +46,8 @@
     },
     {
       "solicitacao": {}
-    }
+    },
+    
   ],
   "Comments": {
     "ui:widget": "textarea"
