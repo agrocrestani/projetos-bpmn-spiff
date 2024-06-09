@@ -22,11 +22,13 @@ query = f"""
                 T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", T2."WhsCode", to_alphanum(T2."OnHand") "OnHand"
             FROM {baseSap}."OITM" T0
                 INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
-                INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
+                INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode"
+                INNER JOIN {baseSap}."OWHS" T3 ON T2."WhsCode" = T3."WhsCode"
             WHERE T2."OnHand" &gt; 0  
-                AND  (T2."WhsCode" = '03.MATR'
-                OR   T2."WhsCode" = '03.FQUE')
-                ORDER BY T0."ItemName", T2."WhsCode" 
+                AND t3."BPLid" = {BPLId}
+                AND  (T2."WhsCode" like '01%'
+                OR    T2."WhsCode" like '02%')
+                ORDER BY T0."ItemName", T2."WhsCode"
         """</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1osnzbx</bpmn:incoming>
