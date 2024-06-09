@@ -32,12 +32,8 @@ query = f"""
         """</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1osnzbx</bpmn:incoming>
-      <bpmn:outgoing>Flow_1u2wok0</bpmn:outgoing>
+      <bpmn:outgoing>Flow_023f6ag</bpmn:outgoing>
     </bpmn:callActivity>
-    <bpmn:endEvent id="Event_0d0krr9">
-      <bpmn:incoming>Flow_1u2wok0</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1u2wok0" sourceRef="Activity_039cy43" targetRef="Event_0d0krr9" />
     <bpmn:sequenceFlow id="Flow_0f008d6" sourceRef="Activity_0uw163e" targetRef="Activity_1n6i288" />
     <bpmn:userTask id="Activity_0uw163e" name="Dados iniciais">
       <bpmn:extensionElements>
@@ -67,6 +63,16 @@ for f in filiais:
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
     <bpmn:dataStoreReference id="DataStoreReference_0xuab3g" name="Filiais" dataStoreRef="filiais" type="json" />
+    <bpmn:sequenceFlow id="Flow_023f6ag" sourceRef="Activity_039cy43" targetRef="Activity_0wfo0gn" />
+    <bpmn:userTask id="Activity_0wfo0gn">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="escolher-itens-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="escolher-itens-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_023f6ag</bpmn:incoming>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -82,9 +88,6 @@ for f in filiais:
         <dc:Bounds x="430" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0d0krr9_di" bpmnElement="Event_0d0krr9">
-        <dc:Bounds x="592" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0s6ltr7_di" bpmnElement="Activity_0uw163e">
         <dc:Bounds x="110" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -95,6 +98,9 @@ for f in filiais:
           <dc:Bounds x="106" y="342" width="28" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0md3myf_di" bpmnElement="Activity_0wfo0gn">
+        <dc:Bounds x="590" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1kmvn07_di" bpmnElement="Flow_1kmvn07">
         <di:waypoint x="38" y="177" />
         <di:waypoint x="110" y="177" />
@@ -103,10 +109,6 @@ for f in filiais:
         <di:waypoint x="370" y="177" />
         <di:waypoint x="430" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1u2wok0_di" bpmnElement="Flow_1u2wok0">
-        <di:waypoint x="530" y="177" />
-        <di:waypoint x="592" y="177" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0f008d6_di" bpmnElement="Flow_0f008d6">
         <di:waypoint x="210" y="177" />
         <di:waypoint x="270" y="177" />
@@ -114,6 +116,10 @@ for f in filiais:
       <bpmndi:BPMNEdge id="DataInputAssociation_1gyspaw_di" bpmnElement="DataInputAssociation_1gyspaw">
         <di:waypoint x="130" y="285" />
         <di:waypoint x="157" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_023f6ag_di" bpmnElement="Flow_023f6ag">
+        <di:waypoint x="530" y="177" />
+        <di:waypoint x="590" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
