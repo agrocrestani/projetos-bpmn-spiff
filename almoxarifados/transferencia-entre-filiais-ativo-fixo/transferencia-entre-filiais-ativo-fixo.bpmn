@@ -61,7 +61,7 @@ if BPLIdDestino == BPLIdOrigem:
 
 1. Verifique se o erro é possível ser corrigido por você.
 2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:postScript>dell(error)</spiffworkflow:postScript>
+        <spiffworkflow:postScript>del(error)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_19nt5l7</bpmn:incoming>
       <bpmn:outgoing>Flow_1rc5s1v</bpmn:outgoing>
