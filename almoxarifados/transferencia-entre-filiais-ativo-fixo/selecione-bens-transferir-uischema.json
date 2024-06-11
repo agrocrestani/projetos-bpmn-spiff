@@ -2,7 +2,7 @@
   "produto": {
     "ui:widget": "typeahead",
     "ui:options": {
-      "category": "prod_com_mov",
+      "category": "ativos_fixos",
       "itemFormat": "{ItemName} - {ItemCode}"
     }
   }
