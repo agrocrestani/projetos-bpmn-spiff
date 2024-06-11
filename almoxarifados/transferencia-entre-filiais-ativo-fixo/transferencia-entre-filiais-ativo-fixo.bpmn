@@ -78,6 +78,12 @@ if BPLIdDestino == BPLIdOrigem:
     <bpmn:sequenceFlow id="Flow_1rc5s1v" sourceRef="VERIFICA_ERRO_01" targetRef="Gateway_1bpuhwx" />
     <bpmn:sequenceFlow id="Flow_1t9fqmk" sourceRef="SELECIONE_BENS_TRANSFERENCIA" targetRef="EndEvent_1" />
     <bpmn:userTask id="SELECIONE_BENS_TRANSFERENCIA" name="Selecione os Bens a Serem Transferidos">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="selecione-bens-transferir-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="selecione-bens-transferir-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_06h7wy1</bpmn:incoming>
       <bpmn:outgoing>Flow_1t9fqmk</bpmn:outgoing>
     </bpmn:userTask>
@@ -98,6 +104,9 @@ if BPLIdDestino == BPLIdOrigem:
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="52" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="812" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0jizyxo_di" bpmnElement="DEF_FILIAL_ORIGEM_DESTINO">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -114,18 +123,15 @@ if BPLIdDestino == BPLIdOrigem:
           <dc:Bounds x="445" y="128" width="50" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_19a2fpf_di" bpmnElement="VERIFICA_ERRO_01">
+        <dc:Bounds x="270" y="380" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1bpuhwx_di" bpmnElement="Gateway_1bpuhwx" isMarkerVisible="true">
         <dc:Bounds x="145" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="812" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1t685ws_di" bpmnElement="SELECIONE_BENS_TRANSFERENCIA">
         <dc:Bounds x="590" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_19a2fpf_di" bpmnElement="VERIFICA_ERRO_01">
-        <dc:Bounds x="270" y="380" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1crwbef_di" bpmnElement="FINAL_POR_TEMPO">
