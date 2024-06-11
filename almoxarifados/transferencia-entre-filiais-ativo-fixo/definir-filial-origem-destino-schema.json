@@ -1,7 +1,8 @@
 {
   "type": "object",
   "required": [
-    "BPLIdOrigem"m
+    "BPLIdOrigem",
+    "BPLIdDestino"
   ],
   "properties": {
     "BPLIdOrigem": {
