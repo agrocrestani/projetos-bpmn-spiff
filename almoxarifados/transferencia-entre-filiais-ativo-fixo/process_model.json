@@ -1,0 +1,9 @@
+{
+    "description": "Transfer\u00eancia de ativo fixo entre filiais - movimenta\u00e7\u00e3o de bens dur\u00e1veis entre unidades da empresa, incluindo autoriza\u00e7\u00e3o, documenta\u00e7\u00e3o, transporte e atualiza\u00e7\u00e3o de registros cont\u00e1beis.",
+    "display_name": "Transfer\u00eancia entre filiais ativo fixo",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "transferencia-entre-filiais-ativo-fixo.bpmn",
+    "primary_process_id": "Process_transferencia_entre_filiais_ativo_fixo_317vfrz"
+}
