@@ -16,7 +16,7 @@
       <bpmn:dataOutputAssociation id="DataOutputAssociation_0tjuw5b">
         <bpmn:targetRef>DataStoreReference_1oronwq</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
-      <bpmn:script>typeahead = {"prod_com_mov": produto_com_movimento}</bpmn:script>
+      <bpmn:script>typeahead = {"ativos_fixos": ativos_fixos}</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_09mu4sd" targetRef="Activity_0o51srq" />
     <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
@@ -36,13 +36,15 @@ connection = {
 }
 
 query = f"""
-            SELECT DISTINCT 
+            SELECT  
                 t0."ItemCode" ,
-                t1."ItemName" 
+                t0."ItemName" ,
+                t0.U_RSD_FILIAL ,
+                t1."AliasName" 
             FROM 
-                {baseSap}.OITW t0
-                INNER JOIN {baseSap}.OITM t1 ON t1."ItemCode" = t0."ItemCode"
-            WHERE t0."AvgPrice" &gt; 0
+                {baseSap}.OITM t0
+                INNER JOIN {baseSap}.OBPL t1 ON t1."BPLId" = t0.U_RSD_FILIAL 
+            WHERE t0."ItemType" = 'F'
         """
 
 rsp = Hana(connection).selectDb(query)
@@ -98,12 +100,12 @@ del(rsp)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_15602ew</bpmn:incoming>
       <bpmn:outgoing>Flow_0w7oyed</bpmn:outgoing>
-      <bpmn:script>produto_com_movimento = []
+      <bpmn:script>ativos_fixos = []
 
 for r in rsp:
     ItemCode = str(r['itemcode'])
     ItemName = str(r['itemname'])
-    produto_com_movimento.append(
+    ativos_fixos.append(
         {
             "search_term": ItemName, 
             "result": {
