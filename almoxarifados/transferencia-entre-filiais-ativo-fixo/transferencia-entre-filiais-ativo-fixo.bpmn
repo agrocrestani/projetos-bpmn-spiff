@@ -44,7 +44,9 @@ del(filial)</spiffworkflow:preScript>
       <bpmn:outgoing>Flow_06h7wy1</bpmn:outgoing>
       <bpmn:outgoing>Flow_19nt5l7</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_06h7wy1" sourceRef="DECISAO_ERRO_01" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_06h7wy1" sourceRef="DECISAO_ERRO_01" targetRef="EndEvent_1">
+      <bpmn:conditionExpression>error == null</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:manualTask id="VERIFICA_ERRO_01" name="Verifica Erro">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
@@ -57,6 +59,7 @@ del(filial)</spiffworkflow:preScript>
 
 1. Verifique se o erro é possível ser corrigido por você.
 2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:postScript>dell(error)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_19nt5l7</bpmn:incoming>
       <bpmn:outgoing>Flow_1rc5s1v</bpmn:outgoing>
@@ -75,6 +78,12 @@ del(filial)</spiffworkflow:preScript>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_transferencia_entre_filiais_ativo_fixo">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="52" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="602" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0jizyxo_di" bpmnElement="DEF_FILIAL_ORIGEM_DESTINO">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -85,9 +94,6 @@ del(filial)</spiffworkflow:preScript>
           <dc:Bounds x="306" y="-35" width="29" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="602" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_12dhe7r_di" bpmnElement="DECISAO_ERRO_01" isMarkerVisible="true">
         <dc:Bounds x="445" y="152" width="50" height="50" />
         <bpmndi:BPMNLabel />
@@ -95,9 +101,6 @@ del(filial)</spiffworkflow:preScript>
       <bpmndi:BPMNShape id="Activity_19a2fpf_di" bpmnElement="VERIFICA_ERRO_01">
         <dc:Bounds x="270" y="290" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="52" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1bpuhwx_di" bpmnElement="Gateway_1bpuhwx" isMarkerVisible="true">
         <dc:Bounds x="145" y="152" width="50" height="50" />
