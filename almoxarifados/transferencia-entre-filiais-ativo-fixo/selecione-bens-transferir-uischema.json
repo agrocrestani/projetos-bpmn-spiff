@@ -1,5 +1,5 @@
 {
-  "produto": {
+  "prativooduto": {
     "ui:widget": "typeahead",
     "ui:options": {
       "category": "ativos_fixos",
