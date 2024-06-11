@@ -10,7 +10,7 @@
       <bpmn:incoming>Flow_0lz96a1</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0lz96a1" sourceRef="Activity_0o51srq" targetRef="Event_0jxoz7s" />
-    <bpmn:scriptTask id="Activity_0o51srq" name="Parse cities response">
+    <bpmn:scriptTask id="Activity_0o51srq" name="Parse Ativos response">
       <bpmn:incoming>Flow_0w7oyed</bpmn:incoming>
       <bpmn:outgoing>Flow_0lz96a1</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_0tjuw5b">
@@ -51,7 +51,7 @@ rsp = Hana(connection).selectDb(query)
 
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:scriptTask id="Activity_09mu4sd" name="Fetch entidades">
+    <bpmn:scriptTask id="Activity_09mu4sd" name="Fetch Ativos">
       <bpmn:extensionElements>
         <spiffworkflow:serviceTaskOperator id="postgres_v2/SelectValuesV2" resultVariable="rsp">
           <spiffworkflow:parameters>
@@ -105,15 +105,25 @@ del(rsp)</spiffworkflow:postScript>
 for r in rsp:
     ItemCode = str(r['itemcode'])
     ItemName = str(r['itemname'])
+    U_RSD_FILIAL = str(r['u_rsd_filial'])
+    AliasName = str(r['aliasname'])
     ativos_fixos.append(
         {
             "search_term": ItemName, 
             "result": {
                 "ItemCode": ItemCode, 
-                "ItemName": ItemName
+                "ItemName": ItemName,
+                "U_RSD_FILIAL": U_RSD_FILIAL,
+                "AliasName": AliasName
                 }
             }
         )
+
+del(ItemCode)
+del(ItemName)
+del(U_RSD_FILIAL)
+del(AliasName)
+del(r)
 
 del(rsp)</bpmn:script>
     </bpmn:scriptTask>
@@ -142,6 +152,7 @@ del(rsp)</bpmn:script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0w58e99_di" bpmnElement="Activity_09mu4sd">
         <dc:Bounds x="220" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0tn4ed3_di" bpmnElement="Flow_0tn4ed3">
         <di:waypoint x="-22" y="177" />
