@@ -83,6 +83,7 @@ if BPLIdDestino == BPLIdOrigem:
           <spiffworkflow:property name="formJsonSchemaFilename" value="selecione-bens-transferir-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="selecione-bens-transferir-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:preScript>del(error)</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_06h7wy1</bpmn:incoming>
       <bpmn:outgoing>Flow_1t9fqmk</bpmn:outgoing>
