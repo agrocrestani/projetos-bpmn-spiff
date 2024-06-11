@@ -7,7 +7,7 @@
   "properties": {
     "ativo": {
       "type": "string",
-      "title": "Produto"
+      "title": "Ativo Fixo"
     }
   }
 }
