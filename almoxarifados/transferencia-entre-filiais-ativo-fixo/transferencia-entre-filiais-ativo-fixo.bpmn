@@ -88,7 +88,7 @@ if BPLIdDestino == BPLIdOrigem:
     <bpmn:boundaryEvent id="TEMPORIZADOR_ATIVIDADE" name="Temporizador da Atividade" attachedToRef="DEF_FILIAL_ORIGEM_DESTINO">
       <bpmn:outgoing>Flow_06uevzi</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_178v5z0">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT15S" </bpmn:timeDuration>
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT1H" </bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:boundaryEvent>
   </bpmn:process>
