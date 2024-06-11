@@ -4,11 +4,11 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="DEF_FILIAL_ORIGEM_DESTINO" />
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Gateway_1bpuhwx" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:incoming>Flow_06h7wy1</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="DEF_FILIAL_ORIGEM_DESTINO" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="DEF_FILIAL_ORIGEM_DESTINO" targetRef="DECISAO_ERRO_01" />
     <bpmn:userTask id="DEF_FILIAL_ORIGEM_DESTINO" name="Definir Filial de Origem e Destino">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>Escolha a filial de origem onde o ativo está localizado e a filial de destino para onde o ativo será transferido.</spiffworkflow:instructionsForEndUser>
@@ -26,8 +26,11 @@ for filial in filiais:
 
 del(filiais)
 del(filial)</spiffworkflow:preScript>
+        <spiffworkflow:postScript>if BPLIdDestino == BPLIdOrigem:
+    erro = "Não é possível transferir um ativo para a mesma filial de origem."
+</spiffworkflow:postScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:incoming>INICIO</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
       <bpmn:property id="Property_1twfozj" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_08ov4l6">
@@ -36,16 +39,42 @@ del(filial)</spiffworkflow:preScript>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
     <bpmn:dataStoreReference id="Filial_DS" name="Filiais" dataStoreRef="filiais" type="json" />
+    <bpmn:exclusiveGateway id="DECISAO_ERRO_01" name="Tem Erro?" default="Flow_06h7wy1">
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_06h7wy1</bpmn:outgoing>
+      <bpmn:outgoing>Flow_19nt5l7</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_06h7wy1" sourceRef="DECISAO_ERRO_01" targetRef="EndEvent_1" />
+    <bpmn:manualTask id="VERIFICA_ERRO_01" name="Verifica Erro">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
+
+### Informações
+
+| Campo | Conteudo |
+| ----------: | -------------- |
+| Mensagem Erro: | {{error}}
+
+1. Verifique se o erro é possível ser corrigido por você.
+2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_19nt5l7</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rc5s1v</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_19nt5l7" sourceRef="DECISAO_ERRO_01" targetRef="VERIFICA_ERRO_01">
+      <bpmn:conditionExpression>error != null</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_1bpuhwx" default="INICIO">
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:incoming>Flow_1rc5s1v</bpmn:incoming>
+      <bpmn:outgoing>INICIO</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="INICIO" name="Inicio" sourceRef="Gateway_1bpuhwx" targetRef="DEF_FILIAL_ORIGEM_DESTINO" />
+    <bpmn:sequenceFlow id="Flow_1rc5s1v" sourceRef="VERIFICA_ERRO_01" targetRef="Gateway_1bpuhwx" />
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_transferencia_entre_filiais_ativo_fixo">
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="432" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0jizyxo_di" bpmnElement="DEF_FILIAL_ORIGEM_DESTINO">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -56,17 +85,55 @@ del(filial)</spiffworkflow:preScript>
           <dc:Bounds x="306" y="-35" width="29" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="602" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_12dhe7r_di" bpmnElement="DECISAO_ERRO_01" isMarkerVisible="true">
+        <dc:Bounds x="445" y="152" width="50" height="50" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_19a2fpf_di" bpmnElement="VERIFICA_ERRO_01">
+        <dc:Bounds x="270" y="290" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="52" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1bpuhwx_di" bpmnElement="Gateway_1bpuhwx" isMarkerVisible="true">
+        <dc:Bounds x="145" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
-        <di:waypoint x="215" y="177" />
-        <di:waypoint x="270" y="177" />
+        <di:waypoint x="88" y="177" />
+        <di:waypoint x="145" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="370" y="177" />
-        <di:waypoint x="432" y="177" />
+        <di:waypoint x="445" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_08ov4l6_di" bpmnElement="DataInputAssociation_08ov4l6">
         <di:waypoint x="320" y="45" />
         <di:waypoint x="320" y="137" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06h7wy1_di" bpmnElement="Flow_06h7wy1">
+        <di:waypoint x="495" y="177" />
+        <di:waypoint x="602" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19nt5l7_di" bpmnElement="Flow_19nt5l7">
+        <di:waypoint x="470" y="202" />
+        <di:waypoint x="470" y="330" />
+        <di:waypoint x="370" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wryrj4_di" bpmnElement="INICIO">
+        <di:waypoint x="195" y="177" />
+        <di:waypoint x="270" y="177" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="222" y="159" width="26" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rc5s1v_di" bpmnElement="Flow_1rc5s1v">
+        <di:waypoint x="270" y="330" />
+        <di:waypoint x="170" y="330" />
+        <di:waypoint x="170" y="202" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
