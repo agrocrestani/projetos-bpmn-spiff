@@ -1,1 +1,13 @@
-{}
+{
+  "title": "Selecionar o Produto",
+  "type": "object",
+  "required": [
+    "produto"
+  ],
+  "properties": {
+    "produto": {
+      "type": "string",
+      "title": "Produto"
+    }
+  }
+}
