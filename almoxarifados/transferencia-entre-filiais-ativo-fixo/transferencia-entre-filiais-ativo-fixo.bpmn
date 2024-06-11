@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:process id="Process_transferencia_entre_filiais_ativo_fixo" name="Transferência de Ativo Fixo entre Filiais" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
@@ -81,6 +81,16 @@ if BPLIdDestino == BPLIdOrigem:
       <bpmn:incoming>Flow_06h7wy1</bpmn:incoming>
       <bpmn:outgoing>Flow_1t9fqmk</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:endEvent id="FINAL_POR_TEMPO" name="Finalizador por tempo">
+      <bpmn:incoming>Flow_06uevzi</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_06uevzi" sourceRef="TEMPORIZADOR_ATIVIDADE" targetRef="FINAL_POR_TEMPO" />
+    <bpmn:boundaryEvent id="TEMPORIZADOR_ATIVIDADE" name="Temporizador da Atividade" attachedToRef="DEF_FILIAL_ORIGEM_DESTINO">
+      <bpmn:outgoing>Flow_06uevzi</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_178v5z0">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT20S"</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -104,10 +114,6 @@ if BPLIdDestino == BPLIdOrigem:
           <dc:Bounds x="445" y="128" width="50" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_19a2fpf_di" bpmnElement="VERIFICA_ERRO_01">
-        <dc:Bounds x="270" y="290" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1bpuhwx_di" bpmnElement="Gateway_1bpuhwx" isMarkerVisible="true">
         <dc:Bounds x="145" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -117,6 +123,22 @@ if BPLIdDestino == BPLIdOrigem:
       <bpmndi:BPMNShape id="Activity_1t685ws_di" bpmnElement="SELECIONE_BENS_TRANSFERENCIA">
         <dc:Bounds x="590" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_19a2fpf_di" bpmnElement="VERIFICA_ERRO_01">
+        <dc:Bounds x="270" y="340" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1crwbef_di" bpmnElement="FINAL_POR_TEMPO">
+        <dc:Bounds x="272" y="272" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="253" y="315" width="75" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_169uhed_di" bpmnElement="TEMPORIZADOR_ATIVIDADE">
+        <dc:Bounds x="272" y="199" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="250" y="242" width="81" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="88" y="177" />
@@ -136,8 +158,8 @@ if BPLIdDestino == BPLIdOrigem:
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_19nt5l7_di" bpmnElement="Flow_19nt5l7">
         <di:waypoint x="470" y="202" />
-        <di:waypoint x="470" y="330" />
-        <di:waypoint x="370" y="330" />
+        <di:waypoint x="470" y="380" />
+        <di:waypoint x="370" y="380" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0wryrj4_di" bpmnElement="INICIO">
         <di:waypoint x="195" y="177" />
@@ -147,13 +169,17 @@ if BPLIdDestino == BPLIdOrigem:
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1rc5s1v_di" bpmnElement="Flow_1rc5s1v">
-        <di:waypoint x="270" y="330" />
-        <di:waypoint x="170" y="330" />
+        <di:waypoint x="270" y="380" />
+        <di:waypoint x="170" y="380" />
         <di:waypoint x="170" y="202" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1t9fqmk_di" bpmnElement="Flow_1t9fqmk">
         <di:waypoint x="690" y="177" />
         <di:waypoint x="812" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06uevzi_di" bpmnElement="Flow_06uevzi">
+        <di:waypoint x="290" y="235" />
+        <di:waypoint x="290" y="272" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
