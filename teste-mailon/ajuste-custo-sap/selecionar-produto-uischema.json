@@ -1,5 +1,5 @@
 {
-  "produto": {
+  "ativos": {
     "ui:widget": "typeahead",
     "ui:options": {
       "category": "prod_com_mov",
