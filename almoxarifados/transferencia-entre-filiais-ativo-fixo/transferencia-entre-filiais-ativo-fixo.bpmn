@@ -11,7 +11,7 @@
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="DEF_FILIAL_ORIGEM_DESTINO" targetRef="EndEvent_1" />
     <bpmn:userTask id="DEF_FILIAL_ORIGEM_DESTINO" name="Definir Filial de Origem e Destino">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser>Escolha a filial de origem onde o ativo está localizado e a filial de destino para onde o ativo será transferido.</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="definir-filial-origem-destino-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="definir-filial-origem-destino-uischema.json" />
