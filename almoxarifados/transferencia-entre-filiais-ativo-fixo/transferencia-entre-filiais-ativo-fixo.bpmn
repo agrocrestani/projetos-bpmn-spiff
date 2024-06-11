@@ -154,14 +154,14 @@ if BPLIdDestino == BPLIdOrigem:
       <bpmndi:BPMNShape id="Event_1ejlc50_di" bpmnElement="Event_1ejlc50">
         <dc:Bounds x="712" y="32" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_01vamw6_di" bpmnElement="Event_1p5jtl1">
+        <dc:Bounds x="622" y="119" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_169uhed_di" bpmnElement="TEMPORIZADOR_ATIVIDADE">
         <dc:Bounds x="352" y="119" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="329" y="86" width="81" height="27" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_01vamw6_di" bpmnElement="Event_1p5jtl1">
-        <dc:Bounds x="622" y="119" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="88" y="177" />
