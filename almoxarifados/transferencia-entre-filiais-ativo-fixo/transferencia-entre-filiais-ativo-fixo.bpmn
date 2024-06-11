@@ -26,7 +26,7 @@ for filial in filiais:
 
 del(filiais)
 del(filial)</spiffworkflow:preScript>
-        <spiffworkflow:postScript>error = null
+        <spiffworkflow:postScript>error = None
 
 if BPLIdDestino == BPLIdOrigem:
     error = "Não é possível transferir um ativo para a mesma filial de origem."
@@ -47,7 +47,7 @@ if BPLIdDestino == BPLIdOrigem:
       <bpmn:outgoing>Flow_19nt5l7</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_06h7wy1" sourceRef="DECISAO_ERRO_01" targetRef="EndEvent_1">
-      <bpmn:conditionExpression>error == null</bpmn:conditionExpression>
+      <bpmn:conditionExpression>error == None</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:manualTask id="VERIFICA_ERRO_01" name="Verifica Erro">
       <bpmn:extensionElements>
@@ -67,7 +67,7 @@ if BPLIdDestino == BPLIdOrigem:
       <bpmn:outgoing>Flow_1rc5s1v</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:sequenceFlow id="Flow_19nt5l7" sourceRef="DECISAO_ERRO_01" targetRef="VERIFICA_ERRO_01">
-      <bpmn:conditionExpression>error != null</bpmn:conditionExpression>
+      <bpmn:conditionExpression>error != None</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="Gateway_1bpuhwx" default="INICIO">
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
