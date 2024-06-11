@@ -6,7 +6,7 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Gateway_1bpuhwx" />
     <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_06h7wy1</bpmn:incoming>
+      <bpmn:incoming>Flow_1t9fqmk</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="DEF_FILIAL_ORIGEM_DESTINO" targetRef="DECISAO_ERRO_01" />
     <bpmn:userTask id="DEF_FILIAL_ORIGEM_DESTINO" name="Definir Filial de Origem e Destino">
@@ -46,7 +46,7 @@ if BPLIdDestino == BPLIdOrigem:
       <bpmn:outgoing>Flow_06h7wy1</bpmn:outgoing>
       <bpmn:outgoing>Flow_19nt5l7</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_06h7wy1" sourceRef="DECISAO_ERRO_01" targetRef="EndEvent_1">
+    <bpmn:sequenceFlow id="Flow_06h7wy1" sourceRef="DECISAO_ERRO_01" targetRef="SELECIONE_BENS_TRANSFERENCIA">
       <bpmn:conditionExpression>error == None</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:manualTask id="VERIFICA_ERRO_01" name="Verifica Erro">
@@ -76,6 +76,11 @@ if BPLIdDestino == BPLIdOrigem:
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="INICIO" name="Inicio" sourceRef="Gateway_1bpuhwx" targetRef="DEF_FILIAL_ORIGEM_DESTINO" />
     <bpmn:sequenceFlow id="Flow_1rc5s1v" sourceRef="VERIFICA_ERRO_01" targetRef="Gateway_1bpuhwx" />
+    <bpmn:sequenceFlow id="Flow_1t9fqmk" sourceRef="SELECIONE_BENS_TRANSFERENCIA" targetRef="EndEvent_1" />
+    <bpmn:userTask id="SELECIONE_BENS_TRANSFERENCIA" name="Selecione os Bens a Serem Transferidos">
+      <bpmn:incoming>Flow_06h7wy1</bpmn:incoming>
+      <bpmn:outgoing>Flow_1t9fqmk</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -109,6 +114,10 @@ if BPLIdDestino == BPLIdOrigem:
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="812" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1t685ws_di" bpmnElement="SELECIONE_BENS_TRANSFERENCIA">
+        <dc:Bounds x="590" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="88" y="177" />
         <di:waypoint x="145" y="177" />
@@ -123,7 +132,7 @@ if BPLIdDestino == BPLIdOrigem:
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_06h7wy1_di" bpmnElement="Flow_06h7wy1">
         <di:waypoint x="495" y="177" />
-        <di:waypoint x="812" y="177" />
+        <di:waypoint x="590" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_19nt5l7_di" bpmnElement="Flow_19nt5l7">
         <di:waypoint x="470" y="202" />
@@ -141,6 +150,10 @@ if BPLIdDestino == BPLIdOrigem:
         <di:waypoint x="270" y="330" />
         <di:waypoint x="170" y="330" />
         <di:waypoint x="170" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1t9fqmk_di" bpmnElement="Flow_1t9fqmk">
+        <di:waypoint x="690" y="177" />
+        <di:waypoint x="812" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
