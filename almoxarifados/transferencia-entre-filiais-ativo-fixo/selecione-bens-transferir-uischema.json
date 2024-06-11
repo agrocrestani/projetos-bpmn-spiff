@@ -2,7 +2,7 @@
   "ativo": {
     "ui:widget": "typeahead",
     "ui:options": {
-      "category": "ativos_fixos,
+      "category": ativos_fixos,
       "itemFormat": "{ItemCode} - {ItemName}"
     }
   }
