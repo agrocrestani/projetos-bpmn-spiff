@@ -13,5 +13,21 @@
       "value": "3",
       "label": "0362-AGROPECUARIA CRESTANI LTDA"
     }
+  ],
+
+    "BPLIdOrigem": "3",
+  "n_filiais": [
+    {
+      "value": "1",
+      "label": "0109-AGROPECUARIA CRESTANI LTDA"
+    },
+    {
+      "value": "2",
+      "label": "0281-AGROPECUARIA CRESTANI LTDA"
+    },
+    {
+      "value": "3",
+      "label": "0362-AGROPECUARIA CRESTANI LTDA"
+    }
   ]
 }
