@@ -5,7 +5,7 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_0tn4ed3</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_0tn4ed3" sourceRef="StartEvent_1" targetRef="Activity_0dyhbdy" />
+    <bpmn:sequenceFlow id="Flow_0tn4ed3" sourceRef="StartEvent_1" targetRef="Ativos_Fixos" />
     <bpmn:endEvent id="Event_0jxoz7s">
       <bpmn:incoming>Flow_0lz96a1</bpmn:incoming>
     </bpmn:endEvent>
@@ -20,8 +20,8 @@
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_09mu4sd" targetRef="Activity_0o51srq" />
     <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
-    <bpmn:sequenceFlow id="Flow_15602ew" sourceRef="Activity_0dyhbdy" targetRef="Activity_09mu4sd" />
-    <bpmn:scriptTask id="Activity_0dyhbdy" name="Fetch Cadastro de Itens">
+    <bpmn:sequenceFlow id="Flow_15602ew" sourceRef="Ativos_Fixos" targetRef="Activity_09mu4sd" />
+    <bpmn:scriptTask id="Ativos_Fixos" name="Ativos Fixos">
       <bpmn:incoming>Flow_0tn4ed3</bpmn:incoming>
       <bpmn:outgoing>Flow_15602ew</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
@@ -146,7 +146,7 @@ del(rsp)</bpmn:script>
           <dc:Bounds x="413" y="362" width="55" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1j6pxa8_di" bpmnElement="Activity_0dyhbdy">
+      <bpmndi:BPMNShape id="Activity_1j6pxa8_di" bpmnElement="Ativos_Fixos">
         <dc:Bounds x="50" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
