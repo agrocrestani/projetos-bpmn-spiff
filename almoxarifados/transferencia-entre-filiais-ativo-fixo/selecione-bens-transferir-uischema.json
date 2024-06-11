@@ -2,7 +2,7 @@
   "ativo": {
     "ui:widget": "typeahead",
     "ui:options": {
-      "category": "ativos_fixos_" + BPLIdOrigem,
+      "category": "ativos_fixos" + BPLIdOrigem,
       "itemFormat": "{ItemCode} - {ItemName}"
     }
   }
