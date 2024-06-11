@@ -49,7 +49,7 @@
 ### Informe os dados abaixo e clique em continuar.</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>n_filiais = []
 for f in filiais:
-    if f['BPLId'] in ["1", "3", "4", "5"]:
+    if f['BPLId'] in ["1", "2", "3", "4", "5"]:
         BPLId = f['BPLId']
         BPLName = f['BPLName']
         n_filiais.append(
