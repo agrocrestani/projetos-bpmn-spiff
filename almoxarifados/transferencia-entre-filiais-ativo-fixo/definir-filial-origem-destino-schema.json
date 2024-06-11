@@ -4,7 +4,7 @@
     "BPLId"
   ],
   "properties": {
-    "BPLId": {
+    "BPLIdOrigem": {
       "title": "Filial",
       "type": "string",
       "anyOf": [
