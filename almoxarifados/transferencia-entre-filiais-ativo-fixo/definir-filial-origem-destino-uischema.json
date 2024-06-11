@@ -1,10 +1,9 @@
 {
   "ui:layout": [
     {
-      "BPLIdOrigem": {},
+      "BPLIdOrigem": {}
     },
         {
-      "BPLIdOrigem": {},
       "BPLIdDestino": {}
     }
   ]
