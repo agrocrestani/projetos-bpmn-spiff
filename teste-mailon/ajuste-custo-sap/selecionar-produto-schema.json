@@ -4,10 +4,10 @@
   "required": [
     "produto"
   ],
-  "produtos": {
+  "properties": {
     "produto": {
       "type": "string",
-      "title": "Ativos Fixos"
+      "title": "Produto"
     }
   }
 }
