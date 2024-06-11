@@ -26,8 +26,10 @@ for filial in filiais:
 
 del(filiais)
 del(filial)</spiffworkflow:preScript>
-        <spiffworkflow:postScript>if BPLIdDestino == BPLIdOrigem:
-    erro = "Não é possível transferir um ativo para a mesma filial de origem."
+        <spiffworkflow:postScript>error = null
+
+if BPLIdDestino == BPLIdOrigem:
+    error = "Não é possível transferir um ativo para a mesma filial de origem."
 </spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>INICIO</bpmn:incoming>
