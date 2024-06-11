@@ -4,7 +4,7 @@
   "required": [
     "produto"
   ],
-  "ativos": {
+  "produtos": {
     "produto": {
       "type": "string",
       "title": "Ativos Fixos"
