@@ -23,7 +23,9 @@ for filial in filiais:
         "value": filial['BPLId'],
         "label": filial['AliasName'],
     })
-</spiffworkflow:preScript>
+
+del(filiais)
+del(filial)</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
