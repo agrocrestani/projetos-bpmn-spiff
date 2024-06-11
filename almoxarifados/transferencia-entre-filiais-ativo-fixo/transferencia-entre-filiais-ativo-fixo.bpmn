@@ -16,7 +16,7 @@
           <spiffworkflow:property name="formJsonSchemaFilename" value="definir-filial-origem-destino-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="definir-filial-origem-destino-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript>n_filiais = Filial</spiffworkflow:preScript>
+        <spiffworkflow:preScript>n_filiais = Filiais</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
