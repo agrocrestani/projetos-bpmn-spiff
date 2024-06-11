@@ -7,7 +7,7 @@
   "ativos": {
     "produto": {
       "type": "string",
-      "title": "Produto"
+      "title": "Ativos Fixos"
     }
   }
 }
