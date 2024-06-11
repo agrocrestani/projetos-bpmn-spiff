@@ -44,7 +44,7 @@ query = f"""
             FROM 
                 {baseSap}.OITM t0
                 INNER JOIN {baseSap}.OBPL t1 ON t1."BPLId" = t0.U_RSD_FILIAL 
-            WHERE t0."ItemType" = 'F'
+            WHERE t0."ItemType" = 'F' AND t0.U_RSD_FILIAL = {BPLIdOrigem}
         """
 
 rsp = Hana(connection).selectDb(query)
