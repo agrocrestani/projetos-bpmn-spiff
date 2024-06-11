@@ -2,7 +2,7 @@
   "title": "Selecionar o Bem",
   "type": "object",
   "required": [
-    "produto"
+    "ativo"
   ],
   "properties": {
     "ativo": {
