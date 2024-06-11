@@ -37,8 +37,9 @@ You can also change the text you are reading here by updating the *Instructions*
         <bpmn:targetRef>Property_1twfozj</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
-    <bpmn:dataStoreReference id="Filial_DS" name="Filial" />
+    <bpmn:dataStoreReference id="Filial_DS" name="Filiais" dataStoreRef="filiais" type="json" />
   </bpmn:process>
+  <bpmn:dataStore id="filiais" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_transferencia_entre_filiais_ativo_fixo">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -54,7 +55,7 @@ You can also change the text you are reading here by updating the *Instructions*
       <bpmndi:BPMNShape id="DataStoreReference_1uk47xj_di" bpmnElement="Filial_DS">
         <dc:Bounds x="295" y="-5" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="308" y="-35" width="24" height="14" />
+          <dc:Bounds x="306" y="-35" width="29" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
