@@ -51,7 +51,7 @@ if BPLIdDestino == BPLIdOrigem:
     </bpmn:sequenceFlow>
     <bpmn:manualTask id="VERIFICA_ERRO_01" name="Verifica Erro">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
+        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro!&lt;/font&gt; 
 
 ### Informações
 
