@@ -18,5 +18,5 @@ O usuário visualizará as informações da transferência, juntamente com a NF 
 ### 6º  - Entrada do Bem na Filial de Destino
 Assim que concluído a etapa anterior, na filial de destino, o usuário verá um formulário para registrar a entrada do bem. Quem será o responsável por dar entrada no ativo dentro das filiais?
 
-### 7º ? - Confirmação de Recebimento
+### 7º - Confirmação de Recebimento
 O usuário que iniciou o processo receberá a confirmação de que o bem chegou ao destino.
