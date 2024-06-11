@@ -1,6 +1,5 @@
 {
-      "title": "Turnover Agro Crestani",
-
+"title": "Turnover Agro Crestani",
   "type": "object",
   "required": [
     "BPLId"
