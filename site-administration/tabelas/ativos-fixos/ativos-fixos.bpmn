@@ -117,7 +117,7 @@ del(AliasName)
 del(r)
 
 
-typeahead = {f'"ativos_fixos_2"': ativos_fixos}
+typeahead = {f'ativos_fixos_2': ativos_fixos}
 
 </bpmn:script>
     </bpmn:scriptTask>
