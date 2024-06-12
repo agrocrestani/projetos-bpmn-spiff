@@ -11,7 +11,7 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_09mu4sd" targetRef="Event_0jxoz7s" />
     <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
-    <bpmn:scriptTask id="Activity_09mu4sd" name="Fetch Estoque">
+    <bpmn:scriptTask id="Activity_09mu4sd" name="Fetch Ativos">
       <bpmn:extensionElements>
         <spiffworkflow:serviceTaskOperator id="postgres_v2/SelectValuesV2" resultVariable="rsp">
           <spiffworkflow:parameters>
@@ -64,46 +64,48 @@ connection = {
 
 baseSap = get_secret('baseSap')
 
-# query = f"""
-#     SELECT 
-#       T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", T2."WhsCode", to_alphanum(T2."OnHand") "OnHand"
-#     FROM {baseSap}."OITM" T0
-#     INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
-#     INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
-#     WHERE T2."OnHand" &gt; 0  
-#       AND  (T2."WhsCode" = '03.MATR'
-#       OR   T2."WhsCode" = '03.FQUE')
-#     ORDER BY T0."ItemName", T2."WhsCode" 
-#           """
+query = f"""
+            SELECT  
+                t0."ItemCode" ,
+                t0."ItemName" ,
+                t0.U_RSD_FILIAL ,
+                t1."AliasName" 
+            FROM 
+                {baseSap}.OITM t0
+                INNER JOIN {baseSap}.OBPL t1 ON t1."BPLId" = t0.U_RSD_FILIAL 
+            WHERE t0."ItemType" = 'F' AND t0.U_RSD_FILIAL = {BPLIdOrigem}
+        """
 
-# rsp = json.loads(Hana(connection).selectDb(query))
 rsp = Hana(connection).selectDb(query)
 
+del(connection)
 estoque = []
 
 for r in rsp:
     ItemCode = str(r['itemcode'])
     ItemName = str(r['itemname'])
-    ItmsGrpNam = str(r['itmsgrpnam'])
-    InvntryUom = str(r['invntryuom'])
-    OnHand = "{:,.2f}".format(float(r['onhand'])).replace(",", "X").replace(".", ",").replace("X", ".")
-    WhsCode = str(r['whscode'])
-    estoque.append(
+    U_RSD_FILIAL = str(r['u_rsd_filial'])
+    AliasName = str(r['aliasname'])
+    ativos_fixos.append(
         {
             "search_term": ItemName, 
             "result": {
                 "ItemCode": ItemCode, 
-                "ItemName": ItemName, 
-                "ItmsGrpNam": ItmsGrpNam,
-                "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
-                "OnHand": OnHand,
-                "WhsCode": WhsCode
+                "ItemName": ItemName,
+                "U_RSD_FILIAL": U_RSD_FILIAL,
+                "AliasName": AliasName
                 }
             }
         )
 
+del(ItemCode)
+del(ItemName)
+del(U_RSD_FILIAL)
+del(AliasName)
+del(r)
 
-typeahead = {"estoque": estoque}
+
+typeahead = {f'"ativos_fixos_{BPLIdOrigem}"': ativos_fixos}
 
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
