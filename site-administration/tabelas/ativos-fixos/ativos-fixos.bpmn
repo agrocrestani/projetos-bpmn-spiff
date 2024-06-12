@@ -1,25 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
-  <bpmn:process id="Process_5zne1on" isExecutable="true">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:dataStore id="typeahead" name="TypeaheadDataStore" />
+  <bpmn:process id="Atualiza_Estoque" name="Atualiza Estoque" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
-      <bpmn:outgoing>Flow_14fg8ih</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0tn4ed3</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_14fg8ih" sourceRef="StartEvent_1" targetRef="Activity_1rmc3fs" />
-    <bpmn:userTask id="Activity_1rmc3fs">
-      <bpmn:incoming>Flow_14fg8ih</bpmn:incoming>
-    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0tn4ed3" sourceRef="StartEvent_1" targetRef="Activity_09mu4sd" />
+    <bpmn:endEvent id="Event_0jxoz7s">
+      <bpmn:incoming>Flow_0w7oyed</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_09mu4sd" targetRef="Event_0jxoz7s" />
+    <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
+    <bpmn:scriptTask id="Activity_09mu4sd" name="Fetch Estoque">
+      <bpmn:extensionElements>
+        <spiffworkflow:serviceTaskOperator id="postgres_v2/SelectValuesV2" resultVariable="rsp">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="database_connection_str" type="str" value="&#34;SPIFF_SECRET:postgres&#34;" />
+            <spiffworkflow:parameter id="table_name" type="str" value="table" />
+            <spiffworkflow:parameter id="schema" type="any" value="schema" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:preScript>table = "sap.\"vw_est_insumos\""
+
+schema = {
+  "columns": [
+    "\"ItemCode\"",
+    "\"ItemName\"",
+    "\"OnHand\""
+  ]
+}</spiffworkflow:preScript>
+        <spiffworkflow:postScript>estoque_de_insumos = []
+
+for result in rsp['body']:
+    name = result[1]
+    code = result[0]
+    onhand = result[2]
+    estoque_de_insumos.append(
+        {
+            "search_term": name, 
+            "result": {
+                "name": name, 
+                "code": code, 
+                "onhand": onhand.strip()
+                }
+            }
+        )
+
+del(rsp)</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0tn4ed3</bpmn:incoming>
+      <bpmn:outgoing>Flow_0w7oyed</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0c9aji6">
+        <bpmn:targetRef>DataStoreReference_1oronwq</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+# query = f"""
+#     SELECT 
+#       T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", T2."WhsCode", to_alphanum(T2."OnHand") "OnHand"
+#     FROM {baseSap}."OITM" T0
+#     INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
+#     INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
+#     WHERE T2."OnHand" &gt; 0  
+#       AND  (T2."WhsCode" = '03.MATR'
+#       OR   T2."WhsCode" = '03.FQUE')
+#     ORDER BY T0."ItemName", T2."WhsCode" 
+#           """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+rsp = Hana(connection).selectDb(query)
+
+estoque = []
+
+for r in rsp:
+    ItemCode = str(r['itemcode'])
+    ItemName = str(r['itemname'])
+    ItmsGrpNam = str(r['itmsgrpnam'])
+    InvntryUom = str(r['invntryuom'])
+    OnHand = "{:,.2f}".format(float(r['onhand'])).replace(",", "X").replace(".", ",").replace("X", ".")
+    WhsCode = str(r['whscode'])
+    estoque.append(
+        {
+            "search_term": ItemName, 
+            "result": {
+                "ItemCode": ItemCode, 
+                "ItemName": ItemName, 
+                "ItmsGrpNam": ItmsGrpNam,
+                "InvntryUom": InvntryUom if InvntryUom != 'null' else None,
+                "OnHand": OnHand,
+                "WhsCode": WhsCode
+                }
+            }
+        )
+
+
+typeahead = {"estoque": estoque}
+
+del(connection)</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_5zne1on">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Atualiza_Estoque">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_09jcvk9_di" bpmnElement="Activity_1rmc3fs">
-        <dc:Bounds x="290" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Event_0jxoz7s_di" bpmnElement="Event_0jxoz7s">
+        <dc:Bounds x="402" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_14fg8ih_di" bpmnElement="Flow_14fg8ih">
+      <bpmndi:BPMNShape id="DataStoreReference_1oronwq_di" bpmnElement="DataStoreReference_1oronwq">
+        <dc:Bounds x="305" y="305" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="289" y="362" width="83" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_04tia02_di" bpmnElement="Activity_09mu4sd">
+        <dc:Bounds x="250" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0tn4ed3_di" bpmnElement="Flow_0tn4ed3">
         <di:waypoint x="215" y="177" />
-        <di:waypoint x="290" y="177" />
+        <di:waypoint x="250" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0w7oyed_di" bpmnElement="Flow_0w7oyed">
+        <di:waypoint x="350" y="177" />
+        <di:waypoint x="402" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0c9aji6_di" bpmnElement="DataOutputAssociation_0c9aji6">
+        <di:waypoint x="307" y="217" />
+        <di:waypoint x="321" y="305" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
