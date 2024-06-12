@@ -85,7 +85,7 @@ query = f"""
             FROM 
                 {baseSap}.OITM t0
                 INNER JOIN {baseSap}.OBPL t1 ON t1."BPLId" = t0.U_RSD_FILIAL 
-            WHERE t0."ItemType" = 'F' AND t0.U_RSD_FILIAL = 1
+            WHERE t0."ItemType" = 'F' AND t0.U_RSD_FILIAL = 2
         """
 
 rsp = Hana(connection).selectDb(query)
@@ -117,7 +117,7 @@ del(AliasName)
 del(r)
 
 
-typeahead = {f'"ativos_fixos_1"': ativos_fixos}
+typeahead = {f'"ativos_fixos_2"': ativos_fixos}
 
 </bpmn:script>
     </bpmn:scriptTask>
