@@ -8,7 +8,6 @@
       <bpmn:lane id="Lane_Comercial_Graos" name="Comercial Graos">
         <bpmn:flowNodeRef>Activity_Busca_NFe_sem_DUE</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_NFes</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
@@ -275,6 +274,9 @@ del(query)
         <dc:Bounds x="159" y="340" width="1360" height="270" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1532" y="452" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1398pii_di" bpmnElement="Activity_NFes" isExpanded="true">
         <dc:Bounds x="410" y="370" width="990" height="213" />
         <bpmndi:BPMNLabel />
@@ -341,16 +343,13 @@ del(query)
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="192" y="452" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1462" y="452" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="228" y="470" />
         <di:waypoint x="270" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ccgix8_di" bpmnElement="Flow_0ccgix8">
         <di:waypoint x="1400" y="470" />
-        <di:waypoint x="1462" y="470" />
+        <di:waypoint x="1532" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="370" y="470" />
