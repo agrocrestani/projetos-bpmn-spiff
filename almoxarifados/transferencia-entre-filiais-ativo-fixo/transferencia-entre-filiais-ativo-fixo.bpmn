@@ -109,7 +109,7 @@ if BPLIdDestino == BPLIdOrigem:
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1mj92hh" sourceRef="Event_1p5jtl1" targetRef="Event_1ejlc50" />
     <bpmn:sequenceFlow id="Flow_1l78zdc" sourceRef="Activity_07otdvu" targetRef="SELECIONE_BENS_TRANSFERENCIA" />
-    <bpmn:callActivity id="Activity_07otdvu" name="Atualiza Ativo" calledElement="Process_solicitar_insumos_unidades_9qfwbwe">
+    <bpmn:callActivity id="Activity_07otdvu" name="Atualiza Ativo" calledElement="Process_observacao_nfe_insumos_6afjavb">
       <bpmn:incoming>Flow_06h7wy1</bpmn:incoming>
       <bpmn:outgoing>Flow_1l78zdc</bpmn:outgoing>
     </bpmn:callActivity>
