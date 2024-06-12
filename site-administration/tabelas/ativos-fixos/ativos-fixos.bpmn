@@ -120,7 +120,7 @@ del(rsp)
 
 typeahead = {f"ativos_fixos_{BPLIdOrigem}": ativos_fixos}
 
-qtdItens = ativos_fixos.len()
+qtdItens = len(ativos_fixos)
 
 del(ativos_fixos)
 </bpmn:script>
