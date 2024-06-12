@@ -5,7 +5,7 @@ Quem |
 Colaboradores Crestani | 
 
 
-### 1º - Definição da Filial de Origem e Destino
+### 1º - Solicitação do Ativo Fixo
 O usuário selecionará a filial de origem e destino do ativo fixo por meio de dois dropdowns na tela.
 
 ### 2º - Seleção dos Bens a Serem Transferidos
