@@ -119,7 +119,7 @@ del(r)
 
 typeahead = {f'"ativos_fixos_1"': ativos_fixos}
 
-del(connection)</bpmn:script>
+</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
