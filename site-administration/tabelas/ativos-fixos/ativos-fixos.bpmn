@@ -91,7 +91,7 @@ query = f"""
 rsp = Hana(connection).selectDb(query)
 
 del(connection)
-estoque = []
+ativos_fixos = []
 
 for r in rsp:
     ItemCode = str(r['itemcode'])
