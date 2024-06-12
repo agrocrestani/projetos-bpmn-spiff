@@ -64,17 +64,17 @@ connection = {
 
 baseSap = get_secret('baseSap')
 
-# query = f"""
-#             SELECT  
-#                 t0."ItemCode" ,
-#                 t0."ItemName" ,
-#                 t0.U_RSD_FILIAL ,
-#                 t1."AliasName" 
-#             FROM 
-#                 {baseSap}.OITM t0
-#                 INNER JOIN {baseSap}.OBPL t1 ON t1."BPLId" = t0.U_RSD_FILIAL 
-#             WHERE t0."ItemType" = 'F' AND t0.U_RSD_FILIAL = {BPLIdOrigem}
-#         """
+query = f"""
+            SELECT  
+                t0."ItemCode" ,
+                t0."ItemName" ,
+                t0.U_RSD_FILIAL ,
+                t1."AliasName" 
+            FROM 
+                {baseSap}.OITM t0
+                INNER JOIN {baseSap}.OBPL t1 ON t1."BPLId" = t0.U_RSD_FILIAL 
+            WHERE t0."ItemType" = 'F' AND t0.U_RSD_FILIAL = {BPLIdOrigem}
+        """
 
 query = f"""
             SELECT  
@@ -117,7 +117,7 @@ del(AliasName)
 del(r)
 
 
-typeahead = {f'ativos_fixos_1': ativos_fixos}
+typeahead = {f"'ativos_fixos_{BPLIdOrigem}'": ativos_fixos}
 
 </bpmn:script>
     </bpmn:scriptTask>
