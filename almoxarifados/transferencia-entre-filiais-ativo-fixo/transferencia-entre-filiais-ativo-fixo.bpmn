@@ -84,6 +84,7 @@ if BPLIdDestino == BPLIdOrigem:
           <spiffworkflow:property name="formUiSchemaFilename" value="selecione-bens-transferir-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:preScript>del(error)</spiffworkflow:preScript>
+        <spiffworkflow:instructionsForEndUser>Total Ativos na Filial { qtdItens }</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1l78zdc</bpmn:incoming>
       <bpmn:outgoing>Flow_1t9fqmk</bpmn:outgoing>
