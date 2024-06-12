@@ -115,6 +115,9 @@ if BPLIdDestino == BPLIdOrigem:
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="52" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="792" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0jizyxo_di" bpmnElement="DEF_FILIAL_ORIGEM_DESTINO">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -138,18 +141,15 @@ if BPLIdDestino == BPLIdOrigem:
       <bpmndi:BPMNShape id="Gateway_1bpuhwx_di" bpmnElement="Gateway_1bpuhwx" isMarkerVisible="true">
         <dc:Bounds x="145" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1t685ws_di" bpmnElement="SELECIONE_BENS_TRANSFERENCIA">
+        <dc:Bounds x="570" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1crwbef_di" bpmnElement="FINAL_POR_TEMPO">
         <dc:Bounds x="452" y="12" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="432" y="-25.5" width="75" height="27" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="792" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1t685ws_di" bpmnElement="SELECIONE_BENS_TRANSFERENCIA">
-        <dc:Bounds x="570" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1ejlc50_di" bpmnElement="Event_1ejlc50">
         <dc:Bounds x="692" y="32" width="36" height="36" />
@@ -157,14 +157,14 @@ if BPLIdDestino == BPLIdOrigem:
           <dc:Bounds x="672" y="68" width="76" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_01vamw6_di" bpmnElement="Event_1p5jtl1">
+        <dc:Bounds x="602" y="119" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_169uhed_di" bpmnElement="TEMPORIZADOR_ATIVIDADE">
         <dc:Bounds x="352" y="119" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="329" y="86" width="81" height="27" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_01vamw6_di" bpmnElement="Event_1p5jtl1">
-        <dc:Bounds x="602" y="119" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="88" y="177" />
