@@ -95,7 +95,7 @@
           <text>"jose.alves@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_175kyv5">
-          <text>"Matriz_Cantina"</text>
+          <text>"admin"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_06ilfe0">
@@ -216,7 +216,7 @@
           <text>"emerson.leandro@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1xdgu24">
-          <text>"Matriz_Contabil"</text>
+          <text>"Matriz_Gerencia"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0vliomv">
@@ -227,6 +227,17 @@
           <text>"stela.souza@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_013wahy">
+          <text>"Matriz_Contabil"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_044ej05">
+        <inputEntry id="UnaryTests_0p9c7ff">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1webo9n">
+          <text>"camila.vaz@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sp7d4a">
           <text>"Matriz_Contabil"</text>
         </outputEntry>
       </rule>
@@ -260,7 +271,7 @@
           <text>"jose.alves@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1d67i6w">
-          <text>"admin"</text>
+          <text>"Matriz_Gerencia"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0q8g79k">
@@ -491,6 +502,17 @@
           <text>"alexandre.meurer@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ppb1jr">
+          <text>"Matriz_Gerencia"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0du41p5">
+        <inputEntry id="UnaryTests_00k9zx4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01yxgl8">
+          <text>"jorge.regis@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1efevmk">
           <text>"Matriz_Gerencia"</text>
         </outputEntry>
       </rule>

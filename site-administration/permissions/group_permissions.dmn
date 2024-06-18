@@ -127,6 +127,20 @@
           <text>"/extensions/aggregate-metadata"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1dt8sfy">
+        <inputEntry id="UnaryTests_1v1et4p">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07r2do3">
+          <text>"everybody"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_176ku75">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_056vapq">
+          <text>"/can-run-privileged-script/*"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0swu709">
         <inputEntry id="UnaryTests_0i3obt6">
           <text></text>
@@ -334,7 +348,7 @@
           <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hw43w7">
-          <text>"PM:compras/solicitacao-de-compra-cantina"</text>
+          <text>"PM:compras/solicitacao-compras-cantina"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_02e5ukj">
@@ -407,6 +421,20 @@
           <text>"BASIC"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1o4t22f">
+        <inputEntry id="UnaryTests_1wchlks">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ehp5de">
+          <text>"Querencia_Cantina"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uw6l7m">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0blotnv">
+          <text>"PM:compras/solicitacao-compras-cantina"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_10gjfpq">
         <inputEntry id="UnaryTests_0p4uc49">
           <text></text>
@@ -446,7 +474,7 @@
           <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1qy37pz">
-          <text>"PM:compras/solicitacao-de-compra-cantina"</text>
+          <text>"PM:compras/solicitacao-compras-cantina"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0g04wvp">
@@ -530,7 +558,7 @@
           <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kbamc5">
-          <text>"PM:compras/solicitacao-de-compra-cantina"</text>
+          <text>"PM:compras/solicitacao-compras-cantina"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0uty85e">
@@ -572,7 +600,7 @@
           <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_147jylf">
-          <text>"PM:compras/solicitacao-de-compra-cantina"</text>
+          <text>"PM:compras/solicitacao-compras-cantina"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1be3g2g">
@@ -685,6 +713,48 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_18bcwt3">
           <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1p0408k">
+        <inputEntry id="UnaryTests_179i6ns">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1odiv0o">
+          <text>"Matriz_Gerencia"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kov1k5">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gzeaiz">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0emmrmj">
+        <inputEntry id="UnaryTests_0rybvti">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1suao6k">
+          <text>"Matriz_Gerencia"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_046zhbd">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ngom6f">
+          <text>"/can-run-privileged-script/*"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xljxog">
+        <inputEntry id="UnaryTests_0ut9qaa">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0iwntkp">
+          <text>"Matriz_Gerencia"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01ewm5o">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05ztvel">
+          <text>"PM:relatorios/ajuste-custo-sap"</text>
         </outputEntry>
       </rule>
     </decisionTable>

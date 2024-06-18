@@ -5,11 +5,11 @@
   </bpmn:collaboration>
   <bpmn:process id="Process_informar_nfe_na_due_no_sap_s4et3dg" name="Informar NFe na DUE no SAP" isExecutable="true">
     <bpmn:laneSet id="LaneSet_1ysngrh">
-      <bpmn:lane id="Lane_Comercial_Graos" name="Comercial Graos">
-        <bpmn:flowNodeRef>Activity_Busca_NFe_sem_DUE</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+      <bpmn:lane id="Lane_Comercial_Graos" name="Matriz_ComercialGraos">
         <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_NFes</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_Busca_NFe_sem_DUE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_Busca_NFe_sem_DUE" />
@@ -120,8 +120,11 @@ connection = {
 
 query = f"""
     INSERT INTO {baseSap}."DeclaracaoExportacaoItens"
-    ("DeclaracaoExportacaoId", "DocEntry","DocDate","DocNum","SeqCode","Serial","SeriesStr","Model","ObjType","LineNum","ItemCode","ItemName","LineTotal","chNFe")
-    VALUES({idDueSap[0]['id']},{nfe['docentry']},'{nfe['docdate'][0:10]}',{nfe['docnum']},{nfe['seqcode']},{nfe['serial']},'{nfe['seriesstr']}',{nfe['model']},{nfe['objtype']},{nfe['linenum']},'{nfe['itemcode']}','{nfe['itemname']}',{nfe['linetotal']},'{nfe['keynfe']}')
+    ("DeclaracaoExportacaoId", "DocEntry","DocDate","DocNum","SeqCode","Serial","SeriesStr",
+     "Model","ObjType","LineNum","ItemCode","ItemName","LineTotal","chNFe")
+    VALUES({idDueSap[0]['id']},{nfe['docentry']},'{nfe['docdate'][0:10]}',{nfe['docnum']},
+           {nfe['seqcode']},{nfe['serial']},'{nfe['seriesstr']}',{nfe['model']},{nfe['objtype']},
+           {nfe['linenum']},'{nfe['itemcode']}','{nfe['itemname']}',{nfe['linetotal']},'{nfe['keynfe']}')
 """
 
 Hana(connection).executeDb(query)
@@ -269,22 +272,21 @@ del(query)
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1803azx">
       <bpmndi:BPMNShape id="Participant_0qra9c5_di" bpmnElement="Participant_0qra9c5" isHorizontal="true">
-        <dc:Bounds x="129" y="340" width="1390" height="270" />
+        <dc:Bounds x="129" y="340" width="1410" height="270" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_153rpnu_di" bpmnElement="Lane_Comercial_Graos" isHorizontal="true">
-        <dc:Bounds x="159" y="340" width="1360" height="270" />
+        <dc:Bounds x="159" y="340" width="1380" height="270" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1482" y="452" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1398pii_di" bpmnElement="Activity_NFes" isExpanded="true">
-        <dc:Bounds x="410" y="370" width="990" height="213" />
+        <dc:Bounds x="410" y="370" width="1010" height="213" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0k10jva_di" bpmnElement="Activity_Busca_Id_da_DUE">
         <dc:Bounds x="810" y="430" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_18vvxc9_di" bpmnElement="Activity_Informa_NFe_na_DUE">
-        <dc:Bounds x="980" y="430" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0wkbi6q_di" bpmnElement="Gateway_0wkbi6q" isMarkerVisible="true">
@@ -294,19 +296,23 @@ del(query)
         <dc:Bounds x="550" y="430" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1b5n8ba_di" bpmnElement="Event_1b5n8ba">
-        <dc:Bounds x="1262" y="452" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0gcqa1j_di" bpmnElement="Event_0gcqa1j">
         <dc:Bounds x="450" y="452" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1s8aivm_di" bpmnElement="Activity_Mostra_Dados_SAP">
-        <dc:Bounds x="1120" y="430" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_18vvxc9_di" bpmnElement="Activity_Informa_NFe_na_DUE">
+        <dc:Bounds x="970" y="430" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1s8aivm_di" bpmnElement="Activity_Mostra_Dados_SAP">
+        <dc:Bounds x="1130" y="430" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1b5n8ba_di" bpmnElement="Event_1b5n8ba">
+        <dc:Bounds x="1282" y="452" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0o0tp2q_di" bpmnElement="Flow_0o0tp2q">
         <di:waypoint x="910" y="470" />
-        <di:waypoint x="980" y="470" />
+        <di:waypoint x="970" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1l0h6eb_di" bpmnElement="Flow_1l0h6eb">
         <di:waypoint x="745" y="470" />
@@ -317,22 +323,22 @@ del(query)
         <di:waypoint x="695" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0nry0ei_di" bpmnElement="Flow_0nry0ei">
-        <di:waypoint x="1080" y="470" />
-        <di:waypoint x="1120" y="470" />
+        <di:waypoint x="1070" y="470" />
+        <di:waypoint x="1130" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12epf89_di" bpmnElement="Flow_12epf89">
         <di:waypoint x="720" y="495" />
         <di:waypoint x="720" y="553" />
-        <di:waypoint x="1280" y="553" />
-        <di:waypoint x="1280" y="488" />
+        <di:waypoint x="1300" y="553" />
+        <di:waypoint x="1300" y="488" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1aiipxu_di" bpmnElement="Flow_1aiipxu">
         <di:waypoint x="486" y="470" />
         <di:waypoint x="550" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_07x7mvp_di" bpmnElement="Flow_07x7mvp">
-        <di:waypoint x="1220" y="470" />
-        <di:waypoint x="1262" y="470" />
+        <di:waypoint x="1230" y="470" />
+        <di:waypoint x="1282" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Activity_0ckybt4_di" bpmnElement="Activity_Busca_NFe_sem_DUE">
         <dc:Bounds x="270" y="430" width="100" height="80" />
@@ -341,16 +347,13 @@ del(query)
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="192" y="452" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1462" y="452" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="228" y="470" />
         <di:waypoint x="270" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ccgix8_di" bpmnElement="Flow_0ccgix8">
-        <di:waypoint x="1400" y="470" />
-        <di:waypoint x="1462" y="470" />
+        <di:waypoint x="1420" y="470" />
+        <di:waypoint x="1482" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="370" y="470" />

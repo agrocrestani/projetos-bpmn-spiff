@@ -1,0 +1,56 @@
+{
+    "documentos_entrada": {
+        "items":{
+            "ui:layout": [
+                {
+                    "tipo_documento": 
+                        {
+                            "sm": 2,
+                            "md": 2,
+                            "lg": 4
+                        },
+                    "num_documento": 
+                        {
+                            "sm": 2,
+                            "md": 2,
+                            "lg": 3
+                        }
+                },
+                {
+                     "qtde": 
+                        {
+                            "sm": 2,
+                            "md": 2,
+                            "lg": 4
+                        },
+                    "custo_unitario": 
+                        {
+                            "sm": 2,
+                            "md": 2,
+                            "lg": 3
+                        }
+                }
+            ]      
+        }
+    },
+    "documentos_saida": {
+        "items":{
+            "ui:layout": [
+                {
+                    "tipo_documento": 
+                        {
+                            "sm": 2,
+                            "md": 2,
+                            "lg": 5
+                        },
+                    "num_documento": 
+                        {
+                            "sm": 2,
+                            "md": 2,
+                            "lg": 2
+                        }
+                }
+            ]          
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "description": "",
+    "display_name": "Entradas Armazem de Terceiro",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "entradas-armazem-de-terceiro.bpmn",
+    "primary_process_id": "Process_entradas_armazem_de_terceiro_a0aeour"
+}

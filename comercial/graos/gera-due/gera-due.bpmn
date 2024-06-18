@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="Process_gera_due_y29b60r" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_19e22i2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_1l7qgqo" />
+    <bpmn:serviceTask id="Activity_0qpzdpu" name="Busca novas DUEs">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser />
+        <spiffworkflow:preScript>schema = {
+  "sql": """
+      SELECT distinct 
+          itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' numero_due,
+          itens_averbados -&gt; 0 -&gt;&gt; 'data_embarque' data_embarque,
+          itens_averbados -&gt; 0 -&gt;&gt; 'data_averbacao' data_averbacao,
+          itens_averbados -&gt; 0 -&gt;&gt; 'motivo_alteracao' motivo_alteracao,
+          '1' as natureza,
+          entidadeid,
+          null as nro_declaracao,
+          null as tipo_documento,
+          null as tipo_conhecimento,
+          null as data_declaracao,
+          null as pais_destino
+      FROM 
+          sap.due_eventos
+      --where
+          --itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' not in (select d."NumeroDeclaracao" from sap.due_dados d)
+          --and itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' in ('24BR0004628584', '24BR0002157037','24BR0002157525')
+    """,
+  "fetch_results": True
+}
+
+</spiffworkflow:preScript>
+        <spiffworkflow:serviceTaskOperator id="postgres_v2/DoSQL" resultVariable="rsp">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="database_connection_str" type="str" value="&#34;SPIFF_SECRET:postgres&#34;" />
+            <spiffworkflow:parameter id="schema" type="any" value="schema" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:postScript>dues = [
+    {
+        "numero_due": r[0],
+        "data_embarque": r[1],
+        "data_averbacao": r[2],
+        "motivo_alteracao": r[3],
+        "natureza": "",
+        "entidade": r[5],
+        "nro_declaracao":"",
+        "tipo_documento":"",
+        "tipo_conhecimento":"",
+        "data_declaracao":"",
+        "pais_destino":""
+    } for r in rsp['body']
+]
+
+totalRegistros = len(dues)
+contador = 0
+del(rsp)</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:subProcess id="Activity_0rp2yix">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript>del(due)</spiffworkflow:postScript>
+        <spiffworkflow:preScript>contador += 1</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0bzjyx3</bpmn:incoming>
+      <bpmn:outgoing>Flow_19e22i2</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
+        <bpmn:loopDataInputRef>newDues</bpmn:loopDataInputRef>
+        <bpmn:loopDataOutputRef>newDues</bpmn:loopDataOutputRef>
+        <bpmn:inputDataItem id="due" name="due" />
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="Event_0cxxyf3">
+        <bpmn:outgoing>Flow_1d28xqv</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_1d28xqv" sourceRef="Event_0cxxyf3" targetRef="Gateway_0sb4w4b" />
+      <bpmn:sequenceFlow id="Flow_0mvhmve" sourceRef="Activity_0rsc96w" targetRef="Activity_1781rri" />
+      <bpmn:userTask id="Activity_0rsc96w" name="Complementa dados da DUE">
+        <bpmn:extensionElements>
+          <spiffworkflow:properties>
+            <spiffworkflow:property name="formJsonSchemaFilename" value="complementa-due-schema.json" />
+            <spiffworkflow:property name="formUiSchemaFilename" value="complementa-due-uischema.json" />
+          </spiffworkflow:properties>
+          <spiffworkflow:postScript />
+          <spiffworkflow:preScript>if due['entidade'] == "1":
+    entidade = "{\"id\":1,\"nome_fantasia\":\"FAZENDA PROMISSAO\",\"cnpj\":\"03.262.185/0002-81\"}"
+elif due['entidade'] == "2":
+    entidade = "{\"id\":2,\"nome_fantasia\":\"FAZENDA QUERENCIA\",\"cnpj\":\"03.262.185/0001-09\"}"
+elif due['entidade'] == "3":
+    entidade = "{\"id\":3,\"nome_fantasia\":\"FAZENDA COLORADO\",\"cnpj\":\"03.262.185/0003-62\"}"
+elif due['entidade'] == "4":
+    entidade = "{\"id\":4,\"nome_fantasia\":\"FAZENDA SAO CARLOS\",\"cnpj\":\"03.262.185/0004-43\"}"
+elif due['entidade'] == "5":
+    entidade = "{\"id\":5,\"nome_fantasia\":\"UNIDADE DE BRASNORTE SITIO AGUA AZUL\",\"cnpj\":\"03.262.185/0006-05\"}"
+elif due['entidade'] == "6":
+    entidade = "{\"id\":6,\"nome_fantasia\":\"GERMINARE MATRIZ\",\"cnpj\":\"08.944.169/0001-01\"}"
+elif due['entidade'] == "7":
+    entidade = "{\"id\":7,\"nome_fantasia\":\"QUERENCIA EMP TGA\",\"cnpj\":\"26.250.360/0001-35\"}"
+elif due['entidade'] == "8":
+    entidade = "{\"id\":8,\"nome_fantasia\":\"QUERENCIA EMP CPJ\",\"cnpj\":\"26.250.360/0002-16\"}"
+elif due['entidade'] == "9":
+    entidade = "{\"id\":9,\"nome_fantasia\":\"FAZENDA CURUPAI\",\"cnpj\":\"03.262.185/0005-24\"}"
+elif due['entidade'] == "10":
+    entidade = "{\"id\":10,\"nome_fantasia\":\"GERMINARE SERV TGA\",\"cnpj\":\"08.944.169/0002-92\"}"
+elif due['entidade'] == "11":
+    entidade = "{\"id\":11,\"nome_fantasia\":\"GERMINARE SERV BRA\",\"cnpj\":\"08.944.169/0004-54\"}"
+
+formDue = {
+    # "paisDestino": "",
+    "entidade": entidade,
+    "numero_due": due['numero_due'],
+    "data_embarque": due['data_embarque'][0:10],
+    "data_averbacao": due['data_averbacao'][0:10],
+    "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
+    "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
+    "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
+}
+
+# try:
+#     del(formDue)
+#     formDue = {
+#         "paisDestino": None,
+#         "entidade": None,
+#         "numero_due": due['numero_due'],
+#         "data_embarque": due['data_embarque'][0:10],
+#         "data_averbacao": due['data_averbacao'][0:10],
+#         "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
+#         "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
+#         "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
+#    }
+# except:
+#     formDue = {
+#         "paisDestino": None,
+#         "entidade": None,
+#         "numero_due": due['numero_due'],
+#         "data_embarque": due['data_embarque'][0:10],
+#         "data_averbacao": due['data_averbacao'][0:10],
+#         "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
+#         "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
+#         "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
+#    }</spiffworkflow:preScript>
+          <spiffworkflow:instructionsForEndUser># Complementa os dados da DUE
+### Registro {{contador}} de {{totalRegistros}}
+Essa DUE será inserida no Add-on TaxPlux NFe do SAP.</spiffworkflow:instructionsForEndUser>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1rv724w</bpmn:incoming>
+        <bpmn:outgoing>Flow_0mvhmve</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:scriptTask id="Activity_153jm8a" name="Insere no SAP">
+        <bpmn:incoming>Flow_19pznsv</bpmn:incoming>
+        <bpmn:outgoing>Flow_06r7tkv</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+
+paisDestino = json.loads(formDue['paisDestino'])
+entidade = json.loads(formDue['entidade'])
+numero_due = formDue['numero_due']
+data_registro = formDue['data_registro']
+data_averbacao = formDue['data_averbacao']
+naturezaDeclaracao = json.loads(formDue['naturezaDeclaracao'])
+tipoConhecimento =  json.loads(formDue['tipoConhecimento'])
+tipoDeclaracao = json.loads(formDue['tipoDeclaracao'])
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+            INSERT INTO {baseSap}."DeclaracaoExportacao"
+            ("EntidadeId", 
+            "NumeroDeclaracao", 
+            "NumeroRegistro", 
+            "NumeroConhecimento", 
+            "PaisDestino", 
+            "DataDeclaracao", 
+            "DataRegistro", 
+            "DataConhecimento", 
+            "DataAverbacao", 
+            "NaturezaId", 
+            "TipoConhecimentoId", 
+            "TipoDocumentoId")
+            VALUES(
+            {entidade['id']}, 
+            '{numero_due}', 
+            '{numero_due}',  
+            '{numero_due}',  
+            '{paisDestino['id']}', 
+            '{data_registro}',  
+            '{data_registro}', 
+            '{data_registro}', 
+            '{data_averbacao}', 
+            {naturezaDeclaracao['id']}, 
+            {tipoConhecimento['id']}, 
+            {tipoDeclaracao['id']})
+          """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+Hana(connection).executeDb(query)
+Hana(connection).executeDb('commit')
+del(formDue)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_06r7tkv" sourceRef="Activity_153jm8a" targetRef="Activity_1wqfogd" />
+      <bpmn:endEvent id="Event_1jr3erk">
+        <bpmn:incoming>Flow_0foxnyx</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0foxnyx" sourceRef="Activity_1wqfogd" targetRef="Event_1jr3erk" />
+      <bpmn:manualTask id="Activity_1wqfogd" name="Mensagem">
+        <bpmn:extensionElements>
+          <spiffworkflow:instructionsForEndUser># Confirmação
+
+### Due número: {{due['numero_due']}} inserida com sucesso no SAP.</spiffworkflow:instructionsForEndUser>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_06r7tkv</bpmn:incoming>
+        <bpmn:outgoing>Flow_0foxnyx</bpmn:outgoing>
+      </bpmn:manualTask>
+      <bpmn:boundaryEvent id="Event_1pv0zjg" attachedToRef="Activity_153jm8a">
+        <bpmn:outgoing>Flow_0zvw3u8</bpmn:outgoing>
+        <bpmn:errorEventDefinition id="ErrorEventDefinition_0wy4rhi" errorRef="Error_1" />
+      </bpmn:boundaryEvent>
+      <bpmn:sequenceFlow id="Flow_0zvw3u8" sourceRef="Event_1pv0zjg" targetRef="Activity_00g026e" />
+      <bpmn:manualTask id="Activity_00g026e" name="Visualiza Erro">
+        <bpmn:extensionElements>
+          <spiffworkflow:instructionsForEndUser>{{Error1}}</spiffworkflow:instructionsForEndUser>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0zvw3u8</bpmn:incoming>
+        <bpmn:outgoing>Flow_1n1v30t</bpmn:outgoing>
+      </bpmn:manualTask>
+      <bpmn:boundaryEvent id="Event_0dday6u" attachedToRef="Activity_00g026e">
+        <bpmn:extensionElements>
+          <spiffworkflow:signalButtonLabel>Pula DUE</spiffworkflow:signalButtonLabel>
+        </bpmn:extensionElements>
+        <bpmn:outgoing>Flow_16gw67i</bpmn:outgoing>
+        <bpmn:signalEventDefinition id="SignalEventDefinition_0wfjc9h" signalRef="Signal_1" />
+      </bpmn:boundaryEvent>
+      <bpmn:exclusiveGateway id="Gateway_0sb4w4b">
+        <bpmn:incoming>Flow_1n1v30t</bpmn:incoming>
+        <bpmn:incoming>Flow_1d28xqv</bpmn:incoming>
+        <bpmn:outgoing>Flow_1rv724w</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_1rv724w" sourceRef="Gateway_0sb4w4b" targetRef="Activity_0rsc96w" />
+      <bpmn:sequenceFlow id="Flow_1n1v30t" sourceRef="Activity_00g026e" targetRef="Gateway_0sb4w4b" />
+      <bpmn:endEvent id="Event_1a8e1yi">
+        <bpmn:incoming>Flow_16gw67i</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_16gw67i" sourceRef="Event_0dday6u" targetRef="Event_1a8e1yi" />
+      <bpmn:sequenceFlow id="Flow_0aa2crg" sourceRef="Activity_1781rri" targetRef="Gateway_0dyggs7" />
+      <bpmn:exclusiveGateway id="Gateway_0dyggs7" default="Flow_19pznsv">
+        <bpmn:incoming>Flow_0aa2crg</bpmn:incoming>
+        <bpmn:outgoing>Flow_19pznsv</bpmn:outgoing>
+        <bpmn:outgoing>Flow_0f4cahx</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_19pznsv" sourceRef="Gateway_0dyggs7" targetRef="Activity_153jm8a" />
+      <bpmn:scriptTask id="Activity_1781rri" name="Verifica se existe">
+        <bpmn:incoming>Flow_0mvhmve</bpmn:incoming>
+        <bpmn:outgoing>Flow_0aa2crg</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+
+entidade = json.loads(formDue['entidade'])
+numero_due = formDue['numero_due']
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+            SELECT count(*) qtde FROM {baseSap}."DeclaracaoExportacao" d WHERE d."EntidadeId" = {entidade['id']} AND d."NumeroDeclaracao" = '{numero_due}'
+        """
+
+rsp = Hana(connection).selectDb(query)
+
+existe = 0
+
+if rsp[0]['qtde'] &gt; 0:
+    existe = rsp[0]["qtde"]</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_0f4cahx" sourceRef="Gateway_0dyggs7" targetRef="Activity_0ulfn62">
+        <bpmn:conditionExpression>existe &gt;= 1</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:endEvent id="Event_0jfob9y">
+        <bpmn:incoming>Flow_1eg5zky</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_1eg5zky" sourceRef="Activity_0ulfn62" targetRef="Event_0jfob9y" />
+      <bpmn:manualTask id="Activity_0ulfn62" name="Mensagem já existe">
+        <bpmn:extensionElements>
+          <spiffworkflow:instructionsForEndUser># Já existe.
+
+### Due número: {{due['numero_due']}} já existe no SAP.</spiffworkflow:instructionsForEndUser>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0f4cahx</bpmn:incoming>
+        <bpmn:outgoing>Flow_1eg5zky</bpmn:outgoing>
+      </bpmn:manualTask>
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_19e22i2" sourceRef="Activity_0rp2yix" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_0bzjyx3" sourceRef="Activity_1l7qgqo" targetRef="Activity_0rp2yix" />
+    <bpmn:scriptTask id="Activity_1l7qgqo" name="Busca Dues no SAP">
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bzjyx3</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+            SELECT  d."EntidadeId",d."NumeroDeclaracao" 
+            FROM {baseSap}."DeclaracaoExportacao" d 
+        """
+
+duesSap = Hana(connection).selectDb(query)
+
+listaSAP = []
+for d in duesSap:
+    listaSAP.append(d['numerodeclaracao']+'-'+str(d['entidadeid']))
+
+
+#Verifica se está lançado no SAP
+newDues = []
+for z in dues:
+    dueEnt = z['numero_due']+'-'+z['entidade']
+    if dueEnt in listaSAP:
+        continue
+    else:
+        newDues.append(z)
+
+totalRegistros = len(newDues)
+contador = 0
+
+del(dues)
+del(duesSap)
+</bpmn:script>
+    </bpmn:scriptTask>
+  </bpmn:process>
+  <bpmn:error id="Error_1" name="Error_1">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>Error1</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
+  <bpmn:signal id="Signal_1" name="Signal_1">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>Signal1</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:signal>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_gera_due_y29b60r">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1912" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0kgs1zt_di" bpmnElement="Activity_0qpzdpu">
+        <dc:Bounds x="280" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0rp2yix_di" bpmnElement="Activity_0rp2yix" isExpanded="true">
+        <dc:Bounds x="620" y="-90" width="1240" height="597" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0cxxyf3_di" bpmnElement="Event_0cxxyf3">
+        <dc:Bounds x="660" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1i31z27_di" bpmnElement="Activity_0rsc96w">
+        <dc:Bounds x="870" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0kb8eyo_di" bpmnElement="Activity_153jm8a">
+        <dc:Bounds x="1380" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1jr3erk_di" bpmnElement="Event_1jr3erk">
+        <dc:Bounds x="1722" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0t5tb6s_di" bpmnElement="Activity_1wqfogd">
+        <dc:Bounds x="1550" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vm4d99_di" bpmnElement="Activity_00g026e">
+        <dc:Bounds x="960" y="260" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0sb4w4b_di" bpmnElement="Gateway_0sb4w4b" isMarkerVisible="true">
+        <dc:Bounds x="755" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1a8e1yi_di" bpmnElement="Event_1a8e1yi">
+        <dc:Bounds x="1442" y="402" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0dyggs7_di" bpmnElement="Gateway_0dyggs7" isMarkerVisible="true">
+        <dc:Bounds x="1205" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0sx3qej_di" bpmnElement="Activity_1781rri">
+        <dc:Bounds x="1030" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0jfob9y_di" bpmnElement="Event_0jfob9y">
+        <dc:Bounds x="1612" y="42" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1h9unnt_di" bpmnElement="Activity_0ulfn62">
+        <dc:Bounds x="1380" y="20" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1i1p2je_di" bpmnElement="Event_0dday6u">
+        <dc:Bounds x="1012" y="322" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14tx1k3_di" bpmnElement="Event_1pv0zjg">
+        <dc:Bounds x="1432" y="199" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1d28xqv_di" bpmnElement="Flow_1d28xqv">
+        <di:waypoint x="696" y="177" />
+        <di:waypoint x="755" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mvhmve_di" bpmnElement="Flow_0mvhmve">
+        <di:waypoint x="970" y="177" />
+        <di:waypoint x="1030" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06r7tkv_di" bpmnElement="Flow_06r7tkv">
+        <di:waypoint x="1480" y="177" />
+        <di:waypoint x="1550" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0foxnyx_di" bpmnElement="Flow_0foxnyx">
+        <di:waypoint x="1650" y="177" />
+        <di:waypoint x="1722" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zvw3u8_di" bpmnElement="Flow_0zvw3u8">
+        <di:waypoint x="1450" y="235" />
+        <di:waypoint x="1450" y="300" />
+        <di:waypoint x="1060" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rv724w_di" bpmnElement="Flow_1rv724w">
+        <di:waypoint x="805" y="177" />
+        <di:waypoint x="870" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1n1v30t_di" bpmnElement="Flow_1n1v30t">
+        <di:waypoint x="960" y="300" />
+        <di:waypoint x="780" y="300" />
+        <di:waypoint x="780" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16gw67i_di" bpmnElement="Flow_16gw67i">
+        <di:waypoint x="1030" y="358" />
+        <di:waypoint x="1030" y="420" />
+        <di:waypoint x="1442" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0aa2crg_di" bpmnElement="Flow_0aa2crg">
+        <di:waypoint x="1130" y="177" />
+        <di:waypoint x="1205" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19pznsv_di" bpmnElement="Flow_19pznsv">
+        <di:waypoint x="1255" y="177" />
+        <di:waypoint x="1380" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0f4cahx_di" bpmnElement="Flow_0f4cahx">
+        <di:waypoint x="1230" y="152" />
+        <di:waypoint x="1230" y="60" />
+        <di:waypoint x="1380" y="60" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1eg5zky_di" bpmnElement="Flow_1eg5zky">
+        <di:waypoint x="1480" y="60" />
+        <di:waypoint x="1612" y="60" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_017gpzy_di" bpmnElement="Activity_1l7qgqo">
+        <dc:Bounds x="450" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="280" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
+        <di:waypoint x="380" y="177" />
+        <di:waypoint x="450" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19e22i2_di" bpmnElement="Flow_19e22i2">
+        <di:waypoint x="1860" y="177" />
+        <di:waypoint x="1912" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bzjyx3_di" bpmnElement="Flow_0bzjyx3">
+        <di:waypoint x="550" y="177" />
+        <di:waypoint x="620" y="177" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

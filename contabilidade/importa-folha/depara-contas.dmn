@@ -32,6 +32,14 @@
           <text>"1.1.3.01.02.007"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0lg7yyh">
+        <inputEntry id="UnaryTests_1gglqro">
+          <text>"10102008"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09xxa8g">
+          <text>"1.1.3.01.02.008"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_13wenqx">
         <inputEntry id="UnaryTests_07ngbiq">
           <text>"20101001"</text>
@@ -192,6 +200,14 @@
           <text>"3.1.3.02.01.014"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1vj3dqh">
+        <inputEntry id="UnaryTests_1ik9vaq">
+          <text>"30201019"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0oba3zb">
+          <text>"3.1.3.02.01.019"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_13tmhuu">
         <inputEntry id="UnaryTests_039rih8">
           <text>"40201001"</text>
@@ -262,6 +278,14 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_1imljbj">
           <text>"4.1.1.02.01.011"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0uy10c4">
+        <inputEntry id="UnaryTests_0rmr8n4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tkjb7p">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
