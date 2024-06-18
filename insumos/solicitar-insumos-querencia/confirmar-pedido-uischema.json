@@ -1,0 +1,24 @@
+{
+  "ui:layout": [
+    {
+      "mainusage": {}
+    },
+    {
+      "observacaoNfe": {}
+    },
+    {
+      "done": {}
+    }
+  ],
+  "ui:submitButtonOptions": {
+    "submitText": "Confirma os dados NFe?",
+    "norender": false,
+    "props": {
+      "disabled": false,
+      "className": "btn btn-info"
+    }
+  },
+  "observacaoNfe": {
+    "ui:widget": "textarea"
+  }
+}

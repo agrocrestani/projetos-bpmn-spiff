@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "required": [
+        "solicitacao",
+        "safra"
+      ],
+  "properties": {
+    "solicitacao": {
+      "type": "array",
+      "title": "Items",
+      "description": "Selecione os items clicando em 'Adicionar Novo'.",
+      "items": {
+        "type": "object",
+        "required": [
+          "insumo",
+          "quantidade"
+        ],
+        "properties": {
+          "insumo": {
+            "type": "string",
+            "title": "Selecione o Insumo"
+          },
+          "quantidade": {
+            "type": "number",
+            "title": "Quantidade"
+          }
+        }
+      }
+    },
+    "unidade": {
+      "title": "Selecione a unidade",
+      "type": "string",
+      "default": "1",
+      "anyOf": [
+        "options_from_task_data_var:n_filiais"
+      ]
+    },
+    "safra": {
+      "title": "Selecione a safra",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:n_safras"
+      ]
+    }
+  }
+}

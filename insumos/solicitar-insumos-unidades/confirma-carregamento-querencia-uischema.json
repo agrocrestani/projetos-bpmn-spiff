@@ -1,0 +1,10 @@
+{   
+    "ui:submitButtonOptions": {
+        "submitText": "Confirma o carregamento?",
+        "norender": false,
+        "props": {
+        "disabled": false,
+        "className": "btn btn-info"
+        }
+    }
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="Definitions_76910d7" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision_DefineFornec" name="Define Fornecedor NFe">
+    <decisionTable id="decisionTable_1">
+      <input id="input_1">
+        <inputExpression id="inputExpression_1" typeRef="string">
+          <text>BPLIdEmissor</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" name="CardCodeFor" typeRef="string" />
+      <rule id="DecisionRule_0mofuv8">
+        <inputEntry id="UnaryTests_1kd277r">
+          <text>"1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0plhc8h">
+          <text>"F00213"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hdslgb">
+        <inputEntry id="UnaryTests_1ljt5x7">
+          <text>"2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_060ev8t">
+          <text>"F00210"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ge9egb">
+        <inputEntry id="UnaryTests_0zmua1b">
+          <text>"3"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10how6s">
+          <text>"F02261"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lxkheb">
+        <inputEntry id="UnaryTests_1akbzfj">
+          <text>"4"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1r1618j">
+          <text>"F00211"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ijm3a2">
+        <inputEntry id="UnaryTests_10elf0r">
+          <text>"5"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vjxrho">
+          <text>"F00212"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_1cykosu">
+      <dmndi:DMNShape id="DMNShape_1dhfq2s" dmnElementRef="decision_DefineFornec">
+        <dc:Bounds height="80" width="180" x="157" y="151" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

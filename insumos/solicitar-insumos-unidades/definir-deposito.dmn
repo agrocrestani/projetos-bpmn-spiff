@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="Definitions_76910d7" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision_DefinirDeposito" name="Definir deposito">
+    <decisionTable id="decisionTable_1">
+      <input id="input_1">
+        <inputExpression id="inputExpression_1" typeRef="string">
+          <text>unidade</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" name="WarehouseCode" typeRef="string" />
+      <rule id="DecisionRule_02q4ao4">
+        <inputEntry id="UnaryTests_17me12s">
+          <text>"1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02f5x21">
+          <text>"03.FQUE"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_198wp67">
+        <inputEntry id="UnaryTests_0r9cqf7">
+          <text>"2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_040twu2">
+          <text>"03.FPRO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1f4gerd">
+        <inputEntry id="UnaryTests_0t6fj8x">
+          <text>"3"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1c0rq0w">
+          <text>"03.FCOL"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16k6tjm">
+        <inputEntry id="UnaryTests_1xw7u4q">
+          <text>"4"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sg553u">
+          <text>"03.FSCA"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03y5t62">
+        <inputEntry id="UnaryTests_0mklmao">
+          <text>"5"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18il5bl">
+          <text>"03.FCUR"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_1cykosu">
+      <dmndi:DMNShape id="DMNShape_1dhfq2s" dmnElementRef="decision_DefinirDeposito">
+        <dc:Bounds height="80" width="180" x="157" y="151" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

@@ -1,0 +1,25 @@
+{
+  "solicitacao": [],
+  "unidade": "1",
+  "safra": "oranges",
+  "n_safras": [
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
+  ],
+  "n_filiais": [
+    {
+      "value": "1",
+      "label": "FAZENDA QUERENCIA"
+    }
+  ]
+}

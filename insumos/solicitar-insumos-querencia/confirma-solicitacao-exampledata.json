@@ -1,0 +1,32 @@
+{
+  "solicitacao": [],
+  "unidade": "apples",
+  "n_filiais": [
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
+  ],
+  "n_safras": [
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
+  ]
+}
