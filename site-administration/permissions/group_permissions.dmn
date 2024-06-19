@@ -337,6 +337,34 @@
           <text>"/can-run-privileged-script/*"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0uhezkq">
+        <inputEntry id="UnaryTests_11okdqa">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0iyk7o7">
+          <text>"Matriz_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pgc3pa">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sck425">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06ispvs">
+        <inputEntry id="UnaryTests_1em43k5">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jngemf">
+          <text>"Matriz_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0biqyx2">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1y1cbq3">
+          <text>"PG:insumos"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1hzphqb">
         <inputEntry id="UnaryTests_1gej9j4">
           <text></text>
@@ -435,6 +463,34 @@
           <text>"PM:compras/solicitacao-compras-cantina"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_03d76qa">
+        <inputEntry id="UnaryTests_10u82tr">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qh7ira">
+          <text>"Querencia_Producao"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kx7qu5">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08aikmt">
+          <text>"PG:insumos/solicitar-insumos-querencia"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07lpfyn">
+        <inputEntry id="UnaryTests_0va2hxv">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1my7d04">
+          <text>"Querencia_Deposito_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a59hn1">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qqmxib">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_10gjfpq">
         <inputEntry id="UnaryTests_0p4uc49">
           <text></text>
@@ -519,6 +575,34 @@
           <text>"BASIC"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_14no6ej">
+        <inputEntry id="UnaryTests_1t6g2ya">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13yiyfl">
+          <text>"Curupai_Producao"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hfng86">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0y7e8ho">
+          <text>"PG:insumos/solicitar-insumos-unidades"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18oj9c1">
+        <inputEntry id="UnaryTests_0hnmjdp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0l4hy3v">
+          <text>"Curupai_Deposito_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kbxogh">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ywbj9g">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_19by8ua">
         <inputEntry id="UnaryTests_0rsgsnc">
           <text></text>
@@ -587,6 +671,34 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_00mimn5">
           <text>"/can-run-privileged-script/*"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qf3crv">
+        <inputEntry id="UnaryTests_0d8x8lw">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kdcz7o">
+          <text>"Colorado_Producao"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hldmt0">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pk1nof">
+          <text>"PG:insumos/solicitar-insumos-unidades"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0j78lmu">
+        <inputEntry id="UnaryTests_0kgdmfn">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0r5c8h9">
+          <text>"Colorado_Deposito_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0c3um2b">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09nakrw">
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0s1wk0a">
@@ -673,6 +785,34 @@
           <text>"BASIC"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0ivhk1f">
+        <inputEntry id="UnaryTests_1up1xg0">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1izc9k4">
+          <text>"SaoCarlos_Producao"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0570let">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0z7fq3o">
+          <text>"PG:insumos/solicitar-insumos-unidades"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0r1mt9o">
+        <inputEntry id="UnaryTests_00xihjd">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05cl83o">
+          <text>"SaoCarlos_Deposito_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15vbw73">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sk5mti">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0qdgvlp">
         <inputEntry id="UnaryTests_083bqv1">
           <text></text>
@@ -755,6 +895,34 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_05ztvel">
           <text>"PM:relatorios/ajuste-custo-sap"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05fw8kg">
+        <inputEntry id="UnaryTests_0kvyyox">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gquwq8">
+          <text>"Matriz_Producao"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ad8sci">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vuo9qo">
+          <text>"PG:insumos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sd0lof">
+        <inputEntry id="UnaryTests_083oj2e">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hkix7k">
+          <text>"Matriz_Deposito_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0x859qj">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uscgo8">
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
     </decisionTable>
