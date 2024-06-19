@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="Process_inventorygenentries_yisighq" name="InventoryGenEntries" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1dvrh4l</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="Gateway_0r1m0pj">
+      <bpmn:incoming>Flow_1dvrh4l</bpmn:incoming>
+      <bpmn:incoming>Flow_146cdox</bpmn:incoming>
+      <bpmn:outgoing>Flow_0nkpbr3</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1dvrh4l" sourceRef="StartEvent_1" targetRef="Gateway_0r1m0pj" />
+    <bpmn:sequenceFlow id="Flow_0nkpbr3" sourceRef="Gateway_0r1m0pj" targetRef="Activity_0jpmayb" />
+    <bpmn:exclusiveGateway id="Gateway_000q1yr" default="Flow_0fn5u9y">
+      <bpmn:incoming>Flow_0d8qofn</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fn5u9y</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1fdqexx</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0d8qofn" sourceRef="Activity_0jpmayb" targetRef="Gateway_000q1yr" />
+    <bpmn:endEvent id="Event_0yscxzn">
+      <bpmn:incoming>Flow_0fn5u9y</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0fn5u9y" sourceRef="Gateway_000q1yr" targetRef="Event_0yscxzn" />
+    <bpmn:serviceTask id="Activity_0jpmayb" name="Lança entrada de mercadoria no ERP">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
+
+url = 'https://172.20.1.9:50000/b1s/v2/InventoryGenEntries'
+
+headers = {
+  'Cookie': f"B1SESSION={loginSap}",
+  'Content-Type': 'application/json'
+}</spiffworkflow:preScript>
+        <spiffworkflow:postScript>try:
+    lancaEntrada = entrada['http_status']
+except:
+    lancaEntrada = 500</spiffworkflow:postScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="entrada">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="payload" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0nkpbr3</bpmn:incoming>
+      <bpmn:outgoing>Flow_0d8qofn</bpmn:outgoing>
+      <bpmn:property id="Property_195tcdn" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_0dj7l5c">
+        <bpmn:sourceRef>DataStoreReference_1eiyy5b</bpmn:sourceRef>
+        <bpmn:targetRef>Property_195tcdn</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:serviceTask>
+    <bpmn:boundaryEvent id="Event_10bbba7" attachedToRef="Activity_0jpmayb">
+      <bpmn:outgoing>Flow_1pcaj1n</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0gdytdk" errorRef="Error_Entrada" />
+    </bpmn:boundaryEvent>
+    <bpmn:exclusiveGateway id="Gateway_02ut7dc">
+      <bpmn:incoming>Flow_1pcaj1n</bpmn:incoming>
+      <bpmn:incoming>Flow_1fdqexx</bpmn:incoming>
+      <bpmn:outgoing>Flow_0emmyet</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1pcaj1n" sourceRef="Event_10bbba7" targetRef="Gateway_02ut7dc" />
+    <bpmn:sequenceFlow id="Flow_0emmyet" sourceRef="Gateway_02ut7dc" targetRef="Activity_1duk8v7" />
+    <bpmn:sequenceFlow id="Flow_146cdox" sourceRef="Activity_1duk8v7" targetRef="Gateway_0r1m0pj" />
+    <bpmn:sequenceFlow id="Flow_1fdqexx" sourceRef="Gateway_000q1yr" targetRef="Gateway_02ut7dc">
+      <bpmn:conditionExpression>lancaEntrada != 201</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:manualTask id="Activity_1duk8v7" name="Verifica Erro na Entrada">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
+
+### Informações
+
+| Campo | Conteudo |
+| ----------: | -------------- |
+| Código Erro: | {{errorCode}} |
+| Mensagem Erro: | {{errorMessage}}
+| Status  | {{status_code}} |
+
+1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
+2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript>try:
+    status_code = lancaEntrada 
+    errorCode = entrada['body']['error']['code']
+    errorMessage = entrada['body']['error']['message']['value']
+except:
+    command = errorEntrada['command_response_body']
+    command = json.loads(command)
+    status_code = errorEntrada['status_code']
+    errorCode = errorEntrada['error_code']
+    errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0emmyet</bpmn:incoming>
+      <bpmn:outgoing>Flow_146cdox</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:dataStoreReference id="DataStoreReference_1eiyy5b" name="SapLogin" dataStoreRef="saplogin" type="json" />
+  </bpmn:process>
+  <bpmn:dataStore id="saplogin" name="JSONDataStore" />
+  <bpmn:error id="Error_Entrada" name="Error_Entrada">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>ErrorEntrada</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_inventorygenentries_yisighq">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0r1m0pj_di" bpmnElement="Gateway_0r1m0pj" isMarkerVisible="true">
+        <dc:Bounds x="265" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_000q1yr_di" bpmnElement="Gateway_000q1yr" isMarkerVisible="true">
+        <dc:Bounds x="655" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0yscxzn_di" bpmnElement="Event_0yscxzn">
+        <dc:Bounds x="762" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1yiiyt6_di" bpmnElement="Activity_0jpmayb">
+        <dc:Bounds x="500" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_02ut7dc_di" bpmnElement="Gateway_02ut7dc" isMarkerVisible="true">
+        <dc:Bounds x="545" y="295" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1azqqco_di" bpmnElement="Activity_1duk8v7">
+        <dc:Bounds x="370" y="280" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1eiyy5b_di" bpmnElement="DataStoreReference_1eiyy5b">
+        <dc:Bounds x="635" y="35" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="637" y="92" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0bmrgvd_di" bpmnElement="Event_10bbba7">
+        <dc:Bounds x="552" y="199" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1dvrh4l_di" bpmnElement="Flow_1dvrh4l">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="265" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0nkpbr3_di" bpmnElement="Flow_0nkpbr3">
+        <di:waypoint x="315" y="177" />
+        <di:waypoint x="500" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0d8qofn_di" bpmnElement="Flow_0d8qofn">
+        <di:waypoint x="600" y="177" />
+        <di:waypoint x="655" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fn5u9y_di" bpmnElement="Flow_0fn5u9y">
+        <di:waypoint x="705" y="177" />
+        <di:waypoint x="762" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0dj7l5c_di" bpmnElement="DataInputAssociation_0dj7l5c">
+        <di:waypoint x="635" y="80" />
+        <di:waypoint x="566" y="137" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pcaj1n_di" bpmnElement="Flow_1pcaj1n">
+        <di:waypoint x="570" y="235" />
+        <di:waypoint x="570" y="295" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0emmyet_di" bpmnElement="Flow_0emmyet">
+        <di:waypoint x="545" y="320" />
+        <di:waypoint x="470" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_146cdox_di" bpmnElement="Flow_146cdox">
+        <di:waypoint x="370" y="320" />
+        <di:waypoint x="290" y="320" />
+        <di:waypoint x="290" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fdqexx_di" bpmnElement="Flow_1fdqexx">
+        <di:waypoint x="680" y="202" />
+        <di:waypoint x="680" y="320" />
+        <di:waypoint x="595" y="320" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

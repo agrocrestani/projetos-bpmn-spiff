@@ -1,0 +1,30 @@
+{
+  "n_filiais": [
+    {
+      "value": "1",
+      "label": "0109-AGROPECUARIA CRESTANI LTDA"
+    },
+    {
+      "value": "2",
+      "label": "0281-AGROPECUARIA CRESTANI LTDA"
+    },
+    {
+      "value": "3",
+      "label": "0362-AGROPECUARIA CRESTANI LTDA"
+    }
+  ],
+  "n_depositos": [
+    {
+      "value": "01.BRAS",
+      "label": "01.BRAS - ALMOXAR UNID. BRASNORTE"
+    },
+    {
+      "value": "01.FCOL",
+      "label": "01.FCOL - ALMOXAR COLORADO"
+    },
+    {
+      "value": "01.FCUR",
+      "label": "01.FCUR - ALMOXAR CURUPAI"
+    }
+  ]
+}

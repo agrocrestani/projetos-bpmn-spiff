@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "required": [
+  ],
+  "properties": {
+    "BPLId": {
+      "title": "Filial",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:n_filiais"
+      ]
+    },
+    "WhsCode": {
+      "title": "Deposito",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:n_depositos"
+      ]
+    },
+    "idFarmbox": {
+      "type": "string",
+      "title": "Id Farmbox"
+    },
+    "novoIdFarmbox": {
+      "type": "string",
+      "title": "Id Farmbox"
+    },
+    "idSolinftec": {
+      "type": "string",
+      "title": "Id Solinftec"
+    },
+    "novoIdSolinftec": {
+      "type": "string",
+      "title": "Id Solinftec"
+    }
+  }
+}

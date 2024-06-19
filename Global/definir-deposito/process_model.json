@@ -1,0 +1,9 @@
+{
+    "description": "",
+    "display_name": "Definir Dep\u00f3sito",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "definir-deposito.bpmn",
+    "primary_process_id": "Process_definir_deposito"
+}

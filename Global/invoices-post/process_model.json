@@ -1,0 +1,9 @@
+{
+    "description": "Emite NFe de Sa\u00edda no SAP",
+    "display_name": "Invoices post",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "invoices-post.bpmn",
+    "primary_process_id": "Process_invoices_post_xf8j10r"
+}

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="Process_depara_deposito_j5xqmlj" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:incoming>Flow_03nhtj6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_1o8n0c1" />
+    <bpmn:userTask id="Activity_0qpzdpu" name="Dados iniciais">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
+
+ * **Script Task** - write a short snippet of python code to update some data
+ *  **User Task** - generate a form that collects information from a user
+ * **Service Task** - communicate with an external API to fetch or update some data.
+
+You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="dados-iniciais-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="dados-iniciais-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:preScript>n_filiais = []
+for f in filiais:
+    BPLId = f['BPLId']
+    BPLName = f['BPLName']
+    AliasName = f['AliasName']
+    if BPLId in ['2', '3', '4', '5']: 
+        n_filiais.append(
+            {
+                "value": BPLId,
+                "label": AliasName,
+            }
+        )
+
+n_depositos = []
+for d in depositos:
+    WhsCode = d['WhsCode']
+    WhsName = d['WhsName']
+    n_depositos.append(
+        {
+            "value": WhsCode,
+            "label": WhsCode + " - " + WhsName
+        }
+    )
+
+del(filiais)
+del(depositos)</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
+      <bpmn:property id="Property_1sorkz2" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_14ly1o9">
+        <bpmn:sourceRef>DataStoreReference_1na4bge</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1sorkz2</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_1evf0l4">
+        <bpmn:sourceRef>DataStoreReference_1tm7fbb</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1sorkz2</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0j09d7n" sourceRef="Activity_1o8n0c1" targetRef="Activity_0rox92v" />
+    <bpmn:scriptTask id="Activity_1o8n0c1" name="Busca o deposito no SAP">
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0j09d7n</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+            SELECT
+                o."WhsCode",
+                o."WhsName",
+                o."U_AC_IdFarmBox",
+                o."U_AC_Id_Solinftec"
+            FROM
+                {baseSap}.owhs o
+            WHERE
+                o."BPLid" = {BPLId}
+                AND o."WhsCode" = '{WhsCode}'
+          """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+rsp = Hana(connection).selectDb(query)
+
+idFarmbox = rsp[0]['u_ac_idfarmbox']
+idSolinftec = rsp[0]['u_ac_id_solinftec']
+
+del(rsp)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:dataStoreReference id="DataStoreReference_1na4bge" name="Depositos" dataStoreRef="depositos" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_1tm7fbb" name="Filiais" dataStoreRef="filiais" type="json" />
+    <bpmn:sequenceFlow id="Flow_03nhtj6" sourceRef="Activity_0rox92v" targetRef="EndEvent_1" />
+    <bpmn:userTask id="Activity_0rox92v" name="DePara Deposito">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="depara-deposito-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="depara-deposito-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0j09d7n</bpmn:incoming>
+      <bpmn:outgoing>Flow_03nhtj6</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmn:dataStore id="depositos" name="JSONDataStore" />
+  <bpmn:dataStore id="filiais" name="JSONDataStore" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_depara_deposito_j5xqmlj">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1012" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1wh07y7_di" bpmnElement="Activity_0qpzdpu">
+        <dc:Bounds x="270" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1xfwtkl_di" bpmnElement="Activity_1o8n0c1">
+        <dc:Bounds x="450" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1na4bge_di" bpmnElement="DataStoreReference_1na4bge">
+        <dc:Bounds x="255" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="255" y="342" width="50" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1tm7fbb_di" bpmnElement="DataStoreReference_1tm7fbb">
+        <dc:Bounds x="335" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="346" y="342" width="28" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1l0nwd5_di" bpmnElement="Activity_0rox92v">
+        <dc:Bounds x="620" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="450" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_14ly1o9_di" bpmnElement="DataInputAssociation_14ly1o9">
+        <di:waypoint x="290" y="285" />
+        <di:waypoint x="317" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1evf0l4_di" bpmnElement="DataInputAssociation_1evf0l4">
+        <di:waypoint x="353" y="285" />
+        <di:waypoint x="330" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0j09d7n_di" bpmnElement="Flow_0j09d7n">
+        <di:waypoint x="550" y="177" />
+        <di:waypoint x="620" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_03nhtj6_di" bpmnElement="Flow_03nhtj6">
+        <di:waypoint x="720" y="177" />
+        <di:waypoint x="1012" y="177" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

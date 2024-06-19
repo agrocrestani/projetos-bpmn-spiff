@@ -1,0 +1,51 @@
+{
+  "ui:layout": [
+    {
+      "BPLId": {},
+      "WhsCode": {
+        "sm": 2,
+        "md": 2,
+        "lg": 4
+      }
+    },
+    {
+      "idFarmbox": {},
+      "novoIdFarmbox": {}
+    },
+    {
+      "idSolinftec": {},
+      "novoIdSolinftec": {}
+    }
+  ],
+  "idFarmbox": {
+    "ui:disabled": {},
+    "ui:classNames": "task-title foo-bar",
+    "ui:autofocus": true,
+    "ui:emptyValue": "",
+    "ui:description": "Valor atual no SAP"
+  },
+  "novoIdFarmbox": {
+    "ui:style": { "color": "red" },
+    "ui:autofocus": true,
+    "ui:emptyValue": "",
+    "ui:default": "{{idFarmbox}}",
+    "ui:description": "Informe o novo ID do depósito no Farmbox"
+  },
+  "idSolinftec": {
+    "ui:disabled": {},
+    "ui:autofocus": true,
+    "ui:emptyValue": "",
+    "ui:description": "Valor atual no SAP"
+  },
+  "novoIdSolinftec": {
+    "ui:autofocus": true,
+    "ui:emptyValue": "",
+    "ui:description": "Informe o novo ID do depósito no Solinftec"
+  },
+  "BPLId": {
+    "ui:disabled": {}
+  },
+  "WhsCode": {
+    "ui:disabled": {}
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "required": [
+    "BPLId",
+    "WhsCode"
+  ],
+  "properties": {
+    "BPLId": {
+      "title": "Filial",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:n_filiais"
+      ]
+    },
+    "WhsCode": {
+      "title": "Deposito",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:n_depositos"
+      ]
+    }
+  }
+}

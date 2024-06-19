@@ -1,0 +1,9 @@
+{
+    "description": "Define a observa\u00e7\u00e3o para nota de Transferencia de Insumos",
+    "display_name": "Observacao NFe Insumos",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "observacao-nfe-insumos.bpmn",
+    "primary_process_id": "Process_observacao_nfe_insumos_6afjavb"
+}
