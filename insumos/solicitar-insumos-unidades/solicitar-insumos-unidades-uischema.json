@@ -16,7 +16,7 @@
       "insumo": {
         "ui:widget": "typeahead",
         "ui:options": {
-          "category": "estoque_de_insumos",
+          "category": "estoque",
           "itemFormat": "{ItemName} - {WhsCode} (Estoque: {OnHand} {InvntryUom} {ItemCode})"
         }
       }
