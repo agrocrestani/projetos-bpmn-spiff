@@ -35,14 +35,10 @@
         <bpmn:flowNodeRef>Activity_1jg3f8e</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1bsmf9p</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0qzj466</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_082xwxf</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1x3dg9k</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1bcdnjg</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_12k31uu</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1n5dya6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1049z97</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_0nylixx</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1bacem4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0nylixx</bpmn:flowNodeRef>
         <bpmn:childLaneSet id="LaneSet_18ibth1">
           <bpmn:lane id="Lane_1mcy60b" name="Matriz_Deposito_Insumos">
             <bpmn:flowNodeRef>Activity_0zxfq72</bpmn:flowNodeRef>
@@ -62,8 +58,8 @@
             <bpmn:flowNodeRef>Gateway_19ut00j</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_1n5dya6</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1049z97</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Event_0nylixx</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1bacem4</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Event_0nylixx</bpmn:flowNodeRef>
           </bpmn:lane>
           <bpmn:lane id="Lane_1i1rltx">
             <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
@@ -73,12 +69,14 @@
             <bpmn:flowNodeRef>Activity_1jg3f8e</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1bsmf9p</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_0qzj466</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Activity_082xwxf</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Activity_1x3dg9k</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Activity_1bcdnjg</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Event_12k31uu</bpmn:flowNodeRef>
           </bpmn:lane>
         </bpmn:childLaneSet>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Deposito_Solicitante" name="Querencia_Deposito_Insumos">
+        <bpmn:flowNodeRef>Activity_082xwxf</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1x3dg9k</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1bcdnjg</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_12k31uu</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="StartEvent_1">
@@ -109,7 +107,9 @@ carregaMatriz = 0
 carregaQuerencia = 0</spiffworkflow:preScript>
         <spiffworkflow:postScript>for f in n_filiais:
     if f['value'] == unidade:
-        Nome_Cli_Destino = f['label']</spiffworkflow:postScript>
+        Nome_Cli_Destino = f['label']
+
+</spiffworkflow:postScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="solicitar-insumos-unidades-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="solicitar-insumos-unidades-uischema.json" />
@@ -138,7 +138,23 @@ carregaQuerencia = 0</spiffworkflow:preScript>
         <bpmn:targetRef>Property_0m73nn4</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
-    <bpmn:callActivity id="Activity_0j9q13v" name="Atualiza estoque Insumos" calledElement="Estoque_de_Insumos">
+    <bpmn:callActivity id="Activity_0j9q13v" name="Atualiza estoque Insumos" calledElement="Atualiza_Estoque">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>baseSap = get_secret('baseSap')
+
+query = f"""
+    SELECT 
+      T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", T2."WhsCode", to_alphanum(T2."OnHand") "OnHand"
+    FROM {baseSap}."OITM" T0
+    INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
+    INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
+    WHERE T2."OnHand" &gt; 0  
+      AND  T2."WhsCode" = '03.MATR'
+    ORDER BY T0."ItemName", T2."WhsCode" 
+          """
+
+localSolicitacao = "querencia"</spiffworkflow:preScript>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_07x0sp4</bpmn:incoming>
       <bpmn:outgoing>Flow_00r1s3x</bpmn:outgoing>
     </bpmn:callActivity>
@@ -283,10 +299,10 @@ else:
         errorCode = rsp['body']['error']['code']
         errorMessage = rsp['body']['error']['message']['value']
     except:
-        command = sapError['command_response_body']
+        command = ErrorNFe['command_response_body']
         command = json.loads(command)
-        status_code = sapError['status_code']
-        errorCode = sapError['error_code']
+        status_code = ErrorNFe['status_code']
+        errorCode = ErrorNFe['error_code']
         errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
         <spiffworkflow:postScript>for b in bkp:
     b['insumo'] = json.dumps(b['insumo'])
@@ -357,7 +373,8 @@ payload = {
             <spiffworkflow:parameter id="verify" type="bool" />
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
-        <spiffworkflow:postScript>Saida_Que_Col = DocEntry</spiffworkflow:postScript>
+        <spiffworkflow:postScript>if lancado == 201:
+    Saida_Que_Col = DocEntry</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_14qu8ic</bpmn:incoming>
@@ -595,6 +612,60 @@ payload = {
       <bpmn:incoming>Flow_0q9zm5t</bpmn:incoming>
       <bpmn:outgoing>Flow_12bt55u</bpmn:outgoing>
     </bpmn:callActivity>
+    <bpmn:exclusiveGateway id="Gateway_1n5dya6" default="Flow_0a1sn56">
+      <bpmn:incoming>Flow_00exh31</bpmn:incoming>
+      <bpmn:outgoing>Flow_0a1sn56</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0nrhooh</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:manualTask id="Activity_1049z97" name="Visualiza Erro">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>if lancado == 204:
+    status_code = lancado
+    errorMessage = 'Nota Inutilizada no SAP. Para corrigir os itens e emitir uma nova nota, clique em [Continuar]. Para finalizar o processo clique em [Finalizar].'
+else:
+    try:
+        status_code = lancado
+        errorCode = rsp['body']['error']['code']
+        errorMessage = rsp['body']['error']['message']['value']
+    except:
+        command = ErrorNFe['command_response_body']
+        command = json.loads(command)
+        status_code = ErrorNFe['status_code']
+        errorCode = ErrorNFe['error_code']
+        errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
+        <spiffworkflow:postScript>for b in bkp:
+    b['insumo'] = json.dumps(b['insumo'])
+
+solicitacao = bkp.copy()</spiffworkflow:postScript>
+        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
+
+### Informações
+
+| Campo | Conteudo |
+| ----------: | -------------- |
+| Código Erro: | {{errorCode}} |
+| Mensagem Erro: | {{errorMessage}}
+| Status  | {{status_code}} |
+
+1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
+2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0nrhooh</bpmn:incoming>
+      <bpmn:outgoing>Flow_0iuxdg0</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:boundaryEvent id="Event_0nylixx" attachedToRef="Activity_1rkt1l6">
+      <bpmn:extensionElements>
+        <spiffworkflow:signalButtonLabel>Finaliza</spiffworkflow:signalButtonLabel>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_1oytvmj</bpmn:outgoing>
+      <bpmn:signalEventDefinition id="SignalEventDefinition_1rd7i0y" signalRef="Finalizar_Processo" />
+    </bpmn:boundaryEvent>
+    <bpmn:dataStoreReference id="DataStoreReference_1a90b40" name="Utilizações" dataStoreRef="utilizacoes" type="json" />
+    <bpmn:sequenceFlow id="Flow_08mshle" sourceRef="Activity_1bacem4" targetRef="Activity_0v68ob6" />
+    <bpmn:callActivity id="Activity_1bacem4" name="Observação NFe" calledElement="Process_observacao_nfe_insumos_6afjavb">
+      <bpmn:incoming>Flow_1btf1uw</bpmn:incoming>
+      <bpmn:outgoing>Flow_08mshle</bpmn:outgoing>
+    </bpmn:callActivity>
     <bpmn:userTask id="Activity_082xwxf" name="Validar nota de entrada">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>confirma = False
@@ -805,60 +876,6 @@ for i in itens:
     <bpmn:endEvent id="Event_12k31uu">
       <bpmn:incoming>Flow_11363nf</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:exclusiveGateway id="Gateway_1n5dya6" default="Flow_0a1sn56">
-      <bpmn:incoming>Flow_00exh31</bpmn:incoming>
-      <bpmn:outgoing>Flow_0a1sn56</bpmn:outgoing>
-      <bpmn:outgoing>Flow_0nrhooh</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:manualTask id="Activity_1049z97" name="Visualiza Erro">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>if lancado == 204:
-    status_code = lancado
-    errorMessage = 'Nota Inutilizada no SAP. Para corrigir os itens e emitir uma nova nota, clique em [Continuar]. Para finalizar o processo clique em [Finalizar].'
-else:
-    try:
-        status_code = lancado
-        errorCode = rsp['body']['error']['code']
-        errorMessage = rsp['body']['error']['message']['value']
-    except:
-        command = ErrorNFe['command_response_body']
-        command = json.loads(command)
-        status_code = ErrorNFe['status_code']
-        errorCode = ErrorNFe['error_code']
-        errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
-        <spiffworkflow:postScript>for b in bkp:
-    b['insumo'] = json.dumps(b['insumo'])
-
-solicitacao = bkp.copy()</spiffworkflow:postScript>
-        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
-
-### Informações
-
-| Campo | Conteudo |
-| ----------: | -------------- |
-| Código Erro: | {{errorCode}} |
-| Mensagem Erro: | {{errorMessage}}
-| Status  | {{status_code}} |
-
-1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
-2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0nrhooh</bpmn:incoming>
-      <bpmn:outgoing>Flow_0iuxdg0</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:boundaryEvent id="Event_0nylixx" attachedToRef="Activity_1rkt1l6">
-      <bpmn:extensionElements>
-        <spiffworkflow:signalButtonLabel>Finaliza</spiffworkflow:signalButtonLabel>
-      </bpmn:extensionElements>
-      <bpmn:outgoing>Flow_1oytvmj</bpmn:outgoing>
-      <bpmn:signalEventDefinition id="SignalEventDefinition_1rd7i0y" signalRef="Finalizar_Processo" />
-    </bpmn:boundaryEvent>
-    <bpmn:dataStoreReference id="DataStoreReference_1a90b40" name="Utilizações" dataStoreRef="utilizacoes" type="json" />
-    <bpmn:sequenceFlow id="Flow_08mshle" sourceRef="Activity_1bacem4" targetRef="Activity_0v68ob6" />
-    <bpmn:callActivity id="Activity_1bacem4" name="Observação NFe" calledElement="Process_observacao_nfe_insumos_6afjavb">
-      <bpmn:incoming>Flow_1btf1uw</bpmn:incoming>
-      <bpmn:outgoing>Flow_08mshle</bpmn:outgoing>
-    </bpmn:callActivity>
   </bpmn:process>
   <bpmn:error id="Error_2" name="Error_2">
     <bpmn:extensionElements>
@@ -869,7 +886,11 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Solicitar_Insumos_Querencia">
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
-        <dc:Bounds x="-363" y="-170" width="4406" height="1100" />
+        <dc:Bounds x="-363" y="-430" width="4406" height="1360" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1sas326_di" bpmnElement="Lane_Deposito_Solicitante" isHorizontal="true">
+        <dc:Bounds x="-333" y="-430" width="4376" height="260" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1nq9ktb_di" bpmnElement="Lane_1nq9ktb" isHorizontal="true">
         <dc:Bounds x="-333" y="-170" width="4376" height="1100" />
@@ -965,20 +986,6 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Activity_1pmxnnw_di" bpmnElement="Activity_0qzj466">
         <dc:Bounds x="3033" y="-53" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1ey9irg_di" bpmnElement="Activity_082xwxf">
-        <dc:Bounds x="3293" y="-53" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0hyjrqs_di" bpmnElement="Activity_1x3dg9k">
-        <dc:Bounds x="3480" y="-53" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0n5cgee_di" bpmnElement="Activity_1bcdnjg">
-        <dc:Bounds x="3783" y="-53" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_12k31uu_di" bpmnElement="Event_12k31uu">
-        <dc:Bounds x="3975" y="-31" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1n5dya6_di" bpmnElement="Gateway_1n5dya6" isMarkerVisible="true">
         <dc:Bounds x="2205" y="325" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -994,6 +1001,20 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Activity_17hnjth_di" bpmnElement="Activity_1bacem4">
         <dc:Bounds x="870" y="310" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ey9irg_di" bpmnElement="Activity_082xwxf">
+        <dc:Bounds x="3293" y="-330" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0hyjrqs_di" bpmnElement="Activity_1x3dg9k">
+        <dc:Bounds x="3490" y="-330" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0n5cgee_di" bpmnElement="Activity_1bcdnjg">
+        <dc:Bounds x="3710" y="-330" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_12k31uu_di" bpmnElement="Event_12k31uu">
+        <dc:Bounds x="3892" y="-308" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1y2p3ku_di" bpmnElement="Event_0nylixx">
         <dc:Bounds x="1085" y="602" width="36" height="36" />
@@ -1063,8 +1084,8 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
         <di:waypoint x="2663" y="-13" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_11363nf_di" bpmnElement="Flow_11363nf">
-        <di:waypoint x="3883" y="-13" />
-        <di:waypoint x="3975" y="-13" />
+        <di:waypoint x="3810" y="-290" />
+        <di:waypoint x="3892" y="-290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13sk5ni_di" bpmnElement="Flow_13sk5ni">
         <di:waypoint x="2763" y="-13" />
@@ -1080,16 +1101,18 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
         <di:waypoint x="1212" y="658" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1anb9z3_di" bpmnElement="Flow_1anb9z3">
-        <di:waypoint x="3393" y="-13" />
-        <di:waypoint x="3480" y="-13" />
+        <di:waypoint x="3393" y="-290" />
+        <di:waypoint x="3490" y="-290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0by2q56_di" bpmnElement="Flow_0by2q56">
-        <di:waypoint x="3580" y="-13" />
-        <di:waypoint x="3783" y="-13" />
+        <di:waypoint x="3590" y="-290" />
+        <di:waypoint x="3710" y="-290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12bt55u_di" bpmnElement="Flow_12bt55u">
         <di:waypoint x="3133" y="-13" />
-        <di:waypoint x="3293" y="-13" />
+        <di:waypoint x="3213" y="-13" />
+        <di:waypoint x="3213" y="-290" />
+        <di:waypoint x="3293" y="-290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_160peiq_di" bpmnElement="Flow_160peiq">
         <di:waypoint x="1810" y="350" />

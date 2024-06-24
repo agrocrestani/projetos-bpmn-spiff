@@ -56,7 +56,7 @@ except:
       <bpmn:incoming>Flow_0bpq1s0</bpmn:incoming>
       <bpmn:outgoing>Flow_0r122ep</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_14dvl65">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT1S"</bpmn:timeDuration>
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT15S"</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
     <bpmn:sequenceFlow id="Flow_0r122ep" sourceRef="Event_07f7330" targetRef="Activity_1oobqq4" />
@@ -314,6 +314,10 @@ except:
       <bpmndi:BPMNShape id="Event_1w5t3go_di" bpmnElement="Event_07f7330">
         <dc:Bounds x="802" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1fvvdiz_di" bpmnElement="Activity_1oobqq4">
+        <dc:Bounds x="950" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1rq0zkg_di" bpmnElement="Gateway_1rq0zkg" isMarkerVisible="true">
         <dc:Bounds x="1145" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -348,10 +352,6 @@ except:
         <bpmndi:BPMNLabel>
           <dc:Bounds x="827" y="612" width="47" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1fvvdiz_di" bpmnElement="Activity_1oobqq4">
-        <dc:Bounds x="950" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0d5o65q_di" bpmnElement="Event_0d5o65q">
         <dc:Bounds x="602" y="402" width="36" height="36" />
