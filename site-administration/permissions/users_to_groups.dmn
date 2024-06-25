@@ -392,7 +392,7 @@
           <text>"simone.silva@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1aodmc3">
-          <text>"Curupai_Deposito_Defensivos"</text>
+          <text>"Curupai_Deposito_Insumos"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_17q7i1n">
@@ -403,7 +403,7 @@
           <text>"andressa.silva@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0cj2iko">
-          <text>"Curupai_Deposito_Defensivos"</text>
+          <text>"Curupai_Deposito_Insumos"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0vxzwvr">
