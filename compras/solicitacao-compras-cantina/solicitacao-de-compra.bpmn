@@ -314,7 +314,7 @@ payload = {
     "U_RSD_Prioridade": U_RSD_Prioridade,
     "U_RSD_Aplicacao": U_RSD_Aplicacao,
     "RequriedDate": RequriedDate,
-    "Comments": f"Solicitante: {solicitante}. Quantidades calculadas para: {qtdeColaboradores} pessoas, durante {periodo} dias. {Comments}",
+    "Comments": Comments,
     "U_AC_Spiff_Instancia": spiff_instancia,
     "U_AC_Spiff_Tarefa": spiff_tarefa,
     "U_AC_Spiff_Usuario": usuarioLancamento,
