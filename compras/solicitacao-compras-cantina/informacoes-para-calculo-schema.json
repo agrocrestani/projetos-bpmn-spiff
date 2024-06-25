@@ -24,7 +24,7 @@
     "Department": {
       "title": "Departamento",
       "type": "string",
-      "default": "16",
+      "default": "18",
       "anyOf": [
         "options_from_task_data_var:n_departamentos"
       ]
@@ -103,7 +103,9 @@
     },
     "Comments": {
       "type": "string",
-      "title": "Observações"
+      "title": "Observações",
+      "description": "A sua observação pode ter no máximo 250 caracteres, o que é aceito pelo SAP.",
+      "maxLength": 250
     },
     "qtdeColaboradores": {
       "title": "Quantidade de pessoas",

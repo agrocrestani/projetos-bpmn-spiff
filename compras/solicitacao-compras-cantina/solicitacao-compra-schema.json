@@ -99,7 +99,9 @@
     },
     "Comments": {
       "type": "string",
-      "title": "Observações"
+      "title": "Observações",
+      "description": "A sua observação pode ter no máximo 250 caracteres, o que é aceito pelo SAP.",
+      "maxLength": 250
     },
     "solicitacao": {
       "type": "array",

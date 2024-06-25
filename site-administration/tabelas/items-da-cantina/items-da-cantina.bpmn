@@ -98,7 +98,7 @@ for r in rsp:
             }
         )
 
-typeahead = {"items_cantina": items_cantina}
+typeahead = {f"items_cantina_{deposito}": items_cantina}
 
 
 del(connection)</bpmn:script>

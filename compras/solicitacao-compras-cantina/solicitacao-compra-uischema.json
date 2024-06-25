@@ -78,10 +78,19 @@
       "item": {
         "ui:widget": "typeahead",
         "ui:options": {
-          "category": "items_cantina",
+          "category": "items_cantina_{deposito}",
           "itemFormat": "{ItemName} - Sug.: {QtdeSugerida} ({InvntryUom} - {ItemCode})"
         }
       }
     }
+  },
+  "Department": {
+    "ui:disabled": true
+  },
+  "U_RSD_Aplicacao": {
+    "ui:disabled": true
+  },
+  "MainUsage": {
+    "ui:disabled": true
   }
 }

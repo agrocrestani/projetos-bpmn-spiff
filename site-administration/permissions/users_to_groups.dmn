@@ -395,6 +395,17 @@
           <text>"Curupai_Deposito_Insumos"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0rw65ta">
+        <inputEntry id="UnaryTests_0fpjkd0">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pk4pgl">
+          <text>"debora.silva@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nodzx8">
+          <text>"Curupai_Cantina"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_17q7i1n">
         <inputEntry id="UnaryTests_1pnn1uz">
           <text></text>

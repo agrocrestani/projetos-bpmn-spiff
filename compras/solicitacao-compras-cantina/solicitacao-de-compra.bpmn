@@ -51,7 +51,7 @@
 for f in filiais:
     if f['BPLId'] in ["1", "2", "3", "4", "5"]:
         BPLId = f['BPLId']
-        BPLName = f['BPLName']
+        BPLName = f['AliasName']
         n_filiais.append(
             {
                 "value": BPLId,
@@ -142,6 +142,19 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
     <bpmn:callActivity id="Activity_13g9nwv" name="Atualiza Itens" calledElement="itens_cantina">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>deposito = ""
+if BPLId == "1":
+    deposito = "querencia"
+elif BPLId == "2":
+    deposito = "promissao"
+if BPLId == "3":
+    deposito = "colorado"
+if BPLId == "4":
+    deposito = "saocarlos"
+if BPLId == "5":
+    deposito = "curupai"</spiffworkflow:preScript>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
       <bpmn:outgoing>Flow_1d8mo6p</bpmn:outgoing>
     </bpmn:callActivity>
@@ -301,7 +314,7 @@ payload = {
     "U_RSD_Prioridade": U_RSD_Prioridade,
     "U_RSD_Aplicacao": U_RSD_Aplicacao,
     "RequriedDate": RequriedDate,
-    "Comments": f"Solicitante: {solicitante}. Quantidades calculadas para: {qtdeColaboradores} colaboradores, durante {periodo} dias",
+    "Comments": f"Solicitante: {solicitante}. Quantidades calculadas para: {qtdeColaboradores} pessoas, durante {periodo} dias. {Comments}",
     "U_AC_Spiff_Instancia": spiff_instancia,
     "U_AC_Spiff_Tarefa": spiff_tarefa,
     "U_AC_Spiff_Usuario": usuarioLancamento,
@@ -510,7 +523,7 @@ group_members = get_group_members(group_identifier)
 # lane_owners = { "Cantina": group_members }
 lane_owners = {
     "Cantina": group_members,
-    "Gerencia": [aprovador]
+    "Gerencia": [gestor]
 }
 # lane_owners['Gerencia'] = gestor</spiffworkflow:postScript>
       </bpmn:extensionElements>
