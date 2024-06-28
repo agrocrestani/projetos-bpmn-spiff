@@ -813,6 +813,20 @@
           <text>"PG:insumos/solicitar-insumos-unidades"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1at62fi">
+        <inputEntry id="UnaryTests_0uwikh9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0anq4v2">
+          <text>"SaoCarlos_Cantina"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vsscbd">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mz957p">
+          <text>"PM:compras/solicitacao-compras-cantina"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0r1mt9o">
         <inputEntry id="UnaryTests_00xihjd">
           <text></text>
