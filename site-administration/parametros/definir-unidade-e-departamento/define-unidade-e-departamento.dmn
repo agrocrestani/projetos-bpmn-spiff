@@ -402,6 +402,23 @@
           <text>"vilmar.ferreira@agrocrestani.com.br"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1awqyk3">
+        <inputEntry id="UnaryTests_1okb3gc">
+          <text>"marilene.barros"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0372nvz">
+          <text>"SaoCarlos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0llvlk8">
+          <text>"Cantina"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1suot0f">
+          <text>"roobson.kennedy@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i2r196">
+          <text>"roobson.kennedy@agrocrestani.com.br"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
