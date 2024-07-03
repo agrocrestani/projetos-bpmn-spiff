@@ -19,8 +19,10 @@ headers = {
 </spiffworkflow:preScript>
         <spiffworkflow:postScript>try:
     lancado = rsp['http_status']
+    DocEntry = rsp['body']['DocEntry']
 except:
-    lancado = 500</spiffworkflow:postScript>
+    lancado = 500
+</spiffworkflow:postScript>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="url" type="str" value="url" />
