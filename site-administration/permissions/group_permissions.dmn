@@ -365,6 +365,34 @@
           <text>"PG:insumos"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1aq0ftz">
+        <inputEntry id="UnaryTests_1engq3n">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1swttdq">
+          <text>"Matriz_Faturamento"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_146jk5f">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_070r8rv">
+          <text>"PM:almoxarifados/lanca-nfe-de-entrada-no-sap"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18wx8nk">
+        <inputEntry id="UnaryTests_0vkd6t0">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05fo49u">
+          <text>"Matriz_Faturamento"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ja8okf">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14w6bde">
+          <text>"PG:almoxarifado"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1hzphqb">
         <inputEntry id="UnaryTests_1gej9j4">
           <text></text>
@@ -474,7 +502,7 @@
           <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08aikmt">
-          <text>"PG:insumos/solicitar-insumos-querencia"</text>
+          <text>"PM:insumos/solicitar-insumos-querencia"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_07lpfyn">
@@ -600,7 +628,7 @@
           <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0y7e8ho">
-          <text>"PG:insumos/solicitar-insumos-unidades"</text>
+          <text>"PM:insumos/solicitar-insumos-unidades"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_18oj9c1">
@@ -698,7 +726,7 @@
           <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1pk1nof">
-          <text>"PG:insumos/solicitar-insumos-unidades"</text>
+          <text>"PM:insumos/solicitar-insumos-unidades"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0j78lmu">
@@ -827,6 +855,20 @@
           <text>"PM:compras/solicitacao-compras-cantina"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1880bqd">
+        <inputEntry id="UnaryTests_0d22rtk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vxc5ju">
+          <text>"SaoCarlos_Almoxarifado"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03qntml">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0b1bxh5">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0r1mt9o">
         <inputEntry id="UnaryTests_00xihjd">
           <text></text>
@@ -950,6 +992,20 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1uscgo8">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bwd63w">
+        <inputEntry id="UnaryTests_1eru84p">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1v9re96">
+          <text>"Matriz_Agricultura_Precisao"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14llb3g">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bay5xz">
           <text>"BASIC"</text>
         </outputEntry>
       </rule>
