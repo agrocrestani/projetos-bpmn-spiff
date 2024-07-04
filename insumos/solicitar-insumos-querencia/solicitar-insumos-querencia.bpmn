@@ -31,7 +31,6 @@
         <bpmn:childLaneSet id="LaneSet_18ibth1" />
       </bpmn:lane>
       <bpmn:lane id="Lane_1b7188y" name="Matriz_Insumos">
-        <bpmn:flowNodeRef>Event_008sf2g</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1rkt1l6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_09sj7do</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0wopia0</bpmn:flowNodeRef>
@@ -47,6 +46,7 @@
         <bpmn:flowNodeRef>Activity_16t5nxk</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1n5dya6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0nylixx</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_008sf2g</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_0665azt" name="Matriz_Deposito_Insumos">
         <bpmn:flowNodeRef>Activity_0zxfq72</bpmn:flowNodeRef>
@@ -84,9 +84,6 @@
     <bpmn:sequenceFlow id="Flow_1anb9z3" sourceRef="Activity_082xwxf" targetRef="Activity_1x3dg9k" />
     <bpmn:sequenceFlow id="Flow_0by2q56" sourceRef="Activity_1x3dg9k" targetRef="Activity_1bcdnjg" />
     <bpmn:sequenceFlow id="Flow_11363nf" sourceRef="Activity_1bcdnjg" targetRef="Event_12k31uu" />
-    <bpmn:endEvent id="Event_008sf2g">
-      <bpmn:incoming>Flow_1oytvmj</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:manualTask id="Activity_1rkt1l6" name="Verifica Erro">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>if lancado == 204:
@@ -849,6 +846,9 @@ for i in itens:
     <bpmn:endEvent id="Event_12k31uu">
       <bpmn:incoming>Flow_11363nf</bpmn:incoming>
     </bpmn:endEvent>
+    <bpmn:endEvent id="Event_008sf2g">
+      <bpmn:incoming>Flow_1oytvmj</bpmn:incoming>
+    </bpmn:endEvent>
   </bpmn:process>
   <bpmn:error id="Error_2" name="Error_2">
     <bpmn:extensionElements>
@@ -861,23 +861,20 @@ for i in itens:
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
         <dc:Bounds x="-363" y="230" width="4406" height="1490" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1sas326_di" bpmnElement="Lane_Deposito_Solicitante" isHorizontal="true">
-        <dc:Bounds x="-333" y="230" width="4376" height="310" />
+      <bpmndi:BPMNShape id="Lane_0665azt_di" bpmnElement="Lane_0665azt" isHorizontal="true">
+        <dc:Bounds x="-333" y="1480" width="4376" height="240" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1b7188y_di" bpmnElement="Lane_1b7188y" isHorizontal="true">
+        <dc:Bounds x="-333" y="890" width="4376" height="590" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1nq9ktb_di" bpmnElement="Lane_1nq9ktb" isHorizontal="true">
         <dc:Bounds x="-333" y="540" width="4376" height="350" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1b7188y_di" bpmnElement="Lane_1b7188y" isHorizontal="true">
-        <dc:Bounds x="-333" y="890" width="4376" height="510" />
+      <bpmndi:BPMNShape id="Lane_1sas326_di" bpmnElement="Lane_Deposito_Solicitante" isHorizontal="true">
+        <dc:Bounds x="-333" y="230" width="4376" height="310" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_0665azt_di" bpmnElement="Lane_0665azt" isHorizontal="true">
-        <dc:Bounds x="-333" y="1400" width="4376" height="320" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_008sf2g_di" bpmnElement="Event_008sf2g">
-        <dc:Bounds x="1212" y="1292" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_01z645e_di" bpmnElement="Activity_1rkt1l6">
         <dc:Bounds x="1040" y="1270" width="100" height="80" />
@@ -986,6 +983,9 @@ for i in itens:
       <bpmndi:BPMNShape id="Event_12k31uu_di" bpmnElement="Event_12k31uu">
         <dc:Bounds x="3812" y="352" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_008sf2g_di" bpmnElement="Event_008sf2g">
+        <dc:Bounds x="1172" y="1392" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1y2p3ku_di" bpmnElement="Event_0nylixx">
         <dc:Bounds x="1092" y="1332" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -1052,9 +1052,9 @@ for i in itens:
         <di:waypoint x="1710" y="1090" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1oytvmj_di" bpmnElement="Flow_1oytvmj">
-        <di:waypoint x="1110" y="1332" />
-        <di:waypoint x="1110" y="1310" />
-        <di:waypoint x="1212" y="1310" />
+        <di:waypoint x="1110" y="1368" />
+        <di:waypoint x="1110" y="1410" />
+        <di:waypoint x="1172" y="1410" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_160peiq_di" bpmnElement="Flow_160peiq">
         <di:waypoint x="1810" y="1090" />
@@ -1116,17 +1116,17 @@ for i in itens:
         <di:waypoint x="3750" y="370" />
         <di:waypoint x="3812" y="370" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_1u0frmg_di" bpmnElement="DataInputAssociation_1u0frmg">
-        <di:waypoint x="352" y="765" />
-        <di:waypoint x="353" y="700" />
+      <bpmndi:BPMNEdge id="DataInputAssociation_1scwoig_di" bpmnElement="DataInputAssociation_1scwoig">
+        <di:waypoint x="1141" y="1175" />
+        <di:waypoint x="1105" y="1130" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1toag1e_di" bpmnElement="DataInputAssociation_1toag1e">
         <di:waypoint x="294" y="765" />
         <di:waypoint x="330" y="700" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_1scwoig_di" bpmnElement="DataInputAssociation_1scwoig">
-        <di:waypoint x="1141" y="1175" />
-        <di:waypoint x="1105" y="1130" />
+      <bpmndi:BPMNEdge id="DataInputAssociation_1u0frmg_di" bpmnElement="DataInputAssociation_1u0frmg">
+        <di:waypoint x="352" y="765" />
+        <di:waypoint x="353" y="700" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
