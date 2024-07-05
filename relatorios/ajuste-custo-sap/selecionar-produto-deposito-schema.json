@@ -1,17 +1,12 @@
 {
-  "title": "Selecionar o Produto e o Deposito",
+  "title": "Selecionar o Deposito",
   "type": "object",
   "required": [
-    "produto",
     "deposito",
     "dataInicio",
     "dataFinal"
   ],
   "properties": {
-    "produto": {
-      "type": "string",
-      "title": "Produto"
-    },
     "deposito": {
       "type": "string",
       "title": "Deposito",
