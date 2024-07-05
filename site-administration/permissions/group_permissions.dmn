@@ -253,20 +253,6 @@
           <text>"BASIC"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0yflr5j">
-        <inputEntry id="UnaryTests_15xe8ub">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_08q3sd9">
-          <text>"Matriz_ComercialGraos"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_13wwdug">
-          <text>["all"]</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_15qu6t1">
-          <text>"/can-run-privileged-script/*"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_01yhpgr">
         <inputEntry id="UnaryTests_1m7o5au">
           <text></text>
@@ -295,20 +281,6 @@
           <text>"PM:contabilidade/importa-folha"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_10uy0hk">
-        <inputEntry id="UnaryTests_1rsinxh">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1dx74gs">
-          <text>"Matriz_Rh"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1bwnf4q">
-          <text>["all"]</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0gn81hs">
-          <text>"/can-run-privileged-script/*"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0e37x7s">
         <inputEntry id="UnaryTests_0tgwezk">
           <text></text>
@@ -334,7 +306,7 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0yj0vc9">
-          <text>"/can-run-privileged-script/*"</text>
+          <text>"PM:relatorios/ajuste-custo-sap"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0uhezkq">
