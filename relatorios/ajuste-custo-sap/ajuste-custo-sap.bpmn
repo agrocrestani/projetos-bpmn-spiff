@@ -18,8 +18,6 @@
       <bpmn:outgoing>Flow_12354sq</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
-baseSap = get_secret('baseSap')
-
 consulta_movimentos = []
 
 connection = {
@@ -229,7 +227,6 @@ del(precoTotalNormalizado)
         </spiffworkflow:properties>
         <spiffworkflow:preScript>from connectordb.hana import Hana
 
-baseSap = get_secret('baseSap')
 
 connection = {
     "address": "172.20.1.4",
@@ -252,7 +249,6 @@ query_depositos = f"""
 consulta_depositos = Hana(connection).selectDb(query_depositos)
 
 del(query_depositos)
-del(baseSap)
 del(connection)
 
 depositosList = []
@@ -603,6 +599,7 @@ del(documentos_saida)</spiffworkflow:postScript>
           <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-produto-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:postScript>produto = json.loads(produto)
+baseSap = get_secret('baseSap')
 </spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
@@ -978,9 +975,6 @@ recalcular == False</spiffworkflow:postScript>
         <dc:Bounds x="-10" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0zik9bp_di" bpmnElement="Event_0zik9bp">
-        <dc:Bounds x="-98" y="-48" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d1r8sl_di" bpmnElement="Activity_1d1r8sl" isExpanded="true">
         <dc:Bounds x="220" y="77" width="550" height="200" />
       </bpmndi:BPMNShape>
@@ -1045,15 +1039,18 @@ recalcular == False</spiffworkflow:postScript>
       <bpmndi:BPMNShape id="Activity_1m04ayc_di" bpmnElement="VISAO_CALCULADA">
         <dc:Bounds x="980" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0zik9bp_di" bpmnElement="Event_0zik9bp">
+        <dc:Bounds x="-98" y="-48" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1dt7gez_di" bpmnElement="Event_0j1i9fu">
+        <dc:Bounds x="-98" y="119" width="36" height="36" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0vgnurq_di" bpmnElement="EncerradoInatividade1">
         <dc:Bounds x="-238" y="119" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="-247" y="162" width="54" height="27" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1dt7gez_di" bpmnElement="Event_0j1i9fu">
-        <dc:Bounds x="-98" y="119" width="36" height="36" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-332" y="177" />
