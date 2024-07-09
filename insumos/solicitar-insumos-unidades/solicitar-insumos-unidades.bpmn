@@ -489,9 +489,9 @@ headers = {
         <spiffworkflow:postScript>try:
     lancado = rsp['http_status']
     unidadeEmissor = rsp['body']["BPL_IDAssignedToInvoice"]
+    DocEntry = rsp['body']['DocEntry']
 except:
     lancado = 500
-
 
 # del(lancamentos)
 # del(c)
@@ -1029,23 +1029,23 @@ except:
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
         <dc:Bounds x="34" y="-700" width="4686" height="2090" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_029j3y3_di" bpmnElement="Lane_029j3y3" isHorizontal="true">
-        <dc:Bounds x="64" y="1080" width="4656" height="310" />
+      <bpmndi:BPMNShape id="Lane_1j37mlc_di" bpmnElement="Lane_1j37mlc" isHorizontal="true">
+        <dc:Bounds x="64" y="120" width="4656" height="630" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1nq9ktb_di" bpmnElement="Lane_1nq9ktb" isHorizontal="true">
+        <dc:Bounds x="64" y="-270" width="4656" height="390" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_11gm3tc_di" bpmnElement="Lane_Deposito_Solicitante" isHorizontal="true">
+        <dc:Bounds x="64" y="-700" width="4656" height="430" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_00gzs5v_di" bpmnElement="Lane_00gzs5v" isHorizontal="true">
         <dc:Bounds x="64" y="750" width="4656" height="330" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_11gm3tc_di" bpmnElement="Lane_Deposito_Solicitante" isHorizontal="true">
-        <dc:Bounds x="64" y="-700" width="4656" height="430" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1nq9ktb_di" bpmnElement="Lane_1nq9ktb" isHorizontal="true">
-        <dc:Bounds x="64" y="-270" width="4656" height="390" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1j37mlc_di" bpmnElement="Lane_1j37mlc" isHorizontal="true">
-        <dc:Bounds x="64" y="120" width="4656" height="630" />
+      <bpmndi:BPMNShape id="Lane_029j3y3_di" bpmnElement="Lane_029j3y3" isHorizontal="true">
+        <dc:Bounds x="64" y="1080" width="4656" height="310" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_02etn56_di" bpmnElement="Gateway_02etn56" isMarkerVisible="true">
@@ -1202,11 +1202,11 @@ except:
       <bpmndi:BPMNShape id="Activity_0wzuy1s_di" bpmnElement="Activity_0qzj466">
         <dc:Bounds x="3600" y="210" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0lcauxa_di" bpmnElement="Event_1g2tkj6">
-        <dc:Bounds x="1602" y="272" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_17bb53r_di" bpmnElement="Event_0sb557c">
         <dc:Bounds x="4122" y="-548" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0lcauxa_di" bpmnElement="Event_1g2tkj6">
+        <dc:Bounds x="1602" y="272" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_02ebu0j_di" bpmnElement="Flow_02ebu0j">
         <di:waypoint x="238" y="-113" />
