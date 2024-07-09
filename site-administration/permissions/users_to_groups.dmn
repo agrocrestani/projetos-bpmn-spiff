@@ -54,6 +54,17 @@
           <text>"Matriz_Gerencia"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_01r213f">
+        <inputEntry id="UnaryTests_1a7xjyn">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wct7gj">
+          <text>"emerson.gregorio@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11i0vu2">
+          <text>"Matriz_Rh"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_01pinc2">
         <inputEntry id="UnaryTests_0gm0p7n">
           <text></text>
@@ -62,7 +73,7 @@
           <text>"emerson.gregorio@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05znqqo">
-          <text>"Matriz_Rh"</text>
+          <text>"Matriz_Faturamento"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_03fn1oq">
@@ -261,6 +272,17 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0sp7d4a">
           <text>"Matriz_Contabil"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mae7bm">
+        <inputEntry id="UnaryTests_0hm7mmz">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qd4nez">
+          <text>"emanoel.souza@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1l8a4gx">
+          <text>"Matriz_Faturamento"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_07uvsyi">
@@ -714,6 +736,17 @@
           <text>"Matriz_Deposito_Insumos"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0my2uwk">
+        <inputEntry id="UnaryTests_0e3wxvb">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0d4ym7d">
+          <text>"eduardo.silva@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0oils99">
+          <text>"Matriz_Deposito_Insumos"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1e5ih5r">
         <inputEntry id="UnaryTests_0d5vefg">
           <text></text>
@@ -734,6 +767,17 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0bsyq7k">
           <text>"Matriz_Faturamento"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ix1uga">
+        <inputEntry id="UnaryTests_1nb2pj5">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0trfgrk">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1td1eze">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
