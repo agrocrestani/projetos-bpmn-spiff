@@ -1,0 +1,9 @@
+{
+    "description": "",
+    "display_name": "Lanca NFe de Entrada no SAP",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "lanca-nfe-de-entrada-no-sap.bpmn",
+    "primary_process_id": "Process_lanca_nfe_de_entrada_no_sap_mublbsr"
+}

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="Process_busca_rascunho_nfe_og4w5n9" name="busca_rascunho_nfe" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:incoming>Flow_1ou767z</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Gateway_1y9d1pz" />
+    <bpmn:serviceTask id="Activity_0qpzdpu" name="Busca racunho da NFe no SAP">
+      <bpmn:documentation>.</bpmn:documentation>
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser />
+        <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
+
+# Serial = 301797
+# LicTradNum = "F03284"
+# FederalTaxID = "02916265001646"
+
+url = f"https://172.20.1.9:50000/b1s/v2/Drafts?$filter=SequenceSerial eq {Serial} and FederalTaxID eq '{FederalTaxID}'"
+
+headers = {
+  'Cookie': f"B1SESSION={loginSap}",
+  'Content-Type': 'application/json'
+}
+
+#declaracao de variaveis
+erroRascunho = 0
+baixaItensCantina = []
+outrosItens = []</spiffworkflow:preScript>
+        <spiffworkflow:serviceTaskOperator id="http/GetRequestV2" resultVariable="rsp">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="params" type="any" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+            <spiffworkflow:parameter id="attempts" type="int" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:postScript>try:
+    statusCode = rsp['http_status']
+    if statusCode == 200:
+        nfeDraft = rsp['body']['value'][0] 
+        nfeDraftItems = nfeDraft['DocumentLines']
+except: 
+    statusCode = 500
+    mensagem = "Rascunho da NFe não localizado no SAP."
+
+</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
+      <bpmn:property id="Property_1bkarp1" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1v2n4hu">
+        <bpmn:sourceRef>DataStoreReference_012xzcw</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1bkarp1</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:serviceTask>
+    <bpmn:dataStoreReference id="DataStoreReference_012xzcw" name="SapLogin" dataStoreRef="saplogin" type="json" />
+    <bpmn:sequenceFlow id="Flow_13un7bn" sourceRef="Activity_1yj7axo" targetRef="Activity_017bdx1" />
+    <bpmn:scriptTask id="Activity_1yj7axo" name="Atualiza itens cantina">
+      <bpmn:incoming>Flow_02n6yqu</bpmn:incoming>
+      <bpmn:outgoing>Flow_13un7bn</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+            SELECT 
+                T0."ItemCode", T0."ItemName"
+            FROM 
+                sbo_crestani_prd."OITM" T0
+            WHERE 
+                -- t0."QryGroup3" = 'Y' AND t0."validFor" = 'Y'
+                t0."ItmsGrpCod" IN ('195','342')
+          """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+rsp = Hana(connection).selectDb(query)
+
+
+items_cantina = []
+
+for r in rsp:
+    Code = str(r['itemcode'])
+    items_cantina.append(Code)
+
+rascunhoNaoLocalizado = False
+
+del(connection)
+
+</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_1ou767z" sourceRef="Activity_017bdx1" targetRef="EndEvent_1" />
+    <bpmn:scriptTask id="Activity_017bdx1" name="Define se nota é compra para Cantina">
+      <bpmn:incoming>Flow_13un7bn</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ou767z</bpmn:outgoing>
+      <bpmn:script>for i in nfeDraftItems:
+    if i['ItemCode'] in items_cantina:
+        baixaItensCantina.append(i)
+    else:
+        outrosItens.append(i)
+
+del (i)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:exclusiveGateway id="Gateway_1y9d1pz" default="Flow_02n6yqu">
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_02n6yqu</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0ci3lhy</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_02n6yqu" sourceRef="Gateway_1y9d1pz" targetRef="Activity_1yj7axo" />
+    <bpmn:endEvent id="Event_0uqpiwt">
+      <bpmn:incoming>Flow_0ji20fa</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0ji20fa" sourceRef="Activity_05lbch7" targetRef="Event_0uqpiwt" />
+    <bpmn:manualTask id="Activity_05lbch7" name="Mensagem de erro">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>#Verifique o erro
+
+|Campo | Conteudo |
+| ---------- | ------------ |
+| Codigo Erro | {{statusCode}}
+| Mensagem  | {{mensagem}}</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:postScript>rascunhoNaoLocalizado = True</spiffworkflow:postScript>
+        <spiffworkflow:preScript>if erroRascunho:
+    statusCode = erroRascunho['status_code']
+    mensagem = erroRascunho['message']
+</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_03m7gzs</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ji20fa</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:exclusiveGateway id="Gateway_08ysbni">
+      <bpmn:incoming>Flow_0o1vax9</bpmn:incoming>
+      <bpmn:incoming>Flow_0ci3lhy</bpmn:incoming>
+      <bpmn:outgoing>Flow_03m7gzs</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_03m7gzs" sourceRef="Gateway_08ysbni" targetRef="Activity_05lbch7" />
+    <bpmn:sequenceFlow id="Flow_0o1vax9" sourceRef="Event_1dm1dft" targetRef="Gateway_08ysbni" />
+    <bpmn:sequenceFlow id="Flow_0ci3lhy" sourceRef="Gateway_1y9d1pz" targetRef="Gateway_08ysbni">
+      <bpmn:conditionExpression>statusCode != 200</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:boundaryEvent id="Event_1dm1dft" attachedToRef="Activity_0qpzdpu">
+      <bpmn:outgoing>Flow_0o1vax9</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_010xyc7" errorRef="Error_Rascunho" />
+    </bpmn:boundaryEvent>
+  </bpmn:process>
+  <bpmn:dataStore id="saplogin" name="JSONDataStore" />
+  <bpmn:error id="Error_Rascunho" name="Error_Rascunho">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>erroRascunho</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_busca_rascunho_nfe_og4w5n9">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="842" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0nm5ti0_di" bpmnElement="Activity_0qpzdpu">
+        <dc:Bounds x="269" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_012xzcw_di" bpmnElement="DataStoreReference_012xzcw">
+        <dc:Bounds x="255" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="257" y="342" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ojnm6k_di" bpmnElement="Activity_1yj7axo">
+        <dc:Bounds x="530" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0yp2rff_di" bpmnElement="Activity_017bdx1">
+        <dc:Bounds x="680" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1y9d1pz_di" bpmnElement="Gateway_1y9d1pz" isMarkerVisible="true">
+        <dc:Bounds x="435" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0uqpiwt_di" bpmnElement="Event_0uqpiwt">
+        <dc:Bounds x="682" y="272" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1svxzk6_di" bpmnElement="Activity_05lbch7">
+        <dc:Bounds x="530" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_08ysbni_di" bpmnElement="Gateway_08ysbni" isMarkerVisible="true">
+        <dc:Bounds x="435" y="265" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_12okzxt_di" bpmnElement="Event_1dm1dft">
+        <dc:Bounds x="322" y="199" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="269" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
+        <di:waypoint x="369" y="177" />
+        <di:waypoint x="435" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1v2n4hu_di" bpmnElement="DataInputAssociation_1v2n4hu">
+        <di:waypoint x="289" y="285" />
+        <di:waypoint x="314" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13un7bn_di" bpmnElement="Flow_13un7bn">
+        <di:waypoint x="630" y="177" />
+        <di:waypoint x="680" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ou767z_di" bpmnElement="Flow_1ou767z">
+        <di:waypoint x="780" y="177" />
+        <di:waypoint x="842" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02n6yqu_di" bpmnElement="Flow_02n6yqu">
+        <di:waypoint x="485" y="177" />
+        <di:waypoint x="530" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ji20fa_di" bpmnElement="Flow_0ji20fa">
+        <di:waypoint x="630" y="290" />
+        <di:waypoint x="682" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_03m7gzs_di" bpmnElement="Flow_03m7gzs">
+        <di:waypoint x="485" y="290" />
+        <di:waypoint x="530" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0o1vax9_di" bpmnElement="Flow_0o1vax9">
+        <di:waypoint x="340" y="235" />
+        <di:waypoint x="340" y="290" />
+        <di:waypoint x="435" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ci3lhy_di" bpmnElement="Flow_0ci3lhy">
+        <di:waypoint x="460" y="202" />
+        <di:waypoint x="460" y="265" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

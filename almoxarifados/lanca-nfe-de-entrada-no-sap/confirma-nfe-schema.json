@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "done": {
+      "type": "boolean",
+      "title": "Confirmo que verifiquei os dados da NFe e conferi os itens fisicamente.",
+      "default": false
+    }
+  }
+}

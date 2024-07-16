@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="Process_inventorygenexits_alilvwv" name="Saida de Mercadoria no SAP" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Gateway_193ikqd" />
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:incoming>Flow_14sosg5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Gateway_1lc0fr7" />
+    <bpmn:serviceTask id="Activity_0qpzdpu" name="Saida de mercadoria no SAP">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
+
+ * **Script Task** - write a short snippet of python code to update some data
+ *  **User Task** - generate a form that collects information from a user
+ * **Service Task** - communicate with an external API to fetch or update some data.
+
+You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript># loginSap = saplogin[0]['SessionId']
+
+url = 'https://172.20.1.9:50000/b1s/v2/InventoryGenExits'
+
+headers = {
+  'Cookie': f"B1SESSION={loginSap}",
+  'Content-Type': 'application/json'
+}</spiffworkflow:preScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rspSaida">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="payload" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:postScript>try:
+    lancaSaida = rspSaida['http_status']
+except:
+    lancaSaida = 500</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_100908n</bpmn:incoming>
+      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_193ikqd">
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:incoming>Flow_055zyrh</bpmn:incoming>
+      <bpmn:outgoing>Flow_100908n</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_100908n" sourceRef="Gateway_193ikqd" targetRef="Activity_0qpzdpu" />
+    <bpmn:exclusiveGateway id="Gateway_1lc0fr7" default="Flow_14sosg5">
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_14sosg5</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0m78j2g</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_14sosg5" sourceRef="Gateway_1lc0fr7" targetRef="EndEvent_1" />
+    <bpmn:boundaryEvent id="Event_1yswld5" attachedToRef="Activity_0qpzdpu">
+      <bpmn:outgoing>Flow_19dkdqc</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_06lq1cw" errorRef="Error_Saida_Mercadoria" />
+    </bpmn:boundaryEvent>
+    <bpmn:exclusiveGateway id="Gateway_0n0yt2o">
+      <bpmn:incoming>Flow_0m78j2g</bpmn:incoming>
+      <bpmn:incoming>Flow_19dkdqc</bpmn:incoming>
+      <bpmn:outgoing>Flow_0t9svfz</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0m78j2g" sourceRef="Gateway_1lc0fr7" targetRef="Gateway_0n0yt2o">
+      <bpmn:conditionExpression>lancaSaida != 201</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0t9svfz" sourceRef="Gateway_0n0yt2o" targetRef="Activity_01ww280" />
+    <bpmn:sequenceFlow id="Flow_19dkdqc" sourceRef="Event_1yswld5" targetRef="Gateway_0n0yt2o" />
+    <bpmn:sequenceFlow id="Flow_055zyrh" sourceRef="Activity_01ww280" targetRef="Gateway_193ikqd" />
+    <bpmn:manualTask id="Activity_01ww280" name="Verifica Erro na Saida">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>try:
+    status_code = lancaEntrada 
+    errorCode = rspSaida['body']['error']['code']
+    errorMessage = rspSaida['body']['error']['message']['value']
+except:
+    command = erroSaidaMercadoria['command_response_body']
+    command = json.loads(command)
+    status_code = erroSaidaMercadoria['status_code']
+    errorCode = erroSaidaMercadoria['error_code']
+    errorMessage = command['body']['error']['message']</spiffworkflow:preScript>
+        <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
+
+### Informações
+
+| Campo | Conteudo |
+| ----------: | -------------- |
+| Código Erro: | {{errorCode}} |
+| Mensagem Erro: | {{errorMessage}}
+| Status  | {{status_code}} |
+
+1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
+2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0t9svfz</bpmn:incoming>
+      <bpmn:outgoing>Flow_055zyrh</bpmn:outgoing>
+    </bpmn:manualTask>
+  </bpmn:process>
+  <bpmn:error id="Error_Saida_Mercadoria" name="Error_Saida_Mercadoria">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>erroSaidaMercadoria</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_inventorygenexits_alilvwv">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="752" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0v82dvo_di" bpmnElement="Activity_0qpzdpu">
+        <dc:Bounds x="460" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_193ikqd_di" bpmnElement="Gateway_193ikqd" isMarkerVisible="true">
+        <dc:Bounds x="255" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1lc0fr7_di" bpmnElement="Gateway_1lc0fr7" isMarkerVisible="true">
+        <dc:Bounds x="625" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0n0yt2o_di" bpmnElement="Gateway_0n0yt2o" isMarkerVisible="true">
+        <dc:Bounds x="495" y="295" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0o8fnzu_di" bpmnElement="Activity_01ww280">
+        <dc:Bounds x="330" y="280" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_06byydf_di" bpmnElement="Event_1yswld5">
+        <dc:Bounds x="502" y="199" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="255" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
+        <di:waypoint x="560" y="177" />
+        <di:waypoint x="625" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_100908n_di" bpmnElement="Flow_100908n">
+        <di:waypoint x="305" y="177" />
+        <di:waypoint x="460" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14sosg5_di" bpmnElement="Flow_14sosg5">
+        <di:waypoint x="675" y="177" />
+        <di:waypoint x="752" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0m78j2g_di" bpmnElement="Flow_0m78j2g">
+        <di:waypoint x="650" y="202" />
+        <di:waypoint x="650" y="320" />
+        <di:waypoint x="545" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0t9svfz_di" bpmnElement="Flow_0t9svfz">
+        <di:waypoint x="495" y="320" />
+        <di:waypoint x="430" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19dkdqc_di" bpmnElement="Flow_19dkdqc">
+        <di:waypoint x="520" y="235" />
+        <di:waypoint x="520" y="295" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_055zyrh_di" bpmnElement="Flow_055zyrh">
+        <di:waypoint x="330" y="320" />
+        <di:waypoint x="280" y="320" />
+        <di:waypoint x="280" y="202" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

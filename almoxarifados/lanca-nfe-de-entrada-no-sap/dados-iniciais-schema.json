@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "required": [
+    "FederalTaxID",
+    "Serial"
+  ],
+  "properties": {
+    "FederalTaxID": {
+      "type": "string",
+      "title": "CNPJ/CPF"
+    },
+    "Serial": {
+      "type": "string",
+      "title": "Número da NFe"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "observacao": {
+      "description": "Por favor, utilize este campo para relatar qualquer erro na NFe, para que nossa equipe de faturamento possa proceder com as correções necessárias.",
+      "type": "string",
+      "title": "Observacao"
+    }
+  }
+}
