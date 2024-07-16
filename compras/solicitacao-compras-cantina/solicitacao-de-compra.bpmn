@@ -191,11 +191,11 @@ for f in n_filiais:
 | Campo | Conteúdo |  Campo | Conteúdo |
 | ---------: | --------------|  ---------: | --------------|
 |Filial: |{{BPLName}}|Departamento: |{{Department}}|
-|**Quantidade de colaboradores:** | {{qtdeColaboradores}} |**Periodo em dias:** | {{periodo}} |
+|**Quantidade de pessoas:** | {{qtdeColaboradores}} |**Periodo em dias:** | {{periodo}} |
 |Prioridade: |{{U_RSD_Prioridade}}| Tipo Requisição: | {{U_RSD_Aplicacao}} |
 |Centro de Custo: | {{OcrCode}} | Cultura: | {{OcrCode2}} |
 |Safra: | {{OcrCode3}} | Depósito: | {{WhsCode}} |
-|Utilização: | {{MainUsage}} | 
+|Utilização: | {{MainUsage}} | Data Necessária | {{RequiredDate}}
 
 **Observações:** {{Comments}}
 
@@ -313,7 +313,7 @@ payload = {
     "SendNotification": "tNO",
     "U_RSD_Prioridade": U_RSD_Prioridade,
     "U_RSD_Aplicacao": U_RSD_Aplicacao,
-    "RequriedDate": RequriedDate,
+    "RequriedDate": RequiredDate,
     "Comments": Comments,
     "U_AC_Spiff_Instancia": spiff_instancia,
     "U_AC_Spiff_Tarefa": spiff_tarefa,
@@ -518,14 +518,11 @@ Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número:
       <bpmn:extensionElements>
         <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
         <spiffworkflow:postScript>group_identifier = f"{unidade}_{departamento}"
-# group_identifier = f"{unidade}_{departamento}"
 group_members = get_group_members(group_identifier)
-# lane_owners = { "Cantina": group_members }
 lane_owners = {
     "Cantina": group_members,
-    "Gerencia": [gestor]
-}
-# lane_owners['Gerencia'] = gestor</spiffworkflow:postScript>
+    "Gerencia": [aprovador]
+}</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_0bsuxx8</bpmn:outgoing>
