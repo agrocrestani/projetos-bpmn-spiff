@@ -339,7 +339,7 @@ for i in baixaItensCantina:
 
 payload = {
     "BPL_IDAssignedToInvoice": nfeDraft['BPL_IDAssignedToInvoice'],
-    "TaxDate": nfeDraft['TaxDate'],
+    # "TaxDate": nfeDraft['TaxDate'],
     "U_RSD_Origem": 11, 
     "U_RSD_Aplicacao": 2,
     # "U_RSD_Fazenda": nfeDraft[''],
