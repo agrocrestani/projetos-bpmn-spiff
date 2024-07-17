@@ -127,20 +127,6 @@
           <text>"/extensions/aggregate-metadata"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1r1avnk">
-        <inputEntry id="UnaryTests_17i4zah">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_10iit0s">
-          <text>"everybody"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1hr3rzn">
-          <text>["start"]</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_19kc49w">
-          <text>"PM:almoxarifados/lanca-nfe-de-entrada-no-sap"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1dt8sfy">
         <inputEntry id="UnaryTests_1v1et4p">
           <text></text>
@@ -376,7 +362,7 @@
           <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14w6bde">
-          <text>"PG:almoxarifado"</text>
+          <text>"PG:almoxarifados"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1hzphqb">
@@ -415,10 +401,10 @@
           <text>"Querencia_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0wymag5">
-          <text>["all"]</text>
+          <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_013yltg">
-          <text>"/can-run-privileged-script/*"</text>
+          <text>"PM:almoxarifados/lanca-nfe-de-entrada-no-sap"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_01vu57r">
@@ -433,6 +419,20 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1j82qvg">
           <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0riac3d">
+        <inputEntry id="UnaryTests_1sc9c5w">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1s57e6i">
+          <text>"Querencia_Almoxarifado"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0c6ri2v">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05wdg2u">
+          <text>"PG:almoxarifados"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_05er6u5">
@@ -503,6 +503,20 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0qqmxib">
           <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0lz4hs7">
+        <inputEntry id="UnaryTests_0sq8ltg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xoexzy">
+          <text>"Curupai_Almoxarifado"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10z678l">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1contka">
+          <text>"PG:almoxarifados"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_10gjfpq">
@@ -729,6 +743,20 @@
           <text>"BASIC"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1dq01ys">
+        <inputEntry id="UnaryTests_1c67p1f">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11xpjeh">
+          <text>"Colorado_Almoxarifado"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tugdat">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ubg6tz">
+          <text>"PG:almoxarifados"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0s1wk0a">
         <inputEntry id="UnaryTests_0g4l9np">
           <text></text>
@@ -867,6 +895,20 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0sk5mti">
           <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bi51mb">
+        <inputEntry id="UnaryTests_1fvt16y">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1632rhp">
+          <text>"SaoCarlos_Almoxarifado"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17crwgq">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ovxgup">
+          <text>"PG:almoxarifados"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0qdgvlp">

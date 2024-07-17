@@ -249,7 +249,7 @@
           <text>"emerson.leandro@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1xdgu24">
-          <text>"Matriz_Insumos"</text>
+          <text>"Querencia_Almoxarifado"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0vliomv">
@@ -774,10 +774,98 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0trfgrk">
-          <text></text>
+          <text>"leandro.almeida@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1td1eze">
+          <text>"Querencia_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mi1881">
+        <inputEntry id="UnaryTests_14ncxxq">
           <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1npulmw">
+          <text>"warlison.silva@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tf1pai">
+          <text>"Querencia_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15ucrv9">
+        <inputEntry id="UnaryTests_0kgs22u">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19vvohf">
+          <text>"matheus.lima@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_073kf0s">
+          <text>"Querencia_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pozchx">
+        <inputEntry id="UnaryTests_0bmp23m">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jo6szl">
+          <text>"alexandre.silva@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0an28bn">
+          <text>"Querencia_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_079dt0b">
+        <inputEntry id="UnaryTests_1bscilr">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04x5dg3">
+          <text>"simone.silva@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sjs86k">
+          <text>"Curupai_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c472f8">
+        <inputEntry id="UnaryTests_17igrva">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1uuql2w">
+          <text>"debora.silva@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1chw3yp">
+          <text>"Curupai_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0uc5prj">
+        <inputEntry id="UnaryTests_12o8bzt">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17in00e">
+          <text>"edson.junior@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11bl9s7">
+          <text>"Curupai_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ogloyx">
+        <inputEntry id="UnaryTests_0w2tdwn">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0l90xc8">
+          <text>"rafael.lima@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18xn05p">
+          <text>"Curupai_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_036d7qd">
+        <inputEntry id="UnaryTests_16nxs8a">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_035p8ga">
+          <text>"wesley.souza@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14q9e9s">
+          <text>"Colorado_Almoxarifado"</text>
         </outputEntry>
       </rule>
     </decisionTable>
