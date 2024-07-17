@@ -127,6 +127,20 @@
           <text>"/extensions/aggregate-metadata"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1r1avnk">
+        <inputEntry id="UnaryTests_17i4zah">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10iit0s">
+          <text>"everybody"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hr3rzn">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19kc49w">
+          <text>"PM:almoxarifados/lanca-nfe-de-entrada-no-sap"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1dt8sfy">
         <inputEntry id="UnaryTests_1v1et4p">
           <text></text>
