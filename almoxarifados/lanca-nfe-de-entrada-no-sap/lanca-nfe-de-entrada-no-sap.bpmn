@@ -440,6 +440,7 @@ except:
     mensagem = 'Erro não mapeado, por favor procure o TI'
     statusCode = '500'
 </spiffworkflow:preScript>
+        <spiffworkflow:postScript>del(errorConverterRascunho)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0d0wx32</bpmn:incoming>
       <bpmn:outgoing>Flow_1ndv6vv</bpmn:outgoing>
