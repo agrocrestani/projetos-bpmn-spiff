@@ -9,7 +9,7 @@
     "OcrCode3",
     "WhsCode",
     "MainUsage",
-    "RequriedDate",
+    "RequiredDate",
     "qtdeColaboradores",
     "periodo"
   ],
@@ -138,7 +138,7 @@
         }
       ]
     },
-    "RequriedDate": {
+    "RequiredDate": {
       "type": "string",
       "format": "date",
       "title": "Data Necessária",

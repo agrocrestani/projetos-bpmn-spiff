@@ -8,7 +8,12 @@
   "OcrCode3": "24/25",
   "WhsCode": "01.FCOL",
   "MainUsage": "1",
-  "solicitacao": [],
+  "Comments": "Solicitante: emerson.gregorio. Quantidades calculadas para: 200 pessoas, durante 15 dias. Teste de observação. Solicitante: emerson.gregorio. Quantidades calculadas para: 200 pessoas, durante 15 dias. Teste de observação. Solicitante: emerson.gregorio. Qvvvvvvvvvvvvvvvvvvvv",
+  "solicitacao": [
+    {
+      "item": "{\"ItemCode\":\"002193\",\"ItemName\":\"ARROZ KG\",\"InvntryUom\":\"QUILOGRAM\",\"QtdeSugerida\":900,\"PrecoMedio\":30.419107}"
+    }
+  ],
   "n_filiais": [
     {
       "value": "1",

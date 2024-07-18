@@ -1,7 +1,8 @@
 {
   "ui:layout": [
     {
-      "BPLId": {}
+      "BPLId": {},
+      "RequiredDate": {}
     },
     {
       "Department": {

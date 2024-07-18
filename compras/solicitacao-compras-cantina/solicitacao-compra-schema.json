@@ -11,7 +11,8 @@
       "OcrCode3",
       "WhsCode",
       "MainUsage",
-      "solicitacao"
+      "solicitacao",
+      "RequiredDate"
     ],
   "properties": {
     "BPLId": {
@@ -123,6 +124,12 @@
           }
         }
       }
+    },
+    "RequiredDate": {
+      "type": "string",
+      "format": "date",
+      "title": "Data Necessária",
+      "validationErrorMessage": "Date must be today's date or later"
     }
   }
 }
