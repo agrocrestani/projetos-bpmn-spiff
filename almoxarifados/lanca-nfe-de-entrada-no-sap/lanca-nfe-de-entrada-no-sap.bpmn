@@ -234,7 +234,7 @@ except:
           <spiffworkflow:property name="formJsonSchemaFilename" value="confirma-nfe-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="confirma-nfe-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:postScript>#obs = observacao</spiffworkflow:postScript>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1g79fy7</bpmn:incoming>
       <bpmn:outgoing>Flow_1ujq4vb</bpmn:outgoing>

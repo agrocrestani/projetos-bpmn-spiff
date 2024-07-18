@@ -1,5 +1,13 @@
 {
-  "observacao": {
-    "ui:widget": "textarea"
-  }
+  "ui:layout": [
+    {
+      "pesoChegada": {
+        "sm": 2,
+        "md": 2,
+        "lg": 4}
+    },
+    {
+      "done": {}
+    }
+  ]
 }

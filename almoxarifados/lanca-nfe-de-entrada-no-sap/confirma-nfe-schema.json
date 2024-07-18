@@ -1,10 +1,18 @@
 {
   "type": "object",
   "properties": {
+    "pesoChegada": {
+      "type": "string",
+       "description": "Se esta entrada precisar registrar o peso de chegada na unidade, por favor, utilize este campo.",
+      "title": "Peso de Chegada (Observe a UM da NFe). Formato: 99999.99"
+    },
     "done": {
       "type": "boolean",
       "title": "Confirmo que verifiquei os dados da NFe e conferi os itens fisicamente.",
       "default": false
     }
-  }
+  },
+  "required": [
+    "done"
+  ]
 }

@@ -41,9 +41,18 @@ query = f"""
             --AND "Serial" = {numeroNota} 
             --AND "LicTradNum" = '{cnpjFornecedor}'
           """
+Hana(connection).executeDb(query)
 
-# rsp = json.loads(Hana(connection).selectDb(query))
-Hana(connection).executeDb(query)</bpmn:script>
+if pesoChegada:
+    pesoChegada = float(pesoChegada.replace(',', '.'))
+    queryPesoChegada = f"""
+            UPDATE 
+                {baseSap}.DRF1 
+            SET U_RSD_PesoChegada = {pesoChegada}
+            WHERE 
+                "DocEntry" = {DocEntry} 
+    """
+    Hana(connection).executeDb(queryPesoChegada)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
