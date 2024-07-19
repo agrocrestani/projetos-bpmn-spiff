@@ -48,7 +48,7 @@ if pesoChegada:
     queryPesoChegada = f"""
             UPDATE 
                 {baseSap}.DRF1 
-            SET U_RSD_PesoChegada = {pesoChegada}
+            SET "U_RSD_PesoBruto" = {pesoChegada}
             WHERE 
                 "DocEntry" = {DocEntry} 
     """
