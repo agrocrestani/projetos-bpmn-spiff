@@ -85,64 +85,69 @@ query = f"""
 # rsp = json.loads(Hana(connection).selectDb(query))
 sqlRsp = Hana(connection).selectDb(query)
 
-chaveAcesso = sqlRsp[0]['keynfe']
-cnpj = sqlRsp[0]['cnpj']
-statusId = sqlRsp[0]['statusid']
-hist = sqlRsp[0]['hist']
-arquivo_nfe = f'http://srv-rds-02:8000/{cnpj}/danfe/{chaveAcesso}.pdf'
+try:
+    chaveAcesso = sqlRsp[0]['keynfe']
+    cnpj = sqlRsp[0]['cnpj']
+    statusId = sqlRsp[0]['statusid']
+    hist = sqlRsp[0]['hist']
+    arquivo_nfe = f'http://srv-rds-02:8000/{cnpj}/danfe/{chaveAcesso}.pdf'
 
-del(connection)
+    del(connection)
 
 
-nfe = rsp["body"]
-nfeItens = nfe['DocumentLines']
+    nfe = rsp["body"]
+    nfeItens = nfe['DocumentLines']
 
-DocEntry = nfe['DocEntry']
-DocNum = nfe['DocNum']
-Serial = nfe['SequenceSerial']
-DocDate = nfe['DocDate']
-CardCode = nfe['CardCode']
-CardName = nfe['CardName']
-BPLId = nfe['BPL_IDAssignedToInvoice']
-BPLName = nfe['BPLName']
-VATRegNum = nfe['VATRegNum']
+    DocEntry = nfe['DocEntry']
+    DocNum = nfe['DocNum']
+    Serial = nfe['SequenceSerial']
+    DocDate = nfe['DocDate']
+    CardCode = nfe['CardCode']
+    CardName = nfe['CardName']
+    BPLId = nfe['BPL_IDAssignedToInvoice']
+    BPLName = nfe['BPLName']
+    VATRegNum = nfe['VATRegNum']
 
-itens = []
-Total = 0
-depositos = []
-for i in nfeItens:
-    itens.append(
-        {
-            "LineNum": i['LineNum'],
-            "ItemCode": i['ItemCode'],
-            "ItemDescription": i['ItemDescription'],
-            "Quantity": i['Quantity'],
-            "Price": i['Price'],
-            "WarehouseCode": i['WarehouseCode'],
-            "LineTotal": i['LineTotal']
-        }
-    )
-    if not i['WarehouseCode'] in depositos:
-        depositos.append(i['WarehouseCode'])
-    Total += i['LineTotal']
+    itens = []
+    Total = 0
+    depositos = []
+    for i in nfeItens:
+        itens.append(
+            {
+                "LineNum": i['LineNum'],
+                "ItemCode": i['ItemCode'],
+                "ItemDescription": i['ItemDescription'],
+                "Quantity": i['Quantity'],
+                "Price": i['Price'],
+                "WarehouseCode": i['WarehouseCode'],
+                "LineTotal": i['LineTotal']
+            }
+        )
+        if not i['WarehouseCode'] in depositos:
+            depositos.append(i['WarehouseCode'])
+        Total += i['LineTotal']
 
-qtdeDeposito = len(depositos)
-itensMatriz = []
-itensQuerencia = []
-TotalMatriz = 0
-TotalQuerencia = 0
+    qtdeDeposito = len(depositos)
+    itensMatriz = []
+    itensQuerencia = []
+    TotalMatriz = 0
+    TotalQuerencia = 0
 
-for i in itens:
-    if i['WarehouseCode'] == '03.MATR':
-        carregaMatriz = 1
-        itensMatriz.append(i)
-        TotalMatriz += i['LineTotal']
-    elif i['WarehouseCode'] == '03.FQUE':
-        carregaQuerencia = 1
-        itensQuerencia.append(i)
-        TotalQuerencia += i['LineTotal']
+    for i in itens:
+        if i['WarehouseCode'] == '03.MATR':
+            carregaMatriz = 1
+            itensMatriz.append(i)
+            TotalMatriz += i['LineTotal']
+        elif i['WarehouseCode'] == '03.FQUE':
+            carregaQuerencia = 1
+            itensQuerencia.append(i)
+            TotalQuerencia += i['LineTotal']
 
-del(rsp)
+    del(rsp)
+except: 
+    statusId = sqlRsp[0]['statusid']
+    hist = sqlRsp[0]['hist']
+    
 # del(n_filiais)
 # del(n_safras)
 # del(main_usage)
