@@ -69,6 +69,9 @@ query = f"""
 # rsp = json.loads(Hana(connection).selectDb(query))
 notas = Hana(connection).selectDb(query)
 
+totalRegistros = len(notas)
+contador = 0
+
 if notas:
     existe = 1
 else:
@@ -80,6 +83,7 @@ else:
     <bpmn:subProcess id="Activity_0xlvdxr">
       <bpmn:extensionElements>
         <spiffworkflow:postScript>del(n)</spiffworkflow:postScript>
+        <spiffworkflow:preScript>contador += 1</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_00oexmh</bpmn:incoming>
       <bpmn:outgoing>Flow_0kmkjub</bpmn:outgoing>
@@ -87,6 +91,7 @@ else:
         <bpmn:loopDataInputRef>notas</bpmn:loopDataInputRef>
         <bpmn:loopDataOutputRef>notas</bpmn:loopDataOutputRef>
         <bpmn:inputDataItem id="n" name="n" />
+        <bpmn:completionCondition xsi:type="bpmn:tFormalExpression">notas == contador</bpmn:completionCondition>
       </bpmn:multiInstanceLoopCharacteristics>
       <bpmn:startEvent id="Event_14f3gre">
         <bpmn:outgoing>Flow_1y74ynw</bpmn:outgoing>
@@ -367,30 +372,21 @@ A consulta será realizada de acordo com a quantidade de documentos que você es
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="12" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0li3mef_di" bpmnElement="Activity_0o4km9l">
-        <dc:Bounds x="280" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0b3e1jv_di" bpmnElement="Gateway_0b3e1jv" isMarkerVisible="true">
-        <dc:Bounds x="435" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1xt73c7_di" bpmnElement="Activity_0jy3vne">
-        <dc:Bounds x="100" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="2252" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1d9tx0d_di" bpmnElement="Activity_1ttrwhc">
-        <dc:Bounds x="540" y="460" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_12r35bs_di" bpmnElement="Event_12r35bs">
-        <dc:Bounds x="692" y="482" width="36" height="36" />
+      <bpmndi:BPMNShape id="Activity_0li3mef_di" bpmnElement="Activity_0o4km9l">
+        <dc:Bounds x="280" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0xlvdxr_di" bpmnElement="Activity_0xlvdxr" isExpanded="true">
         <dc:Bounds x="540" y="10" width="1650" height="380" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14f3gre_di" bpmnElement="Event_14f3gre">
         <dc:Bounds x="580" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0b3f5ng_di" bpmnElement="Event_0b3f5ng">
+        <dc:Bounds x="2062" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1vpm1ea_di" bpmnElement="Activity_16xyoyk">
         <dc:Bounds x="860" y="137" width="100" height="80" />
@@ -431,9 +427,6 @@ A consulta será realizada de acordo com a quantidade de documentos que você es
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_00dldt1_di" bpmnElement="Event_00dldt1">
         <dc:Bounds x="1152" y="272" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0b3f5ng_di" bpmnElement="Event_0b3f5ng">
-        <dc:Bounds x="2062" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1f6a0eq_di" bpmnElement="Flow_1f6a0eq">
         <di:waypoint x="960" y="177" />
@@ -490,6 +483,18 @@ A consulta será realizada de acordo com a quantidade de documentos que você es
         <di:waypoint x="1060" y="290" />
         <di:waypoint x="1152" y="290" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Gateway_0b3e1jv_di" bpmnElement="Gateway_0b3e1jv" isMarkerVisible="true">
+        <dc:Bounds x="435" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_12r35bs_di" bpmnElement="Event_12r35bs">
+        <dc:Bounds x="692" y="482" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1d9tx0d_di" bpmnElement="Activity_1ttrwhc">
+        <dc:Bounds x="540" y="460" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1xt73c7_di" bpmnElement="Activity_0jy3vne">
+        <dc:Bounds x="100" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="48" y="177" />
         <di:waypoint x="100" y="177" />
