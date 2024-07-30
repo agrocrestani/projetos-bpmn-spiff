@@ -5,12 +5,6 @@
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0jy3vne" />
-    <bpmn:endEvent id="EndEvent_1">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0kmkjub</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0a0uukb" sourceRef="Activity_0o4km9l" targetRef="Gateway_0b3e1jv" />
     <bpmn:scriptTask id="Activity_0o4km9l" name="Busca notas de exportação no SAP">
       <bpmn:extensionElements>
@@ -325,7 +319,7 @@ del(connection)
         <bpmn:conditionExpression>status_code != 200</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
     </bpmn:subProcess>
-    <bpmn:sequenceFlow id="Flow_0kmkjub" sourceRef="Activity_0xlvdxr" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_0kmkjub" sourceRef="Activity_0xlvdxr" targetRef="Activity_0isssb3" />
     <bpmn:exclusiveGateway id="Gateway_0b3e1jv" default="Flow_00oexmh">
       <bpmn:incoming>Flow_0a0uukb</bpmn:incoming>
       <bpmn:outgoing>Flow_00oexmh</bpmn:outgoing>
@@ -366,18 +360,33 @@ A consulta será realizada de acordo com a quantidade de documentos que você es
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_15feimg</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:manualTask id="Activity_0isssb3" name="Mensagem final">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Foram processadas {{contador}} nota(s).</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0kmkjub</bpmn:incoming>
+      <bpmn:outgoing>Flow_0y5s7vn</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:endEvent id="Event_13z83qs">
+      <bpmn:incoming>Flow_0y5s7vn</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0y5s7vn" sourceRef="Activity_0isssb3" targetRef="Event_13z83qs" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_consulta_due_syc1hvx">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="12" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="2252" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0li3mef_di" bpmnElement="Activity_0o4km9l">
         <dc:Bounds x="280" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0eikstw_di" bpmnElement="Activity_0isssb3">
+        <dc:Bounds x="2290" y="140" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_13z83qs_di" bpmnElement="Event_13z83qs">
+        <dc:Bounds x="2492" y="162" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0xlvdxr_di" bpmnElement="Activity_0xlvdxr" isExpanded="true">
         <dc:Bounds x="540" y="10" width="1650" height="380" />
@@ -504,8 +513,8 @@ A consulta será realizada de acordo com a quantidade de documentos que você es
         <di:waypoint x="435" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0kmkjub_di" bpmnElement="Flow_0kmkjub">
-        <di:waypoint x="2190" y="177" />
-        <di:waypoint x="2252" y="177" />
+        <di:waypoint x="2190" y="180" />
+        <di:waypoint x="2290" y="180" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_00oexmh_di" bpmnElement="Flow_00oexmh">
         <di:waypoint x="485" y="177" />
@@ -523,6 +532,10 @@ A consulta será realizada de acordo com a quantidade de documentos que você es
       <bpmndi:BPMNEdge id="Flow_15feimg_di" bpmnElement="Flow_15feimg">
         <di:waypoint x="200" y="177" />
         <di:waypoint x="280" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0y5s7vn_di" bpmnElement="Flow_0y5s7vn">
+        <di:waypoint x="2390" y="180" />
+        <di:waypoint x="2492" y="180" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
