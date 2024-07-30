@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="Process_consulta_due_syc1hvx" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0jy3vne" />
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0kmkjub</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0a0uukb" sourceRef="Activity_0o4km9l" targetRef="Gateway_0b3e1jv" />
+    <bpmn:scriptTask id="Activity_0o4km9l" name="Busca notas de exportação no SAP">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_15feimg</bpmn:incoming>
+      <bpmn:outgoing>Flow_0a0uukb</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+from datetime import datetime, timedelta
+
+data_pesquisa = (datetime.now() - timedelta(days=15)).strftime('%Y%m%d')
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+        select
+            t0."DocEntry",
+            t0."DocNum",
+            t0."Serial",
+            t3."KeyNfe",
+            t0."DocDate",
+            t0."SeqCode",
+            t0."SeriesStr",
+            t0."SubStr",
+            t0."Model",
+            t0."ObjType",
+            t1."LineNum",
+            t1."ItemCode",
+            t4."ItemName",
+            TO_ALPHANUM(t1."Quantity") "Quantity",
+            TO_ALPHANUM(t1."LineTotal") "LineTotal",
+            T5.ID "EntidadeId"
+        from
+            {baseSap}.oinv t0
+            INNER JOIN {baseSap}.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
+            INNER JOIN {baseSap}.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
+            INNER JOIN {baseSap}."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4 AND t0."ObjType" = t3."DocType" 
+            INNER JOIN {baseSap}.oitm t4 ON T1."ItemCode" = t4."ItemCode"
+            INNER JOIN {baseSap}."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
+            LEFT  JOIN {baseSap}."DeclaracaoExportacaoItens" t6 ON t3."KeyNfe" = t6."chNFe" 
+            LEFT  JOIN {baseSap}.CONTROLEDUE  t7 ON t3."KeyNfe" = t7.keynfe
+        WHERE
+            t2."MainUsage" = 82 AND t0."DocDate" &lt;= '{data_pesquisa}' AND t1."ItemCode" = '022966'
+            AND t6."chNFe" IS NULL AND t7.KEYNFE IS null
+        ORDER BY "DocNum"
+        LIMIT {int(qtde_nfe)}
+    """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+notas = Hana(connection).selectDb(query)
+
+if notas:
+    existe = 1
+else:
+    existe = 0
+
+# del(query)
+# del(connection)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:subProcess id="Activity_0xlvdxr">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript>del(n)</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_00oexmh</bpmn:incoming>
+      <bpmn:outgoing>Flow_0kmkjub</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
+        <bpmn:loopDataInputRef>notas</bpmn:loopDataInputRef>
+        <bpmn:loopDataOutputRef>notas</bpmn:loopDataOutputRef>
+        <bpmn:inputDataItem id="n" name="n" />
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="Event_14f3gre">
+        <bpmn:outgoing>Flow_1y74ynw</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:endEvent id="Event_0b3f5ng">
+        <bpmn:incoming>Flow_110gk4p</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_1f6a0eq" sourceRef="Activity_16xyoyk" targetRef="Gateway_1kjxolw" />
+      <bpmn:scriptTask id="Activity_16xyoyk" name="Busca NFe InfoSimples">
+        <bpmn:extensionElements>
+          <spiffworkflow:preScript>from AesEverywhere import aes256
+import base64
+
+url = 'https://api.infosimples.com/api/v2/consultas/receita-federal/nfe'
+
+# pkcs12_cert = str(aes256.encrypt(base64.b64encode(open("/ssh/AgroCrestani.pfx", "rb").read()).decode(),
+                                    # "QIpKCTOWkvYKMReYoi9c08DS8AUG1flXsPBsof-x"))
+# pkcs12_pass = str(aes256.encrypt("crestani", "QIpKCTOWkvYKMReYoi9c08DS8AUG1flXsPBsof-x"))
+
+# headers = {
+#     "pkcs12_cert": pkcs12_cert,
+#     "pkcs12_pass": pkcs12_pass,
+#     "token": "SEiDpm7AXh5rlGGf1w6r17lb5KCa8M51DQQzj6sy",
+#     "nfe": f"{n['keynfe']}"
+# }</spiffworkflow:preScript>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1qnnevc</bpmn:incoming>
+        <bpmn:outgoing>Flow_1f6a0eq</bpmn:outgoing>
+        <bpmn:script>from connectordb.due import infosimples
+
+senha = get_secret('senhaCertificadoAgroCrestani')
+
+nfe = infosimples(keynfe, senha)
+nfe = json.loads(nfe)
+status_code = nfe['code']
+del(senha)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_0e37u4y" sourceRef="Activity_192oa1q" targetRef="Gateway_19zrpd0" />
+      <bpmn:scriptTask id="Activity_192oa1q" name="Verifica se existe">
+        <bpmn:incoming>Flow_0446kpc</bpmn:incoming>
+        <bpmn:outgoing>Flow_0e37u4y</bpmn:outgoing>
+        <bpmn:script>from connectordb.postgres import Postgres
+
+connection = {
+        "host": '192.168.1.229',
+        "database": 'crestani',
+        "user": 'postgres',
+        "password": 'crest@ni2900'
+    }
+
+query = """
+                SELECT count(*)
+                FROM sap.due_eventos
+                where keynfe = '{keynfe}'
+            """
+
+existe = Postgres(connection).dbSelect(query)
+
+nr_notas = existe[0]['count']
+
+# del(query)
+# del(connection)
+# del(existe)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:exclusiveGateway id="Gateway_19zrpd0" default="Flow_0dwazb5">
+        <bpmn:incoming>Flow_0e37u4y</bpmn:incoming>
+        <bpmn:outgoing>Flow_0dwazb5</bpmn:outgoing>
+        <bpmn:outgoing>Flow_0hr0mlk</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_0dwazb5" sourceRef="Gateway_19zrpd0" targetRef="Activity_1vnpbhm" />
+      <bpmn:sequenceFlow id="Flow_0nssbde" sourceRef="Activity_1vnpbhm" targetRef="Gateway_1ufqz1y" />
+      <bpmn:scriptTask id="Activity_0k9erl8" name="Lança na ControleDue">
+        <bpmn:incoming>Flow_1y74ynw</bpmn:incoming>
+        <bpmn:outgoing>Flow_1qnnevc</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+keynfe = n['keynfe']
+
+query = f"""
+        INSERT INTO {baseSap}.ControleDue (KeyNfe) VALUES ('{keynfe}')
+    """
+
+Hana(connection).executeDb(query)
+Hana(connection).executeDb('commit')
+
+del(query)
+del(connection)
+del(baseSap)
+</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:scriptTask id="Activity_1vnpbhm" name="Adiciona NFe no DueEventos">
+        <bpmn:incoming>Flow_0dwazb5</bpmn:incoming>
+        <bpmn:outgoing>Flow_0nssbde</bpmn:outgoing>
+        <bpmn:script>from connectordb.postgres import Postgres
+
+connection = {
+        "host": '192.168.1.229',
+        "database": 'crestani',
+        "user": 'postgres',
+        "password": 'crest@ni2900'
+    }
+
+try:
+    eventos = nfe['data'][0]['nfe']['eventos']
+    for e in eventos:
+        if e['evento'] == 'Averbação para Exportação (Órgão Autor: AN)':
+            evento = e['evento']
+            protocolo = e['protocolo']
+            data_autorizacao = e['data_autorizacao']
+            data_inclusao = e['data_inclusao']
+            info = json.dumps(e['info'],ensure_ascii=False)
+            detalhes = json.dumps(e['detalhes'],ensure_ascii=False)
+            autorizacao_sefaz = json.dumps(e['autorizacao_sefaz'],ensure_ascii=False)
+            condicoes_uso = json.dumps(e['condicoes_uso'],ensure_ascii=False)
+            itens_averbados = json.dumps(e['itens_averbados'],ensure_ascii=False)
+
+            query = f"""
+                INSERT INTO sap.due_eventos
+                (keynfe, evento, protocolo, data_autorizacao, data_inclusao, info, detalhes, autorizacao_sefaz, condicoes_uso, itens_averbados)
+                VALUES('{keynfe}', '{evento}', '{protocolo}', '{data_autorizacao}', '{data_inclusao}',
+                '{info}', '{detalhes}', '{autorizacao_sefaz}', '{condicoes_uso}', '{itens_averbados}')
+            """
+
+            Postgres(connection).executeDb(query)
+            Postgres(connection).executeDb('commit')
+            lanca = 1
+        else:
+            lanca = 0
+except:
+    eventos = nfe['data'][0]['nfe']['eventos']
+    lanca = 0
+
+del(nfe)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_0nhgagq" sourceRef="Activity_0j8bn2h" targetRef="Activity_00xnjqu" />
+      <bpmn:scriptTask id="Activity_0j8bn2h" name="Busca filial e entidade">
+        <bpmn:incoming>Flow_1ciaezp</bpmn:incoming>
+        <bpmn:outgoing>Flow_0nhgagq</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+        select
+            t0."BPLId", 
+            T5.ID "EntidadeId"
+        from
+            sbo_crestani_prd.oinv t0
+            INNER JOIN sbo_crestani_prd."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4
+            INNER JOIN sbo_crestani_prd."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
+        WHERE
+            t3."KeyNfe" in ('{keynfe}')
+            """
+oinv = Hana(connection).selectDb(query)
+
+bplid = oinv[0]['bplid']
+entidadeid = oinv[0]['entidadeid']
+
+del(query)
+del(connection)
+del(oinv)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_110gk4p" sourceRef="Activity_00xnjqu" targetRef="Event_0b3f5ng" />
+      <bpmn:scriptTask id="Activity_00xnjqu" name="Atualiza DueEventos">
+        <bpmn:incoming>Flow_0nhgagq</bpmn:incoming>
+        <bpmn:outgoing>Flow_110gk4p</bpmn:outgoing>
+        <bpmn:script>from connectordb.postgres import Postgres
+
+connection = {
+        "host": '192.168.1.229',
+        "database": 'crestani',
+        "user": 'postgres',
+        "password": 'crest@ni2900'
+    }
+
+
+query = f"""update sap.due_eventos set bplid = '{bplid}', entidadeid = '{entidadeid}' where keynfe = '{keynfe}'"""
+
+Postgres(connection).executeDb(query)
+Postgres(connection).executeDb('commit')
+
+del(connection)
+# del(query)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:exclusiveGateway id="Gateway_1ufqz1y" default="Flow_1ciaezp">
+        <bpmn:incoming>Flow_0nssbde</bpmn:incoming>
+        <bpmn:outgoing>Flow_1ciaezp</bpmn:outgoing>
+        <bpmn:outgoing>Flow_1yn16yf</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_1ciaezp" sourceRef="Gateway_1ufqz1y" targetRef="Activity_0j8bn2h" />
+      <bpmn:endEvent id="Event_1uxiwgo">
+        <bpmn:incoming>Flow_1yn16yf</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_1yn16yf" sourceRef="Gateway_1ufqz1y" targetRef="Event_1uxiwgo">
+        <bpmn:conditionExpression>lanca == 0</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:endEvent id="Event_0849q7n">
+        <bpmn:incoming>Flow_0hr0mlk</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0hr0mlk" sourceRef="Gateway_19zrpd0" targetRef="Event_0849q7n">
+        <bpmn:conditionExpression>nr_notas != 0</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:exclusiveGateway id="Gateway_1kjxolw" default="Flow_0446kpc">
+        <bpmn:incoming>Flow_1f6a0eq</bpmn:incoming>
+        <bpmn:outgoing>Flow_0446kpc</bpmn:outgoing>
+        <bpmn:outgoing>Flow_0arz5bj</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_1y74ynw" sourceRef="Event_14f3gre" targetRef="Activity_0k9erl8" />
+      <bpmn:sequenceFlow id="Flow_1qnnevc" sourceRef="Activity_0k9erl8" targetRef="Activity_16xyoyk" />
+      <bpmn:sequenceFlow id="Flow_0446kpc" sourceRef="Gateway_1kjxolw" targetRef="Activity_192oa1q" />
+      <bpmn:endEvent id="Event_00dldt1">
+        <bpmn:incoming>Flow_0arz5bj</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0arz5bj" sourceRef="Gateway_1kjxolw" targetRef="Event_00dldt1">
+        <bpmn:conditionExpression>status_code != 200</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_0kmkjub" sourceRef="Activity_0xlvdxr" targetRef="EndEvent_1" />
+    <bpmn:exclusiveGateway id="Gateway_0b3e1jv" default="Flow_00oexmh">
+      <bpmn:incoming>Flow_0a0uukb</bpmn:incoming>
+      <bpmn:outgoing>Flow_00oexmh</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0bkbng6</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_00oexmh" sourceRef="Gateway_0b3e1jv" targetRef="Activity_0xlvdxr" />
+    <bpmn:sequenceFlow id="Flow_0bkbng6" sourceRef="Gateway_0b3e1jv" targetRef="Activity_1ttrwhc">
+      <bpmn:conditionExpression>existe == 0</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_12r35bs">
+      <bpmn:incoming>Flow_1jwjlng</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1jwjlng" sourceRef="Activity_1ttrwhc" targetRef="Event_12r35bs" />
+    <bpmn:manualTask id="Activity_1ttrwhc" name="Mensagem Não existe mais notas">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Aviso
+Não existem mais notas para consultar neste momento.
+
+Após 10 dias tente novamente.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0bkbng6</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jwjlng</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_15feimg" sourceRef="Activity_0jy3vne" targetRef="Activity_0o4km9l" />
+    <bpmn:userTask id="Activity_0jy3vne" name="Quantidade de NFe">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="quantidade-nfe-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="quantidade-nfe-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser># Consulta se existe DUE para NFe de Exportação Indireta
+A consulta será realizada de acordo com a quantidade de documentos que você especificar abaixo.
+
+**As consultas podem ser realizadas com o intervalo de 10 dias apos a ultima execução.**
+
+### Digite abaixo a quantidade de NFe que deseja consultar.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_15feimg</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_consulta_due_syc1hvx">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="12" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0li3mef_di" bpmnElement="Activity_0o4km9l">
+        <dc:Bounds x="280" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0b3e1jv_di" bpmnElement="Gateway_0b3e1jv" isMarkerVisible="true">
+        <dc:Bounds x="435" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1xt73c7_di" bpmnElement="Activity_0jy3vne">
+        <dc:Bounds x="100" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="2252" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1d9tx0d_di" bpmnElement="Activity_1ttrwhc">
+        <dc:Bounds x="540" y="460" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_12r35bs_di" bpmnElement="Event_12r35bs">
+        <dc:Bounds x="692" y="482" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xlvdxr_di" bpmnElement="Activity_0xlvdxr" isExpanded="true">
+        <dc:Bounds x="540" y="10" width="1650" height="380" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14f3gre_di" bpmnElement="Event_14f3gre">
+        <dc:Bounds x="580" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vpm1ea_di" bpmnElement="Activity_16xyoyk">
+        <dc:Bounds x="860" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1imad00_di" bpmnElement="Activity_192oa1q">
+        <dc:Bounds x="1150" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_19zrpd0_di" bpmnElement="Gateway_19zrpd0" isMarkerVisible="true">
+        <dc:Bounds x="1305" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05ijuyn_di" bpmnElement="Activity_0k9erl8">
+        <dc:Bounds x="670" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0l745ev_di" bpmnElement="Activity_1vnpbhm">
+        <dc:Bounds x="1430" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_031tegu_di" bpmnElement="Activity_0j8bn2h">
+        <dc:Bounds x="1750" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15te4zr_di" bpmnElement="Activity_00xnjqu">
+        <dc:Bounds x="1900" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1ufqz1y_di" bpmnElement="Gateway_1ufqz1y" isMarkerVisible="true">
+        <dc:Bounds x="1595" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1uxiwgo_di" bpmnElement="Event_1uxiwgo">
+        <dc:Bounds x="1752" y="272" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0849q7n_di" bpmnElement="Event_0849q7n">
+        <dc:Bounds x="1432" y="272" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1kjxolw_di" bpmnElement="Gateway_1kjxolw" isMarkerVisible="true">
+        <dc:Bounds x="1035" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_00dldt1_di" bpmnElement="Event_00dldt1">
+        <dc:Bounds x="1152" y="272" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0b3f5ng_di" bpmnElement="Event_0b3f5ng">
+        <dc:Bounds x="2062" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1f6a0eq_di" bpmnElement="Flow_1f6a0eq">
+        <di:waypoint x="960" y="177" />
+        <di:waypoint x="1035" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0e37u4y_di" bpmnElement="Flow_0e37u4y">
+        <di:waypoint x="1250" y="177" />
+        <di:waypoint x="1305" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dwazb5_di" bpmnElement="Flow_0dwazb5">
+        <di:waypoint x="1355" y="177" />
+        <di:waypoint x="1430" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0nssbde_di" bpmnElement="Flow_0nssbde">
+        <di:waypoint x="1530" y="177" />
+        <di:waypoint x="1595" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0nhgagq_di" bpmnElement="Flow_0nhgagq">
+        <di:waypoint x="1850" y="177" />
+        <di:waypoint x="1900" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_110gk4p_di" bpmnElement="Flow_110gk4p">
+        <di:waypoint x="2000" y="177" />
+        <di:waypoint x="2062" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ciaezp_di" bpmnElement="Flow_1ciaezp">
+        <di:waypoint x="1645" y="177" />
+        <di:waypoint x="1750" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yn16yf_di" bpmnElement="Flow_1yn16yf">
+        <di:waypoint x="1620" y="202" />
+        <di:waypoint x="1620" y="290" />
+        <di:waypoint x="1752" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hr0mlk_di" bpmnElement="Flow_0hr0mlk">
+        <di:waypoint x="1330" y="202" />
+        <di:waypoint x="1330" y="290" />
+        <di:waypoint x="1432" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1y74ynw_di" bpmnElement="Flow_1y74ynw">
+        <di:waypoint x="616" y="177" />
+        <di:waypoint x="670" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1qnnevc_di" bpmnElement="Flow_1qnnevc">
+        <di:waypoint x="770" y="177" />
+        <di:waypoint x="860" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0446kpc_di" bpmnElement="Flow_0446kpc">
+        <di:waypoint x="1085" y="177" />
+        <di:waypoint x="1150" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0arz5bj_di" bpmnElement="Flow_0arz5bj">
+        <di:waypoint x="1060" y="202" />
+        <di:waypoint x="1060" y="290" />
+        <di:waypoint x="1152" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
+        <di:waypoint x="48" y="177" />
+        <di:waypoint x="100" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0a0uukb_di" bpmnElement="Flow_0a0uukb">
+        <di:waypoint x="380" y="177" />
+        <di:waypoint x="435" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kmkjub_di" bpmnElement="Flow_0kmkjub">
+        <di:waypoint x="2190" y="177" />
+        <di:waypoint x="2252" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00oexmh_di" bpmnElement="Flow_00oexmh">
+        <di:waypoint x="485" y="177" />
+        <di:waypoint x="540" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bkbng6_di" bpmnElement="Flow_0bkbng6">
+        <di:waypoint x="460" y="202" />
+        <di:waypoint x="460" y="500" />
+        <di:waypoint x="540" y="500" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jwjlng_di" bpmnElement="Flow_1jwjlng">
+        <di:waypoint x="640" y="500" />
+        <di:waypoint x="692" y="500" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15feimg_di" bpmnElement="Flow_15feimg">
+        <di:waypoint x="200" y="177" />
+        <di:waypoint x="280" y="177" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
