@@ -176,12 +176,11 @@ try:
             lanca = 1
         else:
             lanca = 998
-
-contador += 1
-
 except:
     eventos = nfe['data'][0]['nfe']['eventos']
     lanca = 999
+
+contador += 1
 
 del(nfe)</bpmn:script>
     </bpmn:scriptTask>
