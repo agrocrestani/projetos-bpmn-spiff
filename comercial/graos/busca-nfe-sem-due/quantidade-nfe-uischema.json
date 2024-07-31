@@ -2,9 +2,8 @@
   "qtde_nfe": {
     "ui:autofocus": true,
     "ui:emptyValue": "",
-    "ui:placeholder": "ui:emptyValue causes this field to always be valid despite being required",
-    "ui:autocomplete": "family-name",
-    "ui:enableMarkdownInDescription": true
+    "ui:placeholder": "Qtde Nfe",
+    "ui:autocomplete": "family-name"
   },
   "ui:layout": [
     {
