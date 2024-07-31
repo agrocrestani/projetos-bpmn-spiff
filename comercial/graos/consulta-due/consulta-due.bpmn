@@ -282,7 +282,9 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1uuvsyg" sourceRef="Event_0bty7hf" targetRef="Event_0n1i26c" />
     <bpmn:sequenceFlow id="Flow_0s4lsk6" sourceRef="Event_01qqulz" targetRef="Gateway_1ncact6" />
-    <bpmn:sequenceFlow id="Flow_12ydc0e" sourceRef="Gateway_09prdqc" targetRef="Gateway_0799w0g" />
+    <bpmn:sequenceFlow id="Flow_12ydc0e" sourceRef="Gateway_09prdqc" targetRef="Gateway_0799w0g">
+      <bpmn:conditionExpression>lanca != 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="Gateway_0799w0g" default="Flow_0qu2ixt">
       <bpmn:incoming>Flow_12ydc0e</bpmn:incoming>
       <bpmn:outgoing>Flow_0qu2ixt</bpmn:outgoing>
