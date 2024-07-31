@@ -2,7 +2,7 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:message id="ConsultaDue" name="ConsultaDue" />
   <bpmn:collaboration id="Collaboration_0xdcjir">
-    <bpmn:participant id="Participant_0gso1je" processRef="Process_consulta_due_syc1hvx" />
+    <bpmn:participant id="Participant_0gso1je" name="Matriz_ComercialGraos" processRef="Process_consulta_due_syc1hvx" />
   </bpmn:collaboration>
   <bpmn:process id="Process_consulta_due_syc1hvx" isExecutable="true">
     <bpmn:scriptTask id="Activity_0k9erl8" name="Lança na ControleDue">
@@ -59,7 +59,9 @@ del(baseSap)
       <bpmn:conditionExpression>lanca == 0</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0ksfbgg" sourceRef="Activity_0j8bn2h" targetRef="Activity_00xnjqu" />
-    <bpmn:sequenceFlow id="Flow_1b0p1hu" sourceRef="Gateway_1gucul1" targetRef="Activity_0kjpb0a" />
+    <bpmn:sequenceFlow id="Flow_1b0p1hu" sourceRef="Gateway_1gucul1" targetRef="Activity_0kjpb0a">
+      <bpmn:conditionExpression>status_code != 200</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:endEvent id="Event_13z83qs">
       <bpmn:incoming>Flow_1vdiw5e</bpmn:incoming>
     </bpmn:endEvent>
@@ -289,6 +291,7 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0xdcjir">
       <bpmndi:BPMNShape id="Participant_0gso1je_di" bpmnElement="Participant_0gso1je" isHorizontal="true">
         <dc:Bounds x="520" y="-230" width="1760" height="380" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_05ijuyn_di" bpmnElement="Activity_0k9erl8">
         <dc:Bounds x="680" y="-210" width="100" height="80" />
