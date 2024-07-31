@@ -30,6 +30,8 @@ query = f"""
 Hana(connection).executeDb(query)
 Hana(connection).executeDb('commit')
 
+contador = 0
+
 del(query)
 del(connection)
 del(baseSap)
@@ -55,9 +57,6 @@ del(baseSap)
     <bpmn:sequenceFlow id="Flow_1hbc2of" sourceRef="Gateway_0gjfe6g" targetRef="Activity_1vnpbhm" />
     <bpmn:sequenceFlow id="Flow_0c8hasv" sourceRef="Activity_1vnpbhm" targetRef="Gateway_09prdqc" />
     <bpmn:sequenceFlow id="Flow_1jgbu7n" sourceRef="Gateway_09prdqc" targetRef="Activity_0j8bn2h" />
-    <bpmn:sequenceFlow id="Flow_1mfxihq" sourceRef="Gateway_09prdqc" targetRef="Event_01qqulz">
-      <bpmn:conditionExpression>lanca == 0</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0ksfbgg" sourceRef="Activity_0j8bn2h" targetRef="Activity_00xnjqu" />
     <bpmn:sequenceFlow id="Flow_1b0p1hu" sourceRef="Gateway_1gucul1" targetRef="Activity_0kjpb0a">
       <bpmn:conditionExpression>status_code != 200</bpmn:conditionExpression>
@@ -176,17 +175,20 @@ try:
             Postgres(connection).executeDb('commit')
             lanca = 1
         else:
-            lanca = 0
+            lanca = 998
+
+contador += 1
+
 except:
     eventos = nfe['data'][0]['nfe']['eventos']
-    lanca = 0
+    lanca = 999
 
 del(nfe)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:exclusiveGateway id="Gateway_09prdqc" default="Flow_1jgbu7n">
       <bpmn:incoming>Flow_0c8hasv</bpmn:incoming>
       <bpmn:outgoing>Flow_1jgbu7n</bpmn:outgoing>
-      <bpmn:outgoing>Flow_1mfxihq</bpmn:outgoing>
+      <bpmn:outgoing>Flow_12ydc0e</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:scriptTask id="Activity_0j8bn2h" name="Busca filial e entidade">
       <bpmn:incoming>Flow_1jgbu7n</bpmn:incoming>
@@ -222,9 +224,6 @@ del(query)
 del(connection)
 del(oinv)</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:endEvent id="Event_01qqulz">
-      <bpmn:incoming>Flow_1mfxihq</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:scriptTask id="Activity_00xnjqu" name="Atualiza DueEventos">
       <bpmn:incoming>Flow_0ksfbgg</bpmn:incoming>
       <bpmn:outgoing>Flow_1vdiw5e</bpmn:outgoing>
@@ -249,6 +248,7 @@ del(connection)
     <bpmn:exclusiveGateway id="Gateway_1ncact6">
       <bpmn:incoming>Flow_0plch6e</bpmn:incoming>
       <bpmn:incoming>Flow_12smlpu</bpmn:incoming>
+      <bpmn:incoming>Flow_0s4lsk6</bpmn:incoming>
       <bpmn:outgoing>Flow_0xhlk9r</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0xhlk9r" sourceRef="Gateway_1ncact6" targetRef="Activity_16xyoyk" />
@@ -281,6 +281,43 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
       <bpmn:incoming>Flow_1uuvsyg</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1uuvsyg" sourceRef="Event_0bty7hf" targetRef="Event_0n1i26c" />
+    <bpmn:sequenceFlow id="Flow_0s4lsk6" sourceRef="Event_01qqulz" targetRef="Gateway_1ncact6" />
+    <bpmn:sequenceFlow id="Flow_12ydc0e" sourceRef="Gateway_09prdqc" targetRef="Gateway_0799w0g" />
+    <bpmn:exclusiveGateway id="Gateway_0799w0g" default="Flow_0qu2ixt">
+      <bpmn:incoming>Flow_12ydc0e</bpmn:incoming>
+      <bpmn:outgoing>Flow_0qu2ixt</bpmn:outgoing>
+      <bpmn:outgoing>Flow_02q0qbc</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0qu2ixt" sourceRef="Gateway_0799w0g" targetRef="Gateway_0xpchcl" />
+    <bpmn:intermediateCatchEvent id="Event_01qqulz">
+      <bpmn:incoming>Flow_0yfekdr</bpmn:incoming>
+      <bpmn:outgoing>Flow_0s4lsk6</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0961b4h">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"P30D"</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:exclusiveGateway id="Gateway_0xpchcl">
+      <bpmn:incoming>Flow_0qu2ixt</bpmn:incoming>
+      <bpmn:incoming>Flow_1i0x52t</bpmn:incoming>
+      <bpmn:outgoing>Flow_0yfekdr</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0yfekdr" sourceRef="Gateway_0xpchcl" targetRef="Event_01qqulz" />
+    <bpmn:sequenceFlow id="Flow_02q0qbc" sourceRef="Gateway_0799w0g" targetRef="Activity_1qp9sbp">
+      <bpmn:conditionExpression>contador &gt; 2</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1i0x52t" sourceRef="Activity_1qp9sbp" targetRef="Gateway_0xpchcl" />
+    <bpmn:manualTask id="Activity_1qp9sbp" name="Nota sem DUE">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Erro na Consulta da DUE
+
+Por favor verificar a NFe de chave: {{keynfe}}.
+Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
+
+**OBS: Caso a nota esteja válida, você pode tentar novamente clicando no botão "Continuar" ou no botão "Encerrar Processo" para finalizar.**</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_02q0qbc</bpmn:incoming>
+      <bpmn:outgoing>Flow_1i0x52t</bpmn:outgoing>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:signal id="Signal_encerrar" name="Signal_encerrar">
     <bpmn:extensionElements>
@@ -290,7 +327,7 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0xdcjir">
       <bpmndi:BPMNShape id="Participant_0gso1je_di" bpmnElement="Participant_0gso1je" isHorizontal="true">
-        <dc:Bounds x="520" y="-230" width="1760" height="380" />
+        <dc:Bounds x="520" y="-590" width="1760" height="740" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_05ijuyn_di" bpmnElement="Activity_0k9erl8">
@@ -329,9 +366,6 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
         <dc:Bounds x="1900" y="-210" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_01qqulz_di" bpmnElement="Event_01qqulz">
-        <dc:Bounds x="1902" y="-78" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_15te4zr_di" bpmnElement="Activity_00xnjqu">
         <dc:Bounds x="2060" y="-210" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -345,6 +379,19 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0n1i26c_di" bpmnElement="Event_0n1i26c">
         <dc:Bounds x="1152" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0799w0g_di" bpmnElement="Gateway_0799w0g" isMarkerVisible="true">
+        <dc:Bounds x="1775" y="-365" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_02zpt8m_di" bpmnElement="Event_01qqulz">
+        <dc:Bounds x="1352" y="-358" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0xpchcl_di" bpmnElement="Gateway_0xpchcl" isMarkerVisible="true">
+        <dc:Bounds x="1525" y="-365" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1xixen2_di" bpmnElement="Activity_1qp9sbp">
+        <dc:Bounds x="1630" y="-500" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1dp6vg1_di" bpmnElement="Event_0bty7hf">
         <dc:Bounds x="1062" y="22" width="36" height="36" />
@@ -390,11 +437,6 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
         <di:waypoint x="1825" y="-170" />
         <di:waypoint x="1900" y="-170" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1mfxihq_di" bpmnElement="Flow_1mfxihq">
-        <di:waypoint x="1800" y="-145" />
-        <di:waypoint x="1800" y="-60" />
-        <di:waypoint x="1902" y="-60" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ksfbgg_di" bpmnElement="Flow_0ksfbgg">
         <di:waypoint x="2000" y="-170" />
         <di:waypoint x="2060" y="-170" />
@@ -417,6 +459,33 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
         <di:waypoint x="1080" y="58" />
         <di:waypoint x="1080" y="120" />
         <di:waypoint x="1152" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0s4lsk6_di" bpmnElement="Flow_0s4lsk6">
+        <di:waypoint x="1352" y="-340" />
+        <di:waypoint x="880" y="-340" />
+        <di:waypoint x="880" y="-195" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12ydc0e_di" bpmnElement="Flow_12ydc0e">
+        <di:waypoint x="1800" y="-195" />
+        <di:waypoint x="1800" y="-315" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0qu2ixt_di" bpmnElement="Flow_0qu2ixt">
+        <di:waypoint x="1775" y="-340" />
+        <di:waypoint x="1575" y="-340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0yfekdr_di" bpmnElement="Flow_0yfekdr">
+        <di:waypoint x="1525" y="-340" />
+        <di:waypoint x="1388" y="-340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02q0qbc_di" bpmnElement="Flow_02q0qbc">
+        <di:waypoint x="1800" y="-365" />
+        <di:waypoint x="1800" y="-460" />
+        <di:waypoint x="1730" y="-460" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1i0x52t_di" bpmnElement="Flow_1i0x52t">
+        <di:waypoint x="1630" y="-460" />
+        <di:waypoint x="1550" y="-460" />
+        <di:waypoint x="1550" y="-365" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
