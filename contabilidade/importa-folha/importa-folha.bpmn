@@ -19,9 +19,9 @@
         <bpmn:flowNodeRef>Gateway_1fdiwv1</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane">
+        <bpmn:flowNodeRef>Activity_0ck9cww</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_00vuw5a</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1luisbh</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0ck9cww</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_contabil" name="Matriz_Contabil">
         <bpmn:flowNodeRef>Activity_0pk9g8b</bpmn:flowNodeRef>
@@ -157,7 +157,8 @@ del(ccusto)</spiffworkflow:postScript>
 - Depois que importar todos os arquivos, entregar o resumo da folha para o Departamento Contabil para fazerem a conferência.</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>n_safras = safras
 n_culturas = culturas
-n_filiais = filiais</spiffworkflow:preScript>
+n_filiais = filiais
+cultura = None</spiffworkflow:preScript>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="importar-folha-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="importar-folha-uischema.json" />
@@ -529,6 +530,10 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
       <bpmn:outgoing>Flow_041vp20</bpmn:outgoing>
       <bpmn:outgoing>Flow_1dwzd8i</bpmn:outgoing>
     </bpmn:exclusiveGateway>
+    <bpmn:task id="Activity_0ck9cww" name="Verifica erro">
+      <bpmn:incoming>Flow_0lkxegk</bpmn:incoming>
+      <bpmn:outgoing>Flow_10hhtnr</bpmn:outgoing>
+    </bpmn:task>
     <bpmn:dataStoreReference id="DataStoreReference_1175xbr" name="SapLogin" dataStoreRef="saplogin" type="json" />
     <bpmn:manualTask id="Activity_1ly0k48" name="Verifica Erro">
       <bpmn:extensionElements>
@@ -590,13 +595,6 @@ except:
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0lkxegk" sourceRef="Event_1luisbh" targetRef="Activity_0ck9cww" />
     <bpmn:sequenceFlow id="Flow_0x5wk77" sourceRef="Event_06i6v6d" targetRef="Activity_1ly0k48" />
-    <bpmn:manualTask id="Activity_0ck9cww" name="Verifica erro">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>{{DeParaError}}</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0lkxegk</bpmn:incoming>
-      <bpmn:outgoing>Flow_10hhtnr</bpmn:outgoing>
-    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:error id="ErrorSap" name="ErrorSap">
     <bpmn:extensionElements>
@@ -626,9 +624,6 @@ except:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="865" y="344" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0x8uzcr_di" bpmnElement="Activity_0ck9cww">
-        <dc:Bounds x="1836" y="905" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00vuw5a_di" bpmnElement="Activity_00vuw5a" isExpanded="true">
         <dc:Bounds x="916" y="665" width="920" height="200" />
@@ -728,6 +723,10 @@ except:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1cfqyfk_di" bpmnElement="Gateway_1cfqyfk" isMarkerVisible="true">
         <dc:Bounds x="2691" y="1100" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ck9cww_di" bpmnElement="Activity_0ck9cww">
+        <dc:Bounds x="1836" y="905" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_1175xbr_di" bpmnElement="DataStoreReference_1175xbr">
         <dc:Bounds x="2401" y="1200" width="50" height="50" />
