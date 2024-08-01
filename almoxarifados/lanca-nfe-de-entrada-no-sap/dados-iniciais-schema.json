@@ -1,17 +1,23 @@
 {
   "type": "object",
   "required": [
-    "FederalTaxID",
-    "Serial"
   ],
   "properties": {
     "FederalTaxID": {
       "type": "string",
-      "title": "CNPJ/CPF"
+      "title": "CNPJ/CPF",
+      "description": "Digite apenas numeros"
     },
     "Serial": {
       "type": "string",
-      "title": "Número da NFe"
+      "title": "Número da NFe",
+      "description": "Digite apenas numeros"
+
+    },
+    "U_ChaveAcesso": {
+      "description": "Utilize o CNPJ/CPF e Número ou a Chave da NFe",
+      "type": "string",
+      "title": "OU Chave da NFe"
     }
   }
 }
