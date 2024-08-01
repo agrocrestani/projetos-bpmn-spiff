@@ -164,8 +164,8 @@ cultura = None</spiffworkflow:preScript>
           <spiffworkflow:property name="formUiSchemaFilename" value="importar-folha-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:postScript>referencia = str(datalacto[5:7])+"/"+str(datalacto[0:4])
-del(n_safras)
-del(n_culturas)</spiffworkflow:postScript>
+# del(n_safras)
+# del(n_culturas)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:incoming>Flow_0bvco56</bpmn:incoming>
