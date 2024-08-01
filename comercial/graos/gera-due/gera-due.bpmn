@@ -93,13 +93,13 @@ del(rsp)</spiffworkflow:postScript>
           </spiffworkflow:properties>
           <spiffworkflow:postScript />
           <spiffworkflow:preScript>if due['entidade'] == "1":
-    entidade = "{\"id\":1,\"nome_fantasia\":\"FAZENDA PROMISSAO\",\"cnpj\":\"03.262.185/0002-81\"}"
+    entidade = "{\"id\":1,\"nome_fantasia\":\"FAZENDA PROMISSAO\",\"cnpj\":\"09.262.185/0002-81\"}"
 elif due['entidade'] == "2":
-    entidade = "{\"id\":2,\"nome_fantasia\":\"FAZENDA QUERENCIA\",\"cnpj\":\"03.262.185/0001-09\"}"
+    entidade = "{\"id\":2,\"nome_fantasia\":\"FAZENDA QUERENCIA\",\"cnpj\":\"09.262.185/0001-09\"}"
 elif due['entidade'] == "3":
-    entidade = "{\"id\":3,\"nome_fantasia\":\"FAZENDA COLORADO\",\"cnpj\":\"03.262.185/0003-62\"}"
+    entidade = "{\"id\":3,\"nome_fantasia\":\"FAZENDA COLORADO\",\"cnpj\":\"09.262.185/0003-62\"}"
 elif due['entidade'] == "4":
-    entidade = "{\"id\":4,\"nome_fantasia\":\"FAZENDA SAO CARLOS\",\"cnpj\":\"03.262.185/0004-43\"}"
+    entidade = "{\"id\":4,\"nome_fantasia\":\"FAZENDA SAO CARLOS\",\"cnpj\":\"09.262.185/0004-43\"}"
 elif due['entidade'] == "5":
     entidade = "{\"id\":5,\"nome_fantasia\":\"UNIDADE DE BRASNORTE SITIO AGUA AZUL\",\"cnpj\":\"03.262.185/0006-05\"}"
 elif due['entidade'] == "6":
@@ -334,13 +334,13 @@ duesSap = Hana(connection).selectDb(query)
 
 listaSAP = []
 for d in duesSap:
-    listaSAP.append(d['numerodeclaracao']+'-'+str(d['entidadeid']))
+    listaSAP.append(str(d['numerodeclaracao'])+'-'+str(d['entidadeid']))
 
 
 #Verifica se está lançado no SAP
 newDues = []
 for z in dues:
-    dueEnt = z['numero_due']+'-'+z['entidade']
+    dueEnt = str(z['numero_due'])+'-'+str(z['entidade'])
     if dueEnt in listaSAP:
         continue
     else:
