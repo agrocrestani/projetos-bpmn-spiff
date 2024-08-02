@@ -208,7 +208,7 @@ del(rsp)</spiffworkflow:postScript>
 |ObjType|{{ObjType}}|
 |LineNum|{{LineNum}}|
 |ItemCode|{{ItemCode}}|
-|ItemName|{{ItemName']}}|
+|ItemName|{{ItemName}}|
 |LineTotal|{{LineTotal}}|
 |KeyNfe|{{KeyNFe}}|</spiffworkflow:instructionsForEndUser>
           <spiffworkflow:preScript />
