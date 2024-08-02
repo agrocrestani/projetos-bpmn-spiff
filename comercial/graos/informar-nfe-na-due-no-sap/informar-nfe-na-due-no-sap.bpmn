@@ -269,7 +269,7 @@ query = f"""
             {baseSap}.oinv t0
             INNER JOIN {baseSap}.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
             INNER JOIN {baseSap}.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
-            INNER JOIN {baseSap}."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4
+            INNER JOIN {baseSap}."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4 AND t0."ObjType" = t3."DocType" 
             INNER JOIN {baseSap}.oitm t4 ON T1."ItemCode" = t4."ItemCode"
             INNER JOIN {baseSap}."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
         WHERE
