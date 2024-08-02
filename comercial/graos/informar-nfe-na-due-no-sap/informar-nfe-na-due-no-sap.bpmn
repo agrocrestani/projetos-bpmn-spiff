@@ -134,9 +134,8 @@ LineTotal = nfe['linetotal']
 KeyNFe = nfe['keynfe']
 
 query = f"""
-    INSERT INTO {baseSap}."DeclaracaoExportacaoItens"
-    ("DeclaracaoExportacaoId", "DocEntry","DocDate","DocNum","SeqCode","Serial","SeriesStr",
-     "Model","ObjType","LineNum","ItemCode","ItemName","LineTotal","chNFe")
+    INSERT INTO {baseSap}."DeclaracaoExportacaoItens" 
+    ("DeclaracaoExportacaoId", "DocEntry", "DocDate", "DocNum", "SeqCode", "Serial", "SeriesStr", "Model", "ObjType", "LineNum", "ItemCode", "ItemName", "LineTotal", "chNFe")
     VALUES({IdDueSap},{DocEntry},'{DocDate}',{DocNum},{SeqCode},{Serial},'{SeriesStr}',{Model},{ObjType},{LineNum},'{ItemCode}','{ItemName}',{LineTotal},'{KeyNFe}')
 """
 
@@ -194,23 +193,24 @@ del(rsp)</spiffworkflow:postScript>
       <bpmn:sequenceFlow id="Flow_07x7mvp" sourceRef="Activity_Mostra_Dados_SAP" targetRef="Event_1b5n8ba" />
       <bpmn:manualTask id="Activity_Mostra_Dados_SAP" name="Mostra os Dados Inseridos no SAP">
         <bpmn:extensionElements>
-          <spiffworkflow:instructionsForEndUser>## Informado NFe: *{{nfe['serial']}}* na DUE: *{{due}}* no SAP
+          <spiffworkflow:instructionsForEndUser>## Informado NFe: *{{Serial}}* na DUE: *{{due}}* no SAP
 ### Registro {{contador}} de {{totalRegistros}}
+
 | Campo | Valor  |
 | ---------: | ------- |
-| Id DUE    | {{idDueSap[0]['id']}} |
-| DocEntry | {{nfe['docentry']}} |
-|DocDate  | {{nfe['docdate'][0:10]}} | 
-|DocNum  |{{nfe['docnum']}}|
-|SeqCode |{{nfe['seqcode']}}|
-|SeriesStr|{{nfe['seriesstr']}}|
-|Model|{{nfe['model']}}|
-|ObjType|{{nfe['objtype']}}|
-|LineNum|{{nfe['linenum']}}|
-|ItemCode|{{nfe['itemcode']}}|
-|ItemName|{{nfe['itemname']}}|
-|LineTotal|{{nfe['linetotal']}}|
-|KeyNfe|{{nfe['keynfe']}}|</spiffworkflow:instructionsForEndUser>
+| Id DUE    | {{IdDueSap}} |
+| DocEntry | {{DocEntry}} |
+|DocDate  | {{DocDate}} | 
+|DocNum  |{{DocNum}}|
+|SeqCode |{{SeqCode}}|
+|SeriesStr|{{SeriesStr}}|
+|Model|{{Model}}|
+|ObjType|{{ObjType}}|
+|LineNum|{{LineNum}}|
+|ItemCode|{{ItemCode}}|
+|ItemName|{{ItemName']}}|
+|LineTotal|{{LineTotal}}|
+|KeyNfe|{{KeyNFe}}|</spiffworkflow:instructionsForEndUser>
           <spiffworkflow:preScript />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0nry0ei</bpmn:incoming>
