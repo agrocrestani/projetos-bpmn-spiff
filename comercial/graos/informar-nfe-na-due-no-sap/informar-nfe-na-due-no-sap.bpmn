@@ -137,7 +137,7 @@ query = f"""
     INSERT INTO {baseSap}."DeclaracaoExportacaoItens"
     ("DeclaracaoExportacaoId", "DocEntry","DocDate","DocNum","SeqCode","Serial","SeriesStr",
      "Model","ObjType","LineNum","ItemCode","ItemName","LineTotal","chNFe")
-    VALUES({IdDueSap},{DocEntry},'{DocDate}',{DocNum},{SeqCode,{Serial},'{SeriesStr}',{Model},{ObjType},{LineNum},'{ItemCode}','{ItemName}',{LineTotal},'{KeyNFe}')
+    VALUES({IdDueSap},{DocEntry},'{DocDate}',{DocNum},{SeqCode},{Serial},'{SeriesStr}',{Model},{ObjType},{LineNum},'{ItemCode}','{ItemName}',{LineTotal},'{KeyNFe}')
 """
 
 Hana(connection).executeDb(query)
@@ -211,7 +211,7 @@ del(rsp)</spiffworkflow:postScript>
 |ItemName|{{nfe['itemname']}}|
 |LineTotal|{{nfe['linetotal']}}|
 |KeyNfe|{{nfe['keynfe']}}|</spiffworkflow:instructionsForEndUser>
-          <spiffworkflow:preScript></spiffworkflow:preScript>
+          <spiffworkflow:preScript />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0nry0ei</bpmn:incoming>
         <bpmn:outgoing>Flow_07x7mvp</bpmn:outgoing>
