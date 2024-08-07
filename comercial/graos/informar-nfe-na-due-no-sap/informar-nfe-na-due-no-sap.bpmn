@@ -272,9 +272,11 @@ query = f"""
             INNER JOIN {baseSap}."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4 AND t0."ObjType" = t3."DocType" 
             INNER JOIN {baseSap}.oitm t4 ON T1."ItemCode" = t4."ItemCode"
             INNER JOIN {baseSap}."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
+            LEFT  JOIN {baseSap}."DeclaracaoExportacaoItens" t6 ON t3."KeyNfe" = t6."chNFe" 
+            LEFT  JOIN {baseSap}.CONTROLEDUE  t7 ON t3."KeyNfe" = t7.keynfe
         WHERE
                 t2."MainUsage" = 82 AND t0."DocDate" &lt;= '{data_pesquisa}'  AND (t1."ItemCode" = '022966' or t1."ItemCode" = '022958')
-                AND t0."DocEntry" NOT IN (SELECT "DocEntry" FROM {baseSap}."DeclaracaoExportacaoItens")
+                AND t6."chNFe" IS NULL AND t7.KEYNFE IS null
                 --and t3."KeyNfe" = '51240103262185000443550010000014221137660108'
         order by t0."DocNum"
         limit 100
