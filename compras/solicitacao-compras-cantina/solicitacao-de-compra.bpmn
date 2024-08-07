@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:dataStore id="centros_de_custo" name="JSONDataStore" />
   <bpmn:dataStore id="culturas" name="JSONDataStore" />
   <bpmn:dataStore id="departamentos" name="JSONDataStore" />
@@ -30,10 +30,12 @@
         <bpmn:flowNodeRef>Activity_160ldmq</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_13g9nwv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0qpzdpu</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0z7hg1d</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0g0isr7</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_05rqdyh</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0z7hg1d</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0iodf8w</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_18si6ct</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:dataStoreReference id="DataStoreReference_13uzln6" name="Almoxarifados" dataStoreRef="almoxarifados" type="json" />
@@ -184,59 +186,6 @@ for f in n_filiais:
       <bpmn:incoming>Flow_0vu7th0</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Activity_0z7hg1d" name="Revisão da Solicitação">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser># Solicitação de Compras para Cantina
-
-| Campo | Conteúdo |  Campo | Conteúdo |
-| ---------: | --------------|  ---------: | --------------|
-|Filial: |{{BPLName}}|Departamento: |{{Department}}|
-|**Quantidade de pessoas:** | {{qtdeColaboradores}} |**Periodo em dias:** | {{periodo}} |
-|Prioridade: |{{U_RSD_Prioridade}}| Tipo Requisição: | {{U_RSD_Aplicacao}} |
-|Centro de Custo: | {{OcrCode}} | Cultura: | {{OcrCode2}} |
-|Safra: | {{OcrCode3}} | Depósito: | {{WhsCode}} |
-|Utilização: | {{MainUsage}} | Data Necessária | {{RequiredDate}}
-
-**Observações:** {{Comments}}
-
-
-| Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade | Custo Médio | V. Total |
-| ---------- | ---------------| --------------------: | --------------------: | ------------ | -----------------: | ----------: |
-{% for s in sol%}
-| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio']}} | {{s['TotalItem']}} |
-{%endfor%}
-||||||Total | {{total}}
-</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:properties>
-          <spiffworkflow:property name="formJsonSchemaFilename" value="revisao-da-solicitacao-schema.json" />
-          <spiffworkflow:property name="formUiSchemaFilename" value="revisao-da-solicitacao-uischema.json" />
-        </spiffworkflow:properties>
-        <spiffworkflow:postScript>if operacao == 'Corrige':
-    solicitacao = solicitacao_bkp</spiffworkflow:postScript>
-        <spiffworkflow:preScript>almoxarifado = ""
-for i in n_almoxarifados:
-    if i['value'] == WhsCode:
-        almoxarifado = i['label']
-
-sol = []
-for s in solicitacao:
-    s1 = json.loads(s['item'])
-    s1['quantidade'] = s['quantidade']
-    sol.append(s1)
-
-comments = ""
-
-total = 0
-for s in sol:
-    total += s['quantidade']*s['PrecoMedio']
-    s['TotalItem'] = "{:,.2f}".format(s['quantidade']*s['PrecoMedio']).replace(",", "X").replace(".", ",").replace("X", ".")
-    s['PrecoMedio'] =  "{:,.2f}".format(s['PrecoMedio']).replace(",", "X").replace(".", ",").replace("X", ".")
-
-total = "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X", ".")</spiffworkflow:preScript>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
-      <bpmn:outgoing>Flow_0uyps62</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:exclusiveGateway id="Gateway_0g0isr7" default="Flow_1evt79u">
       <bpmn:incoming>Flow_0uyps62</bpmn:incoming>
       <bpmn:outgoing>Flow_1evt79u</bpmn:outgoing>
@@ -314,7 +263,7 @@ payload = {
     "U_RSD_Prioridade": U_RSD_Prioridade,
     "U_RSD_Aplicacao": U_RSD_Aplicacao,
     "RequriedDate": RequiredDate,
-    "Comments": Comments,
+    "Comments": Comments if Comments else 'Compra para Cantina',
     "U_AC_Spiff_Instancia": spiff_instancia,
     "U_AC_Spiff_Tarefa": spiff_tarefa,
     "U_AC_Spiff_Usuario": usuarioLancamento,
@@ -527,6 +476,69 @@ lane_owners = {
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_0bsuxx8</bpmn:outgoing>
     </bpmn:callActivity>
+    <bpmn:userTask id="Activity_0z7hg1d" name="Revisão da Solicitação">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Solicitação de Compras para Cantina
+
+| Campo | Conteúdo |  Campo | Conteúdo |
+| ---------: | --------------|  ---------: | --------------|
+|Filial: |{{BPLName}}|Departamento: |{{Department}}|
+|**Quantidade de pessoas:** | {{qtdeColaboradores}} |**Periodo em dias:** | {{periodo}} |
+|Prioridade: |{{U_RSD_Prioridade}}| Tipo Requisição: | {{U_RSD_Aplicacao}} |
+|Centro de Custo: | {{OcrCode}} | Cultura: | {{OcrCode2}} |
+|Safra: | {{OcrCode3}} | Depósito: | {{WhsCode}} |
+|Utilização: | {{MainUsage}} | Data Necessária | {{RequiredDate}}
+
+**Observações:** {{Comments}}
+
+
+| Código | Descrição | Qtde Sugerida | Qtde Solicitada | Unidade | Custo Médio | V. Total |
+| ---------- | ---------------| --------------------: | --------------------: | ------------ | -----------------: | ----------: |
+{% for s in sol%}
+| {{ s['ItemCode'] }} | {{s['ItemName']}} | {{s['QtdeSugerida']}} | {{s['quantidade']}}  | {{s['InvntryUom']}} | {{s['PrecoMedio']}} | {{s['TotalItem']}} |
+{%endfor%}
+||||||Total | {{total}}
+</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="revisao-da-solicitacao-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="revisao-da-solicitacao-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:postScript>if operacao == 'Corrige':
+    solicitacao = solicitacao_bkp</spiffworkflow:postScript>
+        <spiffworkflow:preScript>almoxarifado = ""
+for i in n_almoxarifados:
+    if i['value'] == WhsCode:
+        almoxarifado = i['label']
+operacao = ''
+sol = []
+for s in solicitacao:
+    s1 = json.loads(s['item'])
+    s1['quantidade'] = s['quantidade']
+    sol.append(s1)
+
+comments = ""
+
+total = 0
+for s in sol:
+    total += s['quantidade']*s['PrecoMedio']
+    s['TotalItem'] = "{:,.2f}".format(s['quantidade']*s['PrecoMedio']).replace(",", "X").replace(".", ",").replace("X", ".")
+    s['PrecoMedio'] =  "{:,.2f}".format(s['PrecoMedio']).replace(",", "X").replace(".", ",").replace("X", ".")
+
+total = "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X", ".")</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0uyps62</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:boundaryEvent id="Event_0iodf8w" attachedToRef="Activity_160ldmq">
+      <bpmn:outgoing>Flow_1c3inn5</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_099mw8z">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"P10H"</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="Event_18si6ct">
+      <bpmn:incoming>Flow_1c3inn5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1c3inn5" sourceRef="Event_0iodf8w" targetRef="Event_18si6ct" />
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
@@ -599,9 +611,6 @@ lane_owners = {
         <dc:Bounds x="995" y="147" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0ztm3rt_di" bpmnElement="Activity_0z7hg1d">
-        <dc:Bounds x="1165" y="147" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0g0isr7_di" bpmnElement="Gateway_0g0isr7" isMarkerVisible="true">
         <dc:Bounds x="1320" y="162" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -656,8 +665,17 @@ lane_owners = {
         <dc:Bounds x="445" y="-220" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ztm3rt_di" bpmnElement="Activity_0z7hg1d">
+        <dc:Bounds x="1165" y="146" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_18si6ct_di" bpmnElement="Event_18si6ct">
+        <dc:Bounds x="772" y="292" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1g0h8ka_di" bpmnElement="Event_0uwcfkc">
         <dc:Bounds x="1777" y="572" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ykhrb6_di" bpmnElement="Event_0iodf8w">
+        <dc:Bounds x="682" y="209" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0bsuxx8_di" bpmnElement="Flow_0bsuxx8">
         <di:waypoint x="545" y="-180" />
@@ -687,10 +705,14 @@ lane_owners = {
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="1095" y="187" />
-        <di:waypoint x="1165" y="187" />
+        <di:waypoint x="1130" y="187" />
+        <di:waypoint x="1130" y="186" />
+        <di:waypoint x="1165" y="186" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0uyps62_di" bpmnElement="Flow_0uyps62">
-        <di:waypoint x="1265" y="187" />
+        <di:waypoint x="1265" y="186" />
+        <di:waypoint x="1293" y="186" />
+        <di:waypoint x="1293" y="187" />
         <di:waypoint x="1320" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1evt79u_di" bpmnElement="Flow_1evt79u">
@@ -742,6 +764,11 @@ lane_owners = {
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="413" y="-180" />
         <di:waypoint x="445" y="-180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1c3inn5_di" bpmnElement="Flow_1c3inn5">
+        <di:waypoint x="700" y="245" />
+        <di:waypoint x="700" y="310" />
+        <di:waypoint x="772" y="310" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0w8lbnm_di" bpmnElement="DataInputAssociation_0w8lbnm">
         <di:waypoint x="540" y="72" />
