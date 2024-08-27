@@ -1,0 +1,9 @@
+{
+    "description": "Busca o PTAX do Dolar do dia.",
+    "display_name": "Busca Dolar",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "busca-dolar.bpmn",
+    "primary_process_id": "Process_busca_dolar_rzbjjad"
+}

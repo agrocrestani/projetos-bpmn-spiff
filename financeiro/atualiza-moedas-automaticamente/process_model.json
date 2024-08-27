@@ -1,0 +1,9 @@
+{
+    "description": "",
+    "display_name": "Atualiza Moedas Automaticamente",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "atualiza-moedas-automaticamente.bpmn",
+    "primary_process_id": "Process_atualiza_moedas_automaticamente_ovh9gvy"
+}
