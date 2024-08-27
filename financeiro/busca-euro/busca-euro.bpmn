@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
-  <bpmn:process id="Process_busca_euro_b3f3f3v" isExecutable="true">
+  <bpmn:process id="Process_busca_euro_b3f3f3v" name="Busca Euro" isExecutable="true">
     <bpmn:sequenceFlow id="Flow_02pvp3r" sourceRef="StartEvent_1" targetRef="Activity_0k7b4gt" />
     <bpmn:scriptTask id="Activity_0k7b4gt" name="Dados Iniciais">
       <bpmn:extensionElements>
