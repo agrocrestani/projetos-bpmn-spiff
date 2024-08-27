@@ -23,7 +23,6 @@
         <bpmn:flowNodeRef>Event_0iodf8w</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0z7hg1d</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0qpzdpu</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0hoiwvj</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_0may6a6" name="Gerencia">
         <bpmn:flowNodeRef>Activity_0xafkf4</bpmn:flowNodeRef>
@@ -61,6 +60,8 @@ for f in filiais:
                 "label": BPLName
             }
         )
+
+Comments = ''
 
 n_safras = []
 for s in safras:
@@ -438,7 +439,7 @@ lane_owners = {
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_0bsuxx8" sourceRef="Activity_0fy07h0" targetRef="Activity_160ldmq" />
     <bpmn:sequenceFlow id="Flow_13fehm8" sourceRef="Activity_160ldmq" targetRef="Activity_13g9nwv" />
-    <bpmn:sequenceFlow id="Flow_1d8mo6p" sourceRef="Activity_13g9nwv" targetRef="Activity_0hoiwvj" />
+    <bpmn:sequenceFlow id="Flow_1d8mo6p" sourceRef="Activity_13g9nwv" targetRef="Activity_0qpzdpu" />
     <bpmn:sequenceFlow id="Flow_13sk1mn" sourceRef="Gateway_0g0isr7" targetRef="Activity_0qpzdpu">
       <bpmn:conditionExpression>operacao == 'Corrige'</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
@@ -537,14 +538,9 @@ for f in n_filiais:
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_13sk1mn</bpmn:incoming>
       <bpmn:incoming>Flow_0vu7th0</bpmn:incoming>
-      <bpmn:incoming>Flow_08rq9a6</bpmn:incoming>
+      <bpmn:incoming>Flow_1d8mo6p</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:task id="Activity_0hoiwvj" name="tstes">
-      <bpmn:incoming>Flow_1d8mo6p</bpmn:incoming>
-      <bpmn:outgoing>Flow_08rq9a6</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:sequenceFlow id="Flow_08rq9a6" sourceRef="Activity_0hoiwvj" targetRef="Activity_0qpzdpu" />
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
@@ -677,10 +673,6 @@ for f in n_filiais:
         <dc:Bounds x="1250" y="127" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0hoiwvj_di" bpmnElement="Activity_0hoiwvj">
-        <dc:Bounds x="1130" y="127" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1g0h8ka_di" bpmnElement="Event_0uwcfkc">
         <dc:Bounds x="1982" y="552" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -699,7 +691,7 @@ for f in n_filiais:
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1d8mo6p_di" bpmnElement="Flow_1d8mo6p">
         <di:waypoint x="1110" y="167" />
-        <di:waypoint x="1130" y="167" />
+        <di:waypoint x="1250" y="167" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13sk1mn_di" bpmnElement="Flow_13sk1mn">
         <di:waypoint x="1550" y="192" />
@@ -775,10 +767,6 @@ for f in n_filiais:
         <di:waypoint x="905" y="225" />
         <di:waypoint x="905" y="290" />
         <di:waypoint x="977" y="290" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_08rq9a6_di" bpmnElement="Flow_08rq9a6">
-        <di:waypoint x="1230" y="167" />
-        <di:waypoint x="1250" y="167" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0w8lbnm_di" bpmnElement="DataInputAssociation_0w8lbnm">
         <di:waypoint x="745" y="52" />
