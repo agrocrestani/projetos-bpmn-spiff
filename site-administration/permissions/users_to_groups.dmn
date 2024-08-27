@@ -494,6 +494,17 @@
           <text>"Colorado_Administrativo"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1set762">
+        <inputEntry id="UnaryTests_173pjaj">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01g05k5">
+          <text>"wesley.souza@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zzf4tz">
+          <text>"Colorado_Producao"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1mk7er7">
         <inputEntry id="UnaryTests_0ccnl72">
           <text></text>
@@ -547,6 +558,39 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1kymmks">
           <text>"Colorado_Deposito_Insumos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_157ch5i">
+        <inputEntry id="UnaryTests_1t9cu11">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ehowhn">
+          <text>"murilo.goncalves@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06odhcj">
+          <text>"Colorado_Producao"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12jtfcs">
+        <inputEntry id="UnaryTests_1b8z9dq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tosej9">
+          <text>"murilo.goncalves@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ioyrcc">
+          <text>"Colorado_Administrativo"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0s8mhdw">
+        <inputEntry id="UnaryTests_17p8316">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_167aer3">
+          <text>"sabrina.ferreira@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qrpym3">
+          <text>"Colorado_Administrativo"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0yu2oon">
