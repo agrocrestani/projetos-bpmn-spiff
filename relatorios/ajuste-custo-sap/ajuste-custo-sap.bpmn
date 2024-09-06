@@ -1044,12 +1044,14 @@ recalcular == False</spiffworkflow:postScript>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1dt7gez_di" bpmnElement="Event_0j1i9fu">
         <dc:Bounds x="-98" y="119" width="36" height="36" />
-        <bpmndi:BPMNLabel />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-67" y="96" width="54" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0vgnurq_di" bpmnElement="EncerradoInatividade1">
         <dc:Bounds x="-238" y="119" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="-247" y="162" width="54" height="27" />
+          <dc:Bounds x="-217" y="96" width="54" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">

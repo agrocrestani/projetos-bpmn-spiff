@@ -1,6 +1,23 @@
 {
-  "produto": "011021",
-  "deposito": "apples",
-  "dataInicio": "2024-05-16",
-  "dataFinal": "2024-06-01"
+  "deposito": "SOJA",
+  "dataInicio": "2024-09-06",
+  "dataFinal": "2024-09-06",
+  "depositosList": [
+    {
+      "value": "",
+      "label": ""
+    },
+    {
+      "value": "SOJA",
+      "label": "SOJA"
+    },
+    {
+      "value": "MILHO",
+      "label": "MILHO"
+    },
+    {
+      "value": "ALGODAO",
+      "label": "ALGODÃO"
+    }
+  ]
 }
