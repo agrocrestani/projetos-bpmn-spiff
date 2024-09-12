@@ -1,0 +1,75 @@
+{
+  "type": "object",
+  "properties": {
+    "formDue": {
+      "title": "",
+      "description": "",
+      "type": "object",
+      "properties": {
+        "numero_due": {
+          "type": "string",
+          "title": "Numero DUE"
+        },
+        "data_registro": {
+          "type": "string",
+          "format": "date",
+          "title": "Data de Registro"
+        },
+        "data_averbacao": {
+          "type": "string",
+          "format": "date",
+          "title": "Data Averbação"
+        },
+        "entidade": {
+          "type": "string",
+          "title": "Entidade"
+        },
+        "naturezaDeclaracao": {
+          "type": "string",
+          "title": "Natureza da Declaração"
+        },
+        "tipoConhecimento": {
+          "type": "string",
+          "title": "Tipo do Conhecimento"
+        },
+        "tipoDeclaracao": {
+          "type": "string",
+          "title": "Tipo Declaração"
+        },
+        "paisDestino": {
+          "type": "string",
+          "title": "País de destino"
+        },
+        "ufDestino": {
+          "type": "string",
+          "title": "UF de destino",
+          "anyOf": [
+            "options_from_task_data_var:estados"
+          ]
+        },
+        "local": {
+          "type": "string",
+          "title": "Local"
+        },
+        "data_declaracao": {
+          "type": "string",
+          "format": "date",
+          "title": "Data da Declaração"
+        },
+        "data_conhecimento": {
+          "type": "string",
+          "format": "date",
+          "title": "Data do Conhecimento"
+        },
+        "numero_registro": {
+          "type": "string",
+          "title": "Numero do Registro"
+        },
+        "numero_conhecimento": {
+          "type": "string",
+          "title": "Numero do Conhecimento"
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,29 @@
 {
+    "correlation_keys": null,
+    "correlation_properties": null,
     "data_store_specifications": {},
     "description": "",
-    "display_name": "Algodao"
+    "display_name": "Algodao",
+    "messages": {
+        "ConsultaDueAlgodao": {
+            "correlation_properties": {},
+            "schema": {}
+        },
+        "GeraDueAlgodao": {
+            "correlation_properties": {},
+            "schema": {}
+        },
+        "RetornoConsultaDUE": {
+            "correlation_properties": {},
+            "schema": {}
+        },
+        "RetornoGeraDue": {
+            "correlation_properties": {},
+            "schema": {}
+        },
+        "RetornoGeraDue2": {
+            "correlation_properties": {},
+            "schema": {}
+        }
+    }
 }

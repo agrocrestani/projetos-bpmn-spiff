@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "required": [
+    "qtde_nfe"
+  ],
+  "properties": {
+    "qtde_nfe": {
+      "type": "number",
+      "title": "Quantidade NFe"
+    }
+  }
+}

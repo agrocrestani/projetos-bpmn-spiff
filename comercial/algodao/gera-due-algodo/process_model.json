@@ -1,0 +1,9 @@
+{
+    "description": "",
+    "display_name": "Gera Due Algod\u00e3o",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "gera-due-algodo.bpmn",
+    "primary_process_id": "Process_gera_due_algodo_8w48pd9"
+}

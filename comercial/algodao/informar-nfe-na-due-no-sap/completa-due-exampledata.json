@@ -1,0 +1,55 @@
+{
+  "formDue": {
+    "paisDestino": "{\"id\":\"EH\",\"nome\":\"Saara Ocidental\"}",
+    "entidade": "{\"id\":3,\"nome_fantasia\":\"FAZENDA COLORADO\",\"cnpj\":\"03.262.185/0003-62\"}",
+    "numero_due": "12345678910",
+    "data_embarque": "2024-06-05",
+    "data_averbacao": "2024-06-05",
+    "naturezaDeclaracao": "{\"id\":0,\"nome_fantasia\":\"Exportação Direta\"}",
+    "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
+    "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}",
+    "numero_registro": "546654",
+    "data_declaracao": "2024-08-20",
+    "data_registro": "2024-08-20",
+    "data_conhecimento": "2024-08-20",
+    "ufDestino": "RO",
+    "local": "Santos",
+    "numero_conhecimento": "2BR2549"
+  },
+  "fruits": [
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
+  ],
+  "estados": [
+    {
+      "value": "",
+      "label": ""
+    },
+    {
+      "value": "RO",
+      "label": "RO - Rondônia"
+    },
+    {
+      "value": "AC",
+      "label": "AC - Acre"
+    },
+    {
+      "value": "AM",
+      "label": "AM - Amazonas"
+    },
+    {
+      "value": "RR",
+      "label": "RR - Roraima"
+    }
+  ]
+}

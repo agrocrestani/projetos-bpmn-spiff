@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "required": [
+    "num_nfe"
+  ],
+  "properties": {
+    "num_nfe": {
+      "type": "string",
+      "title": "Número da NFe"
+    }
+  }
+}

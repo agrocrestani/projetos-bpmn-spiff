@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "properties": {
+    "bio": {
+      "type": "string",
+      "title": "Observação"
+    }
+  }
+}

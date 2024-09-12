@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="Process_busca_nfe_sem_due_algodao" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1t0dchb</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1t0dchb" sourceRef="StartEvent_1" targetRef="Activity_1rnrb6b" />
+    <bpmn:sequenceFlow id="Flow_0p6cm79" sourceRef="Activity_1rnrb6b" targetRef="Activity_1nb8s3m" />
+    <bpmn:exclusiveGateway id="Gateway_0o68hzh" default="Flow_1kouroz">
+      <bpmn:incoming>Flow_0orurb7</bpmn:incoming>
+      <bpmn:outgoing>Flow_0kqg4dx</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1kouroz</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0orurb7" sourceRef="Activity_1nb8s3m" targetRef="Gateway_0o68hzh" />
+    <bpmn:sequenceFlow id="Flow_0kqg4dx" sourceRef="Gateway_0o68hzh" targetRef="Activity_08mp7f3">
+      <bpmn:conditionExpression>existe == 0</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_1ek98il">
+      <bpmn:incoming>Flow_1ssqgzg</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1ssqgzg" sourceRef="Activity_08mp7f3" targetRef="Event_1ek98il" />
+    <bpmn:userTask id="Activity_1rnrb6b" name="Número da NFe">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="quantidade-nfe-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="quantidade-nfe-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser># Consulta se existe DUE para NFe de Exportação Indireta
+A consulta será realizada de acordo com a quantidade de documentos que você especificar abaixo.
+
+**As consultas podem ser realizadas com o intervalo de 10 dias apos a ultima execução.**
+
+### Digite abaixo a quantidade de NFe que deseja consultar.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1t0dchb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0p6cm79</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:scriptTask id="Activity_1nb8s3m" name="Busca NFe Exportação no SAP">
+      <bpmn:incoming>Flow_0p6cm79</bpmn:incoming>
+      <bpmn:outgoing>Flow_0orurb7</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+from datetime import datetime, timedelta
+
+data_pesquisa = (datetime.now() - timedelta(days=15)).strftime('%Y%m%d')
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+        select
+            t0."DocEntry",
+            t0."DocNum",
+            t0."Serial",
+            t3."KeyNfe",
+            TO_ALPHANUM(t0."DocDate") "DocDate",
+            t0."SeqCode",
+            t0."SeriesStr",
+            t0."SubStr",
+            t0."Model",
+            t0."ObjType",
+            t1."LineNum",
+            t1."ItemCode",
+            t4."ItemName",
+            TO_ALPHANUM(t1."Quantity") "Quantity",
+            TO_ALPHANUM(t1."LineTotal") "LineTotal",
+            T5.ID "EntidadeId"
+        from
+            {baseSap}.oinv t0
+            INNER JOIN {baseSap}.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
+            INNER JOIN {baseSap}.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
+            INNER JOIN {baseSap}."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4 AND t0."ObjType" = t3."DocType" 
+            INNER JOIN {baseSap}.oitm t4 ON T1."ItemCode" = t4."ItemCode"
+            INNER JOIN {baseSap}."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
+            LEFT  JOIN {baseSap}."DeclaracaoExportacaoItens" t6 ON t3."KeyNfe" = t6."chNFe" 
+            LEFT  JOIN {baseSap}.CONTROLEDUE  t7 ON t3."KeyNfe" = t7.keynfe
+        WHERE
+            t0."Serial" LIKE {num_nfe}
+    """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+notas = Hana(connection).selectDb(query)
+
+totalRegistros = len(notas)
+contador = 0
+
+if notas:
+    existe = 1
+else:
+    existe = 0
+
+# del(query)
+# del(connection)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:subProcess id="Activity_118tz8v">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser />
+        <spiffworkflow:postScript>del(n)</spiffworkflow:postScript>
+        <spiffworkflow:preScript>contador += 1
+nfe = n</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1kouroz</bpmn:incoming>
+      <bpmn:outgoing>Flow_1c3r56q</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
+        <bpmn:loopDataInputRef>notas</bpmn:loopDataInputRef>
+        <bpmn:loopDataOutputRef>notas</bpmn:loopDataOutputRef>
+        <bpmn:inputDataItem id="n" name="n" />
+        <bpmn:completionCondition xsi:type="bpmn:tFormalExpression">notas == contador</bpmn:completionCondition>
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="Event_0eksyns">
+        <bpmn:outgoing>Flow_1j5lowg</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_1j5lowg" sourceRef="Event_0eksyns" targetRef="Event_0baaute" />
+      <bpmn:sequenceFlow id="Flow_1njobpr" sourceRef="Event_0baaute" targetRef="Event_0x3kztr" />
+      <bpmn:intermediateCatchEvent id="Event_0baaute">
+        <bpmn:incoming>Flow_1j5lowg</bpmn:incoming>
+        <bpmn:outgoing>Flow_1njobpr</bpmn:outgoing>
+        <bpmn:timerEventDefinition id="TimerEventDefinition_0w0ri5w">
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT60S"</bpmn:timeDuration>
+        </bpmn:timerEventDefinition>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:endEvent id="Event_0x3kztr">
+        <bpmn:incoming>Flow_1njobpr</bpmn:incoming>
+        <bpmn:messageEventDefinition id="MessageEventDefinition_1m635eu" messageRef="ConsultaDueAlgodao">
+          <bpmn:extensionElements>
+            <spiffworkflow:messagePayload>nfe</spiffworkflow:messagePayload>
+          </bpmn:extensionElements>
+        </bpmn:messageEventDefinition>
+      </bpmn:endEvent>
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_1kouroz" sourceRef="Gateway_0o68hzh" targetRef="Activity_118tz8v" />
+    <bpmn:endEvent id="Event_017w15b">
+      <bpmn:incoming>Flow_1c3r56q</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1c3r56q" sourceRef="Activity_118tz8v" targetRef="Event_017w15b" />
+    <bpmn:manualTask id="Activity_08mp7f3" name="Não existe NFes">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Aviso
+Não existem mais notas para consultar neste momento.
+
+Após 10 dias tente novamente.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0kqg4dx</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ssqgzg</bpmn:outgoing>
+    </bpmn:manualTask>
+  </bpmn:process>
+  <bpmn:message id="ConsultaDueAlgodao" name="ConsultaDueAlgodao" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_busca_nfe_sem_due_algodao">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0o68hzh_di" bpmnElement="Gateway_0o68hzh" isMarkerVisible="true">
+        <dc:Bounds x="595" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ek98il_di" bpmnElement="Event_1ek98il">
+        <dc:Bounds x="902" y="332" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1v9at8f_di" bpmnElement="Activity_1rnrb6b">
+        <dc:Bounds x="270" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_071hfah_di" bpmnElement="Activity_1nb8s3m">
+        <dc:Bounds x="430" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_118tz8v_di" bpmnElement="Activity_118tz8v" isExpanded="true">
+        <dc:Bounds x="720" y="77" width="350" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0eksyns_di" bpmnElement="Event_0eksyns">
+        <dc:Bounds x="760" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1df4tsx_di" bpmnElement="Event_0baaute">
+        <dc:Bounds x="872" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1psxd4k_di" bpmnElement="Event_0x3kztr">
+        <dc:Bounds x="1002" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1j5lowg_di" bpmnElement="Flow_1j5lowg">
+        <di:waypoint x="796" y="177" />
+        <di:waypoint x="872" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1njobpr_di" bpmnElement="Flow_1njobpr">
+        <di:waypoint x="908" y="177" />
+        <di:waypoint x="1002" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_017w15b_di" bpmnElement="Event_017w15b">
+        <dc:Bounds x="1152" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0v156ss_di" bpmnElement="Activity_08mp7f3">
+        <dc:Bounds x="720" y="310" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1t0dchb_di" bpmnElement="Flow_1t0dchb">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0p6cm79_di" bpmnElement="Flow_0p6cm79">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="430" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0orurb7_di" bpmnElement="Flow_0orurb7">
+        <di:waypoint x="530" y="177" />
+        <di:waypoint x="595" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kqg4dx_di" bpmnElement="Flow_0kqg4dx">
+        <di:waypoint x="620" y="202" />
+        <di:waypoint x="620" y="350" />
+        <di:waypoint x="720" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ssqgzg_di" bpmnElement="Flow_1ssqgzg">
+        <di:waypoint x="820" y="350" />
+        <di:waypoint x="902" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kouroz_di" bpmnElement="Flow_1kouroz">
+        <di:waypoint x="645" y="177" />
+        <di:waypoint x="720" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1c3r56q_di" bpmnElement="Flow_1c3r56q">
+        <di:waypoint x="1070" y="177" />
+        <di:waypoint x="1152" y="177" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,14 @@
+{
+    "description": "",
+    "display_name": "Informar NFe na DUE no SAP",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": [
+        {
+            "key": "due",
+            "path": ""
+        }
+    ],
+    "primary_file_name": "informar-nfe-na-due-sap.bpmn",
+    "primary_process_id": "Process_p5ff026"
+}

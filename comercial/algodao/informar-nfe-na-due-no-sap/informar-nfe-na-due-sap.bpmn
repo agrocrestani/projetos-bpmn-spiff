@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:collaboration id="Collaboration_08y7n4">
+    <bpmn:participant id="Participant_0k6ywnt" name="Matriz_ComercialAlgodao" processRef="Process_p5ff026" />
+    <bpmn:correlationKey id="CorrelationKey_0kgbqt5" name="MainCorrelationKey" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_p5ff026" isExecutable="true">
+    <bpmn:sequenceFlow id="Flow_0iu26s5" sourceRef="SE001" targetRef="UT001" />
+    <bpmn:sequenceFlow id="Flow_1ad9n9l" sourceRef="ST002" targetRef="Activity_0w1s47q" />
+    <bpmn:sequenceFlow id="Flow_0qhsblf" sourceRef="UT001" targetRef="ST001" />
+    <bpmn:startEvent id="SE001">
+      <bpmn:outgoing>Flow_0iu26s5</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0v9khd3" sourceRef="ST001" targetRef="EG001" />
+    <bpmn:userTask id="UT001" name="Número da NFe de Exportação">
+      <bpmn:documentation>Neste passo o usuario irá informar o Nº da Nota Fiscal de Exportação</bpmn:documentation>
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="form-num-nfe-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="form-num-nfe-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0iu26s5</bpmn:incoming>
+      <bpmn:outgoing>Flow_0qhsblf</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:scriptTask id="ST001" name="Busca NFe Exportação no SAP">
+      <bpmn:documentation>Busca a NFe de Exportação no SAP</bpmn:documentation>
+      <bpmn:incoming>Flow_0qhsblf</bpmn:incoming>
+      <bpmn:outgoing>Flow_0v9khd3</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+from datetime import datetime, timedelta
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+        select distinct
+            t0."DocEntry",
+            t0."DocNum",
+            t0."Serial",
+            t3."KeyNfe",
+            TO_ALPHANUM(t0."DocDate") "DocDate",
+            t0."SeqCode",
+            t0."SeriesStr",
+            t0."SubStr",
+            t0."Model",
+            t0."ObjType",
+            t1."LineNum",
+            t1."ItemCode",
+            t4."ItemName",
+            TO_ALPHANUM(t1."Quantity") "Quantity",
+            TO_ALPHANUM(t1."LineTotal") "LineTotal",
+            T5.ID "EntidadeId"
+        from
+            {baseSap}.oinv t0
+            INNER JOIN {baseSap}.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
+            INNER JOIN {baseSap}.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
+            INNER JOIN {baseSap}."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4 AND t0."ObjType" = t3."DocType" 
+            INNER JOIN {baseSap}.oitm t4 ON T1."ItemCode" = t4."ItemCode"
+            INNER JOIN {baseSap}."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
+            LEFT  JOIN {baseSap}."DeclaracaoExportacaoItens" t6 ON t3."KeyNfe" = t6."chNFe" 
+            LEFT  JOIN {baseSap}.CONTROLEDUE  t7 ON t3."KeyNfe" = t7.keynfe
+        WHERE
+            t0."Serial" LIKE {num_nfe}
+        LIMIT 1
+    """
+
+nota = Hana(connection).selectDb(query)
+
+totalRegistros = len(nota)
+contador = 0
+
+if nota:
+    existe = 1
+else:
+    existe = 0
+
+# del(query)
+# del(connection)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:exclusiveGateway id="EG001" default="Flow_0m0hmq7">
+      <bpmn:incoming>Flow_0v9khd3</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ecqk5y</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0m0hmq7</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:manualTask id="MT001" name="NFe não Encontrada">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Aviso
+Não foi encontrada uma NFe de Exportação para o Nº informado!
+</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ecqk5y</bpmn:incoming>
+      <bpmn:outgoing>EE001</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_0ecqk5y" sourceRef="EG001" targetRef="MT001">
+      <bpmn:conditionExpression>existe == 0</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="EE001" sourceRef="MT001" targetRef="EE002" />
+    <bpmn:sequenceFlow id="Flow_0m0hmq7" sourceRef="EG001" targetRef="MIT001" />
+    <bpmn:intermediateThrowEvent id="MIT001" name="Consulta DUE Algodão">
+      <bpmn:incoming>Flow_0m0hmq7</bpmn:incoming>
+      <bpmn:outgoing>Flow_093cxkb</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1v1tedt" messageRef="ConsultaDueAlgodao">
+        <bpmn:extensionElements>
+          <spiffworkflow:messagePayload>nota</spiffworkflow:messagePayload>
+        </bpmn:extensionElements>
+      </bpmn:messageEventDefinition>
+    </bpmn:intermediateThrowEvent>
+    <bpmn:sequenceFlow id="Flow_0zljw1u" sourceRef="MIC001" targetRef="EG003" />
+    <bpmn:sequenceFlow id="Flow_093cxkb" sourceRef="MIT001" targetRef="MIC001" />
+    <bpmn:sequenceFlow id="Flow_1ic5322" sourceRef="EG003" targetRef="Activity_1n76q5d">
+      <bpmn:conditionExpression />
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_02jw8f5" sourceRef="EG003" targetRef="EE003">
+      <bpmn:conditionExpression>retorno == []</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="EE002" name="End Event 001">
+      <bpmn:incoming>EE001</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1pw9jb2" sourceRef="Gateway_1fwyp10" targetRef="ST002">
+      <bpmn:conditionExpression>retorno_gera_due == "SUCESSO"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0uy60wd" sourceRef="Activity_0w1s47q" targetRef="Gateway_1bkasks" />
+    <bpmn:sequenceFlow id="Flow_0ele0ky" sourceRef="Gateway_1bkasks" targetRef="Activity_0bmxevw" />
+    <bpmn:sequenceFlow id="Flow_0za5a6h" sourceRef="Gateway_1bkasks" targetRef="Event_1ulouop">
+      <bpmn:conditionExpression>due == 0</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0arcwbv" sourceRef="Activity_0bmxevw" targetRef="Activity_01njdmp" />
+    <bpmn:sequenceFlow id="Flow_1ruciys" sourceRef="Activity_01njdmp" targetRef="Activity_0t2b3aj" />
+    <bpmn:sequenceFlow id="Flow_0phur47" sourceRef="Activity_0t2b3aj" targetRef="Activity_04r1j8e" />
+    <bpmn:sequenceFlow id="Flow_04xhsk1" sourceRef="Activity_04r1j8e" targetRef="Event_1ulouop" />
+    <bpmn:intermediateCatchEvent id="MIC001" name="Retorno Consulta DUE Algodão">
+      <bpmn:incoming>Flow_093cxkb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0zljw1u</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1xbb5cp" messageRef="RetornoConsultaDUE">
+        <bpmn:extensionElements>
+          <spiffworkflow:messageVariable>retorno</spiffworkflow:messageVariable>
+        </bpmn:extensionElements>
+      </bpmn:messageEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:exclusiveGateway id="EG003" default="Flow_1ic5322">
+      <bpmn:incoming>Flow_0zljw1u</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ic5322</bpmn:outgoing>
+      <bpmn:outgoing>Flow_02jw8f5</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="EE003" name="End Event 003">
+      <bpmn:incoming>Flow_02jw8f5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_00zykza" sourceRef="Activity_1n76q5d" targetRef="Gateway_0ew0mpg" />
+    <bpmn:scriptTask id="Activity_1n76q5d" name="Verifica se existe">
+      <bpmn:incoming>Flow_1ic5322</bpmn:incoming>
+      <bpmn:outgoing>Flow_00zykza</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+if retorno[2] == 1:
+    entidade = "{\"id\":1,\"nome_fantasia\":\"FAZENDA PROMISSAO\",\"cnpj\":\"09.262.185/0002-81\"}"
+elif retorno[2] == 2:
+    entidade = "{\"id\":2,\"nome_fantasia\":\"FAZENDA QUERENCIA\",\"cnpj\":\"09.262.185/0001-09\"}"
+elif retorno[2] == 3:
+    entidade = "{\"id\":3,\"nome_fantasia\":\"FAZENDA COLORADO\",\"cnpj\":\"09.262.185/0003-62\"}"
+elif retorno[2] == 4:
+    entidade = "{\"id\":4,\"nome_fantasia\":\"FAZENDA SAO CARLOS\",\"cnpj\":\"09.262.185/0004-43\"}"
+elif retorno[2] == 5:
+    entidade = "{\"id\":5,\"nome_fantasia\":\"UNIDADE DE BRASNORTE SITIO AGUA AZUL\",\"cnpj\":\"03.262.185/0006-05\"}"
+elif retorno[2] == 6:
+    entidade = "{\"id\":6,\"nome_fantasia\":\"GERMINARE MATRIZ\",\"cnpj\":\"08.944.169/0001-01\"}"
+elif retorno[2] == 7:
+    entidade = "{\"id\":7,\"nome_fantasia\":\"QUERENCIA EMP TGA\",\"cnpj\":\"26.250.360/0001-35\"}"
+elif retorno[2] == 8:
+    entidade = "{\"id\":8,\"nome_fantasia\":\"QUERENCIA EMP CPJ\",\"cnpj\":\"26.250.360/0002-16\"}"
+elif retorno[2] == 9:
+    entidade = "{\"id\":9,\"nome_fantasia\":\"FAZENDA CURUPAI\",\"cnpj\":\"03.262.185/0005-24\"}"
+elif retorno[2] == 10:
+    entidade = "{\"id\":10,\"nome_fantasia\":\"GERMINARE SERV TGA\",\"cnpj\":\"08.944.169/0002-92\"}"
+elif retorno[2] == 11:
+    entidade = "{\"id\":11,\"nome_fantasia\":\"GERMINARE SERV BRA\",\"cnpj\":\"08.944.169/0004-54\"}"
+
+data = json.loads(retorno[0])
+
+# 'entidade'
+formDue = {
+    "paisDestino": "",
+    "entidade": entidade,
+    "numero_due": data[0]['numero_due'],
+    "data_embarque": data[0]['data_embarque'][0:10],
+   "data_averbacao": data[0]['data_averbacao'][0:10],
+   "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
+   "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
+   "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
+}
+
+
+entidade = json.loads(formDue['entidade'])
+numero_due = formDue['numero_due']
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+            SELECT count(*) qtde FROM {baseSap}."DeclaracaoExportacao" d WHERE d."EntidadeId" = {entidade['id']} AND d."NumeroDeclaracao" = '{numero_due}'
+        """
+
+rsp = Hana(connection).selectDb(query)
+
+existe = 0
+
+if rsp[0]['qtde'] &gt; 0:
+    existe = rsp[0]["qtde"]
+
+retorno_gera_due = "SUCESSO"</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:exclusiveGateway id="Gateway_0ew0mpg" default="Flow_10nmnq5">
+      <bpmn:incoming>Flow_00zykza</bpmn:incoming>
+      <bpmn:incoming>Flow_191cdmw</bpmn:incoming>
+      <bpmn:outgoing>Flow_10nmnq5</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1q1glqw</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_10nmnq5" sourceRef="Gateway_0ew0mpg" targetRef="Activity_1tgglyp" />
+    <bpmn:sequenceFlow id="Flow_0curdye" sourceRef="Activity_1tgglyp" targetRef="Activity_0a5g4li" />
+    <bpmn:userTask id="Activity_1tgglyp" name="Complementa dados da DUE">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="completa-due-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="completa-due-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_10nmnq5</bpmn:incoming>
+      <bpmn:outgoing>Flow_0curdye</bpmn:outgoing>
+      <bpmn:property id="Property_1rr1kq4" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_0pqy17f">
+        <bpmn:sourceRef>DataStoreReference_1p8hhe4</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1rr1kq4</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1k6rsyt" sourceRef="Activity_0a5g4li" targetRef="Activity_1in30ns" />
+    <bpmn:scriptTask id="Activity_0a5g4li" name="Insere no SAP">
+      <bpmn:incoming>Flow_0curdye</bpmn:incoming>
+      <bpmn:outgoing>Flow_1k6rsyt</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+paisDestino = json.loads(formDue['paisDestino'])
+entidade = json.loads(formDue['entidade'])
+numero_due = formDue['numero_due']
+numero_conhecimento = formDue['numero_conhecimento']
+numero_registro = formDue['numero_registro']
+data_registro = formDue['data_registro']
+data_declaracao = formDue['data_declaracao']
+data_averbacao = formDue['data_averbacao']
+data_conhecimento = formDue['data_conhecimento']
+naturezaDeclaracao = json.loads(formDue['naturezaDeclaracao'])
+tipoConhecimento =  json.loads(formDue['tipoConhecimento'])
+tipoDeclaracao = json.loads(formDue['tipoDeclaracao'])
+ufDestino = formDue['ufDestino']
+local = formDue['local']
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+            INSERT INTO {baseSap}."DeclaracaoExportacao"
+            ("EntidadeId", 
+            "NumeroDeclaracao", 
+            "NumeroRegistro", 
+            "NumeroConhecimento", 
+            "PaisDestino", 
+            "DataDeclaracao", 
+            "DataRegistro", 
+            "DataConhecimento", 
+            "DataAverbacao", 
+            "NaturezaId", 
+            "TipoConhecimentoId", 
+            "TipoDocumentoId",
+            "UFDesctino", 
+            "Local")
+            VALUES(
+            {entidade['id']}, 
+            '{numero_due}', 
+            '{numero_registro}',  
+            '{numero_conhecimento}',  
+            '{paisDestino['id']}', 
+            '{data_declaracao}',  
+            '{data_registro}', 
+            '{data_conhecimento}', 
+            '{data_averbacao}', 
+            {naturezaDeclaracao['id']}, 
+            {tipoConhecimento['id']}, 
+            {tipoDeclaracao['id']},
+            '{ufDestino}',
+            '{local}')
+          """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+Hana(connection).executeDb(query)
+Hana(connection).executeDb('commit')
+del(formDue)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_0vzobae" sourceRef="Activity_1in30ns" targetRef="Gateway_1fwyp10" />
+    <bpmn:sequenceFlow id="Flow_1q1glqw" sourceRef="Gateway_0ew0mpg" targetRef="Gateway_1fwyp10">
+      <bpmn:conditionExpression>existe &gt;= 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_1fwyp10" default="Flow_1pw9jb2">
+      <bpmn:incoming>Flow_0vzobae</bpmn:incoming>
+      <bpmn:incoming>Flow_1q1glqw</bpmn:incoming>
+      <bpmn:outgoing>Flow_1pw9jb2</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:manualTask id="Activity_1in30ns" name="Mensagem">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser># Confirmação
+
+### Due número: {{data[0]['numero_due']}} inserida com sucesso no SAP.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1k6rsyt</bpmn:incoming>
+      <bpmn:outgoing>Flow_0vzobae</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:boundaryEvent id="Event_1flbirz" attachedToRef="Activity_0a5g4li">
+      <bpmn:outgoing>Flow_198qr3b</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1qnwixk" errorRef="ErroInsereDueSap" />
+    </bpmn:boundaryEvent>
+    <bpmn:manualTask id="Activity_1psaa90" name="Visualiza Erro">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>{{Error1}}</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_198qr3b</bpmn:incoming>
+      <bpmn:outgoing>Flow_191cdmw</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_198qr3b" sourceRef="Event_1flbirz" targetRef="Activity_1psaa90" />
+    <bpmn:boundaryEvent id="Event_1o574uk" attachedToRef="Activity_1psaa90">
+      <bpmn:extensionElements>
+        <spiffworkflow:signalButtonLabel>Encerrar Proceso</spiffworkflow:signalButtonLabel>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_1uwe27f</bpmn:outgoing>
+      <bpmn:signalEventDefinition id="SignalEventDefinition_1g2ck00" signalRef="Encerra" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1uwe27f" sourceRef="Event_1o574uk" targetRef="Event_0qdbb2b" />
+    <bpmn:endEvent id="Event_0qdbb2b">
+      <bpmn:incoming>Flow_1uwe27f</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_191cdmw" sourceRef="Activity_1psaa90" targetRef="Gateway_0ew0mpg" />
+    <bpmn:dataStoreReference id="DataStoreReference_1p8hhe4" name="Estados" dataStoreRef="estados" type="json" />
+    <bpmn:scriptTask id="ST002" name="Busca as notas sem DUE">
+      <bpmn:incoming>Flow_1pw9jb2</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ad9n9l</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+from datetime import datetime, timedelta
+
+env = get_env()
+baseSap = get_secret('baseSap')
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+        select distinct
+            t0."DocEntry",
+            t0."DocNum",
+            t0."Serial",
+            t3."KeyNfe",
+            to_alphanum(t0."DocDate") "DocDate",
+            t0."SeqCode",
+            t0."SeriesStr",
+            t0."SubStr",
+            t0."Model",
+            t0."ObjType",
+            to_alphanum(t0."DocTotal") "DocTotal",
+            t1."LineNum",
+            t1."ItemCode",
+            t4."ItemName",
+            to_alphanum(t1."Quantity") "Quantity",
+            to_alphanum(t1."LineTotal") "LineTotal",
+            T5.ID "EntidadeId"
+        from
+            {baseSap}.oinv t0
+            INNER JOIN {baseSap}.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
+            INNER JOIN {baseSap}.inv12 t2 ON t0."DocEntry" = t2."DocEntry"
+            INNER JOIN {baseSap}."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4 AND t0."ObjType" = t3."DocType" 
+            INNER JOIN {baseSap}.oitm t4 ON T1."ItemCode" = t4."ItemCode"
+            INNER JOIN {baseSap}."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
+            LEFT  JOIN {baseSap}."DeclaracaoExportacaoItens" t6 ON t3."KeyNfe" = t6."chNFe" 
+            LEFT  JOIN {baseSap}.CONTROLEDUE  t7 ON t3."KeyNfe" = t7.keynfe
+        WHERE
+                t0."Serial" LIKE {num_nfe}
+        """
+        
+nfes = Hana(connection).selectDb(query)
+totalRegistros = len(nfes)
+contador = 0
+del(connection)
+del(query)
+</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:serviceTask id="Activity_0w1s47q" name="Busca DUE da NFE">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript>try:
+    entidadeid = rsp['body'][0][0]
+    due = rsp['body'][0][1]
+except:
+    due = 0
+
+del(schema)
+del(rsp)</spiffworkflow:postScript>
+        <spiffworkflow:preScript>keynfe = nfes[0]['keynfe']
+
+schema = {
+  "sql": f"""
+      SELECT distinct 
+        entidadeid,
+         itens_averbados -&gt; 0 -&gt;&gt; 'numero_due' numero_due
+      FROM 
+        sap.due_eventos
+      where
+        keynfe = '{keynfe}'
+    """,
+  "fetch_results": True
+}
+
+</spiffworkflow:preScript>
+        <spiffworkflow:instructionsForEndUser>try:
+    entidadeid = rsp['body'][0][0]
+    due = rsp['body'][0][1]
+except:
+    due = 0
+
+del(schema)
+del(rsp)</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:serviceTaskOperator id="postgres_v2/DoSQL" resultVariable="rsp">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="database_connection_str" type="str" value="&#34;SPIFF_SECRET:postgres&#34;" />
+            <spiffworkflow:parameter id="schema" type="any" value="schema" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ad9n9l</bpmn:incoming>
+      <bpmn:outgoing>Flow_0uy60wd</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_1bkasks" default="Flow_0ele0ky">
+      <bpmn:incoming>Flow_0uy60wd</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ele0ky</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0za5a6h</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:scriptTask id="Activity_0bmxevw" name="Busca Id da DUE">
+      <bpmn:incoming>Flow_0ele0ky</bpmn:incoming>
+      <bpmn:outgoing>Flow_0arcwbv</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query_id_due = f"""
+    SELECT de."Id" FROM {baseSap}."DeclaracaoExportacao" de 
+        WHERE de."EntidadeId" = {entidade['id']}
+        AND de."NumeroDeclaracao" = '{numero_due}' 
+"""
+
+DocEntry = nfes[0]['docentry']
+
+
+idDueSap = Hana(connection).selectDb(query_id_due)
+
+query_nf_ref = f"""
+    SELECT t0."DocEntry", t0."LineNum", t0."ExtDocNum", t0."AccessKey" FROM {baseSap}."INV21" t0
+        WHERE t0."DocEntry" = {DocEntry}
+"""
+query_nf_ref = f"""
+    SELECT 
+    t0."DocEntry",
+    t0."RefDocEntr",  
+    t0."LineNum", 
+    t0."ExtDocNum", 
+    t0."AccessKey", 
+    t2."LineNum", 
+    to_alphanum(t2."Quantity") as "Quantity", 
+    to_alphanum(t2."LineTotal") as "LineTotal"
+    FROM {baseSap}."INV21" t0
+    INNER JOIN {baseSap}."OINV" t1 ON t1."DocEntry" = t0."RefDocEntr" 
+    INNER JOIN {baseSap}."INV1" t2 ON t2."DocEntry" = t1."DocEntry" 
+        WHERE t0."DocEntry" = {DocEntry} ORDER BY t0."LineNum" 
+"""
+
+nf_referenciadas = Hana(connection).selectDb(query_nf_ref)
+
+del(connection)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="Activity_01njdmp" name="Busca Informações que precisa">
+      <bpmn:incoming>Flow_0arcwbv</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ruciys</bpmn:outgoing>
+      <bpmn:script>from connectordb.oracle import Oracle
+
+connection = {
+    "dsn": "172.20.2.2:1521/prod",  # Exemplo de DSN (IP:Porta/SID ou Service Name)
+    "user": "agnew",
+    "password": "agnew"
+}
+
+baseUni = "AGNEW"
+
+IdDueSap = idDueSap[0]['id']
+DocDate = nfes[0]['docdate'][0:10]
+DocNum = nfes[0]['docnum']
+SeqCode = nfes[0]['seqcode']
+Serial = nfes[0]['serial']
+SeriesStr = nfes[0]['seriesstr']
+Model = nfes[0]['model']
+ObjType = nfes[0]['objtype']
+LineNum = nfes[0]['linenum']
+ItemCode = nfes[0]['itemcode']
+ItemName = nfes[0]['itemname']
+LineTotal = nfes[0]['linetotal']
+Quantity = nfes[0]['quantity']
+KeyNFe = nfes[0]['keynfe']
+DocTotal = nfes[0]['doctotal']
+
+
+query = f"""
+    SELECT * FROM {baseUni}.AC_VW_NF_EXP_REMESSA WHERE DANFE_EXP LIKE '{KeyNFe}'
+"""
+
+query_retorno = f"""
+    SELECT * FROM {baseUni}.AC_VW_NF_EXP_RETORNO WHERE DANFE_NF_EXP LIKE '{KeyNFe}'
+"""
+
+nf_remessas = Oracle(connection).selectDb(query)
+
+nf_retorno = Oracle(connection).selectDb(query_retorno)
+# Supondo que nf_referenciadas, nf_remessas, nf_retorno e nfes sejam listas de dicionários como mostrado
+
+# Contar valores únicos de refdocentr
+unique_refdocentr = len(set(n["refdocentr"] for n in nf_referenciadas if n["refdocentr"] is not None))
+
+# Atualizar o resumo com conversão adequada para float
+resumo = {
+    "nf_referenciadas": {
+        "quantidade": unique_refdocentr,
+        "quantidade_total": sum(float(n["quantity"]) for n in nf_referenciadas if n["quantity"] is not None),
+        "valor_total": sum(float(n["linetotal"]) for n in nf_referenciadas if n["linetotal"] is not None)
+    },
+    "nf_remessas": {
+        "quantidade": len(nf_remessas),
+        "quantidade_total": sum(float(n["qtd_parcial"]) for n in nf_remessas if n["qtd_parcial"] is not None),
+        "valor_total": sum(float(n["vl_parcial"]) for n in nf_remessas if n["vl_parcial"] is not None)
+    },
+    "nf_retorno": {
+        "quantidade": len(nf_retorno),
+        "quantidade_total": sum(float(n["qtd_retorno"]) for n in nf_retorno if n["qtd_retorno"] is not None),
+        "valor_total": sum(float(n["vl_retorno"]) for n in nf_retorno if n["vl_retorno"] is not None)
+    },
+    "nota_principal": {
+        "quantidade": len(nota),
+        "quantidade_total": sum(float(n["quantity"]) for n in nfes if n["quantity"] is not None),
+        "valor_total": sum(float(n["linetotal"]) for n in nfes if n["linetotal"] is not None)
+    }
+}
+
+# Limpar variáveis
+del(connection)
+del(query)
+del(baseUni)
+</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="Activity_04r1j8e" name="Informa NFe na DUE">
+      <bpmn:incoming>Flow_0phur47</bpmn:incoming>
+      <bpmn:outgoing>Flow_04xhsk1</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+IdDueSap = idDueSap[0]['id']
+DocEntry = nfes[0]['docentry']
+DocDate = nfes[0]['docdate'][0:10]
+DocNum = nfes[0]['docnum']
+SeqCode = nfes[0]['seqcode']
+Serial = nfes[0]['serial']
+SeriesStr = nfes[0]['seriesstr']
+Model = nfes[0]['model']
+ObjType = nfes[0]['objtype']
+LineNum = nfes[0]['linenum']
+ItemCode = nfes[0]['itemcode']
+ItemName = nfes[0]['itemname']
+LineTotal = nfes[0]['linetotal']
+KeyNFe = nfes[0]['keynfe']
+DocTotal = nfes[0]['doctotal']
+
+query = f"""
+    INSERT INTO {baseSap}."DeclaracaoExportacaoItens" 
+    ("DeclaracaoExportacaoId", "DocEntry", "DocDate", "DocNum", "SeqCode", "Serial", "SeriesStr", "Model", "ObjType", "LineNum", "ItemCode", "ItemName", "LineTotal", "chNFe")
+    VALUES({IdDueSap},{DocEntry},'{DocDate}',{DocNum},{SeqCode},{Serial},'{SeriesStr}',{Model},{ObjType},{LineNum},'{ItemCode}','{ItemName}',{LineTotal},'{KeyNFe}')
+"""
+
+Hana(connection).executeDb(query)
+</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:endEvent id="Event_1ulouop">
+      <bpmn:incoming>Flow_0za5a6h</bpmn:incoming>
+      <bpmn:incoming>Flow_04xhsk1</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="Activity_0t2b3aj" name="Mostra os Dados Inseridos no SAP">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>## Informado NFe: *{{Serial}}* na DUE: *{{due}}* no SAP
+
+### Nota de Exportação
+
+| KeyNfe | 
+| :---------: |
+|{{KeyNFe}}|
+
+| Id DUE  | DocDate | DocNum  | SeqCode | SeriesStr | DocTotal |
+| ---------: | ------- | ---------: | ------- | ---------: | ------- |
+| {{IdDueSap}} | {{DocDate}} | {{DocNum}} | {{SeqCode}} | {{SeriesStr}} | {{DocTotal}} |
+
+
+| LineNum | ItemCode | ItemName | Quantidade | Total |
+| ---------: | ------- | -------- | --------- | --------- |
+{% for nfe in nfes%}
+{{ nfe['linenum'] }} | {{ nfe['itemcode'] }} | {{ nfe['itemname'] }} | {{ nfe['quantity'] }}  | {{ nfe['linetotal'] }}
+{% endfor %}
+
+### Notas Referenciadas SAP
+
+| DocEntry  | LineNum | Quantidade  | Total R$ |
+| ---------: | ------- | -------- | --------- |
+{% for nf_ref in nf_referenciadas%}
+{{ nf_ref ['refdocentr'] }} | {{ nf_ref ['linenum'] }} | {{ nf_ref ['quantity'] }}  | {{ nf_ref ['linetotal'] }}
+{% endfor %}
+
+### Nota de Remessa UniSystem
+
+| Nº Contrato | Instrução | Nº NF Remessa | Quantidade | Total R$ | 
+| --------- | --------- | ---------  | ---------  | ----------- |
+{% for nf_r in nf_remessas%}
+{{ nf_r ['nr_contrato'] }} | {{ nf_r ['nr_instrucao'] }} | {{ nf_r ['nr_nf_rem'] }}  | {{ nf_r ['qtd_parcial'] }} | {{ nf_r ['vl_parcial'] }}
+{% endfor %}
+
+### Nota de Retorno UniSystem
+
+| Nº NF Retorno | Chave | Quantidade | Total R$ | 
+| --------- | --------- | --------- | --------- |
+{% for nf_ret in nf_retorno%}
+{{ nf_ret ['nf_retorno'] }} | {{ nf_ret ['danfe_retorno'] }} | {{ nf_ret ['qtd_retorno'] }} | {{ nf_ret ['vl_retorno'] }} | 
+{% endfor %}
+
+# Resumo Geral
+
+| Tipo de Nota            | Quantidade | Quantidade Total | Valor Total R$    |
+| ----------------------- | ----------: | ----------------: | ----------------: |
+| Nota de Exportação | {{ '{:,.2f}'.format(resumo['nota_principal']['quantidade']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.2f}'.format(resumo['nota_principal']['quantidade_total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.2f}'.format(resumo['nota_principal']['valor_total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
+| Notas Referenciadas SAP | {{ '{:,.2f}'.format(resumo['nf_referenciadas']['quantidade']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.2f}'.format(resumo['nf_referenciadas']['quantidade_total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.2f}'.format(resumo['nf_referenciadas']['valor_total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
+| Nota de Remessa UniSystem | {{ '{:,.2f}'.format(resumo['nf_remessas']['quantidade']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.2f}'.format(resumo['nf_remessas']['quantidade_total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.2f}'.format(resumo['nf_remessas']['valor_total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
+| Nota de Retorno UniSystem | {{ '{:,.2f}'.format(resumo['nf_retorno']['quantidade']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} | {{ '{:,.2f}'.format(resumo['nf_retorno']['quantidade_total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }}  | {{ '{:,.2f}'.format(resumo['nf_retorno']['valor_total']).replace(',', ' ').replace('.', ',').replace(' ', '.') }} |
+</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="observacao-form-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="observacao-form-uischema.json" />
+        </spiffworkflow:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ruciys</bpmn:incoming>
+      <bpmn:outgoing>Flow_0phur47</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmn:message id="ConsultaDueAlgodao" name="ConsultaDueAlgodao" />
+  <bpmn:message id="RetornoConsultaDUE" name="RetornoConsultaDUE" />
+  <bpmn:error id="ErroInsereDueSap" name="ErroInsereDueSap">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>erroInsereDueSap</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
+  <bpmn:signal id="Encerra" name="Encerra">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>encerra01</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:signal>
+  <bpmn:dataStore id="estados" name="JSONDataStore" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_08y7n4">
+      <bpmndi:BPMNShape id="Participant_0k6ywnt_di" bpmnElement="Participant_0k6ywnt" isHorizontal="true">
+        <dc:Bounds x="-770" y="-80" width="3248" height="558" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="SE001">
+        <dc:Bounds x="-698" y="132" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0c3gx0b_di" bpmnElement="UT001">
+        <dc:Bounds x="-600" y="110" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1eo5t3j_di" bpmnElement="ST001">
+        <dc:Bounds x="-440" y="110" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1nzn8zr_di" bpmnElement="EG001" isMarkerVisible="true">
+        <dc:Bounds x="-295" y="125" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0wpy7mq_di" bpmnElement="MT001">
+        <dc:Bounds x="-320" y="-10" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1qbb8ak_di" bpmnElement="MIT001">
+        <dc:Bounds x="-198" y="132" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-214" y="175" width="71" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_18pb678_di" bpmnElement="EE002">
+        <dc:Bounds x="-158" y="12" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-176" y="55" width="73" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1n3yn39_di" bpmnElement="MIC001">
+        <dc:Bounds x="-88" y="132" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-110" y="175" width="86" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1lxhjnh_di" bpmnElement="EG003" isMarkerVisible="true">
+        <dc:Bounds x="-5" y="125" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="7" y="182" width="6" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0hg0wv4" bpmnElement="EE003">
+        <dc:Bounds x="2" y="12" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-16" y="-7" width="73" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ompqhz_di" bpmnElement="Activity_1n76q5d">
+        <dc:Bounds x="190" y="110" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0ew0mpg_di" bpmnElement="Gateway_0ew0mpg" isMarkerVisible="true">
+        <dc:Bounds x="325" y="125" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0kwpwa6_di" bpmnElement="Activity_1tgglyp">
+        <dc:Bounds x="410" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1rmnh7j_di" bpmnElement="Activity_0a5g4li">
+        <dc:Bounds x="570" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1fwyp10_di" bpmnElement="Gateway_1fwyp10" isMarkerVisible="true">
+        <dc:Bounds x="855" y="125" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0a5mm11_di" bpmnElement="Activity_1in30ns">
+        <dc:Bounds x="720" y="110" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0bbp9j3_di" bpmnElement="Activity_1psaa90">
+        <dc:Bounds x="410" y="240" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0qdbb2b_di" bpmnElement="Event_0qdbb2b">
+        <dc:Bounds x="602" y="382" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1p8hhe4_di" bpmnElement="DataStoreReference_1p8hhe4">
+        <dc:Bounds x="435" y="-25" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="440" y="-55" width="41" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1fw9pff_di" bpmnElement="ST002">
+        <dc:Bounds x="970" y="110" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0ofiqus" bpmnElement="Activity_0w1s47q">
+        <dc:Bounds x="1150" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1vetpuu" bpmnElement="Gateway_1bkasks" isMarkerVisible="true">
+        <dc:Bounds x="1325" y="125" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0ve690u" bpmnElement="Activity_0bmxevw">
+        <dc:Bounds x="1460" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1ju5t52" bpmnElement="Activity_01njdmp">
+        <dc:Bounds x="1630" y="110" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1k429xm" bpmnElement="Activity_04r1j8e">
+        <dc:Bounds x="1960" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0n6afig" bpmnElement="Event_1ulouop">
+        <dc:Bounds x="2162" y="132" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0odmv9z_di" bpmnElement="Activity_0t2b3aj">
+        <dc:Bounds x="1790" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ot8a54_di" bpmnElement="Event_1o574uk">
+        <dc:Bounds x="452" y="302" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_06yudjz_di" bpmnElement="Event_1flbirz">
+        <dc:Bounds x="582" y="172" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0iu26s5_di" bpmnElement="Flow_0iu26s5">
+        <di:waypoint x="-662" y="150" />
+        <di:waypoint x="-600" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ad9n9l_di" bpmnElement="Flow_1ad9n9l">
+        <di:waypoint x="1070" y="150" />
+        <di:waypoint x="1150" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0qhsblf_di" bpmnElement="Flow_0qhsblf">
+        <di:waypoint x="-500" y="150" />
+        <di:waypoint x="-440" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0v9khd3_di" bpmnElement="Flow_0v9khd3">
+        <di:waypoint x="-340" y="150" />
+        <di:waypoint x="-295" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ecqk5y_di" bpmnElement="Flow_0ecqk5y">
+        <di:waypoint x="-270" y="125" />
+        <di:waypoint x="-270" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0960utj_di" bpmnElement="EE001">
+        <di:waypoint x="-220" y="30" />
+        <di:waypoint x="-158" y="30" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-187" y="-7" width="73" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0m0hmq7_di" bpmnElement="Flow_0m0hmq7">
+        <di:waypoint x="-245" y="150" />
+        <di:waypoint x="-198" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zljw1u_di" bpmnElement="Flow_0zljw1u">
+        <di:waypoint x="-52" y="150" />
+        <di:waypoint x="-5" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_093cxkb_di" bpmnElement="Flow_093cxkb">
+        <di:waypoint x="-162" y="150" />
+        <di:waypoint x="-88" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ic5322_di" bpmnElement="Flow_1ic5322">
+        <di:waypoint x="45" y="150" />
+        <di:waypoint x="190" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02jw8f5_di" bpmnElement="Flow_02jw8f5">
+        <di:waypoint x="20" y="125" />
+        <di:waypoint x="20" y="48" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pw9jb2_di" bpmnElement="Flow_1pw9jb2">
+        <di:waypoint x="905" y="150" />
+        <di:waypoint x="970" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_1kvbg40" bpmnElement="Flow_0uy60wd">
+        <di:waypoint x="1250" y="150" />
+        <di:waypoint x="1325" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_032m3mo" bpmnElement="Flow_0ele0ky">
+        <di:waypoint x="1375" y="150" />
+        <di:waypoint x="1460" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_1fighps" bpmnElement="Flow_0za5a6h">
+        <di:waypoint x="1350" y="175" />
+        <di:waypoint x="1350" y="220" />
+        <di:waypoint x="2180" y="220" />
+        <di:waypoint x="2180" y="168" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_1jofwcu" bpmnElement="Flow_0arcwbv">
+        <di:waypoint x="1560" y="150" />
+        <di:waypoint x="1630" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0h65gam" bpmnElement="Flow_1ruciys">
+        <di:waypoint x="1730" y="150" />
+        <di:waypoint x="1790" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0s7db1w" bpmnElement="Flow_0phur47">
+        <di:waypoint x="1890" y="150" />
+        <di:waypoint x="1960" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_1dljwv1" bpmnElement="Flow_04xhsk1">
+        <di:waypoint x="2060" y="150" />
+        <di:waypoint x="2162" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00zykza_di" bpmnElement="Flow_00zykza">
+        <di:waypoint x="290" y="150" />
+        <di:waypoint x="325" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10nmnq5_di" bpmnElement="Flow_10nmnq5">
+        <di:waypoint x="375" y="150" />
+        <di:waypoint x="410" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0curdye_di" bpmnElement="Flow_0curdye">
+        <di:waypoint x="510" y="150" />
+        <di:waypoint x="570" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1k6rsyt_di" bpmnElement="Flow_1k6rsyt">
+        <di:waypoint x="670" y="150" />
+        <di:waypoint x="720" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vzobae_di" bpmnElement="Flow_0vzobae">
+        <di:waypoint x="820" y="150" />
+        <di:waypoint x="855" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1q1glqw_di" bpmnElement="Flow_1q1glqw">
+        <di:waypoint x="350" y="125" />
+        <di:waypoint x="350" y="50" />
+        <di:waypoint x="880" y="50" />
+        <di:waypoint x="880" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_198qr3b_di" bpmnElement="Flow_198qr3b">
+        <di:waypoint x="600" y="208" />
+        <di:waypoint x="600" y="280" />
+        <di:waypoint x="510" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1uwe27f_di" bpmnElement="Flow_1uwe27f">
+        <di:waypoint x="470" y="338" />
+        <di:waypoint x="470" y="400" />
+        <di:waypoint x="602" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_191cdmw_di" bpmnElement="Flow_191cdmw">
+        <di:waypoint x="410" y="280" />
+        <di:waypoint x="350" y="280" />
+        <di:waypoint x="350" y="175" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0pqy17f_di" bpmnElement="DataInputAssociation_0pqy17f">
+        <di:waypoint x="460" y="25" />
+        <di:waypoint x="460" y="110" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

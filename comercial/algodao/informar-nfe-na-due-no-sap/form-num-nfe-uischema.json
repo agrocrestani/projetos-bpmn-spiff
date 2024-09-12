@@ -1,0 +1,17 @@
+{
+  "num_nfe": {
+    "ui:autofocus": true,
+    "ui:emptyValue": "",
+    "ui:placeholder": "Digite o nº da NFe",
+    "ui:autocomplete": "family-name"
+  },
+  "ui:layout": [
+    {
+      "num_nfe": {
+        "sm": 4,
+        "md": 4,
+        "lg": 4
+      }
+    }
+  ]
+}
