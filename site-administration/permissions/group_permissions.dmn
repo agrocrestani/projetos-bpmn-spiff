@@ -261,10 +261,24 @@
           <text>"Matriz_ComercialGraos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18zgdo9">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vw46yv">
           <text>"PG:comercial:graos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0h8vwcx">
+        <inputEntry id="UnaryTests_1aiuhai">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hdg2ee">
+          <text>"Matriz_ComercialAlgodao"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yb2l97">
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15v8h4x">
+          <text>"PM:comercial:algodao/informar-nfe-na-due-no-sap"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_11wov95">
@@ -275,7 +289,7 @@
           <text>"Matriz_Rh"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_10g2lr0">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nxenh3">
           <text>"PM:contabilidade/importa-folha"</text>
@@ -303,7 +317,7 @@
           <text>"Matriz_Contabil"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1krk986">
-          <text>["all"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0yj0vc9">
           <text>"PM:relatorios/ajuste-custo-sap"</text>
@@ -331,7 +345,7 @@
           <text>"Matriz_Insumos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0biqyx2">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1y1cbq3">
           <text>"PG:insumos"</text>
@@ -345,7 +359,7 @@
           <text>"Matriz_Faturamento"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_146jk5f">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_070r8rv">
           <text>"PM:almoxarifados/lanca-nfe-de-entrada-no-sap"</text>
@@ -359,7 +373,7 @@
           <text>"Matriz_Faturamento"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ja8okf">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14w6bde">
           <text>"PG:almoxarifados"</text>
@@ -373,7 +387,7 @@
           <text>"Querencia_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1lcdo8k">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hw43w7">
           <text>"PM:compras/solicitacao-compras-cantina"</text>
@@ -401,7 +415,7 @@
           <text>"Querencia_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0wymag5">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_013yltg">
           <text>"PM:almoxarifados/lanca-nfe-de-entrada-no-sap"</text>
@@ -429,7 +443,7 @@
           <text>"Querencia_Almoxarifado"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0c6ri2v">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05wdg2u">
           <text>"PG:almoxarifados"</text>
@@ -471,7 +485,7 @@
           <text>"Querencia_Cantina"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0uw6l7m">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0blotnv">
           <text>"PM:compras/solicitacao-compras-cantina"</text>
@@ -485,7 +499,7 @@
           <text>"Querencia_Producao"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kx7qu5">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08aikmt">
           <text>"PM:insumos/solicitar-insumos-querencia"</text>
@@ -513,7 +527,7 @@
           <text>"Curupai_Almoxarifado"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_10z678l">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1contka">
           <text>"PG:almoxarifados"</text>
@@ -555,7 +569,7 @@
           <text>"Curupai_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kr1jsu">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1qy37pz">
           <text>"PM:compras/solicitacao-compras-cantina"</text>
@@ -569,7 +583,7 @@
           <text>"Curupai_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_11njzfl">
-          <text>["all"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0xf1zp2">
           <text>"/can-run-privileged-script/*"</text>
@@ -597,7 +611,7 @@
           <text>"Curupai_Cantina"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ck07wo">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0x7zeut">
           <text>"PM:compras/solicitacao-compras-cantina"</text>
@@ -625,7 +639,7 @@
           <text>"Curupai_Producao"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0hfng86">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0y7e8ho">
           <text>"PM:insumos/solicitar-insumos-unidades"</text>
@@ -681,7 +695,7 @@
           <text>"Colorado_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0bkbssi">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kbamc5">
           <text>"PM:compras/solicitacao-compras-cantina"</text>
@@ -723,7 +737,7 @@
           <text>"Colorado_Producao"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hldmt0">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1pk1nof">
           <text>"PM:insumos/solicitar-insumos-unidades"</text>
@@ -751,7 +765,7 @@
           <text>"Colorado_Almoxarifado"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0tugdat">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ubg6tz">
           <text>"PG:almoxarifados"</text>
@@ -765,7 +779,7 @@
           <text>"SaoCarlos_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1sg9twi">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_147jylf">
           <text>"PM:compras/solicitacao-compras-cantina"</text>
@@ -849,7 +863,7 @@
           <text>"SaoCarlos_Producao"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0570let">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0z7fq3o">
           <text>"PG:insumos/solicitar-insumos-unidades"</text>
@@ -863,7 +877,7 @@
           <text>"SaoCarlos_Cantina"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0vsscbd">
-          <text>["all"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0mz957p">
           <text>"PM:compras/solicitacao-compras-cantina"</text>
@@ -905,7 +919,7 @@
           <text>"SaoCarlos_Almoxarifado"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17crwgq">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ovxgup">
           <text>"PG:almoxarifados"</text>
@@ -989,7 +1003,7 @@
           <text>"Matriz_Gerencia"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_01ewm5o">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05ztvel">
           <text>"PM:relatorios/ajuste-custo-sap"</text>
@@ -1003,7 +1017,7 @@
           <text>"Matriz_Producao"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ad8sci">
-          <text>["start"]</text>
+          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vuo9qo">
           <text>"PG:insumos"</text>
@@ -1034,6 +1048,34 @@
           <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1bay5xz">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ecuth4">
+        <inputEntry id="UnaryTests_0j7b3zw">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06l9wxy">
+          <text>"Matriz_Suporte_Sistemas"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0o4qvv4">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qt8x0n">
+          <text>"SUPPORT"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13n4cnd">
+        <inputEntry id="UnaryTests_0wjqkyy">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cd3xry">
+          <text>"Matriz_Suporte_Infra"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ma3ojx">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ihw8av">
           <text>"BASIC"</text>
         </outputEntry>
       </rule>

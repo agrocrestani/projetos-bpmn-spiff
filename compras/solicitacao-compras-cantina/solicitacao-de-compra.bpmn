@@ -15,14 +15,16 @@
     <bpmn:laneSet id="LaneSet_1sz1hle">
       <bpmn:lane id="Lane_12uy9io" name="Cantina">
         <bpmn:flowNodeRef>Activity_160ldmq</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_13g9nwv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0g0isr7</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_05rqdyh</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_18si6ct</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_0iodf8w</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0z7hg1d</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0qpzdpu</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0fy07h0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0iodf8w</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_13g9nwv</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_0may6a6" name="Gerencia">
         <bpmn:flowNodeRef>Activity_0xafkf4</bpmn:flowNodeRef>
@@ -32,10 +34,6 @@
         <bpmn:flowNodeRef>Activity_1hrnfpg</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_09i1pq2</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0uwcfkc</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="Lane_1xw8qvr">
-        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0fy07h0</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:dataStoreReference id="DataStoreReference_13uzln6" name="Almoxarifados" dataStoreRef="almoxarifados" type="json" />
@@ -145,23 +143,6 @@ solicitante = get_current_user()['display_name']</spiffworkflow:preScript>
         <bpmn:targetRef>Property_0dlyti3</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
-    <bpmn:callActivity id="Activity_13g9nwv" name="Atualiza Itens2" calledElement="itens_cantina">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>deposito = ""
-if BPLId == "1":
-    deposito = "querencia"
-elif BPLId == "2":
-    deposito = "promissao"
-if BPLId == "3":
-    deposito = "colorado"
-if BPLId == "4":
-    deposito = "saocarlos"
-if BPLId == "5":
-    deposito = "curupai"</spiffworkflow:preScript>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
-      <bpmn:outgoing>Flow_1d8mo6p</bpmn:outgoing>
-    </bpmn:callActivity>
     <bpmn:exclusiveGateway id="Gateway_0g0isr7" default="Flow_1evt79u">
       <bpmn:incoming>Flow_0uyps62</bpmn:incoming>
       <bpmn:outgoing>Flow_1evt79u</bpmn:outgoing>
@@ -408,22 +389,6 @@ Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número:
       <bpmn:incoming>Flow_1xscovm</bpmn:incoming>
       <bpmn:outgoing>Flow_1wwcph5</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:startEvent id="StartEvent_1">
-      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
-    </bpmn:startEvent>
-    <bpmn:callActivity id="Activity_0fy07h0" name="Define unidade e departamento" calledElement="Process_definir_unidade_e_departamento_zxer6t3">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
-        <spiffworkflow:postScript>group_identifier = f"{unidade}_{departamento}"
-group_members = get_group_members(group_identifier)
-lane_owners = {
-    "Cantina": group_members,
-    "Gerencia": [aprovador]
-}</spiffworkflow:postScript>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:outgoing>Flow_0bsuxx8</bpmn:outgoing>
-    </bpmn:callActivity>
     <bpmn:endEvent id="Event_18si6ct">
       <bpmn:incoming>Flow_1c3inn5</bpmn:incoming>
     </bpmn:endEvent>
@@ -541,6 +506,39 @@ for f in n_filiais:
       <bpmn:incoming>Flow_1d8mo6p</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:callActivity id="Activity_0fy07h0" name="Define unidade e departamento" calledElement="Process_definir_unidade_e_departamento_zxer6t3">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>usuarioLogado = get_current_user()['display_name']</spiffworkflow:preScript>
+        <spiffworkflow:postScript>group_identifier = f"{unidade}_{departamento}"
+group_members = get_group_members(group_identifier)
+lane_owners = {
+    "Cantina": group_members,
+    "Gerencia": [aprovador]
+}</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bsuxx8</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="Activity_13g9nwv" name="Atualiza Itens2" calledElement="itens_cantina">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>deposito = ""
+if BPLId == "1":
+    deposito = "querencia"
+elif BPLId == "2":
+    deposito = "promissao"
+if BPLId == "3":
+    deposito = "colorado"
+if BPLId == "4":
+    deposito = "saocarlos"
+if BPLId == "5":
+    deposito = "curupai"</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_13fehm8</bpmn:incoming>
+      <bpmn:outgoing>Flow_1d8mo6p</bpmn:outgoing>
+    </bpmn:callActivity>
   </bpmn:process>
   <bpmn:dataStore id="typeahead" name="KKVDataStore" />
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
@@ -552,17 +550,14 @@ for f in n_filiais:
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1tyx2x2">
       <bpmndi:BPMNShape id="Participant_0476j7y_di" bpmnElement="Participant_0476j7y" isHorizontal="true">
-        <dc:Bounds x="480" y="-300" width="2260" height="1120" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1xw8qvr_di" bpmnElement="Lane_1xw8qvr" isHorizontal="true">
-        <dc:Bounds x="510" y="-300" width="2230" height="230" />
+        <dc:Bounds x="480" y="-100" width="2260" height="920" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0may6a6_di" bpmnElement="Lane_0may6a6" isHorizontal="true">
         <dc:Bounds x="510" y="400" width="2230" height="420" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_12uy9io_di" bpmnElement="Lane_12uy9io" isHorizontal="true">
-        <dc:Bounds x="510" y="-70" width="2230" height="470" />
+        <dc:Bounds x="510" y="-100" width="2230" height="500" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_13uzln6_di" bpmnElement="DataStoreReference_13uzln6">
@@ -603,10 +598,6 @@ for f in n_filiais:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0qutju8_di" bpmnElement="Activity_160ldmq">
         <dc:Bounds x="840" y="127" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1c7gl9e_di" bpmnElement="Activity_13g9nwv">
-        <dc:Bounds x="1010" y="127" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0g0isr7_di" bpmnElement="Gateway_0g0isr7" isMarkerVisible="true">
@@ -656,13 +647,6 @@ for f in n_filiais:
         <dc:Bounds x="2400" y="127" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="582" y="-218" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_02mb9xm_di" bpmnElement="Activity_0fy07h0">
-        <dc:Bounds x="650" y="-240" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_18si6ct_di" bpmnElement="Event_18si6ct">
         <dc:Bounds x="977" y="272" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -673,6 +657,17 @@ for f in n_filiais:
         <dc:Bounds x="1250" y="127" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="562" y="149" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02mb9xm_di" bpmnElement="Activity_0fy07h0">
+        <dc:Bounds x="660" y="127" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1c7gl9e_di" bpmnElement="Activity_13g9nwv">
+        <dc:Bounds x="1040" y="127" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1g0h8ka_di" bpmnElement="Event_0uwcfkc">
         <dc:Bounds x="1982" y="552" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -680,17 +675,15 @@ for f in n_filiais:
         <dc:Bounds x="887" y="189" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0bsuxx8_di" bpmnElement="Flow_0bsuxx8">
-        <di:waypoint x="750" y="-200" />
-        <di:waypoint x="805" y="-200" />
-        <di:waypoint x="805" y="167" />
+        <di:waypoint x="760" y="167" />
         <di:waypoint x="840" y="167" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13fehm8_di" bpmnElement="Flow_13fehm8">
         <di:waypoint x="940" y="167" />
-        <di:waypoint x="1010" y="167" />
+        <di:waypoint x="1040" y="167" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1d8mo6p_di" bpmnElement="Flow_1d8mo6p">
-        <di:waypoint x="1110" y="167" />
+        <di:waypoint x="1140" y="167" />
         <di:waypoint x="1250" y="167" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13sk1mn_di" bpmnElement="Flow_13sk1mn">
@@ -760,8 +753,8 @@ for f in n_filiais:
         <di:waypoint x="2400" y="167" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
-        <di:waypoint x="618" y="-200" />
-        <di:waypoint x="650" y="-200" />
+        <di:waypoint x="598" y="167" />
+        <di:waypoint x="660" y="167" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1c3inn5_di" bpmnElement="Flow_1c3inn5">
         <di:waypoint x="905" y="225" />
