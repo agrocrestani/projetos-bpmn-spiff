@@ -216,7 +216,40 @@
           <text>"marcio.firmino@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_07ql941">
-          <text>"Matriz_Rh"</text>
+          <text>"Matriz_SuporteSistemas"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17lweix">
+        <inputEntry id="UnaryTests_1xel3cm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hsz03b">
+          <text>"jose.alves@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0elfdny">
+          <text>"Matriz_SuporteSistemas"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19l2pqi">
+        <inputEntry id="UnaryTests_0hwxv9r">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01pjwnv">
+          <text>"ilton.cesar@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_013tkzf">
+          <text>"Matriz_SuporteInfra"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1j5eazu">
+        <inputEntry id="UnaryTests_1q817bk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ezosaq">
+          <text>"jorge.regis@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18dj6i7">
+          <text>"Matriz_SuporteInfra"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1m6pdzw">
@@ -910,6 +943,28 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_14q9e9s">
           <text>"Colorado_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1b96e42">
+        <inputEntry id="UnaryTests_05xt3ox">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wqg1hc">
+          <text>"danieli.grilo@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0aukvh3">
+          <text>"Matriz_ComercialAlgodao"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0907fgp">
+        <inputEntry id="UnaryTests_0gn55o8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pv1t2m">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sf7wem">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
