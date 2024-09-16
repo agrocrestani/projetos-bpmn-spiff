@@ -421,7 +421,7 @@
       </rule>
       <rule id="DecisionRule_07q7ac0">
         <inputEntry id="UnaryTests_08tjlo5">
-          <text>"sabrina.ferreira@agrocrestani.com.br"</text>
+          <text>"sabrina.ferreira"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1vqxb9f">
           <text>"Colorado"</text>
