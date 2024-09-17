@@ -1,106 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:dataStore id="typeahead" name="TypeaheadDataStore" />
-  <bpmn:process id="load_world" name="Load World" isExecutable="true">
+  <bpmn:process id="entidades" name="Entidades" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_0tn4ed3</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_0tn4ed3" sourceRef="StartEvent_1" targetRef="Activity_09mu4sd" />
+    <bpmn:sequenceFlow id="Flow_0tn4ed3" sourceRef="StartEvent_1" targetRef="Activity_0ow0bql" />
     <bpmn:endEvent id="Event_0jxoz7s">
-      <bpmn:incoming>Flow_0lz96a1</bpmn:incoming>
+      <bpmn:incoming>Flow_1vts6gz</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_0lz96a1" sourceRef="Activity_0o51srq" targetRef="Event_0jxoz7s" />
-    <bpmn:scriptTask id="Activity_0o51srq" name="Parse cities response">
-      <bpmn:incoming>Flow_0w7oyed</bpmn:incoming>
-      <bpmn:outgoing>Flow_0lz96a1</bpmn:outgoing>
+    <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
+    <bpmn:scriptTask id="Activity_0ow0bql" name="Busca entidades">
+      <bpmn:incoming>Flow_0tn4ed3</bpmn:incoming>
+      <bpmn:outgoing>Flow_1vts6gz</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_0tjuw5b">
         <bpmn:targetRef>DataStoreReference_1oronwq</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
-      <bpmn:script>
-# typeahead = []
+      <bpmn:script>from connectordb.hana import Hana
 
-typeahead = {"entidades": entidades}</bpmn:script>
-    </bpmn:scriptTask>
-    <bpmn:sequenceFlow id="Flow_0w7oyed" sourceRef="Activity_09mu4sd" targetRef="Activity_0o51srq" />
-    <bpmn:serviceTask id="Activity_09mu4sd" name="Fetch entidades">
-      <bpmn:extensionElements>
-        <spiffworkflow:serviceTaskOperator id="postgres_v2/SelectValuesV2" resultVariable="rsp">
-          <spiffworkflow:parameters>
-            <spiffworkflow:parameter id="database_connection_str" type="str" value="&#34;SPIFF_SECRET:postgres&#34;" />
-            <spiffworkflow:parameter id="table_name" type="str" value="table" />
-            <spiffworkflow:parameter id="schema" type="any" value="schema" />
-          </spiffworkflow:parameters>
-        </spiffworkflow:serviceTaskOperator>
-        <spiffworkflow:preScript>table = "sap.\"Entidade\""
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
 
-schema = {
-  "columns": [
-    "\"ID\"",
-    "\"NomeFantasia\"",
-    "\"CNPJ\""
-  ]
-}</spiffworkflow:preScript>
-        <spiffworkflow:postScript>entidades = []
+baseSap = get_secret('baseSap')
 
-for r in rsp['body']:
-    id = r[0]
-    nome_fantasia = r[1]
-    cnpj = r[2]
+query = f"""
+    SELECT 
+      e.ID,
+      e."NomeFantasia",
+      e.CNPJ
+    FROM {baseSap}."Entidade" e
+          """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+rsp = Hana(connection).selectDb(query)
+
+entidades = []
+
+for r in rsp:
+    entidadeId = str(r['id'])
+    entidadeName = str(r['nomefantasia'])
+    entidadeCnpj = str(r['cnpj'])
     entidades.append(
         {
-            "search_term": nome_fantasia, 
+            "search_term": entidadeName, 
             "result": {
-                "id": id, 
-                "nome_fantasia": nome_fantasia, 
-                "cnpj": cnpj
+                "id": entidadeId, 
+                "nome_fantasia": entidadeName, 
+                "cnpj": entidadeCnpj
                 }
             }
         )
 
-del(rsp)</spiffworkflow:postScript>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0tn4ed3</bpmn:incoming>
-      <bpmn:outgoing>Flow_0w7oyed</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Update &#10;Typeahead Data Store" dataStoreRef="typeahead" />
+typeahead = {"entidades": entidades}
+
+del(rsp)
+del(connection)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_1vts6gz" sourceRef="Activity_0ow0bql" targetRef="Event_0jxoz7s" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="load_world">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="entidades">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0jxoz7s_di" bpmnElement="Event_0jxoz7s">
         <dc:Bounds x="542" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1fwfxsn_di" bpmnElement="Activity_0o51srq">
-        <dc:Bounds x="397" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1hntoll_di" bpmnElement="Activity_09mu4sd">
-        <dc:Bounds x="250" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_1xdqn6q_di" bpmnElement="Activity_0ow0bql">
+        <dc:Bounds x="320" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_1oronwq_di" bpmnElement="DataStoreReference_1oronwq">
-        <dc:Bounds x="415" y="305" width="50" height="50" />
+        <dc:Bounds x="345" y="285" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="413" y="362" width="55" height="14" />
+          <dc:Bounds x="331" y="342" width="80" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0tn4ed3_di" bpmnElement="Flow_0tn4ed3">
         <di:waypoint x="215" y="177" />
-        <di:waypoint x="250" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0lz96a1_di" bpmnElement="Flow_0lz96a1">
-        <di:waypoint x="497" y="177" />
-        <di:waypoint x="542" y="177" />
+        <di:waypoint x="320" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_0tjuw5b_di" bpmnElement="DataOutputAssociation_0tjuw5b">
-        <di:waypoint x="446" y="217" />
-        <di:waypoint x="445" y="305" />
+        <di:waypoint x="370" y="220" />
+        <di:waypoint x="374" y="285" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0w7oyed_di" bpmnElement="Flow_0w7oyed">
-        <di:waypoint x="350" y="177" />
-        <di:waypoint x="397" y="177" />
+      <bpmndi:BPMNEdge id="Flow_1vts6gz_di" bpmnElement="Flow_1vts6gz">
+        <di:waypoint x="420" y="177" />
+        <di:waypoint x="542" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
