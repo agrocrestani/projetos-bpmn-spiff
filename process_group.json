@@ -36,6 +36,13 @@
                 "name": "Depositos",
                 "schema": {}
             },
+            "estados": {
+                "description": "",
+                "identifier": "estados",
+                "location": "",
+                "name": "Estados",
+                "schema": {}
+            },
             "filiais": {
                 "description": "",
                 "identifier": "filiais",
