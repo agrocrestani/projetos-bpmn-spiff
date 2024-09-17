@@ -50,6 +50,13 @@
                 "name": "Filiais",
                 "schema": {}
             },
+            "natureza_da_declaracao": {
+                "description": "",
+                "identifier": "natureza_da_declaracao",
+                "location": "",
+                "name": "Natureza da Declaracao",
+                "schema": {}
+            },
             "safras": {
                 "description": "",
                 "identifier": "safras",
@@ -62,6 +69,20 @@
                 "identifier": "saplogin",
                 "location": "",
                 "name": "SapLogin",
+                "schema": {}
+            },
+            "tipo_conhecimento": {
+                "description": "",
+                "identifier": "tipo_conhecimento",
+                "location": "",
+                "name": "Tipo Conhecimento",
+                "schema": {}
+            },
+            "tipo_declaracao": {
+                "description": "",
+                "identifier": "tipo_declaracao",
+                "location": "",
+                "name": "Tipo Declaracao",
                 "schema": {}
             },
             "tipo_requisicao": {
