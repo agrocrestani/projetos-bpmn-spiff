@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="natureza_da_declaracao" name="Natureza da Declaracao" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0qc3i7h</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0jxoz7s">
+      <bpmn:incoming>Flow_02fzwp7</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Natureza da Declaracao" dataStoreRef="natureza_da_declaracao" type="json" />
+    <bpmn:sequenceFlow id="Flow_0qc3i7h" sourceRef="StartEvent_1" targetRef="Activity_1qe0wk8" />
+    <bpmn:sequenceFlow id="Flow_02fzwp7" sourceRef="Activity_1qe0wk8" targetRef="Event_0jxoz7s" />
+    <bpmn:scriptTask id="Activity_1qe0wk8" name="Busca Natureza da Declaracao">
+      <bpmn:incoming>Flow_0qc3i7h</bpmn:incoming>
+      <bpmn:outgoing>Flow_02fzwp7</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1q44jn4">
+        <bpmn:targetRef>DataStoreReference_1oronwq</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+            SELECT * FROM {baseSap}."DeclaracaoExportacaoNatureza" den 
+        """
+
+
+rsp = Hana(connection).selectDb(query)
+# rsp = json.loads(Hana(connection).selectDb(query))
+
+naturezaDeclaracao = [
+    {
+      "value": "",
+      "label": ""
+    }
+]
+
+for r in rsp:
+    value = str(r['id'])
+    label = str(r['description'])
+    naturezaDeclaracao.append(
+        {
+            "value": value, 
+            "label": label
+        }
+    )
+
+natureza_da_declaracao = naturezaDeclaracao
+
+del(rsp)
+del(naturezaDeclaracao)
+
+
+
+
+del(connection)</bpmn:script>
+    </bpmn:scriptTask>
+  </bpmn:process>
+  <bpmn:dataStore id="natureza_da_declaracao" name="JSONDataStore" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="natureza_da_declaracao">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0jxoz7s_di" bpmnElement="Event_0jxoz7s">
+        <dc:Bounds x="542" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1oronwq_di" bpmnElement="DataStoreReference_1oronwq">
+        <dc:Bounds x="415" y="305" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="411" y="362" width="60" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_04xdrw5_di" bpmnElement="Activity_1qe0wk8">
+        <dc:Bounds x="260" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0qc3i7h_di" bpmnElement="Flow_0qc3i7h">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="260" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02fzwp7_di" bpmnElement="Flow_02fzwp7">
+        <di:waypoint x="360" y="177" />
+        <di:waypoint x="542" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1q44jn4_di" bpmnElement="DataOutputAssociation_1q44jn4">
+        <di:waypoint x="344" y="217" />
+        <di:waypoint x="418" y="305" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

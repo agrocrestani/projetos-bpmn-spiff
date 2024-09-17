@@ -1,9 +1,9 @@
 {
     "description": "",
-    "display_name": "Gera DUE",
+    "display_name": "Natureza da Declaracao",
     "exception_notification_addresses": [],
     "fault_or_suspend_on_exception": "fault",
     "metadata_extraction_paths": null,
-    "primary_file_name": "gera-due.bpmn",
-    "primary_process_id": "Process_gera_due_graos"
+    "primary_file_name": "natureza-da-declaracao.bpmn",
+    "primary_process_id": "natureza_da_declaracao"
 }

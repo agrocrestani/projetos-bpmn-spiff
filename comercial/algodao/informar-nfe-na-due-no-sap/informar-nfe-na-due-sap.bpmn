@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:collaboration id="Collaboration_08y7n4">
-    <bpmn:participant id="Participant_0k6ywnt" processRef="Process_p5ff026" />
+    <bpmn:participant id="Participant_0k6ywnt" name="Matriz_ComercialAlgodao" processRef="Process_p5ff026" />
     <bpmn:correlationKey id="CorrelationKey_0kgbqt5" name="MainCorrelationKey" />
   </bpmn:collaboration>
   <bpmn:process id="Process_p5ff026" isExecutable="true">
@@ -235,13 +235,25 @@ retorno_gera_due = "SUCESSO"</bpmn:script>
           <spiffworkflow:property name="formJsonSchemaFilename" value="completa-due-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="completa-due-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_10nmnq5</bpmn:incoming>
       <bpmn:outgoing>Flow_0curdye</bpmn:outgoing>
       <bpmn:property id="Property_1rr1kq4" name="__targetRef_placeholder" />
       <bpmn:dataInputAssociation id="DataInputAssociation_0pqy17f">
         <bpmn:sourceRef>DataStoreReference_1p8hhe4</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1rr1kq4</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_04rij6c">
+        <bpmn:sourceRef>DataStoreReference_1vlcama</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1rr1kq4</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_032ier7">
+        <bpmn:sourceRef>DataStoreReference_1tqb1iw</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1rr1kq4</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_0vlbct4">
+        <bpmn:sourceRef>DataStoreReference_1264tcy</bpmn:sourceRef>
         <bpmn:targetRef>Property_1rr1kq4</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
@@ -260,9 +272,9 @@ data_registro = formDue['data_registro']
 data_declaracao = formDue['data_declaracao']
 data_averbacao = formDue['data_averbacao']
 data_conhecimento = formDue['data_conhecimento']
-naturezaDeclaracao = json.loads(formDue['naturezaDeclaracao'])
-tipoConhecimento =  json.loads(formDue['tipoConhecimento'])
-tipoDeclaracao = json.loads(formDue['tipoDeclaracao'])
+naturezaDeclaracao = formDue['naturezaDeclaracao']
+tipoConhecimento =  formDue['tipoConhecimento']
+tipoDeclaracao = formDue['tipoDeclaracao']
 ufDestino = formDue['ufDestino']
 local = formDue['local']
 
@@ -301,9 +313,9 @@ query = f"""
             '{data_registro}', 
             '{data_conhecimento}', 
             '{data_averbacao}', 
-            {naturezaDeclaracao['id']}, 
-            {tipoConhecimento['id']}, 
-            {tipoDeclaracao['id']},
+            {naturezaDeclaracao}, 
+            {tipoConhecimento}, 
+            {tipoDeclaracao},
             '{ufDestino}',
             '{local}')
           """
@@ -355,7 +367,7 @@ del(formDue)</bpmn:script>
       <bpmn:incoming>Flow_1uwe27f</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_191cdmw" sourceRef="Activity_1psaa90" targetRef="Gateway_0ew0mpg" />
-    <bpmn:dataStoreReference id="DataStoreReference_1p8hhe4" name="Estados" dataStoreRef="estados" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_1p8hhe4" name="Tipo Conhecimento" dataStoreRef="tipo_conhecimento" type="json" />
     <bpmn:scriptTask id="ST002" name="Busca as notas sem DUE">
       <bpmn:incoming>Flow_1pw9jb2</bpmn:incoming>
       <bpmn:outgoing>Flow_1ad9n9l</bpmn:outgoing>
@@ -401,7 +413,7 @@ query = f"""
             LEFT  JOIN {baseSap}."DeclaracaoExportacaoItens" t6 ON t3."KeyNfe" = t6."chNFe" 
             LEFT  JOIN {baseSap}.CONTROLEDUE  t7 ON t3."KeyNfe" = t7.keynfe
         WHERE
-                t0."Serial" LIKE {num_nfe}
+                t0."Serial" = {num_nfe}
         """
         
 nfes = Hana(connection).selectDb(query)
@@ -419,8 +431,8 @@ del(query)
 except:
     due = 0
 
-del(schema)
-del(rsp)</spiffworkflow:postScript>
+# del(schema)
+# del(rsp)</spiffworkflow:postScript>
         <spiffworkflow:preScript>keynfe = nfes[0]['keynfe']
 
 schema = {
@@ -686,6 +698,9 @@ Hana(connection).executeDb(query)
       <bpmn:incoming>Flow_1ruciys</bpmn:incoming>
       <bpmn:outgoing>Flow_0phur47</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:dataStoreReference id="DataStoreReference_1tqb1iw" name="Estados" dataStoreRef="estados" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_1vlcama" name="Natureza da Declaracao" dataStoreRef="natureza_da_declaracao" type="json" />
+    <bpmn:dataStoreReference id="DataStoreReference_1264tcy" name="Tipo Declaracao" dataStoreRef="tipo_declaracao" type="json" />
   </bpmn:process>
   <bpmn:message id="ConsultaDueAlgodao" name="ConsultaDueAlgodao" />
   <bpmn:message id="RetornoConsultaDUE" name="RetornoConsultaDUE" />
@@ -699,11 +714,15 @@ Hana(connection).executeDb(query)
       <spiffworkflow:variableName>encerra01</spiffworkflow:variableName>
     </bpmn:extensionElements>
   </bpmn:signal>
+  <bpmn:dataStore id="natureza_da_declaracao" name="JSONDataStore" />
+  <bpmn:dataStore id="tipo_conhecimento" name="JSONDataStore" />
+  <bpmn:dataStore id="tipo_declaracao" name="JSONDataStore" />
   <bpmn:dataStore id="estados" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_08y7n4">
       <bpmndi:BPMNShape id="Participant_0k6ywnt_di" bpmnElement="Participant_0k6ywnt" isHorizontal="true">
         <dc:Bounds x="-770" y="-80" width="3248" height="558" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="SE001">
         <dc:Bounds x="-698" y="132" width="36" height="36" />
@@ -782,7 +801,7 @@ Hana(connection).executeDb(query)
       <bpmndi:BPMNShape id="DataStoreReference_1p8hhe4_di" bpmnElement="DataStoreReference_1p8hhe4">
         <dc:Bounds x="435" y="-25" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="440" y="-55" width="41" height="14" />
+          <dc:Bounds x="425" y="-55" width="71" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1fw9pff_di" bpmnElement="ST002">
@@ -810,6 +829,24 @@ Hana(connection).executeDb(query)
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0odmv9z_di" bpmnElement="Activity_0t2b3aj">
         <dc:Bounds x="1790" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1tqb1iw_di" bpmnElement="DataStoreReference_1tqb1iw">
+        <dc:Bounds x="385" y="-25" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="390" y="32" width="41" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1vlcama_di" bpmnElement="DataStoreReference_1vlcama">
+        <dc:Bounds x="335" y="-25" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="330" y="32" width="60" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1264tcy_di" bpmnElement="DataStoreReference_1264tcy">
+        <dc:Bounds x="485" y="-25" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="471" y="32" width="79" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1ot8a54_di" bpmnElement="Event_1o574uk">
         <dc:Bounds x="452" y="302" width="36" height="36" />
@@ -942,6 +979,18 @@ Hana(connection).executeDb(query)
       <bpmndi:BPMNEdge id="DataInputAssociation_0pqy17f_di" bpmnElement="DataInputAssociation_0pqy17f">
         <di:waypoint x="460" y="25" />
         <di:waypoint x="460" y="110" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_04rij6c_di" bpmnElement="DataInputAssociation_04rij6c">
+        <di:waypoint x="377" y="25" />
+        <di:waypoint x="433" y="110" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_032ier7_di" bpmnElement="DataInputAssociation_032ier7">
+        <di:waypoint x="420" y="25" />
+        <di:waypoint x="456" y="110" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0vlbct4_di" bpmnElement="DataInputAssociation_0vlbct4">
+        <di:waypoint x="500" y="25" />
+        <di:waypoint x="464" y="110" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

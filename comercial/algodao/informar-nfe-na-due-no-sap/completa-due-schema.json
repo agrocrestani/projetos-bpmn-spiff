@@ -5,6 +5,22 @@
       "title": "",
       "description": "",
       "type": "object",
+      "required": [
+        "numero_due",
+        "data_registro",
+        "data_averbacao",
+        "entidade",
+        "naturezaDeclaracao",
+        "tipoConhecimento",
+        "tipoDeclaracao",
+        "paisDestino",
+        "ufDestino",
+        "local",
+        "data_declaracao",
+        "data_conhecimento",
+        "numero_registro",
+        "numero_conhecimento"
+      ],
       "properties": {
         "numero_due": {
           "type": "string",
@@ -26,15 +42,24 @@
         },
         "naturezaDeclaracao": {
           "type": "string",
-          "title": "Natureza da Declaração"
+          "title": "Natureza da Declaração",
+          "anyOf": [
+            "options_from_task_data_var:natureza_da_declaracao"
+          ]
         },
         "tipoConhecimento": {
           "type": "string",
-          "title": "Tipo do Conhecimento"
+          "title": "Tipo do Conhecimento",
+          "anyOf": [
+            "options_from_task_data_var:tipo_conhecimento"
+          ]
         },
         "tipoDeclaracao": {
           "type": "string",
-          "title": "Tipo Declaração"
+          "title": "Tipo Declaração",
+          "anyOf": [
+            "options_from_task_data_var:tipo_declaracao"
+          ]
         },
         "paisDestino": {
           "type": "string",

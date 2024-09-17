@@ -5,9 +5,9 @@
     "numero_due": "12345678910",
     "data_embarque": "2024-06-05",
     "data_averbacao": "2024-06-05",
-    "naturezaDeclaracao": "{\"id\":0,\"nome_fantasia\":\"Exportação Direta\"}",
-    "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
-    "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}",
+    "naturezaDeclaracao": "0",
+    "tipoConhecimento": "10",
+    "tipoDeclaracao": "2",
     "numero_registro": "546654",
     "data_declaracao": "2024-08-20",
     "data_registro": "2024-08-20",
@@ -50,6 +50,92 @@
     {
       "value": "RR",
       "label": "RR - Roraima"
+    }
+  ],
+  "natureza_da_declaracao": [
+    {
+      "value": "",
+      "label": ""
+    },
+    {
+      "value": "0",
+      "label": "Exportação Direta"
+    },
+    {
+      "value": "1",
+      "label": "Exportação Indireta"
+    }
+  ],
+  "tipo_conhecimento": [
+    {
+      "value": "",
+      "label": ""
+    },
+    {
+      "value": "1",
+      "label": "AWB"
+    },
+    {
+      "value": "2",
+      "label": "MAWB"
+    },
+    {
+      "value": "3",
+      "label": "HAWB"
+    },
+    {
+      "value": "4",
+      "label": "COMAT"
+    },
+    {
+      "value": "6",
+      "label": "R. EXPRESSAS"
+    },
+    {
+      "value": "7",
+      "label": "ETIQ. REXPRESSAS"
+    },
+    {
+      "value": "8",
+      "label": "HR. EXPRESSAS"
+    },
+    {
+      "value": "9",
+      "label": "AV7"
+    },
+    {
+      "value": "10",
+      "label": "BL"
+    },
+    {
+      "value": "11",
+      "label": "MBL"
+    },
+    {
+      "value": "12",
+      "label": "HBL"
+    },
+    {
+      "value": "13",
+      "label": "CRT"
+    }
+  ],
+  "tipo_declaracao": [
+    {
+      "value": "",
+      "label": ""
+    },
+    {
+      "value": "0",
+      "label": "Declaração de Exportação"
+    },
+    {
+      "value": "1",
+      "label": "Declaração Simplificada de Exportação"
+    },
+    {
+      "value": "2",
+      "label": "Declaração Única de Exportação"
     }
   ]
 }

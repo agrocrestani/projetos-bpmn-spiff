@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
-  <bpmn:process id="Process_gera_due_y29b60r" isExecutable="true">
+  <bpmn:process id="Process_gera_due_graos" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
@@ -91,7 +91,6 @@ del(rsp)</spiffworkflow:postScript>
             <spiffworkflow:property name="formJsonSchemaFilename" value="complementa-due-schema.json" />
             <spiffworkflow:property name="formUiSchemaFilename" value="complementa-due-uischema.json" />
           </spiffworkflow:properties>
-          <spiffworkflow:postScript />
           <spiffworkflow:preScript>if due['entidade'] == "1":
     entidade = "{\"id\":1,\"nome_fantasia\":\"FAZENDA PROMISSAO\",\"cnpj\":\"09.262.185/0002-81\"}"
 elif due['entidade'] == "2":
@@ -166,9 +165,9 @@ entidade = json.loads(formDue['entidade'])
 numero_due = formDue['numero_due']
 data_registro = formDue['data_registro']
 data_averbacao = formDue['data_averbacao']
-naturezaDeclaracao = json.loads(formDue['naturezaDeclaracao'])
-tipoConhecimento =  json.loads(formDue['tipoConhecimento'])
-tipoDeclaracao = json.loads(formDue['tipoDeclaracao'])
+naturezaDeclaracao = formDue['naturezaDeclaracao']
+tipoConhecimento =  formDue['tipoConhecimento']
+tipoDeclaracao = formDue['tipoDeclaracao']
 
 connection = {
     "address": "172.20.1.4",
@@ -203,9 +202,9 @@ query = f"""
             '{data_registro}', 
             '{data_registro}', 
             '{data_averbacao}', 
-            {naturezaDeclaracao['id']}, 
-            {tipoConhecimento['id']}, 
-            {tipoDeclaracao['id']})
+            {naturezaDeclaracao}, 
+            {tipoConhecimento}, 
+            {tipoDeclaracao})
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
@@ -365,7 +364,7 @@ del(duesSap)
     </bpmn:extensionElements>
   </bpmn:signal>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_gera_due_y29b60r">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_gera_due_graos">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>

@@ -1,5 +1,13 @@
 {
+    "correlation_keys": null,
+    "correlation_properties": null,
     "data_store_specifications": {},
     "description": "",
-    "display_name": "Gr\u00e3os"
+    "display_name": "Gr\u00e3os",
+    "messages": {
+        "ConsultaDue": {
+            "correlation_properties": {},
+            "schema": {}
+        }
+    }
 }
