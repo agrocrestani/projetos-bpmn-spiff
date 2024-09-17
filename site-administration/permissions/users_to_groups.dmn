@@ -282,7 +282,7 @@
           <text>"emerson.leandro@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1xdgu24">
-          <text>"Querencia_Almoxarifado"</text>
+          <text>"Matriz_ComercialAlgodao"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0vliomv">
@@ -954,17 +954,6 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0aukvh3">
           <text>"Matriz_ComercialAlgodao"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0907fgp">
-        <inputEntry id="UnaryTests_0gn55o8">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0pv1t2m">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0sf7wem">
-          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>

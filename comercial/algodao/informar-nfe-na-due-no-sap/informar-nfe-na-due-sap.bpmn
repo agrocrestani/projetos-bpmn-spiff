@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:collaboration id="Collaboration_08y7n4">
-    <bpmn:participant id="Participant_0k6ywnt" name="Matriz_ComercialAlgodao" processRef="Process_p5ff026" />
+    <bpmn:participant id="Participant_0k6ywnt" processRef="Process_p5ff026" />
     <bpmn:correlationKey id="CorrelationKey_0kgbqt5" name="MainCorrelationKey" />
   </bpmn:collaboration>
   <bpmn:process id="Process_p5ff026" isExecutable="true">
@@ -235,6 +235,7 @@ retorno_gera_due = "SUCESSO"</bpmn:script>
           <spiffworkflow:property name="formJsonSchemaFilename" value="completa-due-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="completa-due-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:preScript></spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_10nmnq5</bpmn:incoming>
       <bpmn:outgoing>Flow_0curdye</bpmn:outgoing>
@@ -703,7 +704,6 @@ Hana(connection).executeDb(query)
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_08y7n4">
       <bpmndi:BPMNShape id="Participant_0k6ywnt_di" bpmnElement="Participant_0k6ywnt" isHorizontal="true">
         <dc:Bounds x="-770" y="-80" width="3248" height="558" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="SE001">
         <dc:Bounds x="-698" y="132" width="36" height="36" />

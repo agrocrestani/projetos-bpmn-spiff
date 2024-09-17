@@ -141,6 +141,20 @@
           <text>"/can-run-privileged-script/*"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1f1ivd3">
+        <inputEntry id="UnaryTests_16ope0l">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0p4d22m">
+          <text>"everybody"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0247tar">
+          <text>["read"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rv4cuf">
+          <text>"/process-data/confidential/*"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0swu709">
         <inputEntry id="UnaryTests_0i3obt6">
           <text></text>
@@ -275,10 +289,24 @@
           <text>"Matriz_ComercialAlgodao"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1yb2l97">
-          <text>["all", "DENY:update", "DENY:create", "DENY:delete", "DENY:read"]</text>
+          <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15v8h4x">
-          <text>"PM:comercial:algodao/informar-nfe-na-due-no-sap"</text>
+          <text>"PG:comercial:algodao"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tdsxgw">
+        <inputEntry id="UnaryTests_1s12xo5">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1llk50t">
+          <text>"Matriz_ComercialAlgodao"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1l91jjk">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hosn20">
+          <text>"BASIC"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_11wov95">
