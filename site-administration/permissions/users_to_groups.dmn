@@ -703,17 +703,6 @@
           <text>"SaoCarlos_Almoxarifado"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1sd6fqt">
-        <inputEntry id="UnaryTests_1de4bi8">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0fymc6r">
-          <text>"willian.santana@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0nekfvq">
-          <text>"SaoCarlos_Producao"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1m169vy">
         <inputEntry id="UnaryTests_0yy7cd9">
           <text></text>
@@ -725,17 +714,6 @@
           <text>"SaoCarlos_Aprovador"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_00epaw1">
-        <inputEntry id="UnaryTests_17e4rhg">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_02rj5gs">
-          <text>"willyans.oliveira@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0xymhso">
-          <text>"SaoCarlos_Producao"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1cxe4y4">
         <inputEntry id="UnaryTests_15kpsls">
           <text></text>
@@ -745,6 +723,28 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_06gz5xx">
           <text>"SaoCarlos_Gerente"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0trcp1x">
+        <inputEntry id="UnaryTests_0il3k3a">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qe6xsl">
+          <text>"roobson.kennedy@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09usabd">
+          <text>"SaoCarlos_Producao"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04y9y0x">
+        <inputEntry id="UnaryTests_09e6y03">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14s9p73">
+          <text>"marcos.godoy@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_12xm5bf">
+          <text>"SaoCarlos_Producao"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1ukgobj">
