@@ -203,7 +203,7 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># Erro na Consulta da DUE
 
-Por favor verificar a NFe de chave: {{keynfe}}.
+Por favor verificar a NFe de chave: **{{keynfe}}**.
 Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
 
 **OBS: Caso a nota esteja válida, você pode tentar novamente clicando no botão "Continuar" ou no botão "Encerrar Processo" para finalizar.**</spiffworkflow:instructionsForEndUser>
