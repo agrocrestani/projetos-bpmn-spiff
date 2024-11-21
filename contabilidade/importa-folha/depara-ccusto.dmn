@@ -118,7 +118,7 @@
           <text>"12303"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1w6rkq5">
-          <text>"QUEMEC"</text>
+          <text>"QUEPRO"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_09pageu">
@@ -154,7 +154,7 @@
           <text>"12306"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1kaqxqf">
-          <text>"FAZDIR"</text>
+          <text>"Hectares"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0npzp97">
@@ -274,7 +274,7 @@
           <text>"12303"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1r2xh8k">
-          <text>"TGAMEC"</text>
+          <text>"TGAPRO"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1s7u5pi">
@@ -346,7 +346,7 @@
           <text>"12303"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0in7iag">
-          <text>"TGAMEC"</text>
+          <text>"TGAPRO"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0s0mxqi">
@@ -418,7 +418,7 @@
           <text>"12303"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1c7ufgd">
-          <text>"CJOMEC"</text>
+          <text>"CJOPRO"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0kvq5b9">
@@ -490,7 +490,7 @@
           <text>"12303"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1moez78">
-          <text>"BRAMEC"</text>
+          <text>"BRAPRO"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0m00ly5">

@@ -34,6 +34,7 @@
         "naturezaDeclaracao": {
           "type": "string",
           "title": "Natureza da Declaração",
+          "default": "1",
           "anyOf": [
             "options_from_task_data_var:natureza_da_declaracao"
           ]
@@ -41,6 +42,7 @@
         "tipoConhecimento": {
           "type": "string",
           "title": "Tipo do Conhecimento",
+          "default": "10",
           "anyOf": [
             "options_from_task_data_var:tipo_conhecimento"
           ]
@@ -48,6 +50,7 @@
         "tipoDeclaracao": {
           "type": "string",
           "title": "Tipo Declaração",
+          "default": "2",
           "anyOf": [
             "options_from_task_data_var:tipo_declaracao"
           ]

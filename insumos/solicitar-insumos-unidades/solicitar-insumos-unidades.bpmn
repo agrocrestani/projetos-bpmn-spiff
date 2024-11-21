@@ -816,7 +816,7 @@ payload = {
     "SequenceCode": -2,
     "SequenceModel": "39",
     "BPL_IDAssignedToInvoice": unidade,
-    "U_ChaveAcesso": "",
+    "U_ChaveAcesso": chaveAcesso,
     "TaxDate": DocDate[0:10],
     "DocumentsOwner": OwnerCode,
     "SalesPersonCode": SlpCode,

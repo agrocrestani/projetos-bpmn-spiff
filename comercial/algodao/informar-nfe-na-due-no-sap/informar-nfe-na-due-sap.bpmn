@@ -267,8 +267,6 @@ paisDestino = json.loads(formDue['paisDestino'])
 entidade = json.loads(formDue['entidade'])
 numero_due = formDue['numero_due']
 numero_conhecimento = formDue['numero_conhecimento']
-numero_registro = formDue['numero_registro']
-data_registro = formDue['data_registro']
 data_declaracao = formDue['data_declaracao']
 data_averbacao = formDue['data_averbacao']
 data_conhecimento = formDue['data_conhecimento']
@@ -291,11 +289,9 @@ query = f"""
             INSERT INTO {baseSap}."DeclaracaoExportacao"
             ("EntidadeId", 
             "NumeroDeclaracao", 
-            "NumeroRegistro", 
             "NumeroConhecimento", 
             "PaisDestino", 
             "DataDeclaracao", 
-            "DataRegistro", 
             "DataConhecimento", 
             "DataAverbacao", 
             "NaturezaId", 
@@ -306,11 +302,9 @@ query = f"""
             VALUES(
             {entidade['id']}, 
             '{numero_due}', 
-            '{numero_registro}',  
             '{numero_conhecimento}',  
             '{paisDestino['id']}', 
             '{data_declaracao}',  
-            '{data_registro}', 
             '{data_conhecimento}', 
             '{data_averbacao}', 
             {naturezaDeclaracao}, 

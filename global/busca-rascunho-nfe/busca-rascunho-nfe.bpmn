@@ -48,6 +48,7 @@ outrosItens = []</spiffworkflow:preScript>
     statusCode = rsp['http_status']
     if statusCode == 200:
         nfeDraft = rsp['body']['value'][0] 
+        # esbocoStatus = rsp['body']['value']['DocumentStatus']
         nfeDraftItems = nfeDraft['DocumentLines']
 except: 
     statusCode = 500
@@ -170,6 +171,9 @@ del (i)</bpmn:script>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="852" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0nm5ti0_di" bpmnElement="Activity_0qpzdpu">
         <dc:Bounds x="269" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -199,9 +203,6 @@ del (i)</bpmn:script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_08ysbni_di" bpmnElement="Gateway_08ysbni" isMarkerVisible="true">
         <dc:Bounds x="435" y="265" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="852" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_12okzxt_di" bpmnElement="Event_1dm1dft">
         <dc:Bounds x="322" y="199" width="36" height="36" />

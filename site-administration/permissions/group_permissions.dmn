@@ -26,6 +26,20 @@
 </text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0aukt8b">
+        <inputEntry id="UnaryTests_1e530sr">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ukjtst">
+          <text>"support"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kfhy1k">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lvmezl">
+          <text>"SUPPORT"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0vxd5xq">
         <description>everybody group has basic access to the system.</description>
         <inputEntry id="UnaryTests_18ra8iv">
@@ -603,20 +617,6 @@
           <text>"PM:compras/solicitacao-compras-cantina"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0g04wvp">
-        <inputEntry id="UnaryTests_17givv3">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1oonvxb">
-          <text>"Curupai_Administrativo"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_11njzfl">
-          <text>["start"]</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0xf1zp2">
-          <text>"/can-run-privileged-script/*"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0b77ue4">
         <inputEntry id="UnaryTests_1t1zpwa">
           <text></text>
@@ -894,7 +894,7 @@
           <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0z7fq3o">
-          <text>"PG:insumos/solicitar-insumos-unidades"</text>
+          <text>"PM:insumos/solicitar-insumos-unidades"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1at62fi">
@@ -1009,20 +1009,6 @@
           <text>"BASIC"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0emmrmj">
-        <inputEntry id="UnaryTests_0rybvti">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1suao6k">
-          <text>"Matriz_Gerencia"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_046zhbd">
-          <text>["all"]</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1ngom6f">
-          <text>"/can-run-privileged-script/*"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1xljxog">
         <inputEntry id="UnaryTests_0ut9qaa">
           <text></text>
@@ -1105,6 +1091,20 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0ihw8av">
           <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_166ipvx">
+        <inputEntry id="UnaryTests_0haolch">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0buczaf">
+          <text>"Matriz_Administrativo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xpa2zz">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03m0ouq">
+          <text>"SUPPORT"</text>
         </outputEntry>
       </rule>
     </decisionTable>

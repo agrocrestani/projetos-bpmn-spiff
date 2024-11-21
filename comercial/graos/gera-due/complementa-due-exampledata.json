@@ -5,9 +5,9 @@
     "numero_due": "12345678910",
     "data_embarque": "2024-06-05",
     "data_averbacao": "2024-06-05",
-    "naturezaDeclaracao": null,
-    "tipoConhecimento": null,
-    "tipoDeclaracao": null
+    "naturezaDeclaracao": "1",
+    "tipoConhecimento": "10",
+    "tipoDeclaracao": "2"
   },
   "natureza_da_declaracao": [
     {

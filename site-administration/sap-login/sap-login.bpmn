@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:process id="Process_login_sap_s0chrgk" isExecutable="true">
-    <bpmn:sequenceFlow id="Flow_0sjbpag" sourceRef="StartEvent_1" targetRef="Activity_12rivqi" />
+    <bpmn:sequenceFlow id="Flow_0sjbpag" sourceRef="StartEvent_1" targetRef="Gateway_1hyuyve" />
     <bpmn:serviceTask id="Activity_12rivqi" name="Loga no SAP">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>url = "https://172.20.1.9:50000/b1s/v1/Login"
@@ -30,20 +30,20 @@ headers = {
 body = response['body']
 status = response['http_status']</spiffworkflow:postScript>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0sjbpag</bpmn:incoming>
+      <bpmn:incoming>Flow_13brbcg</bpmn:incoming>
       <bpmn:outgoing>Flow_1egjosn</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:endEvent id="Event_1la0phd">
       <bpmn:incoming>Flow_1q1dbcs</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1egjosn" sourceRef="Activity_12rivqi" targetRef="Activity_1ngczyk" />
+    <bpmn:sequenceFlow id="Flow_1egjosn" sourceRef="Activity_12rivqi" targetRef="Gateway_13z1ch3" />
     <bpmn:sequenceFlow id="Flow_1q1dbcs" sourceRef="Activity_1ngczyk" targetRef="Event_1la0phd" />
     <bpmn:scriptTask id="Activity_1ngczyk" name="Pega SessionId">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>SessionId = body["SessionId"]</spiffworkflow:preScript>
         <spiffworkflow:postScript />
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1egjosn</bpmn:incoming>
+      <bpmn:incoming>Flow_0lfch1x</bpmn:incoming>
       <bpmn:outgoing>Flow_1q1dbcs</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1nni45t">
         <bpmn:targetRef>DataStoreReference_1e0prfh</bpmn:targetRef>
@@ -59,48 +59,112 @@ saplogin = [
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_0sjbpag</bpmn:outgoing>
     </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="Gateway_1hyuyve">
+      <bpmn:incoming>Flow_0sjbpag</bpmn:incoming>
+      <bpmn:incoming>Flow_19bd3z1</bpmn:incoming>
+      <bpmn:outgoing>Flow_13brbcg</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_13brbcg" sourceRef="Gateway_1hyuyve" targetRef="Activity_12rivqi" />
+    <bpmn:exclusiveGateway id="Gateway_13z1ch3" default="Flow_0lfch1x">
+      <bpmn:incoming>Flow_1egjosn</bpmn:incoming>
+      <bpmn:outgoing>Flow_0lfch1x</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1owrdgp</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0lfch1x" sourceRef="Gateway_13z1ch3" targetRef="Activity_1ngczyk" />
+    <bpmn:sequenceFlow id="Flow_1owrdgp" name="Se não logar" sourceRef="Gateway_13z1ch3" targetRef="Gateway_08miuwa">
+      <bpmn:conditionExpression>status != 200</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:boundaryEvent id="Event_0rlcbyx" attachedToRef="Activity_12rivqi">
+      <bpmn:outgoing>Flow_1oji7s3</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1qm9xi7" errorRef="Error_Login" />
+    </bpmn:boundaryEvent>
+    <bpmn:exclusiveGateway id="Gateway_08miuwa">
+      <bpmn:incoming>Flow_1owrdgp</bpmn:incoming>
+      <bpmn:incoming>Flow_1oji7s3</bpmn:incoming>
+      <bpmn:outgoing>Flow_19bd3z1</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_19bd3z1" sourceRef="Gateway_08miuwa" targetRef="Gateway_1hyuyve" />
+    <bpmn:sequenceFlow id="Flow_1oji7s3" sourceRef="Event_0rlcbyx" targetRef="Gateway_08miuwa" />
   </bpmn:process>
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
+  <bpmn:error id="Error_Login" name="Error_Login">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>statusLogin</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_login_sap_s0chrgk">
       <bpmndi:BPMNShape id="Activity_0mqr8r5_di" bpmnElement="Activity_12rivqi">
-        <dc:Bounds x="350" y="47" width="100" height="80" />
+        <dc:Bounds x="430" y="47" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1la0phd_di" bpmnElement="Event_1la0phd">
-        <dc:Bounds x="742" y="69" width="36" height="36" />
+        <dc:Bounds x="902" y="69" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0zol1bk_di" bpmnElement="Activity_1ngczyk">
-        <dc:Bounds x="530" y="46" width="100" height="80" />
+        <dc:Bounds x="720" y="47" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_1e0prfh_di" bpmnElement="DataStoreReference_1e0prfh">
-        <dc:Bounds x="565" y="-85" width="50" height="50" />
+        <dc:Bounds x="825" y="-65" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="568" y="-109" width="47" height="14" />
+          <dc:Bounds x="828" y="-89" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0j77do5_di" bpmnElement="StartEvent_1">
         <dc:Bounds x="212" y="69" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1hyuyve_di" bpmnElement="Gateway_1hyuyve" isMarkerVisible="true">
+        <dc:Bounds x="315" y="62" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_13z1ch3_di" bpmnElement="Gateway_13z1ch3" isMarkerVisible="true">
+        <dc:Bounds x="595" y="62" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_08miuwa_di" bpmnElement="Gateway_08miuwa" isMarkerVisible="true">
+        <dc:Bounds x="475" y="225" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0egk955_di" bpmnElement="Event_0rlcbyx">
+        <dc:Bounds x="482" y="109" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0sjbpag_di" bpmnElement="Flow_0sjbpag">
         <di:waypoint x="248" y="87" />
-        <di:waypoint x="350" y="87" />
+        <di:waypoint x="315" y="87" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1egjosn_di" bpmnElement="Flow_1egjosn">
-        <di:waypoint x="450" y="87" />
-        <di:waypoint x="490" y="87" />
-        <di:waypoint x="490" y="86" />
-        <di:waypoint x="530" y="86" />
+        <di:waypoint x="530" y="87" />
+        <di:waypoint x="595" y="87" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1q1dbcs_di" bpmnElement="Flow_1q1dbcs">
-        <di:waypoint x="630" y="86" />
-        <di:waypoint x="686" y="86" />
-        <di:waypoint x="686" y="87" />
-        <di:waypoint x="742" y="87" />
+        <di:waypoint x="820" y="87" />
+        <di:waypoint x="902" y="87" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_1nni45t_di" bpmnElement="DataOutputAssociation_1nni45t">
-        <di:waypoint x="583" y="46" />
-        <di:waypoint x="588" y="-35" />
+        <di:waypoint x="796" y="47" />
+        <di:waypoint x="834" y="-15" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13brbcg_di" bpmnElement="Flow_13brbcg">
+        <di:waypoint x="365" y="87" />
+        <di:waypoint x="430" y="87" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lfch1x_di" bpmnElement="Flow_0lfch1x">
+        <di:waypoint x="645" y="87" />
+        <di:waypoint x="720" y="87" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1owrdgp_di" bpmnElement="Flow_1owrdgp">
+        <di:waypoint x="620" y="112" />
+        <di:waypoint x="620" y="250" />
+        <di:waypoint x="525" y="250" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="628" y="178" width="64" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19bd3z1_di" bpmnElement="Flow_19bd3z1">
+        <di:waypoint x="475" y="250" />
+        <di:waypoint x="340" y="250" />
+        <di:waypoint x="340" y="112" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1oji7s3_di" bpmnElement="Flow_1oji7s3">
+        <di:waypoint x="500" y="145" />
+        <di:waypoint x="500" y="225" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

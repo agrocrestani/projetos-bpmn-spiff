@@ -7,7 +7,6 @@
       "type": "object",
       "required": [
         "numero_due",
-        "data_registro",
         "data_averbacao",
         "entidade",
         "naturezaDeclaracao",
@@ -18,7 +17,6 @@
         "local",
         "data_declaracao",
         "data_conhecimento",
-        "numero_registro",
         "numero_conhecimento"
       ],
       "properties": {
@@ -43,6 +41,7 @@
         "naturezaDeclaracao": {
           "type": "string",
           "title": "Natureza da Declaração",
+          "default": "0",
           "anyOf": [
             "options_from_task_data_var:natureza_da_declaracao"
           ]
@@ -50,6 +49,7 @@
         "tipoConhecimento": {
           "type": "string",
           "title": "Tipo do Conhecimento",
+          "default": "10",
           "anyOf": [
             "options_from_task_data_var:tipo_conhecimento"
           ]
@@ -57,6 +57,7 @@
         "tipoDeclaracao": {
           "type": "string",
           "title": "Tipo Declaração",
+          "default": "2",
           "anyOf": [
             "options_from_task_data_var:tipo_declaracao"
           ]

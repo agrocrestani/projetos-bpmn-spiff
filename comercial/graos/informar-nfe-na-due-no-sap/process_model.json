@@ -3,7 +3,12 @@
     "display_name": "Informar NFe na DUE no SAP",
     "exception_notification_addresses": [],
     "fault_or_suspend_on_exception": "fault",
-    "metadata_extraction_paths": null,
+    "metadata_extraction_paths": [
+        {
+            "key": "keynfe",
+            "path": ""
+        }
+    ],
     "primary_file_name": "informar-nfe-na-due-no-sap.bpmn",
     "primary_process_id": "Process_informar_nfe_na_due_no_sap_s4et3dg"
 }

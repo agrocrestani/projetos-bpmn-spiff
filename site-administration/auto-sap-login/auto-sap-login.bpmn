@@ -9,7 +9,7 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_0r3w0w7">
-        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">"R/PT357M"</bpmn:timeCycle>
+        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">"R/PT330M"</bpmn:timeCycle>
       </bpmn:timerEventDefinition>
     </bpmn:startEvent>
     <bpmn:callActivity id="Activity_0qpzdpu" name="Example manual task" calledElement="Process_login_sap_s0chrgk">

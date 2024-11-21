@@ -7,6 +7,10 @@
         {
             "key": "due",
             "path": ""
+        },
+        {
+            "key": "numero_due",
+            "path": ""
         }
     ],
     "primary_file_name": "informar-nfe-na-due-sap.bpmn",
