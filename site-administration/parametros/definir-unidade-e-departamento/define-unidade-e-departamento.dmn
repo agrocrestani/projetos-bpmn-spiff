@@ -436,6 +436,23 @@
           <text>"adelar.soares@agrocrestani.com.br"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1bg3gg1">
+        <inputEntry id="UnaryTests_1jjqg3s">
+          <text>"maria.angela"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01dwl13">
+          <text>"Colorado"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_098kx68">
+          <text>"Administrativo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02mtk1v">
+          <text>"adelar.soares@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jkg4wz">
+          <text>"adelar.soares@agrocrestani.com.br"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
