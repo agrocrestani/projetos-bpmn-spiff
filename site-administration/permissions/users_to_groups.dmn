@@ -1096,7 +1096,7 @@
           <text>"maria.angela@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ecurr5">
-          <text>"Colorado_Admnistrativo"</text>
+          <text>"Colorado_Administrativo"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1c6b29r">
@@ -1126,10 +1126,10 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1j2i9bh">
-          <text>"maria.angela@agrocrestani.com.br"</text>
+          <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0r4frtc">
-          <text>"Colorado_Deposito_Insumos"</text>
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1df21xv">
