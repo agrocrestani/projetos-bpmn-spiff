@@ -24,6 +24,18 @@
           "quantidade": {
             "type": "number",
             "title": "Quantidade"
+          },
+          "dosagem": {
+            "type": "string",
+            "title": "Dose aplicação"
+          },
+          "tipoAplicacao": {
+            "type": "string",
+            "title": "Tipo Aplicação",
+            "enum": [
+              "Terrestre",
+              "Aerea"
+            ]
           }
         }
       }

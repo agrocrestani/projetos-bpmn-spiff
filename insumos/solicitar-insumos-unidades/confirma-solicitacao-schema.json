@@ -21,7 +21,19 @@
             "quantidade": {
             "type": "number",
             "title": "Quantidade"
-            }
+            },
+          "dosagem": {
+            "type": "string",
+            "title": "Dose aplicação"
+          },
+          "tipoAplicacao": {
+            "type": "string",
+            "title": "Tipo Aplicação",
+            "enum": [
+              "Terrestre",
+              "Aerea"
+            ]
+          }
         }
       }
     },
@@ -31,6 +43,13 @@
       "disabled": "True",
       "anyOf": [
         "options_from_task_data_var:n_filiais"
+      ]
+    },
+    "safra": {
+      "title": "Selecione a safra",
+      "type": "string",
+      "anyOf": [
+        "options_from_task_data_var:n_safras"
       ]
     }
   }

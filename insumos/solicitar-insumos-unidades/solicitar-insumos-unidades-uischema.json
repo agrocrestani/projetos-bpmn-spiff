@@ -10,6 +10,16 @@
             "sm": 2,
             "md": 2,
             "lg": 2
+          },
+          "dosagem": {
+            "sm": 2,
+            "md": 3,
+            "lg": 3
+          },
+          "tipoAplicacao": {
+            "sm": 2,
+            "md": 3,
+            "lg": 3
           }
         }
       ],
