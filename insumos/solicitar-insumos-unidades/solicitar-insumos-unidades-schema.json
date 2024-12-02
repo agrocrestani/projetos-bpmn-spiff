@@ -14,7 +14,9 @@
         "type": "object",
         "required": [
           "insumo",
-          "quantidade"
+          "quantidade",
+          "dosagem",
+          "tipoAplicacao"
         ],
         "properties": {
           "insumo": {

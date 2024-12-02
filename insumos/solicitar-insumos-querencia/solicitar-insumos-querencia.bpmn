@@ -874,11 +874,19 @@ for i in itens:
     tr:hover {
         background-color: #e0f7fa; /* Azul claro ao passar o mouse */
     }
+    @media screen and (max-width: 600px) {
+        table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+    }
 &lt;/style&gt;
 
 ## Informações para Emissão da Receita
 
-**Unidade destino:** {{localSolicitacao.upper()}}
+{% if erro != 999 %}
+**Unidade destino:** {{ localSolicitacao.upper() }}
 
 &lt;table&gt;
     &lt;thead&gt;
@@ -891,35 +899,41 @@ for i in itens:
         &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-        {% for i in items %}
+        {% for item in items %}
         &lt;tr&gt;
-            &lt;td&gt;{{ i['ItemName'] }}&lt;/td&gt;
-            &lt;td style="text-align:right;"&gt;{{ i['Quantity'] }}&lt;/td&gt;
-            &lt;td&gt;{{ i['Deposito'] }}&lt;/td&gt;
-            &lt;td&gt;{{ i['Dosagem'] }}&lt;/td&gt;
-            &lt;td&gt;{{ i['TipoAplicacao'] }}&lt;/td&gt;
+            &lt;td&gt;{{ item['ItemName'] }}&lt;/td&gt;
+            &lt;td&gt;{{ item['Quantity'] }}&lt;/td&gt;
+            &lt;td&gt;{{ item['Deposito'] }}&lt;/td&gt;
+            &lt;td&gt;{{ item['Dosagem']  }}&lt;/td&gt;
+            &lt;td&gt;{{ item['TipoAplicacao'] }}&lt;/td&gt;
         &lt;/tr&gt;
         {% endfor %}
     &lt;/tbody&gt;
 &lt;/table&gt;
 
 ### Instrução:
-
 Você deve enviar essas informações para o responsável pela emissão da receita.
 
-
+{% else %}
+### Instrução:
+Não foi informado Dosagem e/ou Tipo de Aplicação para essa solicitação.
+{% endif %}
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:preScript>items = []
-for s in solicitacao:
-  items.append(
-    {
-      "ItemName": s["insumo"]["ItemName"],
-      "Quantity": s["quantidade"],
-      "Deposito": s["insumo"]["WhsCode"],
-      "Dosagem": s["dosagem"],
-      "TipoAplicacao": s["tipoAplicacao"]
-    }
-  )</spiffworkflow:preScript>
+try:
+  for s in solicitacao:
+    items.append(
+      {
+        "ItemName": s["insumo"]["ItemName"],
+        "Quantity": s["quantidade"],
+        "Deposito": s["insumo"]["WhsCode"],
+        "Dosagem": s["dosagem"],
+        "TipoAplicacao": s["tipoAplicacao"]
+      }
+    )
+except:
+  erro = 999
+  mensagem = "Não foi informado dosagem e/ou aplicação na solicitação"</spiffworkflow:preScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0a1sn56</bpmn:incoming>
       <bpmn:outgoing>Flow_04lt51m</bpmn:outgoing>
