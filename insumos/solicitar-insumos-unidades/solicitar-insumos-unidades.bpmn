@@ -439,7 +439,7 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:incoming>Flow_0ct14vj</bpmn:incoming>
       <bpmn:outgoing>Flow_0a77a64</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_0juamh1">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT20S"</bpmn:timeDuration>
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT1M"</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
     <bpmn:scriptTask id="Activity_1pav2g7" name="Busca Chave de acesso">
