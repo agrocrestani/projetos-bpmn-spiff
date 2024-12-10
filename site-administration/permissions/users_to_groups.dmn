@@ -1143,6 +1143,17 @@
           <text>"Colorado_Almoxarifado"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0z2eqki">
+        <inputEntry id="UnaryTests_0r411uu">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1oidmnn">
+          <text>"michele.sousa@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jl17el">
+          <text>"SaoCarlos_Aprovador"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
