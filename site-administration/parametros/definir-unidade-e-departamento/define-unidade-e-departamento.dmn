@@ -453,6 +453,23 @@
           <text>"adelar.soares@agrocrestani.com.br"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1rcjzzm">
+        <inputEntry id="UnaryTests_1c78ivu">
+          <text>"michele.sousa"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1bpb1qd">
+          <text>"SaoCarlos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0iridzt">
+          <text>"Administrativo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ijhmdo">
+          <text>"roobson.kennedy@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0a4acp1">
+          <text>"roobson.kennedy@agrocrestani.com.br"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
