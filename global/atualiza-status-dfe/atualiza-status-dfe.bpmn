@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:process id="Process_atualiza_status_dfe_u5lx4sv" isExecutable="true">
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
+    <bpmn:scriptTask id="Activity_0qpzdpu" name="Busca notas no DFe">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ktdc2c</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+            SELECT 
+                "Id", 
+                "DocTypeId", 
+                "KeyNfe"
+            FROM 
+                {baseSap}."DocReceived" 
+            WHERE 
+                "StatusId" NOT IN (4,8,15,17) AND
+                ("ParceiroXml" LIKE ('03262185%') OR
+                "ParceiroXml" LIKE ('08944169%') OR
+                "ParceiroXml" LIKE ('26250360%'))
+            order by 
+                "Id"
+          """
+notas = Hana(connection).selectDb(query)
+
+totalRegistros = len(notas)
+contador = 0</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:endEvent id="Event_0xyf85x">
+      <bpmn:incoming>Flow_0ti4enn</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:subProcess id="Activity_0bl6x0j">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript>del(nota)</spiffworkflow:postScript>
+        <spiffworkflow:instructionsForEndUser>## Processando nota {{contador }} de {{totalRegistros }}</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript>contador += 1</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ktdc2c</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ti4enn</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" spiffworkflow:scriptsOnInstances="true">
+        <bpmn:loopDataInputRef>notas</bpmn:loopDataInputRef>
+        <bpmn:loopDataOutputRef>notas</bpmn:loopDataOutputRef>
+        <bpmn:inputDataItem id="nota" name="nota" />
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="Event_0jhavg4">
+        <bpmn:outgoing>Flow_1xj3msq</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:scriptTask id="Activity_1jujsh5" name="Atualiza DFe">
+        <bpmn:extensionElements>
+          <spiffworkflow:instructionsForEndUser />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1xj3msq</bpmn:incoming>
+        <bpmn:outgoing>Flow_1wrtr1h</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+from time import sleep
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+# sleep(5)
+
+baseSap = get_secret('baseSap')
+
+if nota:
+    query_nota = f"""
+        SELECT am."DocNum", am."DocEntry" 
+        FROM {baseSap}.AC_MOVIMENTOS am 
+        WHERE am."KeyNfe" = '{nota['keynfe']}' 
+        AND am."ObjType" = {nota['doctypeid']}
+        AND am.CANCELED = 'N'
+    """
+    documento = Hana(connection).selectDb(query_nota)
+    
+    if len(documento) == 1:
+        query_update_dfe_documento = f"""
+            UPDATE {baseSap}."DocReceived" d
+            SET 
+                d."DocEntry" = {documento[0]['docentry']},
+                d."DocNum" = {documento[0]['docnum']},
+                d."StatusId" = 4,
+                d."IsDraft" = 0
+            WHERE
+                d."KeyNfe" = '{nota['keynfe']}'
+        """
+        Hana(connection).executeDb(query_update_dfe_documento)
+    else:
+        query_rascunho = f"""
+            SELECT am."DocNum", am."DocEntry" 
+            FROM {baseSap}.ODRF am 
+            WHERE am."U_ChaveAcesso" = '{nota['keynfe']}' 
+            AND am."ObjType" = {nota['doctypeid']}
+            AND o."DocStatus" = 'O'
+        """
+        rascunho = Hana(connection).selectDb(query_nota)
+        if len(rascunho) == 1:
+            query_update_dfe_rascunho = f"""
+                UPDATE {baseSap}."DocReceived" d
+                SET 
+                    d."DocEntry" = {rascunho[0]['docentry']},
+                    d."DocNum" = {rascunho[0]['docnum']},
+                    d."StatusId" = 6,
+                    d."IsDraft" = 1
+                WHERE
+                    d."KeyNfe" = '{nota['keynfe']}'
+            """
+            Hana(connection).executeDb(query_update_dfe_rascunho)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_1xj3msq" sourceRef="Event_0jhavg4" targetRef="Activity_1jujsh5" />
+      <bpmn:endEvent id="Event_1agxefr">
+        <bpmn:incoming>Flow_1wrtr1h</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_1wrtr1h" sourceRef="Activity_1jujsh5" targetRef="Event_1agxefr" />
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_1ktdc2c" sourceRef="Activity_0qpzdpu" targetRef="Activity_0bl6x0j" />
+    <bpmn:sequenceFlow id="Flow_0ti4enn" sourceRef="Activity_0bl6x0j" targetRef="Event_0xyf85x" />
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1gcrv14">
+        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">"R/2024-12-13T00:00:00-04:00/P1D"</bpmn:timeCycle>
+      </bpmn:timerEventDefinition>
+    </bpmn:startEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_atualiza_status_dfe_u5lx4sv">
+      <bpmndi:BPMNShape id="Activity_1leu1s5_di" bpmnElement="Activity_0qpzdpu">
+        <dc:Bounds x="270" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0xyf85x_di" bpmnElement="Event_0xyf85x">
+        <dc:Bounds x="882" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1qn5zaw_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0bl6x0j_di" bpmnElement="Activity_0bl6x0j" isExpanded="true">
+        <dc:Bounds x="460" y="77" width="350" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0jhavg4_di" bpmnElement="Event_0jhavg4">
+        <dc:Bounds x="500" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1y5czgd_di" bpmnElement="Activity_1jujsh5">
+        <dc:Bounds x="590" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1agxefr_di" bpmnElement="Event_1agxefr">
+        <dc:Bounds x="752" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1xj3msq_di" bpmnElement="Flow_1xj3msq">
+        <di:waypoint x="536" y="177" />
+        <di:waypoint x="590" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wrtr1h_di" bpmnElement="Flow_1wrtr1h">
+        <di:waypoint x="690" y="177" />
+        <di:waypoint x="752" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ktdc2c_di" bpmnElement="Flow_1ktdc2c">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="460" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ti4enn_di" bpmnElement="Flow_0ti4enn">
+        <di:waypoint x="810" y="177" />
+        <di:waypoint x="882" y="177" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
