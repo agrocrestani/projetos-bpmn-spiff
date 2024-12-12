@@ -1,0 +1,9 @@
+{
+    "description": "Verifica se tem notas lan\u00e7adas e atualiza o status do DFe",
+    "display_name": "Atualiza Status DFe",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "atualiza-status-dfe.bpmn",
+    "primary_process_id": "Process_atualiza_status_dfe_u5lx4sv"
+}
