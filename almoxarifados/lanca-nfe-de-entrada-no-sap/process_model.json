@@ -7,10 +7,6 @@
         {
             "key": "Serial",
             "path": ""
-        },
-        {
-            "key": "chaveAcesso",
-            "path": ""
         }
     ],
     "primary_file_name": "lanca-nfe-de-entrada-no-sap.bpmn",
