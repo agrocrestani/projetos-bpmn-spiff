@@ -85,7 +85,7 @@ query = f"""
             FROM 
                 {baseSap}."OITM" T0
             WHERE 
-                t0."QryGroup5" = 'Y' AND t0."validFor" = 'Y'
+                t0."QryGroup3" = 'Y' AND t0."validFor" = 'Y'
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
@@ -169,8 +169,21 @@ del (i)</bpmn:script>
   </bpmn:error>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_busca_rascunho_nfe_og4w5n9">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="42" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="852" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0nm5ti0_di" bpmnElement="Activity_0qpzdpu">
+        <dc:Bounds x="269" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_012xzcw_di" bpmnElement="DataStoreReference_012xzcw">
+        <dc:Bounds x="395" y="35" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="397" y="92" width="47" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ojnm6k_di" bpmnElement="Activity_1yj7axo">
         <dc:Bounds x="530" y="137" width="100" height="80" />
@@ -183,27 +196,14 @@ del (i)</bpmn:script>
       <bpmndi:BPMNShape id="Gateway_1y9d1pz_di" bpmnElement="Gateway_1y9d1pz" isMarkerVisible="true">
         <dc:Bounds x="435" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="42" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_16n9880_di" bpmnElement="Gateway_16n9880" isMarkerVisible="true">
-        <dc:Bounds x="155" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_012xzcw_di" bpmnElement="DataStoreReference_012xzcw">
-        <dc:Bounds x="395" y="35" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="397" y="92" width="47" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1svxzk6_di" bpmnElement="Activity_05lbch7">
         <dc:Bounds x="130" y="290" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0nm5ti0_di" bpmnElement="Activity_0qpzdpu">
-        <dc:Bounds x="269" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_08ysbni_di" bpmnElement="Gateway_08ysbni" isMarkerVisible="true">
         <dc:Bounds x="295" y="305" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_16n9880_di" bpmnElement="Gateway_16n9880" isMarkerVisible="true">
+        <dc:Bounds x="155" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_12okzxt_di" bpmnElement="Event_1dm1dft">
         <dc:Bounds x="302" y="199" width="36" height="36" />
