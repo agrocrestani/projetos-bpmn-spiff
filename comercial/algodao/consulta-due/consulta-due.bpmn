@@ -18,41 +18,6 @@
     <bpmn:sequenceFlow id="Flow_1b0p1hu" sourceRef="Gateway_1gucul1" targetRef="Activity_0kjpb0a">
       <bpmn:conditionExpression>status_code != 200</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:scriptTask id="Activity_16xyoyk" name="Busca NFe InfoSimples">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>from AesEverywhere import aes256
-import base64
-
-url = 'https://api.infosimples.com/api/v2/consultas/receita-federal/nfe'
-
-# pkcs12_cert = str(aes256.encrypt(base64.b64encode(open("/ssh/AgroCrestani.pfx", "rb").read()).decode(),
-                                    # "QIpKCTOWkvYKMReYoi9c08DS8AUG1flXsPBsof-x"))
-# pkcs12_pass = str(aes256.encrypt("crestani", "QIpKCTOWkvYKMReYoi9c08DS8AUG1flXsPBsof-x"))
-
-# headers = {
-#     "pkcs12_cert": pkcs12_cert,
-#     "pkcs12_pass": pkcs12_pass,
-#     "token": "SEiDpm7AXh5rlGGf1w6r17lb5KCa8M51DQQzj6sy",
-#     "nfe": f"{n['keynfe']}"
-# }</spiffworkflow:preScript>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0xhlk9r</bpmn:incoming>
-      <bpmn:outgoing>Flow_04tucnh</bpmn:outgoing>
-      <bpmn:script>from connectordb.due import infosimples
-
-senha = get_secret('senhaCertificadoAgroCrestani')
-
-try:
-    nfe = infosimples(keynfe, senha)
-    nfe = json.loads(nfe)
-    status_code = nfe['code']
-    mensagem = nfe['code_message']
-except:
-    status_code = 999
-    mensagem = f'A Nota {keynfe} não teve retorno da Sefaz'
-
-del(senha)</bpmn:script>
-    </bpmn:scriptTask>
     <bpmn:exclusiveGateway id="Gateway_1gucul1" default="Flow_17izu5w">
       <bpmn:incoming>Flow_04tucnh</bpmn:incoming>
       <bpmn:outgoing>Flow_17izu5w</bpmn:outgoing>
@@ -144,7 +109,7 @@ del(nfe)</bpmn:script>
     </bpmn:exclusiveGateway>
     <bpmn:scriptTask id="Activity_0j8bn2h" name="Busca filial e entidade">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1jgbu7n</bpmn:incoming>
       <bpmn:outgoing>Flow_0ksfbgg</bpmn:outgoing>
@@ -181,7 +146,7 @@ del(oinv)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:scriptTask id="Activity_00xnjqu" name="Atualiza DueEventos">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0ksfbgg</bpmn:incoming>
       <bpmn:outgoing>Flow_1vdiw5e</bpmn:outgoing>
@@ -342,6 +307,45 @@ del(baseSap)
         </bpmn:extensionElements>
       </bpmn:messageEventDefinition>
     </bpmn:endEvent>
+    <bpmn:scriptTask id="Activity_16xyoyk" name="Busca NFe InfoSimples">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>from AesEverywhere import aes256
+import base64
+
+url = 'https://api.infosimples.com/api/v2/consultas/receita-federal/nfe'
+
+# pkcs12_cert = str(aes256.encrypt(base64.b64encode(open("/ssh/AgroCrestani.pfx", "rb").read()).decode(),
+                                    # "QIpKCTOWkvYKMReYoi9c08DS8AUG1flXsPBsof-x"))
+# pkcs12_pass = str(aes256.encrypt("crestani", "QIpKCTOWkvYKMReYoi9c08DS8AUG1flXsPBsof-x"))
+
+# headers = {
+#     "pkcs12_cert": pkcs12_cert,
+#     "pkcs12_pass": pkcs12_pass,
+#     "token": "SEiDpm7AXh5rlGGf1w6r17lb5KCa8M51DQQzj6sy",
+#     "nfe": f"{n['keynfe']}"
+# }</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0xhlk9r</bpmn:incoming>
+      <bpmn:outgoing>Flow_04tucnh</bpmn:outgoing>
+      <bpmn:script>from connectordb.due import infosimples
+
+senha = get_secret('senhaCertificadoAgroCrestani')
+
+
+nfe = infosimples(keynfe, senha)
+nfe = json.loads(nfe)
+
+# try:
+#     nfe = infosimples(keynfe, senha)
+#     nfe = json.loads(nfe)
+#     status_code = nfe['code']
+#     mensagem = nfe['code_message']
+# except:
+#     status_code = 999
+#     mensagem = f'A Nota {keynfe} não teve retorno da Sefaz'
+
+del(senha)</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:signal id="Signal_encerrar" name="Signal_encerrar">
     <bpmn:extensionElements>
@@ -354,10 +358,6 @@ del(baseSap)
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0xdcjir">
       <bpmndi:BPMNShape id="Participant_0gso1je_di" bpmnElement="Participant_0gso1je" isHorizontal="true">
         <dc:Bounds x="520" y="-590" width="1760" height="740" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1vpm1ea_di" bpmnElement="Activity_16xyoyk">
-        <dc:Bounds x="1010" y="-210" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1gucul1_di" bpmnElement="Gateway_1gucul1" isMarkerVisible="true">
@@ -419,6 +419,10 @@ del(baseSap)
       <bpmndi:BPMNShape id="BPMNShape_157pxob" bpmnElement="EE002">
         <dc:Bounds x="1202" y="72" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vpm1ea_di" bpmnElement="Activity_16xyoyk">
+        <dc:Bounds x="1020" y="-210" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1dp6vg1_di" bpmnElement="Event_0bty7hf">
         <dc:Bounds x="1062" y="22" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -435,7 +439,7 @@ del(baseSap)
         <di:waypoint x="855" y="-170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_04tucnh_di" bpmnElement="Flow_04tucnh">
-        <di:waypoint x="1110" y="-170" />
+        <di:waypoint x="1120" y="-170" />
         <di:waypoint x="1195" y="-170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17izu5w_di" bpmnElement="Flow_17izu5w">
@@ -469,7 +473,7 @@ del(baseSap)
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0xhlk9r_di" bpmnElement="Flow_0xhlk9r">
         <di:waypoint x="905" y="-170" />
-        <di:waypoint x="1010" y="-170" />
+        <di:waypoint x="1020" y="-170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12smlpu_di" bpmnElement="Flow_12smlpu">
         <di:waypoint x="1010" y="0" />
