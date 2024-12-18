@@ -331,18 +331,14 @@ url = 'https://api.infosimples.com/api/v2/consultas/receita-federal/nfe'
 
 senha = get_secret('senhaCertificadoAgroCrestani')
 
-
-nfe = infosimples(keynfe, senha)
-nfe = json.loads(nfe)
-
-# try:
-#     nfe = infosimples(keynfe, senha)
-#     nfe = json.loads(nfe)
-#     status_code = nfe['code']
-#     mensagem = nfe['code_message']
-# except:
-#     status_code = 999
-#     mensagem = f'A Nota {keynfe} não teve retorno da Sefaz'
+try:
+    nfe = infosimples(keynfe, senha)
+    nfe = json.loads(nfe)
+    status_code = nfe['code']
+    mensagem = nfe['code_message']
+except:
+    status_code = 999
+    mensagem = f'A Nota {keynfe} não teve retorno da Sefaz'
 
 del(senha)</bpmn:script>
     </bpmn:scriptTask>
