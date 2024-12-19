@@ -46,7 +46,7 @@ existe = Postgres(connection).dbSelect(query)
 nr_notas = existe[0]['count']
 
 # del(query)
-# del(connection)
+del(connection)
 # del(existe)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:exclusiveGateway id="Gateway_0gjfe6g" default="Flow_1hbc2of">
@@ -100,7 +100,8 @@ for e in eventos:
 
 contador += 1
 
-del(nfe)</bpmn:script>
+del(nfe)
+del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:exclusiveGateway id="Gateway_09prdqc" default="Flow_1jgbu7n">
       <bpmn:incoming>Flow_0c8hasv</bpmn:incoming>
