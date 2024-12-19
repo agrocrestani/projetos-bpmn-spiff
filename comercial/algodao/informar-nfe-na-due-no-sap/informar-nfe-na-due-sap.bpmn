@@ -526,21 +526,21 @@ connection = {
 
 # baseUni = "AGNEW"
 
-IdDueSap = idDueSap[0]['id']
-DocDate = nfes[0]['docdate'][0:10]
-DocNum = nfes[0]['docnum']
-SeqCode = nfes[0]['seqcode']
-Serial = nfes[0]['serial']
-SeriesStr = nfes[0]['seriesstr']
-Model = nfes[0]['model']
-ObjType = nfes[0]['objtype']
-LineNum = nfes[0]['linenum']
-ItemCode = nfes[0]['itemcode']
-ItemName = nfes[0]['itemname']
-LineTotal = nfes[0]['linetotal']
-Quantity = nfes[0]['quantity']
-KeyNFe = nfes[0]['keynfe']
-DocTotal = nfes[0]['doctotal']
+# IdDueSap = idDueSap[0]['id']
+# DocDate = nfes[0]['docdate'][0:10]
+# DocNum = nfes[0]['docnum']
+# SeqCode = nfes[0]['seqcode']
+# Serial = nfes[0]['serial']
+# SeriesStr = nfes[0]['seriesstr']
+# Model = nfes[0]['model']
+# ObjType = nfes[0]['objtype']
+# LineNum = nfes[0]['linenum']
+# ItemCode = nfes[0]['itemcode']
+# ItemName = nfes[0]['itemname']
+# LineTotal = nfes[0]['linetotal']
+# Quantity = nfes[0]['quantity']
+# KeyNFe = nfes[0]['keynfe']
+# DocTotal = nfes[0]['doctotal']
 
 
 # query = f"""
