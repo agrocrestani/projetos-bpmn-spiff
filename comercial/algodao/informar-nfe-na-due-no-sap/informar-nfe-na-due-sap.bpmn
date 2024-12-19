@@ -516,13 +516,13 @@ del(connection)</bpmn:script>
     <bpmn:scriptTask id="Activity_01njdmp" name="Busca Informações que precisa">
       <bpmn:incoming>Flow_0arcwbv</bpmn:incoming>
       <bpmn:outgoing>Flow_1ruciys</bpmn:outgoing>
-      <bpmn:script>from connectordb.oracle import Oracle
+      <bpmn:script># from connectordb.oracle import Oracle
 
-connection = {
-    "dsn": "172.20.2.2:1521/prod",  # Exemplo de DSN (IP:Porta/SID ou Service Name)
-    "user": "agnew",
-    "password": "agnew"
-}
+# connection = {
+#     "dsn": "172.20.2.2:1521/prod",  # Exemplo de DSN (IP:Porta/SID ou Service Name)
+#     "user": "agnew",
+#     "password": "agnew"
+# }
 
 # baseUni = "AGNEW"
 
