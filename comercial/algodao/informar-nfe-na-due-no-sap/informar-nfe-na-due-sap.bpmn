@@ -518,75 +518,75 @@ del(connection)</bpmn:script>
       <bpmn:outgoing>Flow_1ruciys</bpmn:outgoing>
       <bpmn:script>from connectordb.oracle import Oracle
 
-# connection = {
-#     "dsn": "172.20.2.2:1521/prod",  # Exemplo de DSN (IP:Porta/SID ou Service Name)
-#     "user": "agnew",
-#     "password": "agnew"
-# }
+connection = {
+    "dsn": "172.20.2.2:1521/prod",  # Exemplo de DSN (IP:Porta/SID ou Service Name)
+    "user": "agnew",
+    "password": "agnew"
+}
 
 # baseUni = "AGNEW"
 
-# IdDueSap = idDueSap[0]['id']
-# DocDate = nfes[0]['docdate'][0:10]
-# DocNum = nfes[0]['docnum']
-# SeqCode = nfes[0]['seqcode']
-# Serial = nfes[0]['serial']
-# SeriesStr = nfes[0]['seriesstr']
-# Model = nfes[0]['model']
-# ObjType = nfes[0]['objtype']
-# LineNum = nfes[0]['linenum']
-# ItemCode = nfes[0]['itemcode']
-# ItemName = nfes[0]['itemname']
-# LineTotal = nfes[0]['linetotal']
-# Quantity = nfes[0]['quantity']
-# KeyNFe = nfes[0]['keynfe']
-# DocTotal = nfes[0]['doctotal']
+IdDueSap = idDueSap[0]['id']
+DocDate = nfes[0]['docdate'][0:10]
+DocNum = nfes[0]['docnum']
+SeqCode = nfes[0]['seqcode']
+Serial = nfes[0]['serial']
+SeriesStr = nfes[0]['seriesstr']
+Model = nfes[0]['model']
+ObjType = nfes[0]['objtype']
+LineNum = nfes[0]['linenum']
+ItemCode = nfes[0]['itemcode']
+ItemName = nfes[0]['itemname']
+LineTotal = nfes[0]['linetotal']
+Quantity = nfes[0]['quantity']
+KeyNFe = nfes[0]['keynfe']
+DocTotal = nfes[0]['doctotal']
 
 
-# query = f"""
-#     SELECT * FROM AC_VW_NF_EXP_REMESSA WHERE DANFE_EXP LIKE '{KeyNFe}'
-# """
+query = f"""
+    SELECT * FROM AC_VW_NF_EXP_REMESSA WHERE DANFE_EXP LIKE '{KeyNFe}'
+"""
 
-# query_retorno = f"""
-#     SELECT * FROM AC_VW_NF_EXP_RETORNO WHERE DANFE_NF_EXP LIKE '{KeyNFe}'
-# """
+query_retorno = f"""
+    SELECT * FROM AC_VW_NF_EXP_RETORNO WHERE DANFE_NF_EXP LIKE '{KeyNFe}'
+"""
 
-# nf_remessas = Oracle(connection).selectDb(query)
+nf_remessas = Oracle(connection).selectDb(query)
 
-# nf_retorno = Oracle(connection).selectDb(query_retorno)
-# # Supondo que nf_referenciadas, nf_remessas, nf_retorno e nfes sejam listas de dicionários como mostrado
+nf_retorno = Oracle(connection).selectDb(query_retorno)
+# Supondo que nf_referenciadas, nf_remessas, nf_retorno e nfes sejam listas de dicionários como mostrado
 
-# # Contar valores únicos de refdocentr
-# unique_refdocentr = len(set(n["refdocentr"] for n in nf_referenciadas if n["refdocentr"] is not None))
+# Contar valores únicos de refdocentr
+unique_refdocentr = len(set(n["refdocentr"] for n in nf_referenciadas if n["refdocentr"] is not None))
 
-# # Atualizar o resumo com conversão adequada para float
-# resumo = {
-#     "nf_referenciadas": {
-#         "quantidade": unique_refdocentr,
-#         "quantidade_total": sum(float(n["quantity"]) for n in nf_referenciadas if n["quantity"] is not None),
-#         "valor_total": sum(float(n["linetotal"]) for n in nf_referenciadas if n["linetotal"] is not None)
-#     },
-#     "nf_remessas": {
-#         "quantidade": len(nf_remessas),
-#         "quantidade_total": sum(float(n["qtd_parcial"]) for n in nf_remessas if n["qtd_parcial"] is not None),
-#         "valor_total": sum(float(n["vl_parcial"]) for n in nf_remessas if n["vl_parcial"] is not None)
-#     },
-#     "nf_retorno": {
-#         "quantidade": len(nf_retorno),
-#         "quantidade_total": sum(float(n["qtd_retorno"]) for n in nf_retorno if n["qtd_retorno"] is not None),
-#         "valor_total": sum(float(n["vl_retorno"]) for n in nf_retorno if n["vl_retorno"] is not None)
-#     },
-#     "nota_principal": {
-#         "quantidade": len(nota),
-#         "quantidade_total": sum(float(n["quantity"]) for n in nfes if n["quantity"] is not None),
-#         "valor_total": sum(float(n["linetotal"]) for n in nfes if n["linetotal"] is not None)
-#     }
-# }
+# Atualizar o resumo com conversão adequada para float
+resumo = {
+    "nf_referenciadas": {
+        "quantidade": unique_refdocentr,
+        "quantidade_total": sum(float(n["quantity"]) for n in nf_referenciadas if n["quantity"] is not None),
+        "valor_total": sum(float(n["linetotal"]) for n in nf_referenciadas if n["linetotal"] is not None)
+    },
+    "nf_remessas": {
+        "quantidade": len(nf_remessas),
+        "quantidade_total": sum(float(n["qtd_parcial"]) for n in nf_remessas if n["qtd_parcial"] is not None),
+        "valor_total": sum(float(n["vl_parcial"]) for n in nf_remessas if n["vl_parcial"] is not None)
+    },
+    "nf_retorno": {
+        "quantidade": len(nf_retorno),
+        "quantidade_total": sum(float(n["qtd_retorno"]) for n in nf_retorno if n["qtd_retorno"] is not None),
+        "valor_total": sum(float(n["vl_retorno"]) for n in nf_retorno if n["vl_retorno"] is not None)
+    },
+    "nota_principal": {
+        "quantidade": len(nota),
+        "quantidade_total": sum(float(n["quantity"]) for n in nfes if n["quantity"] is not None),
+        "valor_total": sum(float(n["linetotal"]) for n in nfes if n["linetotal"] is not None)
+    }
+}
 
-# # Limpar variáveis
-# del(connection)
-# del(query)
-# del(baseUni)
+# Limpar variáveis
+del(connection)
+del(query)
+del(baseUni)
 </bpmn:script>
     </bpmn:scriptTask>
     <bpmn:scriptTask id="Activity_04r1j8e" name="Informa NFe na DUE">
