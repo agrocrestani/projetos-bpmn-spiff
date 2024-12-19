@@ -544,11 +544,11 @@ DocTotal = nfes[0]['doctotal']
 
 
 query = f"""
-    SELECT * FROM {baseUni}.AC_VW_NF_EXP_REMESSA WHERE DANFE_EXP LIKE '{KeyNFe}'
+    SELECT * FROM AC_VW_NF_EXP_REMESSA WHERE DANFE_EXP LIKE '{KeyNFe}'
 """
 
 query_retorno = f"""
-    SELECT * FROM {baseUni}.AC_VW_NF_EXP_RETORNO WHERE DANFE_NF_EXP LIKE '{KeyNFe}'
+    SELECT * FROM AC_VW_NF_EXP_RETORNO WHERE DANFE_NF_EXP LIKE '{KeyNFe}'
 """
 
 nf_remessas = Oracle(connection).selectDb(query)
