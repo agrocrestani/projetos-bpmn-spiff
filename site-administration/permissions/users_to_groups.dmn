@@ -747,6 +747,17 @@
           <text>"Colorado_Administrativo"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0f2i08x">
+        <inputEntry id="UnaryTests_0v93m4r">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1x06j6l">
+          <text>"sabrina.ferreira@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17lixrh">
+          <text>"Colorado_Aprovador"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0yu2oon">
         <inputEntry id="UnaryTests_13qyt9c">
           <text></text>
