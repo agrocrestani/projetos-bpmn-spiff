@@ -31,7 +31,6 @@ try:
     body = response['body']
     status = response['http_status']
 except:
-    body = "Ocorreu erro no login no SAP"
     status = 999</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_13brbcg</bpmn:incoming>
