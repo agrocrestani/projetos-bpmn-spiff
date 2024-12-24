@@ -27,8 +27,12 @@ headers = {
           </spiffworkflow:parameters>
         </spiffworkflow:serviceTaskOperator>
         <spiffworkflow:postScript>#body = json.loads(response['body'])
-body = response['body']
-status = response['http_status']</spiffworkflow:postScript>
+try:
+    body = response['body']
+    status = response['http_status']
+except:
+    body = "Ocorreu erro no login no SAP"
+    status = 999</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_13brbcg</bpmn:incoming>
       <bpmn:outgoing>Flow_1egjosn</bpmn:outgoing>
