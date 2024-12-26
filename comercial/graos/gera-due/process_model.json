@@ -3,7 +3,12 @@
     "display_name": "Gera DUE",
     "exception_notification_addresses": [],
     "fault_or_suspend_on_exception": "fault",
-    "metadata_extraction_paths": null,
+    "metadata_extraction_paths": [
+        {
+            "key": "due",
+            "path": "due['numero_due']"
+        }
+    ],
     "primary_file_name": "gera-due.bpmn",
     "primary_process_id": "Process_gera_due_graos"
 }
