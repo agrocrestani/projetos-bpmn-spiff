@@ -5,7 +5,7 @@
     "fault_or_suspend_on_exception": "fault",
     "metadata_extraction_paths": [
         {
-            "key": "Chave Acesso",
+            "key": "ChaveAcesso",
             "path": "keynfe"
         }
     ],
