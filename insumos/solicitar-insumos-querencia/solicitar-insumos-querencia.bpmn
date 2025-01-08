@@ -25,7 +25,6 @@
         <bpmn:flowNodeRef>Activity_1bacem4</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_09jse4j</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0v68ob6</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0823umq</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0kygj4b</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1l8yv4t</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1uhmn2l</bpmn:flowNodeRef>
@@ -35,6 +34,7 @@
         <bpmn:flowNodeRef>Gateway_1n5dya6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_008sf2g</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0nylixx</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0823umq</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_1nq9ktb">
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
@@ -69,8 +69,8 @@ else:
         status_code = ErrorNFe['status_code']
         errorCode = ErrorNFe['error_code']
         errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
-        <spiffworkflow:postScript>for b in bkp:
-    b['insumo'] = json.dumps(b['insumo'])
+        <spiffworkflow:postScript># for b in bkp:
+#     b['insumo'] = json.dumps(b['insumo'])
 
 solicitacao = bkp.copy()</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
@@ -193,57 +193,6 @@ for u in utilizacoes:
         <bpmn:targetRef>Property_04iyqgg</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
-    <bpmn:callActivity id="Activity_0823umq" name="Emite NFe da Querencia para Colorado" calledElement="Process_invoices_post_xf8j10r">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
-spiff_tarefa = taskInfo = get_current_task_info()['id']
-
-items = []
-for s in solicitacao:
-  items.append(
-    {
-      "ItemCode": s["insumo"]["ItemCode"],
-      "Quantity": s["quantidade"],
-      "WarehouseCode": s["insumo"]["WhsCode"]
-    }
-  )
-
-#Código de cliente Colorado
-CardCode = "C00113"
-
-payload = {
-    "CardCode": CardCode,
-    "BPL_IDAssignedToInvoice": "1",
-    "DocumentsOwner": OwnerCode,
-    "SalesPersonCode": SlpCode,
-    "Comments": f"Solicitante: {solicitante}",
-    "U_AC_Spiff_Instancia": spiff_instancia,
-    "U_AC_Spiff_Tarefa": spiff_tarefa,
-    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
-    "ClosingRemarks": observacaoNfe,
-    "DocumentLines": items,
-    "TaxExtension": {
-      "MainUsage": mainusage,
-      "Incoterms": "0"
-    }
-}</spiffworkflow:preScript>
-        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
-          <spiffworkflow:parameters>
-            <spiffworkflow:parameter id="url" type="str" value="url" />
-            <spiffworkflow:parameter id="headers" type="any" value="headers" />
-            <spiffworkflow:parameter id="data" type="any" value="payload" />
-            <spiffworkflow:parameter id="basic_auth_username" type="str" />
-            <spiffworkflow:parameter id="basic_auth_password" type="str" />
-            <spiffworkflow:parameter id="verify" type="bool" />
-          </spiffworkflow:parameters>
-        </spiffworkflow:serviceTaskOperator>
-        <spiffworkflow:postScript>if lancado == 201:
-    Saida_Que_Col = DocEntry</spiffworkflow:postScript>
-        <spiffworkflow:instructionsForEndUser />
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_14qu8ic</bpmn:incoming>
-      <bpmn:outgoing>Flow_13t1cjk</bpmn:outgoing>
-    </bpmn:callActivity>
     <bpmn:exclusiveGateway id="Gateway_0kygj4b" default="Flow_1frh7mk">
       <bpmn:incoming>Flow_13t1cjk</bpmn:incoming>
       <bpmn:outgoing>Flow_0tid22h</bpmn:outgoing>
@@ -294,7 +243,9 @@ payload = {
     </bpmn:manualTask>
     <bpmn:callActivity id="Activity_1uhmn2l" name="Lanca NFe na Colorado" calledElement="Process_purchase_invoices_krrf890">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>items = []
+        <spiffworkflow:preScript>del(payload)
+
+items = []
 #Código deposito de entrada na Colorado
 
 ambiente = get_secret('ambiente')
@@ -399,7 +350,30 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
     </bpmn:manualTask>
     <bpmn:callActivity id="Activity_16t5nxk" name="Emite NFe da Colorado para Querencia" calledElement="Process_invoices_post_xf8j10r">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
+        <spiffworkflow:preScript>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+def get_avgPrice(item, warehouse):
+    query = f"""
+                SELECT w."AvgPrice" FROM {baseSap}.oitw w
+                WHERE w."ItemCode" = '{item}' AND w."WhsCode" = '{warehouse}'
+              """
+    # rsp = json.loads(Hana(connection).selectDb(query))
+    rsp = Hana(connection).selectDb(query)
+    avgPrice = rsp[0]['avgprice']
+    return avgPrice
+
+del(payload)
+
+spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
 
 items = []
@@ -408,6 +382,7 @@ for s in nfeEntradaItens:
     {
       "ItemCode": s["ItemCode"],
       "Quantity": s["Quantity"],
+      "UnitPrice": str(get_avgPrice(s["ItemCode"],"03.FCOL")),
       "WarehouseCode": "03.FCOL" #Código deposito de insumos da Colorado
     }
   )
@@ -697,6 +672,8 @@ usuarioEmissorNFe = get_current_user()['display_name']
 
 WarehouseCode = "03.FQUE"
 
+baseSap = get_secret('baseSap')
+
 items = []
 for s in nfeItens:
   items.append(
@@ -720,7 +697,7 @@ payload = {
     "SequenceCode": -2,
     "SequenceModel": "39",
     "BPL_IDAssignedToInvoice": unidade,
-    "U_ChaveAcesso": chaveAcesso,
+    "U_ChaveAcesso": chaveAcesso if baseSap != 'SBO_CRESTANI_QA' else '',
     "TaxDate": DocDate[0:10],
     "DocumentsOwner": OwnerCode,
     "SalesPersonCode": SlpCode,
@@ -938,6 +915,81 @@ except:
       <bpmn:incoming>Flow_0a1sn56</bpmn:incoming>
       <bpmn:outgoing>Flow_04lt51m</bpmn:outgoing>
     </bpmn:manualTask>
+    <bpmn:callActivity id="Activity_0823umq" name="Emite NFe da Querencia para Colorado" calledElement="Process_invoices_post_xf8j10r">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+def get_avgPrice(item, warehouse):
+    query = f"""
+                SELECT w."AvgPrice" FROM {baseSap}.oitw w
+                WHERE w."ItemCode" = '{item}' AND w."WhsCode" = '{warehouse}'
+              """
+    # rsp = json.loads(Hana(connection).selectDb(query))
+    rsp = Hana(connection).selectDb(query)
+    avgPrice = rsp[0]['avgprice']
+    return avgPrice
+
+spiff_instancia = get_toplevel_process_info()['process_instance_id']
+spiff_tarefa = taskInfo = get_current_task_info()['id']
+
+items = []
+for s in solicitacao:
+  item_code = s["insumo"]["ItemCode"]
+  warehouse_code = s["insumo"]["WhsCode"]
+  items.append(
+    {
+      "ItemCode": item_code,
+      "Quantity": s["quantidade"],
+      "UnitPrice": str(get_avgPrice(item_code,warehouse_code)),
+      "WarehouseCode": warehouse_code
+    }
+  )
+
+#Código de cliente Colorado
+CardCode = "C00113"
+
+payload = {
+    "CardCode": CardCode,
+    "BPL_IDAssignedToInvoice": "1",
+    "DocumentsOwner": OwnerCode,
+    "SalesPersonCode": SlpCode,
+    "Comments": f"Solicitante: {solicitante}",
+    "U_AC_Spiff_Instancia": spiff_instancia,
+    "U_AC_Spiff_Tarefa": spiff_tarefa,
+    "U_AC_Spiff_Usuario": usuarioEmissorNFe,
+    "ClosingRemarks": observacaoNfe,
+    "DocumentLines": items,
+    "TaxExtension": {
+      "MainUsage": mainusage,
+      "Incoterms": "0"
+    }
+}</spiffworkflow:preScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="payload" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:postScript>if lancado == 201:
+    Saida_Que_Col = DocEntry</spiffworkflow:postScript>
+        <spiffworkflow:instructionsForEndUser />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_14qu8ic</bpmn:incoming>
+      <bpmn:outgoing>Flow_13t1cjk</bpmn:outgoing>
+    </bpmn:callActivity>
   </bpmn:process>
   <bpmn:error id="Error_2" name="Error_2">
     <bpmn:extensionElements>
@@ -990,10 +1042,6 @@ except:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_17wgt8z_di" bpmnElement="Activity_0v68ob6">
         <dc:Bounds x="108" y="1115" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1j0r6l3_di" bpmnElement="Activity_0823umq">
-        <dc:Bounds x="255" y="1115" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0kygj4b_di" bpmnElement="Gateway_0kygj4b" isMarkerVisible="true">
         <dc:Bounds x="463" y="1130" width="50" height="50" />
@@ -1079,6 +1127,10 @@ except:
         <dc:Bounds x="1570" y="1605" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1j0r6l3_di" bpmnElement="Activity_0823umq">
+        <dc:Bounds x="270" y="1115" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1y2p3ku_di" bpmnElement="Event_0nylixx">
         <dc:Bounds x="167" y="1397" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -1118,10 +1170,10 @@ except:
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_14qu8ic_di" bpmnElement="Flow_14qu8ic">
         <di:waypoint x="208" y="1155" />
-        <di:waypoint x="255" y="1155" />
+        <di:waypoint x="270" y="1155" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13t1cjk_di" bpmnElement="Flow_13t1cjk">
-        <di:waypoint x="355" y="1155" />
+        <di:waypoint x="370" y="1155" />
         <di:waypoint x="463" y="1155" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1frh7mk_di" bpmnElement="Flow_1frh7mk">

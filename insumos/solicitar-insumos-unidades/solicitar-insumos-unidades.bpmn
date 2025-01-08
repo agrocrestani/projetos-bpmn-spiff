@@ -314,17 +314,42 @@ localSolicitacao = "unidades"</spiffworkflow:preScript>
     </bpmn:userTask>
     <bpmn:serviceTask id="Activity_0823umq" name="Emite NFe">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
+        <spiffworkflow:preScript>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+def get_avgPrice(item, warehouse):
+    query = f"""
+                SELECT w."AvgPrice" FROM {baseSap}.oitw w
+                WHERE w."ItemCode" = '{item}' AND w."WhsCode" = '{warehouse}'
+              """
+    # rsp = json.loads(Hana(connection).selectDb(query))
+    rsp = Hana(connection).selectDb(query)
+    avgPrice = rsp[0]['avgprice']
+    return avgPrice
+
+spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
 
 
 items = []
 for s in solicitacao:
+  item_code = s["insumo"]["ItemCode"]
+  warehouse_code = s["insumo"]["WhsCode"]
   items.append(
     {
-      "ItemCode": s["insumo"]["ItemCode"],
+      "ItemCode": item_code,
       "Quantity": s["quantidade"],
-      "WarehouseCode": s["insumo"]["WhsCode"]
+      "UnitPrice": str(get_avgPrice(item_code,warehouse_code)),
+      "WarehouseCode": warehouse_code,
+      "PriceSource": "dpsManual"
     }
   )
 
@@ -354,7 +379,6 @@ headers = {
   'Cookie': f"B1SESSION={loginSap}",
   'Content-Type': 'application/json'
 }
-
 </spiffworkflow:preScript>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="rsp">
           <spiffworkflow:parameters>
@@ -405,8 +429,8 @@ except:
     status_code = sapError['status_code']
     errorCode = sapError['error_code']
     errorMessage = command['body']['error']['message']['value']</spiffworkflow:preScript>
-        <spiffworkflow:postScript>for b in bkp:
-    b['insumo'] = json.dumps(b['insumo'])
+        <spiffworkflow:postScript># for b in bkp:
+#     b['insumo'] = json.dumps(b['insumo'])
 
 solicitacao = bkp.copy()</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
@@ -439,7 +463,7 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:incoming>Flow_0ct14vj</bpmn:incoming>
       <bpmn:outgoing>Flow_0a77a64</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_0juamh1">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT1M"</bpmn:timeDuration>
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT20S"</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
     <bpmn:scriptTask id="Activity_1pav2g7" name="Busca Chave de acesso">
@@ -801,6 +825,8 @@ spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
 usuarioEmissorNFe = get_current_user()['display_name']
 
+baseSap = get_secret('baseSap')
+
 items = []
 for s in nfeItens:
   items.append(
@@ -809,6 +835,7 @@ for s in nfeItens:
       "Quantity": s["Quantity"],
       "WarehouseCode": WarehouseCode,
       "Price": s['Price'],
+      # "LineTotal": s['LineTotal'],
       "CostingCode": ccustoEntrada,
       "CostingCode3": safra
     }
@@ -821,7 +848,7 @@ payload = {
     "SequenceCode": -2,
     "SequenceModel": "39",
     "BPL_IDAssignedToInvoice": unidade,
-    "U_ChaveAcesso": chaveAcesso,
+    "U_ChaveAcesso": chaveAcesso if baseSap != 'SBO_CRESTANI_QA' else '',
     "TaxDate": DocDate[0:10],
     "DocumentsOwner": OwnerCode,
     "SalesPersonCode": SlpCode,
