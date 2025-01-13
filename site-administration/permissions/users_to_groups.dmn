@@ -1099,6 +1099,17 @@
           <text>"Curupai_Almoxarifado"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1xcpzva">
+        <inputEntry id="UnaryTests_1s6j36e">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13lv51i">
+          <text>"rafael.lima@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cjf573">
+          <text>"Curupai_Cantina"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_036d7qd">
         <inputEntry id="UnaryTests_16nxs8a">
           <text></text>
