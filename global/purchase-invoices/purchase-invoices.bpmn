@@ -84,7 +84,10 @@ except:
     try:
         errorMessage = command['body']['error']['message']['value']
     except:
-        errorMessage = command['body']['error']['message']</spiffworkflow:preScript>
+        errorCode = 999
+        status_code = "ErroDesconhecido"
+        errorMessage = "Erro na inclusão da nota no SAP. Por favor ente novamente."
+</spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
 
 ### Informações
