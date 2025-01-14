@@ -70,7 +70,7 @@
     <bpmn:sequenceFlow id="Flow_0kw5ffp" sourceRef="Activity_0m59st0" targetRef="Gateway_0svydkv" />
     <bpmn:sequenceFlow id="Flow_1g79fy7" sourceRef="Gateway_147jun7" targetRef="Activity_0gf1z7e" />
     <bpmn:sequenceFlow id="Flow_1bf2gfa" sourceRef="Gateway_147jun7" targetRef="Gateway_1cvjv5f">
-      <bpmn:conditionExpression>rascunhoNaoLocalizado ==  True</bpmn:conditionExpression>
+      <bpmn:conditionExpression>rascunho ==  False</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="Gateway_1cvjv5f">
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
