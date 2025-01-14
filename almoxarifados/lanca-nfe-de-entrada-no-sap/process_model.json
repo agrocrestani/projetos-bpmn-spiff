@@ -6,7 +6,11 @@
     "metadata_extraction_paths": [
         {
             "key": "Serial",
-            "path": ""
+            "path": "Serial"
+        },
+        {
+            "key": "ChaveAcesso",
+            "path": "U_ChaveAcesso"
         }
     ],
     "primary_file_name": "lanca-nfe-de-entrada-no-sap.bpmn",

@@ -119,7 +119,7 @@ baixaItensCantina = ""
       <bpmn:incoming>Flow_0oom33b</bpmn:incoming>
       <bpmn:outgoing>Flow_1iovkqx</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:callActivity id="Activity_1rfm17d" name="Busca a nota no SAP" calledElement="Process_busca_rascunho_nfe_og4w5n9">
+    <bpmn:callActivity id="Activity_1rfm17d" name="Busca a nota no SAP" calledElement="busca_rascunho">
       <bpmn:extensionElements>
         <spiffworkflow:preScript />
         <spiffworkflow:postScript>if baixaItensCantina:
@@ -644,6 +644,9 @@ sendMail = send_email(to_email, subject, title_email, body_email, task_link)</sp
       <bpmndi:BPMNShape id="Event_00bas0a_di" bpmnElement="Event_0avudbq">
         <dc:Bounds x="432" y="272" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_107r03x_di" bpmnElement="Event_1qd79lp">
+        <dc:Bounds x="432" y="199" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_16dq5q9_di" bpmnElement="Event_0bhfm7o">
         <dc:Bounds x="1272" y="612" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -655,9 +658,6 @@ sendMail = send_email(to_email, subject, title_email, body_email, task_link)</sp
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0hoyxza_di" bpmnElement="Event_12aihq1">
         <dc:Bounds x="1242" y="199" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_107r03x_di" bpmnElement="Event_1qd79lp">
-        <dc:Bounds x="432" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
