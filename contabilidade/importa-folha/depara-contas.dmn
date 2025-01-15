@@ -32,14 +32,6 @@
           <text>"1.1.3.01.02.007"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0lg7yyh">
-        <inputEntry id="UnaryTests_1gglqro">
-          <text>"10102008"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_09xxa8g">
-          <text>"1.1.3.01.02.008"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_13wenqx">
         <inputEntry id="UnaryTests_07ngbiq">
           <text>"20101001"</text>
@@ -70,6 +62,14 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_1gfeumi">
           <text>"2.1.1.01.01.009"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01frqge">
+        <inputEntry id="UnaryTests_0ksnnml">
+          <text>"20101010"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tit1cx">
+          <text>"2.1.1.01.01.010"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_056tyhw">
@@ -192,6 +192,14 @@
           <text>"3.1.3.02.01.012"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0z9m1ab">
+        <inputEntry id="UnaryTests_1mpygp5">
+          <text>"30201013"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1btknsb">
+          <text>"3.1.3.02.01.013"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1gl0qro">
         <inputEntry id="UnaryTests_1fzvuqj">
           <text>"30201014"</text>
@@ -200,11 +208,11 @@
           <text>"3.1.3.02.01.014"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1vj3dqh">
-        <inputEntry id="UnaryTests_1ik9vaq">
+      <rule id="DecisionRule_0z5r99q">
+        <inputEntry id="UnaryTests_0gkomr5">
           <text>"30201019"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0oba3zb">
+        <outputEntry id="LiteralExpression_1d50t6s">
           <text>"3.1.3.02.01.019"</text>
         </outputEntry>
       </rule>
@@ -278,14 +286,6 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_1imljbj">
           <text>"4.1.1.02.01.011"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0uy10c4">
-        <inputEntry id="UnaryTests_0rmr8n4">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0tkjb7p">
-          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
