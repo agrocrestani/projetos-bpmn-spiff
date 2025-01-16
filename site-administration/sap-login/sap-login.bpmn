@@ -54,6 +54,8 @@ except:
         <bpmn:targetRef>DataStoreReference_1e0prfh</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
       <bpmn:script>SessionId = body["SessionId"]
+SessionTimeout = body["SessionTimeout"]
+
 saplogin = [
     {
         "SessionId": SessionId
