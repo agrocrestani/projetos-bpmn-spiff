@@ -15,7 +15,8 @@
           "insumo",
           "quantidade",
           "dosagem",
-          "tipoAplicacao"
+          "tipoAplicacao",
+          "cultura"
         ],
         "properties": {
           "insumo": {
@@ -28,14 +29,23 @@
           },
           "dosagem": {
             "type": "string",
-            "title": "Dose aplicação"
+            "title": "Dose aplic."
           },
           "tipoAplicacao": {
             "type": "string",
-            "title": "Tipo Aplicação",
+            "title": "Tipo aplic.",
             "enum": [
               "Terrestre",
               "Aerea"
+            ]
+          },
+          "cultura": {
+            "type": "string",
+            "title": "Cultura",
+            "enum": [
+              "Soja",
+              "Milho",
+              "Algodão"
             ]
           }
         }
