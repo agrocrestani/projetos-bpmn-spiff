@@ -92,11 +92,35 @@ saplogin = [
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_19bd3z1" sourceRef="Gateway_08miuwa" targetRef="Gateway_1hyuyve" />
     <bpmn:sequenceFlow id="Flow_1oji7s3" sourceRef="Event_0rlcbyx" targetRef="Gateway_08miuwa" />
-    <bpmn:task id="Activity_1fyegh7">
+    <bpmn:sequenceFlow id="Flow_0n3h567" sourceRef="Activity_1fyegh7" targetRef="Event_1la0phd" />
+    <bpmn:scriptTask id="Activity_1fyegh7" name="Grava Sessao no Hana">
       <bpmn:incoming>Flow_1q1dbcs</bpmn:incoming>
       <bpmn:outgoing>Flow_0n3h567</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:sequenceFlow id="Flow_0n3h567" sourceRef="Activity_1fyegh7" targetRef="Event_1la0phd" />
+      <bpmn:script>from connectordb.hana import Hana
+from datetime import datetime
+
+#Grava no hana
+connection_hana = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+data_hora_atual = datetime.now()
+data_hora_formatada = data_hora_atual.strftime('%d/%m/%Y %H:%M:%S')
+baseSap = get_secret('baseSap')
+
+query_hana = f"""
+    UPDATE {baseSap}."@AC_SESSAO_SAP" 
+    SET "U_DataHora" = TO_VARCHAR(CURRENT_TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS'), "U_SessionId" = '{SessionId}', "U_SessionTimeout" = 360 
+    WHERE "Code" = '1'
+"""
+
+Hana(connection_hana).executeDb(query_hana)
+
+</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmn:error id="Error_Login" name="Error_Login">
@@ -134,7 +158,7 @@ saplogin = [
       <bpmndi:BPMNShape id="Gateway_08miuwa_di" bpmnElement="Gateway_08miuwa" isMarkerVisible="true">
         <dc:Bounds x="475" y="225" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1fyegh7_di" bpmnElement="Activity_1fyegh7">
+      <bpmndi:BPMNShape id="Activity_14p03vy_di" bpmnElement="Activity_1fyegh7">
         <dc:Bounds x="920" y="47" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0egk955_di" bpmnElement="Event_0rlcbyx">
