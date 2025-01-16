@@ -4,7 +4,8 @@
       "tipoAplicacao": "Terrestre",
       "insumo": "{\"ItemCode\":\"023869\",\"ItemName\":\"ROUNDUP WG\",\"ItmsGrpNam\":\"HERBICIDAS\",\"InvntryUom\":\"QUILOGRAM\",\"OnHand\":\"8.299,00\",\"WhsCode\":\"03.MATR\"}",
       "quantidade": 100,
-      "dosagem": "1 litro/ha"
+      "dosagem": "1 litro/ha",
+      "cultura": "Soja"
     }
   ],
   "unidade": "1",

@@ -873,6 +873,7 @@ for i in itens:
             &lt;th&gt;Depósito&lt;/th&gt;
             &lt;th&gt;Dosagem&lt;/th&gt;
             &lt;th&gt;Tipo Aplicação&lt;/th&gt;
+            &lt;th&gt;Cultura&lt;/th&gt;
         &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
@@ -883,6 +884,7 @@ for i in itens:
             &lt;td&gt;{{ item['Deposito'] }}&lt;/td&gt;
             &lt;td&gt;{{ item['Dosagem']  }}&lt;/td&gt;
             &lt;td&gt;{{ item['TipoAplicacao'] }}&lt;/td&gt;
+            &lt;td&gt;{{ item['Cultura'] }}&lt;/td&gt;
         &lt;/tr&gt;
         {% endfor %}
     &lt;/tbody&gt;
@@ -905,7 +907,8 @@ try:
         "Quantity": s["quantidade"],
         "Deposito": s["insumo"]["WhsCode"],
         "Dosagem": s["dosagem"],
-        "TipoAplicacao": s["tipoAplicacao"]
+        "TipoAplicacao": s["tipoAplicacao"],
+        "Cultura": s["cultura"]
       }
     )
 except:
