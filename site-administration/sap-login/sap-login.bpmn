@@ -39,10 +39,10 @@ except:
       <bpmn:outgoing>Flow_1egjosn</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:endEvent id="Event_1la0phd">
-      <bpmn:incoming>Flow_1q1dbcs</bpmn:incoming>
+      <bpmn:incoming>Flow_0n3h567</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1egjosn" sourceRef="Activity_12rivqi" targetRef="Gateway_13z1ch3" />
-    <bpmn:sequenceFlow id="Flow_1q1dbcs" sourceRef="Activity_1ngczyk" targetRef="Event_1la0phd" />
+    <bpmn:sequenceFlow id="Flow_1q1dbcs" sourceRef="Activity_1ngczyk" targetRef="Activity_1fyegh7" />
     <bpmn:scriptTask id="Activity_1ngczyk" name="Pega SessionId">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>SessionId = body["SessionId"]</spiffworkflow:preScript>
@@ -90,6 +90,11 @@ saplogin = [
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_19bd3z1" sourceRef="Gateway_08miuwa" targetRef="Gateway_1hyuyve" />
     <bpmn:sequenceFlow id="Flow_1oji7s3" sourceRef="Event_0rlcbyx" targetRef="Gateway_08miuwa" />
+    <bpmn:task id="Activity_1fyegh7">
+      <bpmn:incoming>Flow_1q1dbcs</bpmn:incoming>
+      <bpmn:outgoing>Flow_0n3h567</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0n3h567" sourceRef="Activity_1fyegh7" targetRef="Event_1la0phd" />
   </bpmn:process>
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmn:error id="Error_Login" name="Error_Login">
@@ -127,6 +132,9 @@ saplogin = [
       <bpmndi:BPMNShape id="Gateway_08miuwa_di" bpmnElement="Gateway_08miuwa" isMarkerVisible="true">
         <dc:Bounds x="475" y="225" width="50" height="50" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1fyegh7_di" bpmnElement="Activity_1fyegh7">
+        <dc:Bounds x="920" y="47" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0egk955_di" bpmnElement="Event_0rlcbyx">
         <dc:Bounds x="482" y="109" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -140,7 +148,7 @@ saplogin = [
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1q1dbcs_di" bpmnElement="Flow_1q1dbcs">
         <di:waypoint x="820" y="87" />
-        <di:waypoint x="1182" y="87" />
+        <di:waypoint x="920" y="87" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_1nni45t_di" bpmnElement="DataOutputAssociation_1nni45t">
         <di:waypoint x="796" y="47" />
@@ -170,6 +178,10 @@ saplogin = [
       <bpmndi:BPMNEdge id="Flow_1oji7s3_di" bpmnElement="Flow_1oji7s3">
         <di:waypoint x="500" y="145" />
         <di:waypoint x="500" y="225" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0n3h567_di" bpmnElement="Flow_0n3h567">
+        <di:waypoint x="1020" y="87" />
+        <di:waypoint x="1182" y="87" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
