@@ -108,9 +108,6 @@ Não foi encontrada uma NFe de Exportação para o Nº informado!
     <bpmn:sequenceFlow id="Flow_02jw8f5" sourceRef="EG003" targetRef="EE003">
       <bpmn:conditionExpression>retorno == []</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:endEvent id="EE002" name="End Event 001">
-      <bpmn:incoming>EE001</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1pw9jb2" sourceRef="Gateway_1fwyp10" targetRef="ST002">
       <bpmn:conditionExpression>retorno_gera_due == "SUCESSO"</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
@@ -798,7 +795,9 @@ nr_notas = existe[0]['count']
       <bpmn:outgoing>Flow_0mw012c</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0e4lz7p" sourceRef="Activity_00sbw6g" targetRef="Gateway_18slwu0" />
-    <bpmn:sequenceFlow id="Flow_1pcmxk6" sourceRef="Gateway_18slwu0" targetRef="Event_0fe3f3d" />
+    <bpmn:sequenceFlow id="Flow_1pcmxk6" sourceRef="Gateway_18slwu0" targetRef="Event_0fe3f3d">
+      <bpmn:conditionExpression>nr_notas != 0</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:endEvent id="Event_0fe3f3d">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>nr_notas != 0</spiffworkflow:instructionsForEndUser>
@@ -915,6 +914,9 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
         <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"P30D"</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="EE002" name="End Event 001">
+      <bpmn:incoming>EE001</bpmn:incoming>
+    </bpmn:endEvent>
   </bpmn:process>
   <bpmn:error id="ErroInsereDueSap" name="ErroInsereDueSap">
     <bpmn:extensionElements>
@@ -952,12 +954,6 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0wpy7mq_di" bpmnElement="MT001">
         <dc:Bounds x="-320" y="-10" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_18pb678_di" bpmnElement="EE002">
-        <dc:Bounds x="-158" y="12" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="-176" y="55" width="73" height="14" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1lxhjnh_di" bpmnElement="EG003" isMarkerVisible="true">
         <dc:Bounds x="955" y="125" width="50" height="50" />
@@ -1102,14 +1098,20 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
       <bpmndi:BPMNShape id="Event_0i1pfs1_di" bpmnElement="Event_0tn0pj2">
         <dc:Bounds x="152" y="42" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_06yudjz_di" bpmnElement="Event_1flbirz">
-        <dc:Bounds x="1542" y="172" width="36" height="36" />
+      <bpmndi:BPMNShape id="Event_18pb678_di" bpmnElement="EE002">
+        <dc:Bounds x="-148" y="12" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-166" y="55" width="73" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1fmpedw_di" bpmnElement="Event_1q5m9pt">
+        <dc:Bounds x="182" y="312" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1ot8a54_di" bpmnElement="Event_1o574uk">
         <dc:Bounds x="1412" y="302" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1fmpedw_di" bpmnElement="Event_1q5m9pt">
-        <dc:Bounds x="182" y="312" width="36" height="36" />
+      <bpmndi:BPMNShape id="Event_06yudjz_di" bpmnElement="Event_1flbirz">
+        <dc:Bounds x="1542" y="172" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0iu26s5_di" bpmnElement="Flow_0iu26s5">
         <di:waypoint x="-662" y="150" />
@@ -1133,7 +1135,7 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0960utj_di" bpmnElement="EE001">
         <di:waypoint x="-220" y="30" />
-        <di:waypoint x="-158" y="30" />
+        <di:waypoint x="-148" y="30" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="-187" y="-7" width="73" height="14" />
         </bpmndi:BPMNLabel>
