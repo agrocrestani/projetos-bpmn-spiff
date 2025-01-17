@@ -804,10 +804,6 @@ nr_notas = existe[0]['count']
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1pcmxk6</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Activity_1fb3t5g" name="Adiciona NFe no DueEventos">
-      <bpmn:incoming>Flow_0mw012c</bpmn:incoming>
-      <bpmn:outgoing>Flow_1c06r22</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_0mw012c" sourceRef="Gateway_18slwu0" targetRef="Activity_1fb3t5g" />
     <bpmn:exclusiveGateway id="Gateway_0cn3x69" default="Flow_08zeojv">
       <bpmn:incoming>Flow_1c06r22</bpmn:incoming>
@@ -917,6 +913,54 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
     <bpmn:endEvent id="EE002" name="End Event 001">
       <bpmn:incoming>EE001</bpmn:incoming>
     </bpmn:endEvent>
+    <bpmn:scriptTask id="Activity_1fb3t5g" name="Adiciona NFe no DueEventos">
+      <bpmn:incoming>Flow_0mw012c</bpmn:incoming>
+      <bpmn:outgoing>Flow_1c06r22</bpmn:outgoing>
+      <bpmn:script>from connectordb.postgres import Postgres
+
+connection = {
+        "host": '192.168.1.229',
+        "database": 'crestani',
+        "user": 'postgres',
+        "password": 'crest@ni2900'
+    }
+
+# try:
+eventos = nfe['data'][0]['nfe']['eventos']
+produtos1 = nfe['data'][0]['produtos']
+for e in eventos:
+    if e['evento'] == 'Averbação para Exportação (Órgão Autor: AN)':
+        evento = e['evento']
+        protocolo = e['protocolo']
+        data_autorizacao = e['data_autorizacao']
+        data_inclusao = e['data_inclusao']
+        info = json.dumps(e['info'],ensure_ascii=False)
+        detalhes = json.dumps(e['detalhes'],ensure_ascii=False)
+        autorizacao_sefaz = json.dumps(e['autorizacao_sefaz'],ensure_ascii=False)
+        condicoes_uso = json.dumps(e['condicoes_uso'],ensure_ascii=False)
+        itens_averbados = json.dumps(e['itens_averbados'],ensure_ascii=False)
+        produtos = json.dumps(produtos1, ensure_ascii=False)
+
+        query = f"""
+            INSERT INTO sap.due_eventos
+            (keynfe, evento, protocolo, data_autorizacao, data_inclusao, info, detalhes, autorizacao_sefaz, condicoes_uso, itens_averbados, produtos)
+            VALUES('{keynfe}', '{evento}', '{protocolo}', '{data_autorizacao}', '{data_inclusao}',
+            '{info}', '{detalhes}', '{autorizacao_sefaz}', '{condicoes_uso}', '{itens_averbados}', '{produtos}' )
+        """
+
+        Postgres(connection).executeDb(query)
+        Postgres(connection).executeDb('commit')
+        lanca = 1
+    else:
+        lanca = 998
+# except:
+#     eventos = nfe['data'][0]['nfe']['eventos']
+#     lanca = 999
+
+contador += 1
+
+del(nfe)</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:error id="ErroInsereDueSap" name="ErroInsereDueSap">
     <bpmn:extensionElements>
@@ -1073,10 +1117,6 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
       <bpmndi:BPMNShape id="Event_0fe3f3d_di" bpmnElement="Event_0fe3f3d">
         <dc:Bounds x="422" y="262" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1fb3t5g_di" bpmnElement="Activity_1fb3t5g">
-        <dc:Bounds x="430" y="110" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0cn3x69_di" bpmnElement="Gateway_0cn3x69" isMarkerVisible="true">
         <dc:Bounds x="565" y="125" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -1103,6 +1143,9 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
         <bpmndi:BPMNLabel>
           <dc:Bounds x="-166" y="55" width="73" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09asyfl_di" bpmnElement="Activity_1fb3t5g">
+        <dc:Bounds x="430" y="110" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1fmpedw_di" bpmnElement="Event_1q5m9pt">
         <dc:Bounds x="182" y="312" width="36" height="36" />
