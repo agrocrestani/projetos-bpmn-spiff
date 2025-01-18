@@ -608,7 +608,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       <bpmn:incoming>Flow_13sk5ni</bpmn:incoming>
       <bpmn:outgoing>Flow_0q9zm5t</bpmn:outgoing>
     </bpmn:callActivity>
-    <bpmn:callActivity id="Activity_0qzj466" name="Definir Depósito de entrada" calledElement="Process_definir_deposito">
+    <bpmn:callActivity id="Activity_0qzj466" name="Definir Depósito de entrada" calledElement="Process_definir_deposito_Global">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_DefinirDeposito</spiffworkflow:calledDecisionId>
       </bpmn:extensionElements>
