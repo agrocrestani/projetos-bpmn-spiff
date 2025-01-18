@@ -1,6 +1,6 @@
 {
     "description": "",
-    "display_name": "Definir Cliente",
+    "display_name": "Definir Cliente global",
     "exception_notification_addresses": [],
     "fault_or_suspend_on_exception": "fault",
     "metadata_extraction_paths": null,
