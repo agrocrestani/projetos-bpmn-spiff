@@ -9,7 +9,7 @@
       <spiffworkflow:variableName>sapError</spiffworkflow:variableName>
     </bpmn:extensionElements>
   </bpmn:error>
-  <bpmn:collaboration id="Solicitar_Insumos_Querencia">
+  <bpmn:collaboration id="Solicitar_Insumos_Querencia_v2">
     <bpmn:participant id="Participant_0mevgbm" processRef="Process_solicitar_insumos_querencia" />
   </bpmn:collaboration>
   <bpmn:process id="Process_solicitar_insumos_querencia" isExecutable="true">
@@ -1001,7 +1001,7 @@ payload = {
   </bpmn:error>
   <bpmn:signal id="Finalizar_Processo" name="Finalizar_Processo" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Solicitar_Insumos_Querencia">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Solicitar_Insumos_Querencia_v2">
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
         <dc:Bounds x="-1288" y="295" width="4586" height="1490" />
       </bpmndi:BPMNShape>
