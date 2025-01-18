@@ -600,7 +600,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       <bpmn:incoming>Flow_0m9b8u0</bpmn:incoming>
       <bpmn:outgoing>Flow_13sk5ni</bpmn:outgoing>
     </bpmn:callActivity>
-    <bpmn:callActivity id="Activity_1bsmf9p" name="Definir Fornecedor NFe" calledElement="Process_definir_fornecedor_nfe">
+    <bpmn:callActivity id="Activity_1bsmf9p" name="Definir Fornecedor NFe" calledElement="Process_definir_centro_de_custo_Global">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_DefineFornec</spiffworkflow:calledDecisionId>
         <spiffworkflow:preScript>BPLId = nfe['BPL_IDAssignedToInvoice']</spiffworkflow:preScript>
