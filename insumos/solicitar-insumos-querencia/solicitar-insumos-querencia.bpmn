@@ -593,7 +593,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       <bpmn:incoming>Flow_04lt51m</bpmn:incoming>
       <bpmn:outgoing>Flow_0m9b8u0</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:callActivity id="Activity_1jg3f8e" name="Define Centro de Custo" calledElement="Process_definir_centro_de_custo">
+    <bpmn:callActivity id="Activity_1jg3f8e" name="Define Centro de Custo" calledElement="Process_definir_centro_de_custo_Global">
       <bpmn:extensionElements>
         <spiffworkflow:calledDecisionId>decision_DefinirCcusto</spiffworkflow:calledDecisionId>
       </bpmn:extensionElements>
