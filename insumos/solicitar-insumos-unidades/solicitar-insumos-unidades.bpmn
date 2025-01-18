@@ -629,7 +629,7 @@ del(main_usage)
       <bpmn:incoming>Flow_0fskkv6</bpmn:incoming>
       <bpmn:outgoing>Flow_12ic23r</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:callActivity id="Activity_0s4m8q1" name="Observação NFe" calledElement="Process_observacao_nfe_insumos_6afjavb">
+    <bpmn:callActivity id="Activity_0s4m8q1" name="Observação NFe" calledElement="Process_observacao_nfe_insumos">
       <bpmn:incoming>Flow_1btf1uw</bpmn:incoming>
       <bpmn:outgoing>Flow_10sgywb</bpmn:outgoing>
     </bpmn:callActivity>
