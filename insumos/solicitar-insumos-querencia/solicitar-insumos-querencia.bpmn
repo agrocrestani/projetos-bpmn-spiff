@@ -348,7 +348,7 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:incoming>Flow_0nrhooh</bpmn:incoming>
       <bpmn:outgoing>Flow_0iuxdg0</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:callActivity id="Activity_16t5nxk" name="Emite NFe da Colorado para Querencia" calledElement="Process_invoices_post_xf8j10r">
+    <bpmn:callActivity id="Activity_16t5nxk" name="Emite NFe da Colorado para Querencia" calledElement="Process_invoices_post">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>from connectordb.hana import Hana
 
