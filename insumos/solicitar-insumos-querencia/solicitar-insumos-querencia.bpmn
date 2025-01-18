@@ -119,7 +119,7 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:incoming>Flow_0wktytc</bpmn:incoming>
       <bpmn:outgoing>Flow_06tikhf</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:callActivity id="Activity_1bacem4" name="Observação NFe" calledElement="Process_observacao_nfe_insumos_6afjavb">
+    <bpmn:callActivity id="Activity_1bacem4" name="Observação NFe" calledElement="Process_observacao_nfe_insumos">
       <bpmn:incoming>Flow_1btf1uw</bpmn:incoming>
       <bpmn:outgoing>Flow_08mshle</bpmn:outgoing>
     </bpmn:callActivity>
