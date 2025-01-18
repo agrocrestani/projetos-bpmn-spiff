@@ -664,7 +664,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       <bpmn:incoming>Flow_12bt55u</bpmn:incoming>
       <bpmn:outgoing>Flow_1anb9z3</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:callActivity id="Activity_1x3dg9k" name="Lança NFe Entrada no SAP" calledElement="Process_purchase_invoices_krrf890">
+    <bpmn:callActivity id="Activity_1x3dg9k" name="Lança NFe Entrada no SAP" calledElement="Process_purchase_invoices">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
