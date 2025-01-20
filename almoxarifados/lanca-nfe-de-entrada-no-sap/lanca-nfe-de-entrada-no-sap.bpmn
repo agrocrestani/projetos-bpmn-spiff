@@ -317,7 +317,7 @@ except:
       <bpmn:incoming>Flow_182gsdh</bpmn:incoming>
       <bpmn:incoming>Flow_05ngfh8</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:callActivity id="Activity_0q3dw54" name="Saída de estoque" calledElement="Process_inventorygenexits_alilvwv">
+    <bpmn:callActivity id="Activity_0q3dw54" name="Saída de estoque" calledElement="Process_inventorygenexits">
       <bpmn:extensionElements>
         <spiffworkflow:serviceTaskOperator id="http/PostRequestV2">
           <spiffworkflow:parameters>
@@ -371,6 +371,7 @@ payload = {
     "Comments": 'Baixa de estoque',
     "DocumentLines": documentlines
 }</spiffworkflow:preScript>
+        <spiffworkflow:instructionsForEndUser>.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_10pyopk</bpmn:incoming>
       <bpmn:outgoing>Flow_05ngfh8</bpmn:outgoing>
