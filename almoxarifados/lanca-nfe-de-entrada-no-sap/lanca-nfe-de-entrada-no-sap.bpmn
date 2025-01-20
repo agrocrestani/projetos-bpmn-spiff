@@ -371,7 +371,7 @@ payload = {
     "Comments": 'Baixa de estoque',
     "DocumentLines": documentlines
 }</spiffworkflow:preScript>
-        <spiffworkflow:instructionsForEndUser>.</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_10pyopk</bpmn:incoming>
       <bpmn:outgoing>Flow_05ngfh8</bpmn:outgoing>
