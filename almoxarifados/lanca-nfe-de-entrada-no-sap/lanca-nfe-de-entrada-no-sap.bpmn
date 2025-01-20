@@ -23,6 +23,9 @@
         <bpmn:flowNodeRef>Gateway_0f6lo6t</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1rfm17d</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_147jun7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1269i6v</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_01bj24m</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0avudbq</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0gf1z7e</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0svydkv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0ho2ena</bpmn:flowNodeRef>
@@ -33,13 +36,11 @@
         <bpmn:flowNodeRef>Gateway_0jos6vb</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0cqv02e</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0ihl7zd</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1qd79lp</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_12aihq1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1ldldn8</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1nxoafm</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_1269i6v</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_01bj24m</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_1qd79lp</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_0avudbq</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1o1vmnq</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_0gqeyfj" name="Matriz_Faturamento">
         <bpmn:flowNodeRef>Event_0u7jsdm</bpmn:flowNodeRef>
@@ -68,7 +69,7 @@
     <bpmn:sequenceFlow id="Flow_1yjn9w8" sourceRef="Gateway_0svydkv" targetRef="Activity_0ho2ena" />
     <bpmn:sequenceFlow id="Flow_0yuxx4p" sourceRef="Event_1qd79lp" targetRef="Event_0avudbq" />
     <bpmn:sequenceFlow id="Flow_0kw5ffp" sourceRef="Activity_0m59st0" targetRef="Gateway_0svydkv" />
-    <bpmn:sequenceFlow id="Flow_1g79fy7" sourceRef="Gateway_147jun7" targetRef="Activity_0gf1z7e" />
+    <bpmn:sequenceFlow id="Flow_1g79fy7" sourceRef="Gateway_147jun7" targetRef="Activity_1o1vmnq" />
     <bpmn:sequenceFlow id="Flow_1bf2gfa" sourceRef="Gateway_147jun7" targetRef="Gateway_1cvjv5f">
       <bpmn:conditionExpression>rascunho ==  False</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
@@ -177,6 +178,32 @@ except:
       <bpmn:outgoing>Flow_1g79fy7</bpmn:outgoing>
       <bpmn:outgoing>Flow_1bf2gfa</bpmn:outgoing>
     </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_1269i6v" default="Flow_0oom33b">
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0oom33b</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0p12rhk</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0oom33b" sourceRef="Gateway_1269i6v" targetRef="Gateway_0f6lo6t" />
+    <bpmn:sequenceFlow id="Flow_0p12rhk" sourceRef="Gateway_1269i6v" targetRef="Activity_01bj24m">
+      <bpmn:conditionExpression>tamanhoCorreto == 0</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:manualTask id="Activity_01bj24m" name="mensagem verificar dados iniciais">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>### A quantidade de caracteres no CNPJ/CPF ou na Chave de Acesso estão incorretos. Por favor verifique.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0p12rhk</bpmn:incoming>
+      <bpmn:outgoing>Flow_05vn16v</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_05vn16v" sourceRef="Activity_01bj24m" targetRef="Gateway_1cvjv5f" />
+    <bpmn:boundaryEvent id="Event_1qd79lp" attachedToRef="Activity_0qpzdpu">
+      <bpmn:outgoing>Flow_0yuxx4p</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1h1wfst">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT12H"</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="Event_0avudbq">
+      <bpmn:incoming>Flow_0yuxx4p</bpmn:incoming>
+    </bpmn:endEvent>
     <bpmn:userTask id="Activity_0gf1z7e" name="Confirmar o Aceite">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser># Dados da nota para dar Aceite
@@ -200,10 +227,10 @@ except:
 | Total da Nota        | {{totalNota}}
 
 ## Itens
-|Código       | Descrição      | Quantidade | v. Unit.  | V. Total     | Depósito   | C. Custo | Cultura    | Safra    | Conta do Razao | Projeto        |
-| ----------- | -------------- | ---------: | --------: | -----------: | ---------- | -------- | ---------- | -------- | -------------- | -------------- |
+|Código       | Descrição      | Quantidade | v. Unit.  | V. Total     | Depósito   | C. Custo | Cultura    | Safra    | Conta do Razao | Projeto        | Baixa Estoque |
+| ----------- | -------------- | ---------: | --------: | -----------: | ---------- | -------- | ---------- | -------- | -------------- | -------------- | ------- |
 {%for i in items%}
-|{{i['Code']}}|{{i['Description']}}|{{i['Quantity']}}|{{i['Price']}}|{{i['LineTotal']}}|{{i['WhsCode']}}|{{i['Custo']}}|{{i['Cultura']}}|{{i['Safra']}}|{{i['AccountCode']}}|{{i['ProjectCode']}}|
+|{{i['Code']}}|{{i['Description']}}|{{i['Quantity']}}|{{i['Price']}}|{{i['LineTotal']}}|{{i['WhsCode']}}|{{i['Custo']}}|{{i['Cultura']}}|{{i['Safra']}}|{{i['AccountCode']}}|{{i['ProjectCode']}}| {{i['baixa']}} |
 {%endfor%}
 ||||Total|{{totalNota}}</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
@@ -212,7 +239,7 @@ except:
         </spiffworkflow:properties>
         <spiffworkflow:postScript />
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1g79fy7</bpmn:incoming>
+      <bpmn:incoming>Flow_08rvw2f</bpmn:incoming>
       <bpmn:outgoing>Flow_1ujq4vb</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:exclusiveGateway id="Gateway_0svydkv" default="Flow_1yjn9w8">
@@ -304,13 +331,35 @@ except:
         </spiffworkflow:serviceTaskOperator>
         <spiffworkflow:preScript>documentlines = []
 
+from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+def get_avgPrice(item, warehouse):
+    query = f"""
+                SELECT w."AvgPrice" FROM {baseSap}.oitw w
+                WHERE w."ItemCode" = '{item}' AND w."WhsCode" = '{warehouse}'
+              """
+    # rsp = json.loads(Hana(connection).selectDb(query))
+    rsp = Hana(connection).selectDb(query)
+    avgPrice = rsp[0]['avgprice']
+    return avgPrice
+
 for i in baixaItensCantina:
     documentlines.append({
-        "ItemCode": i['ItemCode'],
+        "ItemCode": i['Code'],
         "Quantity": i['Quantity'],
-        "WarehouseCode": i['WarehouseCode'],
-        "CostingCode": i['CostingCode'],
-        "CostingCode3": i['CostingCode3']
+        "WarehouseCode": i['WhsCode'],
+        "Price": str(get_avgPrice(i['Code'], i['WhsCode'])),
+        "CostingCode": i['Custo'],
+        "CostingCode3": i['Safra']
     })
 
 payload = {
@@ -319,7 +368,7 @@ payload = {
     "U_RSD_Origem": 11, 
     "U_RSD_Aplicacao": 2,
     # "U_RSD_Fazenda": nfeDraft[''],
-    "Comments": 'Baixa de estoque itens cantina',
+    "Comments": 'Baixa de estoque',
     "DocumentLines": documentlines
 }</spiffworkflow:preScript>
       </bpmn:extensionElements>
@@ -510,32 +559,50 @@ sendMail = send_email(to_email, subject, title_email, body_email, task_link)</sp
       <bpmn:outgoing>Flow_12m7coi</bpmn:outgoing>
       <bpmn:signalEventDefinition id="SignalEventDefinition_1flpyhy" signalRef="Signal_Termina" />
     </bpmn:boundaryEvent>
-    <bpmn:exclusiveGateway id="Gateway_1269i6v" default="Flow_0oom33b">
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
-      <bpmn:outgoing>Flow_0oom33b</bpmn:outgoing>
-      <bpmn:outgoing>Flow_0p12rhk</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0oom33b" sourceRef="Gateway_1269i6v" targetRef="Gateway_0f6lo6t" />
-    <bpmn:sequenceFlow id="Flow_0p12rhk" sourceRef="Gateway_1269i6v" targetRef="Activity_01bj24m">
-      <bpmn:conditionExpression>tamanhoCorreto == 0</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:manualTask id="Activity_01bj24m" name="mensagem verificar dados iniciais">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>### A quantidade de caracteres no CNPJ/CPF ou na Chave de Acesso estão incorretos. Por favor verifique.</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0p12rhk</bpmn:incoming>
-      <bpmn:outgoing>Flow_05vn16v</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:sequenceFlow id="Flow_05vn16v" sourceRef="Activity_01bj24m" targetRef="Gateway_1cvjv5f" />
-    <bpmn:boundaryEvent id="Event_1qd79lp" attachedToRef="Activity_0qpzdpu">
-      <bpmn:outgoing>Flow_0yuxx4p</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_1h1wfst">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT12H"</bpmn:timeDuration>
-      </bpmn:timerEventDefinition>
-    </bpmn:boundaryEvent>
-    <bpmn:endEvent id="Event_0avudbq">
-      <bpmn:incoming>Flow_0yuxx4p</bpmn:incoming>
-    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_08rvw2f" sourceRef="Activity_1o1vmnq" targetRef="Activity_0gf1z7e" />
+    <bpmn:scriptTask id="Activity_1o1vmnq" name="Verifica Itens Baixa Estoque">
+      <bpmn:incoming>Flow_1g79fy7</bpmn:incoming>
+      <bpmn:outgoing>Flow_08rvw2f</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+def verifica_baixa_automatica(ItemCode):
+    query = f"""
+                SELECT count("ItemCode") qtde FROM {baseSap}.oitm WHERE "QryGroup6" = 'Y' AND "ItemCode" = '{ItemCode}'
+            """ 
+    rsp = Hana(connection).selectDb(query)
+
+    return rsp
+
+
+baixaItensCantina = []
+
+for i in items:
+    baixa_automatica = verifica_baixa_automatica(i['Code'])
+    if baixa_automatica[0]['qtde'] == 1:
+        baixaItensCantina.append(i)
+        i['baixa'] = 'Sim'
+    else:
+        i['baixa'] = 'Não'
+
+if baixaItensCantina:
+    baixaCantina = 1
+
+del(i)
+del(connection)
+
+
+
+</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmn:error id="Error_Converter_Rascunho" name="Error_Converter_Rascunho">
@@ -556,14 +623,14 @@ sendMail = send_email(to_email, subject, title_email, body_email, task_link)</sp
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1l3sbp2">
       <bpmndi:BPMNShape id="Participant_1umes9o_di" bpmnElement="Participant_1umes9o" isHorizontal="true">
-        <dc:Bounds x="129" y="60" width="2231" height="660" />
+        <dc:Bounds x="129" y="60" width="2421" height="660" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0gqeyfj_di" bpmnElement="Lane_0gqeyfj" isHorizontal="true">
-        <dc:Bounds x="159" y="490" width="2201" height="230" />
+        <dc:Bounds x="159" y="490" width="2391" height="230" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1obgm3t_di" bpmnElement="Lane_1obgm3t" isHorizontal="true">
-        <dc:Bounds x="159" y="60" width="2201" height="430" />
+        <dc:Bounds x="159" y="60" width="2391" height="430" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
@@ -585,55 +652,6 @@ sendMail = send_email(to_email, subject, title_email, body_email, task_link)</sp
       <bpmndi:BPMNShape id="Gateway_147jun7_di" bpmnElement="Gateway_147jun7" isMarkerVisible="true">
         <dc:Bounds x="1105" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zpbjir_di" bpmnElement="Activity_0gf1z7e">
-        <dc:Bounds x="1210" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0svydkv_di" bpmnElement="Gateway_0svydkv" isMarkerVisible="true">
-        <dc:Bounds x="1575" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_14ji67n_di" bpmnElement="Activity_0ho2ena">
-        <dc:Bounds x="1710" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_10m480q_di" bpmnElement="Activity_0fmyuyg">
-        <dc:Bounds x="1710" y="320" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1dw0b3m_di" bpmnElement="DataStoreReference_1dw0b3m">
-        <dc:Bounds x="1655" y="245" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1657" y="302" width="47" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1n8hk1e_di" bpmnElement="Activity_0m59st0">
-        <dc:Bounds x="1380" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="2152" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1bx17tg_di" bpmnElement="Activity_0q3dw54">
-        <dc:Bounds x="1980" y="250" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1soutk6_di" bpmnElement="Gateway_0jos6vb" isMarkerVisible="true">
-        <dc:Bounds x="1875" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0u7jsdm_di" bpmnElement="Event_0u7jsdm">
-        <dc:Bounds x="1342" y="652" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0cqv02e_di" bpmnElement="Gateway_0cqv02e" isMarkerVisible="true">
-        <dc:Bounds x="1575" y="335" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0jp71kr_di" bpmnElement="Activity_0j775ky">
-        <dc:Bounds x="1710" y="560" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0ru3cc6_di" bpmnElement="Activity_1vtqrmg">
-        <dc:Bounds x="1210" y="550" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1shk57p_di" bpmnElement="Activity_0ihl7zd">
-        <dc:Bounds x="1210" y="290" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1269i6v_di" bpmnElement="Gateway_1269i6v" isMarkerVisible="true">
         <dc:Bounds x="575" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -644,20 +662,73 @@ sendMail = send_email(to_email, subject, title_email, body_email, task_link)</sp
       <bpmndi:BPMNShape id="Event_00bas0a_di" bpmnElement="Event_0avudbq">
         <dc:Bounds x="432" y="272" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_107r03x_di" bpmnElement="Event_1qd79lp">
-        <dc:Bounds x="432" y="199" width="36" height="36" />
+      <bpmndi:BPMNShape id="Activity_0zpbjir_di" bpmnElement="Activity_0gf1z7e">
+        <dc:Bounds x="1400" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0svydkv_di" bpmnElement="Gateway_0svydkv" isMarkerVisible="true">
+        <dc:Bounds x="1765" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_14ji67n_di" bpmnElement="Activity_0ho2ena">
+        <dc:Bounds x="1900" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10m480q_di" bpmnElement="Activity_0fmyuyg">
+        <dc:Bounds x="1900" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1dw0b3m_di" bpmnElement="DataStoreReference_1dw0b3m">
+        <dc:Bounds x="1845" y="245" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1847" y="302" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1n8hk1e_di" bpmnElement="Activity_0m59st0">
+        <dc:Bounds x="1570" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="2342" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1bx17tg_di" bpmnElement="Activity_0q3dw54">
+        <dc:Bounds x="2170" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1soutk6_di" bpmnElement="Gateway_0jos6vb" isMarkerVisible="true">
+        <dc:Bounds x="2065" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0u7jsdm_di" bpmnElement="Event_0u7jsdm">
+        <dc:Bounds x="1532" y="652" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0cqv02e_di" bpmnElement="Gateway_0cqv02e" isMarkerVisible="true">
+        <dc:Bounds x="1765" y="335" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0jp71kr_di" bpmnElement="Activity_0j775ky">
+        <dc:Bounds x="1900" y="560" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ru3cc6_di" bpmnElement="Activity_1vtqrmg">
+        <dc:Bounds x="1400" y="550" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1shk57p_di" bpmnElement="Activity_0ihl7zd">
+        <dc:Bounds x="1400" y="290" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0myzpde_di" bpmnElement="Activity_1o1vmnq">
+        <dc:Bounds x="1220" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_16dq5q9_di" bpmnElement="Event_0bhfm7o">
-        <dc:Bounds x="1272" y="612" width="36" height="36" />
+        <dc:Bounds x="1462" y="612" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_19xh2cs_di" bpmnElement="Event_1nxoafm">
-        <dc:Bounds x="1742" y="382" width="36" height="36" />
+        <dc:Bounds x="1932" y="382" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1kyzkpn_di" bpmnElement="Event_1ldldn8">
-        <dc:Bounds x="1742" y="199" width="36" height="36" />
+        <dc:Bounds x="1932" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0hoyxza_di" bpmnElement="Event_12aihq1">
-        <dc:Bounds x="1242" y="199" width="36" height="36" />
+        <dc:Bounds x="1432" y="199" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_107r03x_di" bpmnElement="Event_1qd79lp">
+        <dc:Bounds x="432" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
@@ -668,7 +739,7 @@ sendMail = send_email(to_email, subject, title_email, body_email, task_link)</sp
         <di:waypoint x="575" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_15eiieb_di" bpmnElement="Flow_15eiieb">
-        <di:waypoint x="1210" y="600" />
+        <di:waypoint x="1400" y="600" />
         <di:waypoint x="860" y="600" />
         <di:waypoint x="860" y="202" />
       </bpmndi:BPMNEdge>
@@ -681,51 +752,51 @@ sendMail = send_email(to_email, subject, title_email, body_email, task_link)</sp
         <di:waypoint x="1105" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1ujq4vb_di" bpmnElement="Flow_1ujq4vb">
-        <di:waypoint x="1310" y="177" />
-        <di:waypoint x="1380" y="177" />
+        <di:waypoint x="1500" y="177" />
+        <di:waypoint x="1570" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12m7coi_di" bpmnElement="Flow_12m7coi">
-        <di:waypoint x="1290" y="648" />
-        <di:waypoint x="1290" y="670" />
-        <di:waypoint x="1342" y="670" />
+        <di:waypoint x="1480" y="648" />
+        <di:waypoint x="1480" y="670" />
+        <di:waypoint x="1532" y="670" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1tavrr8_di" bpmnElement="Flow_1tavrr8">
-        <di:waypoint x="1810" y="177" />
-        <di:waypoint x="1875" y="177" />
+        <di:waypoint x="2000" y="177" />
+        <di:waypoint x="2065" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_182gsdh_di" bpmnElement="Flow_182gsdh">
-        <di:waypoint x="1925" y="177" />
-        <di:waypoint x="2152" y="177" />
+        <di:waypoint x="2115" y="177" />
+        <di:waypoint x="2342" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_10pyopk_di" bpmnElement="Flow_10pyopk">
-        <di:waypoint x="1900" y="202" />
-        <di:waypoint x="1900" y="290" />
-        <di:waypoint x="1980" y="290" />
+        <di:waypoint x="2090" y="202" />
+        <di:waypoint x="2090" y="290" />
+        <di:waypoint x="2170" y="290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_05ngfh8_di" bpmnElement="Flow_05ngfh8">
-        <di:waypoint x="2080" y="290" />
-        <di:waypoint x="2170" y="290" />
-        <di:waypoint x="2170" y="195" />
+        <di:waypoint x="2270" y="290" />
+        <di:waypoint x="2360" y="290" />
+        <di:waypoint x="2360" y="195" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0p6y9yo_di" bpmnElement="Flow_0p6y9yo">
-        <di:waypoint x="1760" y="235" />
-        <di:waypoint x="1760" y="320" />
+        <di:waypoint x="1950" y="235" />
+        <di:waypoint x="1950" y="320" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1yjn9w8_di" bpmnElement="Flow_1yjn9w8">
-        <di:waypoint x="1625" y="177" />
-        <di:waypoint x="1710" y="177" />
+        <di:waypoint x="1815" y="177" />
+        <di:waypoint x="1900" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0yuxx4p_di" bpmnElement="Flow_0yuxx4p">
         <di:waypoint x="450" y="235" />
         <di:waypoint x="450" y="272" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0kw5ffp_di" bpmnElement="Flow_0kw5ffp">
-        <di:waypoint x="1480" y="177" />
-        <di:waypoint x="1575" y="177" />
+        <di:waypoint x="1670" y="177" />
+        <di:waypoint x="1765" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1g79fy7_di" bpmnElement="Flow_1g79fy7">
         <di:waypoint x="1155" y="177" />
-        <di:waypoint x="1210" y="177" />
+        <di:waypoint x="1220" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1bf2gfa_di" bpmnElement="Flow_1bf2gfa">
         <di:waypoint x="1130" y="152" />
@@ -738,29 +809,29 @@ sendMail = send_email(to_email, subject, title_email, body_email, task_link)</sp
         <di:waypoint x="400" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0d0wx32_di" bpmnElement="Flow_0d0wx32">
-        <di:waypoint x="1760" y="418" />
-        <di:waypoint x="1760" y="560" />
+        <di:waypoint x="1950" y="418" />
+        <di:waypoint x="1950" y="560" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_19xz5h2_di" bpmnElement="Flow_19xz5h2">
-        <di:waypoint x="1710" y="360" />
-        <di:waypoint x="1625" y="360" />
+        <di:waypoint x="1900" y="360" />
+        <di:waypoint x="1815" y="360" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1gxj815_di" bpmnElement="Flow_1gxj815">
-        <di:waypoint x="1600" y="335" />
-        <di:waypoint x="1600" y="202" />
+        <di:waypoint x="1790" y="335" />
+        <di:waypoint x="1790" y="202" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1ndv6vv_di" bpmnElement="Flow_1ndv6vv">
-        <di:waypoint x="1710" y="600" />
-        <di:waypoint x="1600" y="600" />
-        <di:waypoint x="1600" y="385" />
+        <di:waypoint x="1900" y="600" />
+        <di:waypoint x="1790" y="600" />
+        <di:waypoint x="1790" y="385" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_091snb4_di" bpmnElement="Flow_091snb4">
-        <di:waypoint x="1260" y="235" />
-        <di:waypoint x="1260" y="290" />
+        <di:waypoint x="1450" y="235" />
+        <di:waypoint x="1450" y="290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1d2djka_di" bpmnElement="Flow_1d2djka">
-        <di:waypoint x="1260" y="370" />
-        <di:waypoint x="1260" y="550" />
+        <di:waypoint x="1450" y="370" />
+        <di:waypoint x="1450" y="550" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0oom33b_di" bpmnElement="Flow_0oom33b">
         <di:waypoint x="625" y="177" />
@@ -775,9 +846,13 @@ sendMail = send_email(to_email, subject, title_email, body_email, task_link)</sp
         <di:waypoint x="300" y="370" />
         <di:waypoint x="300" y="202" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08rvw2f_di" bpmnElement="Flow_08rvw2f">
+        <di:waypoint x="1320" y="177" />
+        <di:waypoint x="1400" y="177" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0r9e1ag_di" bpmnElement="DataInputAssociation_0r9e1ag">
-        <di:waypoint x="1698" y="245" />
-        <di:waypoint x="1718" y="217" />
+        <di:waypoint x="1888" y="245" />
+        <di:waypoint x="1908" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
