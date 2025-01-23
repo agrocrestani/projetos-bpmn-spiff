@@ -9,7 +9,7 @@
       <spiffworkflow:variableName>sapError</spiffworkflow:variableName>
     </bpmn:extensionElements>
   </bpmn:error>
-  <bpmn:collaboration id="Solicitar_Insumos_Querencia_v2">
+  <bpmn:collaboration id="Solicitar_Insumos_Querencia">
     <bpmn:participant id="Participant_0mevgbm" processRef="Process_solicitar_insumos_querencia" />
   </bpmn:collaboration>
   <bpmn:process id="Process_solicitar_insumos_querencia" isExecutable="true">
@@ -119,7 +119,7 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:incoming>Flow_0wktytc</bpmn:incoming>
       <bpmn:outgoing>Flow_06tikhf</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:callActivity id="Activity_1bacem4" name="Observação NFe" calledElement="Process_observacao_nfe_insumos">
+    <bpmn:callActivity id="Activity_1bacem4" name="Observação NFe" calledElement="Process_observacao_nfe_insumos_6afjavb">
       <bpmn:incoming>Flow_1btf1uw</bpmn:incoming>
       <bpmn:outgoing>Flow_08mshle</bpmn:outgoing>
     </bpmn:callActivity>
@@ -177,7 +177,9 @@ for f in n_filiais:
     if f['value'] == unidade:
       descricaoFilial = f['label']
 
+
 usuarioEmissorNFe = get_current_user()['display_name']
+usuarioLogado = usuarioEmissorNFe
 
 SlpCode = 8
 OwnerCode = 2
@@ -241,7 +243,7 @@ for u in utilizacoes:
       <bpmn:incoming>Flow_1frh7mk</bpmn:incoming>
       <bpmn:outgoing>Flow_12ic23r</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:callActivity id="Activity_1uhmn2l" name="Lanca NFe na Colorado" calledElement="Process_purchase_invoices">
+    <bpmn:callActivity id="Activity_1uhmn2l" name="Lanca NFe na Colorado" calledElement="Process_purchase_invoices_krrf890">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>del(payload)
 
@@ -348,7 +350,7 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:incoming>Flow_0nrhooh</bpmn:incoming>
       <bpmn:outgoing>Flow_0iuxdg0</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:callActivity id="Activity_16t5nxk" name="Emite NFe da Colorado para Querencia" calledElement="Process_invoices_post">
+    <bpmn:callActivity id="Activity_16t5nxk" name="Emite NFe da Colorado para Querencia" calledElement="Process_invoices_post_xf8j10r">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>from connectordb.hana import Hana
 
@@ -664,7 +666,7 @@ carregaQuerencia = 0</spiffworkflow:preScript>
       <bpmn:incoming>Flow_12bt55u</bpmn:incoming>
       <bpmn:outgoing>Flow_1anb9z3</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:callActivity id="Activity_1x3dg9k" name="Lança NFe Entrada no SAP" calledElement="Process_purchase_invoices">
+    <bpmn:callActivity id="Activity_1x3dg9k" name="Lança NFe Entrada no SAP" calledElement="Process_purchase_invoices_krrf890">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
@@ -918,7 +920,7 @@ except:
       <bpmn:incoming>Flow_0a1sn56</bpmn:incoming>
       <bpmn:outgoing>Flow_04lt51m</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:callActivity id="Activity_0823umq" name="Emite NFe da Querencia para Colorado" calledElement="Process_invoices_post">
+    <bpmn:callActivity id="Activity_0823umq" name="Emite NFe da Querencia para Colorado" calledElement="Process_invoices_post_xf8j10r">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>from connectordb.hana import Hana
 
@@ -1001,7 +1003,7 @@ payload = {
   </bpmn:error>
   <bpmn:signal id="Finalizar_Processo" name="Finalizar_Processo" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Solicitar_Insumos_Querencia_v2">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Solicitar_Insumos_Querencia">
       <bpmndi:BPMNShape id="Participant_0mevgbm_di" bpmnElement="Participant_0mevgbm" isHorizontal="true">
         <dc:Bounds x="-1288" y="295" width="4586" height="1490" />
       </bpmndi:BPMNShape>
