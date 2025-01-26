@@ -351,17 +351,6 @@
           <text>"Matriz_Contabil"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1mae7bm">
-        <inputEntry id="UnaryTests_0hm7mmz">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1qd4nez">
-          <text>"emanoel.souza@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1l8a4gx">
-          <text>"Matriz_Faturamento"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0rb8lei">
         <inputEntry id="UnaryTests_102h9tf">
           <text></text>
