@@ -978,17 +978,6 @@
           <text>"Matriz_Deposito_Insumos"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0my2uwk">
-        <inputEntry id="UnaryTests_0e3wxvb">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0d4ym7d">
-          <text>"eduardo.silva@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0oils99">
-          <text>"Matriz_Deposito_Insumos"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1e5ih5r">
         <inputEntry id="UnaryTests_0d5vefg">
           <text></text>
@@ -1000,6 +989,17 @@
           <text>"Matriz_Insumos"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0my2uwk">
+        <inputEntry id="UnaryTests_0e3wxvb">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0d4ym7d">
+          <text>"eduardo.silva@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0oils99">
+          <text>"Matriz_Deposito_Insumos"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1fr0xz0">
         <inputEntry id="UnaryTests_13b2mhd">
           <text></text>
@@ -1009,6 +1009,28 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0bsyq7k">
           <text>"Matriz_Faturamento"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_040g7eh">
+        <inputEntry id="UnaryTests_01z4l76">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dyow9n">
+          <text>"emanoel.souza@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0s46t65">
+          <text>"Matriz_Insumos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pd7r6i">
+        <inputEntry id="UnaryTests_0fg1ck2">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17kwao1">
+          <text>"emanoel.souza@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_095n569">
+          <text>"Matriz_Deposito_Insumos"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1ix1uga">
