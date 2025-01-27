@@ -54,17 +54,20 @@
         <bpmn:flowNodeRef>Activity_1rkt1l6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_05jo0sq</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0kygj4b</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_1ule9u1</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1pav2g7</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_1ttlala</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_1uogvkl</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0f2ed01</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1l8yv4t</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0s4m8q1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1jg3f8e</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1bsmf9p</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0qzj466</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1g2tkj6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1uogvkl</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1ule9u1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0qc81md</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1pav2g7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1jv98lm</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1l8yv4t</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1ttlala</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0f2ed01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0a1y3bj</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:sequenceFlow id="Flow_02ebu0j" sourceRef="StartEvent_1" targetRef="Activity_10va8n7" />
@@ -76,7 +79,7 @@
     <bpmn:sequenceFlow id="Flow_1t9rdtz" sourceRef="Gateway_0kygj4b" targetRef="Gateway_1uogvkl">
       <bpmn:conditionExpression>lancado == 201</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_08133cx" sourceRef="Activity_1pav2g7" targetRef="Gateway_1ttlala" />
+    <bpmn:sequenceFlow id="Flow_08133cx" sourceRef="Activity_1pav2g7" targetRef="Gateway_0qc81md" />
     <bpmn:sequenceFlow id="Flow_12ic23r" sourceRef="Activity_1l8yv4t" targetRef="Activity_0vk60k7" />
     <bpmn:sequenceFlow id="Flow_13t1cjk" sourceRef="Activity_0823umq" targetRef="Gateway_0kygj4b" />
     <bpmn:sequenceFlow id="Flow_0tid22h" sourceRef="Gateway_0kygj4b" targetRef="Gateway_05jo0sq">
@@ -113,7 +116,7 @@
       <bpmn:conditionExpression>statusId != 4</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0ct14vj" sourceRef="Gateway_1uogvkl" targetRef="Event_1ule9u1" />
-    <bpmn:sequenceFlow id="Flow_0moezgg" sourceRef="Activity_0f2ed01" targetRef="Gateway_1uogvkl" />
+    <bpmn:sequenceFlow id="Flow_0moezgg" sourceRef="Activity_0f2ed01" targetRef="Gateway_1jv98lm" />
     <bpmn:sequenceFlow id="Flow_070yv70" sourceRef="Gateway_1hzty4u" targetRef="Activity_1bcdnjg" />
     <bpmn:sequenceFlow id="Flow_1vruzto" sourceRef="Gateway_04bzj7n" targetRef="Activity_082xwxf" />
     <bpmn:sequenceFlow id="Flow_0omy3z8" sourceRef="Gateway_1hzty4u" targetRef="Gateway_103xlpo">
@@ -459,176 +462,6 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:outgoing>Flow_1t9rdtz</bpmn:outgoing>
       <bpmn:outgoing>Flow_0tid22h</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:intermediateCatchEvent id="Event_1ule9u1">
-      <bpmn:incoming>Flow_0ct14vj</bpmn:incoming>
-      <bpmn:outgoing>Flow_0a77a64</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_0juamh1">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT20S"</bpmn:timeDuration>
-      </bpmn:timerEventDefinition>
-    </bpmn:intermediateCatchEvent>
-    <bpmn:scriptTask id="Activity_1pav2g7" name="Busca Chave de acesso">
-      <bpmn:incoming>Flow_0a77a64</bpmn:incoming>
-      <bpmn:outgoing>Flow_08133cx</bpmn:outgoing>
-      <bpmn:script>from connectordb.hana import Hana
-
-if get_secret('ambiente') == 'dev':
-    DocEntry = 2066 #status 4
-    # DocEntry = 14 #status 10
-
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
-
-query = f"""
-            select "KeyNfe", CNPJ, "StatusId", "Hist" from SBO_CRESTANI_PRD.AC_NfeRetorno nf where nf."DocEntry" = {DocEntry} AND nf."Tabela" = 'OINV' 
-          """
-
-# rsp = json.loads(Hana(connection).selectDb(query))
-sqlRsp = Hana(connection).selectDb(query)
-
-chaveAcesso = sqlRsp[0]['keynfe']
-cnpj = sqlRsp[0]['cnpj']
-statusId = sqlRsp[0]['statusid']
-hist = sqlRsp[0]['hist']
-arquivo_nfe = f'http://srv-rds-02:8000/{cnpj}/danfe/{chaveAcesso}.pdf'
-
-del(connection)
-
-
-nfe = rsp["body"]
-nfeItens = nfe['DocumentLines']
-
-DocEntry = nfe['DocEntry']
-DocNum = nfe['DocNum']
-Serial = nfe['SequenceSerial']
-DocDate = nfe['DocDate']
-CardCode = nfe['CardCode']
-CardName = nfe['CardName']
-BPLId = nfe['BPL_IDAssignedToInvoice']
-BPLName = nfe['BPLName']
-VATRegNum = nfe['VATRegNum']
-
-itens = []
-Total = 0
-depositos = []
-for i in nfeItens:
-    itens.append(
-        {
-            "LineNum": i['LineNum'],
-            "ItemCode": i['ItemCode'],
-            "ItemDescription": i['ItemDescription'],
-            "Quantity": i['Quantity'],
-            "Price": i['Price'],
-            "WarehouseCode": i['WarehouseCode'],
-            "LineTotal": i['LineTotal']
-        }
-    )
-    if not i['WarehouseCode'] in depositos:
-        depositos.append(i['WarehouseCode'])
-    Total += i['LineTotal']
-
-qtdeDeposito = len(depositos)
-itensMatriz = []
-itensQuerencia = []
-TotalMatriz = 0
-TotalQuerencia = 0
-
-for i in itens:
-    if i['WarehouseCode'] == '03.MATR':
-        carregaMatriz = 1
-        itensMatriz.append(i)
-        TotalMatriz += i['LineTotal']
-    elif i['WarehouseCode'] == '03.FQUE':
-        carregaQuerencia = 1
-        itensQuerencia.append(i)
-        TotalQuerencia += i['LineTotal']
-
-del(rsp)
-# del(n_filiais)
-del(n_safras)
-del(main_usage)
-# del(nfe)
-# del(nfeItens)</bpmn:script>
-    </bpmn:scriptTask>
-    <bpmn:exclusiveGateway id="Gateway_1ttlala" default="Flow_0fskkv6">
-      <bpmn:incoming>Flow_08133cx</bpmn:incoming>
-      <bpmn:outgoing>Flow_0fskkv6</bpmn:outgoing>
-      <bpmn:outgoing>Flow_1psut5o</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:exclusiveGateway id="Gateway_1uogvkl">
-      <bpmn:incoming>Flow_1t9rdtz</bpmn:incoming>
-      <bpmn:incoming>Flow_0moezgg</bpmn:incoming>
-      <bpmn:outgoing>Flow_0ct14vj</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:manualTask id="Activity_0f2ed01" name="Visualiza o erro">
-      <bpmn:extensionElements>
-        <spiffworkflow:postScript />
-        <spiffworkflow:instructionsForEndUser># Erro na transmissão/retorno na SEFAZ
-
-| Campo | Valor |
-| ----------: | ------- |
-|Número da NFe:|{{Serial}}|
-|Chave de acesso: |{{chaveAcesso}}|
-|Número Sap:|{{DocNum}}|
-|Data:|{{DocDate}}|
-|Código Cliente Destino:|{{CardCode}}|
-|Nome Cliente Destino: |{{Nome_Cli_Destino }}|
-|Nome Emitente: |{{BPLName}}|
-|CNPJ Emitente: |{{VATRegNum}}|
-|||
-|Numero do Status:|{{statusId}}|
-|Mensagem de erro:|{{hist}}|
-
-</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1psut5o</bpmn:incoming>
-      <bpmn:outgoing>Flow_0moezgg</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:manualTask id="Activity_1l8yv4t" name="Dados da NFe">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript />
-        <spiffworkflow:instructionsForEndUser># Dados da Nota Fiscal de Saída
-
-| Campo | Valor |
-| ----------: | ------- |
-|Número da NFe:|{{Serial}}|
-|Chave de acesso: |{{chaveAcesso}}|
-|Número Sap:|{{DocNum}}|
-|Data:|{{DocDate}}|
-|Código Cliente Destino:|{{CardCode}}|
-|Nome Cliente Destino: |{{Nome_Cli_Destino }}|
-|Nome Emitente: |{{BPLName}}|
-|CNPJ Emitente: |{{VATRegNum}}|
-
-&lt;form action="{{arquivo_nfe}}" method="get" target="_blank"&gt;
-        &lt;button type="submit" style="background-color: #008CBA;
-                                     border: none;
-                                     color: white;
-                                     padding: 10px 20px;
-                                     text-align: center;
-                                     text-decoration: none;
-                                     display: inline-block;
-                                     font-size: 16px;
-                                     border-radius: 5px;
-                                     transition-duration: 0.4s;
-                                     cursor: pointer;
-                                     border-bottom: 4px solid #005f8e;"&gt;Visualizar NF-e&lt;/button&gt;
-    &lt;/form&gt;
-
-### Itens da Nota
-| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
-| -------- | --------- |  -------------- | ---------------: | ----------: | ----------: | ------------ |
-{%for i in itens%}
-| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
-{%endfor%}
-| | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0fskkv6</bpmn:incoming>
-      <bpmn:outgoing>Flow_12ic23r</bpmn:outgoing>
-    </bpmn:manualTask>
     <bpmn:callActivity id="Activity_0s4m8q1" name="Observação NFe" calledElement="Process_observacao_nfe_insumos">
       <bpmn:incoming>Flow_1btf1uw</bpmn:incoming>
       <bpmn:outgoing>Flow_10sgywb</bpmn:outgoing>
@@ -1140,6 +973,194 @@ Não foi informado Dosagem e/ou Tipo de Aplicação para essa solicitação.
       <bpmn:incoming>Flow_12ic23r</bpmn:incoming>
       <bpmn:outgoing>Flow_18pg4tb</bpmn:outgoing>
     </bpmn:manualTask>
+    <bpmn:exclusiveGateway id="Gateway_1uogvkl">
+      <bpmn:incoming>Flow_1t9rdtz</bpmn:incoming>
+      <bpmn:incoming>Flow_0j42xp5</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ct14vj</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:intermediateCatchEvent id="Event_1ule9u1">
+      <bpmn:incoming>Flow_0ct14vj</bpmn:incoming>
+      <bpmn:outgoing>Flow_0a77a64</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0juamh1">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT30S"</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:exclusiveGateway id="Gateway_0qc81md" default="Flow_0e73q28">
+      <bpmn:incoming>Flow_08133cx</bpmn:incoming>
+      <bpmn:outgoing>Flow_0e73q28</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0hdhp6m</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0e73q28" sourceRef="Gateway_0qc81md" targetRef="Activity_0a1y3bj" />
+    <bpmn:scriptTask id="Activity_1pav2g7" name="Busca Chave de acesso">
+      <bpmn:incoming>Flow_0a77a64</bpmn:incoming>
+      <bpmn:outgoing>Flow_08133cx</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+if get_secret('ambiente') == 'dev':
+    DocEntry = 2066 #status 4
+    # DocEntry = 14 #status 10
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+query = f"""
+            select "KeyNfe", CNPJ, "StatusId", "Hist" from SBO_CRESTANI_PRD.AC_NfeRetorno nf where nf."DocEntry" = {DocEntry} AND nf."Tabela" = 'OINV' 
+          """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+sqlRsp = Hana(connection).selectDb(query)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:exclusiveGateway id="Gateway_1jv98lm">
+      <bpmn:incoming>Flow_0moezgg</bpmn:incoming>
+      <bpmn:incoming>Flow_0hdhp6m</bpmn:incoming>
+      <bpmn:outgoing>Flow_0j42xp5</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0j42xp5" sourceRef="Gateway_1jv98lm" targetRef="Gateway_1uogvkl" />
+    <bpmn:sequenceFlow id="Flow_0hdhp6m" sourceRef="Gateway_0qc81md" targetRef="Gateway_1jv98lm">
+      <bpmn:conditionExpression>sqlRsp == []</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:manualTask id="Activity_1l8yv4t" name="Dados da NFe">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript />
+        <spiffworkflow:instructionsForEndUser># Dados da Nota Fiscal de Saída
+
+| Campo | Valor |
+| ----------: | ------- |
+|Número da NFe:|{{Serial}}|
+|Chave de acesso: |{{chaveAcesso}}|
+|Número Sap:|{{DocNum}}|
+|Data:|{{DocDate}}|
+|Código Cliente Destino:|{{CardCode}}|
+|Nome Cliente Destino: |{{Nome_Cli_Destino }}|
+|Nome Emitente: |{{BPLName}}|
+|CNPJ Emitente: |{{VATRegNum}}|
+
+&lt;form action="{{arquivo_nfe}}" method="get" target="_blank"&gt;
+        &lt;button type="submit" style="background-color: #008CBA;
+                                     border: none;
+                                     color: white;
+                                     padding: 10px 20px;
+                                     text-align: center;
+                                     text-decoration: none;
+                                     display: inline-block;
+                                     font-size: 16px;
+                                     border-radius: 5px;
+                                     transition-duration: 0.4s;
+                                     cursor: pointer;
+                                     border-bottom: 4px solid #005f8e;"&gt;Visualizar NF-e&lt;/button&gt;
+    &lt;/form&gt;
+
+### Itens da Nota
+| Linha | Código | Descrição | Quantidade | V. Unit. | V. Total | Deposito |
+| -------- | --------- |  -------------- | ---------------: | ----------: | ----------: | ------------ |
+{%for i in itens%}
+| {{i['LineNum']}} | {{i['ItemCode']}} | {{i['ItemDescription']}} | {{i['Quantity']}} | {{i['Price']}} | {{i['LineTotal']}} | {{i['WarehouseCode']}} |
+{%endfor%}
+| | | | | **Total**: | {{Total}} |</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0fskkv6</bpmn:incoming>
+      <bpmn:outgoing>Flow_12ic23r</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:exclusiveGateway id="Gateway_1ttlala" default="Flow_0fskkv6">
+      <bpmn:incoming>Flow_0cl5flx</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fskkv6</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1psut5o</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:manualTask id="Activity_0f2ed01" name="Visualiza o erro">
+      <bpmn:extensionElements>
+        <spiffworkflow:postScript />
+        <spiffworkflow:instructionsForEndUser># Erro na transmissão/retorno na SEFAZ
+
+| Campo | Valor |
+| ----------: | ------- |
+|Número da NFe:|{{Serial}}|
+|Chave de acesso: |{{chaveAcesso}}|
+|Número Sap:|{{DocNum}}|
+|Data:|{{DocDate}}|
+|Código Cliente Destino:|{{CardCode}}|
+|Nome Cliente Destino: |{{Nome_Cli_Destino }}|
+|Nome Emitente: |{{BPLName}}|
+|CNPJ Emitente: |{{VATRegNum}}|
+|||
+|Numero do Status:|{{statusId}}|
+|Mensagem de erro:|{{hist}}|
+
+</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1psut5o</bpmn:incoming>
+      <bpmn:outgoing>Flow_0moezgg</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:scriptTask id="Activity_0a1y3bj" name="Processa Chave de acesso">
+      <bpmn:incoming>Flow_0e73q28</bpmn:incoming>
+      <bpmn:outgoing>Flow_0cl5flx</bpmn:outgoing>
+      <bpmn:script>
+chaveAcesso = sqlRsp[0]['keynfe']
+cnpj = sqlRsp[0]['cnpj']
+statusId = sqlRsp[0]['statusid']
+hist = sqlRsp[0]['hist']
+arquivo_nfe = f'http://srv-rds-02:8000/{cnpj}/danfe/{chaveAcesso}.pdf'
+
+del(connection)
+
+
+nfe = rsp["body"]
+nfeItens = nfe['DocumentLines']
+
+DocEntry = nfe['DocEntry']
+DocNum = nfe['DocNum']
+Serial = nfe['SequenceSerial']
+DocDate = nfe['DocDate']
+CardCode = nfe['CardCode']
+CardName = nfe['CardName']
+BPLId = nfe['BPL_IDAssignedToInvoice']
+BPLName = nfe['BPLName']
+VATRegNum = nfe['VATRegNum']
+
+itens = []
+Total = 0
+depositos = []
+for i in nfeItens:
+    itens.append(
+        {
+            "LineNum": i['LineNum'],
+            "ItemCode": i['ItemCode'],
+            "ItemDescription": i['ItemDescription'],
+            "Quantity": i['Quantity'],
+            "Price": i['Price'],
+            "WarehouseCode": i['WarehouseCode'],
+            "LineTotal": i['LineTotal']
+        }
+    )
+    if not i['WarehouseCode'] in depositos:
+        depositos.append(i['WarehouseCode'])
+    Total += i['LineTotal']
+
+qtdeDeposito = len(depositos)
+itensMatriz = []
+itensQuerencia = []
+TotalMatriz = 0
+TotalQuerencia = 0
+
+for i in itens:
+    if i['WarehouseCode'] == '03.MATR':
+        carregaMatriz = 1
+        itensMatriz.append(i)
+        TotalMatriz += i['LineTotal']
+    elif i['WarehouseCode'] == '03.FQUE':
+        carregaQuerencia = 1
+        itensQuerencia.append(i)
+        TotalQuerencia += i['LineTotal']
+
+del(rsp)
+del(n_safras)
+del(main_usage)
+</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_0cl5flx" sourceRef="Activity_0a1y3bj" targetRef="Gateway_1ttlala" />
   </bpmn:process>
   <bpmn:error id="Error_2" name="Error_2">
     <bpmn:extensionElements>
@@ -1235,26 +1256,6 @@ Não foi informado Dosagem e/ou Tipo de Aplicação para essa solicitação.
       <bpmndi:BPMNShape id="Gateway_0kygj4b_di" bpmnElement="Gateway_0kygj4b" isMarkerVisible="true">
         <dc:Bounds x="1775" y="225" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_03yar2h_di" bpmnElement="Event_1ule9u1">
-        <dc:Bounds x="2012" y="232" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1hlzn0o_di" bpmnElement="Activity_1pav2g7">
-        <dc:Bounds x="2120" y="210" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1ttlala_di" bpmnElement="Gateway_1ttlala" isMarkerVisible="true">
-        <dc:Bounds x="2295" y="225" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1uogvkl_di" bpmnElement="Gateway_1uogvkl" isMarkerVisible="true">
-        <dc:Bounds x="1895" y="225" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_05ap6yu_di" bpmnElement="Activity_0f2ed01">
-        <dc:Bounds x="2270" y="360" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0h2kalh_di" bpmnElement="Activity_1l8yv4t">
-        <dc:Bounds x="2425" y="210" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1r8e0li_di" bpmnElement="Activity_0s4m8q1">
         <dc:Bounds x="1250" y="210" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -1328,6 +1329,36 @@ Não foi informado Dosagem e/ou Tipo de Aplicação para essa solicitação.
         <dc:Bounds x="2560" y="920" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1uogvkl_di" bpmnElement="Gateway_1uogvkl" isMarkerVisible="true">
+        <dc:Bounds x="1865" y="225" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_03yar2h_di" bpmnElement="Event_1ule9u1">
+        <dc:Bounds x="1952" y="232" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1ikjio5" bpmnElement="Gateway_0qc81md" isMarkerVisible="true">
+        <dc:Bounds x="2145" y="225" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1hlzn0o_di" bpmnElement="Activity_1pav2g7">
+        <dc:Bounds x="2020" y="210" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0t6zsre" bpmnElement="Gateway_1jv98lm" isMarkerVisible="true">
+        <dc:Bounds x="2145" y="375" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0h2kalh_di" bpmnElement="Activity_1l8yv4t">
+        <dc:Bounds x="2460" y="210" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1ttlala_di" bpmnElement="Gateway_1ttlala" isMarkerVisible="true">
+        <dc:Bounds x="2345" y="225" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05ap6yu_di" bpmnElement="Activity_0f2ed01">
+        <dc:Bounds x="2320" y="360" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1mwgw62" bpmnElement="Activity_0a1y3bj">
+        <dc:Bounds x="2220" y="210" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_17bb53r_di" bpmnElement="Event_0sb557c">
         <dc:Bounds x="4312" y="-548" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -1361,15 +1392,15 @@ Não foi informado Dosagem e/ou Tipo de Aplicação para essa solicitação.
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1t9rdtz_di" bpmnElement="Flow_1t9rdtz">
         <di:waypoint x="1825" y="250" />
-        <di:waypoint x="1895" y="250" />
+        <di:waypoint x="1865" y="250" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_08133cx_di" bpmnElement="Flow_08133cx">
-        <di:waypoint x="2220" y="250" />
-        <di:waypoint x="2295" y="250" />
+        <di:waypoint x="2120" y="250" />
+        <di:waypoint x="2145" y="250" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12ic23r_di" bpmnElement="Flow_12ic23r">
-        <di:waypoint x="2475" y="290" />
-        <di:waypoint x="2475" y="960" />
+        <di:waypoint x="2510" y="290" />
+        <di:waypoint x="2510" y="960" />
         <di:waypoint x="2560" y="960" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13t1cjk_di" bpmnElement="Flow_13t1cjk">
@@ -1477,25 +1508,24 @@ Não foi informado Dosagem e/ou Tipo de Aplicação para essa solicitação.
         <di:waypoint x="4842" y="-570" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0a77a64_di" bpmnElement="Flow_0a77a64">
-        <di:waypoint x="2048" y="250" />
-        <di:waypoint x="2120" y="250" />
+        <di:waypoint x="1988" y="250" />
+        <di:waypoint x="2020" y="250" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0fskkv6_di" bpmnElement="Flow_0fskkv6">
-        <di:waypoint x="2345" y="250" />
-        <di:waypoint x="2425" y="250" />
+        <di:waypoint x="2395" y="250" />
+        <di:waypoint x="2460" y="250" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1psut5o_di" bpmnElement="Flow_1psut5o">
-        <di:waypoint x="2320" y="275" />
-        <di:waypoint x="2320" y="360" />
+        <di:waypoint x="2370" y="275" />
+        <di:waypoint x="2370" y="360" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ct14vj_di" bpmnElement="Flow_0ct14vj">
-        <di:waypoint x="1945" y="250" />
-        <di:waypoint x="2012" y="250" />
+        <di:waypoint x="1915" y="250" />
+        <di:waypoint x="1952" y="250" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0moezgg_di" bpmnElement="Flow_0moezgg">
-        <di:waypoint x="2270" y="400" />
-        <di:waypoint x="1920" y="400" />
-        <di:waypoint x="1920" y="275" />
+        <di:waypoint x="2320" y="400" />
+        <di:waypoint x="2195" y="400" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_070yv70_di" bpmnElement="Flow_070yv70">
         <di:waypoint x="4545" y="-570" />
@@ -1534,6 +1564,23 @@ Não foi informado Dosagem e/ou Tipo de Aplicação para essa solicitação.
       <bpmndi:BPMNEdge id="Flow_18pg4tb_di" bpmnElement="Flow_18pg4tb">
         <di:waypoint x="2660" y="960" />
         <di:waypoint x="2740" y="960" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0e73q28_di" bpmnElement="Flow_0e73q28">
+        <di:waypoint x="2195" y="250" />
+        <di:waypoint x="2220" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0j42xp5_di" bpmnElement="Flow_0j42xp5">
+        <di:waypoint x="2145" y="400" />
+        <di:waypoint x="1890" y="400" />
+        <di:waypoint x="1890" y="275" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hdhp6m_di" bpmnElement="Flow_0hdhp6m">
+        <di:waypoint x="2170" y="275" />
+        <di:waypoint x="2170" y="375" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cl5flx_di" bpmnElement="Flow_0cl5flx">
+        <di:waypoint x="2320" y="250" />
+        <di:waypoint x="2345" y="250" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1scwoig_di" bpmnElement="DataInputAssociation_1scwoig">
         <di:waypoint x="1099" y="365" />
