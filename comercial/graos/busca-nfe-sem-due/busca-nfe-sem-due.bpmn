@@ -119,25 +119,25 @@ nfe = n</spiffworkflow:preScript>
         <bpmn:completionCondition xsi:type="bpmn:tFormalExpression">notas == contador</bpmn:completionCondition>
       </bpmn:multiInstanceLoopCharacteristics>
       <bpmn:startEvent id="Event_0eksyns">
-        <bpmn:outgoing>Flow_0ow1gha</bpmn:outgoing>
+        <bpmn:outgoing>Flow_13yfq4t</bpmn:outgoing>
       </bpmn:startEvent>
       <bpmn:intermediateCatchEvent id="Event_0baaute">
-        <bpmn:incoming>Flow_0ow1gha</bpmn:incoming>
-        <bpmn:outgoing>Flow_1vekprr</bpmn:outgoing>
+        <bpmn:incoming>Flow_08sxch6</bpmn:incoming>
+        <bpmn:outgoing>Flow_1vgkdts</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_0w0ri5w">
           <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT15S"</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
-      <bpmn:sequenceFlow id="Flow_0ow1gha" sourceRef="Event_0eksyns" targetRef="Event_0baaute" />
-      <bpmn:sequenceFlow id="Flow_1vekprr" sourceRef="Event_0baaute" targetRef="Activity_0244qbh" />
       <bpmn:endEvent id="Event_0ovwtld">
-        <bpmn:incoming>Flow_0jqiofr</bpmn:incoming>
+        <bpmn:incoming>Flow_1vgkdts</bpmn:incoming>
       </bpmn:endEvent>
-      <bpmn:sequenceFlow id="Flow_0jqiofr" sourceRef="Activity_0244qbh" targetRef="Event_0ovwtld" />
       <bpmn:callActivity id="Activity_0244qbh" name="Consulta Due" calledElement="Process_consulta_due_graos">
-        <bpmn:incoming>Flow_1vekprr</bpmn:incoming>
-        <bpmn:outgoing>Flow_0jqiofr</bpmn:outgoing>
+        <bpmn:incoming>Flow_13yfq4t</bpmn:incoming>
+        <bpmn:outgoing>Flow_08sxch6</bpmn:outgoing>
       </bpmn:callActivity>
+      <bpmn:sequenceFlow id="Flow_13yfq4t" sourceRef="Event_0eksyns" targetRef="Activity_0244qbh" />
+      <bpmn:sequenceFlow id="Flow_08sxch6" sourceRef="Activity_0244qbh" targetRef="Event_0baaute" />
+      <bpmn:sequenceFlow id="Flow_1vgkdts" sourceRef="Event_0baaute" targetRef="Event_0ovwtld" />
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_1kouroz" sourceRef="Gateway_0o68hzh" targetRef="Activity_118tz8v" />
     <bpmn:endEvent id="Event_017w15b">
@@ -175,29 +175,29 @@ Após 10 dias tente novamente.</spiffworkflow:instructionsForEndUser>
       <bpmndi:BPMNShape id="Activity_118tz8v_di" bpmnElement="Activity_118tz8v" isExpanded="true">
         <dc:Bounds x="720" y="77" width="540" height="200" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0eksyns_di" bpmnElement="Event_0eksyns">
-        <dc:Bounds x="760" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1df4tsx_di" bpmnElement="Event_0baaute">
-        <dc:Bounds x="862" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0ovwtld_di" bpmnElement="Event_0ovwtld">
         <dc:Bounds x="1122" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0a5z34z_di" bpmnElement="Activity_0244qbh">
-        <dc:Bounds x="960" y="137" width="100" height="80" />
+        <dc:Bounds x="850" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_0ow1gha_di" bpmnElement="Flow_0ow1gha">
-        <di:waypoint x="796" y="177" />
-        <di:waypoint x="862" y="177" />
+      <bpmndi:BPMNShape id="Event_1df4tsx_di" bpmnElement="Event_0baaute">
+        <dc:Bounds x="1012" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0eksyns_di" bpmnElement="Event_0eksyns">
+        <dc:Bounds x="760" y="162" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_13yfq4t_di" bpmnElement="Flow_13yfq4t">
+        <di:waypoint x="796" y="180" />
+        <di:waypoint x="850" y="180" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1vekprr_di" bpmnElement="Flow_1vekprr">
-        <di:waypoint x="898" y="177" />
-        <di:waypoint x="960" y="177" />
+      <bpmndi:BPMNEdge id="Flow_08sxch6_di" bpmnElement="Flow_08sxch6">
+        <di:waypoint x="950" y="177" />
+        <di:waypoint x="1012" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0jqiofr_di" bpmnElement="Flow_0jqiofr">
-        <di:waypoint x="1060" y="177" />
+      <bpmndi:BPMNEdge id="Flow_1vgkdts_di" bpmnElement="Flow_1vgkdts">
+        <di:waypoint x="1048" y="177" />
         <di:waypoint x="1122" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Event_017w15b_di" bpmnElement="Event_017w15b">
