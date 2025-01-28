@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
-  <bpmn:collaboration id="Collaboration_0xdcjir">
+  <bpmn:collaboration id="Collaboration_Consulta_Due_Graos">
     <bpmn:participant id="Participant_0gso1je" name="Matriz_ComercialGraos" processRef="Process_consulta_due_graos" />
     <bpmn:correlationKey id="CorrelationKey_1vk43u8" name="MainCorrelationKey" />
   </bpmn:collaboration>
@@ -373,7 +373,7 @@ del(baseSap)
     </bpmn:extensionElements>
   </bpmn:signal>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0xdcjir">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_Consulta_Due_Graos">
       <bpmndi:BPMNShape id="Participant_0gso1je_di" bpmnElement="Participant_0gso1je" isHorizontal="true">
         <dc:Bounds x="520" y="-320" width="1760" height="470" />
         <bpmndi:BPMNLabel />
