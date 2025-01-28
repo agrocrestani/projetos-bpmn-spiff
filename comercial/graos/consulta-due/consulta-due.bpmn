@@ -151,6 +151,7 @@ try:
             mensagem = 'Nota Desconhecida'
         else:
             lanca = 998
+            mensagem = 'Nota não sem evento de averbação ou desconhecimento'  
 except:
     eventos = nfe['data'][0]['nfe']['eventos']
     lanca = 998
