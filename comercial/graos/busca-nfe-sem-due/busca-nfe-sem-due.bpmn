@@ -131,7 +131,7 @@ nfe = n</spiffworkflow:preScript>
         <bpmn:incoming>Flow_0jqiofr</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:sequenceFlow id="Flow_0jqiofr" sourceRef="Activity_0244qbh" targetRef="Event_0ovwtld" />
-      <bpmn:callActivity id="Activity_0244qbh" calledElement="Process_consulta_due_graos">
+      <bpmn:callActivity id="Activity_0244qbh" name="Consulta Due" calledElement="Process_consulta_due_graos">
         <bpmn:incoming>Flow_1vekprr</bpmn:incoming>
         <bpmn:outgoing>Flow_0jqiofr</bpmn:outgoing>
       </bpmn:callActivity>
@@ -183,6 +183,7 @@ Após 10 dias tente novamente.</spiffworkflow:instructionsForEndUser>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0a5z34z_di" bpmnElement="Activity_0244qbh">
         <dc:Bounds x="960" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0ow1gha_di" bpmnElement="Flow_0ow1gha">
         <di:waypoint x="796" y="177" />
