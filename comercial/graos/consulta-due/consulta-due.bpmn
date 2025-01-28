@@ -307,7 +307,8 @@ del(baseSap)
       <bpmn:incoming>Flow_19fjw35</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_19fjw35" name="Não tem averbação ou outro evento" sourceRef="Gateway_Adiciona_Due" targetRef="Event_17uz65t">
-      <bpmn:conditionExpression>lanca == 998</bpmn:conditionExpression>
+      <bpmn:documentation>,</bpmn:documentation>
+      <bpmn:conditionExpression>lanca == 998 or lanca == 999</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="Gateway_Existe" default="Flow_0oceppw">
       <bpmn:incoming>Flow_1b26is6</bpmn:incoming>
