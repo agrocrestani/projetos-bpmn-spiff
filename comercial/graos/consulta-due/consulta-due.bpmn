@@ -152,6 +152,7 @@ try:
 except:
     eventos = nfe['data'][0]['nfe']['eventos']
     lanca = 998
+    mensagem = 'Erro no try'
 
 contador += 1
 
