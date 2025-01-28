@@ -154,7 +154,7 @@ try:
             mensagem = 'Nota não sem evento de averbação ou desconhecimento'  
 except:
     eventos = nfe['data'][0]['nfe']['eventos']
-    lanca = 998
+    lanca = 999
     mensagem = 'Erro no try'
 
 contador += 1
