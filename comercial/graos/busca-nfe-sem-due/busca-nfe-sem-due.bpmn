@@ -78,10 +78,10 @@ query = f"""
             INNER JOIN {baseSap}.oitm t4 ON T1."ItemCode" = t4."ItemCode"
             INNER JOIN {baseSap}."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
             LEFT  JOIN {baseSap}."DeclaracaoExportacaoItens" t6 ON t3."KeyNfe" = t6."chNFe" 
-            LEFT  JOIN {baseSap}.CONTROLEDUE  t7 ON t3."KeyNfe" = t7.keynfe
+            LEFT  JOIN {baseSap}.CONTROLEDUE  t7 ON t3."KeyNfe" = t7.keynfe AND DAYS_BETWEEN(CURRENT_DATE, t7.data) &gt; 10 AND DUE IS NULL
         WHERE
             t2."MainUsage" = 82 AND t0."DocDate" &lt;= '{data_pesquisa}' AND (t1."ItemCode" = '022966' or t1."ItemCode" = '022958')
-            AND t6."chNFe" IS NULL AND t7.KEYNFE IS null
+            AND t6."chNFe" IS NULL AND t7.KEYNFE IS null and T0.CANCELED = 'N'
         ORDER BY "DocNum"
         LIMIT {int(qtde_nfe)}
     """
@@ -116,25 +116,25 @@ nfe = n</spiffworkflow:preScript>
         <bpmn:completionCondition xsi:type="bpmn:tFormalExpression">notas == contador</bpmn:completionCondition>
       </bpmn:multiInstanceLoopCharacteristics>
       <bpmn:startEvent id="Event_0eksyns">
-        <bpmn:outgoing>Flow_1j5lowg</bpmn:outgoing>
+        <bpmn:outgoing>Flow_0ow1gha</bpmn:outgoing>
       </bpmn:startEvent>
-      <bpmn:sequenceFlow id="Flow_1j5lowg" sourceRef="Event_0eksyns" targetRef="Event_0baaute" />
-      <bpmn:sequenceFlow id="Flow_1njobpr" sourceRef="Event_0baaute" targetRef="Event_0x3kztr" />
       <bpmn:intermediateCatchEvent id="Event_0baaute">
-        <bpmn:incoming>Flow_1j5lowg</bpmn:incoming>
-        <bpmn:outgoing>Flow_1njobpr</bpmn:outgoing>
+        <bpmn:incoming>Flow_0ow1gha</bpmn:incoming>
+        <bpmn:outgoing>Flow_17khrok</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_0w0ri5w">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT60S"</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">"PT15S"</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
-      <bpmn:endEvent id="Event_0x3kztr">
-        <bpmn:incoming>Flow_1njobpr</bpmn:incoming>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_1m635eu" messageRef="ConsultaDue">
+      <bpmn:endEvent id="Event_042p490">
+        <bpmn:incoming>Flow_17khrok</bpmn:incoming>
+        <bpmn:messageEventDefinition id="MessageEventDefinition_1us3fx6" messageRef="ConsultaDue">
           <bpmn:extensionElements>
             <spiffworkflow:messagePayload>nfe</spiffworkflow:messagePayload>
           </bpmn:extensionElements>
         </bpmn:messageEventDefinition>
       </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0ow1gha" sourceRef="Event_0eksyns" targetRef="Event_0baaute" />
+      <bpmn:sequenceFlow id="Flow_17khrok" sourceRef="Event_0baaute" targetRef="Event_042p490" />
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_1kouroz" sourceRef="Gateway_0o68hzh" targetRef="Activity_118tz8v" />
     <bpmn:endEvent id="Event_017w15b">
@@ -152,7 +152,6 @@ Após 10 dias tente novamente.</spiffworkflow:instructionsForEndUser>
       <bpmn:outgoing>Flow_1ssqgzg</bpmn:outgoing>
     </bpmn:manualTask>
   </bpmn:process>
-  <bpmn:correlationKey id="CorrelationKey_12b6ffg" name="MainCorrelationKey" />
   <bpmn:message id="ConsultaDue" name="ConsultaDue" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_busca_nfe_sem_due_pvpj5ik">
@@ -178,21 +177,21 @@ Após 10 dias tente novamente.</spiffworkflow:instructionsForEndUser>
         <dc:Bounds x="760" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1df4tsx_di" bpmnElement="Event_0baaute">
-        <dc:Bounds x="872" y="159" width="36" height="36" />
+        <dc:Bounds x="862" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1psxd4k_di" bpmnElement="Event_0x3kztr">
-        <dc:Bounds x="1002" y="159" width="36" height="36" />
+      <bpmndi:BPMNShape id="Event_13ty8q1_di" bpmnElement="Event_042p490">
+        <dc:Bounds x="972" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_1j5lowg_di" bpmnElement="Flow_1j5lowg">
+      <bpmndi:BPMNEdge id="Flow_0ow1gha_di" bpmnElement="Flow_0ow1gha">
         <di:waypoint x="796" y="177" />
-        <di:waypoint x="872" y="177" />
+        <di:waypoint x="862" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1njobpr_di" bpmnElement="Flow_1njobpr">
-        <di:waypoint x="908" y="177" />
-        <di:waypoint x="1002" y="177" />
+      <bpmndi:BPMNEdge id="Flow_17khrok_di" bpmnElement="Flow_17khrok">
+        <di:waypoint x="898" y="177" />
+        <di:waypoint x="972" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Event_017w15b_di" bpmnElement="Event_017w15b">
-        <dc:Bounds x="1152" y="159" width="36" height="36" />
+        <dc:Bounds x="1142" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0v156ss_di" bpmnElement="Activity_08mp7f3">
         <dc:Bounds x="720" y="310" width="100" height="80" />
@@ -224,7 +223,7 @@ Após 10 dias tente novamente.</spiffworkflow:instructionsForEndUser>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1c3r56q_di" bpmnElement="Flow_1c3r56q">
         <di:waypoint x="1070" y="177" />
-        <di:waypoint x="1152" y="177" />
+        <di:waypoint x="1142" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
