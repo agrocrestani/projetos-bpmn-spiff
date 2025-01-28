@@ -920,7 +920,7 @@ except:
       <bpmn:incoming>Flow_0a1sn56</bpmn:incoming>
       <bpmn:outgoing>Flow_04lt51m</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:callActivity id="Activity_0823umq" name="Emite NFe da Querencia para Colorado" calledElement="Process_invoices_post_xf8j10r">
+    <bpmn:callActivity id="Activity_0823umq" name="Emite NFe da Querencia para Colorado" calledElement="Process_purchase_invoices_krrf890">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>from connectordb.hana import Hana
 
