@@ -135,6 +135,7 @@ try:
             Postgres(connection).executeDb(query)
             Postgres(connection).executeDb('commit')
             lanca = 1
+            mensagem = 'Nota averbada'
         elif e['evento'] == 'Desconhecimento da Operação pelo Destinatário (Órgão Autor: AN)':
             evento = e['evento']
             protocolo = e['protocolo']
@@ -147,6 +148,7 @@ try:
             """
             Hana(connection).executeDb(query_desconhecido)
             Hana(connection).executeDb('commit')
+            mensagem = 'Nota Desconhecida'
         else:
             lanca = 998
 except:
