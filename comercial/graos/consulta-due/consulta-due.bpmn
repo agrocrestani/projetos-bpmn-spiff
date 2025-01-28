@@ -157,23 +157,7 @@ contador += 1
 
 del(nfe)
 
-
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
-
-baseSap = get_secret('baseSap')
-
-keynfe = n['keynfe']
-
-query_consulta = f"""
-    update {baseSap}.ControleDue set data = CURRENT_DATE where KeyNfe = '{keynfe}'
-"""
-
-existe = Hana(connection).selectDb(query_consulta)</bpmn:script>
+</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:exclusiveGateway id="Gateway_Adiciona_Due" default="Flow_1jgbu7n">
       <bpmn:incoming>Flow_0c8hasv</bpmn:incoming>
