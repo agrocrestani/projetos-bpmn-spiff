@@ -2,7 +2,7 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:collaboration id="Collaboration_0xdcjir">
     <bpmn:participant id="Participant_0gso1je" name="Matriz_ComercialGraos" processRef="Process_consulta_due_syc1hvx" />
-    <bpmn:correlationKey id="CorrelationKey_1fkqhk2" name="MainCorrelationKey" />
+    <bpmn:correlationKey id="CorrelationKey_0u7nsgj" name="MainCorrelationKey" />
   </bpmn:collaboration>
   <bpmn:process id="Process_consulta_due_syc1hvx" name="Consulta DUE" isExecutable="true">
     <bpmn:sequenceFlow id="Flow_1vdiw5e" sourceRef="Activity_00xnjqu" targetRef="Event_13z83qs" />
