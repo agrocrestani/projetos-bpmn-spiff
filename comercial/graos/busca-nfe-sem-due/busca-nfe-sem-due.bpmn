@@ -80,10 +80,11 @@ query = f"""
             INNER JOIN {baseSap}.oitm t4 ON T1."ItemCode" = t4."ItemCode"
             INNER JOIN {baseSap}."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
             LEFT  JOIN {baseSap}."DeclaracaoExportacaoItens" t6 ON t3."KeyNfe" = t6."chNFe" 
-            LEFT  JOIN SBO_CRESTANI_PRD.CONTROLEDUE  t7 ON t3."KeyNfe" = t7.keynfe AND DAYS_BETWEEN(t7.DATA, CURRENT_DATE) &gt; 10 AND DUE IS NULL
+            LEFT  JOIN SBO_CRESTANI_PRD.CONTROLEDUE t7 ON t3."KeyNfe" = t7.keynfe
         WHERE
             t2."MainUsage" = 82 AND t0."DocDate" &lt;= '{data_pesquisa}' AND (t1."ItemCode" = '022966' or t1."ItemCode" = '022958')
-            AND t6."chNFe" IS NULL AND t7.DUE IS null and T0.CANCELED = 'N'
+            AND t6."chNFe" IS NULL and T0.CANCELED = 'N'
+            AND t7.DUE IS NULL AND DAYS_BETWEEN(t7.DATA, CURRENT_DATE) &gt; 10
         ORDER BY "DocNum"
         LIMIT {int(qtde_nfe)}
     """
