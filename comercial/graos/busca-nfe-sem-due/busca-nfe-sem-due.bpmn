@@ -69,7 +69,9 @@ query = f"""
             t4."ItemName",
             TO_ALPHANUM(t1."Quantity") "Quantity",
             TO_ALPHANUM(t1."LineTotal") "LineTotal",
-            T5.ID "EntidadeId"
+            T5.ID "EntidadeId",
+            t7.due,
+            DAYS_BETWEEN(t7.DATA, CURRENT_DATE)
         from
             {baseSap}.oinv t0
             INNER JOIN {baseSap}.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
@@ -78,10 +80,10 @@ query = f"""
             INNER JOIN {baseSap}.oitm t4 ON T1."ItemCode" = t4."ItemCode"
             INNER JOIN {baseSap}."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
             LEFT  JOIN {baseSap}."DeclaracaoExportacaoItens" t6 ON t3."KeyNfe" = t6."chNFe" 
-            LEFT  JOIN {baseSap}.CONTROLEDUE  t7 ON t3."KeyNfe" = t7.keynfe AND DAYS_BETWEEN(t7.data, CURRENT_DATE) &gt; 10 AND DUE IS NULL
+            LEFT  JOIN {baseSap}.CONTROLEDUE  t7 ON t3."KeyNfe" = t7.keynfe AND DAYS_BETWEEN(t7.DATA, CURRENT_DATE) &gt; 10 AND DUE IS NULL
         WHERE
             t2."MainUsage" = 82 AND t0."DocDate" &lt;= '{data_pesquisa}' AND (t1."ItemCode" = '022966' or t1."ItemCode" = '022958')
-            AND t6."chNFe" IS NULL and T0.CANCELED = 'N'
+            AND t6."chNFe" IS NULL AND t7.DUE IS null and T0.CANCELED = 'N'
         ORDER BY "DocNum"
         LIMIT {int(qtde_nfe)}
     """
