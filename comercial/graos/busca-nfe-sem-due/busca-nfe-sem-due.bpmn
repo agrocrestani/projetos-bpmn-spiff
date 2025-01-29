@@ -79,12 +79,12 @@ query = f"""
             INNER JOIN {baseSap}."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4 AND t0."ObjType" = t3."DocType" 
             INNER JOIN {baseSap}.oitm t4 ON T1."ItemCode" = t4."ItemCode"
             INNER JOIN {baseSap}."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
-            LEFT  JOIN {baseSap}."DeclaracaoExportacaoItens" t6 ON t3."KeyNfe" = t6."chNFe" 
-            LEFT  JOIN SBO_CRESTANI_PRD.CONTROLEDUE t7 ON t3."KeyNfe" = t7.keynfe
+            LEFT  JOIN {baseSap}."DeclaracaoExportacaoItens" t6 ON TRIM(CAST(t3."KeyNfe" AS NVARCHAR)) = TRIM(CAST(t6."chNFe" AS NVARCHAR)) 
+            LEFT  JOIN SBO_CRESTANI_PRD.CONTROLEDUE t7 ON TRIM(CAST(t3."KeyNfe" AS NVARCHAR)) = TRIM(CAST(t7.keynfe AS NVARCHAR))
         WHERE
             t2."MainUsage" = 82 AND t0."DocDate" &lt;= '{data_pesquisa}' AND (t1."ItemCode" = '022966' or t1."ItemCode" = '022958')
             AND t6."chNFe" IS NULL and T0.CANCELED = 'N'
-            AND t7.DUE IS NULL AND DAYS_BETWEEN(t7.DATA, CURRENT_DATE) &gt; 10
+            AND (DAYS_BETWEEN(t7.DATA, CURRENT_DATE) &gt; 10 OR t7.DATA IS NULL)
         ORDER BY "DocNum"
         LIMIT {int(qtde_nfe)}
     """
@@ -175,18 +175,18 @@ Após 10 dias tente novamente.</spiffworkflow:instructionsForEndUser>
       <bpmndi:BPMNShape id="Activity_118tz8v_di" bpmnElement="Activity_118tz8v" isExpanded="true">
         <dc:Bounds x="720" y="77" width="540" height="200" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0eksyns_di" bpmnElement="Event_0eksyns">
+        <dc:Bounds x="760" y="162" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1df4tsx_di" bpmnElement="Event_0baaute">
+        <dc:Bounds x="1012" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0ovwtld_di" bpmnElement="Event_0ovwtld">
         <dc:Bounds x="1122" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0a5z34z_di" bpmnElement="Activity_0244qbh">
         <dc:Bounds x="850" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1df4tsx_di" bpmnElement="Event_0baaute">
-        <dc:Bounds x="1012" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0eksyns_di" bpmnElement="Event_0eksyns">
-        <dc:Bounds x="760" y="162" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_13yfq4t_di" bpmnElement="Flow_13yfq4t">
         <di:waypoint x="796" y="180" />
