@@ -278,18 +278,19 @@ baseSap = get_secret('baseSap')
 keynfe = n['keynfe']
 
 query_consulta = f"""
-    select count(*) from {baseSap}.ControleDue where KeyNfe = '{keynfe}'
+    select count(*) qtde from {baseSap}.ControleDue where KeyNfe = '{keynfe}'
 """
 
-existe = Hana(connection).selectDb(query_consulta)
+rsp = Hana(connection).selectDb(query_consulta)
+exite = rsp[0]['qtde']
 
-if existe:
+if existe == 1:
     query = f"""
             update {baseSap}.ControleDue set data = CURRENT_DATE where KeyNfe = '{keynfe}'
         """
     Hana(connection).executeDb(query)
     Hana(connection).executeDb('commit')
-else:
+elif existe == 0:
     query = f"""
             INSERT INTO {baseSap}.ControleDue (KeyNfe) VALUES ('{keynfe}')
         """
