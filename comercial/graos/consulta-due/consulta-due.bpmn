@@ -282,7 +282,7 @@ query_consulta = f"""
 """
 
 rsp = Hana(connection).selectDb(query_consulta)
-exite = rsp[0]['qtde']
+existe = rsp[0]['qtde']
 
 if existe == 1:
     query = f"""
