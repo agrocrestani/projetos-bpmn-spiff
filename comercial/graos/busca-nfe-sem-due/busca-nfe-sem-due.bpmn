@@ -71,7 +71,7 @@ query = f"""
             TO_ALPHANUM(t1."LineTotal") "LineTotal",
             T5.ID "EntidadeId",
             t7.due,
-            DAYS_BETWEEN(t7.DATA, CURRENT_DATE)
+            DAYS_BETWEEN(t7.DATA, CURRENT_DATE) dias_ultima_consulta
         from
             {baseSap}.oinv t0
             INNER JOIN {baseSap}.inv1 t1 ON t0."DocEntry" = t1."DocEntry"
