@@ -335,9 +335,9 @@ del(baseSap)
 
 | Campo | Valor |
 | --------- | ------- |
-| Chave | {{ nfe['keynfe'] }} |
-| Serial  | {{ nfe['serial'] }} |
-| Data Emissão | {{ nfe['docdate'] }} |
+| Chave | {{ n['keynfe'] }} |
+| Serial  | {{ n['serial'] }} |
+| Data Emissão | {{ n['docdate'] }} |
 | Evento | {{ evento }} |
 | Protocolo | {{ protocolo }} |
 | Data Autorização | {{ data_autorizacao }} |
