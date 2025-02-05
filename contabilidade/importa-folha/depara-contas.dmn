@@ -288,6 +288,14 @@
           <text>"4.1.1.02.01.011"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1cua45h">
+        <inputEntry id="UnaryTests_0jyjwbk">
+          <text>"10102008"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ycla16">
+          <text>"1.1.3.01.02.008"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
