@@ -72,7 +72,7 @@ except:
       <bpmn:outgoing>Flow_0u714ec</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_02n6yqu" sourceRef="Gateway_1y9d1pz" targetRef="Gateway_1bg3lzv">
-      <bpmn:conditionExpression>statusCode == 200 or insumos == true</bpmn:conditionExpression>
+      <bpmn:conditionExpression>statusCode == 200 or rascunho == true</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:manualTask id="Activity_05lbch7" name="Mensagem de erro">
       <bpmn:extensionElements>
@@ -109,7 +109,7 @@ except:
     <bpmn:sequenceFlow id="Flow_1bccn3l" sourceRef="Gateway_16n9880" targetRef="Activity_0qpzdpu" />
     <bpmn:sequenceFlow id="Flow_1f9uioo" sourceRef="Activity_05lbch7" targetRef="Gateway_16n9880" />
     <bpmn:sequenceFlow id="Flow_0u714ec" sourceRef="Gateway_1y9d1pz" targetRef="Activity_1co7zae">
-      <bpmn:conditionExpression>statusCode != 200 and insumos == False</bpmn:conditionExpression>
+      <bpmn:conditionExpression>statusCode != 200 and rascunho == False</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:manualTask id="Activity_1co7zae" name="Rascunho não localizado">
       <bpmn:extensionElements>
