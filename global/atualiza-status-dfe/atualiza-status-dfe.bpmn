@@ -99,6 +99,7 @@ if nota:
                 d."KeyNfe" = '{nota['keynfe']}'
         """
         Hana(connection).executeDb(query_update_dfe_documento)
+        Hana(connection).executeDb('commit')
     else:
         query_rascunho = f"""
             SELECT am."DocNum", am."DocEntry" 
@@ -119,7 +120,8 @@ if nota:
                 WHERE
                     d."KeyNfe" = '{nota['keynfe']}'
             """
-            Hana(connection).executeDb(query_update_dfe_rascunho)</bpmn:script>
+            Hana(connection).executeDb(query_update_dfe_rascunho)
+            Hana(connection).executeDb('commit')</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:sequenceFlow id="Flow_1xj3msq" sourceRef="Event_0jhavg4" targetRef="Activity_1jujsh5" />
       <bpmn:endEvent id="Event_1agxefr">
@@ -143,6 +145,9 @@ if nota:
       <bpmndi:BPMNShape id="Event_0xyf85x_di" bpmnElement="Event_0xyf85x">
         <dc:Bounds x="882" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0d07n2h_di" bpmnElement="Event_0d07n2h">
+        <dc:Bounds x="162" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0bl6x0j_di" bpmnElement="Activity_0bl6x0j" isExpanded="true">
         <dc:Bounds x="460" y="77" width="350" height="200" />
       </bpmndi:BPMNShape>
@@ -164,9 +169,6 @@ if nota:
         <di:waypoint x="690" y="177" />
         <di:waypoint x="752" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Event_0d07n2h_di" bpmnElement="Event_0d07n2h">
-        <dc:Bounds x="179" y="92" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1ktdc2c_di" bpmnElement="Flow_1ktdc2c">
         <di:waypoint x="370" y="177" />
         <di:waypoint x="460" y="177" />
@@ -176,9 +178,7 @@ if nota:
         <di:waypoint x="882" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0p65xes_di" bpmnElement="Flow_0p65xes">
-        <di:waypoint x="215" y="110" />
-        <di:waypoint x="243" y="110" />
-        <di:waypoint x="243" y="177" />
+        <di:waypoint x="198" y="177" />
         <di:waypoint x="270" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
