@@ -111,7 +111,7 @@ if nota:
             AND am."DocStatus" = 'O'
         """
         rascunho = Hana(connection).selectDb(query_rascunho)
-        if len(rascunho) == 1:
+        if len(rascunho) == 1 and nota['IsDraft'] != 1:
             query_update_dfe_rascunho = f"""
                 UPDATE {baseSap}."DocReceived" d
                 SET 
