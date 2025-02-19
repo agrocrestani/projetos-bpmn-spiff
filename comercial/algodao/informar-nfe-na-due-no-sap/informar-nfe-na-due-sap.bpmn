@@ -118,7 +118,7 @@ Não foi encontrada uma NFe de Exportação para o Nº informado!
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0arcwbv" sourceRef="Activity_0bmxevw" targetRef="Activity_01njdmp" />
     <bpmn:sequenceFlow id="Flow_1ruciys" sourceRef="Activity_01njdmp" targetRef="Activity_0t2b3aj" />
-    <bpmn:sequenceFlow id="Flow_0phur47" sourceRef="Activity_0t2b3aj" targetRef="Activity_04r1j8e" />
+    <bpmn:sequenceFlow id="Flow_0phur47" sourceRef="Activity_0t2b3aj" targetRef="Activity_12ce57l" />
     <bpmn:sequenceFlow id="Flow_04xhsk1" sourceRef="Activity_04r1j8e" targetRef="Event_1ulouop" />
     <bpmn:sequenceFlow id="Flow_00zykza" sourceRef="Activity_1n76q5d" targetRef="Gateway_0ew0mpg" />
     <bpmn:sequenceFlow id="Flow_10nmnq5" sourceRef="Gateway_0ew0mpg" targetRef="Activity_1tgglyp" />
@@ -139,7 +139,7 @@ Não foi encontrada uma NFe de Exportação para o Nº informado!
     <bpmn:endEvent id="EE003" name="End Event 003">
       <bpmn:incoming>Flow_02jw8f5</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:scriptTask id="Activity_1n76q5d" name="Verifica se existe DUE no SAP">
+    <bpmn:scriptTask id="Activity_1n76q5d" name="Verifica se existe a DUE no SAP">
       <bpmn:incoming>Flow_1ic5322</bpmn:incoming>
       <bpmn:outgoing>Flow_00zykza</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
@@ -554,47 +554,6 @@ del(query)
 del(baseUni)
 </bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:scriptTask id="Activity_04r1j8e" name="Informa NFe na DUE">
-      <bpmn:incoming>Flow_0phur47</bpmn:incoming>
-      <bpmn:outgoing>Flow_04xhsk1</bpmn:outgoing>
-      <bpmn:script>from connectordb.hana import Hana
-
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
-
-IdDueSap = idDueSap[0]['id']
-DocEntry = nfes[0]['docentry']
-DocDate = nfes[0]['docdate'][0:10]
-DocNum = nfes[0]['docnum']
-SeqCode = nfes[0]['seqcode']
-Serial = nfes[0]['serial']
-SeriesStr = nfes[0]['seriesstr']
-Model = nfes[0]['model']
-ObjType = nfes[0]['objtype']
-LineNum = nfes[0]['linenum']
-ItemCode = nfes[0]['itemcode']
-ItemName = nfes[0]['itemname']
-LineTotal = nfes[0]['linetotal']
-KeyNFe = nfes[0]['keynfe']
-DocTotal = nfes[0]['doctotal']
-
-query = f"""
-    INSERT INTO {baseSap}."DeclaracaoExportacaoItens" 
-    ("DeclaracaoExportacaoId", "DocEntry", "DocDate", "DocNum", "SeqCode", "Serial", "SeriesStr", "Model", "ObjType", "LineNum", "ItemCode", "ItemName", "LineTotal", "chNFe")
-    VALUES({IdDueSap},{DocEntry},'{DocDate}',{DocNum},{SeqCode},{Serial},'{SeriesStr}',{Model},{ObjType},{LineNum},'{ItemCode}','{ItemName}',{LineTotal},'{KeyNFe}')
-"""
-
-Hana(connection).executeDb(query)
-</bpmn:script>
-    </bpmn:scriptTask>
-    <bpmn:endEvent id="Event_1ulouop">
-      <bpmn:incoming>Flow_0za5a6h</bpmn:incoming>
-      <bpmn:incoming>Flow_04xhsk1</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:userTask id="Activity_0t2b3aj" name="Mostra os Dados Inseridos no SAP">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>## Informado NFe: *{{Serial}}* na DUE: *{{due}}* no SAP
@@ -653,6 +612,7 @@ Hana(connection).executeDb(query)
           <spiffworkflow:property name="formJsonSchemaFilename" value="observacao-form-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="observacao-form-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1ruciys</bpmn:incoming>
       <bpmn:outgoing>Flow_0phur47</bpmn:outgoing>
@@ -961,6 +921,97 @@ contador += 1
 
 del(nfe)</bpmn:script>
     </bpmn:scriptTask>
+    <bpmn:scriptTask id="Activity_04r1j8e" name="Informa NFe na DUE">
+      <bpmn:incoming>Flow_0ewp5o5</bpmn:incoming>
+      <bpmn:outgoing>Flow_04xhsk1</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+IdDueSap = idDueSap[0]['id']
+DocEntry = nfes[0]['docentry']
+DocDate = nfes[0]['docdate'][0:10]
+DocNum = nfes[0]['docnum']
+SeqCode = nfes[0]['seqcode']
+Serial = nfes[0]['serial']
+SeriesStr = nfes[0]['seriesstr']
+Model = nfes[0]['model']
+ObjType = nfes[0]['objtype']
+LineNum = nfes[0]['linenum']
+ItemCode = nfes[0]['itemcode']
+ItemName = nfes[0]['itemname']
+LineTotal = nfes[0]['linetotal']
+KeyNFe = nfes[0]['keynfe']
+DocTotal = nfes[0]['doctotal']
+
+query = f"""
+    INSERT INTO {baseSap}."DeclaracaoExportacaoItens" 
+    ("DeclaracaoExportacaoId", "DocEntry", "DocDate", "DocNum", "SeqCode", "Serial", "SeriesStr", "Model", "ObjType", "LineNum", "ItemCode", "ItemName", "LineTotal", "chNFe")
+    VALUES({IdDueSap},{DocEntry},'{DocDate}',{DocNum},{SeqCode},{Serial},'{SeriesStr}',{Model},{ObjType},{LineNum},'{ItemCode}','{ItemName}',{LineTotal},'{KeyNFe}')
+"""
+
+Hana(connection).executeDb(query)
+</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_0lsi9zx" sourceRef="Activity_12ce57l" targetRef="Gateway_08l22e0" />
+    <bpmn:scriptTask id="Activity_12ce57l" name="Verifica se já foi lançado">
+      <bpmn:incoming>Flow_0phur47</bpmn:incoming>
+      <bpmn:outgoing>Flow_0lsi9zx</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+KeyNFe = nfes[0]['keynfe']
+
+query = f"""
+    select * from  {baseSap}."DeclaracaoExportacaoItens" 
+    where "chNFe" = '{KeyNFe}'
+"""
+
+rsp_nfe = Hana(connection).selectDb(query)
+
+if rsp_nfe:
+    lancada = 1
+
+del(connection)
+del(query)
+</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:exclusiveGateway id="Gateway_08l22e0" default="Flow_0ewp5o5">
+      <bpmn:incoming>Flow_0lsi9zx</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ewp5o5</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0x5fbee</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0ewp5o5" sourceRef="Gateway_08l22e0" targetRef="Activity_04r1j8e" />
+    <bpmn:sequenceFlow id="Flow_0x5fbee" name="NFe já foi lançada" sourceRef="Gateway_08l22e0" targetRef="Activity_03fmega">
+      <bpmn:conditionExpression>lancada == 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1dn4rh9" sourceRef="Activity_03fmega" targetRef="Event_1ulouop" />
+    <bpmn:endEvent id="Event_1ulouop">
+      <bpmn:incoming>Flow_0za5a6h</bpmn:incoming>
+      <bpmn:incoming>Flow_04xhsk1</bpmn:incoming>
+      <bpmn:incoming>Flow_1dn4rh9</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:manualTask id="Activity_03fmega" name="Mensagem NFe já lançada">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>&lt;div style="border: 1px solid #ffeeba; background-color: #fff3cd; color: #856404; padding: 20px; border-radius: 5px; margin: 20px 0;"&gt;
+  &lt;h1 style="margin-top: 0;"&gt;Nota  já lançada&lt;/h2&gt;
+  &lt;h3&gt;A nota &lt;strong&gt;{{Serial }}&lt;/strong&gt;, com a chave &lt;strong&gt;{{KeyNFe }}&lt;/strong&gt;, foi encontrada na tabela da DUE. Por favor Verifique..&lt;/p&gt;
+&lt;/div&gt;</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0x5fbee</bpmn:incoming>
+      <bpmn:outgoing>Flow_1dn4rh9</bpmn:outgoing>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmn:error id="ErroInsereDueSap" name="ErroInsereDueSap">
     <bpmn:extensionElements>
@@ -979,7 +1030,7 @@ del(nfe)</bpmn:script>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_08y7n4">
       <bpmndi:BPMNShape id="Participant_0k6ywnt_di" bpmnElement="Participant_0k6ywnt" isHorizontal="true">
-        <dc:Bounds x="-770" y="-140" width="4208" height="618" />
+        <dc:Bounds x="-770" y="-140" width="4368" height="618" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="SE001">
@@ -1061,12 +1112,6 @@ del(nfe)</bpmn:script>
         <dc:Bounds x="2590" y="110" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_1k429xm" bpmnElement="Activity_04r1j8e">
-        <dc:Bounds x="2920" y="110" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_0n6afig" bpmnElement="Event_1ulouop">
-        <dc:Bounds x="3122" y="132" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0odmv9z_di" bpmnElement="Activity_0t2b3aj">
         <dc:Bounds x="2750" y="110" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -1147,6 +1192,21 @@ del(nfe)</bpmn:script>
       <bpmndi:BPMNShape id="Activity_09asyfl_di" bpmnElement="Activity_1fb3t5g">
         <dc:Bounds x="430" y="110" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1k429xm" bpmnElement="Activity_04r1j8e">
+        <dc:Bounds x="3140" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_176hssb_di" bpmnElement="Activity_12ce57l">
+        <dc:Bounds x="2900" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_08l22e0_di" bpmnElement="Gateway_08l22e0" isMarkerVisible="true">
+        <dc:Bounds x="3035" y="125" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0n6afig" bpmnElement="Event_1ulouop">
+        <dc:Bounds x="3292" y="132" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0dve47m_di" bpmnElement="Activity_03fmega">
+        <dc:Bounds x="3140" y="-10" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1fmpedw_di" bpmnElement="Event_1q5m9pt">
         <dc:Bounds x="182" y="312" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -1206,8 +1266,8 @@ del(nfe)</bpmn:script>
       <bpmndi:BPMNEdge id="BPMNEdge_1fighps" bpmnElement="Flow_0za5a6h">
         <di:waypoint x="2310" y="175" />
         <di:waypoint x="2310" y="220" />
-        <di:waypoint x="3140" y="220" />
-        <di:waypoint x="3140" y="168" />
+        <di:waypoint x="3310" y="220" />
+        <di:waypoint x="3310" y="168" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_1jofwcu" bpmnElement="Flow_0arcwbv">
         <di:waypoint x="2520" y="150" />
@@ -1219,11 +1279,11 @@ del(nfe)</bpmn:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_0s7db1w" bpmnElement="Flow_0phur47">
         <di:waypoint x="2850" y="150" />
-        <di:waypoint x="2920" y="150" />
+        <di:waypoint x="2900" y="150" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_1dljwv1" bpmnElement="Flow_04xhsk1">
-        <di:waypoint x="3020" y="150" />
-        <di:waypoint x="3122" y="150" />
+        <di:waypoint x="3240" y="150" />
+        <di:waypoint x="3292" y="150" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_00zykza_di" bpmnElement="Flow_00zykza">
         <di:waypoint x="1250" y="150" />
@@ -1354,6 +1414,27 @@ del(nfe)</bpmn:script>
         <di:waypoint x="152" y="60" />
         <di:waypoint x="-30" y="60" />
         <di:waypoint x="-30" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lsi9zx_di" bpmnElement="Flow_0lsi9zx">
+        <di:waypoint x="3000" y="150" />
+        <di:waypoint x="3035" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ewp5o5_di" bpmnElement="Flow_0ewp5o5">
+        <di:waypoint x="3085" y="150" />
+        <di:waypoint x="3140" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0x5fbee_di" bpmnElement="Flow_0x5fbee">
+        <di:waypoint x="3060" y="125" />
+        <di:waypoint x="3060" y="30" />
+        <di:waypoint x="3140" y="30" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2965" y="63" width="89" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dn4rh9_di" bpmnElement="Flow_1dn4rh9">
+        <di:waypoint x="3240" y="30" />
+        <di:waypoint x="3310" y="30" />
+        <di:waypoint x="3310" y="132" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0pqy17f_di" bpmnElement="DataInputAssociation_0pqy17f">
         <di:waypoint x="1420" y="25" />
