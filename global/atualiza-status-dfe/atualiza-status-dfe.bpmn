@@ -106,7 +106,7 @@ if nota:
             FROM {baseSap}.ODRF am 
             WHERE am."U_ChaveAcesso" = '{nota['keynfe']}' 
             AND am."ObjType" = {nota['doctypeid']}
-            AND o."DocStatus" = 'O'
+            AND am."DocStatus" = 'O'
         """
         rascunho = Hana(connection).selectDb(query_nota)
         if len(rascunho) == 1:
