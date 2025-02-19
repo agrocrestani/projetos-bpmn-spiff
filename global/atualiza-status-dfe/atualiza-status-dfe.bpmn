@@ -31,7 +31,7 @@ query = f"""
                 ("ParceiroXml" LIKE ('03262185%') OR
                 "ParceiroXml" LIKE ('08944169%') OR
                 "ParceiroXml" LIKE ('26250360%'))
-                and "KeyNfe" = '51240303262185000524550010000038351416624492'
+                -- and "KeyNfe" = '51240303262185000524550010000038351416624492'
             order by 
                 "Id"
           """
