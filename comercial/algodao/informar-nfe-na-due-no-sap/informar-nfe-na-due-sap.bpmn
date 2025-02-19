@@ -139,7 +139,7 @@ Não foi encontrada uma NFe de Exportação para o Nº informado!
     <bpmn:endEvent id="EE003" name="End Event 003">
       <bpmn:incoming>Flow_02jw8f5</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:scriptTask id="Activity_1n76q5d" name="Verifica se existe">
+    <bpmn:scriptTask id="Activity_1n76q5d" name="Verifica se existe DUE no SAP">
       <bpmn:incoming>Flow_1ic5322</bpmn:incoming>
       <bpmn:outgoing>Flow_00zykza</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
