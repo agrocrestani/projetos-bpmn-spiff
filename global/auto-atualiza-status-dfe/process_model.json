@@ -1,0 +1,9 @@
+{
+    "description": "",
+    "display_name": "Auto Atualiza Status DFE",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "auto-atualiza-status-dfe.bpmn",
+    "primary_process_id": "Process_auto_atualiza_status_dfe_xjwj14m"
+}
