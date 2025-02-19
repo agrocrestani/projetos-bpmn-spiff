@@ -135,7 +135,6 @@ if nota:
     <bpmn:sequenceFlow id="Flow_0ti4enn" sourceRef="Activity_0bl6x0j" targetRef="Event_0xyf85x" />
     <bpmn:sequenceFlow id="Flow_0p65xes" sourceRef="Event_0d07n2h" targetRef="Activity_0qpzdpu" />
     <bpmn:startEvent id="Event_0d07n2h">
-      <bpmn:documentation>.</bpmn:documentation>
       <bpmn:outgoing>Flow_0p65xes</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_1knwng0">
         <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">"R/2024-12-13T00:00:00-04:00/P1D"</bpmn:timeCycle>
