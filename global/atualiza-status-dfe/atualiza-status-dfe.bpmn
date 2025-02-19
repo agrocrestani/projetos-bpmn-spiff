@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:process id="Process_atualiza_status_dfe" isExecutable="true">
-    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
     <bpmn:scriptTask id="Activity_0qpzdpu" name="Busca notas no DFe">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser />
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:incoming>Flow_0p65xes</bpmn:incoming>
       <bpmn:outgoing>Flow_1ktdc2c</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
@@ -131,12 +129,6 @@ if nota:
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_1ktdc2c" sourceRef="Activity_0qpzdpu" targetRef="Activity_0bl6x0j" />
     <bpmn:sequenceFlow id="Flow_0ti4enn" sourceRef="Activity_0bl6x0j" targetRef="Event_0xyf85x" />
-    <bpmn:startEvent id="StartEvent_1">
-      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_1gcrv14">
-        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">"R/2024-12-13T00:00:00-04:00/P1D"</bpmn:timeCycle>
-      </bpmn:timerEventDefinition>
-    </bpmn:startEvent>
     <bpmn:startEvent id="Event_0d07n2h">
       <bpmn:outgoing>Flow_0p65xes</bpmn:outgoing>
     </bpmn:startEvent>
@@ -150,9 +142,6 @@ if nota:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0xyf85x_di" bpmnElement="Event_0xyf85x">
         <dc:Bounds x="882" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0d07n2h_di" bpmnElement="Event_0d07n2h">
-        <dc:Bounds x="179" y="92" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0bl6x0j_di" bpmnElement="Activity_0bl6x0j" isExpanded="true">
         <dc:Bounds x="460" y="77" width="350" height="200" />
@@ -175,13 +164,9 @@ if nota:
         <di:waypoint x="690" y="177" />
         <di:waypoint x="752" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Event_1qn5zaw_di" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="159" width="36" height="36" />
+      <bpmndi:BPMNShape id="Event_0d07n2h_di" bpmnElement="Event_0d07n2h">
+        <dc:Bounds x="179" y="92" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
-        <di:waypoint x="215" y="177" />
-        <di:waypoint x="270" y="177" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1ktdc2c_di" bpmnElement="Flow_1ktdc2c">
         <di:waypoint x="370" y="177" />
         <di:waypoint x="460" y="177" />
