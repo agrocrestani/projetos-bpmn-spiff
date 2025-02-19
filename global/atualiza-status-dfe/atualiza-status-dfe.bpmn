@@ -133,12 +133,14 @@ if nota:
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_1ktdc2c" sourceRef="Activity_0qpzdpu" targetRef="Activity_0bl6x0j" />
     <bpmn:sequenceFlow id="Flow_0ti4enn" sourceRef="Activity_0bl6x0j" targetRef="Event_0xyf85x" />
+    <bpmn:sequenceFlow id="Flow_0p14brf" sourceRef="Event_05nud41" targetRef="Activity_0qpzdpu" />
     <bpmn:startEvent id="Event_05nud41">
       <bpmn:outgoing>Flow_0p14brf</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_06kgglb">
+        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">"R/2025-02-20T00:00:00-04:00/P1D"</bpmn:timeCycle>
+      </bpmn:timerEventDefinition>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_0p14brf" sourceRef="Event_05nud41" targetRef="Activity_0qpzdpu" />
   </bpmn:process>
-  <bpmn:correlationKey id="CorrelationKey_1pajwg5" name="MainCorrelationKey" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_atualiza_status_dfe">
       <bpmndi:BPMNShape id="Activity_1leu1s5_di" bpmnElement="Activity_0qpzdpu">
@@ -148,7 +150,7 @@ if nota:
       <bpmndi:BPMNShape id="Event_0xyf85x_di" bpmnElement="Event_0xyf85x">
         <dc:Bounds x="882" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_15rylxh_di" bpmnElement="Event_05nud41">
+      <bpmndi:BPMNShape id="Event_0h4jxwf_di" bpmnElement="Event_05nud41">
         <dc:Bounds x="162" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0bl6x0j_di" bpmnElement="Activity_0bl6x0j" isExpanded="true">
