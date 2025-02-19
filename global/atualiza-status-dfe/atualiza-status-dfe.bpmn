@@ -109,7 +109,7 @@ if nota:
             AND am."ObjType" = {nota['doctypeid']}
             AND am."DocStatus" = 'O'
         """
-        rascunho = Hana(connection).selectDb(query_nota)
+        rascunho = Hana(connection).selectDb(query_rascunho)
         if len(rascunho) == 1:
             query_update_dfe_rascunho = f"""
                 UPDATE {baseSap}."DocReceived" d
