@@ -612,7 +612,7 @@ del(baseUni)
           <spiffworkflow:property name="formJsonSchemaFilename" value="observacao-form-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="observacao-form-uischema.json" />
         </spiffworkflow:properties>
-        <spiffworkflow:postScript></spiffworkflow:postScript>
+        <spiffworkflow:postScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1ruciys</bpmn:incoming>
       <bpmn:outgoing>Flow_0phur47</bpmn:outgoing>
@@ -1006,7 +1006,7 @@ del(query)
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>&lt;div style="border: 1px solid #ffeeba; background-color: #fff3cd; color: #856404; padding: 20px; border-radius: 5px; margin: 20px 0;"&gt;
   &lt;h1 style="margin-top: 0;"&gt;Nota  já lançada&lt;/h2&gt;
-  &lt;h3&gt;A nota &lt;strong&gt;{{Serial }}&lt;/strong&gt;, com a chave &lt;strong&gt;{{KeyNFe }}&lt;/strong&gt;, foi encontrada na tabela da DUE. Por favor Verifique..&lt;/p&gt;
+  &lt;h3&gt;A nota &lt;strong&gt;{{Serial }}&lt;/strong&gt;, com a chave &lt;strong&gt;{{KeyNFe }}&lt;/strong&gt;, foi encontrada na tabela da DUE. Por favor Verifique.&lt;/p&gt;
 &lt;/div&gt;</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0x5fbee</bpmn:incoming>
