@@ -22,7 +22,8 @@ query = f"""
             SELECT 
                 "Id", 
                 "DocTypeId", 
-                "KeyNfe"
+                "KeyNfe",
+                "IsDraft"
             FROM 
                 {baseSap}."DocReceived" 
             WHERE 
