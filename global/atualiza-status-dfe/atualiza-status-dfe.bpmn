@@ -80,7 +80,7 @@ baseSap = get_secret('baseSap')
 
 if nota:
     query_nota = f"""
-        SELECT am."DocNum", am."DocEntry" 
+        SELECT distinct am."DocNum", am."DocEntry" 
         FROM {baseSap}.AC_MOVIMENTOS am 
         WHERE am."KeyNfe" = '{nota['keynfe']}' 
         AND am."ObjType" = {nota['doctypeid']}
