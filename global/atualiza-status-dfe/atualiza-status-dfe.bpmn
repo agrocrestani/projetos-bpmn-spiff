@@ -135,6 +135,7 @@ if nota:
     <bpmn:sequenceFlow id="Flow_0ti4enn" sourceRef="Activity_0bl6x0j" targetRef="Event_0xyf85x" />
     <bpmn:sequenceFlow id="Flow_0p65xes" sourceRef="Event_0d07n2h" targetRef="Activity_0qpzdpu" />
     <bpmn:startEvent id="Event_0d07n2h">
+      <bpmn:documentation>.</bpmn:documentation>
       <bpmn:outgoing>Flow_0p65xes</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_1knwng0">
         <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">"R/2024-12-13T00:00:00-04:00/P1D"</bpmn:timeCycle>
@@ -149,9 +150,6 @@ if nota:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0xyf85x_di" bpmnElement="Event_0xyf85x">
         <dc:Bounds x="882" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1suenng_di" bpmnElement="Event_0d07n2h">
-        <dc:Bounds x="162" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0bl6x0j_di" bpmnElement="Activity_0bl6x0j" isExpanded="true">
         <dc:Bounds x="460" y="77" width="350" height="200" />
@@ -174,6 +172,9 @@ if nota:
         <di:waypoint x="690" y="177" />
         <di:waypoint x="752" y="177" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1suenng_di" bpmnElement="Event_0d07n2h">
+        <dc:Bounds x="162" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1ktdc2c_di" bpmnElement="Flow_1ktdc2c">
         <di:waypoint x="370" y="177" />
         <di:waypoint x="460" y="177" />
