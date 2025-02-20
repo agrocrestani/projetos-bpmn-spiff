@@ -136,7 +136,7 @@ try:
             Postgres(connection).executeDb('commit')
             lanca = 1
             mensagem = 'Nota averbada'
-        elif e['evento'] == 'Desconhecimento da Operação pelo Destinatário (Órgão Autor: AN)':
+        elif e['evento'] == 'Desconhecimento da Operação pelo Destinatário (Órgão Autor: AN)' and dias_da_emissao &lt;= 180:
             evento = e['evento']
             protocolo = e['protocolo']
             data_autorizacao = e['data_autorizacao']
@@ -149,6 +149,9 @@ try:
             Hana(connection_hana).executeDb(query_desconhecido)
             Hana(connection_hana).executeDb('commit')
             mensagem = 'Nota Desconhecida'
+        elif dias_da_emissao &gt; 180:
+            lanca = 996
+            mensagem = 'Nota com mais de 180 dias da emissão'  
         else:
             lanca = 998
             mensagem = 'Nota não sem evento de averbação ou desconhecimento'  
@@ -354,7 +357,7 @@ del(baseSap)
       <bpmn:incoming>Flow_19fjw35</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0a2gkuq" sourceRef="Gateway_Adiciona_Due" targetRef="Activity_1kg6qtg">
-      <bpmn:conditionExpression>dias_da_emissao &gt;= 180</bpmn:conditionExpression>
+      <bpmn:conditionExpression>lanca == 996</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:endEvent id="Event_1mxy2jt">
       <bpmn:incoming>Flow_10aesht</bpmn:incoming>
