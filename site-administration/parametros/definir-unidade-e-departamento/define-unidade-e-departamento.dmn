@@ -487,6 +487,23 @@
           <text>"roobson.kennedy@agrocrestani.com.br"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_09a4o68">
+        <inputEntry id="UnaryTests_0l9kkdg">
+          <text>"marcia.bezerra"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1bn750z">
+          <text>"Querencia"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yyp3jk">
+          <text>"Cantina"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0me2am4">
+          <text>"fernando.lourenzoni@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pu3khl">
+          <text>"enio.sturmer@agrocrestani.com.br"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
