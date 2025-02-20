@@ -974,7 +974,7 @@ connection = {
 KeyNFe = nfes[0]['keynfe']
 
 query = f"""
-    select * from  {baseSap}."DeclaracaoExportacaoItens" 
+    select "chNFe" from  {baseSap}."DeclaracaoExportacaoItens" 
     where "chNFe" = '{KeyNFe}'
 """
 
