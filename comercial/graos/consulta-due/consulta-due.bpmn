@@ -397,8 +397,6 @@ del(baseSap)
         </spiffworkflow:properties>
         <spiffworkflow:postScript>from connectordb.hana import Hana
 
-n = nfe
-
 connection = {
     "address": "172.20.1.4",
     "port": "30015",
