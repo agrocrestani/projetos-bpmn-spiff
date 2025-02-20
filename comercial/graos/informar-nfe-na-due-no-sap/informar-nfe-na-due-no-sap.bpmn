@@ -6,10 +6,10 @@
   <bpmn:process id="Process_informar_nfe_na_due_no_sap_s4et3dg" name="Informar NFe na DUE no SAP" isExecutable="true">
     <bpmn:laneSet id="LaneSet_1ysngrh">
       <bpmn:lane id="Lane_Comercial_Graos" name="Matriz_ComercialGraos">
-        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_NFes</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_Busca_NFe_sem_DUE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_NFes</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_Busca_NFe_sem_DUE" />
@@ -27,7 +27,7 @@
         <bpmn:loopDataOutputRef>nfes</bpmn:loopDataOutputRef>
         <bpmn:inputDataItem id="nfe" name="nfe" />
       </bpmn:multiInstanceLoopCharacteristics>
-      <bpmn:sequenceFlow id="Flow_0o0tp2q" sourceRef="Activity_Busca_Id_da_DUE" targetRef="Activity_Informa_NFe_na_DUE" />
+      <bpmn:sequenceFlow id="Flow_0o0tp2q" sourceRef="Activity_Busca_Id_da_DUE" targetRef="Activity_1vdtoph" />
       <bpmn:sequenceFlow id="Flow_1l0h6eb" sourceRef="Gateway_0wkbi6q" targetRef="Activity_Busca_Id_da_DUE">
         <bpmn:conditionExpression>due == True</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
@@ -107,7 +107,7 @@ del(connection)
 # del(query_id_due)</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:scriptTask id="Activity_Informa_NFe_na_DUE" name="Informa NFe na DUE">
-        <bpmn:incoming>Flow_0o0tp2q</bpmn:incoming>
+        <bpmn:incoming>Flow_1el5y4a</bpmn:incoming>
         <bpmn:outgoing>Flow_0nry0ei</bpmn:outgoing>
         <bpmn:script>from connectordb.hana import Hana
 
@@ -186,6 +186,7 @@ del(rsp)</spiffworkflow:postScript>
       <bpmn:endEvent id="Event_1b5n8ba">
         <bpmn:incoming>Flow_12epf89</bpmn:incoming>
         <bpmn:incoming>Flow_07x7mvp</bpmn:incoming>
+        <bpmn:incoming>Flow_0zg482b</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:startEvent id="Event_0gcqa1j">
         <bpmn:outgoing>Flow_1aiipxu</bpmn:outgoing>
@@ -216,16 +217,61 @@ del(rsp)</spiffworkflow:postScript>
         <bpmn:incoming>Flow_0nry0ei</bpmn:incoming>
         <bpmn:outgoing>Flow_07x7mvp</bpmn:outgoing>
       </bpmn:manualTask>
+      <bpmn:sequenceFlow id="Flow_0v15ex5" sourceRef="Activity_1vdtoph" targetRef="Gateway_0r2zkz6" />
+      <bpmn:exclusiveGateway id="Gateway_0r2zkz6" default="Flow_1el5y4a">
+        <bpmn:incoming>Flow_0v15ex5</bpmn:incoming>
+        <bpmn:outgoing>Flow_1el5y4a</bpmn:outgoing>
+        <bpmn:outgoing>Flow_17y7rf5</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_1el5y4a" sourceRef="Gateway_0r2zkz6" targetRef="Activity_Informa_NFe_na_DUE" />
+      <bpmn:scriptTask id="Activity_1vdtoph" name="Verifica se existe DUE lançada">
+        <bpmn:incoming>Flow_0o0tp2q</bpmn:incoming>
+        <bpmn:outgoing>Flow_0v15ex5</bpmn:outgoing>
+        <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+    select * from  {baseSap}."DeclaracaoExportacaoItens" 
+    where "chNFe" = '{KeyNFe}'
+"""
+
+rsp_nfe = Hana(connection).selectDb(query)
+
+lancada = False
+
+if rsp_nfe:
+    lancada = True
+
+del(connection)
+del(query)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_17y7rf5" sourceRef="Gateway_0r2zkz6" targetRef="Activity_18wsmli">
+        <bpmn:conditionExpression>lancada == True</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_0zg482b" sourceRef="Activity_18wsmli" targetRef="Event_1b5n8ba" />
+      <bpmn:manualTask id="Activity_18wsmli" name="Mensagem NFe já lançada">
+        <bpmn:extensionElements>
+          <spiffworkflow:instructionsForEndUser>&lt;div style="border: 1px solid #ffeeba; background-color: #fff3cd; color: #856404; padding: 20px; border-radius: 5px; margin: 20px 0;"&gt;
+  &lt;h1 style="margin-top: 0;"&gt;Nota  já lançada&lt;/h2&gt;
+  &lt;h3&gt;A nota &lt;strong&gt;{{Serial }}&lt;/strong&gt;, com a chave &lt;strong&gt;{{KeyNFe }}&lt;/strong&gt;, foi encontrada na tabela da DUE. Por favor Verifique.&lt;/p&gt;
+&lt;/div&gt;</spiffworkflow:instructionsForEndUser>
+          <spiffworkflow:preScript>Serial = nfe['serial']</spiffworkflow:preScript>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_17y7rf5</bpmn:incoming>
+        <bpmn:outgoing>Flow_0zg482b</bpmn:outgoing>
+      </bpmn:manualTask>
     </bpmn:subProcess>
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:endEvent id="EndEvent_1">
-      <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0ccgix8</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:scriptTask id="Activity_Busca_NFe_sem_DUE" name="Busca as notas sem DUE">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser />
@@ -288,26 +334,31 @@ del(connection)
 del(query)
 # '51240103262185000109550010000245571183610655',</bpmn:script>
     </bpmn:scriptTask>
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ccgix8</bpmn:incoming>
+    </bpmn:endEvent>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1803azx">
       <bpmndi:BPMNShape id="Participant_0qra9c5_di" bpmnElement="Participant_0qra9c5" isHorizontal="true">
-        <dc:Bounds x="129" y="340" width="1410" height="420" />
+        <dc:Bounds x="129" y="170" width="1961" height="720" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_153rpnu_di" bpmnElement="Lane_Comercial_Graos" isHorizontal="true">
-        <dc:Bounds x="159" y="340" width="1380" height="420" />
+        <dc:Bounds x="159" y="170" width="1931" height="720" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1822" y="497" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1398pii_di" bpmnElement="Activity_NFes" isExpanded="true">
-        <dc:Bounds x="410" y="370" width="1010" height="290" />
+        <dc:Bounds x="410" y="240" width="1240" height="570" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0k10jva_di" bpmnElement="Activity_Busca_Id_da_DUE">
         <dc:Bounds x="810" y="430" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_18vvxc9_di" bpmnElement="Activity_Informa_NFe_na_DUE">
-        <dc:Bounds x="970" y="430" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0wkbi6q_di" bpmnElement="Gateway_0wkbi6q" isMarkerVisible="true">
@@ -317,14 +368,28 @@ del(query)
         <dc:Bounds x="550" y="430" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1b5n8ba_di" bpmnElement="Event_1b5n8ba">
-        <dc:Bounds x="1282" y="452" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0gcqa1j_di" bpmnElement="Event_0gcqa1j">
         <dc:Bounds x="450" y="452" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18vvxc9_di" bpmnElement="Activity_Informa_NFe_na_DUE">
+        <dc:Bounds x="1200" y="430" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1b5n8ba_di" bpmnElement="Event_1b5n8ba">
+        <dc:Bounds x="1512" y="452" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1s8aivm_di" bpmnElement="Activity_Mostra_Dados_SAP">
-        <dc:Bounds x="1130" y="430" width="100" height="80" />
+        <dc:Bounds x="1360" y="430" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0r2zkz6_di" bpmnElement="Gateway_0r2zkz6" isMarkerVisible="true">
+        <dc:Bounds x="1105" y="445" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_14s0lps_di" bpmnElement="Activity_1vdtoph">
+        <dc:Bounds x="970" y="430" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1a0yt0y_di" bpmnElement="Activity_18wsmli">
+        <dc:Bounds x="1280" y="310" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0o0tp2q_di" bpmnElement="Flow_0o0tp2q">
@@ -340,28 +405,43 @@ del(query)
         <di:waypoint x="695" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0nry0ei_di" bpmnElement="Flow_0nry0ei">
-        <di:waypoint x="1070" y="470" />
-        <di:waypoint x="1130" y="470" />
+        <di:waypoint x="1300" y="470" />
+        <di:waypoint x="1360" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12epf89_di" bpmnElement="Flow_12epf89">
         <di:waypoint x="720" y="495" />
-        <di:waypoint x="720" y="600" />
-        <di:waypoint x="1300" y="600" />
-        <di:waypoint x="1300" y="488" />
+        <di:waypoint x="720" y="590" />
+        <di:waypoint x="1530" y="590" />
+        <di:waypoint x="1530" y="488" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1aiipxu_di" bpmnElement="Flow_1aiipxu">
         <di:waypoint x="486" y="470" />
         <di:waypoint x="550" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_07x7mvp_di" bpmnElement="Flow_07x7mvp">
-        <di:waypoint x="1230" y="470" />
-        <di:waypoint x="1282" y="470" />
+        <di:waypoint x="1460" y="470" />
+        <di:waypoint x="1512" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0v15ex5_di" bpmnElement="Flow_0v15ex5">
+        <di:waypoint x="1070" y="470" />
+        <di:waypoint x="1105" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1el5y4a_di" bpmnElement="Flow_1el5y4a">
+        <di:waypoint x="1155" y="470" />
+        <di:waypoint x="1200" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17y7rf5_di" bpmnElement="Flow_17y7rf5">
+        <di:waypoint x="1130" y="445" />
+        <di:waypoint x="1130" y="350" />
+        <di:waypoint x="1280" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zg482b_di" bpmnElement="Flow_0zg482b">
+        <di:waypoint x="1380" y="350" />
+        <di:waypoint x="1530" y="350" />
+        <di:waypoint x="1530" y="452" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="192" y="452" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="1482" y="452" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ckybt4_di" bpmnElement="Activity_Busca_NFe_sem_DUE">
         <dc:Bounds x="270" y="430" width="100" height="80" />
@@ -372,8 +452,8 @@ del(query)
         <di:waypoint x="270" y="470" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ccgix8_di" bpmnElement="Flow_0ccgix8">
-        <di:waypoint x="1420" y="470" />
-        <di:waypoint x="1482" y="470" />
+        <di:waypoint x="1650" y="515" />
+        <di:waypoint x="1822" y="515" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="370" y="470" />
