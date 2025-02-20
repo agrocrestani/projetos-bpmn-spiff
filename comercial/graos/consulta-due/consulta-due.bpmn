@@ -267,6 +267,8 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
       <bpmn:incoming>Flow_0ypij4h</bpmn:incoming>
       <bpmn:outgoing>Flow_0plch6e</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
+from datetime import datetime
+
 
 n = nfe
 
@@ -303,6 +305,20 @@ elif existe == 0:
 
 contador = 0
 
+# Converter a string para um objeto datetime
+formato = "%Y-%m-%d %H:%M:%S.%f0"
+doc_datetime = datetime.strptime(n['docdate'], formato)
+
+# Obter a data atual
+data_atual = datetime.now()
+
+# Calcular a diferença de dias
+dias_da_emissao = (data_atual - doc_datetime).days
+
+
+del(formato)
+del(doc_datetime)
+del(data_atual)
 del(query)
 del(connection)
 del(baseSap)
