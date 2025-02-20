@@ -136,6 +136,14 @@ try:
             Postgres(connection).executeDb('commit')
             lanca = 1
             mensagem = 'Nota averbada'
+
+            #Atualiza tabela ControleDue.
+            query = f"""
+                        update {baseSap}.ControleDue set due = 'sim' where KeyNfe = '{keynfe}'
+                    """
+            Hana(connection).executeDb(query)
+            Hana(connection).executeDb('commit')
+
         elif e['evento'] == 'Desconhecimento da Operação pelo Destinatário (Órgão Autor: AN)' and dias_da_emissao &lt;= 180:
             evento = e['evento']
             protocolo = e['protocolo']
@@ -224,6 +232,8 @@ query = f"""update sap.due_eventos set bplid = '{bplid}', entidadeid = '{entidad
 
 Postgres(connection).executeDb(query)
 Postgres(connection).executeDb('commit')
+
+
 
 del(connection)
 # del(query)</bpmn:script>
