@@ -3,7 +3,6 @@
   "properties": {
     "done": {
       "type": "boolean",
-      "description": "Marcar a nota como resolvida, a mesma não será consulta da proxima vez",
       "title": "Done?",
       "default": false
     }
