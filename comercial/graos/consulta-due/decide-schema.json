@@ -2,7 +2,7 @@
   "properties": {
     "resolvida": {
       "type": "boolean",
-      "description": "Se marcar como resolvida a nota não será consulta"
+      "description": "Se marcar como resolvida a nota não será consultad"
       "title": "Marcar nota como resolvida?",
       "default": false
     }
