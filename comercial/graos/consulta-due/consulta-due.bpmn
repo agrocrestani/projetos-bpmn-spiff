@@ -371,6 +371,10 @@ del(baseSap)
 A nota fiscal {{keynfe}} tem mais de 180 dias, contando a partir da data de emissão. Verifique a nota e decida o que fazer.
 
 </spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="decide-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="decide-uischema.json" />
+        </spiffworkflow:properties>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0a2gkuq</bpmn:incoming>
       <bpmn:outgoing>Flow_0vpnxra</bpmn:outgoing>
