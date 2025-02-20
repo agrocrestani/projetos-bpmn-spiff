@@ -235,7 +235,7 @@ del(rsp)</spiffworkflow:postScript>
       <bpmn:script>from connectordb.hana import Hana
 from datetime import datetime, timedelta
 
-data_pesquisa = (datetime.now() - timedelta(days=15)).strftime('%Y%m%d')
+data_pesquisa = (datetime.now() - timedelta(days=15)).strftime('%Y-%m-%d')
 
 env = get_env()
 baseSap = get_secret('baseSap')
@@ -296,10 +296,6 @@ del(query)
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_153rpnu_di" bpmnElement="Lane_Comercial_Graos" isHorizontal="true">
         <dc:Bounds x="159" y="340" width="1380" height="420" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0ckybt4_di" bpmnElement="Activity_Busca_NFe_sem_DUE">
-        <dc:Bounds x="270" y="430" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1398pii_di" bpmnElement="Activity_NFes" isExpanded="true">
@@ -366,6 +362,10 @@ del(query)
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="1482" y="452" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ckybt4_di" bpmnElement="Activity_Busca_NFe_sem_DUE">
+        <dc:Bounds x="270" y="430" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="228" y="470" />
