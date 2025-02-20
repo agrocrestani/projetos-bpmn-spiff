@@ -494,6 +494,17 @@
           <text>"Querencia_Cantina"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1hudt3x">
+        <inputEntry id="UnaryTests_1dza04v">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0de987m">
+          <text>"marcia.bezerra@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0v3yler">
+          <text>"Querencia_Cantina"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0vncmmz">
         <inputEntry id="UnaryTests_050akqp">
           <text></text>
