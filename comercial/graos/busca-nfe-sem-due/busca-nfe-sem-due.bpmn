@@ -41,7 +41,7 @@ A consulta será realizada de acordo com a quantidade de documentos que você es
       <bpmn:script>from connectordb.hana import Hana
 from datetime import datetime, timedelta
 
-data_pesquisa = (datetime.now() - timedelta(days=15)).strftime('%Y%m%d')
+data_pesquisa = (datetime.now() - timedelta(days=15)).strftime('%Y-%m-%d')
 
 connection = {
     "address": "172.20.1.4",
