@@ -2,7 +2,7 @@
   "properties": {
     "done": {
       "type": "boolean",
-      "title": "Done?",
+      "title": "Marcar nota como ?",
       "default": false
     }
   }
