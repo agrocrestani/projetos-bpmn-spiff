@@ -1,6 +1,6 @@
 {
   "title": "Checkbox",
-  "description": "Marcar",
+  "description": "Marcar a nota como resolvida, a mesma não será consulta",
   "properties": {
     "done": {
       "type": "boolean",
