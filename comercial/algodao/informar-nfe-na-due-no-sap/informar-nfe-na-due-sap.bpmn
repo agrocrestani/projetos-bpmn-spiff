@@ -985,6 +985,7 @@ lancada = False
 if rsp_nfe:
     lancada = True
 
+del(rsp_nfe)
 del(connection)
 del(query)
 </bpmn:script>
