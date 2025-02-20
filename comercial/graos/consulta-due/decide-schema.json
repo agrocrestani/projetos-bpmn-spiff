@@ -3,7 +3,7 @@
   "properties": {
     "done": {
       "type": "boolean",
-      "title": "Done?",
+      "title": "Marcar esta nova como resolvida?",
       "default": false
     }
   }
