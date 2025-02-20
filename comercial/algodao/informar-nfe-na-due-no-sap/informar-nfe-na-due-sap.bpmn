@@ -996,7 +996,8 @@ del(query)
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0ewp5o5" sourceRef="Gateway_08l22e0" targetRef="Activity_04r1j8e" />
     <bpmn:sequenceFlow id="Flow_0x5fbee" name="NFe já foi lançada" sourceRef="Gateway_08l22e0" targetRef="Activity_03fmega">
-      <bpmn:conditionExpression>lancada == 1</bpmn:conditionExpression>
+      <bpmn:documentation>.</bpmn:documentation>
+      <bpmn:conditionExpression>lancada == True</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1dn4rh9" sourceRef="Activity_03fmega" targetRef="Event_1ulouop" />
     <bpmn:endEvent id="Event_1ulouop">
