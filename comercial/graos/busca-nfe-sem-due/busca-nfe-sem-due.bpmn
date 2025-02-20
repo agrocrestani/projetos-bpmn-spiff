@@ -132,19 +132,7 @@ nfe = n</spiffworkflow:preScript>
         <bpmn:incoming>Flow_1vgkdts</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:callActivity id="Activity_0244qbh" name="Consulta Due" calledElement="Process_consulta_due_graos">
-        <bpmn:extensionElements>
-          <spiffworkflow:postScript>from datetime import datetime
-
-# Converter a string para um objeto datetime
-formato = "%Y-%m-%d %H:%M:%S.%f0"
-doc_datetime = datetime.strptime(n['docdate'], formato)
-
-# Obter a data atual
-data_atual = datetime.now()
-
-# Calcular a diferença de dias
-dias_da_emissao = (data_atual - doc_datetime).days</spiffworkflow:postScript>
-        </bpmn:extensionElements>
+        <bpmn:extensionElements />
         <bpmn:incoming>Flow_13yfq4t</bpmn:incoming>
         <bpmn:outgoing>Flow_08sxch6</bpmn:outgoing>
       </bpmn:callActivity>
