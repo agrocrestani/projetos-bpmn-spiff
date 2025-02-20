@@ -385,9 +385,10 @@ del(baseSap)
     <bpmn:sequenceFlow id="Flow_0vpnxra" sourceRef="Activity_1kg6qtg" targetRef="Event_1uzwjgn" />
     <bpmn:userTask id="Activity_1kg6qtg" name="Mostra nota e decide">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser># Mais de 180 dias
-
-A nota fiscal {{keynfe}} tem mais de 180 dias, contando a partir da data de emissão. Verifique a nota e decida o que fazer.
+        <spiffworkflow:instructionsForEndUser>&lt;div style="border: 1px solid #ffeeba; background-color: #fff3cd; color: #856404; padding: 20px; border-radius: 5px; margin: 20px 0;"&gt;
+  &lt;h1 style="margin-top: 0;"&gt;NFE com {{dias_da_emissao}} dias&lt;/h2&gt;
+  &lt;h3&gt;A nota fiscal {{keynfe}} tem mais de 180 dias, contando a partir da data de emissão. Verifique a nota e decida o que fazer.&lt;/h&gt;
+&lt;/div&gt;
 
 </spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
