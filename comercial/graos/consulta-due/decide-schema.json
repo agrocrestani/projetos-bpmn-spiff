@@ -1,5 +1,4 @@
 {
-  
   "properties": {
     "done": {
       "type": "boolean",
