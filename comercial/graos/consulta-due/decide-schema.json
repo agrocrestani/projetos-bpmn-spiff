@@ -1,6 +1,6 @@
 {
   "title": "Checkbox",
-  "description": "Ma",
+  "description": "Marcar nota como reso",
   "properties": {
     "done": {
       "type": "boolean",
