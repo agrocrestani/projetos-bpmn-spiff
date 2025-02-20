@@ -239,7 +239,7 @@ connection = {
 baseSap = get_secret('baseSap')
 
 query = f"""
-    select * from  {baseSap}."DeclaracaoExportacaoItens" 
+    select "chNFe" from  {baseSap}."DeclaracaoExportacaoItens" 
     where "chNFe" = '{keynfe}'
 """
 
