@@ -1,5 +1,4 @@
 {
-  "title": "Checkbox",
   "description": "Marcar a nota como resolvida, a mesma não será consulta da proxima vez",
   "properties": {
     "done": {
