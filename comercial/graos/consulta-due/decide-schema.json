@@ -1,6 +1,6 @@
 {
   "title": "Checkbox",
-  "description": "Marcard",
+  "description": "Marcar",
   "properties": {
     "done": {
       "type": "boolean",
