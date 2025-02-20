@@ -375,6 +375,30 @@ A nota fiscal {{keynfe}} tem mais de 180 dias, contando a partir da data de emis
           <spiffworkflow:property name="formJsonSchemaFilename" value="decide-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="decide-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:postScript>from connectordb.hana import Hana
+
+n = nfe
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+if resolvida:
+    query = f"""
+            update {baseSap}.ControleDue set DUE = 'Resolvida' where KeyNfe = '{keynfe}'
+        """
+    Hana(connection).executeDb(query)
+    Hana(connection).executeDb('commit')
+
+del(query)
+del(connection)
+del(baseSap)
+</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0a2gkuq</bpmn:incoming>
       <bpmn:outgoing>Flow_0vpnxra</bpmn:outgoing>
