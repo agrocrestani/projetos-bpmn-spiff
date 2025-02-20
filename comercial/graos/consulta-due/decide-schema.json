@@ -1,6 +1,6 @@
 {
   "properties": {
-    "done": {
+    "d\one": {
       "type": "boolean",
       "title": "Marcar nota como resolvida?",
       "default": false
