@@ -980,6 +980,8 @@ query = f"""
 
 rsp_nfe = Hana(connection).selectDb(query)
 
+lancada = 0
+
 if rsp_nfe:
     lancada = 1
 
