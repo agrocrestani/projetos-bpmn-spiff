@@ -393,6 +393,20 @@
           <text>"PG:insumos"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1elsao8">
+        <inputEntry id="UnaryTests_0odsulr">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tstae2">
+          <text>"Matriz_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xekvsb">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ajhlyo">
+          <text>"PM:insumos:solicitar-insumos-unidades"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1a1y7n5">
         <inputEntry id="UnaryTests_1xbekfg">
           <text></text>
