@@ -1242,6 +1242,17 @@
           <text>"Colorado_Almoxarifado"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_14ex09v">
+        <inputEntry id="UnaryTests_0ocdtng">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pajm1w">
+          <text>"fabio.melo@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xddofb">
+          <text>"Matriz_Auditoria"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
