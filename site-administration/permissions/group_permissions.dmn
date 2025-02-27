@@ -1219,6 +1219,20 @@
           <text>"SUPPORT"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0qk5b1a">
+        <inputEntry id="UnaryTests_01dam0m">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03d6us8">
+          <text>"Matriz_Auditoria"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qrvwt9">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07tft5b">
+          <text>"PG:farmbox"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
