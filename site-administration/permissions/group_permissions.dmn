@@ -393,6 +393,20 @@
           <text>"PG:insumos"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1mmjqcl">
+        <inputEntry id="UnaryTests_0cnch8g">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cmstr3">
+          <text>"Matriz_Insumos"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0j2k5zo">
+          <text>["start"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_008pjm6">
+          <text>"PG:farmbox"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1elsao8">
         <inputEntry id="UnaryTests_0odsulr">
           <text></text>
