@@ -53,13 +53,13 @@ headers = {
         code = resource['body']['code']
         farm_name = resource['body']['plantations'][0]['plantation']['farm_name']
 except:
-    id = None
+    id_ap = None
     code = None
     farm_name = None        
 </spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0csow7z</bpmn:incoming>
-      <bpmn:outgoing>Flow_00rally</bpmn:outgoing>
+      <bpmn:outgoing>Flow_11uxu6y</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Activity_0duoiej" name="Envia para Integração">
       <bpmn:extensionElements>
@@ -89,12 +89,10 @@ pass_integra = "Senha@2023"
 </spiffworkflow:preScript>
         <spiffworkflow:postScript />
       </bpmn:extensionElements>
+      <bpmn:incoming>Flow_11uxu6y</bpmn:incoming>
       <bpmn:outgoing>Flow_0h5kz9n</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:endEvent id="Event_0omzu24">
-      <bpmn:incoming>Flow_00rally</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_00rally" sourceRef="Activity_0j93oae" targetRef="Event_0omzu24" />
+    <bpmn:sequenceFlow id="Flow_11uxu6y" sourceRef="Activity_0j93oae" targetRef="Activity_0duoiej" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_reprocessa_integracao_da_ap_8bwy0yi">
@@ -113,11 +111,8 @@ pass_integra = "Senha@2023"
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1e0cqpb_di" bpmnElement="Activity_0duoiej">
-        <dc:Bounds x="590" y="250" width="100" height="80" />
+        <dc:Bounds x="590" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0omzu24_di" bpmnElement="Event_0omzu24">
-        <dc:Bounds x="592" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="215" y="177" />
@@ -128,14 +123,12 @@ pass_integra = "Senha@2023"
         <di:waypoint x="430" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0h5kz9n_di" bpmnElement="Flow_0h5kz9n">
-        <di:waypoint x="690" y="290" />
-        <di:waypoint x="721" y="290" />
-        <di:waypoint x="721" y="177" />
+        <di:waypoint x="690" y="177" />
         <di:waypoint x="752" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_00rally_di" bpmnElement="Flow_00rally">
+      <bpmndi:BPMNEdge id="Flow_11uxu6y_di" bpmnElement="Flow_11uxu6y">
         <di:waypoint x="530" y="177" />
-        <di:waypoint x="592" y="177" />
+        <di:waypoint x="590" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
