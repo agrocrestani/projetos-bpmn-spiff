@@ -50,7 +50,7 @@ headers = {
         <spiffworkflow:postScript>try:
     if resource:
         id_ap = resource['body']['id']
-        code = resource['body']['id']
+        code = resource['body']['code']
         farm_name = resource['body']['plantations'][0]['plantation']['farm_name']
 except:
     id = None
