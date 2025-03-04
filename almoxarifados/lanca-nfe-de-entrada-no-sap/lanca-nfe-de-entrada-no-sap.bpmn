@@ -135,6 +135,7 @@ try:
     unidade = nfeDraft['BPLName']
     cnpjUnidade = nfeDraft['VATRegNum']
     numeroNota = nfeDraft['SequenceSerial']
+    Serial = nfeDraft['SequenceSerial']
     chaveAcesso = nfeDraft['U_ChaveAcesso']
     codigoFornecedor = nfeDraft['CardCode']
     nomeFornecedor = nfeDraft['CardName']
