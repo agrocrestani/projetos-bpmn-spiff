@@ -1099,6 +1099,17 @@
           <text>"Querencia_Almoxarifado"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1tcq02j">
+        <inputEntry id="UnaryTests_0zp50o4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_028877p">
+          <text>"mayke.barbosa@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0z0ooy6">
+          <text>"Querencia_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_079dt0b">
         <inputEntry id="UnaryTests_1bscilr">
           <text></text>
