@@ -517,6 +517,18 @@
           <text>"BRAARM"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1t0wuw9">
+        <description>Armazem Tangara</description>
+        <inputEntry id="UnaryTests_0vsh1fc">
+          <text>6</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_025l5n5">
+          <text>"12203"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0f5zi64">
+          <text>"TGAARM"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0ixy1u2">
         <inputEntry id="UnaryTests_052q9to">
           <text>7</text>
