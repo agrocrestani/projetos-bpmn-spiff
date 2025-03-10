@@ -18,7 +18,7 @@
  * **Service Task** - communicate with an external API to fetch or update some data.
 
 You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript># loginSap = saplogin[0]['SessionId']
+        <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
 
 url = 'https://172.20.1.9:50000/b1s/v2/InventoryGenExits'
 
