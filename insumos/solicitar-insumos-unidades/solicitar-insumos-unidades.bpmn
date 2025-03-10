@@ -435,12 +435,16 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
         <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
 
 ### Informações
-
+{% if status_code != 900 %}
 | Campo | Conteudo |
 | ----------: | -------------- |
 | Código Erro: | {{errorCode}} |
 | Mensagem Erro: | {{errorMessage}}
 | Status  | {{status_code}} |
+
+{% else %}
+{{ sapError }}
+{% endif %}
 
 1. Verifique se o erro é possível ser corrigido por você, por exemplo: "Quantidade decai para estoque negativo". O item que você está tentando faturar **não tem estoque no SAP.**
 2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
