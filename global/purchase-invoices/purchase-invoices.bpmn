@@ -102,26 +102,24 @@ except:
     errorCode = rspEntrada['body']['error']['code']
     errorMessage = rspEntrada['body']['error']['message']['value']
 except:
-    command = errorEntrada['command_response_body']
-    command = json.loads(command)
-    status_code = errorEntrada['status_code']
-    errorCode = errorEntrada['error_code']
-    try:
-        errorMessage = command['body']['error']['message']['value']
-    except:
-        errorCode = 999
-        status_code = "ErroDesconhecido"
-        errorMessage = "Erro na inclusão da nota no SAP. Por favor ente novamente."
+    status_code = 900
 </spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
 
-### Informações
 
+### **Informações**
+
+{% if status_code != 900 %}
 | Campo | Conteudo |
 | ----------: | -------------- |
 | Código Erro: | {{errorCode}} |
 | Mensagem Erro: | {{errorMessage}}
 | Status  | {{status_code}} |
+
+{% else %}
+{{ sapError }}
+{% endif %}
+
 
 1. Verifique se o erro é possível ser corrigido por você.
 2. Qualquer outro erro, por favor entrar em contato com o TI.</spiffworkflow:instructionsForEndUser>
