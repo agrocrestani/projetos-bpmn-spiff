@@ -1198,6 +1198,17 @@
           <text>"Matriz_ComercialAlgodao"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_08a0pus">
+        <inputEntry id="UnaryTests_18mm9kl">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1k4pihg">
+          <text>"maria.oliveira@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_024tyq7">
+          <text>"Matriz_ComercialAlgodao"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0cueth5">
         <inputEntry id="UnaryTests_166ef4s">
           <text></text>
