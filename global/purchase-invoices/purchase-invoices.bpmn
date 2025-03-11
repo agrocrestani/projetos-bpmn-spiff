@@ -117,7 +117,7 @@ except:
 | Status  | {{status_code}} |
 
 {% else %}
-{{ sapError }}
+{{ errorEntrada }}
 {% endif %}
 
 
