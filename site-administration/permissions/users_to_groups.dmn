@@ -1264,6 +1264,17 @@
           <text>"Colorado_Almoxarifado"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_003fwu3">
+        <inputEntry id="UnaryTests_0m1b1ih">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1y49zbx">
+          <text>"maria.angela@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tz3qv8">
+          <text>"Colorado_Deposito_Insumos"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_14ex09v">
         <inputEntry id="UnaryTests_0ocdtng">
           <text></text>
