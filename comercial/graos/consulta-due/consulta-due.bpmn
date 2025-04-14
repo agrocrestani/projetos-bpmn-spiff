@@ -170,6 +170,8 @@ except:
 
 contador += 1
 
+resolvida = False
+
 del(nfe)
 
 </bpmn:script>
