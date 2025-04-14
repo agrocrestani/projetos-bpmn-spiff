@@ -87,6 +87,7 @@ query = f"""
             AND t6."chNFe" IS NULL and T0.CANCELED = 'N'
             AND (DAYS_BETWEEN(t7.DATA, CURRENT_DATE) &gt; 10 OR t7.DATA IS NULL)
             AND t8."TaxIdNum" LIKE '03.262.185%'
+            AND T3."KeyNfe" = '51250103262185000443550010000018601735742390'
         ORDER BY "DocNum"
         LIMIT {int(qtde_nfe)}
     """
