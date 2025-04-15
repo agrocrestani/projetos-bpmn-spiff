@@ -133,7 +133,7 @@ try:
             """
 
             Postgres(connection).executeDb(query)
-            Postgres(connection).executeDb('commit')
+            # Postgres(connection).executeDb('commit')
             lanca = 1
             mensagem = 'Nota averbada'
 
@@ -142,7 +142,7 @@ try:
                         update {baseSap}.ControleDue set due = 'sim' where KeyNfe = '{keynfe}'
                     """
             Hana(connection).executeDb(query_update)
-            Hana(connection).executeDb('commit')
+            # Hana(connection).executeDb('commit')
 
         elif e['evento'] == 'Desconhecimento da Operação pelo Destinatário (Órgão Autor: AN)' and dias_da_emissao &lt;= 180:
             evento = e['evento']
@@ -155,7 +155,7 @@ try:
                 update {baseSap}.ControleDue set due = 'desconhecido' where KeyNfe = '{keynfe}'
             """
             Hana(connection_hana).executeDb(query_desconhecido)
-            Hana(connection_hana).executeDb('commit')
+            # Hana(connection_hana).executeDb('commit')
             mensagem = 'Nota Desconhecida'
         elif dias_da_emissao &gt; 180:
             lanca = 996
