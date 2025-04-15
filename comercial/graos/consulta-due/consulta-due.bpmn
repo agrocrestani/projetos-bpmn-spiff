@@ -138,10 +138,10 @@ try:
             mensagem = 'Nota averbada'
 
             #Atualiza tabela ControleDue.
-            query = f"""
+            query_update = f"""
                         update {baseSap}.ControleDue set due = 'sim' where KeyNfe = '{keynfe}'
                     """
-            Hana(connection).executeDb(query)
+            Hana(connection).executeDb(query_update)
             Hana(connection).executeDb('commit')
 
         elif e['evento'] == 'Desconhecimento da Operação pelo Destinatário (Órgão Autor: AN)' and dias_da_emissao &lt;= 180:
