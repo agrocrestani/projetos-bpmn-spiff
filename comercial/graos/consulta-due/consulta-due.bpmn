@@ -111,62 +111,62 @@ connection = {
         "password": 'crest@ni2900'
     }
 
-try:
-    eventos = nfe['data'][0]['nfe']['eventos']
-    for e in eventos:
-        if e['evento'] == 'Averbação para Exportação (Órgão Autor: AN)':
-            evento = e['evento']
-            protocolo = e['protocolo']
-            data_autorizacao = e['data_autorizacao']
-            data_inclusao = e['data_inclusao']
-            info = json.dumps(e['info'],ensure_ascii=False)
-            detalhes = json.dumps(e['detalhes'],ensure_ascii=False)
-            autorizacao_sefaz = json.dumps(e['autorizacao_sefaz'],ensure_ascii=False)
-            condicoes_uso = json.dumps(e['condicoes_uso'],ensure_ascii=False)
-            itens_averbados = json.dumps(e['itens_averbados'],ensure_ascii=False)
+# try:
+eventos = nfe['data'][0]['nfe']['eventos']
+for e in eventos:
+    if e['evento'] == 'Averbação para Exportação (Órgão Autor: AN)':
+        evento = e['evento']
+        protocolo = e['protocolo']
+        data_autorizacao = e['data_autorizacao']
+        data_inclusao = e['data_inclusao']
+        info = json.dumps(e['info'],ensure_ascii=False)
+        detalhes = json.dumps(e['detalhes'],ensure_ascii=False)
+        autorizacao_sefaz = json.dumps(e['autorizacao_sefaz'],ensure_ascii=False)
+        condicoes_uso = json.dumps(e['condicoes_uso'],ensure_ascii=False)
+        itens_averbados = json.dumps(e['itens_averbados'],ensure_ascii=False)
 
-            query = f"""
-                INSERT INTO sap.due_eventos
-                (keynfe, evento, protocolo, data_autorizacao, data_inclusao, info, detalhes, autorizacao_sefaz, condicoes_uso, itens_averbados)
-                VALUES('{keynfe}', '{evento}', '{protocolo}', '{data_autorizacao}', '{data_inclusao}',
-                '{info}', '{detalhes}', '{autorizacao_sefaz}', '{condicoes_uso}', '{itens_averbados}')
-            """
+        query = f"""
+            INSERT INTO sap.due_eventos
+            (keynfe, evento, protocolo, data_autorizacao, data_inclusao, info, detalhes, autorizacao_sefaz, condicoes_uso, itens_averbados)
+            VALUES('{keynfe}', '{evento}', '{protocolo}', '{data_autorizacao}', '{data_inclusao}',
+            '{info}', '{detalhes}', '{autorizacao_sefaz}', '{condicoes_uso}', '{itens_averbados}')
+        """
 
-            Postgres(connection).executeDb(query)
-            # Postgres(connection).executeDb('commit')
-            lanca = 1
-            mensagem = 'Nota averbada'
+        Postgres(connection).executeDb(query)
+        # Postgres(connection).executeDb('commit')
+        lanca = 1
+        mensagem = 'Nota averbada'
 
-            #Atualiza tabela ControleDue.
-            query_update = f"""
-                        update {baseSap}.ControleDue set due = 'sim' where KeyNfe = '{keynfe}'
-                    """
-            Hana(connection).executeDb(query_update)
-            # Hana(connection).executeDb('commit')
+        #Atualiza tabela ControleDue.
+        query_update = f"""
+                    update {baseSap}.ControleDue set due = 'sim' where KeyNfe = '{keynfe}'
+                """
+        Hana(connection).executeDb(query_update)
+        # Hana(connection).executeDb('commit')
 
-        elif e['evento'] == 'Desconhecimento da Operação pelo Destinatário (Órgão Autor: AN)' and dias_da_emissao &lt;= 180:
-            evento = e['evento']
-            protocolo = e['protocolo']
-            data_autorizacao = e['data_autorizacao']
-            data_inclusao = e['data_inclusao']
-            justificativa = e['detalhes']['justificativa']
-            lanca = 997
-            query_desconhecido = f"""
-                update {baseSap}.ControleDue set due = 'desconhecido' where KeyNfe = '{keynfe}'
-            """
-            Hana(connection_hana).executeDb(query_desconhecido)
-            # Hana(connection_hana).executeDb('commit')
-            mensagem = 'Nota Desconhecida'
-        elif dias_da_emissao &gt; 180:
-            lanca = 996
-            mensagem = 'Nota com mais de 180 dias da emissão'  
-        else:
-            lanca = 998
-            mensagem = 'Nota não sem evento de averbação ou desconhecimento'  
-except:
-    eventos = nfe['data'][0]['nfe']['eventos']
-    lanca = 999
-    mensagem = 'Erro no try'
+    elif e['evento'] == 'Desconhecimento da Operação pelo Destinatário (Órgão Autor: AN)' and dias_da_emissao &lt;= 180:
+        evento = e['evento']
+        protocolo = e['protocolo']
+        data_autorizacao = e['data_autorizacao']
+        data_inclusao = e['data_inclusao']
+        justificativa = e['detalhes']['justificativa']
+        lanca = 997
+        query_desconhecido = f"""
+            update {baseSap}.ControleDue set due = 'desconhecido' where KeyNfe = '{keynfe}'
+        """
+        Hana(connection_hana).executeDb(query_desconhecido)
+        # Hana(connection_hana).executeDb('commit')
+        mensagem = 'Nota Desconhecida'
+    elif dias_da_emissao &gt; 180:
+        lanca = 996
+        mensagem = 'Nota com mais de 180 dias da emissão'  
+    else:
+        lanca = 998
+        mensagem = 'Nota não sem evento de averbação ou desconhecimento'  
+# except:
+#     eventos = nfe['data'][0]['nfe']['eventos']
+#     lanca = 999
+#     mensagem = 'Erro no try'
 
 contador += 1
 
