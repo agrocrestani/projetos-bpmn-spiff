@@ -516,6 +516,17 @@
           <text>"Querencia_Producao"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_00qkxh4">
+        <inputEntry id="UnaryTests_1k1yak4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vxcr06">
+          <text>"willian.santana@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hqrmb1">
+          <text>"Querencia_Producao"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0vu3tbu">
         <inputEntry id="UnaryTests_0t30l6c">
           <text></text>
