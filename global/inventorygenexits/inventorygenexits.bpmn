@@ -79,15 +79,21 @@ except:
     <bpmn:manualTask id="Activity_01ww280" name="Verifica Erro na Saida">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>try:
-    status_code = lancaEntrada 
-    errorCode = rspSaida['body']['error']['code']
-    errorMessage = rspSaida['body']['error']['message']['value']
+    try:
+        status_code = lancaEntrada 
+        errorCode = rspSaida['body']['error']['code']
+        errorMessage = rspSaida['body']['error']['message']['value']
+    except:
+        command = erroSaidaMercadoria['command_response_body']
+        command = json.loads(command)
+        status_code = erroSaidaMercadoria['status_code']
+        errorCode = erroSaidaMercadoria['error_code']
+        errorMessage = command['body']['error']['message']
 except:
-    command = erroSaidaMercadoria['command_response_body']
-    command = json.loads(command)
-    status_code = erroSaidaMercadoria['status_code']
-    errorCode = erroSaidaMercadoria['error_code']
-    errorMessage = command['body']['error']['message']</spiffworkflow:preScript>
+        status_code = 999
+        errorCode = '999'
+        errorMessage = 'Desconhecido'
+</spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
 
 ### Informações
@@ -154,6 +160,10 @@ except:
         <di:waypoint x="560" y="177" />
         <di:waypoint x="625" y="177" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_12t2hv9_di" bpmnElement="DataInputAssociation_12t2hv9">
+        <di:waypoint x="542" y="55" />
+        <di:waypoint x="514" y="137" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_100908n_di" bpmnElement="Flow_100908n">
         <di:waypoint x="305" y="177" />
         <di:waypoint x="460" y="177" />
@@ -179,10 +189,6 @@ except:
         <di:waypoint x="330" y="320" />
         <di:waypoint x="280" y="320" />
         <di:waypoint x="280" y="202" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_12t2hv9_di" bpmnElement="DataInputAssociation_12t2hv9">
-        <di:waypoint x="542" y="55" />
-        <di:waypoint x="514" y="137" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
