@@ -1143,6 +1143,28 @@
           <text>"Curupai_Cantina"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1yd5xwy">
+        <inputEntry id="UnaryTests_0oc8upp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sgoop0">
+          <text>"kamila.gomes@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wrrtss">
+          <text>"Curupai_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mzzol5">
+        <inputEntry id="UnaryTests_17wxa1v">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hply9i">
+          <text>"kamila.gomes@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01v1vt2">
+          <text>"Curupai_Administrativo"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1b96e42">
         <inputEntry id="UnaryTests_05xt3ox">
           <text></text>
