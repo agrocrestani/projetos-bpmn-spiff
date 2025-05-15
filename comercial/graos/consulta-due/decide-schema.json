@@ -1,7 +1,7 @@
 {
   "description": "Marcar a nota como resolvida, a mesma não será consulta da proxima vez",
   "properties": {
-    "done": {
+    "resolvida": {
       "type": "boolean",
       "title": "Marcar esta nova como resolvida?",
       "default": false

@@ -433,6 +433,18 @@
           <text>"FAZDIR"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0cxikau">
+        <description>Aprendizagem</description>
+        <inputEntry id="UnaryTests_1wjh64m">
+          <text>4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0d3pow6">
+          <text>"12307"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00ndzs8">
+          <text>"CJOPRO"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0dqz430">
         <description>Produção Lavoura</description>
         <inputEntry id="UnaryTests_0ztyo66">
@@ -505,6 +517,18 @@
           <text>"FAZDIR"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0n91wsb">
+        <description>Aprendizagem</description>
+        <inputEntry id="UnaryTests_159trkx">
+          <text>5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_085tqpp">
+          <text>"12307"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07cghcp">
+          <text>"BRAPRO"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_19yttj4">
         <description>Armazem Curupai</description>
         <inputEntry id="UnaryTests_1hst3rw">
@@ -520,7 +544,7 @@
       <rule id="DecisionRule_1t0wuw9">
         <description>Armazem Tangara</description>
         <inputEntry id="UnaryTests_0vsh1fc">
-          <text>6</text>
+          <text>13</text>
         </inputEntry>
         <inputEntry id="UnaryTests_025l5n5">
           <text>"12203"</text>

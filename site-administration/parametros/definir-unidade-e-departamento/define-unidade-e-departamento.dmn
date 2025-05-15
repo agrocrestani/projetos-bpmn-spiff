@@ -266,6 +266,23 @@
           <text>"vilmar.ferreira@agrocrestani.com.br"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1lgd0da">
+        <inputEntry id="UnaryTests_0awb57r">
+          <text>"kamila.gomes"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wsscm9">
+          <text>"Curupai"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mlpsrq">
+          <text>"Administrativo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xh4uo4">
+          <text>"vilmar.ferreira@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qny785">
+          <text>"vilmar.ferreira@agrocrestani.com.br"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0v1so7b">
         <inputEntry id="UnaryTests_0d0ghlv">
           <text>"ygor.ferreira"</text>

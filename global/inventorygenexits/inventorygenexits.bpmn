@@ -18,7 +18,7 @@
  * **Service Task** - communicate with an external API to fetch or update some data.
 
 You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
-        <spiffworkflow:preScript># loginSap = saplogin[0]['SessionId']
+        <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
 
 url = f'{get_secret('sLayerUrl')}/InventoryGenExits'
 
@@ -43,6 +43,11 @@ except:
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_100908n</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
+      <bpmn:property id="Property_12icjwp" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_12t2hv9">
+        <bpmn:sourceRef>DataStoreReference_0e9p0qm</bpmn:sourceRef>
+        <bpmn:targetRef>Property_12icjwp</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
     </bpmn:serviceTask>
     <bpmn:exclusiveGateway id="Gateway_193ikqd">
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
@@ -74,15 +79,21 @@ except:
     <bpmn:manualTask id="Activity_01ww280" name="Verifica Erro na Saida">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>try:
-    status_code = lancaEntrada 
-    errorCode = rspSaida['body']['error']['code']
-    errorMessage = rspSaida['body']['error']['message']['value']
+    try:
+        status_code = lancaEntrada 
+        errorCode = rspSaida['body']['error']['code']
+        errorMessage = rspSaida['body']['error']['message']['value']
+    except:
+        command = erroSaidaMercadoria['command_response_body']
+        command = json.loads(command)
+        status_code = erroSaidaMercadoria['status_code']
+        errorCode = erroSaidaMercadoria['error_code']
+        errorMessage = command['body']['error']['message']
 except:
-    command = erroSaidaMercadoria['command_response_body']
-    command = json.loads(command)
-    status_code = erroSaidaMercadoria['status_code']
-    errorCode = erroSaidaMercadoria['error_code']
-    errorMessage = command['body']['error']['message']</spiffworkflow:preScript>
+        status_code = 999
+        errorCode = '999'
+        errorMessage = 'Desconhecido'
+</spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
 
 ### Informações
@@ -99,12 +110,14 @@ except:
       <bpmn:incoming>Flow_0t9svfz</bpmn:incoming>
       <bpmn:outgoing>Flow_055zyrh</bpmn:outgoing>
     </bpmn:manualTask>
+    <bpmn:dataStoreReference id="DataStoreReference_0e9p0qm" name="SapLogin" dataStoreRef="saplogin" type="json" />
   </bpmn:process>
   <bpmn:error id="Error_Saida_Mercadoria" name="Error_Saida_Mercadoria">
     <bpmn:extensionElements>
       <spiffworkflow:variableName>erroSaidaMercadoria</spiffworkflow:variableName>
     </bpmn:extensionElements>
   </bpmn:error>
+  <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_inventorygenexits">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -130,6 +143,12 @@ except:
         <dc:Bounds x="330" y="280" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0e9p0qm_di" bpmnElement="DataStoreReference_0e9p0qm">
+        <dc:Bounds x="525" y="5" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="527" y="62" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_06byydf_di" bpmnElement="Event_1yswld5">
         <dc:Bounds x="502" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -140,6 +159,10 @@ except:
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="560" y="177" />
         <di:waypoint x="625" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_12t2hv9_di" bpmnElement="DataInputAssociation_12t2hv9">
+        <di:waypoint x="542" y="55" />
+        <di:waypoint x="514" y="137" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_100908n_di" bpmnElement="Flow_100908n">
         <di:waypoint x="305" y="177" />
