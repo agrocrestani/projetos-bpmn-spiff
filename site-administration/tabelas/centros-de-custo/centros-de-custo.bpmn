@@ -12,7 +12,7 @@
       <bpmn:incoming>Flow_1l9e5wy</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_1iixjle" />
-    <bpmn:scriptTask id="Activity_0qpzdpu" name="Fetch Depositos">
+    <bpmn:scriptTask id="Activity_0qpzdpu" name="Fetch Centros de custo">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
 
@@ -27,10 +27,10 @@ You can also change the text you are reading here by updating the *Instructions*
       <bpmn:script>from connectordb.hana import Hana
 
 connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
+    "address": get_secret('hanaAddress'),
+    "port": get_secret('hanaPort'),
+    "user": get_secret('hanaUser'),
+    "password": get_secret('hanaPassword')
 }
 
 baseSap = get_secret('baseSap')
@@ -46,12 +46,10 @@ query = f"""
 
 rsp = Hana(connection).selectDb(query)
 
-# rsp = json.loads(Hana(connection).selectDb(query))
-
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1l9e5wy" sourceRef="Activity_1iixjle" targetRef="EndEvent_1" />
-    <bpmn:scriptTask id="Activity_1iixjle" name="Parse Almoxarifados">
+    <bpmn:scriptTask id="Activity_1iixjle" name="Parse">
       <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1l9e5wy</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1721ddj">

@@ -7,23 +7,22 @@
     <bpmn:endEvent id="Event_0jxoz7s">
       <bpmn:incoming>Flow_02fzwp7</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Natureza da Declaracao" dataStoreRef="natureza_da_declaracao" type="json" />
-    <bpmn:sequenceFlow id="Flow_0qc3i7h" sourceRef="StartEvent_1" targetRef="Activity_1qe0wk8" />
-    <bpmn:sequenceFlow id="Flow_02fzwp7" sourceRef="Activity_1qe0wk8" targetRef="Event_0jxoz7s" />
-    <bpmn:scriptTask id="Activity_1qe0wk8" name="Busca Natureza da Declaracao">
+    <bpmn:sequenceFlow id="Flow_0qc3i7h" sourceRef="StartEvent_1" targetRef="Busca_Natureza_da_Declaracao" />
+    <bpmn:sequenceFlow id="Flow_02fzwp7" sourceRef="Busca_Natureza_da_Declaracao" targetRef="Event_0jxoz7s" />
+    <bpmn:scriptTask id="Busca_Natureza_da_Declaracao" name="Busca Natureza da Declaracao">
       <bpmn:incoming>Flow_0qc3i7h</bpmn:incoming>
       <bpmn:outgoing>Flow_02fzwp7</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_1q44jn4">
-        <bpmn:targetRef>DataStoreReference_1oronwq</bpmn:targetRef>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_199ngiv">
+        <bpmn:targetRef>DataStoreReference_0ibvmqz</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
       <bpmn:script>from connectordb.hana import Hana
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -62,6 +61,7 @@ del(naturezaDeclaracao)
 
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
+    <bpmn:dataStoreReference id="DataStoreReference_0ibvmqz" name="Natureza da Declaracao" dataStoreRef="natureza_da_declaracao" type="json" />
   </bpmn:process>
   <bpmn:dataStore id="natureza_da_declaracao" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -72,15 +72,15 @@ del(connection)</bpmn:script>
       <bpmndi:BPMNShape id="Event_0jxoz7s_di" bpmnElement="Event_0jxoz7s">
         <dc:Bounds x="542" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1oronwq_di" bpmnElement="DataStoreReference_1oronwq">
-        <dc:Bounds x="415" y="305" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="411" y="362" width="60" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_04xdrw5_di" bpmnElement="Activity_1qe0wk8">
+      <bpmndi:BPMNShape id="Activity_04xdrw5_di" bpmnElement="Busca_Natureza_da_Declaracao">
         <dc:Bounds x="260" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0ibvmqz_di" bpmnElement="DataStoreReference_0ibvmqz">
+        <dc:Bounds x="335" y="295" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="329" y="352" width="62" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0qc3i7h_di" bpmnElement="Flow_0qc3i7h">
         <di:waypoint x="215" y="177" />
@@ -90,9 +90,9 @@ del(connection)</bpmn:script>
         <di:waypoint x="360" y="177" />
         <di:waypoint x="542" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataOutputAssociation_1q44jn4_di" bpmnElement="DataOutputAssociation_1q44jn4">
-        <di:waypoint x="344" y="217" />
-        <di:waypoint x="418" y="305" />
+      <bpmndi:BPMNEdge id="DataOutputAssociation_199ngiv_di" bpmnElement="DataOutputAssociation_199ngiv">
+        <di:waypoint x="323" y="217" />
+        <di:waypoint x="348" y="295" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

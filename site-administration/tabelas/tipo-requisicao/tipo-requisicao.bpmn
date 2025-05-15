@@ -4,7 +4,7 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0k0g6ok" />
     <bpmn:endEvent id="EndEvent_1">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
@@ -22,7 +22,7 @@
 
 You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:incoming>Flow_1yn9xqj</bpmn:incoming>
       <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_158tk1z">
         <bpmn:targetRef>DataStoreReference_199nbou</bpmn:targetRef>
@@ -61,12 +61,109 @@ You can also change the text you are reading here by updating the *Instructions*
 tipo_requisicao = ctipo_requisicao</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_199nbou" name="Tipo Requisição" dataStoreRef="tipo_requisicao" type="json" />
+    <bpmn:sequenceFlow id="Flow_1yn9xqj" sourceRef="Activity_0k0g6ok" targetRef="Activity_0qpzdpu" />
+    <bpmn:serviceTask id="Activity_0k0g6ok" name="Enviar e-mail">
+      <bpmn:extensionElements>
+        <spiffworkflow:serviceTaskOperator id="smtp/SendEmail" resultVariable="rsp">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="smtp_host" type="str" value="&#34;smtp-mail.outlook.com&#34;" />
+            <spiffworkflow:parameter id="smtp_port" type="int" value="587" />
+            <spiffworkflow:parameter id="email_subject" type="str" value="&#34;teste 3&#34; " />
+            <spiffworkflow:parameter id="email_body" type="str" value="body" />
+            <spiffworkflow:parameter id="email_to" type="str" value="&#34;emerson.gregorio@agrocrestani.com.br&#34;" />
+            <spiffworkflow:parameter id="email_from" type="str" value="&#34;integracoes@agrocrestani.com.br&#34;" />
+            <spiffworkflow:parameter id="smtp_user" type="str" value="&#34;integracoes@agrocrestani.com.br&#34;" />
+            <spiffworkflow:parameter id="smtp_password" type="str" value="&#34;1nt3gr4@2900$&#34;" />
+            <spiffworkflow:parameter id="smtp_starttls" type="bool" value="True" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:preScript>body = """
+&lt;!-- email_template.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Email Template&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-top: 5px solid #4CAF50;
+        }
+        h1 {
+            font-size: 24px;
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            color: #6b4f2f;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #388e3c;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #999999;
+            margin-top: 40px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="email-container"&gt;
+        &lt;h1&gt;Titulo da Mensagem&lt;/h1&gt;
+        &lt;p&gt;Esta é uma mensagem enviada pelo SpiffWorkflow&lt;/p&gt;
+        &lt;div class="button-container"&gt;
+            &lt;a href="https://www.google.com" class="button"&gt;Clique Aqui&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="footer"&gt;
+            &lt;p&gt;&amp;copy; 2024 Crestani. Todos os direitos reservados.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+"""</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yn9xqj</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmn:dataStore id="tipo_requisicao" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_tipo_requisicao_bvzvv8a">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="159" width="36" height="36" />
+        <dc:Bounds x="12" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="432" y="159" width="36" height="36" />
@@ -81,9 +178,12 @@ tipo_requisicao = ctipo_requisicao</bpmn:script>
           <dc:Bounds x="291" y="342" width="78" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0av985j_di" bpmnElement="Activity_0k0g6ok">
+        <dc:Bounds x="100" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
-        <di:waypoint x="215" y="177" />
-        <di:waypoint x="270" y="177" />
+        <di:waypoint x="48" y="177" />
+        <di:waypoint x="100" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
         <di:waypoint x="370" y="177" />
@@ -92,6 +192,10 @@ tipo_requisicao = ctipo_requisicao</bpmn:script>
       <bpmndi:BPMNEdge id="DataOutputAssociation_158tk1z_di" bpmnElement="DataOutputAssociation_158tk1z">
         <di:waypoint x="325" y="217" />
         <di:waypoint x="333" y="285" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yn9xqj_di" bpmnElement="Flow_1yn9xqj">
+        <di:waypoint x="200" y="177" />
+        <di:waypoint x="270" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

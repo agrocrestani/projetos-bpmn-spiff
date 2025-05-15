@@ -1,38 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
-  <bpmn:process id="tipo_declaracao" name="Load World" isExecutable="true">
+  <bpmn:process id="tipo_declaracao" name="Tipo Declaracao" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_06qupd7</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:endEvent id="Event_0jxoz7s">
       <bpmn:incoming>Flow_17hkltt</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Tipo Declaracao" dataStoreRef="tipo_declaracao" type="json" />
-    <bpmn:sequenceFlow id="Flow_06qupd7" sourceRef="StartEvent_1" targetRef="Activity_05cvamw" />
-    <bpmn:scriptTask id="Activity_05cvamw" name="Busca Tipo Declaracao">
+    <bpmn:sequenceFlow id="Flow_06qupd7" sourceRef="StartEvent_1" targetRef="Activity_tipo_declaracao" />
+    <bpmn:scriptTask id="Activity_tipo_declaracao" name="Busca Tipo Declaracao">
       <bpmn:incoming>Flow_06qupd7</bpmn:incoming>
       <bpmn:outgoing>Flow_17hkltt</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_1f6hfmm">
-        <bpmn:targetRef>DataStoreReference_1oronwq</bpmn:targetRef>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0yoo3yh">
+        <bpmn:targetRef>DataStoreReference_0ie472k</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
       <bpmn:script>from connectordb.hana import Hana
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
-query = f"""
-            SELECT * FROM {baseSap}."DeclaracaoExportacaoTipo" tc 
-        """
-
+query = f"""SELECT * FROM {baseSap}."DeclaracaoExportacaoTipo" tc"""
 
 rsp = Hana(connection).selectDb(query)
-# rsp = json.loads(Hana(connection).selectDb(query))
 
 tipoDeclaracao = [
     {
@@ -57,7 +52,8 @@ del(rsp)
 del(tipoDeclaracao)
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:sequenceFlow id="Flow_17hkltt" sourceRef="Activity_05cvamw" targetRef="Event_0jxoz7s" />
+    <bpmn:sequenceFlow id="Flow_17hkltt" sourceRef="Activity_tipo_declaracao" targetRef="Event_0jxoz7s" />
+    <bpmn:dataStoreReference id="DataStoreReference_0ie472k" name="Tipo Declaracao" dataStoreRef="tipo_declaracao" type="json" />
   </bpmn:process>
   <bpmn:dataStore id="tipo_declaracao" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -66,29 +62,29 @@ del(connection)</bpmn:script>
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0jxoz7s_di" bpmnElement="Event_0jxoz7s">
-        <dc:Bounds x="542" y="159" width="36" height="36" />
+        <dc:Bounds x="442" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1oronwq_di" bpmnElement="DataStoreReference_1oronwq">
-        <dc:Bounds x="415" y="305" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="402" y="362" width="79" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_13rc7wm_di" bpmnElement="Activity_05cvamw">
+      <bpmndi:BPMNShape id="Activity_13rc7wm_di" bpmnElement="Activity_tipo_declaracao">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0ie472k_di" bpmnElement="DataStoreReference_0ie472k">
+        <dc:Bounds x="335" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="320" y="342" width="81" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_06qupd7_di" bpmnElement="Flow_06qupd7">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataOutputAssociation_1f6hfmm_di" bpmnElement="DataOutputAssociation_1f6hfmm">
-        <di:waypoint x="349" y="217" />
-        <di:waypoint x="415" y="308" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17hkltt_di" bpmnElement="Flow_17hkltt">
         <di:waypoint x="370" y="177" />
-        <di:waypoint x="542" y="177" />
+        <di:waypoint x="442" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0yoo3yh_di" bpmnElement="DataOutputAssociation_0yoo3yh">
+        <di:waypoint x="333" y="217" />
+        <di:waypoint x="354" y="285" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

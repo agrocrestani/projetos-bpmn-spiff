@@ -56,25 +56,25 @@ del(rsp)</spiffworkflow:postScript>
       <bpmn:script>from connectordb.hana import Hana
 
 connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
+    "address": get_secret('hanaAddress'),
+    "port": get_secret('hanaPort'),
+    "user": get_secret('hanaUser'),
+    "password": get_secret('hanaPassword')
 }
 
-# baseSap = get_secret('baseSap')
+baseSap = get_secret('baseSap')
 
-# query = f"""
-#     SELECT 
-#       T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", T2."WhsCode", to_alphanum(T2."OnHand") "OnHand"
-#     FROM {baseSap}."OITM" T0
-#     INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
-#     INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
-#     WHERE T2."OnHand" &gt; 0  
-#       AND  (T2."WhsCode" = '03.MATR'
-#       OR   T2."WhsCode" = '03.FQUE')
-#     ORDER BY T0."ItemName", T2."WhsCode" 
-#           """
+query = f"""
+    SELECT 
+      T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom", T2."WhsCode", to_alphanum(T2."OnHand") "OnHand"
+    FROM {baseSap}."OITM" T0
+    INNER JOIN {baseSap}."OITB" T1 ON T0."ItmsGrpCod" = T1."ItmsGrpCod"
+    INNER JOIN {baseSap}."OITW" T2 ON T0."ItemCode" = T2."ItemCode" 
+    WHERE T2."OnHand" &gt; 0  
+      AND  (T2."WhsCode" = '03.MATR'
+      OR   T2."WhsCode" = '03.FQUE')
+    ORDER BY T0."ItemName", T2."WhsCode" 
+          """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
 rsp = Hana(connection).selectDb(query)
@@ -105,7 +105,8 @@ for r in rsp:
 
 typeahead = {F"estoque_insumos_{localSolicitacao}": estoque}
 
-del(connection)</bpmn:script>
+del(connection)
+del(rsp)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">

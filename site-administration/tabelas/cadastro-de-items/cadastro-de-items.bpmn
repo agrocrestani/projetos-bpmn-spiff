@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:dataStore id="typeahead" name="TypeaheadDataStore" />
-  <bpmn:process id="load_world" name="Load World" isExecutable="true">
+  <bpmn:process id="Cadastro_de_items" name="Load World" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_0tn4ed3</bpmn:outgoing>
     </bpmn:startEvent>
@@ -31,12 +31,12 @@ typeahead = {"oitm": oitm}</bpmn:script>
 
 baseSap = get_secret('baseSap')
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 query = f"""
             SELECT T0."ItemCode", T0."ItemName", T1."ItmsGrpNam", T0."InvntryUom" 
@@ -121,7 +121,7 @@ del(rsp)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="load_world">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Cadastro_de_items">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-58" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>

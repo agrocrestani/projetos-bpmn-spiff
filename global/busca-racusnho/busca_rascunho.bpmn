@@ -20,9 +20,9 @@
 # FederalTaxID = "02916265001646"
 
 if U_ChaveAcesso:
-  url = f"https://172.20.1.9:50000/b1s/v2/Drafts?$filter=U_ChaveAcesso  eq '{U_ChaveAcesso}'"
+  url = f"{get_secret('sLayerUrl')}/Drafts?$filter=U_ChaveAcesso  eq '{U_ChaveAcesso}'"
 else:
-  url = f"https://172.20.1.9:50000/b1s/v2/Drafts?$filter=SequenceSerial eq {Serial} and FederalTaxID eq '{FederalTaxID}'"
+  url = f"{get_secret('sLayerUrl')}/Drafts?$filter=SequenceSerial eq {Serial} and FederalTaxID eq '{FederalTaxID}'"
 
 headers = {
   'Cookie': f"B1SESSION={loginSap}",
