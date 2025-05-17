@@ -22,6 +22,12 @@
         "options_from_task_data_var:n_filiais"
       ]
     },
+    "RequiredDate": {
+      "type": "string",
+      "format": "date",
+      "title": "Data Necessária",
+      "validationErrorMessage": "Date must be today's date or later"
+    },
     "Department": {
       "title": "Departamento",
       "type": "string",
