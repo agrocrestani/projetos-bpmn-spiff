@@ -289,7 +289,7 @@
           <text>"Matriz_ComercialGraos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18zgdo9">
-          <text>["start", "read"]</text>
+          <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vw46yv">
           <text>"PG:comercial:graos"</text>
@@ -387,7 +387,7 @@
           <text>"Matriz_Insumos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0biqyx2">
-          <text>["start", "read"]</text>
+          <text>["start"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1y1cbq3">
           <text>"PG:insumos"</text>
