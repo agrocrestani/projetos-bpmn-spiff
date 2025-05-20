@@ -20,12 +20,12 @@
 
 consulta_movimentos = []
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 query_movimento = f"""
                 SELECT 
@@ -228,12 +228,12 @@ del(precoTotalNormalizado)
         <spiffworkflow:preScript>from connectordb.hana import Hana
 
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 query_depositos = f"""
                     SELECT DISTINCT 
@@ -248,9 +248,6 @@ query_depositos = f"""
 
 consulta_depositos = Hana(connection).selectDb(query_depositos)
 
-del(query_depositos)
-del(connection)
-
 depositosList = []
 for deposito in consulta_depositos:
     depositosList.append(
@@ -262,7 +259,8 @@ for deposito in consulta_depositos:
 
 del(deposito)
 del(consulta_depositos)
-</spiffworkflow:preScript>
+del(query_depositos)
+del(connection)</spiffworkflow:preScript>
         <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:postScript>del(depositosList)</spiffworkflow:postScript>
       </bpmn:extensionElements>
@@ -593,7 +591,6 @@ del(documentos_saida)</spiffworkflow:postScript>
     <bpmn:sequenceFlow id="Flow_0syy6uu" sourceRef="SELECIONAR_PRODUTO" targetRef="Activity_00bh8bd" />
     <bpmn:userTask id="SELECIONAR_PRODUTO" name="Selecionar Produto">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript />
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="selecionar-produto-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="selecionar-produto-uischema.json" />

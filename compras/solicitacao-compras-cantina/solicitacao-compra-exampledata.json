@@ -1,129 +1,164 @@
 {
-  "BPLId": "3",
-  "Department": "1",
-  "U_RSD_Prioridade": "1",
-  "U_RSD_Aplicacao": "2",
-  "OcrCode": "QUEARM",
-  "OcrCode2": "SOJA",
-  "OcrCode3": "24/25",
-  "WhsCode": "01.FCOL",
-  "MainUsage": "1",
-  "Comments": "Solicitante: emerson.gregorio. Quantidades calculadas para: 200 pessoas, durante 15 dias. Teste de observação. Solicitante: emerson.gregorio. Quantidades calculadas para: 200 pessoas, durante 15 dias. Teste de observação. Solicitante: emerson.gregorio. Qvvvvvvvvvvvvvvvvvvvv",
-  "solicitacao": [
-    {
-      "item": "{\"ItemCode\":\"002193\",\"ItemName\":\"ARROZ KG\",\"InvntryUom\":\"QUILOGRAM\",\"QtdeSugerida\":900,\"PrecoMedio\":30.419107}"
-    }
-  ],
+  "solicitacao": [],
   "n_filiais": [
     {
-      "value": "1",
-      "label": "0109-AGROPECUARIA CRESTANI LTDA"
+      "enum": [
+        "1"
+      ],
+      "title": "0109-AGROPECUARIA CRESTANI LTDA"
     },
     {
-      "value": "2",
-      "label": "0281-AGROPECUARIA CRESTANI LTDA"
+      "enum": [
+        "2"
+      ],
+      "title": "0281-AGROPECUARIA CRESTANI LTDA"
     },
     {
-      "value": "3",
-      "label": "0362-AGROPECUARIA CRESTANI LTDA"
+      "enum": [
+        "3"
+      ],
+      "title": "0362-AGROPECUARIA CRESTANI LTDA"
     }
   ],
   "n_departamentos": [
     {
-      "value": "1",
-      "label": "Almoxarifado"
+      "enum": [
+        "1"
+      ],
+      "title": "Almoxarifado"
     },
     {
-      "value": "2",
-      "label": "Comercial"
+      "enum": [
+        "2"
+      ],
+      "title": "Comercial"
     },
     {
-      "value": "3",
-      "label": "Comercial Algodão"
+      "enum": [
+        "3"
+      ],
+      "title": "Comercial Algodão"
     }
   ],
   "n_tipo_requisicao": [
     {
-      "value": "1",
-      "label": "ADM - Estoque"
+      "enum": [
+        "1"
+      ],
+      "title": "ADM - Estoque"
     },
     {
-      "value": "2",
-      "label": "Fazenda - Estoque"
+      "enum": [
+        "2"
+      ],
+      "title": "Fazenda - Estoque"
     },
     {
-      "value": "3",
-      "label": "Projeto Próprio"
+      "enum": [
+        "3"
+      ],
+      "title": "Projeto Próprio"
     }
   ],
   "n_centros_de_custo": [
     {
-      "value": "QUEARM",
-      "label": "QUEARM - N. QUE ARMAZÉM"
+      "enum": [
+        "QUEARM"
+      ],
+      "title": "QUEARM - N. QUE ARMAZÉM"
     },
     {
-      "value": "QUECORP",
-      "label": "QUECORP - N. QUE CORPORATIVO"
+      "enum": [
+        "QUECORP"
+      ],
+      "title": "QUECORP - N. QUE CORPORATIVO"
     },
     {
-      "value": "QUEMEC",
-      "label": "QUEMEC - N. QUE MECANIZAÇÃO"
+      "enum": [
+        "QUEMEC"
+      ],
+      "title": "QUEMEC - N. QUE MECANIZAÇÃO"
     }
   ],
   "n_culturas": [
     {
-      "value": "SOJA",
-      "label": "SOJA"
+      "enum": [
+        "SOJA"
+      ],
+      "title": "SOJA"
     },
     {
-      "value": "MILHO",
-      "label": "MILHO"
+      "enum": [
+        "MILHO"
+      ],
+      "title": "MILHO"
     },
     {
-      "value": "ALGODAO",
-      "label": "ALGODÃO"
+      "enum": [
+        "ALGODAO"
+      ],
+      "title": "ALGODÃO"
     }
   ],
   "n_safras": [
     {
-      "value": "22/23",
-      "label": "Safra 2022/2023"
+      "enum": [
+        "22/23"
+      ],
+      "title": "Safra 2022/2023"
     },
     {
-      "value": "24/25",
-      "label": "Safra 2024/2025"
+      "enum": [
+        "24/25"
+      ],
+      "title": "Safra 2024/2025"
     },
     {
-      "value": "27/28",
-      "label": "Safra 2027/2028"
+      "enum": [
+        "27/28"
+      ],
+      "title": "Safra 2027/2028"
     }
   ],
   "n_utilizacoes": [
     {
-      "value": "1",
-      "label": "001-AMOSTRA GRÁTIS"
+      "enum": [
+        "1"
+      ],
+      "title": "001-AMOSTRA GRÁTIS"
     },
     {
-      "value": "2",
-      "label": "002-BONIFICAÇÃO"
+      "enum": [
+        "2"
+      ],
+      "title": "002-BONIFICAÇÃO"
     },
     {
-      "value": "3",
-      "label": "003-C INDUSTRIAL PF"
+      "enum": [
+        "3"
+      ],
+      "title": "003-C INDUSTRIAL PF"
     }
   ],
   "n_almoxarifados": [
     {
-      "value": "01.BRAS",
-      "label": "01.BRAS - ALMOXAR UNID. BRASNORTE"
+      "enum": [
+        "01.BRAS"
+      ],
+      "title": "01.BRAS - ALMOXAR UNID. BRASNORTE"
     },
     {
-      "value": "01.FCOL",
-      "label": "01.FCOL - ALMOXAR COLORADO"
+      "enum": [
+        "01.FCOL"
+      ],
+      "title": "01.FCOL - ALMOXAR COLORADO"
     },
     {
-      "value": "01.FCUR",
-      "label": "01.FCUR - ALMOXAR CURUPAI"
+      "enum": [
+        "01.FCUR"
+      ],
+      "title": "01.FCUR - ALMOXAR CURUPAI"
     }
-  ]
+  ],
+  "OcrCode2": "MILHO"
 }

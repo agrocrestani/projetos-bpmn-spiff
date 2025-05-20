@@ -89,10 +89,10 @@ del(rsp)</spiffworkflow:postScript>
         <bpmn:script>from connectordb.hana import Hana
 
 connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
+    "address": get_secret('hanaAddress'),
+    "port": get_secret('hanaPort'),
+    "user": get_secret('hanaUser'),
+    "password": get_secret('hanaPassword')
 }
 
 query_id_due = f"""
@@ -104,7 +104,7 @@ query_id_due = f"""
 idDueSap = Hana(connection).selectDb(query_id_due)
 
 del(connection)
-# del(query_id_due)</bpmn:script>
+</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:scriptTask id="Activity_Informa_NFe_na_DUE" name="Informa NFe na DUE">
         <bpmn:incoming>Flow_1el5y4a</bpmn:incoming>
@@ -112,10 +112,10 @@ del(connection)
         <bpmn:script>from connectordb.hana import Hana
 
 connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
+    "address": get_secret('hanaAddress'),
+    "port": get_secret('hanaPort'),
+    "user": get_secret('hanaUser'),
+    "password": get_secret('hanaPassword')
 }
 
 IdDueSap = idDueSap[0]['id']
@@ -140,6 +140,9 @@ query = f"""
 """
 
 Hana(connection).executeDb(query)
+
+del(connection)
+del(query)
 </bpmn:script>
       </bpmn:scriptTask>
       <bpmn:exclusiveGateway id="Gateway_0wkbi6q" default="Flow_1l0h6eb">
@@ -230,10 +233,10 @@ del(rsp)</spiffworkflow:postScript>
         <bpmn:script>from connectordb.hana import Hana
 
 connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
+    "address": get_secret('hanaAddress'),
+    "port": get_secret('hanaPort'),
+    "user": get_secret('hanaUser'),
+    "password": get_secret('hanaPassword')
 }
 
 baseSap = get_secret('baseSap')
@@ -287,12 +290,12 @@ data_pesquisa = (datetime.now() - timedelta(days=15)).strftime('%Y-%m-%d')
 env = get_env()
 baseSap = get_secret('baseSap')
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 query = f"""
         select

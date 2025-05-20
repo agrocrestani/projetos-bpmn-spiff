@@ -30,12 +30,12 @@
       <bpmn:script>from connectordb.hana import Hana
 from datetime import datetime, timedelta
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -185,12 +185,12 @@ formDue = {
 entidade = json.loads(formDue['entidade'])
 numero_due = formDue['numero_due']
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -205,7 +205,9 @@ existe = 0
 if rsp[0]['qtde'] &gt; 0:
     existe = rsp[0]["qtde"]
 
-retorno_gera_due = "SUCESSO"</bpmn:script>
+retorno_gera_due = "SUCESSO"
+
+del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:exclusiveGateway id="Gateway_0ew0mpg" default="Flow_10nmnq5">
       <bpmn:incoming>Flow_00zykza</bpmn:incoming>
@@ -259,12 +261,12 @@ tipoDeclaracao = formDue['tipoDeclaracao']
 ufDestino = formDue['ufDestino']
 local = formDue['local']
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -300,7 +302,8 @@ query = f"""
 # rsp = json.loads(Hana(connection).selectDb(query))
 Hana(connection).executeDb(query)
 Hana(connection).executeDb('commit')
-del(formDue)</bpmn:script>
+del(formDue)
+del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:exclusiveGateway id="Gateway_1fwyp10" default="Flow_1pw9jb2">
       <bpmn:incoming>Flow_0vzobae</bpmn:incoming>
@@ -336,12 +339,12 @@ from datetime import datetime, timedelta
 env = get_env()
 baseSap = get_secret('baseSap')
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 query = f"""
         select distinct
@@ -408,14 +411,7 @@ schema = {
 }
 
 </spiffworkflow:preScript>
-        <spiffworkflow:instructionsForEndUser>try:
-    entidadeid = rsp['body'][0][0]
-    due = rsp['body'][0][1]
-except:
-    due = 0
-
-del(schema)
-del(rsp)</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
         <spiffworkflow:serviceTaskOperator id="postgres_v2/DoSQL" resultVariable="rsp">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="database_connection_str" type="str" value="&#34;SPIFF_SECRET:postgres&#34;" />
@@ -436,12 +432,12 @@ del(rsp)</spiffworkflow:instructionsForEndUser>
       <bpmn:outgoing>Flow_0arcwbv</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 query_id_due = f"""
     SELECT de."Id" FROM {baseSap}."DeclaracaoExportacao" de 
@@ -483,11 +479,11 @@ del(connection)</bpmn:script>
       <bpmn:outgoing>Flow_1ruciys</bpmn:outgoing>
       <bpmn:script>from connectordb.oracle import Oracle
 
-connection = {
-    "dsn": "172.20.2.2:1521/prod",  # Exemplo de DSN (IP:Porta/SID ou Service Name)
-    "user": "agnew",
-    "password": "agnew"
-}
+connection = { 
+    "dsn": get_secret('oracleDsn'),  # Exemplo de DSN (IP:Porta/SID ou Service Name) 
+    "user": get_secret('oracleUser'), 
+    "password": get_secret('oraclePassword') 
+} 
 
 baseUni = "AGNEW"
 
@@ -636,13 +632,15 @@ del(baseUni)
       <bpmn:incoming>Flow_18gw4j9</bpmn:incoming>
       <bpmn:outgoing>Flow_0ay0avw</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
+
 nfe = nota
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -728,12 +726,13 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
       <bpmn:outgoing>Flow_0e4lz7p</bpmn:outgoing>
       <bpmn:script>from connectordb.postgres import Postgres
 
-connection = {
-        "host": '192.168.1.229',
-        "database": 'crestani',
-        "user": 'postgres',
-        "password": 'crest@ni2900'
-    }
+connection = { 
+        "host": get_secret('postgresHost'), 
+        "database": get_secret('postgresDb'), 
+        "user": get_secret('postgresUser'), 
+        "password": get_secret('postgresPassword') 
+    } 
+
 
 query = """
                 SELECT count(*)
@@ -746,7 +745,7 @@ existe = Postgres(connection).dbSelect(query)
 nr_notas = existe[0]['count']
 
 # del(query)
-# del(connection)
+del(connection)
 # del(existe)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:exclusiveGateway id="Gateway_18slwu0" default="Flow_0mw012c">
@@ -777,12 +776,12 @@ nr_notas = existe[0]['count']
       <bpmn:outgoing>Flow_10u5hl4</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -812,12 +811,12 @@ del(oinv)</bpmn:script>
       <bpmn:outgoing>Flow_05tv1k6</bpmn:outgoing>
       <bpmn:script>from connectordb.postgres import Postgres
 
-connection = {
-        "host": '192.168.1.229',
-        "database": 'crestani',
-        "user": 'postgres',
-        "password": 'crest@ni2900'
-    }
+connection = { 
+        "host": get_secret('postgresHost'), 
+        "database": get_secret('postgresDb'), 
+        "user": get_secret('postgresUser'), 
+        "password": get_secret('postgresPassword') 
+    } 
 
 
 query = f"""update sap.due_eventos set bplid = '{bplid}', entidadeid = '{entidadeid}' where keynfe = '{keynfe}'"""
@@ -878,60 +877,61 @@ Verificar se ela está cancelada ou houve desconhecimento por parte do cliente.
       <bpmn:outgoing>Flow_1c06r22</bpmn:outgoing>
       <bpmn:script>from connectordb.postgres import Postgres
 
-connection = {
-        "host": '192.168.1.229',
-        "database": 'crestani',
-        "user": 'postgres',
-        "password": 'crest@ni2900'
-    }
+connection = { 
+        "host": get_secret('postgresHost'), 
+        "database": get_secret('postgresDb'), 
+        "user": get_secret('postgresUser'), 
+        "password": get_secret('postgresPassword') 
+    } 
 
-# try:
-eventos = nfe['data'][0]['nfe']['eventos']
-produtos1 = nfe['data'][0]['produtos']
-for e in eventos:
-    if e['evento'] == 'Averbação para Exportação (Órgão Autor: AN)':
-        evento = e['evento']
-        protocolo = e['protocolo']
-        data_autorizacao = e['data_autorizacao']
-        data_inclusao = e['data_inclusao']
-        info = json.dumps(e['info'],ensure_ascii=False)
-        detalhes = json.dumps(e['detalhes'],ensure_ascii=False)
-        autorizacao_sefaz = json.dumps(e['autorizacao_sefaz'],ensure_ascii=False)
-        condicoes_uso = json.dumps(e['condicoes_uso'],ensure_ascii=False)
-        itens_averbados = json.dumps(e['itens_averbados'],ensure_ascii=False)
-        produtos = json.dumps(produtos1, ensure_ascii=False)
+try:
+    eventos = nfe['data'][0]['nfe']['eventos']
+    produtos1 = nfe['data'][0]['produtos']
+    for e in eventos:
+        if e['evento'] == 'Averbação para Exportação (Órgão Autor: AN)':
+            evento = e['evento']
+            protocolo = e['protocolo']
+            data_autorizacao = e['data_autorizacao']
+            data_inclusao = e['data_inclusao']
+            info = json.dumps(e['info'],ensure_ascii=False)
+            detalhes = json.dumps(e['detalhes'],ensure_ascii=False)
+            autorizacao_sefaz = json.dumps(e['autorizacao_sefaz'],ensure_ascii=False)
+            condicoes_uso = json.dumps(e['condicoes_uso'],ensure_ascii=False)
+            itens_averbados = json.dumps(e['itens_averbados'],ensure_ascii=False)
+            produtos = json.dumps(produtos1, ensure_ascii=False)
 
-        query = f"""
-            INSERT INTO sap.due_eventos
-            (keynfe, evento, protocolo, data_autorizacao, data_inclusao, info, detalhes, autorizacao_sefaz, condicoes_uso, itens_averbados, produtos)
-            VALUES('{keynfe}', '{evento}', '{protocolo}', '{data_autorizacao}', '{data_inclusao}',
-            '{info}', '{detalhes}', '{autorizacao_sefaz}', '{condicoes_uso}', '{itens_averbados}', '{produtos}' )
-        """
+            query = f"""
+                INSERT INTO sap.due_eventos
+                (keynfe, evento, protocolo, data_autorizacao, data_inclusao, info, detalhes, autorizacao_sefaz, condicoes_uso, itens_averbados, produtos)
+                VALUES('{keynfe}', '{evento}', '{protocolo}', '{data_autorizacao}', '{data_inclusao}',
+                '{info}', '{detalhes}', '{autorizacao_sefaz}', '{condicoes_uso}', '{itens_averbados}', '{produtos}' )
+            """
 
-        Postgres(connection).executeDb(query)
-        Postgres(connection).executeDb('commit')
-        lanca = 1
-    else:
-        lanca = 998
-# except:
-#     eventos = nfe['data'][0]['nfe']['eventos']
-#     lanca = 999
+            Postgres(connection).executeDb(query)
+            Postgres(connection).executeDb('commit')
+            lanca = 1
+        else:
+            lanca = 998
+except:
+    eventos = nfe['data'][0]['nfe']['eventos']
+    lanca = 999
 
 contador += 1
 
-del(nfe)</bpmn:script>
+del(nfe)
+del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:scriptTask id="Activity_04r1j8e" name="Informa NFe na DUE">
       <bpmn:incoming>Flow_0ewp5o5</bpmn:incoming>
       <bpmn:outgoing>Flow_04xhsk1</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 IdDueSap = idDueSap[0]['id']
 DocEntry = nfes[0]['docentry']
@@ -964,12 +964,12 @@ Hana(connection).executeDb(query)
       <bpmn:outgoing>Flow_0lsi9zx</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 KeyNFe = nfes[0]['keynfe']
 

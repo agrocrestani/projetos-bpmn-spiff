@@ -55,12 +55,23 @@ del(rsp)</spiffworkflow:postScript>
       </bpmn:dataOutputAssociation>
       <bpmn:script>from connectordb.hana import Hana
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
+
+try:
+    if not WhsCode:
+        WhsCode = '07.FQUE'
+        qtdeColaboradores = 100
+        periodo = 15
+except:
+    WhsCode = '07.FQUE'
+    qtdeColaboradores =100
+    periodo = 15
+
 
 baseSap = get_secret('baseSap')
 
@@ -98,7 +109,7 @@ for r in rsp:
             }
         )
 
-typeahead = {f"items_cantina_{deposito}": items_cantina}
+typeahead = {f"items_cantina": items_cantina}
 
 
 del(connection)</bpmn:script>

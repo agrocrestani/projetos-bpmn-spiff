@@ -9,12 +9,12 @@
       <bpmn:outgoing>Flow_1ktdc2c</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -68,12 +68,12 @@ contador = 0</bpmn:script>
         <bpmn:script>from connectordb.hana import Hana
 from time import sleep
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 # sleep(5)
 
@@ -150,9 +150,6 @@ if nota:
       <bpmndi:BPMNShape id="Event_0xyf85x_di" bpmnElement="Event_0xyf85x">
         <dc:Bounds x="882" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0h4jxwf_di" bpmnElement="Event_05nud41">
-        <dc:Bounds x="162" y="159" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0bl6x0j_di" bpmnElement="Activity_0bl6x0j" isExpanded="true">
         <dc:Bounds x="460" y="77" width="350" height="200" />
       </bpmndi:BPMNShape>
@@ -174,6 +171,9 @@ if nota:
         <di:waypoint x="690" y="177" />
         <di:waypoint x="752" y="177" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0h4jxwf_di" bpmnElement="Event_05nud41">
+        <dc:Bounds x="162" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1ktdc2c_di" bpmnElement="Flow_1ktdc2c">
         <di:waypoint x="370" y="177" />
         <di:waypoint x="460" y="177" />

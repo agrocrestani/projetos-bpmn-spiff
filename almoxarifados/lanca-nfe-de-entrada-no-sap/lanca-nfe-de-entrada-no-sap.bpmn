@@ -266,7 +266,7 @@ except:
 # LicTradNum = "F03284"
 
 
-url = f"https://172.20.1.9:50000/b1s/v2/DraftsService_SaveDraftToDocument"
+url = f"{get_secret('sLayerUrl')}/DraftsService_SaveDraftToDocument"
 
 headers = {
   'Cookie': f"B1SESSION={loginSap}",
@@ -334,12 +334,12 @@ except:
 
 from connectordb.hana import Hana
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -568,10 +568,10 @@ sendMail = send_email(to_email, subject, title_email, body_email, task_link)</sp
       <bpmn:script>from connectordb.hana import Hana
 
 connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
+    "address": get_secret('hanaAddress'),
+    "port": get_secret('hanaPort'),
+    "user": get_secret('hanaUser'),
+    "password": get_secret('hanaPassword')
 }
 
 baseSap = get_secret('baseSap')

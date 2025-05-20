@@ -183,12 +183,12 @@ naturezaDeclaracao = formDue['naturezaDeclaracao']
 tipoConhecimento =  formDue['tipoConhecimento']
 tipoDeclaracao = formDue['tipoDeclaracao']
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -221,10 +221,13 @@ query = f"""
             {tipoDeclaracao})
           """
 
-# rsp = json.loads(Hana(connection).selectDb(query))
 Hana(connection).executeDb(query)
 Hana(connection).executeDb('commit')
-del(formDue)</bpmn:script>
+
+del(formDue)
+del(connection)
+del(baseSap)
+del(query)</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:sequenceFlow id="Flow_06r7tkv" sourceRef="Activity_153jm8a" targetRef="Activity_1wqfogd" />
       <bpmn:endEvent id="Event_1jr3erk">
@@ -285,12 +288,12 @@ del(formDue)</bpmn:script>
 entidade = json.loads(formDue['entidade'])
 numero_due = formDue['numero_due']
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -303,7 +306,11 @@ rsp = Hana(connection).selectDb(query)
 existe = 0
 
 if rsp[0]['qtde'] &gt; 0:
-    existe = rsp[0]["qtde"]</bpmn:script>
+    existe = rsp[0]["qtde"]
+
+del(connection)
+del(baseSap)
+del(query)</bpmn:script>
       </bpmn:scriptTask>
       <bpmn:sequenceFlow id="Flow_0f4cahx" sourceRef="Gateway_0dyggs7" targetRef="Activity_0ulfn62">
         <bpmn:conditionExpression>existe &gt;= 1</bpmn:conditionExpression>
@@ -332,12 +339,12 @@ if rsp[0]['qtde'] &gt; 0:
       <bpmn:outgoing>Flow_0bzjyx3</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -367,6 +374,9 @@ contador = 0
 
 del(dues)
 del(duesSap)
+del(connection)
+del(query)
+del(baseSap)
 </bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>

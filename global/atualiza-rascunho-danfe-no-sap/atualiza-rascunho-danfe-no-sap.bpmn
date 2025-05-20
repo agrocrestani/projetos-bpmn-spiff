@@ -24,10 +24,10 @@ You can also change the text you are reading here by updating the *Instructions*
       <bpmn:script>from connectordb.hana import Hana
 
 connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
+    "address": get_secret('hanaAddress'),
+    "port": get_secret('hanaPort'),
+    "user": get_secret('hanaUser'),
+    "password": get_secret('hanaPassword')
 }
 
 baseSap = get_secret('baseSap')
@@ -55,7 +55,9 @@ try:
     """
     Hana(connection).executeDb(queryPesoChegada)
 except:
-    queryPesoChegada = "Sem peso de chegada"</bpmn:script>
+    queryPesoChegada = "Sem peso de chegada"
+
+del(connection)</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">

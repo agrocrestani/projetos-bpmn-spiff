@@ -7,22 +7,21 @@
     <bpmn:endEvent id="Event_0jxoz7s">
       <bpmn:incoming>Flow_1lrug6o</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:dataStoreReference id="DataStoreReference_1oronwq" name="Tipo Conhecimento" dataStoreRef="tipo_conhecimento" type="json" />
-    <bpmn:sequenceFlow id="Flow_172n9dk" sourceRef="StartEvent_1" targetRef="Activity_08sd9i9" />
-    <bpmn:scriptTask id="Activity_08sd9i9" name="Busca Tipo Conhecimento">
+    <bpmn:sequenceFlow id="Flow_172n9dk" sourceRef="StartEvent_1" targetRef="Busca_Tipo_Conhecinhecimento" />
+    <bpmn:scriptTask id="Busca_Tipo_Conhecinhecimento" name="Busca Tipo Conhecimento">
       <bpmn:incoming>Flow_172n9dk</bpmn:incoming>
       <bpmn:outgoing>Flow_1lrug6o</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_1e2ksol">
-        <bpmn:targetRef>DataStoreReference_1oronwq</bpmn:targetRef>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0uemsuf">
+        <bpmn:targetRef>DataStoreReference_08jvhb0</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
       <bpmn:script>from connectordb.hana import Hana
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -57,7 +56,8 @@ del(rsp)
 del(tipoConhecimento)
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:sequenceFlow id="Flow_1lrug6o" sourceRef="Activity_08sd9i9" targetRef="Event_0jxoz7s" />
+    <bpmn:sequenceFlow id="Flow_1lrug6o" sourceRef="Busca_Tipo_Conhecinhecimento" targetRef="Event_0jxoz7s" />
+    <bpmn:dataStoreReference id="DataStoreReference_08jvhb0" name="Tipo Conhecimento" dataStoreRef="tipo_conhecimento" type="json" />
   </bpmn:process>
   <bpmn:dataStore id="tipo_conhecimento" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -65,18 +65,18 @@ del(connection)</bpmn:script>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_1oronwq_di" bpmnElement="DataStoreReference_1oronwq">
-        <dc:Bounds x="415" y="305" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="406" y="362" width="71" height="27" />
-        </bpmndi:BPMNLabel>
+      <bpmndi:BPMNShape id="Event_0jxoz7s_di" bpmnElement="Event_0jxoz7s">
+        <dc:Bounds x="422" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0mf92vt_di" bpmnElement="Activity_08sd9i9">
+      <bpmndi:BPMNShape id="Activity_0mf92vt_di" bpmnElement="Busca_Tipo_Conhecinhecimento">
         <dc:Bounds x="270" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0jxoz7s_di" bpmnElement="Event_0jxoz7s">
-        <dc:Bounds x="422" y="159" width="36" height="36" />
+      <bpmndi:BPMNShape id="DataStoreReference_08jvhb0_di" bpmnElement="DataStoreReference_08jvhb0">
+        <dc:Bounds x="345" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="334" y="342" width="73" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_172n9dk_di" bpmnElement="Flow_172n9dk">
         <di:waypoint x="215" y="177" />
@@ -86,9 +86,9 @@ del(connection)</bpmn:script>
         <di:waypoint x="370" y="177" />
         <di:waypoint x="422" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataOutputAssociation_1e2ksol_di" bpmnElement="DataOutputAssociation_1e2ksol">
-        <di:waypoint x="351" y="217" />
-        <di:waypoint x="419" y="305" />
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0uemsuf_di" bpmnElement="DataOutputAssociation_0uemsuf">
+        <di:waypoint x="337" y="217" />
+        <di:waypoint x="365" y="285" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

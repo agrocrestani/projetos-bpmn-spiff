@@ -43,12 +43,12 @@ from datetime import datetime, timedelta
 
 data_pesquisa = (datetime.now() - timedelta(days=15)).strftime('%Y-%m-%d')
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -86,7 +86,8 @@ query = f"""
             t2."MainUsage" = 82 AND t0."DocDate" &lt;= '{data_pesquisa}' AND (t1."ItemCode" = '022966' or t1."ItemCode" = '022958')
             AND t6."chNFe" IS NULL and T0.CANCELED = 'N'
             AND (DAYS_BETWEEN(t7.DATA, CURRENT_DATE) &gt; 10 OR t7.DATA IS NULL)
-            AND t8."TaxIdNum" LIKE '03.262.185%'
+            AND T7.DUE IS NULL
+            --AND t8."TaxIdNum" LIKE '03.262.185%'
         ORDER BY "DocNum"
         LIMIT {int(qtde_nfe)}
     """
@@ -102,8 +103,8 @@ if notas:
 else:
     existe = 0
 
-# del(query)
-# del(connection)</bpmn:script>
+del(query)
+del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_118tz8v">
       <bpmn:extensionElements>

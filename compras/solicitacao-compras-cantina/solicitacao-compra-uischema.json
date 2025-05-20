@@ -1,5 +1,5 @@
 {
-  "ui:layout": [
+  "ui:LayoutGridField": [
     {
       "BPLId": {},
       "RequiredDate": {}
@@ -79,7 +79,7 @@
       "item": {
         "ui:widget": "typeahead",
         "ui:options": {
-          "category": "items_cantina_{deposito}",
+          "category": "items_cantina",
           "itemFormat": "{ItemName} - Sug.: {QtdeSugerida} ({InvntryUom} - {ItemCode})"
         }
       }
