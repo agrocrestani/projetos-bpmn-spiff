@@ -331,7 +331,7 @@
           <text>"Matriz_Rh"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_10g2lr0">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nxenh3">
           <text>"PM:contabilidade/importa-folha"</text>
@@ -359,7 +359,7 @@
           <text>"Matriz_Contabil"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1krk986">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0yj0vc9">
           <text>"PM:relatorios/ajuste-custo-sap"</text>
@@ -401,7 +401,7 @@
           <text>"Matriz_Insumos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0j2k5zo">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_008pjm6">
           <text>"PG:farmbox"</text>
@@ -415,7 +415,7 @@
           <text>"Matriz_Insumos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1xekvsb">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ajhlyo">
           <text>"PM:insumos:solicitar-insumos-unidades"</text>
@@ -429,7 +429,7 @@
           <text>"Matriz_Insumos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1p6wyjg">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1rnbqy6">
           <text>"PM:insumos/solicitar-insumos-unidades"</text>
@@ -443,7 +443,7 @@
           <text>"Matriz_Insumos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0n6ditr">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1v3g2yo">
           <text>"PM:insumos/solicitar-insumos-querencia"</text>
@@ -457,7 +457,7 @@
           <text>"Matriz_Faturamento"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_146jk5f">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_070r8rv">
           <text>"PM:almoxarifados/lanca-nfe-de-entrada-no-sap"</text>
@@ -471,7 +471,7 @@
           <text>"Matriz_Faturamento"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ja8okf">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14w6bde">
           <text>"PG:almoxarifados"</text>
@@ -485,7 +485,7 @@
           <text>"Querencia_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1lcdo8k">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hw43w7">
           <text>"PM:compras/solicitacao-compras-cantina"</text>
@@ -513,7 +513,7 @@
           <text>"Querencia_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0wymag5">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_013yltg">
           <text>"PM:almoxarifados/lanca-nfe-de-entrada-no-sap"</text>
@@ -541,7 +541,7 @@
           <text>"Querencia_Almoxarifado"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0c6ri2v">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05wdg2u">
           <text>"PG:almoxarifados"</text>
@@ -583,7 +583,7 @@
           <text>"Querencia_Cantina"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0uw6l7m">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0blotnv">
           <text>"PM:compras/solicitacao-compras-cantina"</text>
@@ -597,7 +597,7 @@
           <text>"Querencia_Producao"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kx7qu5">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08aikmt">
           <text>"PM:insumos/solicitar-insumos-querencia"</text>
@@ -625,7 +625,7 @@
           <text>"Querencia_Deposito_Insumos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1r7rmrr">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05ysvki">
           <text>"PG:farmbox"</text>
@@ -639,7 +639,7 @@
           <text>"Curupai_Almoxarifado"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_10z678l">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1contka">
           <text>"PG:almoxarifados"</text>
@@ -681,7 +681,7 @@
           <text>"Curupai_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kr1jsu">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1qy37pz">
           <text>"PM:compras/solicitacao-compras-cantina"</text>
@@ -709,7 +709,7 @@
           <text>"Curupai_Cantina"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ck07wo">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0x7zeut">
           <text>"PM:compras/solicitacao-compras-cantina"</text>
@@ -737,7 +737,7 @@
           <text>"Curupai_Producao"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0hfng86">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0y7e8ho">
           <text>"PM:insumos/solicitar-insumos-unidades"</text>
@@ -765,7 +765,7 @@
           <text>"Curupai_Deposito_Insumos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ckw9hg">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ge11el">
           <text>"PG:farmbox"</text>
@@ -807,7 +807,7 @@
           <text>"Colorado_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0bkbssi">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kbamc5">
           <text>"PM:compras/solicitacao-compras-cantina"</text>
@@ -849,7 +849,7 @@
           <text>"Colorado_Producao"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hldmt0">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1pk1nof">
           <text>"PM:insumos/solicitar-insumos-unidades"</text>
@@ -877,7 +877,7 @@
           <text>"Colorado_Deposito_Insumos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0wmsu9z">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hngzqt">
           <text>"PG:farmbox"</text>
@@ -891,7 +891,7 @@
           <text>"Colorado_Almoxarifado"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0tugdat">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ubg6tz">
           <text>"PG:almoxarifados"</text>
@@ -905,7 +905,7 @@
           <text>"SaoCarlos_Administrativo"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1sg9twi">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_147jylf">
           <text>"PM:compras/solicitacao-compras-cantina"</text>
@@ -989,7 +989,7 @@
           <text>"SaoCarlos_Producao"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0570let">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0z7fq3o">
           <text>"PM:insumos/solicitar-insumos-unidades"</text>
@@ -1003,7 +1003,7 @@
           <text>"SaoCarlos_Cantina"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0vsscbd">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0mz957p">
           <text>"PM:compras/solicitacao-compras-cantina"</text>
@@ -1045,7 +1045,7 @@
           <text>"SaoCarlos_Deposito_Insumos"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17lmq8z">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0y6jraj">
           <text>"PG:farmbox"</text>
@@ -1059,7 +1059,7 @@
           <text>"SaoCarlos_Almoxarifado"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17crwgq">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ovxgup">
           <text>"PG:almoxarifados"</text>
@@ -1129,7 +1129,7 @@
           <text>"Matriz_Gerencia"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_01ewm5o">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05ztvel">
           <text>"PM:relatorios/ajuste-custo-sap"</text>
@@ -1143,7 +1143,7 @@
           <text>"Matriz_Producao"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ad8sci">
-          <text>["start"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vuo9qo">
           <text>"PG:insumos"</text>
@@ -1227,7 +1227,7 @@
           <text>"Matriz_Auditoria"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0qrvwt9">
-          <text>["all"]</text>
+          <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_07tft5b">
           <text>"PG:farmbox"</text>
