@@ -67,12 +67,12 @@ del(depositos)</spiffworkflow:preScript>
       <bpmn:outgoing>Flow_0j09d7n</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -106,6 +106,8 @@ del(rsp)</bpmn:script>
           <spiffworkflow:property name="formJsonSchemaFilename" value="depara-deposito-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="depara-deposito-uischema.json" />
         </spiffworkflow:properties>
+        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:postScript></spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0j09d7n</bpmn:incoming>
       <bpmn:outgoing>Flow_03nhtj6</bpmn:outgoing>

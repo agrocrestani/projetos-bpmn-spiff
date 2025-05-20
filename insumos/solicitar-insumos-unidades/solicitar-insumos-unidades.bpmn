@@ -319,12 +319,12 @@ localSolicitacao = "unidades"</spiffworkflow:preScript>
       <bpmn:extensionElements>
         <spiffworkflow:preScript>from connectordb.hana import Hana
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 baseSap = get_secret('baseSap')
 
@@ -376,7 +376,7 @@ payload = {
 
 loginSap = saplogin[0]['SessionId']
 
-url = 'https://172.20.1.9:50000/b1s/v1/Invoices'
+url = f'{get_secrest("sLayerUrl")}/Invoices'
 
 headers = {
   'Cookie': f"B1SESSION={loginSap}",
@@ -647,7 +647,7 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
       <bpmn:extensionElements>
         <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
 
-url = 'https://172.20.1.9:50000/b1s/v2/PurchaseInvoices'
+url = f'{get_secret("sLayerUrl")}PurchaseInvoices'
 
 headers = {
   'Cookie': f"B1SESSION={loginSap}",
@@ -1001,12 +1001,12 @@ if get_secret('ambiente') == 'dev':
     DocEntry = 2066 #status 4
     # DocEntry = 14 #status 10
 
-connection = {
-    "address": "172.20.1.4",
-    "port": "30015",
-    "user": "SYSTEM",
-    "password": "9Ab63^Op33"
-}
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
 
 query = f"""
             select "KeyNfe", CNPJ, "StatusId", "Hist" from SBO_CRESTANI_PRD.AC_NfeRetorno nf where nf."DocEntry" = {DocEntry} AND nf."Tabela" = 'OINV' 

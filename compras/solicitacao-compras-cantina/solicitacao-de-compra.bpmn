@@ -232,7 +232,7 @@ payload = {
 
 loginSap = saplogin[0]['SessionId']
 
-url = f'{get_secret('sLayerUrl') }/b1s/v1/PurchaseRequests'
+url = f'{get_secret('sLayerUrl') }/PurchaseRequests'
 
 headers = {
   'Cookie': f"B1SESSION={loginSap}",
@@ -482,7 +482,8 @@ total = "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X",
     </bpmn:userTask>
     <bpmn:userTask id="Activity_0qpzdpu" name="Solicitacao Compras">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>## Instruções sobre a solicitação de compras
+        <spiffworkflow:instructionsForEndUser># Solicitação de Compras para Cantina
+
 {%if operacao == 'Corrige' %}
 ### Correções a serem avaliadas
     {%for o in obs_correcoes%}

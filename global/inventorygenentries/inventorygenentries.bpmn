@@ -25,7 +25,7 @@
       <bpmn:extensionElements>
         <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
 
-url = 'https://172.20.1.9:50000/b1s/v2/InventoryGenEntries'
+url = f"{get_secret('sLayerUrl')}/InventoryGenEntries"
 
 headers = {
   'Cookie': f"B1SESSION={loginSap}",
