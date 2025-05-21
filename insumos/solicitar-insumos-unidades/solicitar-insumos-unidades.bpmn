@@ -836,7 +836,8 @@ for i in itens:
     errorCode = rsp['body']['error']['code']
     errorMessage = rsp['body']['error']['message']['value']
 except:
-    status_code = 900</spiffworkflow:preScript>
+    status_code = 900
+    teste = 'Teste'</spiffworkflow:preScript>
         <spiffworkflow:postScript />
         <spiffworkflow:instructionsForEndUser># &lt;font color="red"&gt;Esta operação resultou em erro&lt;/font&gt; :
 
