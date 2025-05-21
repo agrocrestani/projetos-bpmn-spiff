@@ -645,7 +645,11 @@ solicitacao = bkp.copy()</spiffworkflow:postScript>
     </bpmn:userTask>
     <bpmn:serviceTask id="Activity_1u6vbok" name="Efetuar a entrada da NFe no SAP">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript>loginSap = saplogin[0]['SessionId']
+        <spiffworkflow:preScript>from datetime import date
+
+data_hoje = date.today()
+
+loginSap = saplogin[0]['SessionId']
 
 url = f'{get_secret("sLayerUrl")}PurchaseInvoices'
 
@@ -683,6 +687,7 @@ payload = {
     "BPL_IDAssignedToInvoice": unidade,
     "U_ChaveAcesso": chaveAcesso if baseSap != 'SBO_CRESTANI_QA' else '',
     "TaxDate": DocDate[0:10],
+    "DocDueDate": data_hoje,
     "DocumentsOwner": OwnerCode,
     "SalesPersonCode": SlpCode,
     "Comments": f"Solicitante: {solicitante}",
