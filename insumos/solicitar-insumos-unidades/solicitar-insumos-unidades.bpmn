@@ -376,7 +376,7 @@ payload = {
 
 loginSap = saplogin[0]['SessionId']
 
-url = f'{get_secrest("sLayerUrl")}/Invoices'
+url = f'{get_secret("sLayerUrl")}/Invoices'
 
 headers = {
   'Cookie': f"B1SESSION={loginSap}",
