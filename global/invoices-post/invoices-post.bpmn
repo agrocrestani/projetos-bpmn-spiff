@@ -149,9 +149,6 @@ try:
     hist = sqlRsp[0]['hist']
     arquivo_nfe = f'http://srv-rds-02:8000/{cnpj}/danfe/{chaveAcesso}.pdf'
 
-    del(connection)
-
-
     nfe = rsp["body"]
     nfeItens = nfe['DocumentLines']
 
