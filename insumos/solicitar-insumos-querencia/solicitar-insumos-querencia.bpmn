@@ -390,7 +390,6 @@ for s in nfeEntradaItens:
 
 #Código de cliente Querencia
 CardCode = "C00116"
-teste = 'teste1'
 
 payload = {
     "CardCode": CardCode,
