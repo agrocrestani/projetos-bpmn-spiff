@@ -204,6 +204,7 @@ try:
 except: 
     statusId = sqlRsp[0]['statusid']
     hist = sqlRsp[0]['hist']
+    teste = 't'
     
 # del(n_filiais)
 # del(n_safras)
