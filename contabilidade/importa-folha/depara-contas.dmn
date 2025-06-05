@@ -72,6 +72,14 @@
           <text>"2.1.1.01.01.010"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1b4cp8n">
+        <inputEntry id="UnaryTests_1uhlffa">
+          <text>"20101011"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15mqfwz">
+          <text>"2.1.1.01.01.011"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_056tyhw">
         <inputEntry id="UnaryTests_1munmk2">
           <text>"20102001"</text>
