@@ -49,13 +49,7 @@ del(connection)</bpmn:script>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1t4ltck">
         <bpmn:targetRef>DataStoreReference_18dig2l</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
-      <bpmn:script>n_estados = [
-    {
-      "type": "string",
-      "enum": [],
-      "title": ""
-    }
-]
+      <bpmn:script>n_estados = []
 
 for r in rsp:
     uf = str(r['uf'])
