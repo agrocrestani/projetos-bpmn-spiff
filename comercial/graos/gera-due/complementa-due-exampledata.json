@@ -27,58 +27,160 @@
 ],
   "tipo_conhecimento": [
     {
-      "value": "",
-      "label": ""
+        "type": "string",
+        "enum": [
+            "1"
+        ],
+        "title": "AWB"
     },
     {
-      "value": "1",
-      "label": "AWB"
+        "type": "string",
+        "enum": [
+            "2"
+        ],
+        "title": "MAWB"
     },
     {
-      "value": "2",
-      "label": "MAWB"
+        "type": "string",
+        "enum": [
+            "3"
+        ],
+        "title": "HAWB"
     },
     {
-      "value": "3",
-      "label": "HAWB"
+        "type": "string",
+        "enum": [
+            "4"
+        ],
+        "title": "COMAT"
     },
     {
-      "value": "4",
-      "label": "COMAT"
+        "type": "string",
+        "enum": [
+            "6"
+        ],
+        "title": "R. EXPRESSAS"
     },
     {
-      "value": "6",
-      "label": "R. EXPRESSAS"
+        "type": "string",
+        "enum": [
+            "7"
+        ],
+        "title": "ETIQ. REXPRESSAS"
     },
     {
-      "value": "7",
-      "label": "ETIQ. REXPRESSAS"
+        "type": "string",
+        "enum": [
+            "8"
+        ],
+        "title": "HR. EXPRESSAS"
     },
     {
-      "value": "8",
-      "label": "HR. EXPRESSAS"
+        "type": "string",
+        "enum": [
+            "9"
+        ],
+        "title": "AV7"
     },
     {
-      "value": "9",
-      "label": "AV7"
+        "type": "string",
+        "enum": [
+            "10"
+        ],
+        "title": "BL"
     },
     {
-      "value": "10",
-      "label": "BL"
+        "type": "string",
+        "enum": [
+            "11"
+        ],
+        "title": "MBL"
     },
     {
-      "value": "11",
-      "label": "MBL"
+        "type": "string",
+        "enum": [
+            "12"
+        ],
+        "title": "HBL"
     },
     {
-      "value": "12",
-      "label": "HBL"
+        "type": "string",
+        "enum": [
+            "13"
+        ],
+        "title": "CRT"
     },
     {
-      "value": "13",
-      "label": "CRT"
+        "type": "string",
+        "enum": [
+            "14"
+        ],
+        "title": "DSIC"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "16"
+        ],
+        "title": "COMAT BL"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "17"
+        ],
+        "title": "RWB"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "18"
+        ],
+        "title": "HRWB"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "19"
+        ],
+        "title": "TIF/DTA"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "20"
+        ],
+        "title": "CP2"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "91"
+        ],
+        "title": "NÃO IATA"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "92"
+        ],
+        "title": "MNAO IATA"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "93"
+        ],
+        "title": "HNAO IATA"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "99"
+        ],
+        "title": "OUTROS"
     }
-  ],
+],
   "tipo_declaracao": [
     {
       "value": "",
