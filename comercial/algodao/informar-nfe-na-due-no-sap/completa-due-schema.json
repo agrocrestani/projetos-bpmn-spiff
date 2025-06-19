@@ -59,7 +59,7 @@
           "title": "Tipo Declaração",
           "default": "2",
           "anyOf": [
-            {{tipo_declaracao}}
+            {{tipo_declaracao|}}
           ]
         },
         "paisDestino": {
