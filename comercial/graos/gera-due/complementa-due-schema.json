@@ -41,7 +41,7 @@
           "type": "string",
           "title": "Tipo do Conhecimento",
           "default": "10",
-          "anyOf": tipo_conhecimento"
+          "anyOf": tipo_conhecimento
           ]
         },
         "tipoDeclaracao": {
