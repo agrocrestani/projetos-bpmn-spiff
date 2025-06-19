@@ -56,10 +56,6 @@ natureza_da_declaracao = naturezaDeclaracao
 
 del(rsp)
 del(naturezaDeclaracao)
-
-
-
-
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_0ibvmqz" name="Natureza da Declaracao" dataStoreRef="natureza_da_declaracao" type="json" />
