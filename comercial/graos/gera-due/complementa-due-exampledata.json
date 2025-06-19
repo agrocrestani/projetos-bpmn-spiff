@@ -9,7 +9,22 @@
     "tipoConhecimento": "10",
     "tipoDeclaracao": "2"
   },
-  "natureza_da_declaracao": "default": "10",,
+  "natureza_da_declaracao": [
+    {
+        "type": "string",
+        "enum": [
+            "0"
+        ],
+        "title": "Exportação Direta"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "1"
+        ],
+        "title": "Exportação Indireta"
+    }
+],
   "tipo_conhecimento": [
     {
       "value": "",
