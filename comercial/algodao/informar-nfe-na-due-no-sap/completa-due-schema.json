@@ -43,7 +43,7 @@
           "title": "Natureza da Declaração",
           "default": "0",
           "anyOf": [
-            {{natureza_da_declaracao|t}}
+            {{natureza_da_declaracao|tojson}}
           ]
         },
         "tipoConhecimento": {
