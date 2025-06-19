@@ -1,4 +1,14 @@
 {
+  "formDue": {
+    "numero_due": "25BR0007520717",
+    "data_averbacao": "2025-05-17",
+    "entidade": "{\"id\":2,\"nome_fantasia\":\"FAZENDA QUERENCIA\",\"cnpj\":\"09.262.185/0001-09\"}",
+    "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
+    "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
+    "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}",
+    "paisDestino": "",
+    "data_embarque": "2025-05-09"
+  },
   "num_nfe": "33118",
   "nota": [
     {
@@ -930,28 +940,417 @@
       "motivo_alteracao": "1 - Exportação Averbada"
     }
   ],
-  "formDue": {
-    "paisDestino": "",
-    "entidade": "{\"id\":2,\"nome_fantasia\":\"FAZENDA QUERENCIA\",\"cnpj\":\"09.262.185/0001-09\"}",
-    "numero_due": "25BR0007520717",
-    "data_embarque": "2025-05-09",
-    "data_averbacao": "2025-05-17",
-    "naturezaDeclaracao": "0",
-    "tipoConhecimento": "10",
-    "tipoDeclaracao": "2",
-    "data_registro": "2025-04-28",
-    "ufDestino": "SP",
-    "local": "Santos",
-    "data_declaracao": "2025-05-09",
-    "data_conhecimento": "2025-05-09",
-    "numero_registro": null,
-    "numero_conhecimento": "SAOA16262700"
-  },
   "numero_due": "25BR0007520717",
   "rsp": [
     {
       "qtde": 0
     }
   ],
-  "retorno_gera_due": "SUCESSO"
+  "retorno_gera_due": "SUCESSO",
+  "tipo_conhecimento": [
+    {
+      "type": "",
+      "enum": [],
+      "title": ""
+    },
+    {
+      "type": "string",
+      "enum": [
+        "1"
+      ],
+      "title": "AWB"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "2"
+      ],
+      "title": "MAWB"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "3"
+      ],
+      "title": "HAWB"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "4"
+      ],
+      "title": "COMAT"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "6"
+      ],
+      "title": "R. EXPRESSAS"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "7"
+      ],
+      "title": "ETIQ. REXPRESSAS"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "8"
+      ],
+      "title": "HR. EXPRESSAS"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "9"
+      ],
+      "title": "AV7"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "10"
+      ],
+      "title": "BL"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "11"
+      ],
+      "title": "MBL"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "12"
+      ],
+      "title": "HBL"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "13"
+      ],
+      "title": "CRT"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "14"
+      ],
+      "title": "DSIC"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "16"
+      ],
+      "title": "COMAT BL"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "17"
+      ],
+      "title": "RWB"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "18"
+      ],
+      "title": "HRWB"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "19"
+      ],
+      "title": "TIF/DTA"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "20"
+      ],
+      "title": "CP2"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "91"
+      ],
+      "title": "NÃO IATA"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "92"
+      ],
+      "title": "MNAO IATA"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "93"
+      ],
+      "title": "HNAO IATA"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "99"
+      ],
+      "title": "OUTROS"
+    }
+  ],
+  "natureza_da_declaracao": [
+    {
+      "type": "",
+      "enum": [],
+      "title": ""
+    },
+    {
+      "type": "string",
+      "enum": [
+        "0"
+      ],
+      "title": "Exportação Direta"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "1"
+      ],
+      "title": "Exportação Indireta"
+    }
+  ],
+  "estados": [
+    {
+      "type": "string",
+      "enum": [],
+      "title": ""
+    },
+    {
+      "type": "string",
+      "enum": [
+        "RO"
+      ],
+      "title": "RO - Rondônia"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "AC"
+      ],
+      "title": "AC - Acre"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "AM"
+      ],
+      "title": "AM - Amazonas"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "RR"
+      ],
+      "title": "RR - Roraima"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "PA"
+      ],
+      "title": "PA - Pará"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "AP"
+      ],
+      "title": "AP - Amapá"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "TO"
+      ],
+      "title": "TO - Tocantins"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "MA"
+      ],
+      "title": "MA - Maranhão"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "PI"
+      ],
+      "title": "PI - Piauí"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "CE"
+      ],
+      "title": "CE - Ceará"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "RN"
+      ],
+      "title": "RN - Rio Grande do Norte"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "PB"
+      ],
+      "title": "PB - Paraíba"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "PE"
+      ],
+      "title": "PE - Pernambuco"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "AL"
+      ],
+      "title": "AL - Alagoas"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "SE"
+      ],
+      "title": "SE - Sergipe"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "BA"
+      ],
+      "title": "BA - Bahia"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "MG"
+      ],
+      "title": "MG - Minas Gerais"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "ES"
+      ],
+      "title": "ES - Espírito Santo"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "RJ"
+      ],
+      "title": "RJ - Rio de Janeiro"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "SP"
+      ],
+      "title": "SP - São Paulo"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "PR"
+      ],
+      "title": "PR - Paraná"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "SC"
+      ],
+      "title": "SC - Santa Catarina"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "RS"
+      ],
+      "title": "RS - Rio Grande do Sul"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "MS"
+      ],
+      "title": "MS - Mato Grosso do Sul"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "MT"
+      ],
+      "title": "MT - Mato Grosso"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "GO"
+      ],
+      "title": "GO - Goiás"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "DF"
+      ],
+      "title": "DF - Distrito Federal"
+    }
+  ],
+  "tipo_declaracao": [
+    {
+      "type": "string",
+      "enum": [],
+      "title": ""
+    },
+    {
+      "type": "string",
+      "enum": [
+        "0"
+      ],
+      "title": "Declaração de Exportação"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "1"
+      ],
+      "title": "Declaração Simplificada de Exportação"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "2"
+      ],
+      "title": "Declaração Única de Exportação"
+    }
+  ]
 }
