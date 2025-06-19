@@ -91,7 +91,7 @@ del(n_estados)
       <bpmndi:BPMNShape id="DataStoreReference_18dig2l_di" bpmnElement="DataStoreReference_18dig2l">
         <dc:Bounds x="495" y="305" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="500" y="362" width="41" height="14" />
+          <dc:Bounds x="500" y="362" width="42" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1dgnxtr_di" bpmnElement="Activity_1tpkk9s">
