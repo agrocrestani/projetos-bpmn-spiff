@@ -1,141 +1,957 @@
 {
+  "num_nfe": "33118",
+  "nota": [
+    {
+      "docentry": 26688,
+      "docnum": 16071,
+      "serial": 33118,
+      "keynfe": "51250403262185000109550010000331181314716658",
+      "docdate": "2025-04-24 00:00:00.0000000",
+      "seqcode": 37,
+      "seriesstr": "1",
+      "substr": "",
+      "model": "39",
+      "objtype": "13",
+      "linenum": 0,
+      "itemcode": "022938",
+      "itemname": "ALGODAO EM PLUMA",
+      "quantity": "47341.306000",
+      "linetotal": "528232.230000",
+      "entidadeid": 2
+    }
+  ],
+  "totalRegistros": 1,
+  "contador": 1,
+  "existe": 0,
+  "keynfe": "51250403262185000109550010000331181314716658",
+  "status_code": 200,
+  "mensagem": "A requisição foi processada com sucesso.",
+  "nr_notas": 0,
+  "eventos": [
+    {
+      "evento": "Autorização de Uso",
+      "protocolo": "151250034313721",
+      "data_autorizacao": "24/04/2025 às 17:24:24-04:00",
+      "data_inclusao": "24/04/2025 às 18:25:16",
+      "info": {},
+      "detalhes": {},
+      "autorizacao_sefaz": {},
+      "condicoes_uso": {},
+      "itens_averbados": []
+    },
+    {
+      "evento": "Averbação para Exportação (Órgão Autor: AN)",
+      "protocolo": "891254739397729",
+      "data_autorizacao": "17/05/2025 às 03:56:44-03:00",
+      "data_inclusao": "17/05/2025 às 03:56:44",
+      "info": {
+        "orgao": "91 - AMBIENTE NACIONAL",
+        "ambiente": "1 - Produção",
+        "versao": "1.00",
+        "autor": "",
+        "chave_acesso": "51250403262185000109550010000331181314716658",
+        "id": "ID7907005125040326218500010955001000033118131471665801",
+        "data": "17/05/2025 às 03:56:44-03:00",
+        "tipo": "790700 - Averbação de Exportação",
+        "sequencial": "1"
+      },
+      "detalhes": {
+        "descricao": "Averbação para Exportação",
+        "versao": "1.00",
+        "texto": "",
+        "justificativa": ""
+      },
+      "autorizacao_sefaz": {
+        "mensagem": "",
+        "protocolo": "",
+        "datahora": ""
+      },
+      "condicoes_uso": {
+        "descricao": ""
+      },
+      "itens_averbados": [
+        {
+          "item_nfe": "1",
+          "item_due": "1",
+          "numero_due": "25BR0007520717",
+          "quantidade_averbada": "47.3413",
+          "data_embarque": "2025-05-09T00:00:00-03:00",
+          "data_averbacao": "2025-05-17T03:56:43-03:00",
+          "motivo_alteracao": "1 - Exportação Averbada"
+        },
+        {
+          "item_nfe": "2",
+          "item_due": "2",
+          "numero_due": "25BR0007520717",
+          "quantidade_averbada": "224.6752",
+          "data_embarque": "2025-05-09T00:00:00-03:00",
+          "data_averbacao": "2025-05-17T03:56:43-03:00",
+          "motivo_alteracao": "1 - Exportação Averbada"
+        },
+        {
+          "item_nfe": "3",
+          "item_due": "3",
+          "numero_due": "25BR0007520717",
+          "quantidade_averbada": "49.4112",
+          "data_embarque": "2025-05-09T00:00:00-03:00",
+          "data_averbacao": "2025-05-17T03:56:43-03:00",
+          "motivo_alteracao": "1 - Exportação Averbada"
+        },
+        {
+          "item_nfe": "4",
+          "item_due": "4",
+          "numero_due": "25BR0007520717",
+          "quantidade_averbada": "24.415",
+          "data_embarque": "2025-05-09T00:00:00-03:00",
+          "data_averbacao": "2025-05-17T03:56:43-03:00",
+          "motivo_alteracao": "1 - Exportação Averbada"
+        },
+        {
+          "item_nfe": "5",
+          "item_due": "5",
+          "numero_due": "25BR0007520717",
+          "quantidade_averbada": "48.8874",
+          "data_embarque": "2025-05-09T00:00:00-03:00",
+          "data_averbacao": "2025-05-17T03:56:43-03:00",
+          "motivo_alteracao": "1 - Exportação Averbada"
+        }
+      ]
+    }
+  ],
+  "produtos1": [
+    {
+      "num": 1,
+      "descricao": "ALGODAO EM PLUMA 41.4",
+      "qtd": 47341.306,
+      "unidade": "KG",
+      "valor": "528.232,23",
+      "normalizado_valor": 528232.23,
+      "codigo": "022938",
+      "ncm": "52010020",
+      "cest": "",
+      "indicador_escala_relevante": "",
+      "cnpj_fabricante_mercadoria": "",
+      "codigo_beneficio_fiscal_uf": "",
+      "ex_tipi": "",
+      "cfop": "7127",
+      "outras_despesas": "",
+      "valor_desconto": "",
+      "valor_frete": "",
+      "valor_seguro": "",
+      "normalizado_cnpj_fabricante_mercadoria": "",
+      "composicao_valor": "1 - O valor do item (vProd) compõe o valor total da NF-e (vProd)",
+      "ean_comercial": "SEM GTIN",
+      "unidade_comercial": "KG",
+      "quantidade_comercial": "47.341,3060",
+      "ean_tributavel": "SEM GTIN",
+      "unidade_tributavel": "TON",
+      "quantidade_tributavel": "47,3413",
+      "valor_unitario_comercial": "11,1579564366",
+      "valor_unitario_tributavel": "11.157,9578507561",
+      "numero_pedido": "",
+      "item_pedido": "",
+      "tributos": "",
+      "fci": "",
+      "icms": {
+        "origem_mercadoria": "0 - Nacional",
+        "tributacao_icms": "41 - Não tributada",
+        "modalidade": "",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": "",
+        "base_calculo_fcp": "",
+        "percentual_fcp": "",
+        "valor_fcp": "",
+        "base_calculo_icms_st": "",
+        "aliquota_icms_st": "",
+        "valor_icms_st": "",
+        "base_calculo_fcp_retido": "",
+        "percentual_fcp_retido": "",
+        "valor_fcp_retido": "",
+        "percentual_reducao_bc_icms_st": "",
+        "percentual_mva_icms_st": "",
+        "modalidade_bc_icms_st": "",
+        "percentual_reducao_bc": "",
+        "valor_desonerado": "",
+        "motivo_desoneracao": "",
+        "bc_modalidade": "",
+        "bc_valor": "",
+        "bc_valor_st": "",
+        "bc_perccentual": "",
+        "uf": ""
+      },
+      "ipi": {
+        "classe_enquadramento": "",
+        "codigo_enquadramento": "",
+        "codigo_selo": "",
+        "cnpj_produtor": "",
+        "quantidade_selo": "",
+        "cst": "",
+        "quantidade_total_unidade_padrao": "",
+        "valor_unidade": "",
+        "valor_ipi": "",
+        "base_calculo": "",
+        "aliquota": ""
+      },
+      "importacao": {
+        "base_calculo": "",
+        "despesas_aduaneiras": "",
+        "imposto_importacao": "",
+        "iof": "",
+        "documentos": []
+      },
+      "pis": {
+        "cst": "08 - Operação Sem Incidência da Contribuição",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": ""
+      },
+      "cofins": {
+        "cst": "08 - Operação Sem Incidência da Contribuição",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": ""
+      },
+      "cofins_st": {
+        "quantidade_vendida": "",
+        "aliquota": ""
+      },
+      "info_adicionais": "",
+      "especifico_veiculos_novos": {
+        "tipo_operacao": "",
+        "chassi": "",
+        "cilindradas": "",
+        "cor": "",
+        "cor_descricao": "",
+        "cor_codigo": "",
+        "peso_liquido": "",
+        "peso_bruto": "",
+        "serie": "",
+        "tipo_combustivel": "",
+        "numero_motor": "",
+        "capacidade_maxima_tracao": "",
+        "distancia_eixos": "",
+        "ano_modelo": "",
+        "ano_fabricacao": "",
+        "tipo_pintura": "",
+        "tipo_veiculo": "",
+        "especie": "",
+        "condicao_vin": "",
+        "condicao_veiculo": "",
+        "marca_codigo": "",
+        "potencia_motor": "",
+        "capacidade_passageiros": "",
+        "restricao": ""
+      },
+      "especifico_medicamentos": {
+        "numero_lote": "",
+        "quantidade_produtos_no_lote": "",
+        "data_fabricacao": "",
+        "data_validade": "",
+        "preco_maximo_consumidor": ""
+      }
+    },
+    {
+      "num": 2,
+      "descricao": "ALGODAO EM PLUMA 32.4",
+      "qtd": 224675.158,
+      "unidade": "KG",
+      "valor": "2.492.840,48",
+      "normalizado_valor": 2492840.48,
+      "codigo": "022938",
+      "ncm": "52010020",
+      "cest": "",
+      "indicador_escala_relevante": "",
+      "cnpj_fabricante_mercadoria": "",
+      "codigo_beneficio_fiscal_uf": "",
+      "ex_tipi": "",
+      "cfop": "7127",
+      "outras_despesas": "",
+      "valor_desconto": "",
+      "valor_frete": "",
+      "valor_seguro": "",
+      "normalizado_cnpj_fabricante_mercadoria": "",
+      "composicao_valor": "1 - O valor do item (vProd) compõe o valor total da NF-e (vProd)",
+      "ean_comercial": "SEM GTIN",
+      "unidade_comercial": "KG",
+      "quantidade_comercial": "224.675,1580",
+      "ean_tributavel": "SEM GTIN",
+      "unidade_tributavel": "TON",
+      "quantidade_tributavel": "224,6752",
+      "valor_unitario_comercial": "11,0953097894",
+      "valor_unitario_tributavel": "11.095,3077153153",
+      "numero_pedido": "",
+      "item_pedido": "",
+      "tributos": "",
+      "fci": "",
+      "icms": {
+        "origem_mercadoria": "0 - Nacional",
+        "tributacao_icms": "41 - Não tributada",
+        "modalidade": "",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": "",
+        "base_calculo_fcp": "",
+        "percentual_fcp": "",
+        "valor_fcp": "",
+        "base_calculo_icms_st": "",
+        "aliquota_icms_st": "",
+        "valor_icms_st": "",
+        "base_calculo_fcp_retido": "",
+        "percentual_fcp_retido": "",
+        "valor_fcp_retido": "",
+        "percentual_reducao_bc_icms_st": "",
+        "percentual_mva_icms_st": "",
+        "modalidade_bc_icms_st": "",
+        "percentual_reducao_bc": "",
+        "valor_desonerado": "",
+        "motivo_desoneracao": "",
+        "bc_modalidade": "",
+        "bc_valor": "",
+        "bc_valor_st": "",
+        "bc_perccentual": "",
+        "uf": ""
+      },
+      "ipi": {
+        "classe_enquadramento": "",
+        "codigo_enquadramento": "",
+        "codigo_selo": "",
+        "cnpj_produtor": "",
+        "quantidade_selo": "",
+        "cst": "",
+        "quantidade_total_unidade_padrao": "",
+        "valor_unidade": "",
+        "valor_ipi": "",
+        "base_calculo": "",
+        "aliquota": ""
+      },
+      "importacao": {
+        "base_calculo": "",
+        "despesas_aduaneiras": "",
+        "imposto_importacao": "",
+        "iof": "",
+        "documentos": []
+      },
+      "pis": {
+        "cst": "08 - Operação Sem Incidência da Contribuição",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": ""
+      },
+      "cofins": {
+        "cst": "08 - Operação Sem Incidência da Contribuição",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": ""
+      },
+      "cofins_st": {
+        "quantidade_vendida": "",
+        "aliquota": ""
+      },
+      "info_adicionais": "",
+      "especifico_veiculos_novos": {
+        "tipo_operacao": "",
+        "chassi": "",
+        "cilindradas": "",
+        "cor": "",
+        "cor_descricao": "",
+        "cor_codigo": "",
+        "peso_liquido": "",
+        "peso_bruto": "",
+        "serie": "",
+        "tipo_combustivel": "",
+        "numero_motor": "",
+        "capacidade_maxima_tracao": "",
+        "distancia_eixos": "",
+        "ano_modelo": "",
+        "ano_fabricacao": "",
+        "tipo_pintura": "",
+        "tipo_veiculo": "",
+        "especie": "",
+        "condicao_vin": "",
+        "condicao_veiculo": "",
+        "marca_codigo": "",
+        "potencia_motor": "",
+        "capacidade_passageiros": "",
+        "restricao": ""
+      },
+      "especifico_medicamentos": {
+        "numero_lote": "",
+        "quantidade_produtos_no_lote": "",
+        "data_fabricacao": "",
+        "data_validade": "",
+        "preco_maximo_consumidor": ""
+      }
+    },
+    {
+      "num": 3,
+      "descricao": "ALGODAO EM PLUMA 32.3",
+      "qtd": 49411.175,
+      "unidade": "KG",
+      "valor": "548.220,49",
+      "normalizado_valor": 548220.49,
+      "codigo": "022938",
+      "ncm": "52010020",
+      "cest": "",
+      "indicador_escala_relevante": "",
+      "cnpj_fabricante_mercadoria": "",
+      "codigo_beneficio_fiscal_uf": "",
+      "ex_tipi": "",
+      "cfop": "7127",
+      "outras_despesas": "",
+      "valor_desconto": "",
+      "valor_frete": "",
+      "valor_seguro": "",
+      "normalizado_cnpj_fabricante_mercadoria": "",
+      "composicao_valor": "1 - O valor do item (vProd) compõe o valor total da NF-e (vProd)",
+      "ean_comercial": "SEM GTIN",
+      "unidade_comercial": "KG",
+      "quantidade_comercial": "49.411,1750",
+      "ean_tributavel": "SEM GTIN",
+      "unidade_tributavel": "TON",
+      "quantidade_tributavel": "49,4112",
+      "valor_unitario_comercial": "11,0950709025",
+      "valor_unitario_tributavel": "11.095,0652888414",
+      "numero_pedido": "",
+      "item_pedido": "",
+      "tributos": "",
+      "fci": "",
+      "icms": {
+        "origem_mercadoria": "0 - Nacional",
+        "tributacao_icms": "41 - Não tributada",
+        "modalidade": "",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": "",
+        "base_calculo_fcp": "",
+        "percentual_fcp": "",
+        "valor_fcp": "",
+        "base_calculo_icms_st": "",
+        "aliquota_icms_st": "",
+        "valor_icms_st": "",
+        "base_calculo_fcp_retido": "",
+        "percentual_fcp_retido": "",
+        "valor_fcp_retido": "",
+        "percentual_reducao_bc_icms_st": "",
+        "percentual_mva_icms_st": "",
+        "modalidade_bc_icms_st": "",
+        "percentual_reducao_bc": "",
+        "valor_desonerado": "",
+        "motivo_desoneracao": "",
+        "bc_modalidade": "",
+        "bc_valor": "",
+        "bc_valor_st": "",
+        "bc_perccentual": "",
+        "uf": ""
+      },
+      "ipi": {
+        "classe_enquadramento": "",
+        "codigo_enquadramento": "",
+        "codigo_selo": "",
+        "cnpj_produtor": "",
+        "quantidade_selo": "",
+        "cst": "",
+        "quantidade_total_unidade_padrao": "",
+        "valor_unidade": "",
+        "valor_ipi": "",
+        "base_calculo": "",
+        "aliquota": ""
+      },
+      "importacao": {
+        "base_calculo": "",
+        "despesas_aduaneiras": "",
+        "imposto_importacao": "",
+        "iof": "",
+        "documentos": []
+      },
+      "pis": {
+        "cst": "08 - Operação Sem Incidência da Contribuição",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": ""
+      },
+      "cofins": {
+        "cst": "08 - Operação Sem Incidência da Contribuição",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": ""
+      },
+      "cofins_st": {
+        "quantidade_vendida": "",
+        "aliquota": ""
+      },
+      "info_adicionais": "",
+      "especifico_veiculos_novos": {
+        "tipo_operacao": "",
+        "chassi": "",
+        "cilindradas": "",
+        "cor": "",
+        "cor_descricao": "",
+        "cor_codigo": "",
+        "peso_liquido": "",
+        "peso_bruto": "",
+        "serie": "",
+        "tipo_combustivel": "",
+        "numero_motor": "",
+        "capacidade_maxima_tracao": "",
+        "distancia_eixos": "",
+        "ano_modelo": "",
+        "ano_fabricacao": "",
+        "tipo_pintura": "",
+        "tipo_veiculo": "",
+        "especie": "",
+        "condicao_vin": "",
+        "condicao_veiculo": "",
+        "marca_codigo": "",
+        "potencia_motor": "",
+        "capacidade_passageiros": "",
+        "restricao": ""
+      },
+      "especifico_medicamentos": {
+        "numero_lote": "",
+        "quantidade_produtos_no_lote": "",
+        "data_fabricacao": "",
+        "data_validade": "",
+        "preco_maximo_consumidor": ""
+      }
+    },
+    {
+      "num": 4,
+      "descricao": "ALGODAO EM PLUMA 42.4",
+      "qtd": 24414.965,
+      "unidade": "KG",
+      "valor": "267.829,68",
+      "normalizado_valor": 267829.68,
+      "codigo": "022938",
+      "ncm": "52010020",
+      "cest": "",
+      "indicador_escala_relevante": "",
+      "cnpj_fabricante_mercadoria": "",
+      "codigo_beneficio_fiscal_uf": "",
+      "ex_tipi": "",
+      "cfop": "7127",
+      "outras_despesas": "",
+      "valor_desconto": "",
+      "valor_frete": "",
+      "valor_seguro": "",
+      "normalizado_cnpj_fabricante_mercadoria": "",
+      "composicao_valor": "1 - O valor do item (vProd) compõe o valor total da NF-e (vProd)",
+      "ean_comercial": "SEM GTIN",
+      "unidade_comercial": "KG",
+      "quantidade_comercial": "24.414,9650",
+      "ean_tributavel": "SEM GTIN",
+      "unidade_tributavel": "TON",
+      "quantidade_tributavel": "24,4150",
+      "valor_unitario_comercial": "10,9698981752",
+      "valor_unitario_tributavel": "10.969,8824493139",
+      "numero_pedido": "",
+      "item_pedido": "",
+      "tributos": "",
+      "fci": "",
+      "icms": {
+        "origem_mercadoria": "0 - Nacional",
+        "tributacao_icms": "41 - Não tributada",
+        "modalidade": "",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": "",
+        "base_calculo_fcp": "",
+        "percentual_fcp": "",
+        "valor_fcp": "",
+        "base_calculo_icms_st": "",
+        "aliquota_icms_st": "",
+        "valor_icms_st": "",
+        "base_calculo_fcp_retido": "",
+        "percentual_fcp_retido": "",
+        "valor_fcp_retido": "",
+        "percentual_reducao_bc_icms_st": "",
+        "percentual_mva_icms_st": "",
+        "modalidade_bc_icms_st": "",
+        "percentual_reducao_bc": "",
+        "valor_desonerado": "",
+        "motivo_desoneracao": "",
+        "bc_modalidade": "",
+        "bc_valor": "",
+        "bc_valor_st": "",
+        "bc_perccentual": "",
+        "uf": ""
+      },
+      "ipi": {
+        "classe_enquadramento": "",
+        "codigo_enquadramento": "",
+        "codigo_selo": "",
+        "cnpj_produtor": "",
+        "quantidade_selo": "",
+        "cst": "",
+        "quantidade_total_unidade_padrao": "",
+        "valor_unidade": "",
+        "valor_ipi": "",
+        "base_calculo": "",
+        "aliquota": ""
+      },
+      "importacao": {
+        "base_calculo": "",
+        "despesas_aduaneiras": "",
+        "imposto_importacao": "",
+        "iof": "",
+        "documentos": []
+      },
+      "pis": {
+        "cst": "08 - Operação Sem Incidência da Contribuição",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": ""
+      },
+      "cofins": {
+        "cst": "08 - Operação Sem Incidência da Contribuição",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": ""
+      },
+      "cofins_st": {
+        "quantidade_vendida": "",
+        "aliquota": ""
+      },
+      "info_adicionais": "",
+      "especifico_veiculos_novos": {
+        "tipo_operacao": "",
+        "chassi": "",
+        "cilindradas": "",
+        "cor": "",
+        "cor_descricao": "",
+        "cor_codigo": "",
+        "peso_liquido": "",
+        "peso_bruto": "",
+        "serie": "",
+        "tipo_combustivel": "",
+        "numero_motor": "",
+        "capacidade_maxima_tracao": "",
+        "distancia_eixos": "",
+        "ano_modelo": "",
+        "ano_fabricacao": "",
+        "tipo_pintura": "",
+        "tipo_veiculo": "",
+        "especie": "",
+        "condicao_vin": "",
+        "condicao_veiculo": "",
+        "marca_codigo": "",
+        "potencia_motor": "",
+        "capacidade_passageiros": "",
+        "restricao": ""
+      },
+      "especifico_medicamentos": {
+        "numero_lote": "",
+        "quantidade_produtos_no_lote": "",
+        "data_fabricacao": "",
+        "data_validade": "",
+        "preco_maximo_consumidor": ""
+      }
+    },
+    {
+      "num": 5,
+      "descricao": "ALGODAO EM PLUMA 31.2",
+      "qtd": 48887.396,
+      "unidade": "KG",
+      "valor": "554.678,30",
+      "normalizado_valor": 554678.3,
+      "codigo": "022938",
+      "ncm": "52010020",
+      "cest": "",
+      "indicador_escala_relevante": "",
+      "cnpj_fabricante_mercadoria": "",
+      "codigo_beneficio_fiscal_uf": "",
+      "ex_tipi": "",
+      "cfop": "7127",
+      "outras_despesas": "",
+      "valor_desconto": "",
+      "valor_frete": "",
+      "valor_seguro": "",
+      "normalizado_cnpj_fabricante_mercadoria": "",
+      "composicao_valor": "1 - O valor do item (vProd) compõe o valor total da NF-e (vProd)",
+      "ean_comercial": "SEM GTIN",
+      "unidade_comercial": "KG",
+      "quantidade_comercial": "48.887,3960",
+      "ean_tributavel": "SEM GTIN",
+      "unidade_tributavel": "TON",
+      "quantidade_tributavel": "48,8874",
+      "valor_unitario_comercial": "11,3460389668",
+      "valor_unitario_tributavel": "11.346,0380384312",
+      "numero_pedido": "",
+      "item_pedido": "",
+      "tributos": "",
+      "fci": "",
+      "icms": {
+        "origem_mercadoria": "0 - Nacional",
+        "tributacao_icms": "41 - Não tributada",
+        "modalidade": "",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": "",
+        "base_calculo_fcp": "",
+        "percentual_fcp": "",
+        "valor_fcp": "",
+        "base_calculo_icms_st": "",
+        "aliquota_icms_st": "",
+        "valor_icms_st": "",
+        "base_calculo_fcp_retido": "",
+        "percentual_fcp_retido": "",
+        "valor_fcp_retido": "",
+        "percentual_reducao_bc_icms_st": "",
+        "percentual_mva_icms_st": "",
+        "modalidade_bc_icms_st": "",
+        "percentual_reducao_bc": "",
+        "valor_desonerado": "",
+        "motivo_desoneracao": "",
+        "bc_modalidade": "",
+        "bc_valor": "",
+        "bc_valor_st": "",
+        "bc_perccentual": "",
+        "uf": ""
+      },
+      "ipi": {
+        "classe_enquadramento": "",
+        "codigo_enquadramento": "",
+        "codigo_selo": "",
+        "cnpj_produtor": "",
+        "quantidade_selo": "",
+        "cst": "",
+        "quantidade_total_unidade_padrao": "",
+        "valor_unidade": "",
+        "valor_ipi": "",
+        "base_calculo": "",
+        "aliquota": ""
+      },
+      "importacao": {
+        "base_calculo": "",
+        "despesas_aduaneiras": "",
+        "imposto_importacao": "",
+        "iof": "",
+        "documentos": []
+      },
+      "pis": {
+        "cst": "08 - Operação Sem Incidência da Contribuição",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": ""
+      },
+      "cofins": {
+        "cst": "08 - Operação Sem Incidência da Contribuição",
+        "base_calculo": "",
+        "aliquota": "",
+        "valor": ""
+      },
+      "cofins_st": {
+        "quantidade_vendida": "",
+        "aliquota": ""
+      },
+      "info_adicionais": "",
+      "especifico_veiculos_novos": {
+        "tipo_operacao": "",
+        "chassi": "",
+        "cilindradas": "",
+        "cor": "",
+        "cor_descricao": "",
+        "cor_codigo": "",
+        "peso_liquido": "",
+        "peso_bruto": "",
+        "serie": "",
+        "tipo_combustivel": "",
+        "numero_motor": "",
+        "capacidade_maxima_tracao": "",
+        "distancia_eixos": "",
+        "ano_modelo": "",
+        "ano_fabricacao": "",
+        "tipo_pintura": "",
+        "tipo_veiculo": "",
+        "especie": "",
+        "condicao_vin": "",
+        "condicao_veiculo": "",
+        "marca_codigo": "",
+        "potencia_motor": "",
+        "capacidade_passageiros": "",
+        "restricao": ""
+      },
+      "especifico_medicamentos": {
+        "numero_lote": "",
+        "quantidade_produtos_no_lote": "",
+        "data_fabricacao": "",
+        "data_validade": "",
+        "preco_maximo_consumidor": ""
+      }
+    }
+  ],
+  "e": {
+    "evento": "Averbação para Exportação (Órgão Autor: AN)",
+    "protocolo": "891254739397729",
+    "data_autorizacao": "17/05/2025 às 03:56:44-03:00",
+    "data_inclusao": "17/05/2025 às 03:56:44",
+    "info": {
+      "orgao": "91 - AMBIENTE NACIONAL",
+      "ambiente": "1 - Produção",
+      "versao": "1.00",
+      "autor": "",
+      "chave_acesso": "51250403262185000109550010000331181314716658",
+      "id": "ID7907005125040326218500010955001000033118131471665801",
+      "data": "17/05/2025 às 03:56:44-03:00",
+      "tipo": "790700 - Averbação de Exportação",
+      "sequencial": "1"
+    },
+    "detalhes": {
+      "descricao": "Averbação para Exportação",
+      "versao": "1.00",
+      "texto": "",
+      "justificativa": ""
+    },
+    "autorizacao_sefaz": {
+      "mensagem": "",
+      "protocolo": "",
+      "datahora": ""
+    },
+    "condicoes_uso": {
+      "descricao": ""
+    },
+    "itens_averbados": [
+      {
+        "item_nfe": "1",
+        "item_due": "1",
+        "numero_due": "25BR0007520717",
+        "quantidade_averbada": "47.3413",
+        "data_embarque": "2025-05-09T00:00:00-03:00",
+        "data_averbacao": "2025-05-17T03:56:43-03:00",
+        "motivo_alteracao": "1 - Exportação Averbada"
+      },
+      {
+        "item_nfe": "2",
+        "item_due": "2",
+        "numero_due": "25BR0007520717",
+        "quantidade_averbada": "224.6752",
+        "data_embarque": "2025-05-09T00:00:00-03:00",
+        "data_averbacao": "2025-05-17T03:56:43-03:00",
+        "motivo_alteracao": "1 - Exportação Averbada"
+      },
+      {
+        "item_nfe": "3",
+        "item_due": "3",
+        "numero_due": "25BR0007520717",
+        "quantidade_averbada": "49.4112",
+        "data_embarque": "2025-05-09T00:00:00-03:00",
+        "data_averbacao": "2025-05-17T03:56:43-03:00",
+        "motivo_alteracao": "1 - Exportação Averbada"
+      },
+      {
+        "item_nfe": "4",
+        "item_due": "4",
+        "numero_due": "25BR0007520717",
+        "quantidade_averbada": "24.415",
+        "data_embarque": "2025-05-09T00:00:00-03:00",
+        "data_averbacao": "2025-05-17T03:56:43-03:00",
+        "motivo_alteracao": "1 - Exportação Averbada"
+      },
+      {
+        "item_nfe": "5",
+        "item_due": "5",
+        "numero_due": "25BR0007520717",
+        "quantidade_averbada": "48.8874",
+        "data_embarque": "2025-05-09T00:00:00-03:00",
+        "data_averbacao": "2025-05-17T03:56:43-03:00",
+        "motivo_alteracao": "1 - Exportação Averbada"
+      }
+    ]
+  },
+  "lanca": 1,
+  "evento": "Averbação para Exportação (Órgão Autor: AN)",
+  "protocolo": "891254739397729",
+  "data_autorizacao": "17/05/2025 às 03:56:44-03:00",
+  "data_inclusao": "17/05/2025 às 03:56:44",
+  "info": "{\"orgao\": \"91 - AMBIENTE NACIONAL\", \"ambiente\": \"1 - Produção\", \"versao\": \"1.00\", \"autor\": \"\", \"chave_acesso\": \"51250403262185000109550010000331181314716658\", \"id\": \"ID7907005125040326218500010955001000033118131471665801\", \"data\": \"17/05/2025 às 03:56:44-03:00\", \"tipo\": \"790700 - Averbação de Exportação\", \"sequencial\": \"1\"}",
+  "detalhes": "{\"descricao\": \"Averbação para Exportação\", \"versao\": \"1.00\", \"texto\": \"\", \"justificativa\": \"\"}",
+  "autorizacao_sefaz": "{\"mensagem\": \"\", \"protocolo\": \"\", \"datahora\": \"\"}",
+  "condicoes_uso": "{\"descricao\": \"\"}",
+  "itens_averbados": "[{\"item_nfe\": \"1\", \"item_due\": \"1\", \"numero_due\": \"25BR0007520717\", \"quantidade_averbada\": \"47.3413\", \"data_embarque\": \"2025-05-09T00:00:00-03:00\", \"data_averbacao\": \"2025-05-17T03:56:43-03:00\", \"motivo_alteracao\": \"1 - Exportação Averbada\"}, {\"item_nfe\": \"2\", \"item_due\": \"2\", \"numero_due\": \"25BR0007520717\", \"quantidade_averbada\": \"224.6752\", \"data_embarque\": \"2025-05-09T00:00:00-03:00\", \"data_averbacao\": \"2025-05-17T03:56:43-03:00\", \"motivo_alteracao\": \"1 - Exportação Averbada\"}, {\"item_nfe\": \"3\", \"item_due\": \"3\", \"numero_due\": \"25BR0007520717\", \"quantidade_averbada\": \"49.4112\", \"data_embarque\": \"2025-05-09T00:00:00-03:00\", \"data_averbacao\": \"2025-05-17T03:56:43-03:00\", \"motivo_alteracao\": \"1 - Exportação Averbada\"}, {\"item_nfe\": \"4\", \"item_due\": \"4\", \"numero_due\": \"25BR0007520717\", \"quantidade_averbada\": \"24.415\", \"data_embarque\": \"2025-05-09T00:00:00-03:00\", \"data_averbacao\": \"2025-05-17T03:56:43-03:00\", \"motivo_alteracao\": \"1 - Exportação Averbada\"}, {\"item_nfe\": \"5\", \"item_due\": \"5\", \"numero_due\": \"25BR0007520717\", \"quantidade_averbada\": \"48.8874\", \"data_embarque\": \"2025-05-09T00:00:00-03:00\", \"data_averbacao\": \"2025-05-17T03:56:43-03:00\", \"motivo_alteracao\": \"1 - Exportação Averbada\"}]",
+  "produtos": "[{\"num\": 1, \"descricao\": \"ALGODAO EM PLUMA 41.4\", \"qtd\": 47341.306, \"unidade\": \"KG\", \"valor\": \"528.232,23\", \"normalizado_valor\": 528232.23, \"codigo\": \"022938\", \"ncm\": \"52010020\", \"cest\": \"\", \"indicador_escala_relevante\": \"\", \"cnpj_fabricante_mercadoria\": \"\", \"codigo_beneficio_fiscal_uf\": \"\", \"ex_tipi\": \"\", \"cfop\": \"7127\", \"outras_despesas\": \"\", \"valor_desconto\": \"\", \"valor_frete\": \"\", \"valor_seguro\": \"\", \"normalizado_cnpj_fabricante_mercadoria\": \"\", \"composicao_valor\": \"1 - O valor do item (vProd) compõe o valor total da NF-e (vProd)\", \"ean_comercial\": \"SEM GTIN\", \"unidade_comercial\": \"KG\", \"quantidade_comercial\": \"47.341,3060\", \"ean_tributavel\": \"SEM GTIN\", \"unidade_tributavel\": \"TON\", \"quantidade_tributavel\": \"47,3413\", \"valor_unitario_comercial\": \"11,1579564366\", \"valor_unitario_tributavel\": \"11.157,9578507561\", \"numero_pedido\": \"\", \"item_pedido\": \"\", \"tributos\": \"\", \"fci\": \"\", \"icms\": {\"origem_mercadoria\": \"0 - Nacional\", \"tributacao_icms\": \"41 - Não tributada\", \"modalidade\": \"\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\", \"base_calculo_fcp\": \"\", \"percentual_fcp\": \"\", \"valor_fcp\": \"\", \"base_calculo_icms_st\": \"\", \"aliquota_icms_st\": \"\", \"valor_icms_st\": \"\", \"base_calculo_fcp_retido\": \"\", \"percentual_fcp_retido\": \"\", \"valor_fcp_retido\": \"\", \"percentual_reducao_bc_icms_st\": \"\", \"percentual_mva_icms_st\": \"\", \"modalidade_bc_icms_st\": \"\", \"percentual_reducao_bc\": \"\", \"valor_desonerado\": \"\", \"motivo_desoneracao\": \"\", \"bc_modalidade\": \"\", \"bc_valor\": \"\", \"bc_valor_st\": \"\", \"bc_perccentual\": \"\", \"uf\": \"\"}, \"ipi\": {\"classe_enquadramento\": \"\", \"codigo_enquadramento\": \"\", \"codigo_selo\": \"\", \"cnpj_produtor\": \"\", \"quantidade_selo\": \"\", \"cst\": \"\", \"quantidade_total_unidade_padrao\": \"\", \"valor_unidade\": \"\", \"valor_ipi\": \"\", \"base_calculo\": \"\", \"aliquota\": \"\"}, \"importacao\": {\"base_calculo\": \"\", \"despesas_aduaneiras\": \"\", \"imposto_importacao\": \"\", \"iof\": \"\", \"documentos\": []}, \"pis\": {\"cst\": \"08 - Operação Sem Incidência da Contribuição\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\"}, \"cofins\": {\"cst\": \"08 - Operação Sem Incidência da Contribuição\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\"}, \"cofins_st\": {\"quantidade_vendida\": \"\", \"aliquota\": \"\"}, \"info_adicionais\": \"\", \"especifico_veiculos_novos\": {\"tipo_operacao\": \"\", \"chassi\": \"\", \"cilindradas\": \"\", \"cor\": \"\", \"cor_descricao\": \"\", \"cor_codigo\": \"\", \"peso_liquido\": \"\", \"peso_bruto\": \"\", \"serie\": \"\", \"tipo_combustivel\": \"\", \"numero_motor\": \"\", \"capacidade_maxima_tracao\": \"\", \"distancia_eixos\": \"\", \"ano_modelo\": \"\", \"ano_fabricacao\": \"\", \"tipo_pintura\": \"\", \"tipo_veiculo\": \"\", \"especie\": \"\", \"condicao_vin\": \"\", \"condicao_veiculo\": \"\", \"marca_codigo\": \"\", \"potencia_motor\": \"\", \"capacidade_passageiros\": \"\", \"restricao\": \"\"}, \"especifico_medicamentos\": {\"numero_lote\": \"\", \"quantidade_produtos_no_lote\": \"\", \"data_fabricacao\": \"\", \"data_validade\": \"\", \"preco_maximo_consumidor\": \"\"}}, {\"num\": 2, \"descricao\": \"ALGODAO EM PLUMA 32.4\", \"qtd\": 224675.158, \"unidade\": \"KG\", \"valor\": \"2.492.840,48\", \"normalizado_valor\": 2492840.48, \"codigo\": \"022938\", \"ncm\": \"52010020\", \"cest\": \"\", \"indicador_escala_relevante\": \"\", \"cnpj_fabricante_mercadoria\": \"\", \"codigo_beneficio_fiscal_uf\": \"\", \"ex_tipi\": \"\", \"cfop\": \"7127\", \"outras_despesas\": \"\", \"valor_desconto\": \"\", \"valor_frete\": \"\", \"valor_seguro\": \"\", \"normalizado_cnpj_fabricante_mercadoria\": \"\", \"composicao_valor\": \"1 - O valor do item (vProd) compõe o valor total da NF-e (vProd)\", \"ean_comercial\": \"SEM GTIN\", \"unidade_comercial\": \"KG\", \"quantidade_comercial\": \"224.675,1580\", \"ean_tributavel\": \"SEM GTIN\", \"unidade_tributavel\": \"TON\", \"quantidade_tributavel\": \"224,6752\", \"valor_unitario_comercial\": \"11,0953097894\", \"valor_unitario_tributavel\": \"11.095,3077153153\", \"numero_pedido\": \"\", \"item_pedido\": \"\", \"tributos\": \"\", \"fci\": \"\", \"icms\": {\"origem_mercadoria\": \"0 - Nacional\", \"tributacao_icms\": \"41 - Não tributada\", \"modalidade\": \"\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\", \"base_calculo_fcp\": \"\", \"percentual_fcp\": \"\", \"valor_fcp\": \"\", \"base_calculo_icms_st\": \"\", \"aliquota_icms_st\": \"\", \"valor_icms_st\": \"\", \"base_calculo_fcp_retido\": \"\", \"percentual_fcp_retido\": \"\", \"valor_fcp_retido\": \"\", \"percentual_reducao_bc_icms_st\": \"\", \"percentual_mva_icms_st\": \"\", \"modalidade_bc_icms_st\": \"\", \"percentual_reducao_bc\": \"\", \"valor_desonerado\": \"\", \"motivo_desoneracao\": \"\", \"bc_modalidade\": \"\", \"bc_valor\": \"\", \"bc_valor_st\": \"\", \"bc_perccentual\": \"\", \"uf\": \"\"}, \"ipi\": {\"classe_enquadramento\": \"\", \"codigo_enquadramento\": \"\", \"codigo_selo\": \"\", \"cnpj_produtor\": \"\", \"quantidade_selo\": \"\", \"cst\": \"\", \"quantidade_total_unidade_padrao\": \"\", \"valor_unidade\": \"\", \"valor_ipi\": \"\", \"base_calculo\": \"\", \"aliquota\": \"\"}, \"importacao\": {\"base_calculo\": \"\", \"despesas_aduaneiras\": \"\", \"imposto_importacao\": \"\", \"iof\": \"\", \"documentos\": []}, \"pis\": {\"cst\": \"08 - Operação Sem Incidência da Contribuição\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\"}, \"cofins\": {\"cst\": \"08 - Operação Sem Incidência da Contribuição\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\"}, \"cofins_st\": {\"quantidade_vendida\": \"\", \"aliquota\": \"\"}, \"info_adicionais\": \"\", \"especifico_veiculos_novos\": {\"tipo_operacao\": \"\", \"chassi\": \"\", \"cilindradas\": \"\", \"cor\": \"\", \"cor_descricao\": \"\", \"cor_codigo\": \"\", \"peso_liquido\": \"\", \"peso_bruto\": \"\", \"serie\": \"\", \"tipo_combustivel\": \"\", \"numero_motor\": \"\", \"capacidade_maxima_tracao\": \"\", \"distancia_eixos\": \"\", \"ano_modelo\": \"\", \"ano_fabricacao\": \"\", \"tipo_pintura\": \"\", \"tipo_veiculo\": \"\", \"especie\": \"\", \"condicao_vin\": \"\", \"condicao_veiculo\": \"\", \"marca_codigo\": \"\", \"potencia_motor\": \"\", \"capacidade_passageiros\": \"\", \"restricao\": \"\"}, \"especifico_medicamentos\": {\"numero_lote\": \"\", \"quantidade_produtos_no_lote\": \"\", \"data_fabricacao\": \"\", \"data_validade\": \"\", \"preco_maximo_consumidor\": \"\"}}, {\"num\": 3, \"descricao\": \"ALGODAO EM PLUMA 32.3\", \"qtd\": 49411.175, \"unidade\": \"KG\", \"valor\": \"548.220,49\", \"normalizado_valor\": 548220.49, \"codigo\": \"022938\", \"ncm\": \"52010020\", \"cest\": \"\", \"indicador_escala_relevante\": \"\", \"cnpj_fabricante_mercadoria\": \"\", \"codigo_beneficio_fiscal_uf\": \"\", \"ex_tipi\": \"\", \"cfop\": \"7127\", \"outras_despesas\": \"\", \"valor_desconto\": \"\", \"valor_frete\": \"\", \"valor_seguro\": \"\", \"normalizado_cnpj_fabricante_mercadoria\": \"\", \"composicao_valor\": \"1 - O valor do item (vProd) compõe o valor total da NF-e (vProd)\", \"ean_comercial\": \"SEM GTIN\", \"unidade_comercial\": \"KG\", \"quantidade_comercial\": \"49.411,1750\", \"ean_tributavel\": \"SEM GTIN\", \"unidade_tributavel\": \"TON\", \"quantidade_tributavel\": \"49,4112\", \"valor_unitario_comercial\": \"11,0950709025\", \"valor_unitario_tributavel\": \"11.095,0652888414\", \"numero_pedido\": \"\", \"item_pedido\": \"\", \"tributos\": \"\", \"fci\": \"\", \"icms\": {\"origem_mercadoria\": \"0 - Nacional\", \"tributacao_icms\": \"41 - Não tributada\", \"modalidade\": \"\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\", \"base_calculo_fcp\": \"\", \"percentual_fcp\": \"\", \"valor_fcp\": \"\", \"base_calculo_icms_st\": \"\", \"aliquota_icms_st\": \"\", \"valor_icms_st\": \"\", \"base_calculo_fcp_retido\": \"\", \"percentual_fcp_retido\": \"\", \"valor_fcp_retido\": \"\", \"percentual_reducao_bc_icms_st\": \"\", \"percentual_mva_icms_st\": \"\", \"modalidade_bc_icms_st\": \"\", \"percentual_reducao_bc\": \"\", \"valor_desonerado\": \"\", \"motivo_desoneracao\": \"\", \"bc_modalidade\": \"\", \"bc_valor\": \"\", \"bc_valor_st\": \"\", \"bc_perccentual\": \"\", \"uf\": \"\"}, \"ipi\": {\"classe_enquadramento\": \"\", \"codigo_enquadramento\": \"\", \"codigo_selo\": \"\", \"cnpj_produtor\": \"\", \"quantidade_selo\": \"\", \"cst\": \"\", \"quantidade_total_unidade_padrao\": \"\", \"valor_unidade\": \"\", \"valor_ipi\": \"\", \"base_calculo\": \"\", \"aliquota\": \"\"}, \"importacao\": {\"base_calculo\": \"\", \"despesas_aduaneiras\": \"\", \"imposto_importacao\": \"\", \"iof\": \"\", \"documentos\": []}, \"pis\": {\"cst\": \"08 - Operação Sem Incidência da Contribuição\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\"}, \"cofins\": {\"cst\": \"08 - Operação Sem Incidência da Contribuição\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\"}, \"cofins_st\": {\"quantidade_vendida\": \"\", \"aliquota\": \"\"}, \"info_adicionais\": \"\", \"especifico_veiculos_novos\": {\"tipo_operacao\": \"\", \"chassi\": \"\", \"cilindradas\": \"\", \"cor\": \"\", \"cor_descricao\": \"\", \"cor_codigo\": \"\", \"peso_liquido\": \"\", \"peso_bruto\": \"\", \"serie\": \"\", \"tipo_combustivel\": \"\", \"numero_motor\": \"\", \"capacidade_maxima_tracao\": \"\", \"distancia_eixos\": \"\", \"ano_modelo\": \"\", \"ano_fabricacao\": \"\", \"tipo_pintura\": \"\", \"tipo_veiculo\": \"\", \"especie\": \"\", \"condicao_vin\": \"\", \"condicao_veiculo\": \"\", \"marca_codigo\": \"\", \"potencia_motor\": \"\", \"capacidade_passageiros\": \"\", \"restricao\": \"\"}, \"especifico_medicamentos\": {\"numero_lote\": \"\", \"quantidade_produtos_no_lote\": \"\", \"data_fabricacao\": \"\", \"data_validade\": \"\", \"preco_maximo_consumidor\": \"\"}}, {\"num\": 4, \"descricao\": \"ALGODAO EM PLUMA 42.4\", \"qtd\": 24414.965, \"unidade\": \"KG\", \"valor\": \"267.829,68\", \"normalizado_valor\": 267829.68, \"codigo\": \"022938\", \"ncm\": \"52010020\", \"cest\": \"\", \"indicador_escala_relevante\": \"\", \"cnpj_fabricante_mercadoria\": \"\", \"codigo_beneficio_fiscal_uf\": \"\", \"ex_tipi\": \"\", \"cfop\": \"7127\", \"outras_despesas\": \"\", \"valor_desconto\": \"\", \"valor_frete\": \"\", \"valor_seguro\": \"\", \"normalizado_cnpj_fabricante_mercadoria\": \"\", \"composicao_valor\": \"1 - O valor do item (vProd) compõe o valor total da NF-e (vProd)\", \"ean_comercial\": \"SEM GTIN\", \"unidade_comercial\": \"KG\", \"quantidade_comercial\": \"24.414,9650\", \"ean_tributavel\": \"SEM GTIN\", \"unidade_tributavel\": \"TON\", \"quantidade_tributavel\": \"24,4150\", \"valor_unitario_comercial\": \"10,9698981752\", \"valor_unitario_tributavel\": \"10.969,8824493139\", \"numero_pedido\": \"\", \"item_pedido\": \"\", \"tributos\": \"\", \"fci\": \"\", \"icms\": {\"origem_mercadoria\": \"0 - Nacional\", \"tributacao_icms\": \"41 - Não tributada\", \"modalidade\": \"\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\", \"base_calculo_fcp\": \"\", \"percentual_fcp\": \"\", \"valor_fcp\": \"\", \"base_calculo_icms_st\": \"\", \"aliquota_icms_st\": \"\", \"valor_icms_st\": \"\", \"base_calculo_fcp_retido\": \"\", \"percentual_fcp_retido\": \"\", \"valor_fcp_retido\": \"\", \"percentual_reducao_bc_icms_st\": \"\", \"percentual_mva_icms_st\": \"\", \"modalidade_bc_icms_st\": \"\", \"percentual_reducao_bc\": \"\", \"valor_desonerado\": \"\", \"motivo_desoneracao\": \"\", \"bc_modalidade\": \"\", \"bc_valor\": \"\", \"bc_valor_st\": \"\", \"bc_perccentual\": \"\", \"uf\": \"\"}, \"ipi\": {\"classe_enquadramento\": \"\", \"codigo_enquadramento\": \"\", \"codigo_selo\": \"\", \"cnpj_produtor\": \"\", \"quantidade_selo\": \"\", \"cst\": \"\", \"quantidade_total_unidade_padrao\": \"\", \"valor_unidade\": \"\", \"valor_ipi\": \"\", \"base_calculo\": \"\", \"aliquota\": \"\"}, \"importacao\": {\"base_calculo\": \"\", \"despesas_aduaneiras\": \"\", \"imposto_importacao\": \"\", \"iof\": \"\", \"documentos\": []}, \"pis\": {\"cst\": \"08 - Operação Sem Incidência da Contribuição\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\"}, \"cofins\": {\"cst\": \"08 - Operação Sem Incidência da Contribuição\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\"}, \"cofins_st\": {\"quantidade_vendida\": \"\", \"aliquota\": \"\"}, \"info_adicionais\": \"\", \"especifico_veiculos_novos\": {\"tipo_operacao\": \"\", \"chassi\": \"\", \"cilindradas\": \"\", \"cor\": \"\", \"cor_descricao\": \"\", \"cor_codigo\": \"\", \"peso_liquido\": \"\", \"peso_bruto\": \"\", \"serie\": \"\", \"tipo_combustivel\": \"\", \"numero_motor\": \"\", \"capacidade_maxima_tracao\": \"\", \"distancia_eixos\": \"\", \"ano_modelo\": \"\", \"ano_fabricacao\": \"\", \"tipo_pintura\": \"\", \"tipo_veiculo\": \"\", \"especie\": \"\", \"condicao_vin\": \"\", \"condicao_veiculo\": \"\", \"marca_codigo\": \"\", \"potencia_motor\": \"\", \"capacidade_passageiros\": \"\", \"restricao\": \"\"}, \"especifico_medicamentos\": {\"numero_lote\": \"\", \"quantidade_produtos_no_lote\": \"\", \"data_fabricacao\": \"\", \"data_validade\": \"\", \"preco_maximo_consumidor\": \"\"}}, {\"num\": 5, \"descricao\": \"ALGODAO EM PLUMA 31.2\", \"qtd\": 48887.396, \"unidade\": \"KG\", \"valor\": \"554.678,30\", \"normalizado_valor\": 554678.3, \"codigo\": \"022938\", \"ncm\": \"52010020\", \"cest\": \"\", \"indicador_escala_relevante\": \"\", \"cnpj_fabricante_mercadoria\": \"\", \"codigo_beneficio_fiscal_uf\": \"\", \"ex_tipi\": \"\", \"cfop\": \"7127\", \"outras_despesas\": \"\", \"valor_desconto\": \"\", \"valor_frete\": \"\", \"valor_seguro\": \"\", \"normalizado_cnpj_fabricante_mercadoria\": \"\", \"composicao_valor\": \"1 - O valor do item (vProd) compõe o valor total da NF-e (vProd)\", \"ean_comercial\": \"SEM GTIN\", \"unidade_comercial\": \"KG\", \"quantidade_comercial\": \"48.887,3960\", \"ean_tributavel\": \"SEM GTIN\", \"unidade_tributavel\": \"TON\", \"quantidade_tributavel\": \"48,8874\", \"valor_unitario_comercial\": \"11,3460389668\", \"valor_unitario_tributavel\": \"11.346,0380384312\", \"numero_pedido\": \"\", \"item_pedido\": \"\", \"tributos\": \"\", \"fci\": \"\", \"icms\": {\"origem_mercadoria\": \"0 - Nacional\", \"tributacao_icms\": \"41 - Não tributada\", \"modalidade\": \"\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\", \"base_calculo_fcp\": \"\", \"percentual_fcp\": \"\", \"valor_fcp\": \"\", \"base_calculo_icms_st\": \"\", \"aliquota_icms_st\": \"\", \"valor_icms_st\": \"\", \"base_calculo_fcp_retido\": \"\", \"percentual_fcp_retido\": \"\", \"valor_fcp_retido\": \"\", \"percentual_reducao_bc_icms_st\": \"\", \"percentual_mva_icms_st\": \"\", \"modalidade_bc_icms_st\": \"\", \"percentual_reducao_bc\": \"\", \"valor_desonerado\": \"\", \"motivo_desoneracao\": \"\", \"bc_modalidade\": \"\", \"bc_valor\": \"\", \"bc_valor_st\": \"\", \"bc_perccentual\": \"\", \"uf\": \"\"}, \"ipi\": {\"classe_enquadramento\": \"\", \"codigo_enquadramento\": \"\", \"codigo_selo\": \"\", \"cnpj_produtor\": \"\", \"quantidade_selo\": \"\", \"cst\": \"\", \"quantidade_total_unidade_padrao\": \"\", \"valor_unidade\": \"\", \"valor_ipi\": \"\", \"base_calculo\": \"\", \"aliquota\": \"\"}, \"importacao\": {\"base_calculo\": \"\", \"despesas_aduaneiras\": \"\", \"imposto_importacao\": \"\", \"iof\": \"\", \"documentos\": []}, \"pis\": {\"cst\": \"08 - Operação Sem Incidência da Contribuição\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\"}, \"cofins\": {\"cst\": \"08 - Operação Sem Incidência da Contribuição\", \"base_calculo\": \"\", \"aliquota\": \"\", \"valor\": \"\"}, \"cofins_st\": {\"quantidade_vendida\": \"\", \"aliquota\": \"\"}, \"info_adicionais\": \"\", \"especifico_veiculos_novos\": {\"tipo_operacao\": \"\", \"chassi\": \"\", \"cilindradas\": \"\", \"cor\": \"\", \"cor_descricao\": \"\", \"cor_codigo\": \"\", \"peso_liquido\": \"\", \"peso_bruto\": \"\", \"serie\": \"\", \"tipo_combustivel\": \"\", \"numero_motor\": \"\", \"capacidade_maxima_tracao\": \"\", \"distancia_eixos\": \"\", \"ano_modelo\": \"\", \"ano_fabricacao\": \"\", \"tipo_pintura\": \"\", \"tipo_veiculo\": \"\", \"especie\": \"\", \"condicao_vin\": \"\", \"condicao_veiculo\": \"\", \"marca_codigo\": \"\", \"potencia_motor\": \"\", \"capacidade_passageiros\": \"\", \"restricao\": \"\"}, \"especifico_medicamentos\": {\"numero_lote\": \"\", \"quantidade_produtos_no_lote\": \"\", \"data_fabricacao\": \"\", \"data_validade\": \"\", \"preco_maximo_consumidor\": \"\"}}]",
+  "baseSap": "SBO_CRESTANI_PRD",
+  "bplid": 1,
+  "entidadeid": 2,
+  "query": "\n            SELECT count(*) qtde FROM SBO_CRESTANI_PRD.\"DeclaracaoExportacao\" d WHERE d.\"EntidadeId\" = 2 AND d.\"NumeroDeclaracao\" = '25BR0007520717'\n        ",
+  "retorno": [
+    "[{\"item_nfe\": \"1\", \"item_due\": \"1\", \"numero_due\": \"25BR0007520717\", \"quantidade_averbada\": \"47.3413\", \"data_embarque\": \"2025-05-09T00:00:00-03:00\", \"data_averbacao\": \"2025-05-17T03:56:43-03:00\", \"motivo_alteracao\": \"1 - Exportação Averbada\"}, {\"item_nfe\": \"2\", \"item_due\": \"2\", \"numero_due\": \"25BR0007520717\", \"quantidade_averbada\": \"224.6752\", \"data_embarque\": \"2025-05-09T00:00:00-03:00\", \"data_averbacao\": \"2025-05-17T03:56:43-03:00\", \"motivo_alteracao\": \"1 - Exportação Averbada\"}, {\"item_nfe\": \"3\", \"item_due\": \"3\", \"numero_due\": \"25BR0007520717\", \"quantidade_averbada\": \"49.4112\", \"data_embarque\": \"2025-05-09T00:00:00-03:00\", \"data_averbacao\": \"2025-05-17T03:56:43-03:00\", \"motivo_alteracao\": \"1 - Exportação Averbada\"}, {\"item_nfe\": \"4\", \"item_due\": \"4\", \"numero_due\": \"25BR0007520717\", \"quantidade_averbada\": \"24.415\", \"data_embarque\": \"2025-05-09T00:00:00-03:00\", \"data_averbacao\": \"2025-05-17T03:56:43-03:00\", \"motivo_alteracao\": \"1 - Exportação Averbada\"}, {\"item_nfe\": \"5\", \"item_due\": \"5\", \"numero_due\": \"25BR0007520717\", \"quantidade_averbada\": \"48.8874\", \"data_embarque\": \"2025-05-09T00:00:00-03:00\", \"data_averbacao\": \"2025-05-17T03:56:43-03:00\", \"motivo_alteracao\": \"1 - Exportação Averbada\"}]",
+    1,
+    2
+  ],
+  "entidade": {
+    "id": 2,
+    "nome_fantasia": "FAZENDA QUERENCIA",
+    "cnpj": "09.262.185/0001-09"
+  },
+  "data": [
+    {
+      "item_nfe": "1",
+      "item_due": "1",
+      "numero_due": "25BR0007520717",
+      "quantidade_averbada": "47.3413",
+      "data_embarque": "2025-05-09T00:00:00-03:00",
+      "data_averbacao": "2025-05-17T03:56:43-03:00",
+      "motivo_alteracao": "1 - Exportação Averbada"
+    },
+    {
+      "item_nfe": "2",
+      "item_due": "2",
+      "numero_due": "25BR0007520717",
+      "quantidade_averbada": "224.6752",
+      "data_embarque": "2025-05-09T00:00:00-03:00",
+      "data_averbacao": "2025-05-17T03:56:43-03:00",
+      "motivo_alteracao": "1 - Exportação Averbada"
+    },
+    {
+      "item_nfe": "3",
+      "item_due": "3",
+      "numero_due": "25BR0007520717",
+      "quantidade_averbada": "49.4112",
+      "data_embarque": "2025-05-09T00:00:00-03:00",
+      "data_averbacao": "2025-05-17T03:56:43-03:00",
+      "motivo_alteracao": "1 - Exportação Averbada"
+    },
+    {
+      "item_nfe": "4",
+      "item_due": "4",
+      "numero_due": "25BR0007520717",
+      "quantidade_averbada": "24.415",
+      "data_embarque": "2025-05-09T00:00:00-03:00",
+      "data_averbacao": "2025-05-17T03:56:43-03:00",
+      "motivo_alteracao": "1 - Exportação Averbada"
+    },
+    {
+      "item_nfe": "5",
+      "item_due": "5",
+      "numero_due": "25BR0007520717",
+      "quantidade_averbada": "48.8874",
+      "data_embarque": "2025-05-09T00:00:00-03:00",
+      "data_averbacao": "2025-05-17T03:56:43-03:00",
+      "motivo_alteracao": "1 - Exportação Averbada"
+    }
+  ],
   "formDue": {
-    "paisDestino": "{\"id\":\"EH\",\"nome\":\"Saara Ocidental\"}",
-    "entidade": "{\"id\":3,\"nome_fantasia\":\"FAZENDA COLORADO\",\"cnpj\":\"03.262.185/0003-62\"}",
-    "numero_due": "12345678910",
-    "data_embarque": "2024-06-05",
-    "data_averbacao": "2024-06-05",
+    "paisDestino": "",
+    "entidade": "{\"id\":2,\"nome_fantasia\":\"FAZENDA QUERENCIA\",\"cnpj\":\"09.262.185/0001-09\"}",
+    "numero_due": "25BR0007520717",
+    "data_embarque": "2025-05-09",
+    "data_averbacao": "2025-05-17",
     "naturezaDeclaracao": "0",
     "tipoConhecimento": "10",
     "tipoDeclaracao": "2",
-    "numero_registro": "546654",
-    "data_declaracao": "2024-08-20",
-    "data_registro": "2024-08-20",
-    "data_conhecimento": "2024-08-20",
-    "ufDestino": "RO",
+    "data_registro": "2025-04-28",
+    "ufDestino": "SP",
     "local": "Santos",
-    "numero_conhecimento": "2BR2549"
+    "data_declaracao": "2025-05-09",
+    "data_conhecimento": "2025-05-09",
+    "numero_registro": null,
+    "numero_conhecimento": "SAOA16262700"
   },
-  "fruits": [
+  "numero_due": "25BR0007520717",
+  "rsp": [
     {
-      "value": "apples",
-      "label": "Apples"
-    },
-    {
-      "value": "oranges",
-      "label": "Oranges"
-    },
-    {
-      "value": "bananas",
-      "label": "Bananas"
+      "qtde": 0
     }
   ],
-  "estados": [
-    {
-      "value": "",
-      "label": ""
-    },
-    {
-      "value": "RO",
-      "label": "RO - Rondônia"
-    },
-    {
-      "value": "AC",
-      "label": "AC - Acre"
-    },
-    {
-      "value": "AM",
-      "label": "AM - Amazonas"
-    },
-    {
-      "value": "RR",
-      "label": "RR - Roraima"
-    }
-  ],
-  "natureza_da_declaracao": [
-    {
-      "value": "",
-      "label": ""
-    },
-    {
-      "value": "0",
-      "label": "Exportação Direta"
-    },
-    {
-      "value": "1",
-      "label": "Exportação Indireta"
-    }
-  ],
-  "tipo_conhecimento": [
-    {
-      "value": "",
-      "label": ""
-    },
-    {
-      "value": "1",
-      "label": "AWB"
-    },
-    {
-      "value": "2",
-      "label": "MAWB"
-    },
-    {
-      "value": "3",
-      "label": "HAWB"
-    },
-    {
-      "value": "4",
-      "label": "COMAT"
-    },
-    {
-      "value": "6",
-      "label": "R. EXPRESSAS"
-    },
-    {
-      "value": "7",
-      "label": "ETIQ. REXPRESSAS"
-    },
-    {
-      "value": "8",
-      "label": "HR. EXPRESSAS"
-    },
-    {
-      "value": "9",
-      "label": "AV7"
-    },
-    {
-      "value": "10",
-      "label": "BL"
-    },
-    {
-      "value": "11",
-      "label": "MBL"
-    },
-    {
-      "value": "12",
-      "label": "HBL"
-    },
-    {
-      "value": "13",
-      "label": "CRT"
-    }
-  ],
-  "tipo_declaracao": [
-    {
-      "value": "",
-      "label": ""
-    },
-    {
-      "value": "0",
-      "label": "Declaração de Exportação"
-    },
-    {
-      "value": "1",
-      "label": "Declaração Simplificada de Exportação"
-    },
-    {
-      "value": "2",
-      "label": "Declaração Única de Exportação"
-    }
-  ]
+  "retorno_gera_due": "SUCESSO"
 }
