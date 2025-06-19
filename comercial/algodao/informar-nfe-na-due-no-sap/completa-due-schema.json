@@ -41,6 +41,7 @@
         "naturezaDeclaracao": {
           "type": "string",
           "title": "Natureza da Declaração",
+          "default": "10",
           "anyOf": {{natureza_da_declaracao|tojson}}
         },
         "tipoConhecimento": {
