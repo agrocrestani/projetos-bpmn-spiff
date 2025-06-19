@@ -51,8 +51,9 @@ del(connection)</bpmn:script>
       </bpmn:dataOutputAssociation>
       <bpmn:script>n_estados = [
     {
-      "value": "",
-      "label": ""
+      "type": "string",
+      "enum": [],
+      "title": ""
     }
 ]
 
@@ -61,8 +62,9 @@ for r in rsp:
     nome = str(r['nome'])
     n_estados.append(
         {
-            "value": uf, 
-            "label": uf + " - " + nome
+            "type": "string",
+            "enum": [uf],
+            "title": uf + " - " + nome
         }
     )
 
