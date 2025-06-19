@@ -1,7 +1,13 @@
 {
   "formDue": {
+    "numero_due": "25BR0007520717",
+    "data_averbacao": "2025-05-17",
+    "entidade": "{\"id\":2,\"nome_fantasia\":\"FAZENDA QUERENCIA\",\"cnpj\":\"09.262.185/0001-09\"}",
     "tipoConhecimento": "10",
-    "tipoDeclaracao": "2"
+    "tipoDeclaracao": "2",
+    "paisDestino": "",
+    "data_embarque": "2025-05-09",
+    "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}"
   },
   "num_nfe": "33118",
   "nota": [
@@ -943,11 +949,6 @@
   "retorno_gera_due": "SUCESSO",
   "tipo_conhecimento": [
     {
-      "type": "",
-      "enum": [],
-      "title": ""
-    },
-    {
       "type": "string",
       "enum": [
         "1"
@@ -1104,11 +1105,6 @@
   ],
   "natureza_da_declaracao": [
     {
-      "type": "",
-      "enum": [],
-      "title": ""
-    },
-    {
       "type": "string",
       "enum": [
         "0"
@@ -1124,11 +1120,6 @@
     }
   ],
   "estados": [
-    {
-      "type": "string",
-      "enum": [],
-      "title": ""
-    },
     {
       "type": "string",
       "enum": [
@@ -1320,11 +1311,6 @@
     }
   ],
   "tipo_declaracao": [
-    {
-      "type": "string",
-      "enum": [],
-      "title": ""
-    },
     {
       "type": "string",
       "enum": [
