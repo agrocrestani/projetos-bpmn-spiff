@@ -41,8 +41,7 @@
           "type": "string",
           "title": "Tipo do Conhecimento",
           "default": "10",
-          "anyOf": [
-            "options_from_task_data_var:tipo_conhecimento"
+          "anyOf": tipo_conhecimento"
           ]
         },
         "tipoDeclaracao": {
