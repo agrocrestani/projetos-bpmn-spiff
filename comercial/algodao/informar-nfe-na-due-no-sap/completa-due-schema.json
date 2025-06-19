@@ -51,7 +51,7 @@
           "title": "Tipo do Conhecimento",
           "default": "10",
           "anyOf": [
-            tipo_conhecimento"
+            tipo_conhecimento
           ]
         },
         "tipoDeclaracao": {
