@@ -42,7 +42,6 @@
           "title": "Tipo do Conhecimento",
           "default": "10",
           "anyOf": {{tipo_conhecimento|tojson}}
-          ]
         },
         "tipoDeclaracao": {
           "type": "string",
