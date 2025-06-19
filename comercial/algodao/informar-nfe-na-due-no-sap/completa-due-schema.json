@@ -39,7 +39,6 @@
           "title": "Entidade"
         },
         "naturezaDeclaracao": {
-          
           "title": "Natureza da Declaração",
           "default": "0",
           "anyOf": {{natureza_da_declaracao|tojson}}
