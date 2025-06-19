@@ -1,33 +1,6 @@
 {
     "formDue": {
-        "ui:layout": [
-            {
-                "entidade": {}
-            },
-            {
-                "numero_due": {"sm": 2, "md": 2, "lg": 4},
-                "data_declaracao": {"sm": 2, "md": 2, "lg": 4}
-            },
-            {
-                "numero_conhecimento": {"sm": 2, "md": 2, "lg": 4},
-                "data_conhecimento": {"sm": 2, "md": 2, "lg": 4}
-            },
-            {
-                "naturezaDeclaracao": {},
-                "tipoConhecimento": {}
-            },
-            {
-                "tipoDeclaracao": {},
-                "paisDestino": {}
-            },
-            {
-                "ufDestino": {},
-                "local": {}
-            },
-            {
-                "data_averbacao": {}
-            }
-        ],
+        
         "entidade": {
             "ui:widget": "typeahead",
             "ui:disabled": {},
