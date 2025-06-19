@@ -36,7 +36,7 @@ rsp = Hana(connection).selectDb(query)
 
 naturezaDeclaracao = [
     {
-            "type": ""
+            "type": "",
             "enum": [], 
             "title": ""
     }
@@ -47,7 +47,7 @@ for r in rsp:
     label = str(r['description'])
     naturezaDeclaracao.append(
         {
-            "type": "string"
+            "type": "string",
             "enum": [value], 
             "title": label
         }
@@ -61,7 +61,6 @@ del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_0ibvmqz" name="Natureza da Declaracao" dataStoreRef="natureza_da_declaracao" type="json" />
   </bpmn:process>
-  <bpmn:dataStore id="natureza_da_declaracao" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="natureza_da_declaracao">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -70,27 +69,31 @@ del(connection)</bpmn:script>
       <bpmndi:BPMNShape id="Event_0jxoz7s_di" bpmnElement="Event_0jxoz7s">
         <dc:Bounds x="542" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_04xdrw5_di" bpmnElement="Busca_Natureza_da_Declaracao">
-        <dc:Bounds x="260" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_0ibvmqz_di" bpmnElement="DataStoreReference_0ibvmqz">
         <dc:Bounds x="335" y="295" width="50" height="50" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="329" y="352" width="62" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_04xdrw5_di" bpmnElement="Busca_Natureza_da_Declaracao">
+        <dc:Bounds x="270" y="140" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0qc3i7h_di" bpmnElement="Flow_0qc3i7h">
         <di:waypoint x="215" y="177" />
-        <di:waypoint x="260" y="177" />
+        <di:waypoint x="243" y="177" />
+        <di:waypoint x="243" y="180" />
+        <di:waypoint x="270" y="180" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_02fzwp7_di" bpmnElement="Flow_02fzwp7">
-        <di:waypoint x="360" y="177" />
+        <di:waypoint x="370" y="180" />
+        <di:waypoint x="456" y="180" />
+        <di:waypoint x="456" y="177" />
         <di:waypoint x="542" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_199ngiv_di" bpmnElement="DataOutputAssociation_199ngiv">
-        <di:waypoint x="323" y="217" />
-        <di:waypoint x="348" y="295" />
+        <di:waypoint x="330" y="220" />
+        <di:waypoint x="350" y="295" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
