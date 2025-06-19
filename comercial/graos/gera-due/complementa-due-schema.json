@@ -35,8 +35,7 @@
           "type": "string",
           "title": "Natureza da Declaração",
           "default": "1",
-          "anyOf":natureza_da_declaracao"
-          ]
+          "anyOf":natureza_da_declaracao
         },
         "tipoConhecimento": {
           "type": "string",
