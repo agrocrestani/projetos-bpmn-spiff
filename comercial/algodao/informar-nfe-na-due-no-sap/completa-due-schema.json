@@ -54,7 +54,7 @@
           "type": "string",
           "title": "Tipo Declaração",
           "default": "2",
-          "anyOf": [{{tipo_declaracao|tojson}}]
+          "anyOf": [{{tipo_declaracao|tojson}}
         },
         "paisDestino": {
           "type": "string",
