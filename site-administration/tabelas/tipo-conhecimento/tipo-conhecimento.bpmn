@@ -33,13 +33,7 @@ query = f"""
 rsp = Hana(connection).selectDb(query)
 # rsp = json.loads(Hana(connection).selectDb(query))
 
-tipoConhecimento = [
-    {
-            "type": "",
-            "enum": [], 
-            "title": ""
-    }
-]
+tipoConhecimento = []
 
 for r in rsp:
     value = str(r['id'])
@@ -77,7 +71,7 @@ del(connection)</bpmn:script>
       <bpmndi:BPMNShape id="DataStoreReference_08jvhb0_di" bpmnElement="DataStoreReference_08jvhb0">
         <dc:Bounds x="345" y="285" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="335" y="342" width="73" height="27" />
+          <dc:Bounds x="336" y="342" width="73" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_172n9dk_di" bpmnElement="Flow_172n9dk">
