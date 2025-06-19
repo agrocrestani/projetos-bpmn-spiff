@@ -183,20 +183,158 @@
 ],
   "tipo_declaracao": [
     {
-      "value": "",
-      "label": ""
+        "type": "string",
+        "enum": [
+            "1"
+        ],
+        "title": "AWB"
     },
     {
-      "value": "0",
-      "label": "Declaração de Exportação"
+        "type": "string",
+        "enum": [
+            "2"
+        ],
+        "title": "MAWB"
     },
     {
-      "value": "1",
-      "label": "Declaração Simplificada de Exportação"
+        "type": "string",
+        "enum": [
+            "3"
+        ],
+        "title": "HAWB"
     },
     {
-      "value": "2",
-      "label": "Declaração Única de Exportação"
+        "type": "string",
+        "enum": [
+            "4"
+        ],
+        "title": "COMAT"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "6"
+        ],
+        "title": "R. EXPRESSAS"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "7"
+        ],
+        "title": "ETIQ. REXPRESSAS"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "8"
+        ],
+        "title": "HR. EXPRESSAS"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "9"
+        ],
+        "title": "AV7"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "10"
+        ],
+        "title": "BL"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "11"
+        ],
+        "title": "MBL"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "12"
+        ],
+        "title": "HBL"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "13"
+        ],
+        "title": "CRT"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "14"
+        ],
+        "title": "DSIC"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "16"
+        ],
+        "title": "COMAT BL"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "17"
+        ],
+        "title": "RWB"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "18"
+        ],
+        "title": "HRWB"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "19"
+        ],
+        "title": "TIF/DTA"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "20"
+        ],
+        "title": "CP2"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "91"
+        ],
+        "title": "NÃO IATA"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "92"
+        ],
+        "title": "MNAO IATA"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "93"
+        ],
+        "title": "HNAO IATA"
+    },
+    {
+        "type": "string",
+        "enum": [
+            "99"
+        ],
+        "title": "OUTROS"
     }
-  ]
+]
 }
