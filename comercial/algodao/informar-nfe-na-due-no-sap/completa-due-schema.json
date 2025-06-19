@@ -70,7 +70,7 @@
           "type": "string",
           "title": "UF de destino",
           "anyOf": [
-            "options_from_task_data_var:estados"
+            estados"
           ]
         },
         "local": {
