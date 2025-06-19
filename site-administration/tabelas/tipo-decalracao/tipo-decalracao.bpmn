@@ -51,6 +51,7 @@ del(connection)</bpmn:script>
     <bpmn:sequenceFlow id="Flow_17hkltt" sourceRef="Activity_tipo_declaracao" targetRef="Event_0jxoz7s" />
     <bpmn:dataStoreReference id="DataStoreReference_0ie472k" name="Tipo Declaracao" dataStoreRef="tipo_declaracao" type="json" />
   </bpmn:process>
+  <bpmn:dataStore id="tipo_declaracao" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="tipo_declaracao">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
