@@ -48,8 +48,7 @@
           "type": "string",
           "title": "Tipo Declaração",
           "default": "2",
-          "anyOf": [
-            "options_from_task_data_var:tipo_declaracao"
+          "anyOf": tipo_declaracao"
           ]
         },
         "paisDestino": {
