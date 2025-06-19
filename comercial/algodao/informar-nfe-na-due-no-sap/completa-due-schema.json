@@ -63,7 +63,7 @@
         "ufDestino": {
           "type": "string",
           "title": "UF de destino",
-          "anyOf": [{{estados|tojson}}]
+          "anyOf": {{estados|tojson}}]
         },
         "local": {
           "type": "string",
