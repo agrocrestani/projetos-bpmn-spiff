@@ -3,7 +3,7 @@
     "numero_due": "25BR0007520717",
     "data_averbacao": "2025-05-17",
     "entidade": "{\"id\":2,\"nome_fantasia\":\"FAZENDA QUERENCIA\",\"cnpj\":\"09.262.185/0001-09\"}",
-    "naturezaDeclaracao": "10",
+    "naturezaDeclaracao": "0",
     "tipoConhecimento": "10",
     "tipoDeclaracao": "2",
     "paisDestino": "",
