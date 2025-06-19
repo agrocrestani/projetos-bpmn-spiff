@@ -35,8 +35,9 @@ rsp = Hana(connection).selectDb(query)
 
 tipoConhecimento = [
     {
-      "value": "",
-      "label": ""
+            "type": "",
+            "enum": [], 
+            "title": ""
     }
 ]
 
@@ -45,8 +46,9 @@ for r in rsp:
     label = str(r['description'])
     tipoConhecimento.append(
         {
-            "value": value, 
-            "label": label
+            "type": "string",
+            "enum": [value], 
+            "title": label
         }
     )
 
@@ -75,20 +77,20 @@ del(connection)</bpmn:script>
       <bpmndi:BPMNShape id="DataStoreReference_08jvhb0_di" bpmnElement="DataStoreReference_08jvhb0">
         <dc:Bounds x="345" y="285" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="334" y="342" width="73" height="27" />
+          <dc:Bounds x="335" y="342" width="73" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_172n9dk_di" bpmnElement="Flow_172n9dk">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1lrug6o_di" bpmnElement="Flow_1lrug6o">
-        <di:waypoint x="370" y="177" />
-        <di:waypoint x="422" y="177" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_0uemsuf_di" bpmnElement="DataOutputAssociation_0uemsuf">
         <di:waypoint x="337" y="217" />
         <di:waypoint x="365" y="285" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1lrug6o_di" bpmnElement="Flow_1lrug6o">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="422" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
