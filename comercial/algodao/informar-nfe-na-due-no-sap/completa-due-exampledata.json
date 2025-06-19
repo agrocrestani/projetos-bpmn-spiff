@@ -1,6 +1,7 @@
 {
   "formDue": {
-    "tipoDeclaracao": "2"
+    "tipoDeclaracao": "2",
+    "naturezaDeclaracao": "0"
   },
   "num_nfe": "33118",
   "nota": [
