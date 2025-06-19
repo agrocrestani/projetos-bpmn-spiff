@@ -40,7 +40,7 @@
         },
         "naturezaDeclaracao": {
           "title": "Natureza da Declaração",
-          "anyOf": {{natureza_da_declaracao|to_json}}
+          "anyOf": {{natureza_da_declaracao|tojson}}
         },
         "tipoConhecimento": {
           "type": "string",
