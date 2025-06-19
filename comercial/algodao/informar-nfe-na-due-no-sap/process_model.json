@@ -6,11 +6,15 @@
     "metadata_extraction_paths": [
         {
             "key": "due",
-            "path": ""
+            "path": "due"
         },
         {
             "key": "numero_due",
-            "path": ""
+            "path": "numero_due"
+        },
+        {
+            "key": "Numero_Nota",
+            "path": "num_nfe"
         }
     ],
     "primary_file_name": "informar-nfe-na-due-sap.bpmn",
