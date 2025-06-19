@@ -411,7 +411,7 @@ schema = {
 }
 
 </spiffworkflow:preScript>
-        <spiffworkflow:instructionsForEndUser></spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:instructionsForEndUser />
         <spiffworkflow:serviceTaskOperator id="postgres_v2/DoSQL" resultVariable="rsp">
           <spiffworkflow:parameters>
             <spiffworkflow:parameter id="database_connection_str" type="str" value="&#34;SPIFF_SECRET:postgres&#34;" />
