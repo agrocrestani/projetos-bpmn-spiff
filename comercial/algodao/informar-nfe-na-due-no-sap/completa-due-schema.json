@@ -43,7 +43,7 @@
           "title": "Natureza da Declaração",
           "default": "0",
           "anyOf": [
-            "options_from_task_data_var:natureza_da_declaracao"
+            natureza_da_declaracao"
           ]
         },
         "tipoConhecimento": {
