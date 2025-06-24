@@ -259,12 +259,12 @@ for l in novaTabela:
                 }
             )
 
-mes_ano = datalacto[5:7] + "/" + datalacto[0:4]
+mes_ano = datalacto[5:7] + "-" + datalacto[0:4]
 
 lcm = {
     "ReferenceDate": datalacto,
     "TaxDate": datalacto,
-    "Memo": f"Folha de Pagamento ref. mês {mes_ano}",
+    "Memo": f"Folha de Pagamento ref. mes {mes_ano}",
     "TransactionCode": "FOL",
     "U_AC_Spiff_Instancia": spiff_instancia,
     "U_AC_Spiff_Tarefa": spiff_tarefa,
