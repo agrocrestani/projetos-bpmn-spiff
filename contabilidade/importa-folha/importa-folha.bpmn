@@ -226,7 +226,7 @@ Você pode pesquisar o **Lançamento Contabil Manual** no SAP, utilizando o núm
 novaTabela = []
 total = 0
 
-fixo_temporario = "TEMP." if ccusto == '12311' else ""
+fixo_temporario = "TEMP." if ccusto == '12311' else "FIXO"
 
 for t in tabela:
     centroCusto = str(t['empresa']) + str(t['filial']) + str(t['ccusto'])
