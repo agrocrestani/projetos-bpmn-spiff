@@ -73,6 +73,18 @@
           <text>"QUEUBA"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_140xbkg">
+        <description>UBA</description>
+        <inputEntry id="UnaryTests_1mfaut6">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1iwdbaa">
+          <text>"12311"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0aajzkz">
+          <text>"QUEUBA"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1ox44j3">
         <description>UBS</description>
         <inputEntry id="UnaryTests_0q1oet9">
