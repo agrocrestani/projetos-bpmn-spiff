@@ -319,7 +319,7 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 | ---------- | ------- | ---------- | ------- |
 | Id da instancia | {{spiff_instancia}} | **Safra** | {{ safra }} |
 | Id da tarefa | {{spiff_tarefa}} | **Cultura**| {{ cultura }} |
-| Responsável pela verificação | {{spiff_usuario}} |
+| Responsável pela verificação | {{spiff_usuario}} | **Fixo** | {{fixo_temporario}}
 
 ### Informações do Sênior
 | Campo | Valor | 
@@ -413,7 +413,7 @@ Verificar se a **Empresa, Filial e Centro de custo Senior** corresponde a **Fili
 | ---------- | ------- | ---------- | ------- |
 | Id da instancia | {{spiff_instancia}} | **Safra** | {{ safra }} |
 | Id da tarefa | {{spiff_tarefa}} | **Cultura**| {{ cultura }} |
-| Responsável pela verificação | {{spiff_usuario}} |
+| Responsável pela verificação | {{spiff_usuario}} | **Fixo** | {{fixo_temporario}}
 
 ### Informações do Sênior
 | Campo | Valor | 
