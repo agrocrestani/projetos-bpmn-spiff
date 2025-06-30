@@ -1,6 +1,6 @@
 {
     "formDue": {
-        ,
+        
         "entidade": {
             "ui:widget": "typeahead",
             "ui:disabled": {},
