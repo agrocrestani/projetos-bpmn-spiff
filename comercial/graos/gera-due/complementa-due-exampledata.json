@@ -6,7 +6,7 @@
     "naturezaDeclaracao": "0",
     "tipoConhecimento": "10",
     "tipoDeclaracao": "2",
-    "paisDestino": "",
+    "paisDestino": "{\"id\":\"BS\",\"nome\":\"Bahamas\"}",
     "data_embarque": "2025-05-09"
   },
   "num_nfe": "33118",
