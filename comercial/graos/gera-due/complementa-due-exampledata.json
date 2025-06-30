@@ -4,7 +4,7 @@
     "data_averbacao": "2025-05-17",
     "entidade": "{\"id\":2,\"nome_fantasia\":\"FAZENDA QUERENCIA\",\"cnpj\":\"09.262.185/0001-09\"}",
     "naturezaDeclaracao": "0",
-    "tipoConhecimento": "18",
+    "tipoConhecimento": "10",
     "tipoDeclaracao": "2",
     "paisDestino": "{\"id\":\"BS\",\"nome\":\"Bahamas\"}",
     "data_embarque": "2025-05-09"
