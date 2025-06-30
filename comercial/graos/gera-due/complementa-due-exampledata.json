@@ -10,5 +10,20 @@
     "data_embarque": "2025-05-09"
   },
   "num_nfe": "33118",
-  
+  "natureza_da_declaracao": [
+    {
+      "type": "string",
+      "enum": [
+        "0"
+      ],
+      "title": "Exportação Direta"
+    },
+    {
+      "type": "string",
+      "enum": [
+        "1"
+      ],
+      "title": "Exportação Indireta"
+    }
+  ]
 }
