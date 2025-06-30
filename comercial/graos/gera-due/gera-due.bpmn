@@ -127,9 +127,9 @@ formDue = {
     "numero_due": due['numero_due'],
     "data_embarque": due['data_embarque'][0:10],
     "data_averbacao": due['data_averbacao'][0:10],
-    "naturezaDeclaracao": "{\"id\":1,\"nome_fantasia\":\"Exportação Indireta\"}",
-    "tipoConhecimento": "{\"id\":10,\"nome_fantasia\":\"BL\"}",
-    "tipoDeclaracao": "{\"id\":2,\"nome_fantasia\":\"Declaração Única de Exportação\"}"
+    "naturezaDeclaracao": "1",
+    "tipoConhecimento": "10",
+    "tipoDeclaracao": "2"
 }
 
 # try:
