@@ -134,8 +134,7 @@ del(conta)</spiffworkflow:postScript>
       <bpmn:businessRuleTask id="Activity_1bvnfh7" name="Depara CCusto">
         <bpmn:extensionElements>
           <spiffworkflow:preScript>ccusto = str(l['ccusto'])</spiffworkflow:preScript>
-          <spiffworkflow:postScript>CcustoSenior = ccusto
-del(ccusto)</spiffworkflow:postScript>
+          <spiffworkflow:postScript>CcustoSenior = ccusto</spiffworkflow:postScript>
           <spiffworkflow:calledDecisionId>DeParaCCusto</spiffworkflow:calledDecisionId>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0gjw4os</bpmn:incoming>
