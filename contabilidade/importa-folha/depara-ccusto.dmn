@@ -565,6 +565,18 @@
           <text>"TGAARM"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0badbcm">
+        <description>Aprendizagem</description>
+        <inputEntry id="UnaryTests_0jtrap0">
+          <text>13</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1m7nqlz">
+          <text>"12307"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yfe284">
+          <text>"CORPADM"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0ixy1u2">
         <inputEntry id="UnaryTests_052q9to">
           <text>7</text>
