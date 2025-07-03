@@ -192,17 +192,16 @@ connection = {
 } 
 baseSap = get_secret('baseSap')
 
+cnpj = keynfe[6:21]
+
 query = f"""
-        select
-            t0."BPLId", 
-            T5.ID "EntidadeId"
-        from
-            sbo_crestani_prd.oinv t0
-            INNER JOIN sbo_crestani_prd."Process" t3 ON t0."DocEntry" = t3."DocEntry" AND t3."StatusId" = 4
-            INNER JOIN sbo_crestani_prd."Entidade" T5 ON t0."VATRegNum" = t5.CNPJ
-        WHERE
-            t3."KeyNfe" in ('{keynfe}')
-            """
+        SELECT 
+            e.ID "EntidadeId", 
+            e."BusinessPlaceId" "BPLId"
+        FROM sbo_crestani_prd."Entidade" e
+        WHERE REPLACE(REPLACE(REPLACE(e.CNPJ, '.', ''),'/',''),'-','') = {keynfe}'
+    """
+
 oinv = Hana(connection).selectDb(query)
 
 bplid = oinv[0]['bplid']
