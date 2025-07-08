@@ -192,7 +192,7 @@ connection = {
 } 
 baseSap = get_secret('baseSap')
 
-cnpj = keynfe[6:21]
+cnpj = keynfe[6:20]
 
 query = f"""
         SELECT 
