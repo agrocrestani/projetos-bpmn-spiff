@@ -199,7 +199,7 @@ query = f"""
             e.ID "EntidadeId", 
             e."BusinessPlaceId" "BPLId"
         FROM sbo_crestani_prd."Entidade" e
-        WHERE REPLACE(REPLACE(REPLACE(e.CNPJ, '.', ''),'/',''),'-','') = {cnpj}'
+        WHERE REPLACE(REPLACE(REPLACE(e.CNPJ, '.', ''),'/',''),'-','') = {cnpj}
     """
 
 oinv = Hana(connection).selectDb(query)
