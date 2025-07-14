@@ -417,17 +417,6 @@
           <text>"Querencia_Aprovador"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_06npkg3">
-        <inputEntry id="UnaryTests_0r8nw17">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_128l73k">
-          <text>"enio.sturmer@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1vwpjs5">
-          <text>"Querencia_Aprovador"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1bgxxy7">
         <inputEntry id="UnaryTests_04qkns6">
           <text></text>
@@ -436,6 +425,28 @@
           <text>"rafael.nogueira@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0jzd6f3">
+          <text>"Querencia_Aprovador"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1o2878q">
+        <inputEntry id="UnaryTests_1sc7uic">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bs8tes">
+          <text>"rafael.nogueira@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yokvwn">
+          <text>"Querencia_Gerente"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06npkg3">
+        <inputEntry id="UnaryTests_0r8nw17">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_128l73k">
+          <text>"enio.sturmer@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vwpjs5">
           <text>"Querencia_Aprovador"</text>
         </outputEntry>
       </rule>
