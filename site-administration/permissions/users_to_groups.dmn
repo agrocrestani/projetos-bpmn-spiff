@@ -54,50 +54,6 @@
           <text>"Matriz_Gerencia"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_01r213f">
-        <inputEntry id="UnaryTests_1a7xjyn">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1wct7gj">
-          <text>"emerson.gregorio@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_11i0vu2">
-          <text>"Matriz_Rh"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_01pinc2">
-        <inputEntry id="UnaryTests_0gm0p7n">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1hjsvdn">
-          <text>"emerson.gregorio@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_05znqqo">
-          <text>"Matriz_Faturamento"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_03fn1oq">
-        <inputEntry id="UnaryTests_16xlrmo">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0h8tm1m">
-          <text>"emerson.gregorio@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1u3lunn">
-          <text>"Matriz_Agricultura_Precisao"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1onsgsr">
-        <inputEntry id="UnaryTests_0t8qo6w">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0jaf2i7">
-          <text>"emerson.gregorio@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1br2rxj">
-          <text>"SaoCarlos_Almoxarifado"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0a4f7in">
         <inputEntry id="UnaryTests_1ocx2b2">
           <text></text>
@@ -469,6 +425,17 @@
           <text>"enio.sturmer@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vwpjs5">
+          <text>"Querencia_Aprovador"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1bgxxy7">
+        <inputEntry id="UnaryTests_04qkns6">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_127fr2e">
+          <text>"rafael.nogueira@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jzd6f3">
           <text>"Querencia_Aprovador"</text>
         </outputEntry>
       </rule>
