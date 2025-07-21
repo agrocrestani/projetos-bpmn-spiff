@@ -339,8 +339,7 @@ except:
     command = sapError['command_response_body']
     command = json.loads(command)
     errorCode = command['body']['error']['code']
-    errorMessage = command['body']['error']['message']['value']
-
+    errorMessage = command['body']['error']['message']
 
 # status_code = sapError['status_code']
 # command = sapError['command_response_body']
