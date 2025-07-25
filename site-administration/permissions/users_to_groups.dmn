@@ -1016,7 +1016,7 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1npulmw">
-          <text>"warlisson.silva@agrocrestani.com.br"</text>
+          <text>"luiz.omena@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tf1pai">
           <text>"Querencia_Almoxarifado"</text>
@@ -1030,6 +1030,17 @@
           <text>"matheus.lima@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_073kf0s">
+          <text>"Querencia_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ebyd15">
+        <inputEntry id="UnaryTests_1wqyla2">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0smgoyz">
+          <text>"matheus.lima@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h0iymt">
           <text>"Querencia_Almoxarifado"</text>
         </outputEntry>
       </rule>
