@@ -1015,7 +1015,11 @@ connection = {
 } 
 
 query = f"""
-            select "KeyNfe", CNPJ, "StatusId", "Hist" from SBO_CRESTANI_PRD.AC_NfeRetorno nf where nf."DocEntry" = {DocEntry} AND nf."Tabela" = 'OINV' 
+            select "KeyNfe", CNPJ, "StatusId", "Hist" 
+            from SBO_CRESTANI_PRD.AC_NfeRetorno nf 
+            where nf."DocEntry" = {DocEntry} 
+              AND nf."Tabela" = 'OINV' 
+              AND nf."ReturnId" = 100
           """
 
 # rsp = json.loads(Hana(connection).selectDb(query))
