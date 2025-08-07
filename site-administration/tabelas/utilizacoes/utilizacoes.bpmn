@@ -56,8 +56,9 @@ del(connection)</bpmn:script>
       </bpmn:dataOutputAssociation>
       <bpmn:script>cutilizacoes = [
     {
-      "value": "",
-      "label": ""
+      "type": "",
+      "enum": [""],
+      "title": ""
     }
 ]
 
@@ -66,8 +67,9 @@ for r in rsp:
     Usage = str(r['usage'])
     cutilizacoes.append(
         {
-            "value": Id, 
-            "label": Usage
+            "type": "string",
+            "enum": [Id],
+            "title": Usage
         }
     )
 
