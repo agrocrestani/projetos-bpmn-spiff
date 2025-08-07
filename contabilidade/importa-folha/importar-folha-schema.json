@@ -16,7 +16,6 @@
       "title": "Safra",
       "type": "string",
       "anyOf": {{n_safras|tojson}}
-
     },
     "cultura": {
       "title": "Cultura",
