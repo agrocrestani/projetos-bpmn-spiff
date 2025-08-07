@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
-  <bpmn:process id="Process_almoxarifados_sv3erms" isExecutable="true">
+  <bpmn:process id="Process_almoxarifados" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
-      <bpmn:outgoing>Flow_1l7jori</bpmn:outgoing>
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
     </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
     <bpmn:endEvent id="EndEvent_1">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>The process instance completed successfully.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1l9e5wy</bpmn:incoming>
     </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Activity_1iixjle" />
     <bpmn:scriptTask id="Activity_0qpzdpu" name="Fetch Almoxarifados">
       <bpmn:extensionElements>
         <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
@@ -20,17 +22,17 @@
 
 You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1l7jori</bpmn:incoming>
-      <bpmn:outgoing>Flow_1pbmx0d</bpmn:outgoing>
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
 baseSap = get_secret('baseSap')
 
 connection = {
-    "address": get_secret('hanaAddress'),
-    "port": get_secret('hanaPort'),
-    "user": get_secret('hanaUser'),
-    "password": get_secret('hanaPassword')
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
 }
 
 query = f"""
@@ -49,6 +51,7 @@ query = f"""
         OR o."WhsCode" LIKE '08.%'
         OR o."WhsCode" LIKE '09.%'
         OR o."WhsCode" LIKE '10.%'
+        OR o."WhsCode" LIKE '99.%'
         OR o."WhsCode" LIKE '1%'
       ORDER BY 
         o."WhsCode" 
@@ -60,7 +63,7 @@ del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_1l9e5wy" sourceRef="Activity_1iixjle" targetRef="EndEvent_1" />
     <bpmn:scriptTask id="Activity_1iixjle" name="Parse Almoxarifados">
-      <bpmn:incoming>Flow_1pbmx0d</bpmn:incoming>
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
       <bpmn:outgoing>Flow_1l9e5wy</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1721ddj">
         <bpmn:targetRef>DataStoreReference_0jau633</bpmn:targetRef>
@@ -88,14 +91,12 @@ del(rsp)
 del(calmoxarifados)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_0jau633" name="Almoxarifados" dataStoreRef="almoxarifados" type="json" />
-    <bpmn:sequenceFlow id="Flow_1l7jori" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
-    <bpmn:sequenceFlow id="Flow_1pbmx0d" sourceRef="Activity_0qpzdpu" targetRef="Activity_1iixjle" />
   </bpmn:process>
   <bpmn:dataStore id="almoxarifados" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_almoxarifados_sv3erms">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_almoxarifados">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="142" y="159" width="36" height="36" />
+        <dc:Bounds x="179" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="632" y="159" width="36" height="36" />
@@ -114,6 +115,14 @@ del(calmoxarifados)</bpmn:script>
           <dc:Bounds x="444" y="352" width="72" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="430" y="177" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1l9e5wy_di" bpmnElement="Flow_1l9e5wy">
         <di:waypoint x="530" y="177" />
         <di:waypoint x="632" y="177" />
@@ -121,14 +130,6 @@ del(calmoxarifados)</bpmn:script>
       <bpmndi:BPMNEdge id="DataOutputAssociation_1721ddj_di" bpmnElement="DataOutputAssociation_1721ddj">
         <di:waypoint x="481" y="217" />
         <di:waypoint x="484" y="295" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1l7jori_di" bpmnElement="Flow_1l7jori">
-        <di:waypoint x="178" y="177" />
-        <di:waypoint x="270" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1pbmx0d_di" bpmnElement="Flow_1pbmx0d">
-        <di:waypoint x="370" y="177" />
-        <di:waypoint x="430" y="177" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
