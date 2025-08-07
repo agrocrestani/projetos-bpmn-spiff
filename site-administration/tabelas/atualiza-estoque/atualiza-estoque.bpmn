@@ -76,7 +76,6 @@ query = f"""
     ORDER BY T0."ItemName", T2."WhsCode" 
           """
 
-# rsp = json.loads(Hana(connection).selectDb(query))
 rsp = Hana(connection).selectDb(query)
 
 estoque = []
