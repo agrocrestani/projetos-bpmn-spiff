@@ -15,7 +15,7 @@
     "safra": {
       "title": "Safra",
       "type": "string",
-      "anyOf": {{natureza_da_declaracao|tojson}}
+      "anyOf": {{n_safras|tojson}}
       "anyOf": [
         "options_from_task_data_var:n_safras"
       ]
