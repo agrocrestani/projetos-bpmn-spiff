@@ -29,32 +29,39 @@ You can also change the text you are reading here by updating the *Instructions*
       </bpmn:dataOutputAssociation>
       <bpmn:script>ctipo_requisicao = [
         {
-            "value": "",
-            "label": ""
+            "type": "string",
+            "enum": [""],
+            "title": ""
         },
         {
-            "value": "1", 
-            "label": "ADM - Estoque"
+            "type": "string",
+            "enum": ["1"], 
+            "title": "ADM - Estoque"
         },
         {
-            "value": "2", 
-            "label": "Fazenda - Estoque"
+            "type": "string",
+            "enum": ["2"], 
+            "title": "Fazenda - Estoque"
         },
         {
-            "value": "3", 
-            "label": "Projeto Próprio"
+            "type": "string",
+            "enum": ["3"], 
+            "title": "Projeto Próprio"
         },
         {
-            "value": "4", 
-            "label": "Projeto Terceiro"
+            "type": "string",
+            "enum": ["4"], 
+            "title": "Projeto Terceiro"
         },
         {
-            "value": "5", 
-            "label": "ADM Direto"
+            "type": "string",
+            "enum": ["5"], 
+            "title": "ADM Direto"
         },
         {
-            "value": "6", 
-            "label": "Fazenda Direto"
+            "type": "string",
+            "enum": ["6"], 
+            "title": "Fazenda Direto"
         }
 ]
 
