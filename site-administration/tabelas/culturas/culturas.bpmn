@@ -59,8 +59,9 @@ del(connection)</bpmn:script>
       </bpmn:dataOutputAssociation>
       <bpmn:script>cculturas = [
     {
-      "value": "",
-      "label": ""
+      "type": "",
+      "enum": [""],
+      "title": ""
     }
 ]
 
@@ -69,17 +70,16 @@ for r in rsp:
     OcrName = str(r['ocrname'])
     cculturas.append(
         {
-            "value": OcrCode, 
-            "label": OcrName
+        "type": "string",
+        "enum": [OcrCode],
+        "title": OcrName
         }
     )
 
 culturas = cculturas
 
 del(rsp)
-del(cculturas)
-
-</bpmn:script>
+del(cculturas)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_0jau633" name="Culturas" dataStoreRef="culturas" type="json" />
   </bpmn:process>
