@@ -20,7 +20,7 @@
     "cultura": {
       "title": "Cultura",
       "type": "string",
-      "anyOf": {{n_safras|tojson}}
+      "anyOf": {{n_culturas|tojson}}
       "anyOf": [
         "options_from_task_data_var:n_culturas"
       ]
