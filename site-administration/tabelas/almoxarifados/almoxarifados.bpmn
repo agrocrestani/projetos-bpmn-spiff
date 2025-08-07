@@ -73,6 +73,9 @@ for r in rsp:
     BPLid = str(r['bplid'])
     calmoxarifados.append(
         {
+            "type": "string",
+            "enum": [WhsCode],
+            "title": WhsName,
             "WhsCode": WhsCode, 
             "WhsName": WhsName, 
             "BPLid": BPLid
@@ -91,6 +94,9 @@ del(calmoxarifados)</bpmn:script>
   <bpmn:dataStore id="almoxarifados" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_almoxarifados_sv3erms">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="142" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="632" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -107,9 +113,6 @@ del(calmoxarifados)</bpmn:script>
         <bpmndi:BPMNLabel>
           <dc:Bounds x="444" y="352" width="72" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="142" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1l9e5wy_di" bpmnElement="Flow_1l9e5wy">
         <di:waypoint x="530" y="177" />
