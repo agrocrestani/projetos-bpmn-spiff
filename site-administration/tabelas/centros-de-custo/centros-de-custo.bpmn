@@ -57,8 +57,9 @@ del(connection)</bpmn:script>
       </bpmn:dataOutputAssociation>
       <bpmn:script>ccustos = [
     {
-      "value": "",
-      "label": ""
+      "type": "",
+      "enum": [""],
+      "title": ""
     }
 ]
 
@@ -67,8 +68,9 @@ for r in rsp:
     OcrName = str(r['ocrname'])
     ccustos.append(
         {
-            "value": OcrCode, 
-            "label": OcrCode + " - " + OcrName
+            "type": "string",
+            "enum": [OcrCode],
+            "title": OcrCode + " - " + OcrName
         }
     )
 
@@ -76,6 +78,7 @@ centros_de_custo = ccustos
 
 del(rsp)
 del(ccustos)
+
 
 </bpmn:script>
     </bpmn:scriptTask>
