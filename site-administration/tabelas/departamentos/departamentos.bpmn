@@ -57,8 +57,9 @@ del(connection)</bpmn:script>
       </bpmn:dataOutputAssociation>
       <bpmn:script>cdepartamentos = [
     {
-      "value": "",
-      "label": ""
+      "type": "",
+      "enum": [""],
+      "title": ""
     }
 ]
 
@@ -67,8 +68,9 @@ for r in rsp:
     Name = str(r['name'])
     cdepartamentos.append(
         {
-            "value": Code, 
-            "label": Name
+        "type": "string",
+        "enum": [Code],
+        "title": Name
         }
     )
 
@@ -76,7 +78,6 @@ departamentos = cdepartamentos
 
 del(rsp)
 del(cdepartamentos)
-
 </bpmn:script>
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_0jau633" name="Departamentos" dataStoreRef="departamentos" type="json" />
