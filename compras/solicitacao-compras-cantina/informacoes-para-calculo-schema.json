@@ -90,9 +90,6 @@
       "type": "string",
       "default": "12",
       "anyOf": {{n_utilizacoes|tojson}}
-      "anyOf": [
-        "options_from_task_data_var:n_utilizacoes"
-      ]
     },
     "Comments": {
       "type": "string",
