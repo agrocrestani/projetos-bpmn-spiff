@@ -74,7 +74,6 @@
       "title": "Cultura",
       "type": "string",
       "anyOf": {{n_culturas|tojson}}
-
     },
     "OcrCode3": {
       "title": "Safra",
