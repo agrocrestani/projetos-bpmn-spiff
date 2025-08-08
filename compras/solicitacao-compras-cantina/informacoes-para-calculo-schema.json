@@ -17,7 +17,6 @@
     "BPLId": {
       "title": "Filial",
       "type": "string",
-
       "anyOf": {{n_filiais|tojson}}
     },
     "RequiredDate": {
