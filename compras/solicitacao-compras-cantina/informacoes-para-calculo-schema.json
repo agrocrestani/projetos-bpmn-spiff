@@ -78,7 +78,7 @@
     "OcrCode3": {
       "title": "Safra",
       "type": "string",
-      "anyOf": {{n_culturas|tojson}}
+      "anyOf": {{n_safras|tojson}}
       "anyOf": [
         "options_from_task_data_var:n_safras"
       ]
