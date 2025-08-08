@@ -30,7 +30,6 @@
       "type": "string",
       "default": "18",
       "anyOf": {{n_departamentos|tojson}}
-
     },
     "U_RSD_Prioridade": {
       "title": "Prioridade",
