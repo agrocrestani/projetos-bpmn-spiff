@@ -64,9 +64,6 @@
       "type": "string",
       "default": "2",
       "anyOf": {{n_tipo_requisicao|tojson}}
-      "anyOf": [
-        "options_from_task_data_var:n_tipo_requisicao"
-      ]
     },
     "OcrCode": {
       "title": "Centro de Custo",
