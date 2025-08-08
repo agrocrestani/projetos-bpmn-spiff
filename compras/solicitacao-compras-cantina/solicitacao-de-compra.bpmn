@@ -496,8 +496,8 @@ total = "{:,.2f}".format(total).replace(",", "X").replace(".", ",").replace("X",
         <spiffworkflow:postScript>solicitacao_bkp = solicitacao
 
 for f in n_filiais:
-    if int(f['value']) == int(BPLId):
-        BPLName = f['label']</spiffworkflow:postScript>
+    if int(f['enum'][0]) == int(BPLId):
+        BPLName = f['title']</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_13sk1mn</bpmn:incoming>
       <bpmn:incoming>Flow_0vu7th0</bpmn:incoming>
