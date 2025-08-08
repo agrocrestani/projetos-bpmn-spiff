@@ -84,9 +84,6 @@
       "title": "Deposito",
       "type": "string",
       "anyOf": {{n_almoxarifados|tojson}}
-      "anyOf": [
-        "options_from_task_data_var:n_almoxarifados"
-      ]
     },
     "MainUsage": {
       "title": "Utilizacao",
