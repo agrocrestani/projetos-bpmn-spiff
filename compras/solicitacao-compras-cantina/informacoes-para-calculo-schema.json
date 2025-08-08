@@ -63,7 +63,7 @@
       "title": "Tipo Requisicao",
       "type": "string",
       "default": "2",
-      
+      "anyOf": {{n_departamentos|tojson}}
       "anyOf": [
         "options_from_task_data_var:n_tipo_requisicao"
       ]
