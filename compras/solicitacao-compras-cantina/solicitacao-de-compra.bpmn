@@ -455,8 +455,8 @@ Você pode pesquisar a **Solicitação de Compra** no SAP, utilizando o número:
     solicitacao = solicitacao_bkp</spiffworkflow:postScript>
         <spiffworkflow:preScript>almoxarifado = ""
 for i in n_almoxarifados:
-    if i['value'] == WhsCode:
-        almoxarifado = i['label']
+    if i['enum'][0] == WhsCode:
+        almoxarifado = i['title']
 operacao = ''
 sol = []
 for s in solicitacao:
