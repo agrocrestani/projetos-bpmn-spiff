@@ -56,13 +56,7 @@ del(connection)</bpmn:script>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1721ddj">
         <bpmn:targetRef>DataStoreReference_0jau633</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
-      <bpmn:script>csafras = [
-    {
-      "type": "string",
-      "enum": [""],
-      "title": ""
-    }
-]
+      <bpmn:script>csafras = []
 
 for r in rsp:
     OcrCode = str(r['ocrcode'])
