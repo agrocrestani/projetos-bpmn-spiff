@@ -29,7 +29,7 @@
       "title": "Departamento",
       "type": "string",
       "default": "18",
-      "anyOf": {{n_filiais|tojson}}
+      "anyOf": {{n_departamentos|tojson}}
       "anyOf": [
         "options_from_task_data_var:n_departamentos"
       ]
