@@ -69,7 +69,7 @@ for s in safras:
 n_almoxarifados = []
 for a in almoxarifados:
     if a['enum'][0] in ['07.FCUR', '07.FQUE', '07.FPRO', '07.FSCA']:
-        WhsCode = a['enum']
+        WhsCode = a['enum'][0]
         WhsName = a['title']
         n_almoxarifados.append(
             {
