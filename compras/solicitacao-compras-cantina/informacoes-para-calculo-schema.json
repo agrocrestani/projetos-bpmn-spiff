@@ -69,7 +69,6 @@
       "title": "Centro de Custo",
       "type": "string",
       "anyOf": {{n_centros_de_custo|tojson}}
-
     },
     "OcrCode2": {
       "title": "Cultura",
