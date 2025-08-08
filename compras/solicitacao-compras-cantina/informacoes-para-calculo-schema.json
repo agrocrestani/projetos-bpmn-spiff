@@ -79,7 +79,6 @@
       "title": "Safra",
       "type": "string",
       "anyOf": {{n_safras|tojson}}
-
     },
     "WhsCode": {
       "title": "Deposito",
