@@ -28,7 +28,8 @@
     "Department": {
       "title": "Departamento",
       "type": "string",
-      "default": "18",
+      "default": "18",]
+      
       "anyOf": [
         "options_from_task_data_var:n_departamentos"
       ]
