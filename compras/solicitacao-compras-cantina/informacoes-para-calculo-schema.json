@@ -68,6 +68,7 @@
     "OcrCode": {
       "title": "Centro de Custo",
       "type": "string",
+      "anyOf": {{n_tipo_requisicao|tojson}}
       "anyOf": [
         "options_from_task_data_var:n_centros_de_custo"
       ]
