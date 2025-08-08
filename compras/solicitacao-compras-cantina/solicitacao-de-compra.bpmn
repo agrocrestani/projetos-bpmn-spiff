@@ -68,7 +68,7 @@ for s in safras:
 
 n_almoxarifados = []
 for a in almoxarifados:
-    if a['enum'] in ['07.FCUR', '07.FQUE', '07.FPRO', '07.FSCA']:
+    if a['enum'][0] in ['07.FCUR', '07.FQUE', '07.FPRO', '07.FSCA']:
         WhsCode = a['enum']
         WhsName = a['title']
         n_almoxarifados.append(
@@ -85,7 +85,7 @@ for d in departamentos:
 
 n_centros_de_custo = []
 for c in centros_de_custo:
-    if c['enum'] in ['QUEPRO', 'TGAPRO', 'BRAPRO', 'CJOPRO']:
+    if c['enum'][0] in ['QUEPRO', 'TGAPRO', 'BRAPRO', 'CJOPRO']:
         n_centros_de_custo.append(c)
 
 n_culturas = []
