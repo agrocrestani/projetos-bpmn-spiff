@@ -967,6 +967,28 @@
           <text>"Matriz_Deposito_Insumos"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1nnyjdg">
+        <inputEntry id="UnaryTests_0lf96nk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07scq49">
+          <text>"alan.santos@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kmyrt2">
+          <text>"Matriz_Insumos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16cshd5">
+        <inputEntry id="UnaryTests_1c9srh6">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qlnyjp">
+          <text>"alan.santos@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dxvhss">
+          <text>"Matriz_Deposito_Insumos"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1fr0xz0">
         <inputEntry id="UnaryTests_13b2mhd">
           <text></text>
