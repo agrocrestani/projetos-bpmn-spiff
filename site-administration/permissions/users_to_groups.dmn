@@ -1297,6 +1297,28 @@
           <text>"Matriz_Auditoria"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0q7zg56">
+        <inputEntry id="UnaryTests_1neh5we">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wx94s2">
+          <text>"anderson.machado@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zsfpsx">
+          <text>"Matriz_Rh"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1p3p5kf">
+        <inputEntry id="UnaryTests_16qnfxd">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17a8v3o">
+          <text>"eduardo.oliveira@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0opnr7q">
+          <text>"admin"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
