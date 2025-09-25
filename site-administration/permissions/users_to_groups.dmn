@@ -1231,6 +1231,17 @@
           <text>"Matriz_Administrativo"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_00ai6zo">
+        <inputEntry id="UnaryTests_075nqmq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05kou9f">
+          <text>"fabio.mota@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1b75ggw">
+          <text>""Matriz_Auditoria""</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0bujq9v">
         <inputEntry id="UnaryTests_1yh0qux">
           <text></text>
