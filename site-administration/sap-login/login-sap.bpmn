@@ -11,7 +11,7 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1fsgt3g" sourceRef="StartEvent_1" targetRef="Gateway_0ti2epv" />
     <bpmn:sequenceFlow id="Flow_18ttr1u" sourceRef="Gateway_0ti2epv" targetRef="Activity_05si2ns" />
-    <bpmn:exclusiveGateway id="Gateway_0d9mm6c">
+    <bpmn:exclusiveGateway id="Gateway_0d9mm6c" default="Flow_03v6bye">
       <bpmn:incoming>Flow_0l4264a</bpmn:incoming>
       <bpmn:outgoing>Flow_03v6bye</bpmn:outgoing>
       <bpmn:outgoing>Flow_18lwk9h</bpmn:outgoing>
@@ -27,7 +27,9 @@
       <bpmn:incoming>Flow_1xrvzro</bpmn:incoming>
       <bpmn:outgoing>Flow_02sn476</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_18lwk9h" sourceRef="Gateway_0d9mm6c" targetRef="Gateway_0m9bokr" />
+    <bpmn:sequenceFlow id="Flow_18lwk9h" sourceRef="Gateway_0d9mm6c" targetRef="Gateway_0m9bokr">
+      <bpmn:conditionExpression>status != 200</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_02sn476" sourceRef="Gateway_0m9bokr" targetRef="Gateway_0ti2epv" />
     <bpmn:serviceTask id="Activity_05si2ns" name="Loga no SAP">
       <bpmn:extensionElements>
