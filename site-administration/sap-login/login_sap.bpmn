@@ -59,7 +59,7 @@ except:
     <bpmn:sequenceFlow id="Flow_1xrvzro" sourceRef="Event_0i2q6fi" targetRef="Gateway_0m9bokr" />
     <bpmn:scriptTask id="Activity_1ihfngt" name="Pega SessionId">
       <bpmn:extensionElements>
-        <spiffworkflow:preScript></spiffworkflow:preScript>
+        <spiffworkflow:preScript />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_03v6bye</bpmn:incoming>
       <bpmn:outgoing>Flow_0lywunz</bpmn:outgoing>
@@ -97,12 +97,12 @@ saplogin = [
       <bpmndi:BPMNShape id="Event_0jsnlqp_di" bpmnElement="Event_0jsnlqp">
         <dc:Bounds x="482" y="52" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0m9bokr_di" bpmnElement="Gateway_0m9bokr" isMarkerVisible="true">
+        <dc:Bounds x="55" y="185" width="50" height="50" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1m3oo3n_di" bpmnElement="Activity_05si2ns">
         <dc:Bounds x="30" y="30" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0m9bokr_di" bpmnElement="Gateway_0m9bokr" isMarkerVisible="true">
-        <dc:Bounds x="55" y="185" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ncbab6_di" bpmnElement="Activity_1ihfngt">
         <dc:Bounds x="310" y="30" width="100" height="80" />
