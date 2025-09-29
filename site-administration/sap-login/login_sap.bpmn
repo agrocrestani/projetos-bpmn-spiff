@@ -54,7 +54,7 @@ except:
     </bpmn:serviceTask>
     <bpmn:boundaryEvent id="Event_0i2q6fi" attachedToRef="Activity_05si2ns">
       <bpmn:outgoing>Flow_1xrvzro</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_1ruwc13" />
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1ruwc13" errorRef="Error_Login" />
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_1xrvzro" sourceRef="Event_0i2q6fi" targetRef="Gateway_0m9bokr" />
     <bpmn:scriptTask id="Activity_1ihfngt" name="Pega SessionId">
@@ -77,7 +77,11 @@ saplogin = [
     </bpmn:scriptTask>
     <bpmn:dataStoreReference id="DataStoreReference_19rkpf6" name="SapLogin" dataStoreRef="saplogin" type="json" />
   </bpmn:process>
-  <bpmn:error id="Error_Login" name="Error_Login" />
+  <bpmn:error id="Error_Login" name="Error_Login">
+    <bpmn:extensionElements>
+      <spiffworkflow:variableName>statusLogin</spiffworkflow:variableName>
+    </bpmn:extensionElements>
+  </bpmn:error>
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1d8sfp5">
