@@ -4,6 +4,6 @@
     "exception_notification_addresses": [],
     "fault_or_suspend_on_exception": "fault",
     "metadata_extraction_paths": null,
-    "primary_file_name": "login_sap.bpmn",
-    "primary_process_id": "Process_1d8sfp5"
+    "primary_file_name": "login-sap.bpmn",
+    "primary_process_id": "login-sap"
 }
