@@ -48,6 +48,16 @@ try:
     status = response['http_status']
 except:
     status = 999</spiffworkflow:postScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="data" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_18ttr1u</bpmn:incoming>
       <bpmn:outgoing>Flow_0l4264a</bpmn:outgoing>
@@ -84,7 +94,7 @@ saplogin = [
   </bpmn:error>
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1d8sfp5">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="login-sap">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-178" y="52" width="36" height="36" />
       </bpmndi:BPMNShape>
