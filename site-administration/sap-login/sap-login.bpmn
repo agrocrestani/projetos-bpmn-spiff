@@ -34,10 +34,10 @@ except:
       <bpmn:outgoing>Flow_1egjosn</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:endEvent id="Event_1la0phd">
-      <bpmn:incoming>Flow_0n3h567</bpmn:incoming>
+      <bpmn:incoming>Flow_1q1dbcs</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1egjosn" sourceRef="Activity_12rivqi" targetRef="Gateway_13z1ch3" />
-    <bpmn:sequenceFlow id="Flow_1q1dbcs" sourceRef="Activity_1ngczyk" targetRef="Activity_1fyegh7" />
+    <bpmn:sequenceFlow id="Flow_1q1dbcs" sourceRef="Activity_1ngczyk" targetRef="Event_1la0phd" />
     <bpmn:scriptTask id="Activity_1ngczyk" name="Pega SessionId">
       <bpmn:extensionElements>
         <spiffworkflow:preScript>SessionId = body["SessionId"]</spiffworkflow:preScript>
@@ -84,37 +84,6 @@ saplogin = [
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_19bd3z1" sourceRef="Gateway_08miuwa" targetRef="Gateway_1hyuyve" />
     <bpmn:sequenceFlow id="Flow_1oji7s3" sourceRef="Event_0rlcbyx" targetRef="Gateway_08miuwa" />
-    <bpmn:sequenceFlow id="Flow_0n3h567" sourceRef="Activity_1fyegh7" targetRef="Event_1la0phd" />
-    <bpmn:scriptTask id="Activity_1fyegh7" name="Grava Sessao no Hana">
-      <bpmn:incoming>Flow_1q1dbcs</bpmn:incoming>
-      <bpmn:outgoing>Flow_0n3h567</bpmn:outgoing>
-      <bpmn:script>from connectordb.hana import Hana
-from datetime import datetime
-
-#Grava no hana
-connection = {
-    "address": get_secret('hanaAddress'),
-    "port": get_secret('hanaPort'),
-    "user": get_secret('hanaUser'),
-    "password": get_secret('hanaPassword')
-}
-
-data_hora_atual = datetime.now()
-data_hora_formatada = data_hora_atual.strftime('%d/%m/%Y %H:%M:%S')
-baseSap = get_secret('baseSap')
-
-query_hana = f"""
-    UPDATE {baseSap}."@AC_SESSAO_SAP" 
-    SET "U_DataHora" = TO_VARCHAR(CURRENT_TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS'), "U_SessionId" = '{SessionId}', "U_SessionTimeout" = {SessionTimeout} 
-    WHERE "Code" = '1'
-"""
-
-Hana(connection).executeDb(query_hana)
-
-del(connection)
-
-</bpmn:script>
-    </bpmn:scriptTask>
     <bpmn:startEvent id="Event_0xrgv3s">
       <bpmn:outgoing>Flow_0w04e8c</bpmn:outgoing>
     </bpmn:startEvent>
@@ -131,9 +100,6 @@ del(connection)
       <bpmndi:BPMNShape id="Activity_0mqr8r5_di" bpmnElement="Activity_12rivqi">
         <dc:Bounds x="430" y="47" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1la0phd_di" bpmnElement="Event_1la0phd">
-        <dc:Bounds x="1092" y="69" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0zol1bk_di" bpmnElement="Activity_1ngczyk">
         <dc:Bounds x="720" y="47" width="100" height="80" />
@@ -153,11 +119,11 @@ del(connection)
       <bpmndi:BPMNShape id="Gateway_08miuwa_di" bpmnElement="Gateway_08miuwa" isMarkerVisible="true">
         <dc:Bounds x="475" y="225" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_14p03vy_di" bpmnElement="Activity_1fyegh7">
-        <dc:Bounds x="920" y="47" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0xrgv3s_di" bpmnElement="Event_0xrgv3s">
         <dc:Bounds x="212" y="69" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1la0phd_di" bpmnElement="Event_1la0phd">
+        <dc:Bounds x="912" y="69" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0egk955_di" bpmnElement="Event_0rlcbyx">
         <dc:Bounds x="482" y="109" width="36" height="36" />
@@ -168,7 +134,7 @@ del(connection)
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1q1dbcs_di" bpmnElement="Flow_1q1dbcs">
         <di:waypoint x="820" y="87" />
-        <di:waypoint x="920" y="87" />
+        <di:waypoint x="912" y="87" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_1nni45t_di" bpmnElement="DataOutputAssociation_1nni45t">
         <di:waypoint x="796" y="47" />
@@ -198,10 +164,6 @@ del(connection)
       <bpmndi:BPMNEdge id="Flow_1oji7s3_di" bpmnElement="Flow_1oji7s3">
         <di:waypoint x="500" y="145" />
         <di:waypoint x="500" y="225" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0n3h567_di" bpmnElement="Flow_0n3h567">
-        <di:waypoint x="1020" y="87" />
-        <di:waypoint x="1092" y="87" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0w04e8c_di" bpmnElement="Flow_0w04e8c">
         <di:waypoint x="248" y="87" />
