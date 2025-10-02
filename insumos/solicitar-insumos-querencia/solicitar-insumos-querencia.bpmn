@@ -303,6 +303,8 @@ nfeEntradaItens = nfeEntrada['DocumentLines']
 
 EntraCol = nfeEntrada['DocEntry']
 
+teste = []
+
 del(rspEntrada)</spiffworkflow:postScript>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12ic23r</bpmn:incoming>
