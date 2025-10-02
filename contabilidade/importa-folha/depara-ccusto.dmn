@@ -604,7 +604,7 @@
       <rule id="DecisionRule_1n9dd7u">
         <description>Centro de Distribuicao</description>
         <inputEntry id="UnaryTests_1mjavtb">
-          <text>8</text>
+          <text>12</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0rbfxxt">
           <text>"12312"</text>
