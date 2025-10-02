@@ -121,6 +121,18 @@
           <text>9</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_08xm4bj">
+        <description>Centro de Distribuição</description>
+        <inputEntry id="UnaryTests_02kv7rj">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ffrs0h">
+          <text>8</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h8cp91">
+          <text>12</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
