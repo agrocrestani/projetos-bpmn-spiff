@@ -553,6 +553,51 @@
           <text>"BRAARM"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0ixy1u2">
+        <inputEntry id="UnaryTests_052q9to">
+          <text>7</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sk1t58">
+          <text>"12203"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1se34gr">
+          <text>"QUEARM"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1okaxs0">
+        <inputEntry id="UnaryTests_19c0oaz">
+          <text>7</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_051u0x4">
+          <text>"12304"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xsvhri">
+          <text>"CORPCOM"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1oecnw4">
+        <inputEntry id="UnaryTests_1un0bme">
+          <text>9</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w3lyva">
+          <text>"12304"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16bqi17">
+          <text>"CORPCOM"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1n9dd7u">
+        <description>Centro de Distribuicao</description>
+        <inputEntry id="UnaryTests_1mjavtb">
+          <text>12</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rbfxxt">
+          <text>"12312"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_083wi9s">
+          <text>"CORP.CD"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0qdzioc">
         <description>Administrativo Escritório</description>
         <inputEntry id="UnaryTests_06nm56i">
@@ -601,18 +646,6 @@
           <text>"CORPAVIA"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1n9dd7u">
-        <description>Centro de Distribuicao</description>
-        <inputEntry id="UnaryTests_1mjavtb">
-          <text>12</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0rbfxxt">
-          <text>"12312"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_083wi9s">
-          <text>"CORP.CD"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1t0wuw9">
         <description>Armazem Tangara</description>
         <inputEntry id="UnaryTests_0vsh1fc">
@@ -635,39 +668,6 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_1yfe284">
           <text>"TGAARM"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0ixy1u2">
-        <inputEntry id="UnaryTests_052q9to">
-          <text>7</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0sk1t58">
-          <text>"12203"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1se34gr">
-          <text>"QUEARM"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1okaxs0">
-        <inputEntry id="UnaryTests_19c0oaz">
-          <text>7</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_051u0x4">
-          <text>"12304"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0xsvhri">
-          <text>"CORPCOM"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1oecnw4">
-        <inputEntry id="UnaryTests_1un0bme">
-          <text>9</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1w3lyva">
-          <text>"12304"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_16bqi17">
-          <text>"CORPCOM"</text>
         </outputEntry>
       </rule>
     </decisionTable>
