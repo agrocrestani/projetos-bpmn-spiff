@@ -137,7 +137,7 @@ if nota:
     <bpmn:startEvent id="Event_05nud41">
       <bpmn:outgoing>Flow_0p14brf</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_06kgglb">
-        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">"R/2025-02-20T00:00:00-04:00/P6H"</bpmn:timeCycle>
+        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">"R/2025-02-20T00:00:00-04:00/PT6H"</bpmn:timeCycle>
       </bpmn:timerEventDefinition>
     </bpmn:startEvent>
   </bpmn:process>
