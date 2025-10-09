@@ -12,7 +12,7 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0fl06il" sourceRef="Activity_17ivsvk" targetRef="Gateway_0iggcax" />
     <bpmn:sequenceFlow id="Flow_1mo3e8v" sourceRef="Gateway_0iggcax" targetRef="Activity_0o7y4n0" />
-    <bpmn:exclusiveGateway id="Gateway_1nlylk2">
+    <bpmn:exclusiveGateway id="Gateway_1nlylk2" default="Flow_14zx9ad">
       <bpmn:incoming>Flow_14djeko</bpmn:incoming>
       <bpmn:outgoing>Flow_14zx9ad</bpmn:outgoing>
       <bpmn:outgoing>Flow_0ld6qsp</bpmn:outgoing>
@@ -36,7 +36,9 @@
       <bpmn:incoming>Flow_13helyg</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_13helyg" sourceRef="Gateway_0isyp3r" targetRef="Event_07qfc9y" />
-    <bpmn:sequenceFlow id="Flow_0ld6qsp" sourceRef="Gateway_1nlylk2" targetRef="Activity_0kna21c" />
+    <bpmn:sequenceFlow id="Flow_0ld6qsp" sourceRef="Gateway_1nlylk2" targetRef="Activity_0kna21c">
+      <bpmn:conditionExpression>ptaxEncontrado == False</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0irjpaj" sourceRef="Activity_0kna21c" targetRef="Gateway_0iggcax" />
     <bpmn:sequenceFlow id="Flow_1gbzu4x" sourceRef="Gateway_1bkioca" targetRef="Gateway_0isyp3r">
       <bpmn:conditionExpression>lanca == 0</bpmn:conditionExpression>
