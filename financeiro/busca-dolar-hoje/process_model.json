@@ -1,0 +1,9 @@
+{
+    "description": "",
+    "display_name": "Busca Dolar Hoje",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": null,
+    "primary_file_name": "busca-dolar-hoje.bpmn",
+    "primary_process_id": "Process_busca_dolar_hoje_2sv05ub"
+}
