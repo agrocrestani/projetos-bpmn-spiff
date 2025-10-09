@@ -2,46 +2,251 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:process id="Process_busca_dolar_hoje_2sv05ub" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
-      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0zzvodm</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0qpzdpu" />
-    <bpmn:endEvent id="EndEvent_1">
-      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+    <bpmn:sequenceFlow id="Flow_0zzvodm" sourceRef="StartEvent_1" targetRef="Activity_17ivsvk" />
+    <bpmn:exclusiveGateway id="Gateway_0iggcax">
+      <bpmn:incoming>Flow_0fl06il</bpmn:incoming>
+      <bpmn:incoming>Flow_0irjpaj</bpmn:incoming>
+      <bpmn:outgoing>Flow_1mo3e8v</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0fl06il" sourceRef="Activity_17ivsvk" targetRef="Gateway_0iggcax" />
+    <bpmn:sequenceFlow id="Flow_1mo3e8v" sourceRef="Gateway_0iggcax" targetRef="Activity_0o7y4n0" />
+    <bpmn:exclusiveGateway id="Gateway_1nlylk2">
+      <bpmn:incoming>Flow_14djeko</bpmn:incoming>
+      <bpmn:outgoing>Flow_14zx9ad</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0ld6qsp</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_14djeko" sourceRef="Activity_0o7y4n0" targetRef="Gateway_1nlylk2" />
+    <bpmn:sequenceFlow id="Flow_14zx9ad" sourceRef="Gateway_1nlylk2" targetRef="Activity_16cj1yf" />
+    <bpmn:exclusiveGateway id="Gateway_1bkioca" default="Flow_118gsoi">
+      <bpmn:incoming>Flow_0boij07</bpmn:incoming>
+      <bpmn:outgoing>Flow_118gsoi</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1gbzu4x</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0boij07" sourceRef="Activity_16cj1yf" targetRef="Gateway_1bkioca" />
+    <bpmn:sequenceFlow id="Flow_118gsoi" sourceRef="Gateway_1bkioca" targetRef="Activity_1ossoyx" />
+    <bpmn:exclusiveGateway id="Gateway_0isyp3r">
+      <bpmn:incoming>Flow_1lyjxhf</bpmn:incoming>
+      <bpmn:incoming>Flow_1gbzu4x</bpmn:incoming>
+      <bpmn:outgoing>Flow_13helyg</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1lyjxhf" sourceRef="Activity_1ossoyx" targetRef="Gateway_0isyp3r" />
+    <bpmn:endEvent id="Event_07qfc9y">
+      <bpmn:incoming>Flow_13helyg</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="EndEvent_1" />
-    <bpmn:manualTask id="Activity_0qpzdpu" name="Example manual task">
+    <bpmn:sequenceFlow id="Flow_13helyg" sourceRef="Gateway_0isyp3r" targetRef="Event_07qfc9y" />
+    <bpmn:sequenceFlow id="Flow_0ld6qsp" sourceRef="Gateway_1nlylk2" targetRef="Activity_0kna21c" />
+    <bpmn:sequenceFlow id="Flow_0irjpaj" sourceRef="Activity_0kna21c" targetRef="Gateway_0iggcax" />
+    <bpmn:sequenceFlow id="Flow_1gbzu4x" sourceRef="Gateway_1bkioca" targetRef="Gateway_0isyp3r">
+      <bpmn:conditionExpression>lanca == 0</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:scriptTask id="Activity_17ivsvk" name="Dados Iniciais">
+      <bpmn:incoming>Flow_0zzvodm</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fl06il</bpmn:outgoing>
+      <bpmn:script>moeda = 'USD'
+ptaxEncontrado = True
+cont = 0</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:serviceTask id="Activity_0o7y4n0" name="Buscar Dolar">
       <bpmn:extensionElements>
-        <spiffworkflow:instructionsForEndUser>This is an example **Manual Task**. A **Manual Task** is designed to allow someone to complete a task outside of the system and then report back that it is complete. You can click the *Continue* button to proceed. When you are done running this process, you can edit the **Process Model** to include a:
+        <spiffworkflow:preScript>from datetime import datetime, timedelta
 
- * **Script Task** - write a short snippet of python code to update some data
- *  **User Task** - generate a form that collects information from a user
- * **Service Task** - communicate with an external API to fetch or update some data.
+if ptaxEncontrado != True:
+    data_pesquisa = (datetime.now() - timedelta(days=cont)).strftime('%m-%d-%Y')
+else:
+    data_pesquisa = (datetime.now() - timedelta(days=1)).strftime('%m-%d-%Y')
 
-You can also change the text you are reading here by updating the *Instructions* on this example manual task.</spiffworkflow:instructionsForEndUser>
+url = f"https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda='{moeda}',dataCotacao='{data_pesquisa}')"
+payload = {}
+headers = {}
+</spiffworkflow:preScript>
+        <spiffworkflow:postScript>if rsp['body']['value']:
+    try:
+        cotacoes = rsp['body']['value']
+        for c in cotacoes:
+            if c['tipoBoletim'] == "Fechamento PTAX":
+                dataHoraCotacao = c['dataHoraCotacao'][0:10]
+                cotacaoVenda = c['cotacaoVenda']
+                ptaxEncontrado = True
+            else:
+                ptaxEncontrado = False
+    except:
+        ptaxEncontrado = False
+else:
+    ptaxEncontrado = False</spiffworkflow:postScript>
+        <spiffworkflow:serviceTaskOperator id="http/GetRequestV2" resultVariable="rsp">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers " />
+            <spiffworkflow:parameter id="params" type="any" value="payload" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+            <spiffworkflow:parameter id="verify" type="bool" />
+            <spiffworkflow:parameter id="attempts" type="int" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
-      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
-    </bpmn:manualTask>
+      <bpmn:incoming>Flow_1mo3e8v</bpmn:incoming>
+      <bpmn:outgoing>Flow_14djeko</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:scriptTask id="Activity_16cj1yf" name="Verifica se existe">
+      <bpmn:incoming>Flow_14zx9ad</bpmn:incoming>
+      <bpmn:outgoing>Flow_0boij07</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+RateDate = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
+UpdateDate = datetime.now().strftime('%Y-%m-%d')
+
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+            select count(*) qtdeEncontrado from {baseSap}.ORTT
+            where "RateDate" = '{RateDate}'
+              and "Currency" = '{moeda}'
+          """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+existe = Hana(connection).selectDb(query)
+
+if existe[0]['qtdeencontrado']:
+    lanca = 0
+else:
+    lanca = 1
+
+del(connection)
+del(query)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="Activity_1ossoyx" name="Insere no SAP">
+      <bpmn:incoming>Flow_118gsoi</bpmn:incoming>
+      <bpmn:outgoing>Flow_1lyjxhf</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+RateDate = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
+UpdateDate = datetime.now().strftime('%Y-%m-%d')
+
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
+
+baseSap = get_secret('baseSap')
+
+query = f"""
+            INSERT INTO {baseSap}.ORTT
+            ("RateDate", "Currency", "Rate", "DataSource", "UserSign", "LogInstanc", "UpdateDate", "UserSign2")
+            VALUES('{RateDate}','{moeda}',{cotacaoVenda}, 'I', 140, 0, '{UpdateDate}', 140);
+          """
+
+# rsp = json.loads(Hana(connection).selectDb(query))
+Hana(connection).executeDb(query)
+Hana(connection).executeDb('commit')</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="Activity_0kna21c" name="Atualiza Contador">
+      <bpmn:incoming>Flow_0ld6qsp</bpmn:incoming>
+      <bpmn:outgoing>Flow_0irjpaj</bpmn:outgoing>
+      <bpmn:script>cont += 1
+del(rsp)</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_busca_dolar_hoje_2sv05ub">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="159" width="36" height="36" />
+        <dc:Bounds x="-8" y="132" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="432" y="159" width="36" height="36" />
+      <bpmndi:BPMNShape id="Gateway_0iggcax_di" bpmnElement="Gateway_0iggcax" isMarkerVisible="true">
+        <dc:Bounds x="235" y="125" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zqotmb_di" bpmnElement="Activity_0qpzdpu">
-        <dc:Bounds x="270" y="137" width="100" height="80" />
+      <bpmndi:BPMNShape id="Gateway_1nlylk2_di" bpmnElement="Gateway_1nlylk2" isMarkerVisible="true">
+        <dc:Bounds x="495" y="125" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1bkioca_di" bpmnElement="Gateway_1bkioca" isMarkerVisible="true">
+        <dc:Bounds x="755" y="125" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0isyp3r_di" bpmnElement="Gateway_0isyp3r" isMarkerVisible="true">
+        <dc:Bounds x="1015" y="125" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_07qfc9y_di" bpmnElement="Event_07qfc9y">
+        <dc:Bounds x="1122" y="132" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1xhmuj2_di" bpmnElement="Activity_17ivsvk">
+        <dc:Bounds x="80" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1t9dijn_di" bpmnElement="Activity_0o7y4n0">
+        <dc:Bounds x="340" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vh6vqc_di" bpmnElement="Activity_16cj1yf">
+        <dc:Bounds x="600" y="110" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
-        <di:waypoint x="215" y="177" />
-        <di:waypoint x="270" y="177" />
+      <bpmndi:BPMNShape id="Activity_15eqxf0_di" bpmnElement="Activity_1ossoyx">
+        <dc:Bounds x="860" y="110" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0on88k7_di" bpmnElement="Activity_0kna21c">
+        <dc:Bounds x="340" y="220" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0zzvodm_di" bpmnElement="Flow_0zzvodm">
+        <di:waypoint x="28" y="150" />
+        <di:waypoint x="80" y="150" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
-        <di:waypoint x="370" y="177" />
-        <di:waypoint x="432" y="177" />
+      <bpmndi:BPMNEdge id="Flow_0fl06il_di" bpmnElement="Flow_0fl06il">
+        <di:waypoint x="180" y="150" />
+        <di:waypoint x="235" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1mo3e8v_di" bpmnElement="Flow_1mo3e8v">
+        <di:waypoint x="285" y="150" />
+        <di:waypoint x="340" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14djeko_di" bpmnElement="Flow_14djeko">
+        <di:waypoint x="440" y="150" />
+        <di:waypoint x="495" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14zx9ad_di" bpmnElement="Flow_14zx9ad">
+        <di:waypoint x="545" y="150" />
+        <di:waypoint x="600" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0boij07_di" bpmnElement="Flow_0boij07">
+        <di:waypoint x="700" y="150" />
+        <di:waypoint x="755" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_118gsoi_di" bpmnElement="Flow_118gsoi">
+        <di:waypoint x="805" y="150" />
+        <di:waypoint x="860" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1lyjxhf_di" bpmnElement="Flow_1lyjxhf">
+        <di:waypoint x="960" y="150" />
+        <di:waypoint x="1015" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13helyg_di" bpmnElement="Flow_13helyg">
+        <di:waypoint x="1065" y="150" />
+        <di:waypoint x="1122" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ld6qsp_di" bpmnElement="Flow_0ld6qsp">
+        <di:waypoint x="520" y="175" />
+        <di:waypoint x="520" y="260" />
+        <di:waypoint x="440" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0irjpaj_di" bpmnElement="Flow_0irjpaj">
+        <di:waypoint x="340" y="260" />
+        <di:waypoint x="260" y="260" />
+        <di:waypoint x="260" y="175" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gbzu4x_di" bpmnElement="Flow_1gbzu4x">
+        <di:waypoint x="780" y="175" />
+        <di:waypoint x="780" y="260" />
+        <di:waypoint x="1040" y="260" />
+        <di:waypoint x="1040" y="175" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
