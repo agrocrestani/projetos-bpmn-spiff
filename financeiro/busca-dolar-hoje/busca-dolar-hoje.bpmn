@@ -97,7 +97,7 @@ else:
       <bpmn:outgoing>Flow_0boij07</bpmn:outgoing>
       <bpmn:script>from connectordb.hana import Hana
 
-RateDate = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
+RateDate = (datetime.now()).strftime('%Y-%m-%d')
 UpdateDate = datetime.now().strftime('%Y-%m-%d')
 
 connection = { 
