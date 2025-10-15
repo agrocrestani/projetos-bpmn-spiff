@@ -1066,6 +1066,17 @@
           <text>"Querencia_Almoxarifado"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1pmkier">
+        <inputEntry id="UnaryTests_1tonfm3">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cxycmf">
+          <text>"jailson.santos@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1devrmg">
+          <text>"Querencia_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0x9oi68">
         <inputEntry id="UnaryTests_0rzejdn">
           <text></text>
