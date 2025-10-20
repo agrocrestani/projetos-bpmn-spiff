@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:process id="Process_login_sap" isExecutable="true">
-    <bpmn:serviceTask id="Activity_12rivqi" name="Loga no SAP">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>url = f"{get_secret('sLayerUrl')}/Login"
-
-data = {"UserName": get_secret('userSap'),
-    "Password": get_secret('passSap'),
-    "CompanyDB": get_secret('baseSap'),
-    "Language": "29"
-    }
-
-headers = {
-  'Content-Type': 'application/json'
-}</spiffworkflow:preScript>
-        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response">
-          <spiffworkflow:parameters>
-            <spiffworkflow:parameter id="url" type="str" value="url" />
-            <spiffworkflow:parameter id="headers" type="any" value="headers" />
-            <spiffworkflow:parameter id="data" type="any" value="data" />
-            <spiffworkflow:parameter id="basic_auth_username" type="str" />
-            <spiffworkflow:parameter id="basic_auth_password" type="str" />
-          </spiffworkflow:parameters>
-        </spiffworkflow:serviceTaskOperator>
-        <spiffworkflow:postScript>#body = json.loads(response['body'])
-try:
-    body = response['body']
-    status = response['http_status']
-except:
-    status = 999</spiffworkflow:postScript>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_13brbcg</bpmn:incoming>
-      <bpmn:outgoing>Flow_1egjosn</bpmn:outgoing>
-    </bpmn:serviceTask>
     <bpmn:endEvent id="Event_1la0phd">
       <bpmn:incoming>Flow_1q1dbcs</bpmn:incoming>
     </bpmn:endEvent>
@@ -88,6 +56,38 @@ saplogin = [
       <bpmn:outgoing>Flow_0w04e8c</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_0w04e8c" sourceRef="Event_0xrgv3s" targetRef="Gateway_1hyuyve" />
+    <bpmn:serviceTask id="Activity_12rivqi" name="Loga no SAP">
+      <bpmn:extensionElements>
+        <spiffworkflow:preScript>url = f"{get_secret('sLayerUrl')}/Login"
+
+data = {"UserName": get_secret('userSap'),
+    "Password": get_secret('passSap'),
+    "CompanyDB": get_secret('baseSap'),
+    "Language": "29"
+    }
+
+headers = {
+  'Content-Type': 'application/json'
+}</spiffworkflow:preScript>
+        <spiffworkflow:serviceTaskOperator id="http/PostRequestV2" resultVariable="response">
+          <spiffworkflow:parameters>
+            <spiffworkflow:parameter id="url" type="str" value="url" />
+            <spiffworkflow:parameter id="headers" type="any" value="headers" />
+            <spiffworkflow:parameter id="data" type="any" value="data" />
+            <spiffworkflow:parameter id="basic_auth_username" type="str" />
+            <spiffworkflow:parameter id="basic_auth_password" type="str" />
+          </spiffworkflow:parameters>
+        </spiffworkflow:serviceTaskOperator>
+        <spiffworkflow:postScript>#body = json.loads(response['body'])
+try:
+    body = response['body']
+    status = response['http_status']
+except:
+    status = 999</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_13brbcg</bpmn:incoming>
+      <bpmn:outgoing>Flow_1egjosn</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmn:error id="Error_Login" name="Error_Login">
     <bpmn:extensionElements>
@@ -97,9 +97,8 @@ saplogin = [
   <bpmn:dataStore id="saplogin" name="JSONDataStore" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_login_sap">
-      <bpmndi:BPMNShape id="Activity_0mqr8r5_di" bpmnElement="Activity_12rivqi">
-        <dc:Bounds x="430" y="47" width="100" height="80" />
-        <bpmndi:BPMNLabel />
+      <bpmndi:BPMNShape id="Event_1la0phd_di" bpmnElement="Event_1la0phd">
+        <dc:Bounds x="912" y="69" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0zol1bk_di" bpmnElement="Activity_1ngczyk">
         <dc:Bounds x="720" y="47" width="100" height="80" />
@@ -122,8 +121,8 @@ saplogin = [
       <bpmndi:BPMNShape id="Event_0xrgv3s_di" bpmnElement="Event_0xrgv3s">
         <dc:Bounds x="212" y="69" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1la0phd_di" bpmnElement="Event_1la0phd">
-        <dc:Bounds x="912" y="69" width="36" height="36" />
+      <bpmndi:BPMNShape id="Activity_0ywd9t9_di" bpmnElement="Activity_12rivqi">
+        <dc:Bounds x="430" y="47" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0egk955_di" bpmnElement="Event_0rlcbyx">
         <dc:Bounds x="482" y="109" width="36" height="36" />
