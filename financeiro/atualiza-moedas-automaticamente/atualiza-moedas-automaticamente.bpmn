@@ -9,7 +9,7 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_1tqndao">
-        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">"R/2025-10-20T 17:00:00-04:00/P1D"</bpmn:timeCycle>
+        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">"R/2025-10-20T 17:15:00-04:00/P1D"</bpmn:timeCycle>
       </bpmn:timerEventDefinition>
     </bpmn:startEvent>
     <bpmn:callActivity id="Activity_0qpzdpu" name="Busca Dolar" calledElement="Process_busca_dolar_rzbjjad">
