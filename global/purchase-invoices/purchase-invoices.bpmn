@@ -7,12 +7,12 @@
     </bpmn:extensionElements>
   </bpmn:error>
   <bpmn:signal id="Encerrar_Processo" name="Encerrar_Processo" />
-  <bpmn:collaboration id="Collaboration_0p7awzy">
+  <bpmn:collaboration id="NFeEntrada">
     <bpmn:participant id="Participant_1jobe5n" processRef="Process_purchase_invoices_krrf890" />
   </bpmn:collaboration>
   <bpmn:process id="Process_purchase_invoices_krrf890" name="Purchase Invoices" isExecutable="true">
     <bpmn:laneSet id="LaneSet_0wqqcxg">
-      <bpmn:lane id="Lane_0k48btn" name="NFeEntrada">
+      <bpmn:lane id="Lane_0k48btn">
         <bpmn:flowNodeRef>Gateway_01ugme4</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_00db667</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1bq66l5</bpmn:flowNodeRef>
@@ -152,7 +152,7 @@ lane_owners = {
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0p7awzy">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="NFeEntrada">
       <bpmndi:BPMNShape id="Participant_1jobe5n_di" bpmnElement="Participant_1jobe5n" isHorizontal="true">
         <dc:Bounds x="129" y="-260" width="770" height="732" />
       </bpmndi:BPMNShape>
@@ -161,7 +161,6 @@ lane_owners = {
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0k48btn_di" bpmnElement="Lane_0k48btn" isHorizontal="true">
         <dc:Bounds x="159" y="12" width="740" height="460" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="-148" width="36" height="36" />
