@@ -169,6 +169,20 @@
           <text>"/process-data/confidential/*"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0bghqxa">
+        <inputEntry id="UnaryTests_1ncqs6v">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zi2yyt">
+          <text>"everbody"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05rnlkh">
+          <text>["all"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yaiit5">
+          <text>"/v1.0/process-instances/unique-milestone-names"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0swu709">
         <inputEntry id="UnaryTests_0i3obt6">
           <text></text>
