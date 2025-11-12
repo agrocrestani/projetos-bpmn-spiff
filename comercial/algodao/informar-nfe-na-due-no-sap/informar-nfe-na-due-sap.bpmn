@@ -475,6 +475,14 @@ nf_referenciadas = Hana(connection).selectDb(query_nf_ref)
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:scriptTask id="Activity_01njdmp" name="Busca Informações que precisa">
+      <bpmn:extensionElements>
+        <spiffworkflow:unitTests>
+          <spiffworkflow:unitTest id="Teste_Busca_Info">
+            <spiffworkflow:inputJson>{}</spiffworkflow:inputJson>
+            <spiffworkflow:expectedOutputJson>{}</spiffworkflow:expectedOutputJson>
+          </spiffworkflow:unitTest>
+        </spiffworkflow:unitTests>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0arcwbv</bpmn:incoming>
       <bpmn:outgoing>Flow_1ruciys</bpmn:outgoing>
       <bpmn:script>from connectordb.oracle import Oracle
