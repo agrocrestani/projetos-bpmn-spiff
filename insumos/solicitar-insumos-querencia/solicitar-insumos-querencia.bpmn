@@ -380,13 +380,21 @@ spiff_instancia = get_toplevel_process_info()['process_instance_id']
 spiff_tarefa = taskInfo = get_current_task_info()['id']
 
 items = []
-for s in nfeEntradaItens:
+for s in solicitacao:
+  item_code = s["insumo"]["ItemCode"]
+  warehouse_code = s["insumo"]["WhsCode"]
+  base_type = s["insumo"]["BaseType"]
+  base_entry = s["insumo"]["BaseEntry"]
+  base_line = s["insumo"]["BaseLine"]
   items.append(
     {
-      "ItemCode": s["ItemCode"],
-      "Quantity": s["Quantity"],
-      "UnitPrice": str(get_avgPrice(s["ItemCode"],"03.FCOL")),
-      "WarehouseCode": "03.FCOL" #Código deposito de insumos da Colorado
+      "ItemCode": item_code,
+      "Quantity": s["quantidade"],
+      "UnitPrice": str(get_avgPrice(item_code,warehouse_code)),
+      "WarehouseCode": warehouse_code,
+      "BaseType": base_type,
+      "BaseEntry": base_entry,
+      "BaseLine": base_line
     }
   )
 
