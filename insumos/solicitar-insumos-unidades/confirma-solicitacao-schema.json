@@ -52,16 +52,12 @@
       "title": "Selecione a unidade",
       "type": "string",
       "disabled": "True",
-      "anyOf": [
-        "options_from_task_data_var:n_filiais"
-      ]
+      "anyOf": {{n_filiais|tojson}}
     },
     "safra": {
       "title": "Selecione a safra",
       "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:n_safras"
-      ]
+      "anyOf": {{n_safras|tojson}}
     }
   }
 }

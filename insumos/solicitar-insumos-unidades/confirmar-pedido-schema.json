@@ -15,9 +15,7 @@
       "title": "Uso principal",
       "type": "string",
       "default": "95",
-      "anyOf": [
-        "options_from_task_data_var:main_usage"
-      ]
+      "anyOf": {{main_usage|tojson}}
     },
     "observacaoNfe": {
       "type": "string",

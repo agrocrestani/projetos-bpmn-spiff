@@ -18,9 +18,7 @@
     "BPLId": {
       "title": "Filial",
       "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:n_filiais"
-      ]
+      "anyOf": {{n_filiais|tojson}}
     },
     "RequiredDate": {
       "type": "string",
@@ -31,9 +29,7 @@
     "Department": {
       "title": "Departamento",
       "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:n_departamentos"
-      ]
+      "anyOf": {{n_departamentos|tojson}}
     },
     "U_RSD_Prioridade": {
       "title": "Prioridade",
@@ -65,44 +61,32 @@
     "U_RSD_Aplicacao": {
       "title": "Tipo Requisicao",
       "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:n_tipo_requisicao"
-      ]
+      "anyOf": {{n_tipo_requisicao|tojson}}
     },
     "OcrCode": {
       "title": "Centro de Custo",
       "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:n_centros_de_custo"
-      ]
+      "anyOf": {{n_centros_de_custo|tojson}}
     },
     "OcrCode2": {
       "title": "Cultura",
       "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:n_culturas"
-      ]
+      "anyOf": {{n_culturas|tojson}}
     },
     "OcrCode3": {
       "title": "Safra",
       "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:n_safras"
-      ]
+      "anyOf": {{n_safras|tojson}}
     },
     "WhsCode": {
       "title": "Deposito",
       "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:n_almoxarifados"
-      ]
+      "anyOf": {{n_almoxarifados|tojson}}
     },
     "MainUsage": {
       "title": "Utilizacao",
       "type": "string",
-      "anyOf": [
-        "options_from_task_data_var:n_utilizacoes"
-      ]
+      "anyOf": {{n_utilizacoes|tojson}}
     },
     "Comments": {
       "type": "string",
