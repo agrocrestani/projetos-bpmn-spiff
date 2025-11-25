@@ -1374,6 +1374,39 @@
           <text>"admin"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_16nccxi">
+        <inputEntry id="UnaryTests_03cz5qa">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fzq77y">
+          <text>"kamila.negrao@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_151iop8">
+          <text>"Curupai_Deposito_Insumos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10ldoe7">
+        <inputEntry id="UnaryTests_15b6qsn">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zygh9w">
+          <text>"kamila.negrao@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0miijts">
+          <text>"Curupai_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sn9t3w">
+        <inputEntry id="UnaryTests_1fv89va">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ochgmg">
+          <text>"kamila.negrao@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xz7gs9">
+          <text>"Curupai_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
