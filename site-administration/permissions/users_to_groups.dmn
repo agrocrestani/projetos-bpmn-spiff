@@ -1407,6 +1407,28 @@
           <text>"Curupai_Almoxarifado"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0lmplgr">
+        <inputEntry id="UnaryTests_19rtucl">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jmbweq">
+          <text>"isabelly.silva@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wkzsid">
+          <text>"Querencia_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vih5dj">
+        <inputEntry id="UnaryTests_02xozga">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pqt2hn">
+          <text>"isabelly.silva@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fwudp3">
+          <text>"Querencia_Deposito_Insumos"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
