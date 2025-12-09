@@ -1440,6 +1440,39 @@
           <text>"Querencia_Deposito_Insumos"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0tzv64h">
+        <inputEntry id="UnaryTests_0uzorir">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18g5ngh">
+          <text>"ricletys.oliveira@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i6ak8t">
+          <text>"Querencia_Deposito_Insumos"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0po7lbj">
+        <inputEntry id="UnaryTests_1k44etx">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1eui66f">
+          <text>"ricletys.oliveira@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1quo6vz">
+          <text>"Querencia_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01quf59">
+        <inputEntry id="UnaryTests_1fe6rt8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1njcthz">
+          <text>"maylon.vasconcelos@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rik8ya">
+          <text>"Querencia_Almoxarifado"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
