@@ -274,28 +274,6 @@
           <text>"everybody"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_07ja3am">
-        <inputEntry id="UnaryTests_1px9d6f">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_02v771y">
-          <text>"emerson.leandro@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1xdgu24">
-          <text>"SaoCarlos_Producao"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0lqavvj">
-        <inputEntry id="UnaryTests_06lposo">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_17mwj6t">
-          <text>"emerson.leandro@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1nheusb">
-          <text>"SaoCarlos_Cantina"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0vliomv">
         <inputEntry id="UnaryTests_1w3iy9a">
           <text></text>
