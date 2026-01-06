@@ -444,7 +444,7 @@ baseSap = get_secret('baseSap')
 
 for l in lista_entidades:
     keynfe = l['keynfe']
-    cnpj = keynfe[6-19]
+    cnpj = keynfe[6:19]
     query = f"""
             SELECT 
                 id, 
