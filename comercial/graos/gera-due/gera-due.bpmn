@@ -457,7 +457,7 @@ for l in lista_entidades:
     rspSap = Hana(connection).selectDb(query)
 
     query = f"""
-                update sap.due_eventos set entidadeid = '{rspSap['id']}', bplid = '{rspSap['BusinessPlaceId']}' where keynfe = '{keynfe}' 
+                update sap.due_eventos set entidadeid = '{rspSap[0]['id']}', bplid = '{rspSap[0]['businessplaceid']}' where keynfe = '{keynfe}'
             """
 
     Postgres(connection_pos).executeDb(query)</bpmn:script>
