@@ -399,7 +399,7 @@ del(baseSap)
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0fb9jv0" sourceRef="Gateway_17wo7pd" targetRef="Activity_0qpzdpu" />
     <bpmn:sequenceFlow id="Flow_1ac29bo" sourceRef="Gateway_10eb2vi" targetRef="Activity_14s6z3x">
-      <bpmn:conditionExpression>lista_entidades != None</bpmn:conditionExpression>
+      <bpmn:conditionExpression>len(lista_entidades) != 0</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1u73ysl" sourceRef="Activity_14s6z3x" targetRef="Gateway_17wo7pd" />
     <bpmn:scriptTask id="Activity_1hhnlk1" name="Busca DUE sem Entidade">
