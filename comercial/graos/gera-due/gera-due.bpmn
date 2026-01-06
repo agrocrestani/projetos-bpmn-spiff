@@ -398,21 +398,70 @@ del(baseSap)
       <bpmn:outgoing>Flow_0fb9jv0</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0fb9jv0" sourceRef="Gateway_17wo7pd" targetRef="Activity_0qpzdpu" />
-    <bpmn:task id="Activity_14s6z3x" name="Ajusta DUE">
-      <bpmn:incoming>Flow_1ac29bo</bpmn:incoming>
-      <bpmn:outgoing>Flow_1u73ysl</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1ac29bo" sourceRef="Gateway_10eb2vi" targetRef="Activity_14s6z3x">
       <bpmn:conditionExpression>lista_entidades != None</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1u73ysl" sourceRef="Activity_14s6z3x" targetRef="Gateway_17wo7pd" />
-    <bpmn:serviceTask id="Activity_1hhnlk1" name="Busca DUE sem Entidade">
-      <bpmn:extensionElements>
-        <spiffworkflow:preScript>lista_entidades = []</spiffworkflow:preScript>
-      </bpmn:extensionElements>
+    <bpmn:scriptTask id="Activity_1hhnlk1" name="Busca DUE sem Entidade">
       <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
       <bpmn:outgoing>Flow_0887cyy</bpmn:outgoing>
-    </bpmn:serviceTask>
+      <bpmn:script>from connectordb.postgres import Postgres
+
+connection_pos = { 
+        "host": get_secret('postgresHost'), 
+        "database": get_secret('postgresDb'), 
+        "user": get_secret('postgresUser'), 
+        "password": get_secret('postgresPassword') 
+    }
+
+query = f"""
+            select de.keynfe, de.entidadeid, de.bplid from sap.due_eventos de where de.entidadeid is null
+        """
+
+lista_entidades = Postgres(connection_pos).selectDb(query)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="Activity_14s6z3x" name="Ajusta DUE">
+      <bpmn:incoming>Flow_1ac29bo</bpmn:incoming>
+      <bpmn:outgoing>Flow_1u73ysl</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+from connectordb.postgres import Postgres
+
+connection = { 
+    "address": get_secret('hanaAddress'), 
+    "port": get_secret('hanaPort'), 
+    "user": get_secret('hanaUser'), 
+    "password": get_secret('hanaPassword') 
+} 
+
+connection_pos = { 
+        "host": get_secret('postgresHost'), 
+        "database": get_secret('postgresDb'), 
+        "user": get_secret('postgresUser'), 
+        "password": get_secret('postgresPassword') 
+    } 
+
+baseSap = get_secret('baseSap')
+
+for l in lista_entidades:
+    keynfe = l['keynfe']
+    cnpj = keynfe[6-19]
+    query = f"""
+            SELECT 
+                id, 
+                e."BusinessPlaceId", 
+                e.CNPJ 
+            FROM  {baseSap}."Entidade" e 
+            WHERE REPLACE_REGEXPR('[^[:digit:]]' IN e.CNPJ) = {cnpj} 
+        """
+
+    rspSap = Hana(connection).selectDb(query)
+
+    query = f"""
+                update sap.due_eventos set entidadeid = '{rspSap['id']}', bplid = '{rspSap['BusinessPlaceId']}' where keynfe = '{keynfe}' 
+            """
+
+    Postgres(connection_pos).executeDb(query)</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:error id="Error_1" name="Error_1">
     <bpmn:extensionElements>
@@ -432,9 +481,6 @@ del(baseSap)
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-301" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_10eb2vi_di" bpmnElement="Gateway_10eb2vi" isMarkerVisible="true">
-        <dc:Bounds x="-45" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
         <dc:Bounds x="1972" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -442,19 +488,11 @@ del(baseSap)
         <dc:Bounds x="340" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_017gpzy_di" bpmnElement="Activity_1l7qgqo">
-        <dc:Bounds x="510" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_17wo7pd_di" bpmnElement="Gateway_17wo7pd" isMarkerVisible="true">
-        <dc:Bounds x="215" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_14s6z3x_di" bpmnElement="Activity_14s6z3x">
-        <dc:Bounds x="70" y="250" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1ubonrt_di" bpmnElement="Activity_1hhnlk1">
+      <bpmndi:BPMNShape id="Activity_1d35770_di" bpmnElement="Activity_1hhnlk1">
         <dc:Bounds x="-200" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_16yulig_di" bpmnElement="Activity_14s6z3x">
+        <dc:Bounds x="70" y="250" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0rp2yix_di" bpmnElement="Activity_0rp2yix" isExpanded="true">
         <dc:Bounds x="680" y="-90" width="1240" height="597" />
@@ -518,11 +556,11 @@ del(baseSap)
           <dc:Bounds x="1004" y="72" width="73" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_14tx1k3_di" bpmnElement="Event_1pv0zjg">
-        <dc:Bounds x="1492" y="199" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1i1p2je_di" bpmnElement="Event_0dday6u">
         <dc:Bounds x="1072" y="322" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14tx1k3_di" bpmnElement="Event_1pv0zjg">
+        <dc:Bounds x="1492" y="199" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1d28xqv_di" bpmnElement="Flow_1d28xqv">
         <di:waypoint x="756" y="177" />
@@ -576,6 +614,16 @@ del(baseSap)
         <di:waypoint x="1540" y="60" />
         <di:waypoint x="1672" y="60" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_017gpzy_di" bpmnElement="Activity_1l7qgqo">
+        <dc:Bounds x="510" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_10eb2vi_di" bpmnElement="Gateway_10eb2vi" isMarkerVisible="true">
+        <dc:Bounds x="-45" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_17wo7pd_di" bpmnElement="Gateway_17wo7pd" isMarkerVisible="true">
+        <dc:Bounds x="215" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
         <di:waypoint x="-265" y="177" />
         <di:waypoint x="-200" y="177" />
