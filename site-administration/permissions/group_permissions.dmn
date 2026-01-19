@@ -1255,7 +1255,7 @@
           <text>"Armazem_AguaDaPrata"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1xkxa5t">
-          <text>["start", "read"]</text>
+          <text>["all"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_01th4hs">
           <text>"BASIC"</text>
