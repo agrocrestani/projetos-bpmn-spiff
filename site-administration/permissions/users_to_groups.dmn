@@ -1462,6 +1462,17 @@
           <text>"Querencia_Almoxarifado"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0p59zok">
+        <inputEntry id="UnaryTests_0ogi5vh">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0z8zmxj">
+          <text>"pablo.souza@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zacbw9">
+          <text>"Armazem_AguaDaPrata"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
