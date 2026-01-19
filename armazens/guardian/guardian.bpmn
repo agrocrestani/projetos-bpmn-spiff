@@ -2,7 +2,7 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:collaboration id="Collaboration_0krc72e">
     <bpmn:participant id="Participant_1lzjh0k" processRef="Process_Guardian" />
-    <bpmn:correlationKey id="CorrelationKey_0zfnfpz" name="MainCorrelationKey" />
+    <bpmn:correlationKey id="CorrelationKey_0fkm52b" name="MainCorrelationKey" />
   </bpmn:collaboration>
   <bpmn:process id="Process_Guardian">
     <bpmn:laneSet id="LaneSet_003o76c">
