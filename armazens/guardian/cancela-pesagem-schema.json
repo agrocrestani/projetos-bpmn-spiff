@@ -1,0 +1,14 @@
+{
+  "title": "Observação",
+  "description": "Informe o motivo do cancelamento dessa pesagem",
+  "type": "object",
+  "required": [
+    "observacao"
+  ],
+  "properties": {
+    "observacao": {
+      "type": "string",
+      "title": "Observação"
+    }
+  }
+}

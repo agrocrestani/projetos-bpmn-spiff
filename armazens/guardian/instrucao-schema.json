@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "properties": {
+    "parceiro": {
+      "title": "Parceiro de Negócio",
+      "type": "string",
+      "anyOf": {{parceiros|tojson}}
+    },
+      "instrucao": {
+      "title": "Selecione a instrucao",
+      "type": "string",
+      "anyOf": {{instrucoes|tojson}}
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "title": "Date",
+  "description": "Create a date field with a date picker (delivery_date).",
+  "type": "object",
+  "required": [
+    "numeroNota",
+    "dataNota",
+    "quantidadeNota",
+    "valorNota",
+    "serieNota"
+  ],
+  "properties": {
+    "numeroNota": {
+      "type": "number",
+      "title": "Número NFe"
+    },
+    "serieNota": {
+      "type": "string",
+      "title": "Série",
+      "anyOf": [
+        "options_from_task_data_var:series_list"
+      ]
+    },
+    "dataNota": {
+      "type": "string",
+      "format": "date",
+      "title": "Data NFe",
+      "validationErrorMessage": "Date must be today's date or later"
+    },
+    "quantidadeNota": {
+      "type": "number",
+      "title": "Quantidade"
+    },
+    "valorNota": {
+      "type": "number",
+      "title": "Valor Total da Nota"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "parceiros": [
+    {
+      "type": "string",
+      "enum": [
+        "5846519402"
+      ],
+      "title": "5846519402"
+    }
+  ],
+  "instrucoes": [
+    {
+      "type": "string",
+      "enum": [
+        "7738297402"
+      ],
+      "title": "TESTE GUARDIAN"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "parceiros": [
+    {
+      "type": "string",
+      "enum": [
+        "5846519402"
+      ],
+      "title": "CLIENTE TESTE"
+    }
+  ],
+  "instrucoes": [
+    {
+      "type": "string",
+      "enum": [
+        "7738297402"
+      ],
+      "title": "TESTE GUARDIAN"
+    }
+  ],
+  "parceiro": "5846519402",
+  "instrucao": "7738297402"
+}

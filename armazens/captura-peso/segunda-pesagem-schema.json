@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Exemplo de Schema",
+  "type": "object",
+  "properties": {
+    "repetir_segunda_pesagem": {
+      "type": "boolean",
+      "title": "Repetir primeira pesagem?",
+      "default": false
+    },
+    "informar_segundo_peso_manual": {
+      "type": "boolean",
+      "title": "Peso manual",
+      "default": false
+    }
+  },
+  "dependencies": {
+    "informar_segundo_peso_manual": {
+      "oneOf": [
+        {
+          "properties": {
+            "informar_segundo_peso_manual": {
+              "enum": [false]
+            }
+          }
+        },
+        {
+          "properties": {
+            "informar_segundo_peso_manual": {
+              "enum": [true]
+            },
+            "segundo_peso_manual": {
+              "type": "number",
+              "title": "Segundo Peso Manual",
+              "default": 0
+            }
+          },
+          "required": ["segundo_peso_manual"]
+        }
+      ]
+    }
+  }
+}

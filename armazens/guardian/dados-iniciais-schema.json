@@ -1,0 +1,70 @@
+{
+  "type": "object",
+  "required": [
+    "placa",
+    "talhoes",
+    "safra",
+    "filial",
+    "placa",
+    "motorista",
+    "armazem",
+    "equipe"
+  ],
+  "properties": {
+    "safra": {
+      "type": "string",
+      "title": "Selecione a Safra",
+      "anyOf": {{safras|tojson}}
+    },
+    "filial": {
+      "type": "string",
+      "title": "Filial de entrada",
+      "anyOf": {{filiais|tojson}}
+    },
+    "armazem": {
+      "type": "string",
+      "title": "Armazem",
+      "anyOf": {{armazens|tojson}}
+    },
+    "equipe": {
+      "type": "string",
+      "title": "Equipe de Colheita",
+      "anyOf": {{equipes|tojson}}
+    },
+    "placa": {
+      "type": "string",
+      "title": "Placa caminhão"
+    },
+    "ordem_carregamento": {
+      "type": "number",
+      "title": "Nº Ordem de Carregamento"
+    },
+    "motorista": {
+      "type": "string",
+      "title": "Motorista"
+    },
+    "talhoes": {
+      "type": "array",
+      "title": "Talhões colhidos",
+      "items": {
+        "type": "object",
+        "required": [
+          "talhao",
+          "porcentagem_carga"
+        ],
+        "properties": {
+          "talhao": {
+            "type": "string",
+            "title": "Sel. Talhão",
+            "anyOf": {{talhoes_list|tojson}}
+          },
+          "porcentagem_carga": {
+            "type": "number",
+            "title": "% Carga",
+            "default": 100
+          }
+        }
+      }
+    }
+  }
+}

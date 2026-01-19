@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "observacao": {
+      "type": "string",
+      "title": "Observações",
+      "default": 
+    }
+  }
+}

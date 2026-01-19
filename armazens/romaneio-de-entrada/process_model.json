@@ -1,0 +1,14 @@
+{
+    "description": "",
+    "display_name": "Romaneio de Entrada",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": [
+        {
+            "key": "placa",
+            "path": "placa"
+        }
+    ],
+    "primary_file_name": "romaneio-de-entrada.bpmn",
+    "primary_process_id": "Romaneio_de_entrada"
+}

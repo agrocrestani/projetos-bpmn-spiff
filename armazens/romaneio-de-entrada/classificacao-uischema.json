@@ -1,0 +1,30 @@
+{
+  "ui:layout": [
+    {
+      "umidade": {},
+      "impureza": {}
+    },
+    {
+      "avariados": {},
+      "quebrados": {}
+    },
+    {
+      "ardidos": {},
+      "outros": {}
+    },
+    {
+      "graosverdes": {
+        "sm": 2,
+        "md": 2,
+        "lg": 4
+      },
+      "numeroclassificacao": {}
+    },
+    {
+        "observacao": {}
+    }
+  ],
+  "observacao": {
+    "ui:widget": "textarea"
+  }
+}

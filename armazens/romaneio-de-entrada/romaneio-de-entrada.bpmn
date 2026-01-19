@@ -1,0 +1,916 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
+  <bpmn:collaboration id="Collaboration_0psgp5t">
+    <bpmn:participant id="Participant_1e42ciu" processRef="Romaneio_de_entrada" />
+    <bpmn:correlationKey id="CorrelationKey_1ut0kr0" name="MainCorrelationKey" />
+  </bpmn:collaboration>
+  <bpmn:process id="Romaneio_de_entrada" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_1oxpesl">
+      <bpmn:lane id="Lane_11klbwb" name="Unidade">
+        <bpmn:flowNodeRef>Activity_0r1naah</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_072r0sk</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_04f1q0v</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_09xdi3q</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0m401yq</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0nsbc0v</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1v06whd</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1c71uy8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0iaekf6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0s5ul2f</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1szfprk</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1r6yptl</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_06lrryv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_095jyf2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0jvhy61</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0wyybe4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_05zofu6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1uph1hi</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1n1vyqp</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0qpzdpu</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_0tvwido">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0f32b6k</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:sequenceFlow id="Flow_17db3yp" sourceRef="StartEvent_1" targetRef="Activity_0f32b6k" />
+    <bpmn:sequenceFlow id="Flow_0n0qubj" sourceRef="Gateway_1szfprk" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_1272iop" sourceRef="Gateway_072r0sk" targetRef="Activity_0qpzdpu" />
+    <bpmn:sequenceFlow id="Flow_12pkbxb" sourceRef="Activity_0qpzdpu" targetRef="Gateway_05zofu6" />
+    <bpmn:sequenceFlow id="Flow_099z31f" sourceRef="Activity_09xdi3q" targetRef="Activity_1v06whd" />
+    <bpmn:sequenceFlow id="Flow_08tkr96" sourceRef="Gateway_1c71uy8" targetRef="Activity_0m401yq" />
+    <bpmn:sequenceFlow id="Flow_1nxhc4v" sourceRef="Activity_0m401yq" targetRef="Gateway_095jyf2" />
+    <bpmn:sequenceFlow id="Flow_0kzdzdj" sourceRef="Activity_04f1q0v" targetRef="Activity_0r1naah" />
+    <bpmn:sequenceFlow id="Flow_1p3rzgr" sourceRef="Activity_0r1naah" targetRef="Gateway_072r0sk" />
+    <bpmn:sequenceFlow id="Flow_18rdc55" sourceRef="Gateway_0jvhy61" targetRef="Activity_0nsbc0v" />
+    <bpmn:sequenceFlow id="Flow_09sp3je" sourceRef="Activity_0nsbc0v" targetRef="Gateway_1r6yptl" />
+    <bpmn:sequenceFlow id="Flow_14onqsu" sourceRef="Activity_1v06whd" targetRef="Gateway_1c71uy8" />
+    <bpmn:sequenceFlow id="Flow_0vtnsso" sourceRef="Gateway_1c71uy8" targetRef="Activity_0iaekf6">
+      <bpmn:conditionExpression>placa_valida == False</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_06ekiz6" sourceRef="Activity_0iaekf6" targetRef="Gateway_072r0sk" />
+    <bpmn:sequenceFlow id="Flow_12jui6c" sourceRef="Gateway_1r6yptl" targetRef="Activity_0s5ul2f" />
+    <bpmn:sequenceFlow id="Flow_0sr1vyf" sourceRef="Activity_0s5ul2f" targetRef="Gateway_1szfprk" />
+    <bpmn:sequenceFlow id="Flow_066v3tp" sourceRef="Gateway_1szfprk" targetRef="Activity_06lrryv">
+      <bpmn:conditionExpression>code_proc != 201</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_08vf6pz" sourceRef="Activity_06lrryv" targetRef="Gateway_1r6yptl" />
+    <bpmn:sequenceFlow id="Flow_1rz0lx0" sourceRef="Gateway_095jyf2" targetRef="Activity_0wyybe4" />
+    <bpmn:sequenceFlow id="Flow_0uf5z2t" name="Guardian" sourceRef="Gateway_095jyf2" targetRef="Gateway_0jvhy61">
+      <bpmn:conditionExpression>sistema == 'guardian'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1wdl8xi" sourceRef="Activity_0wyybe4" targetRef="Gateway_0jvhy61" />
+    <bpmn:sequenceFlow id="Flow_10zineb" sourceRef="Activity_0f32b6k" targetRef="Activity_04f1q0v" />
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_17db3yp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:scriptTask id="Activity_0f32b6k" name="Define sistema e usuario">
+      <bpmn:incoming>Flow_17db3yp</bpmn:incoming>
+      <bpmn:outgoing>Flow_10zineb</bpmn:outgoing>
+      <bpmn:script>sistema = 'spiffworkflow'
+usuarioLogado = get_current_user()['display_name']
+owner = get_current_user()['email']
+lane_owners = {
+    "Unidade": [owner]
+    }</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="Activity_0r1naah" name="Atualiza Tabelas">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>Atualizando lista de filiais. Por favor aguarde.</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0kzdzdj</bpmn:incoming>
+      <bpmn:outgoing>Flow_1p3rzgr</bpmn:outgoing>
+      <bpmn:script>from connectordb.oracle import Oracle
+from datetime import datetime
+
+connection = {
+    "dsn": "172.20.2.2/prod",
+    "user": "agnew",
+    "password": "agnew"
+}
+
+#Busca Filiais
+filiais_unisystem = ", ".join("'" + str(item) + "'" for item in filiais_unisystem)
+
+query_filiais = f"""
+            SELECT COD_FILIAL, DESCRICAO_FILIAL FROM FILIAIS WHERE COD_FILIAL IN ({filiais_unisystem}) ORDER BY DESCRICAO_FILIAL 
+          """
+
+rsp_filiais = Oracle(connection).selectDb(query_filiais)
+
+filiais = [
+    {
+      "value": "",
+      "label": ""
+    }
+]
+
+for r in rsp_filiais:
+    cod_filial = str(r['cod_filial'])
+    descricao_filial = str(r['descricao_filial'])
+    filiais.append(
+        {
+            "value": cod_filial, 
+            "label": descricao_filial
+        }
+    )
+
+#Busca Armazens
+armazem_unisystem = ", ".join("'" + str(item) + "'" for item in armazem_unisystem)
+
+query_armazens = f"""
+            SELECT SEQ_PLA_ARMAZEM, DESC_ARMAZEM FROM ZVW_ARMAZENS WHERE SEQ_PLA_ARMAZEM IN ({armazem_unisystem}) ORDER BY DESC_ARMAZEM 
+          """
+
+rsp_armazens = Oracle(connection).selectDb(query_armazens)
+
+armazens = [
+    {
+      "value": "",
+      "label": ""
+    }
+]
+
+for r in rsp_armazens:
+    seq_pla_armazem = str(r['seq_pla_armazem'])
+    desc_armazem = str(r['desc_armazem'])
+    armazens.append(
+        {
+            "value": seq_pla_armazem, 
+            "label": desc_armazem
+        }
+    )
+
+#Busca Safras
+query_safras = f"""
+            SELECT 
+                cod_safra, 
+                descricao_safra, 
+                TO_CHAR(data_inicio, 'YYYY-MM-DD') AS data_inicio,
+                TO_CHAR(data_final, 'YYYY-MM-DD') AS data_final 
+            FROM SAFRAS 
+            ORDER BY descricao_safra 
+          """
+
+rsp_safras = Oracle(connection).selectDb(query_safras)
+
+data_atual = datetime.now()
+
+safra = ''
+
+for s in rsp_safras:
+        dt_inicio = datetime.strptime(s["data_inicio"], '%Y-%m-%d')
+        dt_final = datetime.strptime(s["data_final"], '%Y-%m-%d')
+
+        if dt_inicio &lt;= data_atual &lt;= dt_final:
+            safra = str(s["cod_safra"])
+
+safras = [
+    {
+      "value": "",
+      "label": ""
+    }
+]
+
+for r in rsp_safras:
+    cod_safra = str(r['cod_safra'])
+    descricao_safra = str(r['descricao_safra'])
+    safras.append(
+        {
+            "value": cod_safra, 
+            "label": descricao_safra
+        }
+    )
+
+#Busca Equipes
+query_equipes = f"""
+            SELECT * 
+            FROM EQUIPE_COLHEITA EC
+            WHERE zac_retDePara('U','992','EQUIPE_COLHEITA',EC.seq_pla_equipe,NULL,NULL) IS NOT NULL
+            ORDER BY NOME_EQUIPE
+          """
+
+rsp_equipes = Oracle(connection).selectDb(query_equipes)
+
+equipes = [
+    {
+      "value": "",
+      "label": ""
+    }
+]
+
+for r in rsp_equipes:
+    seq_pla_equipe = str(r['seq_pla_equipe'])
+    nome_equipe = str(r['nome_equipe'])
+    equipes.append(
+        {
+            "value": seq_pla_equipe, 
+            "label": nome_equipe
+        }
+    )
+
+#Busca Talhoes
+query_talhoes = f"""
+            select t0.TALHAO 
+            from zvw_os_colheita t0
+            INNER JOIN FAZENDAS t1 ON t0.SEQ_PLA_FAZENDA = t1.SEQ_PLA_FAZENDA
+            INNER JOIN AGLOMERADOS t2 ON t1.SEQ_PLA_AGLOMERADO = t2.SEQ_PLA_AGLOMERADO 
+            INNER JOIN FILIAIS t3 ON t2.COD_FILIAL = t3.COD_FILIAL
+            WHERE 
+                t3.COD_FILIAL IN ({filiais_unisystem})
+            ORDER BY T0.TALHAO
+          """
+
+rsp_talhoes = Oracle(connection).selectDb(query_talhoes)
+
+talhoes_list = [
+    {
+      "value": "",
+      "label": ""
+    }
+]
+
+for r in rsp_talhoes:
+    cod_talhao = str(r['talhao'])
+    desc_talhao = str(r['talhao'])
+    talhoes_list.append(
+        {
+            "value": cod_talhao, 
+            "label": desc_talhao
+        }
+    )
+
+#Busca Series
+query_series = f"""
+            SELECT SEQ_PLA_SERIE, SERIE FROM SERIES ORDER BY SERIE
+          """
+
+rsp_series = Oracle(connection).selectDb(query_series)
+
+series_list = [
+    {
+      "value": "",
+      "label": ""
+    }
+]
+
+for r in rsp_series:
+    seq_pla_serie = str(r['seq_pla_serie'])
+    serie = str(r['serie'])
+    series_list.append(
+        {
+            "value": seq_pla_serie, 
+            "label": serie
+        }
+    )
+
+del(rsp_filiais)
+del(connection)
+del(query_filiais)
+del(rsp_armazens)
+del(query_armazens)
+del(rsp_safras),
+del(query_safras)
+del(rsp_equipes)
+del(query_equipes)
+del(rsp_talhoes)
+del(query_talhoes)
+del(rsp_series)
+del(query_series)
+del(r)
+</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:exclusiveGateway id="Gateway_072r0sk">
+      <bpmn:incoming>Flow_1p3rzgr</bpmn:incoming>
+      <bpmn:incoming>Flow_06ekiz6</bpmn:incoming>
+      <bpmn:outgoing>Flow_1272iop</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:callActivity id="Activity_04f1q0v" name="Define filial e armazem" calledElement="Process_definir_unidade_e_departamento_zxer6t3">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser />
+        <spiffworkflow:postScript>group_identifier = local_trabalho</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_10zineb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0kzdzdj</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:sequenceFlow id="Flow_03961vh" sourceRef="Gateway_05zofu6" targetRef="Activity_1n1vyqp">
+      <bpmn:conditionExpression>comNotaFiscal == True</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:incoming>Flow_0n0qubj</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:scriptTask id="Activity_09xdi3q" name="Busca Info Unisystem">
+      <bpmn:incoming>Flow_0at872m</bpmn:incoming>
+      <bpmn:outgoing>Flow_099z31f</bpmn:outgoing>
+      <bpmn:script>from connectordb.oracle import Oracle
+from connectordb.hana import Hana
+
+connection = {
+    "dsn": "172.20.2.2/prod",
+    "user": "agnew",
+    "password": "agnew"
+}
+
+talhoes_consulta = []
+for i in talhoes:
+    talhoes_consulta.append(i['talhao'])
+    
+talhoes_consulta = ", ".join("'" + str(item) + "'" for item in talhoes_consulta)
+
+query_os = f"""
+            select * from zvw_os_colheita where talhao in ({talhoes_consulta})
+          """
+os = Oracle(connection).selectDb(query_os)
+
+produto = os[0]['produto']
+seq_pla_produto = os[0]['seq_pla_produto']
+
+query_armazem = f"""
+            SELECT * FROM zvw_armazens WHERE cod_filial = '{filial}'
+          """
+rsp_armazens = Oracle(connection).selectDb(query_armazem)
+
+armazens = [
+    {
+      "value": "",
+      "label": ""
+    }
+]
+
+for r in rsp_armazens:
+    seq_pla_armazem = str(r['seq_pla_armazem'])
+    desc_armazem = str(r['desc_armazem'])
+    armazens.append(
+        {
+            "value": seq_pla_armazem, 
+            "label": desc_armazem
+        }
+    )
+
+del(r)
+del(rsp_armazens)
+del(query_armazem)
+del(query_os)
+del(connection)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:manualTask id="Activity_0m401yq" name="Vizualizar Dados">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Ticket de Pesagem - Armazém&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .ticket-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .ticket-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .ticket-header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #333;
+    }
+    .ticket-header h2 {
+      margin: 5px 0 0;
+      font-size: 18px;
+      color: #666;
+    }
+    .ticket-section {
+      margin-bottom: 20px;
+    }
+    .ticket-section p {
+      margin: 8px 0;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+    .label {
+      font-weight: bold;
+      color: #444;
+    }
+    .ticket-summary {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #007BFF;
+      border-top: 1px solid #ddd;
+      padding-top: 15px;
+    }
+    .print-button {
+      display: block;
+      width: 200px;
+      margin: 30px auto 0;
+      padding: 10px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .print-button:hover {
+      background-color: #0056b3;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="ticket-container"&gt;
+    &lt;div class="ticket-header"&gt;
+      &lt;h1&gt;Conferência Antes da Pesagem&lt;/h1&gt;
+      &lt;h3&gt;{{descricao_filial}}&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class="ticket-section"&gt;
+      &lt;p&gt;&lt;span class="label"&gt;Data:&lt;/span&gt; {{data_atual}}&lt;/p&gt;
+{% for o in os %}
+      &lt;p&gt;&lt;span class="label"&gt;OS Unisystem:&lt;/span&gt; {{ o['nr_os'] }}&lt;/p&gt;
+{% endfor %}
+    &lt;/div&gt;
+    &lt;div class="ticket-section"&gt;
+      &lt;p&gt;&lt;span class="label"&gt;Placa:&lt;/span&gt; {{placa}}&lt;/p&gt;
+      &lt;p&gt;&lt;span class="label"&gt;Motorista:&lt;/span&gt; {{motorista}}&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="ticket-section"&gt;
+      &lt;p&gt;&lt;span class="label"&gt;Unidade:&lt;/span&gt; {{descricao_filial}}&lt;/p&gt;
+      &lt;p&gt;&lt;span class="label"&gt;Produto:&lt;/span&gt; {{produto}}&lt;/p&gt;
+{% for t in talhoes %}
+      &lt;p&gt;&lt;span class="label"&gt;Talhão:&lt;/span&gt; {{ t['talhao'] }}&lt;/p&gt;
+      &lt;p&gt;&lt;span class="label"&gt;Porcentagem Carga:&lt;/span&gt; {{ t['porcentagem_carga'] }}&lt;/p&gt;
+{% endfor %}
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:preScript>from datetime import datetime
+
+# Obtém a data e hora atual
+data_atual = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+Codigo = get_toplevel_process_info()['process_instance_id']</spiffworkflow:preScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_08tkr96</bpmn:incoming>
+      <bpmn:outgoing>Flow_1nxhc4v</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:userTask id="Activity_0nsbc0v" name="Classificação">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="classificacao-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="classificacao-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser>&lt;div style="background-color: #d4edda; padding: 20px; border-radius: 5px;"&gt;
+  &lt;h1 style="color: #155724;"&gt;Classificação&lt;/h1&gt;
+&lt;/div&gt;
+</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_18rdc55</bpmn:incoming>
+      <bpmn:outgoing>Flow_09sp3je</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:scriptTask id="Activity_1v06whd" name="Valida Placa">
+      <bpmn:incoming>Flow_099z31f</bpmn:incoming>
+      <bpmn:outgoing>Flow_14onqsu</bpmn:outgoing>
+      <bpmn:script>from connectordb.hana import Hana
+
+connection = {
+    "address": "172.20.1.4",
+    "port": "30015",
+    "user": "SYSTEM",
+    "password": "9Ab63^Op33"
+}
+
+baseSap = get_secret('baseSap')
+
+caracteres_para_remover = ["-", ".", "_", "/"]
+
+# Remove cada caractere usando replace
+for caractere in caracteres_para_remover:
+  placa = placa.replace(caractere, "")
+
+placa = placa.upper()
+
+query_placa = f"""
+            SELECT O."ItemCode" FROM {baseSap}.OITM O WHERE ("FrgnName" = '{placa}' OR "InventryNo" = '{placa}') 
+          """
+
+rsp_placa = Hana(connection).selectDb(query_placa)
+
+if rsp_placa:
+  placa_valida = True
+else:
+  placa_valida = False
+  mensagem_placa = "Placa não foi encontrada no SAP. Clique em continuar para corrigir a placa."</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:exclusiveGateway id="Gateway_1c71uy8" default="Flow_08tkr96">
+      <bpmn:incoming>Flow_14onqsu</bpmn:incoming>
+      <bpmn:outgoing>Flow_08tkr96</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0vtnsso</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:manualTask id="Activity_0iaekf6" name="Mensagem">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>&lt;div style="border: 1px solid #ffeeba; background-color: #fff3cd; color: #856404; padding: 20px; border-radius: 5px; margin: 20px 0;"&gt;
+  &lt;h1 style="margin-top: 0;"&gt;Validação da placa&lt;/h2&gt;
+  &lt;h3&gt;A placa &lt;strong&gt;{{placa}}&lt;/strong&gt; não foi encontrada no SAP. Por favor, verifique e clique em &lt;strong&gt;continuar&lt;/strong&gt; para corrigir a placa.&lt;/p&gt;
+&lt;/div&gt;</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:guestConfirmation />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0vtnsso</bpmn:incoming>
+      <bpmn:outgoing>Flow_06ekiz6</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:scriptTask id="Activity_0s5ul2f" name="Envia Unisystem">
+      <bpmn:incoming>Flow_12jui6c</bpmn:incoming>
+      <bpmn:outgoing>Flow_0sr1vyf</bpmn:outgoing>
+      <bpmn:script>from connectordb.oracle import Oracle
+from datetime import datetime
+import json
+
+baseUni = get_secret('baseUnisystem')
+usuarioLogado = get_current_user()['display_name']
+
+connection = {
+    "dsn": baseUni,
+    "user": "agnew",
+    "password": "agnew"
+}
+
+
+id_processo = get_current_task_info()['id']
+
+for t in talhoes:
+    for o in os:
+        if t['talhao'] == o['talhao']:
+            t['pfazenda'] = o['seq_pla_fazenda']
+            t['pordermservico'] = o['seq_pla_ordem']
+
+# talhoes = json.dumps(talhoes)
+
+data_envio = datetime.now().strftime("%d/%m/%Y")
+
+if not observacao:
+    observacao = None
+
+payload = {
+    "pcodigo": Codigo,
+    "pplacaveiculo": placa,
+    "pplacacarreta": placa,
+    "ptagassociado": None,
+    "pmotorista": motorista,
+    "ptalhoes": talhoes,
+    "pproduto": seq_pla_produto,
+    "pbruto": peso_bruto,
+    "ptara": peso_tara,
+    "pliquido": peso_liquido,
+    "ptipodocumento": "osg",
+    "parmazem": armazem,
+    "pdata": data_envio,
+    "psafra": safra,
+    "pequipe": equipe,
+    "pumidade": umidade,
+    "pimpureza": impureza,
+    "pavariados": avariados,
+    "pquebrados": quebrados,
+    "pardidos": ardidos,
+    "poutros": outros,
+    "pgraosverdes": graosverdes,
+    "pnotaorigem": numeroNota,
+    "pdataorigem": dataNota,
+    "pserieorigem": serieNota,
+    "pvalororigem": valorNota,
+    "pqtdeorigem": quantidadeNota,
+    "pobservacao": observacao,
+    "pordemcarregamento": ordem_carregamento,
+    "data_pesagem_inicial": data_pesagem_inicial,
+    "primeira_pesagem_manual": informar_primeiro_peso_manual,
+    "data_pesagem_final": data_pesagem_final,
+    "segunda_pesagem_manual": informar_segundo_peso_manual,
+    "origem": group_identifier,
+    "usuario": usuarioLogado.upper(),
+    "numeroclassificacao": numeroclassificacao
+}
+
+# payload2 = " ".join(payload.splitlines())
+
+# payload3 = "{"+payload2+"}"
+
+payload = json.dumps(payload)
+
+payload_proc = [f"'{payload}'"]
+
+romaneio = Oracle(connection).callProc('zprocessaromaneio', id_processo, payload)
+
+code_proc, message_proc = romaneio</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:exclusiveGateway id="Gateway_1szfprk" default="Flow_0n0qubj">
+      <bpmn:incoming>Flow_0sr1vyf</bpmn:incoming>
+      <bpmn:outgoing>Flow_0n0qubj</bpmn:outgoing>
+      <bpmn:outgoing>Flow_066v3tp</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_1r6yptl">
+      <bpmn:incoming>Flow_09sp3je</bpmn:incoming>
+      <bpmn:incoming>Flow_08vf6pz</bpmn:incoming>
+      <bpmn:outgoing>Flow_12jui6c</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:manualTask id="Activity_06lrryv" name="Mensagem Erro">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>&lt;div style="border: 1px solid #ffeeba; background-color: #fff3cd; color: #856404; padding: 20px; border-radius: 5px; margin: 20px 0;"&gt;
+  &lt;h1 style="margin-top: 0;"&gt;Erro na inclusão do Romaneio&lt;/h1&gt;
+  &lt;h3&gt;{{message_proc}}&lt;/h3&gt;
+&lt;/div&gt;
+</spiffworkflow:instructionsForEndUser>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_066v3tp</bpmn:incoming>
+      <bpmn:outgoing>Flow_08vf6pz</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:exclusiveGateway id="Gateway_095jyf2" default="Flow_1rz0lx0">
+      <bpmn:incoming>Flow_1nxhc4v</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rz0lx0</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0uf5z2t</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_0jvhy61">
+      <bpmn:incoming>Flow_1wdl8xi</bpmn:incoming>
+      <bpmn:incoming>Flow_0uf5z2t</bpmn:incoming>
+      <bpmn:outgoing>Flow_18rdc55</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:callActivity id="Activity_0wyybe4" name="Captura Peso" calledElement="Captura_peso">
+      <bpmn:incoming>Flow_1rz0lx0</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wdl8xi</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:sequenceFlow id="Flow_0ecrxtw" sourceRef="Activity_1n1vyqp" targetRef="Gateway_1uph1hi" />
+    <bpmn:exclusiveGateway id="Gateway_05zofu6" default="Flow_0159czy">
+      <bpmn:incoming>Flow_12pkbxb</bpmn:incoming>
+      <bpmn:outgoing>Flow_03961vh</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0159czy</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_1uph1hi">
+      <bpmn:incoming>Flow_0ecrxtw</bpmn:incoming>
+      <bpmn:incoming>Flow_0159czy</bpmn:incoming>
+      <bpmn:outgoing>Flow_0at872m</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0at872m" sourceRef="Gateway_1uph1hi" targetRef="Activity_09xdi3q" />
+    <bpmn:sequenceFlow id="Flow_0159czy" sourceRef="Gateway_05zofu6" targetRef="Gateway_1uph1hi" />
+    <bpmn:userTask id="Activity_1n1vyqp" name="Nota fiscal">
+      <bpmn:extensionElements>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="nota-fiscal-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="nota-fiscal-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:instructionsForEndUser>&lt;div style="background-color: #d4edda; padding: 20px; border-radius: 5px;"&gt;
+  &lt;h1 style="color: #155724;"&gt;Dados da NFE&lt;/h1&gt;
+&lt;/div&gt;
+</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:postScript>from datetime import datetime
+
+# Converter para objeto datetime
+dataNota = datetime.strptime(dataNota, "%Y-%m-%d").strftime("%d/%m/%Y")</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_03961vh</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ecrxtw</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0qpzdpu" name="Romaneio de Entrada">
+      <bpmn:extensionElements>
+        <spiffworkflow:instructionsForEndUser>&lt;div style="background-color: #d4edda; padding: 20px; border-radius: 5px;"&gt;
+  &lt;h1 style="color: #155724;"&gt;Romaneio de Entrada&lt;/h1&gt;
+&lt;/div&gt;
+</spiffworkflow:instructionsForEndUser>
+        <spiffworkflow:properties>
+          <spiffworkflow:property name="formJsonSchemaFilename" value="dados-iniciais-schema.json" />
+          <spiffworkflow:property name="formUiSchemaFilename" value="dados-iniciais-uischema.json" />
+        </spiffworkflow:properties>
+        <spiffworkflow:postScript>for f in filiais:
+    if f["value"] == filial:
+        descricao_filial = f["label"]
+        break
+
+if comNotaFiscal == False:
+    dataNota = None
+    numeroNota = None
+    serieNota = None
+    quantidadeNota = None
+    valorNota = None</spiffworkflow:postScript>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1272iop</bpmn:incoming>
+      <bpmn:outgoing>Flow_12pkbxb</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0psgp5t">
+      <bpmndi:BPMNShape id="Participant_1e42ciu_di" bpmnElement="Participant_1e42ciu" isHorizontal="true">
+        <dc:Bounds x="-150" y="-240" width="2800" height="614" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0tvwido_di" bpmnElement="Lane_0tvwido" isHorizontal="true">
+        <dc:Bounds x="-120" y="-240" width="2770" height="280" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_11klbwb_di" bpmnElement="Lane_11klbwb" isHorizontal="true">
+        <dc:Bounds x="-120" y="40" width="2770" height="334" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="-88" y="-128" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_092zlze_di" bpmnElement="Activity_0f32b6k">
+        <dc:Bounds x="10" y="-150" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1o0ejqy_di" bpmnElement="Activity_0r1naah">
+        <dc:Bounds x="420" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_072r0sk_di" bpmnElement="Gateway_072r0sk" isMarkerVisible="true">
+        <dc:Bounds x="555" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_04d8qb2_di" bpmnElement="Activity_04f1q0v">
+        <dc:Bounds x="230" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14za570_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="2592" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1mdvo4p_di" bpmnElement="Activity_09xdi3q">
+        <dc:Bounds x="1160" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05c6gqk_di" bpmnElement="Activity_0m401yq">
+        <dc:Bounds x="1570" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1op3h9k_di" bpmnElement="Activity_0nsbc0v">
+        <dc:Bounds x="2080" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1jt2vpb_di" bpmnElement="Activity_1v06whd">
+        <dc:Bounds x="1310" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1c71uy8_di" bpmnElement="Gateway_1c71uy8" isMarkerVisible="true">
+        <dc:Bounds x="1465" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1h62mq3_di" bpmnElement="Activity_0iaekf6">
+        <dc:Bounds x="1160" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_173wy0i_di" bpmnElement="Activity_0s5ul2f">
+        <dc:Bounds x="2330" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1szfprk_di" bpmnElement="Gateway_1szfprk" isMarkerVisible="true">
+        <dc:Bounds x="2485" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1r6yptl_di" bpmnElement="Gateway_1r6yptl" isMarkerVisible="true">
+        <dc:Bounds x="2225" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_07onuwu_di" bpmnElement="Activity_06lrryv">
+        <dc:Bounds x="2330" y="270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_095jyf2_di" bpmnElement="Gateway_095jyf2" isMarkerVisible="true">
+        <dc:Bounds x="1725" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0jvhy61_di" bpmnElement="Gateway_0jvhy61" isMarkerVisible="true">
+        <dc:Bounds x="1985" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1brjxbl_di" bpmnElement="Activity_0wyybe4">
+        <dc:Bounds x="1830" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_05zofu6_di" bpmnElement="Gateway_05zofu6" isMarkerVisible="true">
+        <dc:Bounds x="815" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1uph1hi_di" bpmnElement="Gateway_1uph1hi" isMarkerVisible="true">
+        <dc:Bounds x="1065" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1cfnq3k_di" bpmnElement="Activity_1n1vyqp">
+        <dc:Bounds x="920" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0x39e8w_di" bpmnElement="Activity_0qpzdpu">
+        <dc:Bounds x="650" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_17db3yp_di" bpmnElement="Flow_17db3yp">
+        <di:waypoint x="-52" y="-110" />
+        <di:waypoint x="10" y="-110" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0n0qubj_di" bpmnElement="Flow_0n0qubj">
+        <di:waypoint x="2535" y="177" />
+        <di:waypoint x="2592" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1272iop_di" bpmnElement="Flow_1272iop">
+        <di:waypoint x="605" y="177" />
+        <di:waypoint x="650" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12pkbxb_di" bpmnElement="Flow_12pkbxb">
+        <di:waypoint x="750" y="177" />
+        <di:waypoint x="815" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_099z31f_di" bpmnElement="Flow_099z31f">
+        <di:waypoint x="1260" y="177" />
+        <di:waypoint x="1310" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08tkr96_di" bpmnElement="Flow_08tkr96">
+        <di:waypoint x="1515" y="177" />
+        <di:waypoint x="1570" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1nxhc4v_di" bpmnElement="Flow_1nxhc4v">
+        <di:waypoint x="1670" y="177" />
+        <di:waypoint x="1725" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kzdzdj_di" bpmnElement="Flow_0kzdzdj">
+        <di:waypoint x="330" y="177" />
+        <di:waypoint x="420" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1p3rzgr_di" bpmnElement="Flow_1p3rzgr">
+        <di:waypoint x="520" y="177" />
+        <di:waypoint x="555" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18rdc55_di" bpmnElement="Flow_18rdc55">
+        <di:waypoint x="2035" y="177" />
+        <di:waypoint x="2080" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09sp3je_di" bpmnElement="Flow_09sp3je">
+        <di:waypoint x="2180" y="177" />
+        <di:waypoint x="2225" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14onqsu_di" bpmnElement="Flow_14onqsu">
+        <di:waypoint x="1410" y="177" />
+        <di:waypoint x="1465" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vtnsso_di" bpmnElement="Flow_0vtnsso">
+        <di:waypoint x="1490" y="202" />
+        <di:waypoint x="1490" y="310" />
+        <di:waypoint x="1260" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06ekiz6_di" bpmnElement="Flow_06ekiz6">
+        <di:waypoint x="1160" y="310" />
+        <di:waypoint x="580" y="310" />
+        <di:waypoint x="580" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12jui6c_di" bpmnElement="Flow_12jui6c">
+        <di:waypoint x="2275" y="177" />
+        <di:waypoint x="2330" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0sr1vyf_di" bpmnElement="Flow_0sr1vyf">
+        <di:waypoint x="2430" y="177" />
+        <di:waypoint x="2485" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_066v3tp_di" bpmnElement="Flow_066v3tp">
+        <di:waypoint x="2510" y="202" />
+        <di:waypoint x="2510" y="310" />
+        <di:waypoint x="2430" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08vf6pz_di" bpmnElement="Flow_08vf6pz">
+        <di:waypoint x="2330" y="310" />
+        <di:waypoint x="2250" y="310" />
+        <di:waypoint x="2250" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rz0lx0_di" bpmnElement="Flow_1rz0lx0">
+        <di:waypoint x="1775" y="177" />
+        <di:waypoint x="1830" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0uf5z2t_di" bpmnElement="Flow_0uf5z2t">
+        <di:waypoint x="1750" y="202" />
+        <di:waypoint x="1750" y="310" />
+        <di:waypoint x="2010" y="310" />
+        <di:waypoint x="2010" y="202" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1857" y="292" width="46" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wdl8xi_di" bpmnElement="Flow_1wdl8xi">
+        <di:waypoint x="1930" y="177" />
+        <di:waypoint x="1985" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10zineb_di" bpmnElement="Flow_10zineb">
+        <di:waypoint x="110" y="-110" />
+        <di:waypoint x="170" y="-110" />
+        <di:waypoint x="170" y="177" />
+        <di:waypoint x="230" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_03961vh_di" bpmnElement="Flow_03961vh">
+        <di:waypoint x="865" y="177" />
+        <di:waypoint x="920" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ecrxtw_di" bpmnElement="Flow_0ecrxtw">
+        <di:waypoint x="1020" y="177" />
+        <di:waypoint x="1065" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0at872m_di" bpmnElement="Flow_0at872m">
+        <di:waypoint x="1115" y="177" />
+        <di:waypoint x="1160" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0159czy_di" bpmnElement="Flow_0159czy">
+        <di:waypoint x="840" y="152" />
+        <di:waypoint x="840" y="90" />
+        <di:waypoint x="1090" y="90" />
+        <di:waypoint x="1090" y="152" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "required": [
+    "umidade",
+    "impureza",
+    "numeroclassificacao"
+  ],
+  "properties": {
+    "umidade": {
+      "type": "number",
+      "title": "Umidade"
+    },
+    "impureza": {
+      "type": "number",
+      "title": "Impureza"
+    },
+    "avariados": {
+      "type": "number",
+      "title": "Avariados",
+      "default": 0
+    },
+    "quebrados": {
+      "type": "number",
+      "title": "Quebrados",
+      "default": 0
+    },
+    "ardidos": {
+      "type": "number",
+      "title": "Ardidos",
+      "default": 0
+    },
+    "outros": {
+      "type": "number",
+      "title": "Outros",
+      "default": 0
+    },
+    "graosverdes": {
+      "type": "number",
+      "title": "Grãos Verdes",
+      "default": 0
+    },
+    "numeroclassificacao": {
+      "type": "number",
+      "title": "Numero da Classificação"
+    },
+    "observacao": {
+      "type": "string",
+      "title": "Observação",
+      "default": "Integracao SpiffWorkflow"
+    }
+  }
+}

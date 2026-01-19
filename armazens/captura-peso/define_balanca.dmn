@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="Definitions_76910d7" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision_w4b9spf" name="Define balanca">
+    <decisionTable id="decisionTable_1">
+      <input id="input_1" label="local_trabalho">
+        <inputExpression id="inputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="ip" typeRef="string" />
+      <output id="OutputClause_0u3e9fx" label="porta" typeRef="string" />
+      <output id="OutputClause_1og37l5" label="fabricante" typeRef="string" />
+      <output id="OutputClause_0l7sobq" name="modelo" typeRef="string" />
+      <rule id="DecisionRule_02tzm0d">
+        <inputEntry id="UnaryTests_1k24oex">
+          <text>"armazem_curupai"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0e34kqy">
+          <text>"192.168.9.40"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dlgagt">
+          <text>9000</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0aavtph">
+          <text>"toledo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1eobnc7">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_100bqhg">
+        <inputEntry id="UnaryTests_1luuhvo">
+          <text>"armazem_tangara"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sjyjzt">
+          <text>"192.168.202.51"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02gyma5">
+          <text>30000</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i7700n">
+          <text>"saturno"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0x1rm4p">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_081shol">
+        <inputEntry id="UnaryTests_1beosyl">
+          <text>"armazem_germinare"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yh6j5g">
+          <text>"192.168.11.100"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rz3meb">
+          <text>23</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0m5ra1p">
+          <text>"toledo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1e6qeun">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ijyb1r">
+        <inputEntry id="UnaryTests_03el1bs">
+          <text>"armazem_querencia"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lqd92i">
+          <text>"192.168.6.41"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0unxbfv">
+          <text>9000</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ujmm3y">
+          <text>"toledo"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_064yu34">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18xd5qy">
+        <inputEntry id="UnaryTests_1xxg0ez">
+          <text>"armazem_ubs2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bro9g7">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i8vtka">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03r8sja">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jnx5gh">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wn0w09">
+        <inputEntry id="UnaryTests_1vz69y2">
+          <text>"armazem_brasnorte"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jc5xty">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1p6lgea">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dg9zh8">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18aeq87">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_1cykosu">
+      <dmndi:DMNShape id="DMNShape_1dhfq2s" dmnElementRef="decision_w4b9spf">
+        <dc:Bounds height="80" width="180" x="157" y="151" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

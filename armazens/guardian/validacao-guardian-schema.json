@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "properties": {
+    "Tipo_Operacao": {
+      "title": "Tipo de Operação",
+      "type": "string",
+      "enum": [
+        "Colheita",
+        "Colheita Terceiros",
+        "Carregamento",
+        "Colaborador/Visita",
+        "Cancela Pesagem"
+      ]
+    }
+  }
+}

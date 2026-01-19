@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "parceiro": {
+      "title": "Selecione o parceiro de negócio",
+      "type": "string",
+      "anyOf": {{parceiros|tojson}}
+    }
+  }
+}

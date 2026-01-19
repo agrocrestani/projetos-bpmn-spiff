@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "display_name": "Guardian",
+    "exception_notification_addresses": [],
+    "fault_or_suspend_on_exception": "fault",
+    "metadata_extraction_paths": [
+        {
+            "key": "Placa",
+            "path": "placa"
+        },
+        {
+            "key": "Ticket",
+            "path": "Codigo"
+        }
+    ],
+    "primary_file_name": "guardian.bpmn",
+    "primary_process_id": "Process_Guardian"
+}

@@ -1,0 +1,85 @@
+{
+  "type": "object",
+  "required": [
+    "placa",
+    "talhoes",
+    "safra",
+    "filial",
+    "placa",
+    "motorista",
+    "armazem",
+    "equipe"
+  ],
+  "properties": {
+    "safra": {
+      "type": "string",
+      "title": "Selecione a Safra",
+      "anyOf": [
+        "options_from_task_data_var:safras"
+      ]
+    },
+    "filial": {
+      "type": "string",
+      "title": "Filial de entrada",
+      "anyOf": [
+        "options_from_task_data_var:filiais"
+      ]
+    },
+    "armazem": {
+      "type": "string",
+      "title": "Armazem",
+      "anyOf": [
+        "options_from_task_data_var:armazens"
+      ]
+    },
+    "equipe": {
+      "type": "string",
+      "title": "Equipe de Colheita",
+      "anyOf": [
+        "options_from_task_data_var:equipes"
+      ]
+    },
+    "placa": {
+      "type": "string",
+      "title": "Placa caminhão"
+    },
+    "ordem_carregamento": {
+      "type": "number",
+      "title": "Nº Ordem de Carregamento"
+    },
+    "motorista": {
+      "type": "string",
+      "title": "Motorista"
+    },
+    "comNotaFiscal": {
+      "type": "boolean",
+      "title": "Com Nota Fiscal",
+      "default": false
+    },
+    "talhoes": {
+      "type": "array",
+      "title": "Talhões colhidos",
+      "items": {
+        "type": "object",
+        "required": [
+          "talhao",
+          "porcentagem_carga"
+        ],
+        "properties": {
+          "talhao": {
+            "type": "string",
+            "title": "Sel. Talhão",
+            "anyOf": [
+              "options_from_task_data_var:talhoes_list"
+            ]
+          },
+          "porcentagem_carga": {
+            "type": "number",
+            "title": "% Carga",
+            "default": 100
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+    "ui:layout": [
+        {
+            "safra": {},
+            "filial": {}
+        },
+        {
+            "placa": {},
+            "motorista": {}
+        },
+        {
+            "armazem": {
+                "sm": 2,
+                "md": 2,
+                "lg": 4
+            },
+            "equipe": {}
+        },
+        {
+            "ordem_carregamento": {
+                "sm": 2,
+                "md": 2,
+                "lg": 4
+            },
+            "comNotaFiscal": {}
+        },
+        {
+            "talhoes": {}
+        }
+    ],
+    "talhoes": {
+        "items": {
+            "ui:layout": [
+                {
+                    "talhao":{
+                        "sm": 2,
+                        "md": 2,
+                        "lg": 4
+                    },
+                    "porcentagem_carga": {
+                        "sm": 2,
+                        "md": 2,
+                        "lg": 4
+                    }
+                }
+            ]
+        }
+    }
+}

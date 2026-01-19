@@ -1,0 +1,21 @@
+{
+  "dataNota": "2025-02-27",
+  "numeroNota": 123,
+  "serieNota": 123,
+  "quantidadeNota": 123,
+  "valorNota": 123,
+  "series_list": [
+    {
+      "value": "apples",
+      "label": "Apples"
+    },
+    {
+      "value": "oranges",
+      "label": "Oranges"
+    },
+    {
+      "value": "bananas",
+      "label": "Bananas"
+    }
+  ]
+}

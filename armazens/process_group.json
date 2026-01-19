@@ -1,0 +1,17 @@
+{
+    "correlation_keys": null,
+    "correlation_properties": null,
+    "data_store_specifications": {},
+    "description": "",
+    "display_name": "Armaz\u00e9ns",
+    "messages": {
+        "guardian_receive": {
+            "correlation_properties": {},
+            "schema": {}
+        },
+        "romaneio_entrada_start": {
+            "correlation_properties": {},
+            "schema": {}
+        }
+    }
+}

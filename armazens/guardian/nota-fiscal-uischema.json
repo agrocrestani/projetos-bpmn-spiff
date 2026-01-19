@@ -1,0 +1,18 @@
+{
+    "ui:layout": [
+        {
+            "dataNota": {}
+        },
+        {
+            "numeroNota": {},
+            "serieNota": {}
+        },
+        {
+            "quantidadeNota": {},
+            "valorNota": {}
+        }
+    ],
+  "dataNota": {
+    "ui:widget": "date"
+  }
+}
