@@ -1247,6 +1247,20 @@
           <text>"PG:farmbox"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1nguxkf">
+        <inputEntry id="UnaryTests_1ewcger">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ebyumb">
+          <text>"Armazem_AguaDaPrata"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xkxa5t">
+          <text>["start", "read"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01th4hs">
+          <text>"BASIC"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
