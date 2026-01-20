@@ -2,7 +2,7 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_96f6665" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-dev">
   <bpmn:collaboration id="Collaboration_0krc72e">
     <bpmn:participant id="Participant_1lzjh0k" processRef="Process_Guardian" />
-    <bpmn:correlationKey id="CorrelationKey_0fkm52b" name="MainCorrelationKey" />
+    <bpmn:correlationKey id="CorrelationKey_0zfnfpz" name="MainCorrelationKey" />
   </bpmn:collaboration>
   <bpmn:process id="Process_Guardian">
     <bpmn:laneSet id="LaneSet_003o76c">
@@ -63,66 +63,169 @@
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Verificação de Dados&lt;/title&gt;
+    &lt;title&gt;Romaneio de Entrada - Agronegócio&lt;/title&gt;
     &lt;style&gt;
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+        :root {
+            --verde-escuro: #1b5e20;
+            --verde-agro: #2e7d32;
+            --amarelo-safra: #fbc02d;
+            --fundo-leve: #f1f8e9;
+            --cinza-texto: #444;
         }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 20px;
+            background-color: #ffffff;
+            color: var(--cinza-texto);
+        }
+
+        /* Cabeçalho em 3 Colunas (Código 1) */
+        .container-topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--fundo-leve);
+            border: 1px solid #c8e6c9;
+            border-left: 10px solid var(--verde-escuro);
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+        }
+
+        .coluna {
+            flex: 1;
+            padding: 0 10px;
+        }
+
+        .coluna:not(:last-child) {
+            border-right: 1px solid #ccd5ae;
+        }
+
+        .label-topo {
+            display: block;
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .valor-topo {
+            display: block;
+            font-size: 1.15rem;
+            color: var(--verde-escuro);
+            font-weight: 800;
+        }
+
+        /* Título e Subheader */
+        .subheader {
+            color: var(--verde-escuro);
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-bottom: 3px solid var(--amarelo-safra);
+            display: inline-block;
+            padding-right: 50px;
+            margin-bottom: 20px;
+        }
+
+        /* Tabela de Dados (Código 2 Estilizado) */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
+
         th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+            border: 1px solid #e0e0e0;
+            padding: 12px 15px;
             text-align: left;
         }
+
         th {
-            background-color: #f2f2f2;
+            background-color: var(--verde-escuro);
+            color: white;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fcfdfc;
+        }
+
+        tr:hover {
+            background-color: #f1f8e9;
+        }
+
+        .campo-nome {
+            font-weight: bold;
+            color: var(--verde-agro);
+            width: 30%;
+        }
+
+        .campo-valor {
+            font-weight: 500;
         }
     &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;h1&gt;Confira os Dados do Ticket: &lt;strong&gt;{{ Codigo }}&lt;/strong&gt;. &lt;/h1&gt;
+    &lt;div class="container-topo"&gt;
+        &lt;div class="coluna"&gt;
+            &lt;span class="label-topo"&gt;Ticket Guardian&lt;/span&gt;
+            &lt;span class="valor-topo" style="color: var(--verde-agro);"&gt;#{{Codigo}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="coluna"&gt;
+            &lt;span class="label-topo"&gt;Placa&lt;/span&gt;
+            &lt;span class="valor-topo"&gt;{{placa}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="coluna"&gt;
+            &lt;span class="label-topo"&gt;Tipo Operação&lt;/span&gt;
+            &lt;span class="valor-topo"&gt;{{Tipo_Operacao}}&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;h2 class="subheader"&gt;Verificação de dados do Guardian&lt;/h2&gt;
     &lt;table&gt;
-        &lt;tr&gt;
-            &lt;th&gt;Campo&lt;/th&gt;
-            &lt;th&gt;Valor&lt;/th&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Código&lt;/td&gt;
-            &lt;td&gt;{{ Codigo }}&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Placa&lt;/td&gt;
-            &lt;td&gt;{{ placa }}&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Peso Bruto&lt;/td&gt;
-            &lt;td&gt;{{ peso_bruto }}&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Peso Tara&lt;/td&gt;
-            &lt;td&gt;{{ peso_tara }}&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Peso Líquido&lt;/td&gt;
-            &lt;td&gt;{{ peso_liquido }}&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Fazenda / Cliente&lt;/td&gt;
-            &lt;td&gt;{{ fazenda }}&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Motorista&lt;/td&gt;
-            &lt;td&gt;{{ motorista }}&lt;/td&gt;
-        &lt;/tr&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Campo&lt;/th&gt;
+                &lt;th&gt;Valor Detalhado&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td class="campo-nome"&gt;Código do Ticket&lt;/td&gt;
+                &lt;td class="campo-valor"&gt;{{ Codigo }}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="campo-nome"&gt;Placa do Veículo&lt;/td&gt;
+                &lt;td class="campo-valor"&gt;{{ placa }}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="campo-nome"&gt;Peso Bruto&lt;/td&gt;
+                &lt;td class="campo-valor"&gt;{{ peso_bruto }}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="campo-nome"&gt;Peso Tara&lt;/td&gt;
+                &lt;td class="campo-valor"&gt;{{ peso_tara }}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="campo-nome"&gt;Peso Líquido&lt;/td&gt;
+                &lt;td class="campo-valor"&gt;{{ peso_liquido }}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="campo-nome"&gt;Fazenda / Cliente&lt;/td&gt;
+                &lt;td class="campo-valor"&gt;{{ fazenda }}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="campo-nome"&gt;Motorista&lt;/td&gt;
+                &lt;td class="campo-valor"&gt;{{ motorista }}&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
     &lt;/table&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-</spiffworkflow:instructionsForEndUser>
+&lt;/html&gt;</spiffworkflow:instructionsForEndUser>
         <spiffworkflow:properties>
           <spiffworkflow:property name="formJsonSchemaFilename" value="validacao-guardian-schema.json" />
           <spiffworkflow:property name="formUiSchemaFilename" value="validacao-guardian-uischema.json" />
@@ -218,12 +321,13 @@ data_pesagem_final = payload_guardian["data_pesagem_final"]
       </bpmn:callActivity>
       <bpmn:sequenceFlow id="Flow_136yd5k" sourceRef="Activity_105i7gb" targetRef="Activity_0y50jff" />
       <bpmn:scriptTask id="Activity_0y50jff" name="Atualiza Tabelas">
+        <bpmn:extensionElements>
+          <spiffworkflow:instructionsForEndUser />
+        </bpmn:extensionElements>
         <bpmn:incoming>Flow_136yd5k</bpmn:incoming>
         <bpmn:outgoing>Flow_04smuyx</bpmn:outgoing>
         <bpmn:script>from connectordb.oracle import Oracle
 from datetime import datetime
-
-baseUni = get_secret('baseUnisystem')
 
 connection = {
     "dsn": get_secret('oracleDsn'),
@@ -409,6 +513,7 @@ del(r)
       <bpmn:exclusiveGateway id="Gateway_1ukd414">
         <bpmn:incoming>Flow_04smuyx</bpmn:incoming>
         <bpmn:incoming>Flow_1io6pzs</bpmn:incoming>
+        <bpmn:incoming>Flow_0koquo6</bpmn:incoming>
         <bpmn:outgoing>Flow_1lciuki</bpmn:outgoing>
       </bpmn:exclusiveGateway>
       <bpmn:sequenceFlow id="Flow_04smuyx" sourceRef="Activity_0y50jff" targetRef="Gateway_1ukd414" />
@@ -431,6 +536,85 @@ del(r)
             <spiffworkflow:property name="formJsonSchemaFilename" value="dados-iniciais-schema.json" />
             <spiffworkflow:property name="formUiSchemaFilename" value="dados-iniciais-uischema.json" />
           </spiffworkflow:properties>
+          <spiffworkflow:instructionsForEndUser>&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-br"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;style&gt;
+        :root {
+            --verde-escuro: #1b5e20;
+            --verde-agro: #2e7d32;
+            --amarelo-safra: #fbc02d;
+            --fundo-leve: #f1f8e9;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 20px;
+            background-color: #ffffff;
+        }
+        /* Estrutura da Tabela/Grid */
+        .container-topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--fundo-leve);
+            border: 1px solid #c8e6c9;
+            border-left: 10px solid var(--verde-escuro);
+            padding: 15px;
+            border-radius: 4px;
+        }
+       .coluna {
+            flex: 1;
+            padding: 0 10px;
+        }
+        .coluna:not(:last-child) {
+            border-right: 1px solid #ccd5ae; /* Divisória suave entre colunas */
+        }
+        .label {
+            display: block;
+            font-size: 0.75rem;
+            color: #555;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .valor {
+            display: block;
+            font-size: 1.15rem;
+            color: var(--verde-escuro);
+            font-weight: 800;
+        }
+        /* Estilo do Subheader */
+        .subheader {
+            margin-top: 20px;
+            color: var(--verde-escuro);
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-bottom: 3px solid var(--amarelo-safra);
+            display: inline-block;
+            padding-right: 50px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container-topo"&gt;
+        &lt;div class="coluna"&gt;
+            &lt;span class="label"&gt;Ticket Guardian&lt;/span&gt;
+            &lt;span class="valor" style="color: var(--verde-agro);"&gt;#{{Codigo}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="coluna"&gt;
+            &lt;span class="label"&gt;Placa&lt;/span&gt;
+            &lt;span class="valor"&gt;{{placa}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="coluna"&gt;
+            &lt;span class="label"&gt;Tipo Carga&lt;/span&gt;
+            &lt;span class="valor"&gt;{{Tipo_Operacao}}&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;h2 class="subheader"&gt;Romaneio de Entrada&lt;/h2&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</spiffworkflow:instructionsForEndUser>
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1lciuki</bpmn:incoming>
         <bpmn:outgoing>Flow_0klpgas</bpmn:outgoing>
@@ -542,8 +726,8 @@ else:
         <bpmn:incoming>Flow_0oab1ki</bpmn:incoming>
         <bpmn:outgoing>Flow_1io6pzs</bpmn:outgoing>
       </bpmn:manualTask>
-      <bpmn:sequenceFlow id="Flow_05ajo3e" sourceRef="Activity_1v76b40" targetRef="Activity_11v3g19" />
-      <bpmn:manualTask id="Activity_1v76b40" name="Vizualiza Dados">
+      <bpmn:sequenceFlow id="Flow_05ajo3e" sourceRef="Activity_1v76b40" targetRef="Gateway_1p75pxl" />
+      <bpmn:manualTask id="Activity_1v76b40" name="Dados do ticket">
         <bpmn:extensionElements>
           <spiffworkflow:preScript>from datetime import datetime
 
@@ -553,131 +737,293 @@ data_atual = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
           <spiffworkflow:instructionsForEndUser>&lt;!DOCTYPE html&gt;
 &lt;html lang="pt-BR"&gt;
 &lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;Ticket de Pesagem - Armazém&lt;/title&gt;
-  &lt;style&gt;
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 20px;
-    }
-    .ticket-container {
-      max-width: 600px;
-      margin: 20px auto;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      border-radius: 8px;
-    }
-    .ticket-header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .ticket-header h1 {
-      margin: 0;
-      font-size: 28px;
-      color: #333;
-    }
-    .ticket-header h2 {
-      margin: 5px 0 0;
-      font-size: 18px;
-      color: #666;
-    }
-    .ticket-section {
-      margin-bottom: 20px;
-      border: 1px solid #ddd;
-      padding: 15px;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-    }
-    .ticket-section p {
-      margin: 8px 0;
-      font-size: 16px;
-      line-height: 1.4;
-    }
-    .label {
-      font-weight: bold;
-      color: #444;
-    }
-    .ticket-summary {
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-      color: #007BFF;
-      border-top: 1px solid #ddd;
-      padding-top: 15px;
-    }
-    .print-button {
-      display: block;
-      width: 200px;
-      margin: 30px auto 0;
-      padding: 10px;
-      background-color: #007BFF;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      text-align: center;
-    }
-    .print-button:hover {
-      background-color: #0056b3;
-    }
-  &lt;/style&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Ticket de Pesagem - Guardian&lt;/title&gt;
+    &lt;style&gt;
+        :root {
+            --verde-escuro: #1b5e20;
+            --verde-agro: #2e7d32;
+            --amarelo-safra: #fbc02d;
+            --fundo-leve: #f1f8e9;
+            --branco: #ffffff;
+            --cinza-borda: #ddd;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .ticket-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--branco);
+            border: 1px solid var(--cinza-borda);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        /* Cabeçalho 3 Colunas (Informações Críticas) */
+        .container-topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--fundo-leve);
+            border-bottom: 1px solid var(--cinza-borda);
+            border-left: 10px solid var(--verde-escuro);
+            padding: 20px;
+        }
+        .coluna {
+            flex: 1;
+            padding: 0 15px;
+        }
+        .coluna:not(:last-child) {
+            border-right: 1px solid #ccd5ae;
+        }
+        .label-topo {
+            display: block;
+            font-size: 0.7rem;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .valor-topo {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--verde-escuro);
+            font-weight: 800;
+        }
+        /* Subheader Estilizado */
+        .subheader-box {
+            padding: 20px 25px 0;
+        }
+        .subheader {
+            color: var(--verde-escuro);
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-bottom: 3px solid var(--amarelo-safra);
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        /* Seções de Dados */
+        .ticket-content {
+            padding: 0 25px 25px;
+        }
+        .ticket-section {
+            margin-bottom: 15px;
+            border: 1px solid var(--cinza-borda);
+            padding: 15px;
+            border-radius: 6px;
+            background-color: #fcfdfc;
+        }
+        .ticket-section p {
+            margin: 6px 0;
+            font-size: 15px;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .label {
+            font-weight: bold;
+            color: var(--verde-agro);
+            width: 140px;
+            display: inline-block;
+        }
+        /* Estilo para Loop de Talhões */
+        .talhao-row {
+            background-color: #fff;
+            border-bottom: 1px dashed #eee;
+            padding: 5px 0;
+        }
+        .talhao-row:last-child { border-bottom: none; }
+        /* Resumo de Pesos */
+        .ticket-summary {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--verde-escuro);
+            background-color: var(--fundo-leve);
+            margin-top: 10px;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid var(--verde-agro);
+        }
+        .print-button {
+            display: block;
+            width: 220px;
+            margin: 20px auto;
+            padding: 12px;
+            background-color: var(--verde-escuro);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        .print-button:hover {
+            background-color: var(--verde-agro);
+        }
+
+        @media print {
+            .print-button { display: none; }
+            body { background: white; padding: 0; }
+            .ticket-container { box-shadow: none; border: 1px solid #000; }
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;div class="ticket-container"&gt;
-    &lt;div class="ticket-header"&gt;
-      &lt;h1&gt;Validação de dados do Guardian&lt;/h1&gt;
+&lt;div class="ticket-container"&gt;
+    &lt;div class="container-topo"&gt;
+        &lt;div class="coluna"&gt;
+            &lt;span class="label-topo"&gt;Ticket Guardian&lt;/span&gt;
+            &lt;span class="valor-topo"&gt;#{{Codigo}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="coluna"&gt;
+            &lt;span class="label-topo"&gt;Placa&lt;/span&gt;
+            &lt;span class="valor-topo"&gt;{{placa}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="coluna"&gt;
+            &lt;span class="label-topo"&gt;Operação&lt;/span&gt;
+            &lt;span class="valor-topo"&gt;{{Tipo_Operacao}}&lt;/span&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class="ticket-section"&gt;
-      &lt;p&gt;&lt;span class="label"&gt;Data:&lt;/span&gt; {{data_atual}}&lt;/p&gt;
-      &lt;p&gt;&lt;span class="label"&gt;Unidade:&lt;/span&gt; {{descricao_filial}}&lt;/p&gt;
-      &lt;p&gt;&lt;span class="label"&gt;Placa:&lt;/span&gt; {{placa}}&lt;/p&gt;
-      &lt;p&gt;&lt;span class="label"&gt;Motorista:&lt;/span&gt; {{motorista}}&lt;/p&gt;
-      &lt;p&gt;&lt;span class="label"&gt;Produto:&lt;/span&gt; {{produto}}&lt;/p&gt;
+    &lt;div class="subheader-box"&gt;
+        &lt;h2 class="subheader"&gt;Dados do Ticket / Romaneio de Entrada&lt;/h2&gt;
     &lt;/div&gt;
-    &lt;div class="ticket-section"&gt;
-{% for t in talhoes %}
-      &lt;p&gt;&lt;span class="label"&gt;Talhão:&lt;/span&gt; {{ t['talhao'] }}&lt;span class="label"&gt; Porcentagem Carga:&lt;/span&gt; {{ t['porcentagem_carga'] }}&lt;/p&gt;
-{% endfor %}
+    &lt;div class="ticket-content"&gt;
+        &lt;div class="ticket-section"&gt;
+            &lt;p&gt;&lt;span class="label"&gt;Data:&lt;/span&gt; &lt;span&gt;{{data_atual}}&lt;/span&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;span class="label"&gt;Unidade:&lt;/span&gt; &lt;span&gt;{{descricao_filial}}&lt;/span&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;span class="label"&gt;Motorista:&lt;/span&gt; &lt;span&gt;{{motorista}}&lt;/span&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;span class="label"&gt;Produto:&lt;/span&gt; &lt;span&gt;{{produto}}&lt;/span&gt;&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="ticket-section"&gt;
+            &lt;div style="font-weight: bold; margin-bottom: 10px; color: var(--verde-escuro); border-bottom: 1px solid #eee;"&gt;Distribuição por Talhão&lt;/div&gt;
+            {% for t in talhoes %}
+            &lt;div class="talhao-row"&gt;
+                &lt;p&gt;
+                    &lt;span class="label" style="width: 80px;"&gt;Talhão:&lt;/span&gt; 
+                    &lt;span style="flex-grow: 1;"&gt;{{ t['talhao'] }}&lt;/span&gt;
+                    &lt;span class="label" style="width: 140px;"&gt;Porcentagem:&lt;/span&gt; 
+                    &lt;span&gt;{{ t['porcentagem_carga'] }}%&lt;/span&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+            {% endfor %}
+        &lt;/div&gt;
+        &lt;div class="ticket-section"&gt;
+            &lt;p&gt;&lt;span class="label"&gt;Peso Bruto:&lt;/span&gt; &lt;span&gt;{{peso_bruto}} kg&lt;/span&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;span class="label"&gt;Peso Tara:&lt;/span&gt; &lt;span&gt;{{peso_tara}} kg&lt;/span&gt;&lt;/p&gt;
+            &lt;div class="ticket-summary"&gt;
+                Peso Líquido: {{peso_liquido}} kg
+            &lt;/div&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class="ticket-section"&gt;
-      &lt;p&gt;&lt;span class="label"&gt;Peso Bruto:&lt;/span&gt; {{peso_bruto}}&lt;/p&gt;
-      &lt;p&gt;&lt;span class="label"&gt;Peso Tara:&lt;/span&gt; {{peso_tara}}&lt;/p&gt;
-&lt;div class="ticket-summary"&gt;
-      Peso Líquido: {{peso_liquido}}
-    &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
+&lt;/div&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-</spiffworkflow:instructionsForEndUser>
+&lt;/html&gt;</spiffworkflow:instructionsForEndUser>
           <spiffworkflow:postScript />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1ex4mqu</bpmn:incoming>
         <bpmn:outgoing>Flow_05ajo3e</bpmn:outgoing>
       </bpmn:manualTask>
-      <bpmn:sequenceFlow id="Flow_1nna3yh" sourceRef="Activity_11v3g19" targetRef="Gateway_1lnghmd" />
+      <bpmn:sequenceFlow id="Flow_1nna3yh" sourceRef="Activity_11v3g19" targetRef="Activity_1dr1qud" />
       <bpmn:userTask id="Activity_11v3g19" name="Classificação">
         <bpmn:extensionElements>
           <spiffworkflow:properties>
             <spiffworkflow:property name="formJsonSchemaFilename" value="classificacao-schema.json" />
             <spiffworkflow:property name="formUiSchemaFilename" value="classificacao-uischema.json" />
           </spiffworkflow:properties>
-          <spiffworkflow:instructionsForEndUser>&lt;div style="background-color: #d4edda; padding: 20px; border-radius: 5px;"&gt;
-  &lt;h1 style="color: #155724;"&gt;Classificação&lt;/h1&gt;
-&lt;/div&gt;
-</spiffworkflow:instructionsForEndUser>
+          <spiffworkflow:instructionsForEndUser>&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-br"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;style&gt;
+        :root {
+            --verde-escuro: #1b5e20;
+            --verde-agro: #2e7d32;
+            --amarelo-safra: #fbc02d;
+            --fundo-leve: #f1f8e9;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 20px;
+            background-color: #ffffff;
+        }
+        /* Estrutura da Tabela/Grid */
+        .container-topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--fundo-leve);
+            border: 1px solid #c8e6c9;
+            border-left: 10px solid var(--verde-escuro);
+            padding: 15px;
+            border-radius: 4px;
+        }
+       .coluna {
+            flex: 1;
+            padding: 0 10px;
+        }
+        .coluna:not(:last-child) {
+            border-right: 1px solid #ccd5ae; /* Divisória suave entre colunas */
+        }
+        .label {
+            display: block;
+            font-size: 0.75rem;
+            color: #555;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .valor {
+            display: block;
+            font-size: 1.15rem;
+            color: var(--verde-escuro);
+            font-weight: 800;
+        }
+        /* Estilo do Subheader */
+        .subheader {
+            margin-top: 20px;
+            color: var(--verde-escuro);
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-bottom: 3px solid var(--amarelo-safra);
+            display: inline-block;
+            padding-right: 50px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container-topo"&gt;
+        &lt;div class="coluna"&gt;
+            &lt;span class="label"&gt;Ticket Guardian&lt;/span&gt;
+            &lt;span class="valor" style="color: var(--verde-agro);"&gt;#{{Codigo}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="coluna"&gt;
+            &lt;span class="label"&gt;Placa&lt;/span&gt;
+            &lt;span class="valor"&gt;{{placa}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="coluna"&gt;
+            &lt;span class="label"&gt;Tipo Carga&lt;/span&gt;
+            &lt;span class="valor"&gt;{{Tipo_Operacao}}&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;h2 class="subheader"&gt;Classificação&lt;/h2&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</spiffworkflow:instructionsForEndUser>
         </bpmn:extensionElements>
-        <bpmn:incoming>Flow_05ajo3e</bpmn:incoming>
+        <bpmn:incoming>Flow_0lrsl8v</bpmn:incoming>
         <bpmn:outgoing>Flow_1nna3yh</bpmn:outgoing>
       </bpmn:userTask>
       <bpmn:exclusiveGateway id="Gateway_1lnghmd">
-        <bpmn:incoming>Flow_1nna3yh</bpmn:incoming>
         <bpmn:incoming>Flow_0corjcl</bpmn:incoming>
+        <bpmn:incoming>Flow_0bqsj54</bpmn:incoming>
         <bpmn:outgoing>Flow_173bou3</bpmn:outgoing>
       </bpmn:exclusiveGateway>
       <bpmn:sequenceFlow id="Flow_173bou3" sourceRef="Gateway_1lnghmd" targetRef="Activity_0etd0j3" />
@@ -785,6 +1131,270 @@ code_proc, message_proc = romaneio</bpmn:script>
         <bpmn:incoming>Flow_121yxsj</bpmn:incoming>
         <bpmn:outgoing>Flow_0corjcl</bpmn:outgoing>
       </bpmn:manualTask>
+      <bpmn:sequenceFlow id="Flow_0bqsj54" sourceRef="Activity_1dr1qud" targetRef="Gateway_1lnghmd" />
+      <bpmn:boundaryEvent id="Event_0141z9j" attachedToRef="Activity_1dr1qud">
+        <bpmn:extensionElements>
+          <spiffworkflow:signalButtonLabel>Corrigir Classificação</spiffworkflow:signalButtonLabel>
+        </bpmn:extensionElements>
+        <bpmn:outgoing>Flow_1prezdt</bpmn:outgoing>
+        <bpmn:signalEventDefinition id="SignalEventDefinition_0apmrv8" signalRef="Corrigir_Classificacao" />
+      </bpmn:boundaryEvent>
+      <bpmn:exclusiveGateway id="Gateway_1p75pxl">
+        <bpmn:incoming>Flow_05ajo3e</bpmn:incoming>
+        <bpmn:incoming>Flow_1prezdt</bpmn:incoming>
+        <bpmn:outgoing>Flow_0lrsl8v</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_0lrsl8v" sourceRef="Gateway_1p75pxl" targetRef="Activity_11v3g19" />
+      <bpmn:sequenceFlow id="Flow_1prezdt" sourceRef="Event_0141z9j" targetRef="Gateway_1p75pxl" />
+      <bpmn:exclusiveGateway id="Gateway_09p7dmx">
+        <bpmn:incoming>Flow_1yf2mnp</bpmn:incoming>
+        <bpmn:incoming>Flow_0ctd8t1</bpmn:incoming>
+        <bpmn:outgoing>Flow_0koquo6</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_0koquo6" sourceRef="Gateway_09p7dmx" targetRef="Gateway_1ukd414" />
+      <bpmn:boundaryEvent id="Event_1g8aler" attachedToRef="Activity_1v76b40">
+        <bpmn:extensionElements>
+          <spiffworkflow:signalButtonLabel>Corrigir Romaneio</spiffworkflow:signalButtonLabel>
+        </bpmn:extensionElements>
+        <bpmn:outgoing>Flow_1yf2mnp</bpmn:outgoing>
+        <bpmn:signalEventDefinition id="SignalEventDefinition_0hjczt9" signalRef="Corrigir_Romaneio" />
+      </bpmn:boundaryEvent>
+      <bpmn:sequenceFlow id="Flow_1yf2mnp" sourceRef="Event_1g8aler" targetRef="Gateway_09p7dmx" />
+      <bpmn:boundaryEvent id="Event_020hfzr" attachedToRef="Activity_1dr1qud">
+        <bpmn:extensionElements>
+          <spiffworkflow:signalButtonLabel>Corrigir Romaneio</spiffworkflow:signalButtonLabel>
+        </bpmn:extensionElements>
+        <bpmn:outgoing>Flow_0ctd8t1</bpmn:outgoing>
+        <bpmn:signalEventDefinition id="SignalEventDefinition_1nsnzco" signalRef="Corrigir_Romaneio" />
+      </bpmn:boundaryEvent>
+      <bpmn:sequenceFlow id="Flow_0ctd8t1" sourceRef="Event_020hfzr" targetRef="Gateway_09p7dmx" />
+      <bpmn:userTask id="Activity_1dr1qud" name="Conferência">
+        <bpmn:extensionElements>
+          <spiffworkflow:instructionsForEndUser>&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Ticket de Pesagem - Guardian&lt;/title&gt;
+    &lt;style&gt;
+        :root {
+            --verde-escuro: #1b5e20;
+            --verde-agro: #2e7d32;
+            --amarelo-safra: #fbc02d;
+            --fundo-leve: #f1f8e9;
+            --branco: #ffffff;
+            --cinza-borda: #ddd;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .ticket-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--branco);
+            border: 1px solid var(--cinza-borda);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        /* Cabeçalho 3 Colunas */
+        .container-topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--fundo-leve);
+            border-bottom: 1px solid var(--cinza-borda);
+            border-left: 10px solid var(--verde-escuro);
+            padding: 20px;
+        }
+        .coluna {
+            flex: 1;
+            padding: 0 15px;
+        }
+        .coluna:not(:last-child) {
+            border-right: 1px solid #ccd5ae;
+        }
+        .label-topo {
+            display: block;
+            font-size: 0.7rem;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .valor-topo {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--verde-escuro);
+            font-weight: 800;
+        }
+        .subheader-box {
+            padding: 20px 25px 0;
+        }
+        .subheader {
+            color: var(--verde-escuro);
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-bottom: 3px solid var(--amarelo-safra);
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .ticket-content {
+            padding: 0 25px 25px;
+        }
+        .ticket-section {
+            margin-bottom: 15px;
+            border: 1px solid var(--cinza-borda);
+            padding: 15px;
+            border-radius: 6px;
+            background-color: #fcfdfc;
+        }
+        .ticket-section p {
+            margin: 6px 0;
+            font-size: 15px;
+            display: flex;
+        }
+        .label {
+            font-weight: bold;
+            color: var(--verde-agro);
+            width: 140px;
+            display: inline-block;
+        }
+        /* Grid de Classificação */
+        .classificacao-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .classificacao-item {
+            border-bottom: 1px solid #eee;
+            padding: 4px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .obs-box {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--cinza-borda);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .talhao-row {
+            background-color: #fff;
+            border-bottom: 1px dashed #eee;
+            padding: 5px 0;
+        }
+        .ticket-summary {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--verde-escuro);
+            background-color: var(--fundo-leve);
+            margin-top: 10px;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid var(--verde-agro);
+        }
+        .print-button {
+            display: block;
+            width: 220px;
+            margin: 20px auto;
+            padding: 12px;
+            background-color: var(--verde-escuro);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+        }
+        @media print {
+            .print-button { display: none; }
+            body { background: white; padding: 0; }
+            .ticket-container { box-shadow: none; border: 1px solid #000; }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="ticket-container"&gt;
+        &lt;div class="container-topo"&gt;
+            &lt;div class="coluna"&gt;
+                &lt;span class="label-topo"&gt;Ticket Guardian&lt;/span&gt;
+                &lt;span class="valor-topo"&gt;#{{Codigo}}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="coluna"&gt;
+                &lt;span class="label-topo"&gt;Placa&lt;/span&gt;
+                &lt;span class="valor-topo"&gt;{{placa}}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="coluna"&gt;
+                &lt;span class="label-topo"&gt;Operação&lt;/span&gt;
+                &lt;span class="valor-topo"&gt;{{Tipo_Operacao}}&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="subheader-box"&gt;
+            &lt;h2 class="subheader"&gt;Conferência antes de enviar para o Unisystem&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class="ticket-content"&gt;
+            &lt;div class="ticket-section"&gt;
+                &lt;p&gt;&lt;span class="label"&gt;Data:&lt;/span&gt;&lt;span&gt;{{data_atual}}&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;span class="label"&gt;Unidade:&lt;/span&gt;&lt;span&gt;{{descricao_filial}}&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;span class="label"&gt;Motorista:&lt;/span&gt;&lt;span&gt;{{motorista}}&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;span class="label"&gt;Produto:&lt;/span&gt;&lt;span&gt;{{produto}}&lt;/span&gt;&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="ticket-section"&gt;
+                &lt;div style="font-weight: bold; margin-bottom: 5px; color: var(--verde-escuro);"&gt;Classificação Técnica&lt;/div&gt;
+                &lt;p&gt;&lt;span class="label" style="width: 180px;"&gt;Nº Classificação:&lt;/span&gt;&lt;span style="font-weight: bold;"&gt;{{numeroclassificacao}}&lt;/span&gt;&lt;/p&gt;
+                &lt;div class="classificacao-grid"&gt;
+                    &lt;div class="classificacao-item"&gt;&lt;span class="label" style="width: auto;"&gt;Umidade:&lt;/span&gt;&lt;span&gt;{{umidade}}&lt;/span&gt;&lt;/div&gt;
+                    &lt;div class="classificacao-item"&gt;&lt;span class="label" style="width: auto;"&gt;Impureza:&lt;/span&gt;&lt;span&gt;{{impureza}}&lt;/span&gt;&lt;/div&gt;
+                    &lt;div class="classificacao-item"&gt;&lt;span class="label" style="width: auto;"&gt;Avariados:&lt;/span&gt;&lt;span&gt;{{avariados}}&lt;/span&gt;&lt;/div&gt;
+                    &lt;div class="classificacao-item"&gt;&lt;span class="label" style="width: auto;"&gt;Quebrados:&lt;/span&gt;&lt;span&gt;{{quebrados}}&lt;/span&gt;&lt;/div&gt;
+                    &lt;div class="classificacao-item"&gt;&lt;span class="label" style="width: auto;"&gt;Ardidos:&lt;/span&gt;&lt;span&gt;{{ardidos}}&lt;/span&gt;&lt;/div&gt;
+                    &lt;div class="classificacao-item"&gt;&lt;span class="label" style="width: auto;"&gt;Grãos Verdes:&lt;/span&gt;&lt;span&gt;{{graosverdes}}&lt;/span&gt;&lt;/div&gt;
+                    &lt;div class="classificacao-item" style="grid-column: span 2;"&gt;&lt;span class="label" style="width: auto;"&gt;Outros:&lt;/span&gt;&lt;span&gt;{{outros}}&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="obs-box"&gt;
+                    &lt;strong&gt;Observação:&lt;/strong&gt; {{observacao}}
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ticket-section"&gt;
+                &lt;div style="font-weight: bold; margin-bottom: 10px; color: var(--verde-escuro); border-bottom: 1px solid #eee;"&gt;Distribuição por Talhão&lt;/div&gt;
+                {% for t in talhoes %}
+                &lt;div class="talhao-row"&gt;
+                    &lt;p&gt;
+                        &lt;span class="label" style="width: 80px;"&gt;Talhão:&lt;/span&gt;
+                        &lt;span style="flex-grow: 1;"&gt;{{ t['talhao'] }}&lt;/span&gt;
+                        &lt;span class="label" style="width: 140px;"&gt;Porcentagem:&lt;/span&gt;
+                        &lt;span&gt;{{ t['porcentagem_carga'] }}%&lt;/span&gt;
+                    &lt;/p&gt;
+                &lt;/div&gt;
+                {% endfor %}
+            &lt;/div&gt;
+            &lt;div class="ticket-section"&gt;
+                &lt;p&gt;&lt;span class="label"&gt;Peso Bruto:&lt;/span&gt;&lt;span&gt;{{peso_bruto}} kg&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;span class="label"&gt;Peso Tara:&lt;/span&gt;&lt;span&gt;{{peso_tara}} kg&lt;/span&gt;&lt;/p&gt;
+                &lt;div class="ticket-summary"&gt;
+                    Peso Líquido: {{peso_liquido}} kg
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</spiffworkflow:instructionsForEndUser>
+          <spiffworkflow:properties>
+            <spiffworkflow:property name="formJsonSchemaFilename" value="conferencia-schema.json" />
+            <spiffworkflow:property name="formUiSchemaFilename" value="conferencia-uischema.json" />
+          </spiffworkflow:properties>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1nna3yh</bpmn:incoming>
+        <bpmn:outgoing>Flow_0bqsj54</bpmn:outgoing>
+      </bpmn:userTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_11taq3a" sourceRef="Gateway_1m3w1tw" targetRef="Activity_Carregamento">
       <bpmn:conditionExpression>Tipo_Operacao == "Carregamento"</bpmn:conditionExpression>
@@ -1423,12 +2033,10 @@ code_proc, message_proc = romaneio</bpmn:script>
         <bpmn:script>from connectordb.oracle import Oracle
 from datetime import datetime
 
-baseUni = get_secret('baseUnisystem')
-
 connection = {
-    "dsn": baseUni,
-    "user": "agnew",
-    "password": "agnew"
+    "dsn": get_secret('oracleDsn'),
+    "user": get_secret('oracleUser'),
+    "password": get_secret('oraclePassword')
 }
 
 #Busca Filiais
@@ -2050,6 +2658,8 @@ dataNota = datetime.strptime(dataNota, "%Y-%m-%d").strftime("%d/%m/%Y")</spiffwo
     </bpmn:userTask>
   </bpmn:process>
   <bpmn:message id="guardian_receive" name="guardian_receive" />
+  <bpmn:signal id="Corrigir_Romaneio" name="Corrigir_Romaneio" />
+  <bpmn:signal id="Corrigir_Classificacao" name="Corrigir_Classificacao" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0krc72e">
       <bpmndi:BPMNShape id="Participant_1lzjh0k_di" bpmnElement="Participant_1lzjh0k" isHorizontal="true">
@@ -2195,7 +2805,7 @@ dataNota = datetime.strptime(dataNota, "%Y-%m-%d").strftime("%d/%m/%Y")</spiffwo
         <dc:Bounds x="1235" y="175" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0ncmgh9_di" bpmnElement="Event_0ncmgh9">
-        <dc:Bounds x="2132" y="182" width="36" height="36" />
+        <dc:Bounds x="2332" y="182" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_165ek0z_di" bpmnElement="Activity_Entrada_Propria">
         <dc:Bounds x="710" y="160" width="100" height="80" />
@@ -2214,21 +2824,40 @@ dataNota = datetime.strptime(dataNota, "%Y-%m-%d").strftime("%d/%m/%Y")</spiffwo
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_14mp40x_di" bpmnElement="Activity_1v76b40">
         <dc:Bounds x="1360" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_104yaz3_di" bpmnElement="Activity_11v3g19">
-        <dc:Bounds x="1530" y="160" width="100" height="80" />
+        <dc:Bounds x="1630" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1lnghmd_di" bpmnElement="Gateway_1lnghmd" isMarkerVisible="true">
-        <dc:Bounds x="1695" y="175" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1fpt591_di" bpmnElement="Gateway_1fpt591" isMarkerVisible="true">
         <dc:Bounds x="1955" y="175" width="50" height="50" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1fpt591_di" bpmnElement="Gateway_1fpt591" isMarkerVisible="true">
+        <dc:Bounds x="2215" y="175" width="50" height="50" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1u91ntp_di" bpmnElement="Activity_0etd0j3">
-        <dc:Bounds x="1800" y="160" width="100" height="80" />
+        <dc:Bounds x="2060" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1sbz781_di" bpmnElement="Activity_0n087k7">
-        <dc:Bounds x="1800" y="300" width="100" height="80" />
+        <dc:Bounds x="2060" y="300" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1p75pxl_di" bpmnElement="Gateway_1p75pxl" isMarkerVisible="true">
+        <dc:Bounds x="1515" y="175" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_09p7dmx_di" bpmnElement="Gateway_09p7dmx" isMarkerVisible="true">
+        <dc:Bounds x="1385" y="45" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_076uvdr_di" bpmnElement="Activity_1dr1qud">
+        <dc:Bounds x="1790" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1tuxy73_di" bpmnElement="Event_020hfzr">
+        <dc:Bounds x="1832" y="142" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1cqmhxk_di" bpmnElement="Event_1g8aler">
+        <dc:Bounds x="1392" y="142" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1algimy_di" bpmnElement="Event_0141z9j">
+        <dc:Bounds x="1842" y="222" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_16u6gqu_di" bpmnElement="Flow_16u6gqu">
         <di:waypoint x="216" y="200" />
@@ -2274,33 +2903,61 @@ dataNota = datetime.strptime(dataNota, "%Y-%m-%d").strftime("%d/%m/%Y")</spiffwo
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_05ajo3e_di" bpmnElement="Flow_05ajo3e">
         <di:waypoint x="1460" y="200" />
-        <di:waypoint x="1530" y="200" />
+        <di:waypoint x="1515" y="200" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1nna3yh_di" bpmnElement="Flow_1nna3yh">
-        <di:waypoint x="1630" y="200" />
-        <di:waypoint x="1695" y="200" />
+        <di:waypoint x="1730" y="200" />
+        <di:waypoint x="1790" y="200" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_173bou3_di" bpmnElement="Flow_173bou3">
-        <di:waypoint x="1745" y="200" />
-        <di:waypoint x="1800" y="200" />
+        <di:waypoint x="2005" y="200" />
+        <di:waypoint x="2060" y="200" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0g30x8t_di" bpmnElement="Flow_0g30x8t">
-        <di:waypoint x="1900" y="200" />
-        <di:waypoint x="1955" y="200" />
+        <di:waypoint x="2160" y="200" />
+        <di:waypoint x="2215" y="200" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0v2d1gu_di" bpmnElement="Flow_0v2d1gu">
-        <di:waypoint x="2005" y="200" />
-        <di:waypoint x="2132" y="200" />
+        <di:waypoint x="2265" y="200" />
+        <di:waypoint x="2332" y="200" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_121yxsj_di" bpmnElement="Flow_121yxsj">
-        <di:waypoint x="1980" y="225" />
-        <di:waypoint x="1980" y="340" />
-        <di:waypoint x="1900" y="340" />
+        <di:waypoint x="2240" y="225" />
+        <di:waypoint x="2240" y="340" />
+        <di:waypoint x="2160" y="340" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0corjcl_di" bpmnElement="Flow_0corjcl">
-        <di:waypoint x="1800" y="340" />
-        <di:waypoint x="1720" y="340" />
-        <di:waypoint x="1720" y="225" />
+        <di:waypoint x="2060" y="340" />
+        <di:waypoint x="1980" y="340" />
+        <di:waypoint x="1980" y="225" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bqsj54_di" bpmnElement="Flow_0bqsj54">
+        <di:waypoint x="1890" y="200" />
+        <di:waypoint x="1955" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lrsl8v_di" bpmnElement="Flow_0lrsl8v">
+        <di:waypoint x="1565" y="200" />
+        <di:waypoint x="1630" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1prezdt_di" bpmnElement="Flow_1prezdt">
+        <di:waypoint x="1860" y="258" />
+        <di:waypoint x="1860" y="340" />
+        <di:waypoint x="1540" y="340" />
+        <di:waypoint x="1540" y="225" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0koquo6_di" bpmnElement="Flow_0koquo6">
+        <di:waypoint x="1385" y="70" />
+        <di:waypoint x="620" y="70" />
+        <di:waypoint x="620" y="175" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yf2mnp_di" bpmnElement="Flow_1yf2mnp">
+        <di:waypoint x="1410" y="142" />
+        <di:waypoint x="1410" y="95" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ctd8t1_di" bpmnElement="Flow_0ctd8t1">
+        <di:waypoint x="1850" y="142" />
+        <di:waypoint x="1850" y="70" />
+        <di:waypoint x="1435" y="70" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
