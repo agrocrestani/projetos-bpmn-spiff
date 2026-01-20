@@ -212,7 +212,7 @@ solicitante = get_current_user()['display_name']
 carregaMatriz = 0
 carregaQuerencia = 0</spiffworkflow:preScript>
         <spiffworkflow:postScript>for f in n_filiais:
-    if f['value'] == unidade:
+    if f['enum'] == unidade:
         Nome_Cli_Destino = f['label']
 
 
