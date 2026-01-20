@@ -1421,12 +1421,10 @@ code_proc, message_proc = romaneio</bpmn:script>
         <bpmn:script>from connectordb.oracle import Oracle
 from datetime import datetime
 
-baseUni = get_secret('baseUnisystem')
-
 connection = {
-    "dsn": baseUni,
-    "user": "agnew",
-    "password": "agnew"
+    "dsn": get_secret('oracleDsn'),
+    "user": get_secret('oracleUser'),
+    "password": get_secret('oraclePassword')
 }
 
 #Busca Filiais
