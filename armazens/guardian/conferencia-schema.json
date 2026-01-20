@@ -1,0 +1,13 @@
+{ 
+  "type": "object",
+  "required": [
+    "confirmar_dados"
+  ],
+  "properties": {
+    "confirmar_dados": {
+      "type": "boolean",
+      "title": "Declaro que CONFERI todas as informações e estão CORRETAS.",
+      "default": false
+    }
+  }
+}
