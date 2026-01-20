@@ -1473,6 +1473,28 @@
           <text>"Armazem_AguaDaPrata"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_11bgqux">
+        <inputEntry id="UnaryTests_1vrnr6r">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19fbxco">
+          <text>"kamila.negrao@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rku9sr">
+          <text>"Armazem_AguaDaPrata"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1tr450f">
+        <inputEntry id="UnaryTests_024cykc">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f0yniq">
+          <text>"vinicius.belarmino@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15yj2yd">
+          <text>"Armazem_AguaDaPrata"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
