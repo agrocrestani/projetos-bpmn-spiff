@@ -7,20 +7,7 @@
   ],
   "unidade": "apples",
   "safra": "oranges",
-  "n_safras": [
-    {
-      "value": "apples",
-      "label": "Apples"
-    },
-    {
-      "value": "oranges",
-      "label": "Oranges"
-    },
-    {
-      "value": "bananas",
-      "label": "Bananas"
-    }
-  ],
+  "n_safras": [http://192.168.1.222:8001,
   "n_filiais": [
     {
       "value": "apples",
