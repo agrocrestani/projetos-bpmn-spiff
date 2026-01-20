@@ -625,12 +625,10 @@ del(r)
         <bpmn:script>from connectordb.oracle import Oracle
 from connectordb.hana import Hana
 
-baseUni = get_secret('baseUnisystem')
-
 connection = {
-    "dsn": baseUni,
-    "user": "agnew",
-    "password": "agnew"
+    "dsn": get_secret('oracleDsn'),
+    "user": get_secret('oracleUser'),
+    "password": get_secret('oraclePassword')
 }
 
 talhoes_consulta = []
