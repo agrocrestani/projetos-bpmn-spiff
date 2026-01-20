@@ -2493,13 +2493,12 @@ data_atual = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 from datetime import datetime
 import json
 
-baseUni = get_secret('baseUnisystem')
 usuarioLogado = get_current_user()['display_name']
 
 connection = {
-    "dsn": baseUni,
-    "user": "agnew",
-    "password": "agnew"
+    "dsn": get_secret('oracleDsn'),
+    "user": get_secret('oracleUser'),
+    "password": get_secret('oraclePassword')
 }
 
 spiff_instancia = get_toplevel_process_info()['process_instance_id']
