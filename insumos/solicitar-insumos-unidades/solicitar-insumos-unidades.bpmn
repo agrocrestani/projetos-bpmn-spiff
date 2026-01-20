@@ -152,7 +152,6 @@
           <spiffworkflow:property name="formUiSchemaFilename" value="confirma-solicitacao-uischema.json" />
         </spiffworkflow:properties>
         <spiffworkflow:postScript>bkp = solicitacao.copy()</spiffworkflow:postScript>
-        <spiffworkflow:preScript />
         <spiffworkflow:instructionsForEndUser># Confirmar a Solicitação
 
 ### Verifique os itens abaixo e confirme para emissão da nota fiscal.</spiffworkflow:instructionsForEndUser>
@@ -168,8 +167,8 @@
 
 descricaoFilial = ""
 for f in n_filiais:
-    if f['value'] == unidade:
-      descricaoFilial = f['label']
+    if f['enum'] == unidade:
+      descricaoFilial = f['title']
 
 usuarioEmissorNFe = get_current_user()['display_name']
 
