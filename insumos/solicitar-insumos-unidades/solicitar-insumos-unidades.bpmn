@@ -199,8 +199,11 @@ for f in filiais:
     if BPLId in ['2', '3', '4', '5']: 
         n_filiais.append(
             {
-                "value": BPLId,
-                "label": AliasName,
+                "type": "string",
+                "enum": [
+                    BPLId
+                ],
+                "title": AliasName
             }
         )
 
