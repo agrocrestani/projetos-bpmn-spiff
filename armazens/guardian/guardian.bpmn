@@ -463,31 +463,31 @@ os = Oracle(connection).selectDb(query_os)
 produto = os[0]['produto']
 seq_pla_produto = os[0]['seq_pla_produto']
 
-query_armazem = f"""
-            SELECT * FROM zvw_armazens WHERE cod_filial = '{filial}'
-          """
-rsp_armazens = Oracle(connection).selectDb(query_armazem)
+# query_armazem = f"""
+#             SELECT * FROM zvw_armazens WHERE cod_filial = '{filial}'
+#           """
+# rsp_armazens = Oracle(connection).selectDb(query_armazem)
 
-armazens = [
-    {
-      "value": "",
-      "label": ""
-    }
-]
+# armazens = [
+#     {
+#       "value": "",
+#       "label": ""
+#     }
+# ]
 
-for r in rsp_armazens:
-    seq_pla_armazem = str(r['seq_pla_armazem'])
-    desc_armazem = str(r['desc_armazem'])
-    armazens.append(
-        {
-            "value": seq_pla_armazem, 
-            "label": desc_armazem
-        }
-    )
+# for r in rsp_armazens:
+#     seq_pla_armazem = str(r['seq_pla_armazem'])
+#     desc_armazem = str(r['desc_armazem'])
+#     armazens.append(
+#         {
+#             "value": seq_pla_armazem, 
+#             "label": desc_armazem
+#         }
+#     )
 
-del(r)
-del(rsp_armazens)
-del(query_armazem)
+# del(r)
+# del(rsp_armazens)
+# del(query_armazem)
 del(query_os)
 del(connection)</bpmn:script>
       </bpmn:scriptTask>
