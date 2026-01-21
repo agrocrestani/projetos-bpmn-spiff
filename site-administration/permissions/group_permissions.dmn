@@ -1261,6 +1261,20 @@
           <text>"BASIC"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0z6i6rt">
+        <inputEntry id="UnaryTests_0344oef">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uqbf70">
+          <text>"Armazem_AguaDaPrata"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gvvdu4">
+          <text>["start", "read"]</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0l3h113">
+          <text>"PM:guardian"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
