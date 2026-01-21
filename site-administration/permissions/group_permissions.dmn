@@ -1272,7 +1272,7 @@
           <text>["start", "read"]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0l3h113">
-          <text>"PM:guardian"</text>
+          <text>"PG:armazens"</text>
         </outputEntry>
       </rule>
     </decisionTable>
