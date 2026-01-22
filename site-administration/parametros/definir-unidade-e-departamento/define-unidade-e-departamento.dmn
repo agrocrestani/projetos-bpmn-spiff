@@ -112,6 +112,26 @@
           <text>[19,23]</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0bvltn2">
+        <inputEntry id="UnaryTests_1obz2uo">
+          <text>"kamila.negrao"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gmw87a">
+          <text>"Curupai"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1oqdap4">
+          <text>"Aramazem"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11ybdae">
+          <text>"salomao.barros@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ssjguq">
+          <text>"vinicius.belarmino@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_057080a">
+          <text>[19,23]</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1s8u0u5">
         <inputEntry id="UnaryTests_0bbh4ez">
           <text>"jose.alves"</text>
