@@ -92,6 +92,26 @@
           <text>[19,23]</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1ksnyom">
+        <inputEntry id="UnaryTests_0sjo07y">
+          <text>"kamila.negrao"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wotges">
+          <text>"Curupai"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17csail">
+          <text>"Aramazem"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16fzvfi">
+          <text>"salomao.barros@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1w2u7vj">
+          <text>"kamila.negrao@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ejn88b">
+          <text>[19,23]</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1s8u0u5">
         <inputEntry id="UnaryTests_0bbh4ez">
           <text>"jose.alves"</text>
