@@ -1385,17 +1385,6 @@
           <text>"Curupai_Almoxarifado"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1sn9t3w">
-        <inputEntry id="UnaryTests_1fv89va">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0ochgmg">
-          <text>"kamila.negrao@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0xz7gs9">
-          <text>"Curupai_Almoxarifado"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0lmplgr">
         <inputEntry id="UnaryTests_19rtucl">
           <text></text>
