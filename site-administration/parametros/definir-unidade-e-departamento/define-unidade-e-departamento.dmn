@@ -114,7 +114,7 @@
       </rule>
       <rule id="DecisionRule_0bvltn2">
         <inputEntry id="UnaryTests_1obz2uo">
-          <text>"kamila.negrao"</text>
+          <text>"vinicius.belarmino"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1gmw87a">
           <text>"Curupai"</text>
