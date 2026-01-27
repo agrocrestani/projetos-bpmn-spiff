@@ -615,8 +615,8 @@ del(r)
 
 &lt;/body&gt;
 &lt;/html&gt;</spiffworkflow:instructionsForEndUser>
-          <spiffworkflow:preScript></spiffworkflow:preScript>
-          <spiffworkflow:postScript></spiffworkflow:postScript>
+          <spiffworkflow:preScript />
+          <spiffworkflow:postScript />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1lciuki</bpmn:incoming>
         <bpmn:outgoing>Flow_0klpgas</bpmn:outgoing>
