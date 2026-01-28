@@ -1,1 +1,15 @@
-{}
+{
+  "parceiro": {
+    "ui:readonly": true
+  },
+  "instrucao": {
+    "ui:readonly": true
+  },
+  "transp": {
+    "ui:widget": "typeahead",
+    "ui:options": {
+      "category": "transportadoras",
+      "itemFormat": "{nome_transp}"
+    }
+  }
+}
