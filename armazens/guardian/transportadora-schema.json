@@ -1,1 +1,22 @@
-{}
+{
+  "type": "object",
+  "required": [
+    "transp"
+  ],
+  "properties": {
+    "parceiro": {
+      "title": "Parceiro de Negócio",
+      "type": "string",
+      "anyOf": {{parceiros|tojson}}
+    },
+      "instrucao": {
+      "title": "Selecione a instrucao",
+      "type": "string",
+      "anyOf": {{instrucoes|tojson}}
+    },
+      "transp": {
+      "title": "Selecione a transportadora",
+      "type": "string"
+    }
+  }
+}
