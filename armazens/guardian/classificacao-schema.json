@@ -7,41 +7,55 @@
   "properties": {
     "umidade": {
       "type": "number",
-      "title": "Umidade"
+      "title": "Umidade",
+      "minimum": 0,
+      "maximum": 100
     },
     "impureza": {
       "type": "number",
-      "title": "Impureza"
+      "title": "Impureza",
+      "minimum": 0,
+      "maximum": 100
     },
     "avariados": {
       "type": "number",
       "title": "Avariados",
-      "default": 0
+      "default": 0,
+      "minimum": 0,
+      "maximum": 100
     },
     "quebrados": {
       "type": "number",
       "title": "Quebrados",
-      "default": 0
+      "default": 0,
+      "minimum": 0,
+      "maximum": 100
     },
     "ardidos": {
       "type": "number",
       "title": "Ardidos",
-      "default": 0
+      "default": 0,
+      "minimum": 0,
+      "maximum": 100
     },
     "outros": {
       "type": "number",
       "title": "Outros",
-      "default": 0
+      "default": 0,
+      "minimum": 0,
+      "maximum": 100
     },
     "graosverdes": {
       "type": "number",
       "title": "Grãos Verdes",
-      "default": 0
+      "default": 0,
+      "minimum": 0,
+      "maximum": 100
     },
     "numeroclassificacao": {
       "type": "string",
       "title": "Numero da Classificação",
-      "default": null
+      "default": ""
     },
     "observacao": {
       "type": "string",
