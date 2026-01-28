@@ -37,7 +37,9 @@
     },
     "ordem_carregamento": {
       "type": "number",
-      "title": "Nº Ordem de Carregamento"
+      "title": "Nº Ordem de Carregamento",
+      "default": 0,
+      "minimum": 1
     },
     "motorista": {
       "type": "string",
@@ -61,7 +63,9 @@
           "porcentagem_carga": {
             "type": "number",
             "title": "% Carga",
-            "default": 100
+            "default": 100,
+            "minimum": 1,
+            "maximum": 100
           }
         }
       }
