@@ -1,1 +1,33 @@
-{}
+{
+  "transp": "{\"codigo_transp\":\"4882667302\",\"nome_transp\":\"TRANSPORTADORA ALFA LTDA | 43064331/0001-06\"}",
+  "parceiros": [
+    {
+      "type": "string",
+      "enum": [
+        "5846519402"
+      ],
+      "title": "CLIENTE TESTE"
+    }
+  ],
+  "instrucoes": [
+    {
+      "type": "string",
+      "enum": [
+        "7738297402"
+      ],
+      "title": "TESTE GUARDIAN"
+    }
+  ],
+  "transportadoras": [
+    {
+      "type": "string",
+      "enum": [
+        "7738297409"
+      ],
+      "title": "TRANSPORTADORA GUARDIAN"
+    }
+  ],
+  "parceiro": "5846519402",
+  "instrucao": "7738297402",
+  "transportadora": "7738297409"
+}
