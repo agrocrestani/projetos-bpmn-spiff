@@ -2343,7 +2343,7 @@ connection = {
 #Busca Filiais
 filiais_unisystem = ", ".join("'" + str(item) + "'" for item in filiais_unisystem)
 
-query = f"SELECT * FROM ZVW_NEG_ARMAZENS avc WHERE avc.COD_SAFRA = 16 and COD_FILIAL IN ({filiais_unisystem})"
+query = f"SELECT * FROM ZVW_NEG_ARMAZENS avc WHERE avc.COD_SAFRA &gt;= 16 and COD_FILIAL IN ({filiais_unisystem})"
 rsp_negociacoes = Oracle(connection).selectDb(query)
 parceiros = []
 
