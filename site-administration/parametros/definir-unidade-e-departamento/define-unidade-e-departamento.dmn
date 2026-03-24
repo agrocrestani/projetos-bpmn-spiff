@@ -52,26 +52,6 @@
           <text></text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_181g8t8">
-        <inputEntry id="UnaryTests_14wa79w">
-          <text>"marcio.firmino"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_10730o1">
-          <text>"Matriz"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_07pzdeo">
-          <text>"TI"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1pfyqo3">
-          <text>"emerson.gregorio@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0ivazuy">
-          <text>"emerson.gregorio@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1qxjph4">
-          <text></text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0kytszo">
         <inputEntry id="UnaryTests_1dndxys">
           <text>"pablo.souza"</text>
@@ -272,26 +252,6 @@
           <text></text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0nio1g3">
-        <inputEntry id="UnaryTests_0o5oueg">
-          <text>"lierbete.filho"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0cph03u">
-          <text>"SaoCarlos"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1x86ot0">
-          <text>"Administrativo"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_160kwcq">
-          <text>"roobson.kennedy@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0wgim7y">
-          <text>"roobson.kennedy@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_10xfmxj">
-          <text></text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0uzhmrl">
         <inputEntry id="UnaryTests_0oryro9">
           <text>"michele.sousa"</text>
@@ -389,26 +349,6 @@
           <text>"vilmar.ferreira@agrocrestani.com.br"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08v0168">
-          <text></text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0v1so7b">
-        <inputEntry id="UnaryTests_0d0ghlv">
-          <text>"ygor.ferreira"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1yzooll">
-          <text>"Querencia"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1un623k">
-          <text>"Producao"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_126vs9o">
-          <text>"enio.sturmer@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_05iderd">
-          <text>"rafael.nogueira@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1jgk200">
           <text></text>
         </outputEntry>
       </rule>
@@ -652,23 +592,23 @@
           <text></text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_09a4o68">
-        <inputEntry id="UnaryTests_0l9kkdg">
-          <text>"marcia.bezerra"</text>
+      <rule id="DecisionRule_0va5fto">
+        <inputEntry id="UnaryTests_1tvi35f">
+          <text>"isabelly.silva"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_1bn750z">
+        <outputEntry id="LiteralExpression_1d9lu6k">
           <text>"Querencia"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1yyp3jk">
+        <outputEntry id="LiteralExpression_067rnfe">
           <text>"Cantina"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0me2am4">
+        <outputEntry id="LiteralExpression_190d4do">
           <text>"fernando.lourenzoni@agrocrestani.com.br"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0pu3khl">
+        <outputEntry id="LiteralExpression_1mj65ry">
           <text>"fernando.lourenzoni@agrocrestani.com.br"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0ibzoqy">
+        <outputEntry id="LiteralExpression_1hcxf4h">
           <text></text>
         </outputEntry>
       </rule>
