@@ -758,17 +758,6 @@
           <text></text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1m8skcg">
-        <inputEntry id="UnaryTests_1w78y96">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1bd8bn0">
-          <text>"rafael.lima@agrocrestani.com.br"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0708z8h">
-          <text>"Curupai_Administrativo"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1xcpzva">
         <inputEntry id="UnaryTests_1s6j36e">
           <text></text>
