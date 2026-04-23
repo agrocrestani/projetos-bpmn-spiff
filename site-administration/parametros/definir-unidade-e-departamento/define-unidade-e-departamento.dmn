@@ -312,6 +312,26 @@
           <text></text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1sm63f4">
+        <inputEntry id="UnaryTests_1tusp2x">
+          <text>"rafael.lima"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1sfsfxr">
+          <text>"Curupai"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xloghk">
+          <text>"Cantina"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mc42wg">
+          <text>"vilmar.ferreira@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dng2xg">
+          <text>"vilmar.ferreira@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x9f314">
+          <text></text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_00f8ve7">
         <inputEntry id="UnaryTests_0tsvp0c">
           <text>"rafael.lima"</text>
