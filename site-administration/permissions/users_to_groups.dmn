@@ -802,6 +802,17 @@
           <text>"Matriz_ComercialAlgodao"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0mgel5i">
+        <inputEntry id="UnaryTests_1b11peq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1b851bu">
+          <text>"jenyffer.barreto@agrocrestani.com.br"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1u18248">
+          <text>"Matriz_ComercialAlgodao"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0io8h3y">
         <inputEntry id="UnaryTests_1gwmtbb">
           <text></text>
