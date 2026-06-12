@@ -103,7 +103,6 @@ if notas:
 else:
     existe = 0
 
-del(query)
 del(connection)</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_118tz8v">
